@@ -45,15 +45,18 @@
       "symbol": "⌖",
       "theme": "defense",
       "summary": "丧尸生存与防守",
-      "state": "preparing",
-      "statusText": "网页版准备中",
-      "version": "",
-      "compatibility": "网页浏览器",
-      "sizeBytes": null,
-      "playUrl": "",
+      "state": "published",
+      "statusText": "可直接试玩",
+      "version": "1.10.0.2 · 网页试玩",
+      "compatibility": "电脑浏览器，推荐 Chrome / Edge",
+      "sizeBytes": 243819532,
+      "playUrl": "./last-defense/1.10.0.2-preview11/",
       "downloadUrl": "",
       "releaseNotes": [
-        "网页版正在准备，发布后可直接在这里开始游戏。"
+        "真实3D雨夜街区生存，已开放网页试玩。",
+        "WASD 移动，自动射击，升级时选择武器与能力。",
+        "首次进入需加载约233 MB资源，成长进度保存在当前浏览器。",
+        "当前为玩法试玩版，人物与画面仍在持续精修。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"

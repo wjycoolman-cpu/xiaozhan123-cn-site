@@ -27,6 +27,8 @@ jobs:
           archive_name=$(python3 -c "import json;print(json.load(open('game-releases/skymyth-r104.json'))['archive']['name'])")
           mkdir -p /tmp/skymyth-release
           gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/skymyth-release
+          mkdir -p /tmp/lastlight-preview11
+          gh release download lastlight-preview11-web --repo "$GITHUB_REPOSITORY" --pattern LastLight-preview11-site.zip --dir /tmp/lastlight-preview11
       - name: Assemble current site and verified game
         run: |
           python3 - <<'PY'
@@ -63,6 +65,18 @@ jobs:
               for name in manifest['files']:
                   if name.endswith('.host.js') and name not in overlays:
                       (out/'skymyth'/name).unlink()
+          current=json.loads((root/'game-releases/lastlight-preview11.json').read_text())
+          archive=Path('/tmp/lastlight-preview11/LastLight-preview11-site.zip')
+          assert archive.stat().st_size==current['archive']['bytes']
+          with archive.open('rb') as f:
+              assert hashlib.file_digest(f,'sha256').hexdigest()==current['archive']['sha256']
+          with zipfile.ZipFile(archive) as z:
+              assert len(z.namelist())==9 and sorted(z.namelist())==sorted(current['files'])
+              for name,wanted in current['files'].items():
+                  rel=Path(name);assert not rel.is_absolute() and '..' not in rel.parts and len(rel.parts)==1
+                  raw=z.read(name)
+                  assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().lower()==wanted['sha256'].lower()
+                  dest=out/'last-defense'/'1.10.0.2-preview11'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
           assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
           total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
           assert total<1024*1024*1024,total

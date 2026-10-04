@@ -1,0 +1,98 @@
+{
+  "schema": "lastlight-public-preview/v1",
+  "stage": "technical_preview",
+  "revision": "preview11",
+  "release_tag": "lastlight-preview11-web",
+  "target_home_url": "https://xiaozhan123.cn/",
+  "site_route": "last-defense/1.10.0.2-preview11",
+  "archive": {
+    "name": "LastLight-preview11-site.zip",
+    "bytes": 185412222,
+    "sha256": "34868821dea6a1c244005fee626e6d4434c2b684c8fa0cb93e1aae10545d447b"
+  },
+  "profile": {
+    "engine": "Godot 4.7.1",
+    "args": [],
+    "threads": false,
+    "pwa": false,
+    "normal_loader_preserved": true
+  },
+  "export_evidence": {
+    "schema": "lastlight.playable-web-preview-export/v1",
+    "receipt_sha256": "f923302590c5da500fd14153fed76435a56c11a77794fe65f3661d701811c852",
+    "passed": true,
+    "source_guards": {
+      "original_source_unchanged": true,
+      "protected_P10_unchanged": true,
+      "protected_Runtime_unchanged": true,
+      "project_source_unchanged_after_export": true
+    },
+    "required_project_assets": {
+      "assets/shaders/vehicle_paint_r11.gdshader": {
+        "bytes": 2230,
+        "sha256": "d65a9d137a93abd379af6637659595862dff0538c1e96bff8adfbe3d9e4f0ce4"
+      },
+      "assets/environment/reflections/street_cube11.res": {
+        "bytes": 8390094,
+        "sha256": "be512e76a67183cf9a712ecc05303be58967bd09a232ae40e2f64436010fbb16"
+      },
+      "assets/shaders/actor_mature_equipment_fit_r10b.gdshader": {
+        "bytes": 8371,
+        "sha256": "72db32d2a8a42e0d41654d92213db37e5f3a4949c32bd824cb1ca45ca14669a2"
+      },
+      "assets/characters/mature_ranger/ranger_body.meshbin": {
+        "bytes": 1126080,
+        "sha256": "5041415469cfa9cf22fb650a4af4b1d7a6832aa01ce2e9036186d6fa6642e811"
+      },
+      "assets/characters/mature_ranger/ranger_outfit.meshbin": {
+        "bytes": 777548,
+        "sha256": "d6258e72e7157fe7092d95cf3780437a15d5f86ecbc56a7c7e9fb0c529a0ca97"
+      }
+    }
+  },
+  "claims": {
+    "actor_revision": "Actor11 input selected by Root; acceptance remains a separate gate",
+    "visual_acceptance": "unverified",
+    "same_source_as_current_windows_exe": false,
+    "browser_journey": "unverified_until_root_runs_it"
+  },
+  "files": {
+    "index.html": {
+      "bytes": 5540,
+      "sha256": "2B6035AD9117DE17D79D608D4641A527551E447EFF3AF254602F66F7FA737FD1"
+    },
+    "index.js": {
+      "bytes": 279815,
+      "sha256": "68586D6DAAFC93C6E697B3FB258976874AA7459B8931165EBB1DC3C9614CC42C"
+    },
+    "index.pck": {
+      "bytes": 203979372,
+      "sha256": "8D03127238D82ED1E9832C15BA057FEF4F89E0056541E03980694B6FC4564E3F"
+    },
+    "index.wasm": {
+      "bytes": 39513091,
+      "sha256": "35116F68540AC41ACF7D71EA457ADDED91B5E960A9CCA3E2ACC72918EAF01277"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3CB4495C0B98DFBE4B663CBF2B6836473572339BEB66D902367893162A70BE0E"
+    },
+    "index.icon.png": {
+      "bytes": 5492,
+      "sha256": "4BCAF06FF13A1C1D3F16A2A46DDB31C722FADAAC5C4949C5AB3F9BB01EB50038"
+    },
+    "index.apple-touch-icon.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5B476A9C9CE642C0EE4256436D1BC31D9C38F868ACA0F9A8E2A57C18D2DEC2A3"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "BE33985BC7160D6BF9646F259CD86B259CD67B02CCB297EE5C44F8AC84327BC8"
+    }
+  },
+  "final_visual_accepted": false
+}
