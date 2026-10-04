@@ -20,15 +20,15 @@
       "summary": "策略卡牌与战斗冒险",
       "state": "published",
       "statusText": "可直接试玩",
-      "version": "0.8.87 · r104-cache1",
+      "version": "0.8.90 · r108",
       "compatibility": "网页浏览器，建议横屏",
-      "sizeBytes": 188013778,
+      "sizeBytes": 187605056,
       "playUrl": "./skymyth/",
       "downloadUrl": "",
       "releaseNotes": [
-        "网页试玩已开放：选择牌组、出牌战斗，进度保存在当前浏览器。",
-        "首次需下载约188 MB；完成后保存本地资源缓存，再次进入可复用。",
-        "支持大资源分段加载；当前为单人对战，联机尚未接入。"
+        "准备与战斗采用新的奇幻器乐，保留音乐音量设置和平滑切换。",
+        "命中有同步特效、伤害提示与打击音；保留暂停和减少动态模式。",
+        "首次需下载约188 MB；同一版本再次进入可复用本地资源缓存。当前为单人对战。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
