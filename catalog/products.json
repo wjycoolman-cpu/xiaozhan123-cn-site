@@ -3,7 +3,7 @@
   "site": {
     "name": "小站 · 游戏与应用",
     "canonicalUrl": "https://xiaozhan123.cn/",
-    "adminUrl": "https://xiaozhan123.cn/admin/"
+    "adminUrl": ""
   },
   "products": [
     {
@@ -29,7 +29,7 @@
         "网页版正在准备，发布后可直接在这里开始游戏。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       }
     },
     {
@@ -54,7 +54,7 @@
         "网页版正在准备，发布后可直接在这里开始游戏。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       }
     },
     {
@@ -68,45 +68,52 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.4",
-      "versionCode": 5,
+      "version": "1.0.11",
+      "versionCode": 12,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 23280446,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.4.apk",
-      "filename": "pocket-piano-1.0.4.apk",
-      "sha256": "1bdfcf2c6c985717f74ea4f24bd69921f140aeb6cf6e59f601e3636a6944a45f",
+      "sizeBytes": 48430085,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.11.apk",
+      "filename": "pocket-piano-1.0.11.apk",
+      "sha256": "e76a9aee8de4bd0a5da0dd44dd164a945ac03a83bd235ea528d322ea5ea23307",
       "releaseNotes": [
-        "当前正式交付版本为 1.0.4。",
-        "界面新版仍在准备，完成验收后更新此入口。"
+        "同步完整曲库正式版，并接入小站自动更新源。",
+        "保留原包名、签名、个人设置和收藏。"
       ],
       "feedback": {
-        "endpoint": ""
-      }
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+      },
+      "updateManifestUrl": "https://xiaozhan123.cn/pocket-piano/update.json"
     },
     {
-      "id": "kfc-order",
-      "name": "KFC自动点餐",
+      "id": "mianji",
+      "name": "眠迹",
       "aliases": [
-        "KVC"
+        "睡眠监测"
       ],
       "kind": "app",
-      "category": "生活工具",
-      "symbol": "K",
-      "theme": "kfc",
-      "summary": "辅助完成 KFC 点餐",
-      "state": "preparing",
-      "statusText": "安装包准备中",
-      "version": "",
-      "compatibility": "Android，兼容版本待确认",
-      "sizeBytes": null,
-      "downloadUrl": "",
+      "category": "睡眠记录",
+      "symbol": "☾",
+      "theme": "sleep",
+      "summary": "自动推测休息时间，查看睡眠趋势",
+      "state": "available",
+      "statusText": "可下载",
+      "version": "1.1.2",
+      "versionCode": 4,
+      "packageName": "com.mianji.app",
+      "compatibility": "Android 9.0 及以上",
+      "sizeBytes": 2628247,
+      "downloadUrl": "./mianji/releases/mianji-1.1.2.apk",
+      "filename": "mianji-1.1.2.apk",
+      "updateManifestUrl": "https://xiaozhan123.cn/mianji/update.json",
       "releaseNotes": [
-        "新版安装包正在准备。"
+        "接通小站安装包与自动检查更新。",
+        "保留自动监测、睡眠趋势及本机记录。"
       ],
       "feedback": {
-        "endpoint": ""
-      }
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+      },
+      "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74"
     },
     {
       "id": "qingci",
@@ -137,7 +144,7 @@
         "保留四级、六级、独立进度及离线英语朗读。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       }
     },
     {
@@ -162,7 +169,7 @@
         "新版完成验收后会更新下载入口。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       },
       "versionCode": 10324,
       "packageName": "com.smartquestionbank.app",

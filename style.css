@@ -123,3 +123,5 @@ textarea { resize:vertical; }
  .detail-identity h2 { font-size:22px; }
 }
 @media(prefers-reduced-motion:reduce) { .primary:active { transform:none; } }
+
+.sleep .product-icon { background:#566a92; }

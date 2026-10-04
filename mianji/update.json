@@ -1,0 +1,12 @@
+{
+  "schema": "mianji-update/v1",
+  "channel": "released",
+  "packageName": "com.mianji.app",
+  "versionCode": 4,
+  "versionName": "1.1.2",
+  "apkUrl": "https://xiaozhan123.cn/mianji/releases/mianji-1.1.2.apk",
+  "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74",
+  "size": 2628247,
+  "publishedAt": "2026-10-04T13:53:15.077Z",
+  "releaseNotes": "接入小站下载与自动检查更新；新增反馈待发队列。"
+}

@@ -1,0 +1,6 @@
+{
+  "schema": "mianji-feedback-service/v1",
+  "enabled": true,
+  "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1",
+  "status": "connected-existing-system"
+}

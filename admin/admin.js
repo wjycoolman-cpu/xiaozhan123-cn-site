@@ -1,4 +1,4 @@
-const names = Object.freeze({'skymyth':'天空传说','last-defense':'人类大战僵尸','pocket-piano':'掌上钢琴','kfc-order':'KFC自动点餐','qingci':'词间','question-bank':'智能题库'});
+const names = Object.freeze({'skymyth':'天空传说','last-defense':'人类大战僵尸','pocket-piano':'掌上钢琴','mianji':'眠迹','qingci':'词间','question-bank':'智能题库'});
 const statusNames = Object.freeze({new:'待处理',in_progress:'处理中',resolved:'已解决',rejected:'暂不采纳'});
 
 export function mountAdmin(cloudbase, config) {

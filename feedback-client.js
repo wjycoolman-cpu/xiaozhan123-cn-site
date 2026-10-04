@@ -1,6 +1,6 @@
 (function (global) {
   'use strict';
-  const PRODUCTS = new Set(['skymyth', 'last-defense', 'pocket-piano', 'kfc-order', 'qingci', 'question-bank']);
+  const PRODUCTS = new Set(['skymyth', 'last-defense', 'pocket-piano', 'kfc-order', 'mianji', 'qingci', 'question-bank']);
   const SCHEMA = 'app-center-feedback/v1';
   const ACK_SCHEMA = 'app-center-feedback-ack/v1';
   const DB_NAME = 'app-center-feedback-private-v1';

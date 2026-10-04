@@ -16,6 +16,7 @@
    skymyth:'<path d="M12 3 14.3 9.7 21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Z"/>',
    'last-defense':'<path d="M12 3 20 6v6c0 5-5 8-8 10-3-2-8-5-8-10V6Z"/><path d="M8 12h8M12 8v8"/>',
    'pocket-piano':'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 13v7m6-7v7M7 4v9h3V4m4 0v9h3V4"/>',
+   mianji:'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/>',
    'question-bank':'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8.5 12l2.5 2.5 4.5-5"/>'
   };
   const symbol=p.id==='qingci'?'Aa':p.id==='kfc-order'?'K':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${drawings[p.id]||''}</svg>`;
