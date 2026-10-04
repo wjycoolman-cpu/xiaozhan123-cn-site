@@ -1,0 +1,64 @@
+{
+  "schema": "skymyth-public-deployment/v1",
+  "revision": "r104",
+  "productVersion": "0.8.87",
+  "release_tag": "skymyth-r104-web",
+  "archive": {
+    "bytes": 188009307,
+    "sha256": "88093bfb07bcf76a1dcb991bc9a5d383106e08670b32a3ab8dfc2a551e35808f"
+  },
+  "files": {
+    ".nojekyll": {
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    "index.html": {
+      "bytes": 4143,
+      "sha256": "63FAFA840B026746EF825D769C82BA7946E131804FB08D4B19536B087398A69A"
+    },
+    "Build/0e2abb63dbf0351d72f6e8eca8959d7f81491d0d2791ba143eeaf6a0c76e3305.loader.js": {
+      "bytes": 19430,
+      "sha256": "0E2ABB63DBF0351D72F6E8ECA8959D7F81491D0D2791BA143EEAF6A0C76E3305"
+    },
+    "Build/726d9a866e2249a6d5b0b0951f11e483747ef49fce974dc793852f8fa4061f84.host.js": {
+      "bytes": 7804,
+      "sha256": "726D9A866E2249A6D5B0B0951F11E483747EF49FCE974DC793852F8FA4061F84"
+    },
+    "Build/884629eca11f1198d81b13c13d57739ce171edba1ea178e59883d1f357eaff89.framework.js.gz": {
+      "bytes": 96732,
+      "sha256": "480B0B05800C34CD032AEB021B1AA8FCC677AC3684CB87D9D96760EADD890B9D"
+    },
+    "Build/d7b49eca0f8bc19e5c973e194847c1456718cf9055265bd2bd6e645083e6bfc2.data.gz": {
+      "bytes": 176615141,
+      "sha256": "8D6D36ACB53A2481B31C07E4BA5D44A2F8F3E674200A5FBDF2B76CF090C8764F"
+    },
+    "Build/f8f9a2dc6d7233135b314131fb33ffab7232d1d0c9eace5db4f54fc6527ccaea.wasm.gz": {
+      "bytes": 11246448,
+      "sha256": "82984A8A1289DF21C607E0F45FC873D906B765829AD59EC3299C4CDDD6E6E524"
+    },
+    "TemplateData/favicon.ico": {
+      "bytes": 2305,
+      "sha256": "9C13BEB90EE8F70580D52A21D5233970D1C89E71E4A34A462C22610941C3C77F"
+    },
+    "Licenses/Fonts/FONT_SOURCES.md": {
+      "bytes": 1236,
+      "sha256": "7866C67ED103E80EDF8DCB12EEEF62C4A8E760E7BCF161E26653D0A571F39584"
+    },
+    "Licenses/Fonts/LICENSE-Barlow-1.422.txt": {
+      "bytes": 4377,
+      "sha256": "186D750EB496A4C17A76385F82BE6AEA2AC1CF2DE074A811D63786CF374EA73F"
+    },
+    "Licenses/Fonts/LICENSE-SourceHanSans-2.005R.txt": {
+      "bytes": 4463,
+      "sha256": "FCAC737E761EC63DBFBDCE11030A1780161920D80315EDBA9C8BEFF1C2BAC5A2"
+    },
+    "Licenses/Fonts/LICENSE-SourceHanSerif-2.003R.txt": {
+      "bytes": 4463,
+      "sha256": "9FF5BB567E1B92C801FC1069E5FBF992FF8EFCCACB9DB94E5959A5B3BA9BB903"
+    },
+    "Licenses/Fonts/TYPOGRAPHY-R101.md": {
+      "bytes": 475,
+      "sha256": "AB6D7EFBC32E3C8CE9C04B0B4C3616322F6FCCD20CF1F1E875B10475C67F084C"
+    }
+  }
+}

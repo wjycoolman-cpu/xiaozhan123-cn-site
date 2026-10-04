@@ -18,15 +18,17 @@
       "symbol": "✦",
       "theme": "sky",
       "summary": "策略卡牌与战斗冒险",
-      "state": "preparing",
-      "statusText": "网页版准备中",
-      "version": "",
-      "compatibility": "网页浏览器",
-      "sizeBytes": null,
-      "playUrl": "",
+      "state": "published",
+      "statusText": "可直接试玩",
+      "version": "0.8.87 · r104",
+      "compatibility": "网页浏览器，建议横屏",
+      "sizeBytes": 188007017,
+      "playUrl": "./skymyth/",
       "downloadUrl": "",
       "releaseNotes": [
-        "网页版正在准备，发布后可直接在这里开始游戏。"
+        "已开放网页试玩：选择牌组、出牌战斗，进度保存在当前浏览器。",
+        "首次进入约需加载 188 MB 游戏资源。",
+        "当前为单人对战，联机功能尚未接入。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"

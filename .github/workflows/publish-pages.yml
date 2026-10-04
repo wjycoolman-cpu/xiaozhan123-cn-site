@@ -1,0 +1,64 @@
+name: Publish small site with playable SkyMyth
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Download approved game release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/skymyth-r104
+          gh release download skymyth-r104-web --repo "$GITHUB_REPOSITORY" --pattern SkyMyth-r104-site.zip --dir /tmp/skymyth-r104
+      - name: Assemble current site and verified game
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,shutil,subprocess,zipfile
+          root=Path.cwd();out=root/'_site';out.mkdir()
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          for name in filter(None,files):
+              if name.startswith('.github/'):
+                  continue
+              source=root/name
+              assert source.is_file() and not source.is_symlink(),name
+              dest=out/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,dest)
+          manifest=json.loads((root/'game-releases/skymyth-r104.json').read_text())
+          archive=Path('/tmp/skymyth-r104/SkyMyth-r104-site.zip')
+          assert archive.stat().st_size==manifest['archive']['bytes']
+          with archive.open('rb') as f:
+              assert hashlib.file_digest(f,'sha256').hexdigest()==manifest['archive']['sha256']
+          with zipfile.ZipFile(archive) as z:
+              assert sorted(z.namelist())==sorted(manifest['files'])
+              for name,wanted in manifest['files'].items():
+                  rel=Path(name);assert not rel.is_absolute() and '..' not in rel.parts
+                  raw=z.read(name)
+                  assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().upper()==wanted['sha256']
+                  dest=out/'skymyth'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+          assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
+          total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
+          assert total<1024*1024*1024,total
+          print(json.dumps({'site_bytes':total,'game_files':len(manifest['files']),'game_revision':'r104'}))
+          PY
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: _site
+          include-hidden-files: true
+      - name: Deploy complete site
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
