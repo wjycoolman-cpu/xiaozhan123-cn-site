@@ -27,11 +27,14 @@
   }
 
   function endpoint(value) {
-    if (!value) return '';
+    if (typeof value !== 'string' || !value) return '';
     try {
-      const u = new URL(value, global.location.href);
-      const local = ['localhost', '127.0.0.1', '[::1]'].includes(u.hostname);
-      return !u.username && !u.password && !u.hash && (u.protocol === 'https:' || (u.protocol === 'http:' && local)) ? u.href : '';
+      const page = new URL(global.location.href), u = new URL(value, page);
+      if (u.username || u.password || u.href.includes('?') || u.href.includes('#')) return '';
+      const approved = 'https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1';
+      if (value === approved) return approved;
+      const loopback = ['localhost', '127.0.0.1', '[::1]'];
+      return loopback.includes(page.hostname) && loopback.includes(u.hostname) && u.protocol === 'http:' ? u.href : '';
     } catch { return ''; }
   }
 

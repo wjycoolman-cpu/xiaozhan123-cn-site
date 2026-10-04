@@ -8,7 +8,15 @@
  const busyFeedback = new Set();
  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const size = n => n ? `${(n / 1048576).toFixed(1)} MB` : '待发布';
- function safeUrl(value) { if (!value) return ''; try { const u = new URL(value, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
+ function safeUrl(value) {
+  if (typeof value !== 'string' || !value) return '';
+  try {
+   const page = new URL(location.href), u = new URL(value, page);
+   const localPage = ['localhost', '127.0.0.1', '[::1]'].includes(page.hostname);
+   if (u.username || u.password || u.origin !== page.origin) return '';
+   return u.protocol === 'https:' || (u.protocol === 'http:' && localPage) ? u.href : '';
+  } catch { return ''; }
+ }
  function ready(p) { return ['published','available'].includes(p.state) && !!safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); }
  function action(p) { const url = safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); return ready(p) ? `<a class="button primary" href="${esc(url)}" ${p.kind === 'app' ? `download="${esc(p.filename || p.id + '.apk')}" data-download="${esc(p.id)}"` : ''}>${p.kind === 'game' ? '开始游戏' : '下载 APK'}</a>` : `<button class="button disabled" disabled>${esc(p.statusText || '准备中')}</button>`; }
  function icon(p) {
