@@ -64,8 +64,10 @@
     },
     {
       "id": "pocket-piano",
-      "name": "掌上钢琴",
-      "aliases": [],
+      "name": "弹钢琴",
+      "aliases": [
+        "掌上钢琴"
+      ],
       "kind": "app",
       "category": "音乐",
       "symbol": "♬",
@@ -73,17 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.11",
-      "versionCode": 12,
+      "version": "1.0.14",
+      "versionCode": 15,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 48430085,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.11.apk",
-      "filename": "pocket-piano-1.0.11.apk",
-      "sha256": "e76a9aee8de4bd0a5da0dd44dd164a945ac03a83bd235ea528d322ea5ea23307",
+      "sizeBytes": 48458455,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.14.apk",
+      "filename": "pocket-piano-1.0.14.apk",
+      "sha256": "c20612fc22fadf1a8aeedadbb7eb8069ccfbb51afed4b1bec8642cc3afd58fed",
       "releaseNotes": [
-        "同步完整曲库正式版，并接入小站自动更新源。",
-        "保留原包名、签名、个人设置和收藏。"
+        "保留原来的灰蓝钢琴界面；修复多指弹奏，加入自动音域、简谱跟随、音乐计算器及演奏时收起操作栏。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
