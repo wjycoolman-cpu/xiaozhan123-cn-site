@@ -1,12 +1,12 @@
 {
   "schema": "skymyth-public-deployment/v1",
-  "revision": "r108",
+  "revision": "r109",
   "productVersion": "0.8.90",
-  "release_tag": "skymyth-r108-web",
+  "release_tag": "skymyth-r109-web",
   "archive": {
-    "name": "SkyMyth-r108-site.zip",
-    "bytes": 187201794,
-    "sha256": "bb73b7b9a187d94ffccd8082eccefcc6ee0bf0e7499750127be3803b0d285539"
+    "name": "SkyMyth-r109-site.zip",
+    "bytes": 175631707,
+    "sha256": "fa751278380d38d6df8bb05482c8bf959f049c08b38927a7fc53f2471801cbc2"
   },
   "files": {
     ".nojekyll": {
@@ -14,12 +14,16 @@
       "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
     },
     "index.html": {
-      "bytes": 4112,
-      "sha256": "9EDA2BF28BF93E8EA757E3F5A2B88F9F0078EECA04D9851EAF8FF54B624887F0"
+      "bytes": 4118,
+      "sha256": "0529220C533CA6CD82FC31E14D75C6FD18662B75EFE90E1E6A0B177857AF30A5"
     },
     "Build/276a3aaad1e71c92e87c5edbdeeb4cd4bf29a69badf68e8193080a47224b40b6.framework.js.gz": {
       "bytes": 96850,
       "sha256": "D12C06E0D679C04AD15F2A6BEB50DC45F84985B0A06729CF340D2DBF1D134459"
+    },
+    "Build/6b68965246d494d9a1161c8fc6fe8ab2ab7f4988031e07f8a7876cd240cdb36a.data.gz": {
+      "bytes": 164631185,
+      "sha256": "E8F4EA1A64A0B99D51AE6C2519660254B70648794E14A911EE8C735A9F9FCA38"
     },
     "Build/733a7a5744cf3905915ec871c7e6cf6612b661bec22cdd80f652620a372fdbe7.loader.js": {
       "bytes": 19430,
@@ -28,10 +32,6 @@
     "Build/753a0bfb8e1e1425bdf2a9cfdbcd4120688b8a9f644e53f12a021f307473704f.wasm.gz": {
       "bytes": 11247424,
       "sha256": "263AC2A375C663DE2FE5D41AFC6C96DDB8F6CDB01BF67F669593D84F512722C1"
-    },
-    "Build/9afceef1489208235d579c9fc13d275f58fbab0c90859f5f17ed8066b4da660a.data.gz": {
-      "bytes": 176203611,
-      "sha256": "F0CDC1A22E18B9D45C596370EFFCE46B1672AD1712C9C39BE665B9ED22463F5B"
     },
     "Build/be55d83bf6e02f029d036b5fb1ab79f5dc22478c8fbf9afdb4a978e1b8d9348e.host.js": {
       "bytes": 14576,
