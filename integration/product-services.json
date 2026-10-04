@@ -1,0 +1,19 @@
+{
+  "schema": "product-services/v1",
+  "environmentId": "scac-pudong-map-d5fxlisie96d7d00",
+  "site": "https://xiaozhan123.cn/",
+  "websiteFeedbackEndpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1",
+  "skymyth": {
+    "contractConfirmed": true,
+    "schema": "skymyth-feedback/v1",
+    "productId": "skymyth",
+    "feedbackUrl": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/skymyth-feedback-v1",
+    "webRelease": "awaiting verified complete current export"
+  },
+  "lastlight": {
+    "productId": "last-light",
+    "feedbackEndpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/lastlight-feedback-v1",
+    "webRelease": "awaiting verified complete current export"
+  },
+  "gamesRuntimeConfigured": false
+}
