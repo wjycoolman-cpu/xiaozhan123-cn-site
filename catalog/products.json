@@ -1,0 +1,174 @@
+{
+  "schema": "app-center/v1",
+  "site": {
+    "name": "小站 · 游戏与应用",
+    "canonicalUrl": "https://xiaozhan123.cn/",
+    "adminUrl": "https://xiaozhan123.cn/admin/"
+  },
+  "products": [
+    {
+      "id": "skymyth",
+      "name": "天空传说",
+      "aliases": [
+        "青空传说",
+        "SkyMyth"
+      ],
+      "kind": "game",
+      "category": "策略冒险",
+      "symbol": "✦",
+      "theme": "sky",
+      "summary": "策略卡牌与战斗冒险",
+      "state": "preparing",
+      "statusText": "网页版准备中",
+      "version": "",
+      "compatibility": "网页浏览器",
+      "sizeBytes": null,
+      "playUrl": "",
+      "downloadUrl": "",
+      "releaseNotes": [
+        "网页版正在准备，发布后可直接在这里开始游戏。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
+    },
+    {
+      "id": "last-defense",
+      "name": "人类大战僵尸",
+      "aliases": [
+        "最后防线"
+      ],
+      "kind": "game",
+      "category": "生存防守",
+      "symbol": "⌖",
+      "theme": "defense",
+      "summary": "丧尸生存与防守",
+      "state": "preparing",
+      "statusText": "网页版准备中",
+      "version": "",
+      "compatibility": "网页浏览器",
+      "sizeBytes": null,
+      "playUrl": "",
+      "downloadUrl": "",
+      "releaseNotes": [
+        "网页版正在准备，发布后可直接在这里开始游戏。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
+    },
+    {
+      "id": "pocket-piano",
+      "name": "掌上钢琴",
+      "aliases": [],
+      "kind": "app",
+      "category": "音乐",
+      "symbol": "♬",
+      "theme": "piano",
+      "summary": "手机上的钢琴键盘",
+      "state": "available",
+      "statusText": "可下载",
+      "version": "1.0.4",
+      "versionCode": 5,
+      "packageName": "com.pocketpiano.app",
+      "compatibility": "Android 8.0 及以上",
+      "sizeBytes": 23280446,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.4.apk",
+      "filename": "pocket-piano-1.0.4.apk",
+      "sha256": "1bdfcf2c6c985717f74ea4f24bd69921f140aeb6cf6e59f601e3636a6944a45f",
+      "releaseNotes": [
+        "当前正式交付版本为 1.0.4。",
+        "界面新版仍在准备，完成验收后更新此入口。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
+    },
+    {
+      "id": "kfc-order",
+      "name": "KFC自动点餐",
+      "aliases": [
+        "KVC"
+      ],
+      "kind": "app",
+      "category": "生活工具",
+      "symbol": "K",
+      "theme": "kfc",
+      "summary": "辅助完成 KFC 点餐",
+      "state": "preparing",
+      "statusText": "安装包准备中",
+      "version": "",
+      "compatibility": "Android，兼容版本待确认",
+      "sizeBytes": null,
+      "downloadUrl": "",
+      "releaseNotes": [
+        "新版安装包正在准备。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
+    },
+    {
+      "id": "qingci",
+      "name": "词间",
+      "aliases": [
+        "英语学习"
+      ],
+      "kind": "app",
+      "category": "学习",
+      "symbol": "Aa",
+      "theme": "words",
+      "summary": "四级、六级英语词汇学习",
+      "state": "published",
+      "statusText": "可下载",
+      "version": "1.0.6",
+      "versionCode": 7,
+      "packageName": "com.qingci.cet4",
+      "compatibility": "Android 6.0 及以上",
+      "sizeBytes": 6351896,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.6.apk",
+      "filename": "qingci-1.0.6.apk",
+      "sha256": "082141495103c76d2882b0ba0e6820b4f673ad40be6da07eed1c24372ace2591",
+      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/qingci-app/update.json",
+      "releaseNotes": [
+        "应用名称显示为“词间”，保留原包名、签名证书与已有学习记录。",
+        "首页简化，学习、统计、词书和练习分区更清楚。",
+        "每日目标只影响当天进度，达到目标后仍可继续学习。",
+        "保留四级、六级、独立进度及离线英语朗读。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
+    },
+    {
+      "id": "question-bank",
+      "name": "智能题库",
+      "aliases": [
+        "答题"
+      ],
+      "kind": "app",
+      "category": "学习",
+      "symbol": "✓",
+      "theme": "quiz",
+      "summary": "整理题库，练习与复习错题",
+      "state": "published",
+      "statusText": "可下载",
+      "version": "1.3.24",
+      "compatibility": "Android 8.0 及以上",
+      "sizeBytes": 70013741,
+      "downloadUrl": "./exercise-practice-app/SmartQuestionBank-Android-v10324.apk",
+      "releaseNotes": [
+        "目前提供已正式发布的 1.3.24 版本。",
+        "新版完成验收后会更新下载入口。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      },
+      "versionCode": 10324,
+      "packageName": "com.smartquestionbank.app",
+      "filename": "SmartQuestionBank-Android-v10324.apk",
+      "sha256": "bfdfe386f2f9444ed0efed45d29c3e257a6708aefacf4aa2411df609e0429156",
+      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/exercise-practice-app/update.json"
+    }
+  ]
+}
