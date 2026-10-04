@@ -1,0 +1,25 @@
+{
+  "core_version": "1.0.2",
+  "manager_version": "1.0.0",
+  "platform": "Windows 10/11 x64",
+  "files": [
+    {
+      "filename": "StardewFarmAssistant-1.0.2-Mod.zip",
+      "url": "https://xiaozhan123.cn/stardew-farm/releases/StardewFarmAssistant-1.0.2-Mod.zip",
+      "bytes": 188894,
+      "sha256": "318c05c7c2874fe0c663ffa9b3c9f96ca2f02475745370cfbb34bebca9a46f5e"
+    },
+    {
+      "filename": "StardewFarmAssistant-1.0.2-Windows-Setup.zip",
+      "url": "https://xiaozhan123.cn/stardew-farm/releases/StardewFarmAssistant-1.0.2-Windows-Setup.zip",
+      "bytes": 244057,
+      "sha256": "0adcae355eeb1f0dad574dcd77e9ae2ec85cf7755cda524dcc7e65f92fd05655"
+    },
+    {
+      "filename": "StardewFarmAssistant-1.0.2-Windows-Source.zip",
+      "url": "https://xiaozhan123.cn/stardew-farm/releases/StardewFarmAssistant-1.0.2-Windows-Source.zip",
+      "bytes": 356830,
+      "sha256": "6607aa30fd9525f980299e45f3f2d8cdd53ae9494670e3e034635f5e581c937f"
+    }
+  ]
+}

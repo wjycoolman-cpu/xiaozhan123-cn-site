@@ -18,9 +18,10 @@
   } catch { return ''; }
  }
  function ready(p) { return ['published','available'].includes(p.state) && !!safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); }
- function action(p) { const url = safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); return ready(p) ? `<a class="button primary" href="${esc(url)}" ${p.kind === 'app' ? `download="${esc(p.filename || p.id + '.apk')}" data-download="${esc(p.id)}"` : ''}>${p.kind === 'game' ? '开始游戏' : '下载 APK'}</a>` : `<button class="button disabled" disabled>${esc(p.statusText || '准备中')}</button>`; }
+ function action(p) { const url = safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); return ready(p) ? `<a class="button primary" href="${esc(url)}" ${p.kind === 'app' ? `download="${esc(p.filename || p.id + '.apk')}" data-download="${esc(p.id)}"` : ''}>${p.kind === 'game' ? '开始游戏' : esc(p.downloadLabel || '下载 APK')}</a>` : `<button class="button disabled" disabled>${esc(p.statusText || '准备中')}</button>`; }
  function icon(p) {
   const drawings={
+   'stardew-farm':'<path d="M12 14V6m0 5C6 11 5 8 5 5c4 0 7 1 7 5m0-1c0-4 3-5 7-5 0 4-2 6-7 6M4 16h16M4 20h16"/>',
    skymyth:'<path d="M12 3 14.3 9.7 21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Z"/>',
    'last-defense':'<path d="M12 3 20 6v6c0 5-5 8-8 10-3-2-8-5-8-10V6Z"/><path d="M8 12h8M12 8v8"/>',
    'pocket-piano':'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 13v7m6-7v7M7 4v9h3V4m4 0v9h3V4"/>',
@@ -42,7 +43,7 @@
  function product(id) { return catalog.products.find(p => p.id === id); }
  function toast(message) { $('#toast').textContent = message; $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 3000); }
  function detail(p) {
-  selected = p; $('#detail-content').innerHTML = `<div class="detail-identity ${esc(p.theme)}">${icon(p)}<div><h2 id="detail-title" tabindex="-1">${esc(p.name)}</h2><span class="badge ${ready(p)?'available':''}">${esc(p.statusText)}</span></div></div><p class="muted">${esc(p.summary)}</p><dl class="detail-meta"><div><dt>版本</dt><dd>${esc(p.version || '待发布')}</dd></div><div><dt>大小</dt><dd>${size(p.sizeBytes)}</dd></div><div><dt>适用设备</dt><dd>${esc(p.compatibility)}</dd></div><div><dt>类型</dt><dd>${esc(p.category)}</dd></div></dl><h3>更新说明</h3><ul class="notes">${(p.releaseNotes || []).map(n => `<li>${esc(n)}</li>`).join('')}</ul><div class="card-actions">${action(p)}<button class="button secondary" data-share="${esc(p.id)}">分享链接</button><button class="text-button" data-feedback="${esc(p.id)}">反馈问题</button></div>`; $('#detail-dialog').showModal();$('#detail-title').focus();
+  selected = p; $('#detail-content').innerHTML = `<div class="detail-identity ${esc(p.theme)}">${icon(p)}<div><h2 id="detail-title" tabindex="-1">${esc(p.name)}</h2><span class="badge ${ready(p)?'available':''}">${esc(p.statusText)}</span></div></div><p class="muted">${esc(p.summary)}</p><dl class="detail-meta"><div><dt>版本</dt><dd>${esc(p.version || '待发布')}</dd></div><div><dt>大小</dt><dd>${size(p.sizeBytes)}</dd></div><div><dt>适用设备</dt><dd>${esc(p.compatibility)}</dd></div><div><dt>类型</dt><dd>${esc(p.category)}</dd></div></dl><h3>更新说明</h3><ul class="notes">${(p.releaseNotes || []).map(n => `<li>${esc(n)}</li>`).join('')}</ul><div class="card-actions">${action(p)}${safeUrl(p.detailsUrl)?`<a class="button secondary" href="${esc(safeUrl(p.detailsUrl))}">使用与卸载说明</a>`:""}${safeUrl(p.sourceUrl)?`<a class="text-button" href="${esc(safeUrl(p.sourceUrl))}" download>源码</a>`:""}<button class="button secondary" data-share="${esc(p.id)}">分享链接</button><button class="text-button" data-feedback="${esc(p.id)}">反馈问题</button></div>`; $('#detail-dialog').showModal();$('#detail-title').focus();
  }
  function shareUrl(p) { const base = safeUrl(catalog.site.canonicalUrl) || location.href; const u = new URL(base); u.hash = `product=${encodeURIComponent(p.id)}`; return u.href; }
  async function copy(text) { try { if (!navigator.clipboard) throw Error(); await navigator.clipboard.writeText(text); return true; } catch { return false; } }
@@ -115,7 +116,7 @@
   }
  }
  document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ filter=el.dataset.filter; document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===el)));render(); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
- document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-drag]');if(!card||!e.dataTransfer)return;const p=product(card.dataset.drag),u=safeUrl(p.downloadUrl);e.dataTransfer.setData('DownloadURL',`application/vnd.android.package-archive:${p.filename||p.id+'.apk'}:${u}`);e.dataTransfer.setData('text/uri-list',u);e.dataTransfer.setData('text/plain',u);e.dataTransfer.effectAllowed='copy';});
+ document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-drag]');if(!card||!e.dataTransfer)return;const p=product(card.dataset.drag),u=safeUrl(p.downloadUrl);e.dataTransfer.setData('DownloadURL',`${p.mimeType || 'application/vnd.android.package-archive'}:${p.filename||p.id+'.apk'}:${u}`);e.dataTransfer.setData('text/uri-list',u);e.dataTransfer.setData('text/plain',u);e.dataTransfer.effectAllowed='copy';});
  $('#search').addEventListener('input',()=>catalog&&render());
  $('#search-toggle').addEventListener('click',()=>{const open=$('#search-panel').hidden;$('#search-panel').hidden=!open;$('#search-toggle').setAttribute('aria-expanded',String(open));if(open)$('#search').focus();else{$('#search').value='';if(catalog)render();}});
  $('#feedback-form').addEventListener('input',()=>{$('#feedback-status').textContent='';$('#feedback-status').className='form-status';preserveDraft();});

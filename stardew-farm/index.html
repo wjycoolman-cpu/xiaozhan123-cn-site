@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'"><title>星露谷自动农场助手 · 小站</title><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="guide.css"></head>
+<body><header class="site-header"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">小</span><span>小站</span></a></header><main class="guide"><a class="back" href="../#product=stardew-farm">返回产品中心</a>
+<h1>星露谷自动农场助手</h1><p class="lead">优先种田，再从附近整片开荒。自动购种、浇水、收获、整理、出货与睡觉，一键配置和卸载。</p><p class="muted">农场模组 1.0.2 · Windows 配置器 1.0.0 · 原创 MIT 开源</p>
+<p class="download-row"><a class="button primary" href="releases/StardewFarmAssistant-1.0.2-Windows-Setup.zip" download>下载 Windows 玩家包</a><a class="text-button" href="releases/StardewFarmAssistant-1.0.2-Windows-Source.zip" download>下载完整源码</a></p>
+<p class="requirements">需要自己的正版《Stardew Valley》1.6.14+，Windows 10/11 x64 和 .NET Framework 4.8。玩家包约 0.24 MB；首次缺少 SMAPI 时另外下载约 40 MB 官方依赖。游戏本体不包含在包内。</p>
+<h2>开始使用</h2><ol><li>退出游戏，解压<strong>整个玩家包</strong>，保留其中的模组文件夹。</li><li>打开 <code>StardewFarmAssistantManager.exe</code>，工具会查找 Steam 游戏；找不到时点击“浏览”，选择含 <code>Stardew Valley.exe</code> 的文件夹。</li><li>选择“开荒种田（推荐）”，保留自适应上限 200，点击<strong>一键安装并配置</strong>。</li><li>安装完成后点击<strong>启动游戏</strong>，进入自己的单人农场。按 <strong>F8</strong> 开始或暂停，按 <strong>F9</strong> 调整该存档的设置。</li></ol>
+<p>普通读档后默认暂停。方向键或 W/A/S/D 会暂停助手并交还控制。如果该存档已保存过 F9 设置，它可能优先于配置器的全局默认值。</p>
+<h2>三种玩法</h2><table><thead><tr><th>模式</th><th>工作安排</th></tr></thead><tbody><tr><td>开荒种田</td><td>先完成农活，再用余力从连通边界规整清理；保留部分金币与作物。</td></tr><tr><td>收益速进</td><td>积极投入种子，减少额外开荒与普通树清理，推进种田循环。</td></tr><tr><td>观赏演示</td><td>保留更长工具动作，方便观看种田与整片开荒。</td></tr></tbody></table>
+<p>速度上限可细调 <strong>1–200</strong>。实际工作速度依据电脑负载与当前任务调节，仍受原生动作、寻路和背包体力限制；上限数字不等于整个游戏恒定倍速。盈利与布局是在当前农场模型内优化。</p>
+<h2>一键卸载</h2><p>退出游戏，打开配置器，点击<strong>卸载本助手（保留存档）</strong>。工具只删除已确认身份的农场助手文件，保留存档、其他模组、共享 SMAPI 和额外文件。游戏中已经建造的箱子与稻草人仍留在存档中。</p>
+<p>配置加密保存在本机。同一 Windows 账户与游戏目录重新安装时可恢复自定义字段；所选预设和上限仍会更新对应项。损坏的配置会保留原始文本，但不会自动套用；原游戏文件受损时，确认身份的助手仍可卸载。</p>
+<h2>SMAPI 与离线配置</h2><p>已有兼容 SMAPI 直接复用；没有时，配置器从官方 GitHub 下载固定 4.5.2 包并核对内置 SHA-256，按官方文件步骤安装到当前游戏目录。已有较旧或不完整的 SMAPI 请先用官方安装器修复。</p>
+<p>首次离线配置：下载 <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.5.2">SMAPI 官方 4.5.2 安装 ZIP</a>，将原样的 <code>SMAPI-4.5.2-installer.zip</code> 放到配置器旁再点击安装。不会额外安装 Console Commands/Save Backup，不改 Steam 启动选项。</p>
+<h2>当前支持范围</h2><p>本版本针对单人农场。钓鱼、矿洞、全剧情与社区中心是后续扩展。已验证本机安装、卸载、配置恢复和星露谷 1.6.15 的代表种田流程；其他电脑、游戏版本、多人和第三方模组组合尚未穷尽验证。</p>
+<p>这是非官方本地工具，配置器未经过代码签名。下载与源码中包含许可、依赖来源和完整玩家说明；更新时运行新的玩家包。当前没有签名自动更新源或开放的云端反馈接收服务，配置器不上传私人存档或配置。</p>
+<p><a href="releases/StardewFarmAssistant-1.0.2-Mod.zip" download>已有 SMAPI：下载单独社区模组包</a> · <a href="release.json">版本与文件校验信息</a></p></main><footer><a href="../">小站产品中心</a></footer></body></html>

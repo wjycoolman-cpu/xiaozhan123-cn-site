@@ -176,6 +176,42 @@
       "filename": "SmartQuestionBank-Android-v10324.apk",
       "sha256": "bfdfe386f2f9444ed0efed45d29c3e257a6708aefacf4aa2411df609e0429156",
       "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/exercise-practice-app/update.json"
+    },
+    {
+      "id": "stardew-farm",
+      "name": "星露谷自动农场助手",
+      "aliases": [
+        "Stardew Valley",
+        "自动种田",
+        "自动开荒",
+        "一键配置",
+        "农场助手"
+      ],
+      "kind": "app",
+      "category": "PC 游戏模组与配置器",
+      "theme": "words",
+      "summary": "优先种田，规整开荒；一键配置与卸载，按电脑负载自适应加速。",
+      "state": "published",
+      "statusText": "Windows 版已发布",
+      "version": "1.0.2",
+      "compatibility": "Windows 10/11 x64 · .NET Framework 4.8 · 星露谷 1.6.14+ / SMAPI 4.5.2+",
+      "sizeBytes": 244057,
+      "sha256": "0adcae355eeb1f0dad574dcd77e9ae2ec85cf7755cda524dcc7e65f92fd05655",
+      "filename": "StardewFarmAssistant-1.0.2-Windows-Setup.zip",
+      "downloadLabel": "下载 Windows 版",
+      "mimeType": "application/zip",
+      "downloadUrl": "/stardew-farm/releases/StardewFarmAssistant-1.0.2-Windows-Setup.zip",
+      "detailsUrl": "/stardew-farm/",
+      "sourceUrl": "/stardew-farm/releases/StardewFarmAssistant-1.0.2-Windows-Source.zip",
+      "releaseNotes": [
+        "配置器 1.0.0：自动检测游戏；缺少 SMAPI 时校验并安装官方组件。",
+        "开荒种田、收益速进、观赏演示三模式；工作上限 1–200，自适应调节。",
+        "精确卸载本人模组，保留存档、其他模组和共享 SMAPI；可恢复本机配置。",
+        "自动化当前集中于农场；钓鱼、矿洞与全剧情仍是后续扩展。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
     }
   ]
 }
