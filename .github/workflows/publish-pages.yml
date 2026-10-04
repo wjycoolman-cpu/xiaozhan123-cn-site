@@ -23,8 +23,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p /tmp/skymyth-r104
-          gh release download skymyth-r104-web --repo "$GITHUB_REPOSITORY" --pattern SkyMyth-r104-site.zip --dir /tmp/skymyth-r104
+          release_tag=$(python3 -c "import json;print(json.load(open('game-releases/skymyth-r104.json'))['release_tag'])")
+          archive_name=$(python3 -c "import json;print(json.load(open('game-releases/skymyth-r104.json'))['archive']['name'])")
+          mkdir -p /tmp/skymyth-release
+          gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/skymyth-release
       - name: Assemble current site and verified game
         run: |
           python3 - <<'PY'
@@ -39,7 +41,8 @@ jobs:
               assert source.is_file() and not source.is_symlink(),name
               dest=out/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,dest)
           manifest=json.loads((root/'game-releases/skymyth-r104.json').read_text())
-          archive=Path('/tmp/skymyth-r104/SkyMyth-r104-site.zip')
+          archive=Path('/tmp/skymyth-release')/manifest['archive']['name']
+          assert archive.name==manifest['archive']['name'] and archive.suffix=='.zip'
           assert archive.stat().st_size==manifest['archive']['bytes']
           with archive.open('rb') as f:
               assert hashlib.file_digest(f,'sha256').hexdigest()==manifest['archive']['sha256']
@@ -50,10 +53,20 @@ jobs:
                   raw=z.read(name)
                   assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().upper()==wanted['sha256']
                   dest=out/'skymyth'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+          overlays=manifest.get('overlays',{})
+          for name,wanted in overlays.items():
+              rel=Path(name);assert not rel.is_absolute() and '..' not in rel.parts
+              source=root/'skymyth'/rel;raw=source.read_bytes()
+              assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().upper()==wanted['sha256']
+              dest=out/'skymyth'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+          if any(name.endswith('.host.js') for name in overlays):
+              for name in manifest['files']:
+                  if name.endswith('.host.js') and name not in overlays:
+                      (out/'skymyth'/name).unlink()
           assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
           total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
           assert total<1024*1024*1024,total
-          print(json.dumps({'site_bytes':total,'game_files':len(manifest['files']),'game_revision':'r104'}))
+          print(json.dumps({'site_bytes':total,'game_files':len(manifest['files']),'game_revision':manifest['revision']}))
           PY
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:

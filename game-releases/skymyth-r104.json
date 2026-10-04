@@ -1,11 +1,12 @@
 {
   "schema": "skymyth-public-deployment/v1",
-  "revision": "r104",
+  "revision": "r104-cache1",
   "productVersion": "0.8.87",
   "release_tag": "skymyth-r104-web",
   "archive": {
     "bytes": 188009307,
-    "sha256": "88093bfb07bcf76a1dcb991bc9a5d383106e08670b32a3ab8dfc2a551e35808f"
+    "sha256": "88093bfb07bcf76a1dcb991bc9a5d383106e08670b32a3ab8dfc2a551e35808f",
+    "name": "SkyMyth-r104-site.zip"
   },
   "files": {
     ".nojekyll": {
@@ -59,6 +60,16 @@
     "Licenses/Fonts/TYPOGRAPHY-R101.md": {
       "bytes": 475,
       "sha256": "AB6D7EFBC32E3C8CE9C04B0B4C3616322F6FCCD20CF1F1E875B10475C67F084C"
+    }
+  },
+  "overlays": {
+    "index.html": {
+      "bytes": 4132,
+      "sha256": "DEB82BE44810A65E2A72954FE4E2EB8CF006051C724F1135D4709BA6FB63B8C6"
+    },
+    "Build/be55d83bf6e02f029d036b5fb1ab79f5dc22478c8fbf9afdb4a978e1b8d9348e.host.js": {
+      "bytes": 14576,
+      "sha256": "BE55D83BF6E02F029D036B5FB1AB79F5DC22478C8FBF9AFDB4A978E1B8D9348E"
     }
   }
 }
