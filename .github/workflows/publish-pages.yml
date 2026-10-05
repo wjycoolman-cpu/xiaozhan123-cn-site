@@ -137,6 +137,12 @@ jobs:
           assert len(legacy_worker) == 1540
           assert hashlib.sha256(legacy_worker).hexdigest() == 'c45e7f5f21f1a4a5e63c9886351cda60e43d56cc4017cfefe2019197ede0758a'
           (legacy_root / 'index.service.worker.js').write_bytes(legacy_worker)
+          legacy_discovery = "<script data-lastlight-ready14-update>\nif ('serviceWorker' in navigator) {\n  const legacyScope = new URL('/last-defense/1.10.0.2-ready14/', location.origin).href;\n  navigator.serviceWorker.getRegistration(legacyScope + 'index.html').then(registration => {\n    if (registration && registration.scope === legacyScope) return registration.update();\n  }).catch(() => console.warn('LastLight legacy update check unavailable'));\n}\n</script>"
+          site_home = out / 'index.html'
+          site_home_html = site_home.read_text(encoding='utf-8')
+          assert 'data-lastlight-ready14-update' not in site_home_html
+          assert '</body>' in site_home_html
+          site_home.write_text(site_home_html.replace('</body>', legacy_discovery + '\n</body>', 1), encoding='utf-8')
           # END LASTLIGHT FEEDBACK15 ASSEMBLY
           assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
           total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
