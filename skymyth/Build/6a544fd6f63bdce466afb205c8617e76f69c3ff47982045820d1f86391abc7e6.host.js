@@ -15,13 +15,11 @@ var unityInstance = null;
   const counters = {};
   const expectedTotal = Object.values(resources).reduce((n, r) => n + r.bytes, 0);
   const cacheName = 'skymyth-compressed-resources-v1';
-  const chunkSize = 8 * 1024 * 1024;
-  const rangeConcurrency = 6;
   const observation = window.skyMythStaticLoader = {
-    schema: 'skymyth-static-resource-loader/v2', startedAt: performance.now(),
+    schema: 'skymyth-static-resource-loader/v3', startedAt: performance.now(),
     resources: {}, blobUrlsReleased: false, state: 'loading',
-    source: 'r104-cache1', networkBytes: 0,
-    cache: {name: cacheName, state: 'opening', hits: [], writes: [], failures: [], recovered: []},
+    source: 'r111-resumable-chunks', networkBytes: 0, retries: [],
+    cache: {name: cacheName, state: 'opening', hits: [], writes: [], failures: [], recovered: [], savedBytes: 0},
   };
   function release() {
     for (const url of urls) URL.revokeObjectURL(url);
@@ -52,7 +50,7 @@ var unityInstance = null;
     observation.error = String(error);
     controller.abort();
     release();
-    errorNode.textContent = '游戏加载失败，请检查网络后重试。浏览器保存的进度不会被清除。';
+    errorNode.textContent = '下载暂时中断，请检查网络后重试。已保存的下载和游戏进度会保留。';
     label.textContent = '未能进入游戏';
     retry.hidden = false;
     document.getElementById('loading-return').hidden = false;
@@ -83,69 +81,97 @@ var unityInstance = null;
       return new Blob(parts, {type: response.headers.get('content-type') || 'application/octet-stream'});
     } catch (error) { await reader.cancel().catch(function () {}); throw error; }
   }
-  function validRange(response, start, end, total) {
-    return response.status === 206 && !response.headers.get('content-encoding') &&
-      response.headers.get('content-range') === 'bytes ' + start + '-' + end + '/' + total;
+  async function digest(blob) {
+    const bytes = await crypto.subtle.digest('SHA-256', await blob.arrayBuffer());
+    return Array.from(new Uint8Array(bytes), x => x.toString(16).padStart(2, '0')).join('').toUpperCase();
   }
   async function download(resource, key, resolved) {
-    let received = 0;
-    const onBytes = function (bytes) { received += bytes; report(key, received); };
-    const ranged = resource.bytes >= 16 * 1024 * 1024;
-    const localController = new AbortController();
-    const abort = function () { localController.abort(); };
-    controller.signal.addEventListener('abort', abort, {once: true});
-    const options = {signal: localController.signal, credentials: 'same-origin'};
-    try {
-      const firstEnd = Math.min(resource.bytes, chunkSize) - 1;
-      const first = await fetch(resolved, ranged ? {...options, headers: {Range: 'bytes=0-' + firstEnd}} : options);
-      // A host which ignores Range returns its complete body. Use it once.
-      if (!ranged || first.status === 200) {
-        const blob = await readNetwork(first, key, localController.signal, onBytes);
-        return {blob, status: first.status, headers: first.headers, transport: ranged ? 'single-response-range-ignored' : 'single-response'};
-      }
-      if (!validRange(first, 0, firstEnd, resource.bytes)) {
-        await first.body?.cancel();
-        throw new Error('Host returned an invalid first range');
-      }
-      const chunks = new Array(Math.ceil(resource.bytes / chunkSize));
-      chunks[0] = await readNetwork(first, key, localController.signal, onBytes);
-      if (chunks[0].size !== firstEnd + 1) throw new Error('First range length mismatch');
-      let next = 1;
-      async function worker() {
-        while (next < chunks.length) {
-          const index = next++;
-          const start = index * chunkSize, end = Math.min(resource.bytes, start + chunkSize) - 1;
-          const response = await fetch(resolved, {...options, headers: {Range: 'bytes=' + start + '-' + end}});
-          if (!validRange(response, start, end, resource.bytes)) {
-            await response.body?.cancel();
-            throw new Error('Host returned an invalid range');
+    const chunks = resource.chunks;
+    if (!Array.isArray(chunks) || !chunks.length) {
+      let received = 0;
+      const response = await fetch(resolved, {signal: controller.signal, credentials: 'same-origin'});
+      const blob = await readNetwork(response, key, controller.signal, bytes => {
+        received += bytes; report(key, received);
+      });
+      return {blob, status: response.status, headers: response.headers, transport: 'single-response'};
+    }
+    if (chunks.reduce((n, c) => n + c.bytes, 0) !== resource.bytes) throw new Error('Invalid resource chunk manifest');
+    const cache = await cacheReady;
+    const parts = new Array(chunks.length);
+    const inflight = new Map();
+    const metrics = {parts: chunks.length, cacheHits: 0, cacheBytes: 0, retries: [], writes: 0, cacheFailures: 0};
+    let completed = 0, next = 0;
+    const update = () => report(key, completed + Array.from(inflight.values()).reduce((n, v) => n + v, 0));
+    async function part(index) {
+      const chunk = chunks[index], url = new URL(chunk.url, document.URL);
+      if (url.origin !== location.origin || !Number.isSafeInteger(chunk.bytes) || chunk.bytes <= 0 ||
+          chunk.bytes > 2 * 1024 * 1024 || !/^[A-F0-9]{64}$/.test(chunk.sha256)) throw new Error('Invalid resource chunk');
+      if (cache) {
+        try {
+          const saved = await cache.match(url.href);
+          if (saved) {
+            const blob = await saved.blob();
+            if (blob.size !== chunk.bytes || await digest(blob) !== chunk.sha256) throw new Error('Saved part integrity mismatch');
+            parts[index] = blob; completed += blob.size;
+            metrics.cacheHits++; metrics.cacheBytes += blob.size;
+            observation.cache.savedBytes += blob.size;
+            update(); return;
           }
-          const chunk = await readNetwork(response, key, localController.signal, onBytes);
-          if (chunk.size !== end - start + 1) throw new Error('Range length mismatch');
-          chunks[index] = chunk;
+        } catch (error) {
+          observation.cache.recovered.push({key, part: index, error: String(error).slice(0, 240)});
+          await cache.delete(url.href).catch(() => {});
         }
       }
-      const jobs = Array.from({length: Math.min(rangeConcurrency, chunks.length - 1)}, worker);
-      try { await Promise.all(jobs); }
-      catch (error) {
-        localController.abort();
-        await Promise.allSettled(jobs);
-        throw error;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        if (controller.signal.aborted) throw new DOMException('Resource transfer cancelled', 'AbortError');
+        const local = new AbortController();
+        const abort = () => local.abort();
+        controller.signal.addEventListener('abort', abort, {once: true});
+        let timeout;
+        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), 45000);};
+        inflight.set(index, 0); touch();
+        try {
+          const response = await fetch(url, {signal: local.signal, credentials: 'same-origin'});
+          if (response.status !== 200) {await response.body?.cancel(); throw new Error('Part request HTTP ' + response.status);}
+          const blob = await readNetwork(response, key, local.signal, bytes => {
+            touch(); inflight.set(index, inflight.get(index) + bytes); update();
+          });
+          if (blob.size !== chunk.bytes || await digest(blob) !== chunk.sha256) throw new Error('Downloaded part integrity mismatch');
+          clearTimeout(timeout);
+          parts[index] = blob; completed += blob.size; inflight.delete(index);
+          if (cache) {
+            try {
+              await cache.put(url.href, new Response(blob, {status: 200, headers: {
+                'Content-Type': 'application/octet-stream', 'Content-Length': String(blob.size),
+                'X-SkyMyth-Resource-SHA256': chunk.sha256,
+              }}));
+              metrics.writes++; observation.cache.savedBytes += blob.size;
+            } catch (error) {metrics.cacheFailures++; cacheFailure(key + '-part-' + index, error);}
+          }
+          update(); return;
+        } catch (error) {
+          local.abort(); inflight.delete(index); update();
+          if (controller.signal.aborted || attempt === 3) throw error;
+          metrics.retries.push({part: index, attempt, error: String(error).slice(0, 240)});
+          observation.retries.push({key, part: index, attempt});
+          label.textContent = '连接中断，正在继续下载… ' + Math.floor(Object.values(counters).reduce((n,v)=>n+v,0)*100/expectedTotal) + '%';
+        } finally {clearTimeout(timeout); controller.signal.removeEventListener('abort', abort);}
       }
-      const blob = new Blob(chunks, {type: 'application/gzip'});
-      chunks.length = 0;
-      if (blob.size !== resource.bytes) throw new Error('Assembled range length mismatch');
-      return {blob, status: 200, headers: first.headers, transport: 'parallel-ranges', ranges: Math.ceil(resource.bytes / chunkSize), concurrency: rangeConcurrency};
-    } catch (error) {
-      if (!ranged || controller.signal.aborted) throw error;
-      observation.rangeFallback = String(error).slice(0, 240);
-      localController.abort();
-      received = 0;
-      report(key, 0);
-      const response = await fetch(resolved, {signal: controller.signal, credentials: 'same-origin'});
-      const blob = await readNetwork(response, key, controller.signal, onBytes);
-      return {blob, status: response.status, headers: response.headers, transport: 'single-response-range-fallback'};
-    } finally { controller.signal.removeEventListener('abort', abort); }
+    }
+    async function worker() {
+      while (next < chunks.length) {const index = next++; await part(index);}
+    }
+    const jobs = Array.from({length: Math.min(3, chunks.length)}, worker);
+    try {await Promise.all(jobs);}
+    catch (error) {controller.abort(); await Promise.allSettled(jobs); throw error;}
+    const blob = new Blob(parts, {type: 'application/gzip'});
+    parts.length = 0;
+    if (blob.size !== resource.bytes) throw new Error('Assembled resource length mismatch');
+    const cached = metrics.cacheHits === chunks.length;
+    if (cached) observation.cache.hits.push(key);
+    else if (cache && metrics.cacheHits + metrics.writes === chunks.length) observation.cache.writes.push(key);
+    return {blob, status: 200, headers: new Headers(), transport: cached ? 'persistent-chunks' : 'resumable-chunks', chunked: true,
+      ranges: 0, concurrency: 3, chunkMetrics: metrics, networkBodyBytes: resource.bytes - metrics.cacheBytes};
   }
   async function validateAndDecode(blob, key, verifyDigest) {
     const resource = resources[key];
@@ -194,7 +220,7 @@ var unityInstance = null;
     if (!decoded) {
       wire = await download(resource, key, resolved);
       decoded = await validateAndDecode(wire.blob, key, true);
-      if (cache) {
+      if (cache && !wire.chunked) {
         try {
           await cache.put(resolved.href, new Response(wire.blob, {status: 200, headers: {
             'Content-Type': decoded.compressed ? 'application/gzip' : resource.mime,
@@ -211,10 +237,11 @@ var unityInstance = null;
     observation.resources[key] = {
       url: resolved.href, status: wire.status, transport: wire.transport,
       ranges: wire.ranges || 0, concurrency: wire.concurrency || 1,
-      fetchedBodyBytes: wire.transport === 'persistent-cache' ? 0 : wire.blob.size,
-      cachedBodyBytes: wire.transport === 'persistent-cache' ? wire.blob.size : 0,
+      fetchedBodyBytes: wire.chunked ? wire.networkBodyBytes : (wire.transport === 'persistent-cache' ? 0 : wire.blob.size),
+      cachedBodyBytes: wire.chunked ? wire.chunkMetrics.cacheBytes : (wire.transport === 'persistent-cache' ? wire.blob.size : 0),
       decodedBytes: decoded.body.size, browserDecompressed: decoded.compressed,
       sha256VerifiedBeforeCaching: wire.transport !== 'persistent-cache',
+      chunkMetrics: wire.chunkMetrics || null,
       resourceSignatureVerified: key === 'dataUrl' || key === 'codeUrl',
     };
     return [key, url];
@@ -258,7 +285,7 @@ var unityInstance = null;
     if (observation.cache.hits.length + observation.cache.writes.length === Object.keys(resources).length) {
       const cache = await cacheReady;
       if (cache) {
-        const keep = new Set(Object.values(resources).map(r => new URL(r.url, document.URL).href));
+        const keep = new Set(Object.values(resources).flatMap(r => [r.url, ...(r.chunks || []).map(c => c.url)]).map(url => new URL(url, document.URL).href));
         for (const request of await cache.keys()) {
           if (request.url.startsWith(new URL('Build/', document.URL).href) && !keep.has(request.url)) await cache.delete(request);
         }
