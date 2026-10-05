@@ -96,7 +96,7 @@ jobs:
           assert feedback15['profile']['threads'] is False
           assert feedback15['profile']['canvas_resize_policy'] == 2
           assert feedback15['profile']['cache_prefix'] == 'lastlight-transfer-sw-'
-          assert feedback15['profile']['cache_version'] == 'feedback15-transfer1-fb3c684cbe95'
+          assert feedback15['profile']['cache_version'] == 'feedback15-transfer2-fb3c684cbe95'
           assert feedback15['hosting_derivative']['game_pck_wasm_engine_js_byte_identical'] is True
           assert feedback15['export_evidence']['passed'] is True
           assert feedback15['claims']['human_acceptance'] == 'unverified'

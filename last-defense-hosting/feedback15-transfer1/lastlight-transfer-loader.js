@@ -401,7 +401,12 @@
 			rebuilt || loadPck(loaded.manifest, loaded.sourceUrl, onProgress),
 		]);
 		const pck = results[1];
-		await engine.preloadFile(pck, loaded.manifest.source.url);
+		// Godot 4.7.1 indexes fileSizes[file] before inspecting its binary type.
+		// A large Uint8Array is coerced into a huge comma-separated property key.
+		// ArrayBuffer uses the supported binary overload without that conversion.
+		const packBuffer = pck.byteOffset === 0 && pck.byteLength === pck.buffer.byteLength
+			? pck.buffer : pck.buffer.slice(pck.byteOffset, pck.byteOffset + pck.byteLength);
+		await engine.preloadFile(packBuffer, loaded.manifest.source.url);
 		observation.state = 'starting';
 		publishObservation();
 		await engine.start({

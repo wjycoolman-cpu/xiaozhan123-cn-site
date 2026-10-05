@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = 'feedback15-transfer1-fb3c684cbe95';
+const CACHE_VERSION = 'feedback15-transfer2-fb3c684cbe95';
 /** @type {string} */
 const CACHE_PREFIX = 'lastlight-transfer-sw-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
@@ -22,7 +22,9 @@ const OPTIONAL_CACHEABLE_FILES = ["index.pck.delta15.bin"];
 const FULL_CACHE = CACHED_FILES.concat(CACHEABLE_FILES);
 
 self.addEventListener('install', (event) => {
-	event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(CACHED_FILES)));
+	// Fetch this revision's loader bytes even while earlier HTTP entries are fresh.
+	event.waitUntil(caches.open(CACHE_NAME).then((cache) =>
+		cache.addAll(CACHED_FILES.map((name) => new Request(name, {cache: 'reload'})))));
 });
 
 self.addEventListener('activate', (event) => {

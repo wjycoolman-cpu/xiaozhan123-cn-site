@@ -21,7 +21,7 @@
     "service_worker": "index.service.worker.js",
     "service_worker_scope": "same exported route directory",
     "cache_prefix": "lastlight-transfer-sw-",
-    "cache_version": "feedback15-transfer1-fb3c684cbe95",
+    "cache_version": "feedback15-transfer2-fb3c684cbe95",
     "cached_files": [
       "index.html",
       "index.js",
@@ -84,7 +84,7 @@
     "visual_acceptance": "unverified",
     "browser_journey": {
       "ready14_normal_play_and_save_baseline": "passed: 509 kills / 126 seconds / intelligence4->36 / cold reopen36 / return site",
-      "feedback15_normal_journey": "pending hosted transfer1 ordinary browser journey",
+      "feedback15_normal_journey": "pending hosted transfer2 ordinary browser journey",
       "active_game_hot_update": "unverified"
     },
     "human_acceptance": "unverified",
@@ -153,12 +153,12 @@
       "sha256": "3CB4495C0B98DFBE4B663CBF2B6836473572339BEB66D902367893162A70BE0E"
     },
     "index.service.worker.js": {
-      "bytes": 6032,
-      "sha256": "D3C7B08B8F7D8E79CB29171EC86B0A35CC881407641A60BDCF4BCDC653A22736"
+      "bytes": 6168,
+      "sha256": "6E034B5F2111885BE89FA794D912D11F9BD2D3D334387CC90314DBF2BD570A8E"
     },
     "index.transfer.json": {
-      "bytes": 22749,
-      "sha256": "5DCB997AFD6550D6C6CDE812C4F0B6D240AE193A06563EBD34F0282EE2BD5714"
+      "bytes": 21936,
+      "sha256": "506AE40E6DF33C3A58616BF585D7D5FA683ED298C3F66CC90A1E300920B001FD"
     },
     "index.wasm": {
       "bytes": 39513091,
@@ -169,24 +169,29 @@
       "sha256": "14082FD435A5D44F9A11EE08283D07B237379ACC5CF58B4BA3E62A982796E1A6"
     },
     "lastlight-transfer-loader.js": {
-      "bytes": 16964,
-      "sha256": "A63A59B1C0252DAAE5EB4BA51EAE17AEBDB855C742244237E921BD2E952457B4"
+      "bytes": 17372,
+      "sha256": "A24E5EE4209752CEC42B5A9B771F35A6E4DEA250109F8184E74766C9C5637F18"
     }
   },
   "final_visual_accepted": false,
   "hosting_derivative": {
-    "revision": "transfer1",
+    "revision": "transfer2",
     "only_html_service_worker_and_transfer_helpers_changed": true,
     "game_pck_wasm_engine_js_byte_identical": true,
     "feedback_version": "1.10.0.3",
     "source_export_pck_sha256": "FB3C684CBE95DBCB53440C6AE1A3412509B628F779DD8A17D436BE2CB23797C1",
     "whole_pck_download_duplicate_avoided": true,
     "cached_ready14_patch_bytes": 113062,
-    "cpu_runtime_receipt_sha256": "156366322991f98285b8e002cb12aa75a5fb4d0d517d6637923d365b0f66f4ae",
+    "cpu_runtime_receipt_sha256": "bed97360920c9a28f56d7771eabc187746e8d37424b67050638e4ba17005c884",
     "cpu_runtime_cases": 4,
     "engine_is_stub": true,
-    "browser_acceptance": "pending ordinary hosted browser journey",
-    "existing_published_archive_reused": true
+    "browser_acceptance": "pending ordinary hosted transfer2 browser journey",
+    "existing_published_archive_reused": true,
+    "exact_exported_godot_preload_file_executed": true,
+    "wasm_gpu_not_initialized_in_cpu": true,
+    "binary_preload_uses_array_buffer": true,
+    "worker_install_loader_http_cache": "reload",
+    "transfer1_real_browser_start": "failed: Uint8Array property-key coercion in Engine.preloadFile; exact cache delta/full SHA passed; failure retained"
   },
   "archive_files": {
     "index.144x144.png": {
@@ -258,8 +263,8 @@
     },
     "index.service.worker.js": {
       "path": "last-defense-hosting/feedback15-transfer1/index.service.worker.js",
-      "bytes": 6032,
-      "sha256": "D3C7B08B8F7D8E79CB29171EC86B0A35CC881407641A60BDCF4BCDC653A22736"
+      "bytes": 6168,
+      "sha256": "6E034B5F2111885BE89FA794D912D11F9BD2D3D334387CC90314DBF2BD570A8E"
     },
     "index.pck.delta15.bin": {
       "path": "last-defense-hosting/feedback15-transfer1/index.pck.delta15.bin",
@@ -273,8 +278,8 @@
     },
     "index.transfer.json": {
       "path": "last-defense-hosting/feedback15-transfer1/index.transfer.json",
-      "bytes": 22749,
-      "sha256": "5DCB997AFD6550D6C6CDE812C4F0B6D240AE193A06563EBD34F0282EE2BD5714"
+      "bytes": 21936,
+      "sha256": "506AE40E6DF33C3A58616BF585D7D5FA683ED298C3F66CC90A1E300920B001FD"
     },
     "lastlight-pck-entry-delta15.js": {
       "path": "last-defense-hosting/feedback15-transfer1/lastlight-pck-entry-delta15.js",
@@ -283,8 +288,8 @@
     },
     "lastlight-transfer-loader.js": {
       "path": "last-defense-hosting/feedback15-transfer1/lastlight-transfer-loader.js",
-      "bytes": 16964,
-      "sha256": "A63A59B1C0252DAAE5EB4BA51EAE17AEBDB855C742244237E921BD2E952457B4"
+      "bytes": 17372,
+      "sha256": "A24E5EE4209752CEC42B5A9B771F35A6E4DEA250109F8184E74766C9C5637F18"
     }
   }
 }
