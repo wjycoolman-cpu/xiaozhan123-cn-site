@@ -18,10 +18,28 @@ var unityInstance = null;
   const observation = window.skyMythStaticLoader = {
     schema: 'skymyth-static-resource-loader/v3', startedAt: performance.now(),
     resources: {}, blobUrlsReleased: false, state: 'loading',
-    source: 'r113-shared-download-queue', networkBytes: 0, retries: [],
+    source: 'r114-immutable-resource-route', networkBytes: 0, retries: [],
+    route: {mirrorRequests: 0, originRequests: 0, mirrorBytes: 0, originBytes: 0, mirrorNoDataTimeoutMs: 20000, originNoDataTimeoutMs: 90000},
     downloadQueue: {limit: 2, active: 0, peak: 0, waiting: 0, noDataTimeoutMs: 90000},
     cache: {name: cacheName, state: 'opening', hits: [], writes: [], failures: [], recovered: [], savedBytes: 0},
   };
+
+  const mirrorBase = window.skyMythResourceMirror || '';
+  if (mirrorBase && !/^https:\/\/raw\.githubusercontent\.com\/wjycoolman-cpu\/xiaozhan123-cn-site\/[a-f0-9]{40}\/skymyth-cdn\/$/.test(mirrorBase))
+    throw new Error('Unexpected resource mirror configuration');
+  const siteRoot = new URL('./', document.URL);
+  function requestTarget(original, attempt) {
+    if (original.origin !== location.origin || !original.pathname.startsWith(siteRoot.pathname + 'Build/') || original.search || original.hash)
+      throw new Error('Unexpected compiled resource path');
+    const mirror = mirrorBase && attempt !== 2;
+    return {url: mirror ? new URL(original.pathname.slice(siteRoot.pathname.length), mirrorBase) : original,
+      mirror: !!mirror, idle: mirror ? 20000 : 90000};
+  }
+  function fetchResource(source, signal) {
+    observation.route[source.mirror ? 'mirrorRequests' : 'originRequests']++;
+    return fetch(source.url, {signal, credentials: source.mirror ? 'omit' : 'same-origin',
+      mode: source.mirror ? 'cors' : 'same-origin', referrerPolicy: source.mirror ? 'no-referrer' : 'same-origin', redirect: 'error'});
+  }
 
   // Share the two network slots across all resources. Queue waiting time does
   // not consume the no-data deadline; cancellation removes queued work.
@@ -102,7 +120,7 @@ var unityInstance = null;
     const percent = Math.min(100, Math.floor(loaded * 100 / expectedTotal));
     label.textContent = observation.networkBytes ? '正在下载游戏… ' + percent + '%' : '正在从本地载入游戏… ' + percent + '%';
   }
-  async function readNetwork(response, key, signal, completedBytes) {
+  async function readNetwork(response, key, signal, completedBytes, source) {
     if (!response.ok || !response.body) throw new Error('Resource request failed: ' + key + ' HTTP ' + response.status);
     const reader = response.body.getReader();
     const parts = [];
@@ -115,6 +133,7 @@ var unityInstance = null;
         parts.push(part.value);
         received += part.value.byteLength;
         observation.networkBytes += part.value.byteLength;
+        observation.route[source.mirror ? 'mirrorBytes' : 'originBytes'] += part.value.byteLength;
         completedBytes(part.value.byteLength);
       }
       return new Blob(parts, {type: response.headers.get('content-type') || 'application/octet-stream'});
@@ -127,15 +146,29 @@ var unityInstance = null;
   async function download(resource, key, resolved) {
     const chunks = resource.chunks;
     if (!Array.isArray(chunks) || !chunks.length) {
-      let received = 0;
-      const releaseSlot = await acquireDownload(controller.signal);
-      try {
-        const response = await fetch(resolved, {signal: controller.signal, credentials: 'same-origin'});
-        const blob = await readNetwork(response, key, controller.signal, bytes => {
-          received += bytes; report(key, received);
-        });
-        return {blob, status: response.status, headers: response.headers, transport: 'single-response'};
-      } finally {releaseSlot();}
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        if (controller.signal.aborted) throw new DOMException('Resource transfer cancelled', 'AbortError');
+        const local = new AbortController();
+        const abort = () => local.abort();
+        controller.signal.addEventListener('abort', abort, {once: true});
+        const source = requestTarget(resolved, attempt);
+        let received = 0, timeout, releaseSlot;
+        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), source.idle);};
+        try {
+          releaseSlot = await acquireDownload(local.signal); touch();
+          const response = await fetchResource(source, local.signal);
+          const blob = await readNetwork(response, key, local.signal, bytes => {
+            touch(); received += bytes; report(key, received);
+          }, source);
+          await validateAndDecode(blob, key, true);
+          return {blob, status: response.status, headers: response.headers, transport: source.mirror ? 'mirror-response' : 'single-response'};
+        } catch (error) {
+          local.abort(); report(key, 0);
+          if (controller.signal.aborted || attempt === 3) throw error;
+          observation.retries.push({key, attempt, source: source.mirror ? 'mirror' : 'origin'});
+          label.textContent = '连接暂时中断，正在继续下载…';
+        } finally {clearTimeout(timeout); controller.signal.removeEventListener('abort', abort); if (releaseSlot) releaseSlot();}
+      }
     }
     if (chunks.reduce((n, c) => n + c.bytes, 0) !== resource.bytes) throw new Error('Invalid resource chunk manifest');
     const cache = await cacheReady;
@@ -169,16 +202,17 @@ var unityInstance = null;
         const local = new AbortController();
         const abort = () => local.abort();
         controller.signal.addEventListener('abort', abort, {once: true});
+        const source = requestTarget(url, attempt);
         let timeout, releaseSlot;
-        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), 90000);};
+        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), source.idle);};
         inflight.set(index, 0);
         try {
           releaseSlot = await acquireDownload(local.signal); touch();
-          const response = await fetch(url, {signal: local.signal, credentials: 'same-origin'});
+          const response = await fetchResource(source, local.signal);
           if (response.status !== 200) {await response.body?.cancel(); throw new Error('Part request HTTP ' + response.status);}
           const blob = await readNetwork(response, key, local.signal, bytes => {
             touch(); inflight.set(index, inflight.get(index) + bytes); update();
-          });
+          }, source);
           if (blob.size !== chunk.bytes || await digest(blob) !== chunk.sha256) throw new Error('Downloaded part integrity mismatch');
           clearTimeout(timeout);
           parts[index] = blob; completed += blob.size; inflight.delete(index);
@@ -196,7 +230,7 @@ var unityInstance = null;
           local.abort(); inflight.delete(index); update();
           if (controller.signal.aborted || attempt === 3) throw error;
           metrics.retries.push({part: index, attempt, error: String(error).slice(0, 240)});
-          observation.retries.push({key, part: index, attempt});
+          observation.retries.push({key, part: index, attempt, source: source.mirror ? 'mirror' : 'origin'});
           label.textContent = '连接中断，正在继续下载… ' + Math.floor(Object.values(counters).reduce((n,v)=>n+v,0)*100/expectedTotal) + '%';
         } finally {clearTimeout(timeout); controller.signal.removeEventListener('abort', abort); if (releaseSlot) releaseSlot();}
       }

@@ -1,6 +1,6 @@
 {
   "schema": "skymyth-public-deployment/v1",
-  "revision": "r113",
+  "revision": "r114",
   "productVersion": "0.8.91",
   "release_tag": "skymyth-r112-web",
   "archive": {
@@ -304,12 +304,12 @@
   },
   "overlays": {
     "index.html": {
-      "bytes": 18373,
-      "sha256": "84DD3F5BC17CC79A21D159D705357CCADF8172EED0BA408DFC37E06D5A258DC9"
+      "bytes": 18531,
+      "sha256": "23B1F008CCB7F2932D5C9C69DBB626EAAB960DDEEF849C79E15950A1981DC636"
     },
-    "Build/0faa7e53fa583e1c4271e2617f793cf9c3ed49f2f589ba00fcad2de7e5bbb3d9.host.js": {
-      "bytes": 18670,
-      "sha256": "0FAA7E53FA583E1C4271E2617F793CF9C3ED49F2F589BA00FCAD2DE7E5BBB3D9"
+    "Build/b21904753def1300189844ec7199bea30529a75171041fc371951f0ec3fa81b6.host.js": {
+      "bytes": 21526,
+      "sha256": "B21904753DEF1300189844EC7199BEA30529A75171041FC371951F0EC3FA81B6"
     }
   },
   "effective_files": {
@@ -318,8 +318,8 @@
       "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
     },
     "index.html": {
-      "bytes": 18373,
-      "sha256": "84DD3F5BC17CC79A21D159D705357CCADF8172EED0BA408DFC37E06D5A258DC9"
+      "bytes": 18531,
+      "sha256": "23B1F008CCB7F2932D5C9C69DBB626EAAB960DDEEF849C79E15950A1981DC636"
     },
     "Build/06bbf542612d15d77cce3463e37f1af0eca5c8e3e57b2a50023b99f21b52581a.chunk.bin": {
       "bytes": 2097152,
@@ -332,10 +332,6 @@
     "Build/0df4bcfd4a4dca820f0591033c10baec640372c249260b2295ca9c7ed5c1b1c5.chunk.bin": {
       "bytes": 2097152,
       "sha256": "0DF4BCFD4A4DCA820F0591033C10BAEC640372C249260B2295CA9C7ED5C1B1C5"
-    },
-    "Build/0faa7e53fa583e1c4271e2617f793cf9c3ed49f2f589ba00fcad2de7e5bbb3d9.host.js": {
-      "bytes": 18670,
-      "sha256": "0FAA7E53FA583E1C4271E2617F793CF9C3ED49F2F589BA00FCAD2DE7E5BBB3D9"
     },
     "Build/12488c7ca2824436048e89ed8c730fc43ceeab4de0c17c518b60179c1c28304f.chunk.bin": {
       "bytes": 2097152,
@@ -504,6 +500,10 @@
     "Build/b1dfa5a766065ecf8032539a0cbd40a21c7eaafd8607c5fba53d0a3f888b2030.chunk.bin": {
       "bytes": 2097152,
       "sha256": "B1DFA5A766065ECF8032539A0CBD40A21C7EAAFD8607C5FBA53D0A3F888B2030"
+    },
+    "Build/b21904753def1300189844ec7199bea30529a75171041fc371951f0ec3fa81b6.host.js": {
+      "bytes": 21526,
+      "sha256": "B21904753DEF1300189844EC7199BEA30529A75171041FC371951F0EC3FA81B6"
     },
     "Build/b80c8319655364a53874c50339f82d935ed9bd339abd70e8ecf7709bc38e2761.chunk.bin": {
       "bytes": 2097152,
