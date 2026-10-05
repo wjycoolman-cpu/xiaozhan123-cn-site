@@ -1,0 +1,149 @@
+{
+  "schema": "lastlight-public-preview/v2",
+  "status": "actual_export_verified",
+  "stage": "technical_preview",
+  "revision": "feedback15",
+  "release_tag": "lastlight-feedback15-web",
+  "target_home_url": "https://xiaozhan123.cn/",
+  "site_route": "last-defense/1.10.0.3-feedback15",
+  "archive": {
+    "name": "LastLight-feedback15-site.zip",
+    "bytes": 217990002,
+    "sha256": "afd299f52aaacea10b131c7bd96e033665c00ee4a26776b41dfab2dda0fff252"
+  },
+  "profile": {
+    "engine": "Godot 4.7.1",
+    "args": [],
+    "threads": false,
+    "pwa": true,
+    "normal_loader_preserved": true,
+    "canvas_resize_policy": 2,
+    "service_worker": "index.service.worker.js",
+    "service_worker_scope": "same exported route directory",
+    "cache_prefix": "最后防线 · 雨夜感染街区试玩-sw-cache-",
+    "cache_version": "1791170400|4130560",
+    "cached_files": [
+      "index.html",
+      "index.js",
+      "index.offline.html",
+      "index.icon.png",
+      "index.apple-touch-icon.png",
+      "index.audio.worklet.js",
+      "index.audio.position.worklet.js"
+    ],
+    "cacheable_files": [
+      "index.wasm",
+      "index.pck"
+    ],
+    "manifest_file": "index.manifest.json",
+    "manifest_name": "最后防线 · 雨夜感染街区试玩",
+    "manifest_orientation": "any"
+  },
+  "export_evidence": {
+    "validation_report_file": "web-cache-validation.json",
+    "validation_report_sha256": "13e0af06a2b6c47d04a10f23f7245f52a3dd81fe78e3898c5f929536d51368e3",
+    "schema": "lastlight.web-feedback15.actual-validator.v1",
+    "checks_passed": 55,
+    "feedback_endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.service.tcloudbase.com/website-feedback",
+    "passed": true,
+    "source_guards": {
+      "same_frozen_source_for_windows_and_web": true,
+      "source_unchanged_after_dual_export": true,
+      "source_files": 948,
+      "source_bytes": 251193575,
+      "source_manifest_sha256": "5dd18e4520350e8ac2bb75b61b726de8bcfec3b027713d39c9142b6a720da2d9",
+      "build_receipt_sha256": "727382b018669acd358b5aaac899793d177eacd0489f37f2a8d6466878a10173",
+      "editable_source_archive_sha256": "e4f634122d8ace6928018412ce151e25884db199186959b9ec655bdbe9ba50f7",
+      "fresh_clean_import_passed": true,
+      "clean_import_receipt_sha256": "5517b5a16dac3da71b8b43f61a67421f202c6c62c01fada657526081e0915856",
+      "windows_exe_bytes": 333178800,
+      "windows_exe_sha256": "41db077e5737001e070f5a4d9172c0a3fee85551b04325f7b2e7cb27d58e74d3",
+      "windows_exe_version": "1.10.0.3",
+      "windows_and_web_public_client_json_sha256": "d99b1adaf80e16f670200aae6e3275e66d92a83e5616291f5070a695da9516a8",
+      "separate_outbox_namespace": "user://feedback-outbox-website-feedback.json",
+      "legacy_outbox_migration": false
+    },
+    "input_pins": {
+      "status": "supplied",
+      "file": "BUILD-RECEIPT.json",
+      "bytes": 181073,
+      "sha256": "727382b018669acd358b5aaac899793d177eacd0489f37f2a8d6466878a10173"
+    }
+  },
+  "claims": {
+    "feedback15_site_identity": true,
+    "feedback_endpoint_outbox_and_version_consumers": "final Windows/Web source and packed consumer binding passed",
+    "visual_acceptance": "unverified",
+    "browser_journey": {
+      "ready14_normal_play_and_save_baseline": "passed: 509 kills / 126 seconds / intelligence4->36 / cold reopen36 / return site",
+      "feedback15_normal_journey": "pending actual hosted final build",
+      "active_game_hot_update": "unverified"
+    },
+    "human_acceptance": "unverified",
+    "aaa_parity": "not claimed",
+    "native_feedback_journey": "pending actual final EXE verification"
+  },
+  "files": {
+    "index.144x144.png": {
+      "bytes": 3307,
+      "sha256": "0BCB697E5ADEF3D6D9CD8AF7CA3668C7749B63D2E1D6773A15A4319D2FD2F039"
+    },
+    "index.180x180.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.512x512.png": {
+      "bytes": 19184,
+      "sha256": "CE847C4B7DDEDE9942DBF6C2B929187AFC3A3E298D45686779E5499D27E3C61D"
+    },
+    "index.apple-touch-icon.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "BE33985BC7160D6BF9646F259CD86B259CD67B02CCB297EE5C44F8AC84327BC8"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5B476A9C9CE642C0EE4256436D1BC31D9C38F868ACA0F9A8E2A57C18D2DEC2A3"
+    },
+    "index.html": {
+      "bytes": 5632,
+      "sha256": "29A8136DD4702116BBC66B063D85C84C6B2B4C6ECB77C798651311BC75C1CEB8"
+    },
+    "index.icon.png": {
+      "bytes": 5492,
+      "sha256": "4BCAF06FF13A1C1D3F16A2A46DDB31C722FADAAC5C4949C5AB3F9BB01EB50038"
+    },
+    "index.js": {
+      "bytes": 279815,
+      "sha256": "68586D6DAAFC93C6E697B3FB258976874AA7459B8931165EBB1DC3C9614CC42C"
+    },
+    "index.manifest.json": {
+      "bytes": 355,
+      "sha256": "72D7193D33765036876A9EC5DF996A4553115C73C7E644EAABDFD27FB4C7C6C7"
+    },
+    "index.offline.html": {
+      "bytes": 971,
+      "sha256": "B0A5D443E78F58717ADAC780BAC91C1431BFA3B801C41F4707D507FB5AD2E47F"
+    },
+    "index.pck": {
+      "bytes": 236678904,
+      "sha256": "FB3C684CBE95DBCB53440C6AE1A3412509B628F779DD8A17D436BE2CB23797C1"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3CB4495C0B98DFBE4B663CBF2B6836473572339BEB66D902367893162A70BE0E"
+    },
+    "index.service.worker.js": {
+      "bytes": 5853,
+      "sha256": "DE70ADC57BC23B4CBFB322B7C2FEBA5F0B68EEE382002B106699142C44115386"
+    },
+    "index.wasm": {
+      "bytes": 39513091,
+      "sha256": "35116F68540AC41ACF7D71EA457ADDED91B5E960A9CCA3E2ACC72918EAF01277"
+    }
+  },
+  "final_visual_accepted": false
+}

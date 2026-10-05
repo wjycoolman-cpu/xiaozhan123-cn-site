@@ -29,13 +29,12 @@ jobs:
           gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/skymyth-release
           mkdir -p /tmp/lastlight-preview11
           gh release download lastlight-preview11-web --repo "$GITHUB_REPOSITORY" --pattern LastLight-preview11-site.zip --dir /tmp/lastlight-preview11
-          # BEGIN LASTLIGHT READY14 DOWNLOAD
-          # Add after the existing Preview11 download. Keep the SkyMyth and Preview11 lines unchanged.
-          release_tag=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-ready14.json'))['release_tag'])")
-          archive_name=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-ready14.json'))['archive']['name'])")
-          mkdir -p /tmp/lastlight-ready14
-          gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/lastlight-ready14
-          # END LASTLIGHT READY14 DOWNLOAD
+          # BEGIN LASTLIGHT FEEDBACK15 DOWNLOAD
+          release_tag=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-feedback15.json'))['release_tag'])")
+          archive_name=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-feedback15.json'))['archive']['name'])")
+          mkdir -p /tmp/lastlight-feedback15
+          gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/lastlight-feedback15
+          # END LASTLIGHT FEEDBACK15 DOWNLOAD
       - name: Assemble current site and verified game
         run: |
           python3 - <<'PY'
@@ -84,30 +83,29 @@ jobs:
                   raw=z.read(name)
                   assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().lower()==wanted['sha256'].lower()
                   dest=out/'last-defense'/'1.10.0.2-preview11'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
-          # BEGIN LASTLIGHT READY14 ASSEMBLY
-          # Add before the existing CNAME and total-size assertions. This is additive:
-          # retain the existing SkyMyth and LastLight Preview11 assembly blocks unchanged.
-          ready14 = json.loads((root / 'game-releases/lastlight-ready14.json').read_text())
-          assert ready14['schema'] == 'lastlight-public-preview/v2'
-          assert ready14['status'] == 'actual_export_verified'
-          assert ready14['stage'] == 'technical_preview'
-          assert ready14['release_tag'] == 'lastlight-ready14-web'
-          assert ready14['site_route'] == 'last-defense/1.10.0.2-ready14'
-          assert ready14['archive']['name'] == 'LastLight-ready14-site.zip'
-          assert ready14['profile']['pwa'] is True
-          assert ready14['profile']['threads'] is False
-          assert ready14['profile']['canvas_resize_policy'] == 2
-          assert ready14['export_evidence']['passed'] is True
-          assert ready14['claims']['visual_acceptance'] == 'unverified'
-          assert ready14['claims']['human_acceptance'] == 'unverified'
-          assert ready14['final_visual_accepted'] is False
-          archive = Path('/tmp/lastlight-ready14') / ready14['archive']['name']
-          assert archive.is_file() and archive.stat().st_size == ready14['archive']['bytes']
+          # BEGIN LASTLIGHT FEEDBACK15 ASSEMBLY
+          feedback15 = json.loads((root / 'game-releases/lastlight-feedback15.json').read_text())
+          assert feedback15['schema'] == 'lastlight-public-preview/v2'
+          assert feedback15['status'] == 'actual_export_verified'
+          assert feedback15['stage'] == 'technical_preview'
+          assert feedback15['revision'] == 'feedback15'
+          assert feedback15['release_tag'] == 'lastlight-feedback15-web'
+          assert feedback15['site_route'] == 'last-defense/1.10.0.3-feedback15'
+          assert feedback15['archive']['name'] == 'LastLight-feedback15-site.zip'
+          assert feedback15['profile']['pwa'] is True
+          assert feedback15['profile']['threads'] is False
+          assert feedback15['profile']['canvas_resize_policy'] == 2
+          assert feedback15['profile']['cache_prefix'] == feedback15['profile']['manifest_name'] + '-sw-cache-'
+          assert feedback15['export_evidence']['passed'] is True
+          assert feedback15['claims']['human_acceptance'] == 'unverified'
+          assert feedback15['final_visual_accepted'] is False
+          archive = Path('/tmp/lastlight-feedback15') / feedback15['archive']['name']
+          assert archive.is_file() and archive.stat().st_size == feedback15['archive']['bytes']
           with archive.open('rb') as stream:
-              assert hashlib.file_digest(stream, 'sha256').hexdigest().lower() == ready14['archive']['sha256'].lower()
-          wanted = ready14['files']
+              assert hashlib.file_digest(stream, 'sha256').hexdigest().lower() == feedback15['archive']['sha256'].lower()
+          wanted = feedback15['files']
           assert isinstance(wanted, dict) and len(wanted) >= 12
-          destination_root = out / Path(ready14['site_route'])
+          destination_root = out / Path(feedback15['site_route'])
           assert not destination_root.exists()
           with zipfile.ZipFile(archive) as bundle:
               infos = bundle.infolist()
@@ -130,10 +128,16 @@ jobs:
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(raw)
           assert (destination_root / 'index.html').is_file()
-          assert (destination_root / ready14['profile']['service_worker']).is_file()
-          assert isinstance(ready14['profile']['manifest_name'], str) and ready14['profile']['manifest_name']
-          assert ready14['profile']['cache_prefix'] == ready14['profile']['manifest_name'] + '-sw-cache-'
-          # END LASTLIGHT READY14 ASSEMBLY
+          assert (destination_root / feedback15['profile']['service_worker']).is_file()
+          legacy_root = out / 'last-defense' / '1.10.0.2-ready14'
+          legacy_root.mkdir(parents=True, exist_ok=True)
+          legacy_redirect = '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../1.10.0.3-feedback15/index.html"><link rel="canonical" href="../1.10.0.3-feedback15/index.html"><title>LastLight Feedback15</title><p><a href="../1.10.0.3-feedback15/index.html">Open LastLight Feedback15</a></p><script>location.replace("../1.10.0.3-feedback15/index.html"+location.search+location.hash)</script>'
+          (legacy_root / 'index.html').write_bytes(legacy_redirect.encode('utf-8'))
+          legacy_worker = b"'use strict';\n\n// Compatibility worker for the retired Ready14 route only. Its registration\n// scope remains /last-defense/1.10.0.2-ready14/ because the worker is served\n// from that directory without a Service-Worker-Allowed scope override.\nconst READY14_SCOPE = new URL(self.registration.scope);\nconst FEEDBACK15_ENTRY = new URL('../1.10.0.3-feedback15/index.html', READY14_SCOPE).href;\n\nself.addEventListener('install', (event) => {\n\tevent.waitUntil(self.skipWaiting());\n});\n\nself.addEventListener('activate', (event) => {\n\t// Claim existing Ready14 clients so their later requests use this worker.\n\t// Do not navigate or reload them: an in-progress old game keeps running.\n\tevent.waitUntil(self.clients.claim());\n});\n\nself.addEventListener('fetch', (event) => {\n\tconst request = event.request;\n\tif (request.method !== 'GET') {\n\t\treturn;\n\t}\n\n\tlet requestURL;\n\ttry {\n\t\trequestURL = new URL(request.url);\n\t} catch (_) {\n\t\treturn;\n\t}\n\n\tconst isReady14Navigation = request.mode === 'navigate'\n\t\t&& requestURL.origin === READY14_SCOPE.origin\n\t\t&& requestURL.pathname.startsWith(READY14_SCOPE.pathname);\n\tif (isReady14Navigation) {\n\t\tevent.respondWith(Promise.resolve(Response.redirect(FEEDBACK15_ENTRY, 302)));\n\t\treturn;\n\t}\n\n\t// Preserve every existing Godot cache and consult all of them first. This\n\t// keeps audio worklets and other assets available to an already-running old\n\t// client. Only a cache miss reaches the network; nothing is rewritten.\n\tevent.respondWith(caches.match(request).then((cached) => cached || fetch(request)));\n});\n"
+          assert len(legacy_worker) == 1540
+          assert hashlib.sha256(legacy_worker).hexdigest() == 'c45e7f5f21f1a4a5e63c9886351cda60e43d56cc4017cfefe2019197ede0758a'
+          (legacy_root / 'index.service.worker.js').write_bytes(legacy_worker)
+          # END LASTLIGHT FEEDBACK15 ASSEMBLY
           assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
           total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
           assert total<1024*1024*1024,total
