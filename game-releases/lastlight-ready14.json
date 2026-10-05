@@ -1,0 +1,167 @@
+{
+  "schema": "lastlight-public-preview/v2",
+  "status": "actual_export_verified",
+  "stage": "technical_preview",
+  "revision": "ready14",
+  "release_tag": "lastlight-ready14-web",
+  "target_home_url": "https://xiaozhan123.cn/",
+  "site_route": "last-defense/1.10.0.2-ready14",
+  "archive": {
+    "name": "LastLight-ready14-site.zip",
+    "bytes": 217990249,
+    "sha256": "614bd4ccdde3b9a0473000fd08360f959b56fbd40e4642cb6a29ae197bffea20"
+  },
+  "profile": {
+    "engine": "Godot 4.7.1",
+    "args": [],
+    "threads": false,
+    "pwa": true,
+    "normal_loader_preserved": true,
+    "canvas_resize_policy": 2,
+    "service_worker": "index.service.worker.js",
+    "service_worker_scope": "same exported route directory",
+    "cache_prefix": "最后防线 · 雨夜感染街区试玩-sw-cache-",
+    "cache_version": "1791158814|4483163",
+    "cached_files": [
+      "index.html",
+      "index.js",
+      "index.offline.html",
+      "index.icon.png",
+      "index.apple-touch-icon.png",
+      "index.audio.worklet.js",
+      "index.audio.position.worklet.js"
+    ],
+    "cacheable_files": [
+      "index.wasm",
+      "index.pck"
+    ],
+    "manifest_file": "index.manifest.json",
+    "manifest_name": "最后防线 · 雨夜感染街区试玩",
+    "manifest_orientation": "any"
+  },
+  "export_evidence": {
+    "validation_report_file": "WEB-CACHE14-ACTUAL.json",
+    "validation_report_sha256": "50f98e6610ce540f24e3d6d654b276ad91691cb56427de48f622573a008e5c70",
+    "passed": true,
+    "source_guards": {
+      "same_frozen_source_for_windows_and_web": true,
+      "source_unchanged_after_dual_export": true,
+      "source_files": 948,
+      "source_bytes": 251191905,
+      "source_manifest_sha256": "9f04007076c868ddb765a22711aa8dfb7996fcf0bcc037458422e51e3be2b9b5",
+      "build_receipt_sha256": "eeebab433a53ca3dae5ecdc55c7a26c4c01077a6a373d8d7c703496e3dd702de",
+      "editable_source_archive_sha256": "3a8bc1ba9fb0c5afaf46d77e514b791a1b178a705b8ef6a669ee780c2d653b1c",
+      "fresh_clean_import_passed": true,
+      "clean_import_receipt_sha256": "16a2ecbc4dbcee4f2a589dbc735629d6a60b4c29992fda44f275deafd96d960d",
+      "windows_exe_bytes": 333178784,
+      "windows_exe_sha256": "bb343b1f24352f6e8309bfd2ff5ce7d8b59a78cb819d5d443685502325355d36",
+      "windows_exe_version": "1.10.0.2"
+    }
+  },
+  "claims": {
+    "ready_soldier14_present": true,
+    "representative_visual_review": "internal product-size review only",
+    "representative_neutral_visual_scope": "inherited; no visual source changed by the GL status-interface repair",
+    "compatibility_status_interface": {
+      "status": "passed",
+      "checks": "262/262",
+      "report": "qa-root-ready-soldier14-gl-06/ready_soldier_native14.json",
+      "report_sha256": "a7afafcc7ed276d7b738151de232bdc1d840f3810ac70bb8c7aa8aab7630c59c",
+      "five_actor_local_standard_materials": true,
+      "three_distinct_status_effects": true,
+      "source_texture_identity_restored": true
+    },
+    "visual_acceptance": "unverified",
+    "same_source_as_current_windows_exe": true,
+    "browser_journey": {
+      "local_normal_journey": "passed",
+      "kills": 145,
+      "seconds": 82,
+      "saved_intelligence": 14,
+      "close_reopen_save": "passed",
+      "offline_canonical_index": "passed",
+      "bounded_service_worker_update_and_reopen_save": "passed",
+      "local_receipt_sha256": "26a002b97df4252a839e3760e45ce866fd4bdfb02fc146871c590f057ec5210f",
+      "hosted_journey": "pending actual deployment",
+      "physical_phone": "unverified",
+      "active_game_hot_update": "unverified"
+    },
+    "human_acceptance": "unverified",
+    "aaa_parity": "not claimed",
+    "packaged_resource_consumer": {
+      "passed": true,
+      "observer_receipt_sha256": "c31aba0466e1c1fe6473e3c938991b9f2e5154ac673d37894848b4ca0d23a848",
+      "resource_loader_from_actual_embedded_pack": true,
+      "source_and_exe_unchanged": true,
+      "full_game_report_preserved": {
+        "checks_passed": 258,
+        "total": 263,
+        "status": "failed",
+        "five_failures_root_cause": "source-byte observer cannot read original GLB and image files after Godot import; actual ResourceLoader and source-to-pack lineage verified separately"
+      }
+    }
+  },
+  "files": {
+    "index.144x144.png": {
+      "bytes": 3307,
+      "sha256": "0BCB697E5ADEF3D6D9CD8AF7CA3668C7749B63D2E1D6773A15A4319D2FD2F039"
+    },
+    "index.180x180.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.512x512.png": {
+      "bytes": 19184,
+      "sha256": "CE847C4B7DDEDE9942DBF6C2B929187AFC3A3E298D45686779E5499D27E3C61D"
+    },
+    "index.apple-touch-icon.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "BE33985BC7160D6BF9646F259CD86B259CD67B02CCB297EE5C44F8AC84327BC8"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5B476A9C9CE642C0EE4256436D1BC31D9C38F868ACA0F9A8E2A57C18D2DEC2A3"
+    },
+    "index.html": {
+      "bytes": 5632,
+      "sha256": "AC2C133D44E9E7439479823B96226F0C48D33A387E14010058F17F3C2D0689FD"
+    },
+    "index.icon.png": {
+      "bytes": 5492,
+      "sha256": "4BCAF06FF13A1C1D3F16A2A46DDB31C722FADAAC5C4949C5AB3F9BB01EB50038"
+    },
+    "index.js": {
+      "bytes": 279815,
+      "sha256": "68586D6DAAFC93C6E697B3FB258976874AA7459B8931165EBB1DC3C9614CC42C"
+    },
+    "index.manifest.json": {
+      "bytes": 355,
+      "sha256": "72D7193D33765036876A9EC5DF996A4553115C73C7E644EAABDFD27FB4C7C6C7"
+    },
+    "index.offline.html": {
+      "bytes": 971,
+      "sha256": "B0A5D443E78F58717ADAC780BAC91C1431BFA3B801C41F4707D507FB5AD2E47F"
+    },
+    "index.pck": {
+      "bytes": 236678888,
+      "sha256": "DE486963DD76BD22F11A0E83D55066B445DE645D9866224A646B5BB5E9E54C2B"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3CB4495C0B98DFBE4B663CBF2B6836473572339BEB66D902367893162A70BE0E"
+    },
+    "index.service.worker.js": {
+      "bytes": 5853,
+      "sha256": "D30FF8B55F52580A8E73E5061EC769F909731301676147A2654C0F5F0E65B8E0"
+    },
+    "index.wasm": {
+      "bytes": 39513091,
+      "sha256": "35116F68540AC41ACF7D71EA457ADDED91B5E960A9CCA3E2ACC72918EAF01277"
+    }
+  },
+  "final_visual_accepted": false
+}

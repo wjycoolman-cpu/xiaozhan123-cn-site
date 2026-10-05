@@ -29,6 +29,13 @@ jobs:
           gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/skymyth-release
           mkdir -p /tmp/lastlight-preview11
           gh release download lastlight-preview11-web --repo "$GITHUB_REPOSITORY" --pattern LastLight-preview11-site.zip --dir /tmp/lastlight-preview11
+          # BEGIN LASTLIGHT READY14 DOWNLOAD
+          # Add after the existing Preview11 download. Keep the SkyMyth and Preview11 lines unchanged.
+          release_tag=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-ready14.json'))['release_tag'])")
+          archive_name=$(python3 -c "import json;print(json.load(open('game-releases/lastlight-ready14.json'))['archive']['name'])")
+          mkdir -p /tmp/lastlight-ready14
+          gh release download "$release_tag" --repo "$GITHUB_REPOSITORY" --pattern "$archive_name" --dir /tmp/lastlight-ready14
+          # END LASTLIGHT READY14 DOWNLOAD
       - name: Assemble current site and verified game
         run: |
           python3 - <<'PY'
@@ -77,6 +84,56 @@ jobs:
                   raw=z.read(name)
                   assert len(raw)==wanted['bytes'] and hashlib.sha256(raw).hexdigest().lower()==wanted['sha256'].lower()
                   dest=out/'last-defense'/'1.10.0.2-preview11'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+          # BEGIN LASTLIGHT READY14 ASSEMBLY
+          # Add before the existing CNAME and total-size assertions. This is additive:
+          # retain the existing SkyMyth and LastLight Preview11 assembly blocks unchanged.
+          ready14 = json.loads((root / 'game-releases/lastlight-ready14.json').read_text())
+          assert ready14['schema'] == 'lastlight-public-preview/v2'
+          assert ready14['status'] == 'actual_export_verified'
+          assert ready14['stage'] == 'technical_preview'
+          assert ready14['release_tag'] == 'lastlight-ready14-web'
+          assert ready14['site_route'] == 'last-defense/1.10.0.2-ready14'
+          assert ready14['archive']['name'] == 'LastLight-ready14-site.zip'
+          assert ready14['profile']['pwa'] is True
+          assert ready14['profile']['threads'] is False
+          assert ready14['profile']['canvas_resize_policy'] == 2
+          assert ready14['export_evidence']['passed'] is True
+          assert ready14['claims']['visual_acceptance'] == 'unverified'
+          assert ready14['claims']['human_acceptance'] == 'unverified'
+          assert ready14['final_visual_accepted'] is False
+          archive = Path('/tmp/lastlight-ready14') / ready14['archive']['name']
+          assert archive.is_file() and archive.stat().st_size == ready14['archive']['bytes']
+          with archive.open('rb') as stream:
+              assert hashlib.file_digest(stream, 'sha256').hexdigest().lower() == ready14['archive']['sha256'].lower()
+          wanted = ready14['files']
+          assert isinstance(wanted, dict) and len(wanted) >= 12
+          destination_root = out / Path(ready14['site_route'])
+          assert not destination_root.exists()
+          with zipfile.ZipFile(archive) as bundle:
+              infos = bundle.infolist()
+              names = [info.filename for info in infos]
+              assert len(names) == len(set(names)) == len({name.casefold() for name in names})
+              assert not any(info.is_dir() for info in infos)
+              assert sorted(names) == sorted(wanted)
+              for info in infos:
+                  name = info.filename
+                  rel = Path(name)
+                  mode = (info.external_attr >> 16) & 0o170000
+                  assert '\\' not in name and not rel.is_absolute() and '..' not in rel.parts
+                  assert all(part not in ('', '.') for part in rel.parts)
+                  assert mode != 0o120000
+                  raw = bundle.read(info)
+                  expected = wanted[name]
+                  assert len(raw) == expected['bytes']
+                  assert hashlib.sha256(raw).hexdigest().lower() == expected['sha256'].lower()
+                  dest = destination_root / rel
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_bytes(raw)
+          assert (destination_root / 'index.html').is_file()
+          assert (destination_root / ready14['profile']['service_worker']).is_file()
+          assert isinstance(ready14['profile']['manifest_name'], str) and ready14['profile']['manifest_name']
+          assert ready14['profile']['cache_prefix'] == ready14['profile']['manifest_name'] + '-sw-cache-'
+          # END LASTLIGHT READY14 ASSEMBLY
           assert (out/'CNAME').read_text().strip()=='xiaozhan123.cn'
           total=sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
           assert total<1024*1024*1024,total

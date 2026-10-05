@@ -47,16 +47,16 @@
       "summary": "丧尸生存与防守",
       "state": "published",
       "statusText": "可直接试玩",
-      "version": "1.10.0.2 · 网页试玩",
+      "version": "1.10.0.2 · Ready14 网页试玩",
       "compatibility": "电脑浏览器，推荐 Chrome / Edge",
-      "sizeBytes": 243819532,
-      "playUrl": "./last-defense/1.10.0.2-preview11/",
+      "sizeBytes": 276553318,
+      "playUrl": "./last-defense/1.10.0.2-ready14/index.html",
       "downloadUrl": "",
       "releaseNotes": [
-        "真实3D雨夜街区生存，已开放网页试玩。",
-        "WASD 移动，自动射击，升级时选择武器与能力。",
-        "首次进入需加载约233 MB资源，成长进度保存在当前浏览器。",
-        "当前为玩法试玩版，人物与画面仍在持续精修。"
+        "真实3D雨夜街区生存，自动射击，强化武器并回收补给。",
+        "巡夜人采用3D军人形象，配有待机、行走、射击、换弹等动作。",
+        "首次需加载约264 MB，成长进度保存在当前浏览器；完成缓存后支持离线重开。",
+        "当前仍是玩法试玩版，最终画面与趣味认可待实际试玩。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
