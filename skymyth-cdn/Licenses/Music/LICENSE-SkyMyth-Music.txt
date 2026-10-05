@@ -1,0 +1,35 @@
+SkyMyth instrumental fantasy music sources
+=========================================
+
+Both tracks were published by the named authors under CC0 1.0 Universal.
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Optional attribution is retained below; no author endorsement is implied.
+
+The runtime pair replaces the previously rejected nautical/vocal music.
+Source loop length, melody, pitch and tempo are preserved. Runtime files are
+44.1 kHz stereo Ogg Vorbis, with constant gain to approximately -18 LUFS.
+An 8 ms edge ramp prevents a waveform discontinuity at each loop boundary.
+Gain, edge ramp and codec conversion are local adaptations for game mixing.
+
+META
+Title: The Old Tower Inn
+Author: RandomMind
+Source page: https://opengameart.org/content/medieval-the-old-tower-inn
+Original download: https://opengameart.org/sites/default/files/Loop_The_Old_Tower_Inn.wav
+Original SHA-256: E18B497FB0EDDE74A745C4B5A0B90B3FC346C44555F33E3A1485411BBCC171BC
+Runtime: skymyth_meta_loop.ogg
+Runtime SHA-256: 0F91E284368F722F574EEDE78310D850FBE9F86A347BCE441BA4C913C9C1884C
+Runtime duration: 49.951383 seconds; stereo 44.1 kHz.
+Constant gain adaptation: -0.5800 dB.
+
+BATTLE
+Title: Hope (Orchestral battle music)
+Author: MintoDog
+Source page: https://opengameart.org/content/hopeorchestral-battle-music
+Original download: https://opengameart.org/sites/default/files/hope_orchestral_battle_music_bpm165.flac
+Original SHA-256: 5DA6876E90FB07CD6E7A28FB03B436BBD1ADA4D24B9F6CF6284A2104063C4CC3
+Runtime: skymyth_battle_loop.ogg
+Runtime SHA-256: C9BACD34B1CB3D8EE108C032BA21C172A3392E8808079523503194E9A7EB9552
+Runtime duration: 69.818186 seconds; stereo 44.1 kHz.
+Constant gain adaptation: -8.0900 dB.
+
