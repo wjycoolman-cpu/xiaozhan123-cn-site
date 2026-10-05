@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.15",
-      "versionCode": 16,
+      "version": "1.0.17",
+      "versionCode": 18,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 48459227,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.15.apk",
-      "filename": "pocket-piano-1.0.15.apk",
-      "sha256": "7b61e25117bbf9221e06bd43ea4c79676174405cff2e74b1f93a5be8dba5318f",
+      "sizeBytes": 48562124,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.17.apk",
+      "filename": "pocket-piano-1.0.17.apk",
+      "sha256": "4cf019b18e89b03b361fd1d35332f3f390ee57b8bd2141d46decc2a20cde6072",
       "releaseNotes": [
-        "音乐计算器改为竖屏正面布局，保留实体键帽、光影与按下回弹；放大16个按键，加入四种清亮计算器音色。钢琴原界面和曲库保留。"
+        "双排谱提前接续预览；计算器和科学仪器默认简单点按，自动完成原谱音长；从头播放、拖动进度；离线生成9:16整首及自弹视频；保留搜索结果并修正简谱八度点。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
