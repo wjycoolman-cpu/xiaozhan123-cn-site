@@ -20,15 +20,15 @@
       "summary": "策略卡牌与战斗冒险",
       "state": "published",
       "statusText": "可直接试玩",
-      "version": "0.8.91 · r112",
+      "version": "0.8.91 · r113",
       "compatibility": "网页浏览器，建议横屏",
-      "sizeBytes": 123108782,
+      "sizeBytes": 123110847,
       "playUrl": "./skymyth/",
       "downloadUrl": "",
       "releaseNotes": [
-        "首次游戏资源约123 MB，比r111减少约53 MB（30%）。",
-        "下载分段校验和保存，程序缓存复用；网页UI贴图采用高质量有损压缩。",
-        "人物动画、属性图标、字体及原始PNG保持；当前是单人试炼，实体手机仍待验证。"
+        "首次游戏资源约123 MB，比r111减少约53 MB。",
+        "所有大资源共用两路下载队列，等待队列不消耗无数据超时；保留已下载段与旧缓存。",
+        "人物动画、原始PNG和规则保持；当前是单人试炼，真实手机及首次速度另行验证。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"

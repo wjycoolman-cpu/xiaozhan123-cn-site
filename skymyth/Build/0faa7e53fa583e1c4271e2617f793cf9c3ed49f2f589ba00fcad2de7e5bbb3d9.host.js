@@ -18,9 +18,48 @@ var unityInstance = null;
   const observation = window.skyMythStaticLoader = {
     schema: 'skymyth-static-resource-loader/v3', startedAt: performance.now(),
     resources: {}, blobUrlsReleased: false, state: 'loading',
-    source: 'r111-resumable-chunks', networkBytes: 0, retries: [],
+    source: 'r113-shared-download-queue', networkBytes: 0, retries: [],
+    downloadQueue: {limit: 2, active: 0, peak: 0, waiting: 0, noDataTimeoutMs: 90000},
     cache: {name: cacheName, state: 'opening', hits: [], writes: [], failures: [], recovered: [], savedBytes: 0},
   };
+
+  // Share the two network slots across all resources. Queue waiting time does
+  // not consume the no-data deadline; cancellation removes queued work.
+  const pendingDownloads = [];
+  let activeDownloads = 0;
+  function pumpDownloads() {
+    while (activeDownloads < 2 && pendingDownloads.length) {
+      const request = pendingDownloads.shift();
+      request.signal.removeEventListener('abort', request.cancel);
+      if (request.signal.aborted) {request.reject(new DOMException('Download cancelled', 'AbortError')); continue;}
+      activeDownloads++;
+      observation.downloadQueue.active = activeDownloads;
+      observation.downloadQueue.peak = Math.max(observation.downloadQueue.peak, activeDownloads);
+      let released = false;
+      request.resolve(function () {
+        if (released) return;
+        released = true; activeDownloads--;
+        observation.downloadQueue.active = activeDownloads;
+        pumpDownloads();
+      });
+    }
+    observation.downloadQueue.waiting = pendingDownloads.length;
+  }
+  function acquireDownload(signal) {
+    if (signal.aborted) return Promise.reject(new DOMException('Download cancelled', 'AbortError'));
+    return new Promise(function (resolve, reject) {
+      const request = {signal, resolve, reject, cancel: null};
+      request.cancel = function () {
+        const index = pendingDownloads.indexOf(request);
+        if (index >= 0) pendingDownloads.splice(index, 1);
+        signal.removeEventListener('abort', request.cancel);
+        reject(new DOMException('Queued download cancelled', 'AbortError'));
+        pumpDownloads();
+      };
+      signal.addEventListener('abort', request.cancel, {once: true});
+      pendingDownloads.push(request); pumpDownloads();
+    });
+  }
   function release() {
     for (const url of urls) URL.revokeObjectURL(url);
     urls.clear();
@@ -89,11 +128,14 @@ var unityInstance = null;
     const chunks = resource.chunks;
     if (!Array.isArray(chunks) || !chunks.length) {
       let received = 0;
-      const response = await fetch(resolved, {signal: controller.signal, credentials: 'same-origin'});
-      const blob = await readNetwork(response, key, controller.signal, bytes => {
-        received += bytes; report(key, received);
-      });
-      return {blob, status: response.status, headers: response.headers, transport: 'single-response'};
+      const releaseSlot = await acquireDownload(controller.signal);
+      try {
+        const response = await fetch(resolved, {signal: controller.signal, credentials: 'same-origin'});
+        const blob = await readNetwork(response, key, controller.signal, bytes => {
+          received += bytes; report(key, received);
+        });
+        return {blob, status: response.status, headers: response.headers, transport: 'single-response'};
+      } finally {releaseSlot();}
     }
     if (chunks.reduce((n, c) => n + c.bytes, 0) !== resource.bytes) throw new Error('Invalid resource chunk manifest');
     const cache = await cacheReady;
@@ -127,10 +169,11 @@ var unityInstance = null;
         const local = new AbortController();
         const abort = () => local.abort();
         controller.signal.addEventListener('abort', abort, {once: true});
-        let timeout;
-        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), 45000);};
-        inflight.set(index, 0); touch();
+        let timeout, releaseSlot;
+        const touch = () => {clearTimeout(timeout); timeout = setTimeout(() => local.abort(), 90000);};
+        inflight.set(index, 0);
         try {
+          releaseSlot = await acquireDownload(local.signal); touch();
           const response = await fetch(url, {signal: local.signal, credentials: 'same-origin'});
           if (response.status !== 200) {await response.body?.cancel(); throw new Error('Part request HTTP ' + response.status);}
           const blob = await readNetwork(response, key, local.signal, bytes => {
@@ -155,7 +198,7 @@ var unityInstance = null;
           metrics.retries.push({part: index, attempt, error: String(error).slice(0, 240)});
           observation.retries.push({key, part: index, attempt});
           label.textContent = '连接中断，正在继续下载… ' + Math.floor(Object.values(counters).reduce((n,v)=>n+v,0)*100/expectedTotal) + '%';
-        } finally {clearTimeout(timeout); controller.signal.removeEventListener('abort', abort);}
+        } finally {clearTimeout(timeout); controller.signal.removeEventListener('abort', abort); if (releaseSlot) releaseSlot();}
       }
     }
     async function worker() {
