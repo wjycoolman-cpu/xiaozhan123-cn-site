@@ -16,12 +16,12 @@
     "args": [],
     "threads": false,
     "pwa": true,
-    "normal_loader_preserved": true,
+    "normal_loader_preserved": false,
     "canvas_resize_policy": 2,
     "service_worker": "index.service.worker.js",
     "service_worker_scope": "same exported route directory",
-    "cache_prefix": "最后防线 · 雨夜感染街区试玩-sw-cache-",
-    "cache_version": "1791170400|4130560",
+    "cache_prefix": "lastlight-transfer-sw-",
+    "cache_version": "feedback15-transfer1-fb3c684cbe95",
     "cached_files": [
       "index.html",
       "index.js",
@@ -29,15 +29,22 @@
       "index.icon.png",
       "index.apple-touch-icon.png",
       "index.audio.worklet.js",
-      "index.audio.position.worklet.js"
+      "index.audio.position.worklet.js",
+      "lastlight-transfer-loader.js",
+      "index.transfer.json",
+      "lastlight-pck-entry-delta15.js",
+      "index.pck.delta15.json"
     ],
     "cacheable_files": [
-      "index.wasm",
-      "index.pck"
+      "index.wasm"
     ],
     "manifest_file": "index.manifest.json",
     "manifest_name": "最后防线 · 雨夜感染街区试玩",
-    "manifest_orientation": "any"
+    "manifest_orientation": "any",
+    "custom_loader": "Verified delta or resumable SHA256 ranges, using public Godot Engine init/preloadFile/start APIs",
+    "optional_cacheable_files": [
+      "index.pck.delta15.bin"
+    ]
   },
   "export_evidence": {
     "validation_report_file": "web-cache-validation.json",
@@ -68,7 +75,8 @@
       "file": "BUILD-RECEIPT.json",
       "bytes": 181073,
       "sha256": "727382b018669acd358b5aaac899793d177eacd0489f37f2a8d6466878a10173"
-    }
+    },
+    "validation_report_scope": "55 checks apply to the frozen unmodified engine export; hosting derivative has a separate exact inventory and CPU receipt"
   },
   "claims": {
     "feedback15_site_identity": true,
@@ -76,14 +84,111 @@
     "visual_acceptance": "unverified",
     "browser_journey": {
       "ready14_normal_play_and_save_baseline": "passed: 509 kills / 126 seconds / intelligence4->36 / cold reopen36 / return site",
-      "feedback15_normal_journey": "pending actual hosted final build",
+      "feedback15_normal_journey": "pending hosted transfer1 ordinary browser journey",
       "active_game_hot_update": "unverified"
     },
     "human_acceptance": "unverified",
     "aaa_parity": "not claimed",
-    "native_feedback_journey": "pending actual final EXE verification"
+    "native_feedback_journey": "passed final embedded EXE accepted plus duplicate with exact private eight-string owner readback"
   },
   "files": {
+    "index.144x144.png": {
+      "bytes": 3307,
+      "sha256": "0BCB697E5ADEF3D6D9CD8AF7CA3668C7749B63D2E1D6773A15A4319D2FD2F039"
+    },
+    "index.180x180.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.512x512.png": {
+      "bytes": 19184,
+      "sha256": "CE847C4B7DDEDE9942DBF6C2B929187AFC3A3E298D45686779E5499D27E3C61D"
+    },
+    "index.apple-touch-icon.png": {
+      "bytes": 4508,
+      "sha256": "8D7B2FB75EC354CD2065E51543BE0B8840A2D13815E8DB456D6C3C2D0518FBEA"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "BE33985BC7160D6BF9646F259CD86B259CD67B02CCB297EE5C44F8AC84327BC8"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5B476A9C9CE642C0EE4256436D1BC31D9C38F868ACA0F9A8E2A57C18D2DEC2A3"
+    },
+    "index.html": {
+      "bytes": 7029,
+      "sha256": "055F8DC1BC9D81082995E87EFAEBF1E52AD9881C5D3823B9A2A4D65D39115103"
+    },
+    "index.icon.png": {
+      "bytes": 5492,
+      "sha256": "4BCAF06FF13A1C1D3F16A2A46DDB31C722FADAAC5C4949C5AB3F9BB01EB50038"
+    },
+    "index.js": {
+      "bytes": 279815,
+      "sha256": "68586D6DAAFC93C6E697B3FB258976874AA7459B8931165EBB1DC3C9614CC42C"
+    },
+    "index.manifest.json": {
+      "bytes": 355,
+      "sha256": "72D7193D33765036876A9EC5DF996A4553115C73C7E644EAABDFD27FB4C7C6C7"
+    },
+    "index.offline.html": {
+      "bytes": 971,
+      "sha256": "B0A5D443E78F58717ADAC780BAC91C1431BFA3B801C41F4707D507FB5AD2E47F"
+    },
+    "index.pck": {
+      "bytes": 236678904,
+      "sha256": "FB3C684CBE95DBCB53440C6AE1A3412509B628F779DD8A17D436BE2CB23797C1"
+    },
+    "index.pck.delta15.bin": {
+      "bytes": 113062,
+      "sha256": "9564B0A2D93D62259652A9497DDC1695869F32A858423CDD3DD57FD4688C839A"
+    },
+    "index.pck.delta15.json": {
+      "bytes": 26750,
+      "sha256": "45A019C63408C29AD64D824129A819F722828F0C67B645FDDB0144E69BAD74D9"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3CB4495C0B98DFBE4B663CBF2B6836473572339BEB66D902367893162A70BE0E"
+    },
+    "index.service.worker.js": {
+      "bytes": 6032,
+      "sha256": "D3C7B08B8F7D8E79CB29171EC86B0A35CC881407641A60BDCF4BCDC653A22736"
+    },
+    "index.transfer.json": {
+      "bytes": 22749,
+      "sha256": "5DCB997AFD6550D6C6CDE812C4F0B6D240AE193A06563EBD34F0282EE2BD5714"
+    },
+    "index.wasm": {
+      "bytes": 39513091,
+      "sha256": "35116F68540AC41ACF7D71EA457ADDED91B5E960A9CCA3E2ACC72918EAF01277"
+    },
+    "lastlight-pck-entry-delta15.js": {
+      "bytes": 6489,
+      "sha256": "14082FD435A5D44F9A11EE08283D07B237379ACC5CF58B4BA3E62A982796E1A6"
+    },
+    "lastlight-transfer-loader.js": {
+      "bytes": 16964,
+      "sha256": "A63A59B1C0252DAAE5EB4BA51EAE17AEBDB855C742244237E921BD2E952457B4"
+    }
+  },
+  "final_visual_accepted": false,
+  "hosting_derivative": {
+    "revision": "transfer1",
+    "only_html_service_worker_and_transfer_helpers_changed": true,
+    "game_pck_wasm_engine_js_byte_identical": true,
+    "feedback_version": "1.10.0.3",
+    "source_export_pck_sha256": "FB3C684CBE95DBCB53440C6AE1A3412509B628F779DD8A17D436BE2CB23797C1",
+    "whole_pck_download_duplicate_avoided": true,
+    "cached_ready14_patch_bytes": 113062,
+    "cpu_runtime_receipt_sha256": "156366322991f98285b8e002cb12aa75a5fb4d0d517d6637923d365b0f66f4ae",
+    "cpu_runtime_cases": 4,
+    "engine_is_stub": true,
+    "browser_acceptance": "pending ordinary hosted browser journey",
+    "existing_published_archive_reused": true
+  },
+  "archive_files": {
     "index.144x144.png": {
       "bytes": 3307,
       "sha256": "0BCB697E5ADEF3D6D9CD8AF7CA3668C7749B63D2E1D6773A15A4319D2FD2F039"
@@ -145,5 +250,41 @@
       "sha256": "35116F68540AC41ACF7D71EA457ADDED91B5E960A9CCA3E2ACC72918EAF01277"
     }
   },
-  "final_visual_accepted": false
+  "overlays": {
+    "index.html": {
+      "path": "last-defense-hosting/feedback15-transfer1/index.html",
+      "bytes": 7029,
+      "sha256": "055F8DC1BC9D81082995E87EFAEBF1E52AD9881C5D3823B9A2A4D65D39115103"
+    },
+    "index.service.worker.js": {
+      "path": "last-defense-hosting/feedback15-transfer1/index.service.worker.js",
+      "bytes": 6032,
+      "sha256": "D3C7B08B8F7D8E79CB29171EC86B0A35CC881407641A60BDCF4BCDC653A22736"
+    },
+    "index.pck.delta15.bin": {
+      "path": "last-defense-hosting/feedback15-transfer1/index.pck.delta15.bin",
+      "bytes": 113062,
+      "sha256": "9564B0A2D93D62259652A9497DDC1695869F32A858423CDD3DD57FD4688C839A"
+    },
+    "index.pck.delta15.json": {
+      "path": "last-defense-hosting/feedback15-transfer1/index.pck.delta15.json",
+      "bytes": 26750,
+      "sha256": "45A019C63408C29AD64D824129A819F722828F0C67B645FDDB0144E69BAD74D9"
+    },
+    "index.transfer.json": {
+      "path": "last-defense-hosting/feedback15-transfer1/index.transfer.json",
+      "bytes": 22749,
+      "sha256": "5DCB997AFD6550D6C6CDE812C4F0B6D240AE193A06563EBD34F0282EE2BD5714"
+    },
+    "lastlight-pck-entry-delta15.js": {
+      "path": "last-defense-hosting/feedback15-transfer1/lastlight-pck-entry-delta15.js",
+      "bytes": 6489,
+      "sha256": "14082FD435A5D44F9A11EE08283D07B237379ACC5CF58B4BA3E62A982796E1A6"
+    },
+    "lastlight-transfer-loader.js": {
+      "path": "last-defense-hosting/feedback15-transfer1/lastlight-transfer-loader.js",
+      "bytes": 16964,
+      "sha256": "A63A59B1C0252DAAE5EB4BA51EAE17AEBDB855C742244237E921BD2E952457B4"
+    }
+  }
 }

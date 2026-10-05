@@ -95,7 +95,9 @@ jobs:
           assert feedback15['profile']['pwa'] is True
           assert feedback15['profile']['threads'] is False
           assert feedback15['profile']['canvas_resize_policy'] == 2
-          assert feedback15['profile']['cache_prefix'] == feedback15['profile']['manifest_name'] + '-sw-cache-'
+          assert feedback15['profile']['cache_prefix'] == 'lastlight-transfer-sw-'
+          assert feedback15['profile']['cache_version'] == 'feedback15-transfer1-fb3c684cbe95'
+          assert feedback15['hosting_derivative']['game_pck_wasm_engine_js_byte_identical'] is True
           assert feedback15['export_evidence']['passed'] is True
           assert feedback15['claims']['human_acceptance'] == 'unverified'
           assert feedback15['final_visual_accepted'] is False
@@ -104,7 +106,9 @@ jobs:
           with archive.open('rb') as stream:
               assert hashlib.file_digest(stream, 'sha256').hexdigest().lower() == feedback15['archive']['sha256'].lower()
           wanted = feedback15['files']
-          assert isinstance(wanted, dict) and len(wanted) >= 12
+          assert isinstance(wanted, dict) and len(wanted) == 20
+          archived = feedback15['archive_files']
+          assert len(archived) == 15
           destination_root = out / Path(feedback15['site_route'])
           assert not destination_root.exists()
           with zipfile.ZipFile(archive) as bundle:
@@ -112,7 +116,7 @@ jobs:
               names = [info.filename for info in infos]
               assert len(names) == len(set(names)) == len({name.casefold() for name in names})
               assert not any(info.is_dir() for info in infos)
-              assert sorted(names) == sorted(wanted)
+              assert sorted(names) == sorted(archived)
               for info in infos:
                   name = info.filename
                   rel = Path(name)
@@ -121,12 +125,30 @@ jobs:
                   assert all(part not in ('', '.') for part in rel.parts)
                   assert mode != 0o120000
                   raw = bundle.read(info)
-                  expected = wanted[name]
+                  expected = archived[name]
                   assert len(raw) == expected['bytes']
                   assert hashlib.sha256(raw).hexdigest().lower() == expected['sha256'].lower()
                   dest = destination_root / rel
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(raw)
+          for name, overlay in feedback15['overlays'].items():
+              rel = Path(name)
+              source_rel = Path(overlay['path'])
+              assert not rel.is_absolute() and '..' not in rel.parts
+              assert source_rel.parts[:2] == ('last-defense-hosting', 'feedback15-transfer1')
+              assert not source_rel.is_absolute() and '..' not in source_rel.parts
+              source = root / source_rel
+              assert source.is_file() and not source.is_symlink()
+              raw = source.read_bytes()
+              assert len(raw) == overlay['bytes'] == wanted[name]['bytes']
+              assert hashlib.sha256(raw).hexdigest().upper() == overlay['sha256'] == wanted[name]['sha256']
+              dest = destination_root / rel
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_bytes(raw)
+          assert sorted(p.relative_to(destination_root).as_posix() for p in destination_root.rglob('*') if p.is_file()) == sorted(wanted)
+          for name, expected in wanted.items():
+              with (destination_root / name).open('rb') as stream:
+                  assert hashlib.file_digest(stream, 'sha256').hexdigest().upper() == expected['sha256']
           assert (destination_root / 'index.html').is_file()
           assert (destination_root / feedback15['profile']['service_worker']).is_file()
           legacy_root = out / 'last-defense' / '1.10.0.2-ready14'
@@ -137,7 +159,7 @@ jobs:
           assert len(legacy_worker) == 1540
           assert hashlib.sha256(legacy_worker).hexdigest() == 'c45e7f5f21f1a4a5e63c9886351cda60e43d56cc4017cfefe2019197ede0758a'
           (legacy_root / 'index.service.worker.js').write_bytes(legacy_worker)
-          legacy_discovery = "<script data-lastlight-ready14-update>\nif ('serviceWorker' in navigator) {\n  const legacyScope = new URL('/last-defense/1.10.0.2-ready14/', location.origin).href;\n  navigator.serviceWorker.getRegistration(legacyScope + 'index.html').then(registration => {\n    if (registration && registration.scope === legacyScope) return registration.update();\n  }).catch(() => console.warn('LastLight legacy update check unavailable'));\n}\n</script>"
+          legacy_discovery = "<script data-lastlight-ready14-update>\nif ('serviceWorker' in navigator) {\n  ['/last-defense/1.10.0.2-ready14/', '/last-defense/1.10.0.3-feedback15/'].forEach(path => {\n    const exactScope = new URL(path, location.origin).href;\n    navigator.serviceWorker.getRegistration(exactScope + 'index.html').then(async registration => {\n      if (!registration || registration.scope !== exactScope) return;\n      await registration.update();\n      const pending = registration.waiting || registration.installing;\n      if (pending) {\n        const claim = () => {\n          if (pending.state === 'installed') pending.postMessage('claim');\n          if (pending.state === 'activated' || pending.state === 'redundant') pending.removeEventListener('statechange', claim);\n        };\n        pending.addEventListener('statechange', claim);\n        claim();\n      }\n    }).catch(() => console.warn('LastLight update check unavailable'));\n  });\n}\n</script>"
           site_home = out / 'index.html'
           site_home_html = site_home.read_text(encoding='utf-8')
           assert 'data-lastlight-ready14-update' not in site_home_html
