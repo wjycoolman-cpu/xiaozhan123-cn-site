@@ -1,12 +1,12 @@
 {
   "schema": "skymyth-public-deployment/v1",
-  "revision": "r109",
-  "productVersion": "0.8.90",
-  "release_tag": "skymyth-r109-web",
+  "revision": "r110",
+  "productVersion": "0.8.91",
+  "release_tag": "skymyth-r110-web",
   "archive": {
-    "name": "SkyMyth-r109-site.zip",
-    "bytes": 175631707,
-    "sha256": "fa751278380d38d6df8bb05482c8bf959f049c08b38927a7fc53f2471801cbc2"
+    "name": "SkyMyth-r110-site.zip",
+    "bytes": 175583655,
+    "sha256": "2e5e756c9ee252d0d30b1bdea5142e2e20a9171c642453865b28cfb268febc54"
   },
   "files": {
     ".nojekyll": {
@@ -14,28 +14,32 @@
       "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
     },
     "index.html": {
-      "bytes": 4118,
-      "sha256": "0529220C533CA6CD82FC31E14D75C6FD18662B75EFE90E1E6A0B177857AF30A5"
+      "bytes": 7405,
+      "sha256": "AC9C4B5D6B91F14B0E019E12AF12FFC3DC63DD6658B50500CA9F8893E18D7102"
     },
     "Build/276a3aaad1e71c92e87c5edbdeeb4cd4bf29a69badf68e8193080a47224b40b6.framework.js.gz": {
-      "bytes": 96850,
-      "sha256": "D12C06E0D679C04AD15F2A6BEB50DC45F84985B0A06729CF340D2DBF1D134459"
+      "bytes": 96602,
+      "sha256": "331B39107FB0655DB52F8CB2C7781DE79BFB1BE68D782084F373E1E654C27B1B"
     },
-    "Build/6b68965246d494d9a1161c8fc6fe8ab2ab7f4988031e07f8a7876cd240cdb36a.data.gz": {
-      "bytes": 164631185,
-      "sha256": "E8F4EA1A64A0B99D51AE6C2519660254B70648794E14A911EE8C735A9F9FCA38"
-    },
-    "Build/733a7a5744cf3905915ec871c7e6cf6612b661bec22cdd80f652620a372fdbe7.loader.js": {
+    "Build/3bc0a33805fa71f20fe7fd7537037e4f318ce875e6e52dea916aa7c400d8c2cb.loader.js": {
       "bytes": 19430,
-      "sha256": "733A7A5744CF3905915EC871C7E6CF6612B661BEC22CDD80F652620A372FDBE7"
+      "sha256": "3BC0A33805FA71F20FE7FD7537037E4F318CE875E6E52DEA916AA7C400D8C2CB"
     },
-    "Build/753a0bfb8e1e1425bdf2a9cfdbcd4120688b8a9f644e53f12a021f307473704f.wasm.gz": {
-      "bytes": 11247424,
-      "sha256": "263AC2A375C663DE2FE5D41AFC6C96DDB8F6CDB01BF67F669593D84F512722C1"
+    "Build/b6e0d7bde530d82cefd0e472c4c143b08ddcd8403a2588158dead7a544c1fb16.wasm.gz": {
+      "bytes": 11214087,
+      "sha256": "6CB77262CA9B6BF499DA39B561044CB94EECF93271E3BC664F964D715CFEDB22"
     },
     "Build/be55d83bf6e02f029d036b5fb1ab79f5dc22478c8fbf9afdb4a978e1b8d9348e.host.js": {
       "bytes": 14576,
       "sha256": "BE55D83BF6E02F029D036B5FB1AB79F5DC22478C8FBF9AFDB4A978E1B8D9348E"
+    },
+    "Build/f2849ce7905992bfdc578f6186c466ea40ac499bb553d70ed6cdd464dbf6541a.viewport.js": {
+      "bytes": 2950,
+      "sha256": "F2849CE7905992BFDC578F6186C466EA40AC499BB553D70ED6CDD464DBF6541A"
+    },
+    "Build/f2911a024695aeb7417b94526f5bd936c45feef05d82f6a36a1eb369c00b0891.data.gz": {
+      "bytes": 164632507,
+      "sha256": "368E7C92ACE87A90561E84CD1805EF4C06F78C0BB726A67FE7FCD1649BD754D8"
     },
     "TemplateData/favicon.ico": {
       "bytes": 2305,

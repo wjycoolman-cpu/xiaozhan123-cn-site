@@ -20,15 +20,15 @@
       "summary": "策略卡牌与战斗冒险",
       "state": "published",
       "statusText": "可直接试玩",
-      "version": "0.8.90 · r109",
+      "version": "0.8.91 · r110",
       "compatibility": "网页浏览器，建议横屏",
-      "sizeBytes": 176032636,
+      "sizeBytes": 176006610,
       "playUrl": "./skymyth/",
       "downloadUrl": "",
       "releaseNotes": [
-        "776张图片采用无损编码，原像素、透明度和动画帧保持一致。",
-        "保留奇幻配乐、命中反馈、暂停、已保存牌组和本地存档。",
-        "首次需下载约176 MB；同一版本再次进入可复用本地资源缓存。当前为单人对战。"
+        "手机横屏引导、全屏入口和横屏可用画面适配。",
+        "主页显示牌组完整性、卡包数量和联机未开放状态；详情与卡背材质修正。",
+        "保留无损资源、缓存和存档；首次下载约176 MB。当前为单人试炼，整体成熟度仍在完善。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
