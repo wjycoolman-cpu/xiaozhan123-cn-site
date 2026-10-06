@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.20",
-      "versionCode": 21,
+      "version": "1.0.21",
+      "versionCode": 22,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 45089919,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.20.apk",
-      "filename": "pocket-piano-1.0.20.apk",
-      "sha256": "f04a4cbcc19016c441fa368fc298783b20b1d2d825c41f8161f6233b6e24014a",
+      "sizeBytes": 45089767,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.21.apk",
+      "filename": "pocket-piano-1.0.21.apk",
+      "sha256": "0e45e4d8300acd42ec27182a1be802abc96bc8c052d0011b2df7d3b5c2d95f1c",
       "releaseNotes": [
-        "支持暂停后继续、回到开头后等待播放，各乐器收起栏仍可暂停。保留原音色和全部已内置曲库，通过无损压缩减小安装包；更新下载支持同源断线续传。"
+        "亮键跟弹改为当前实亮1、下一步淡描边2，降低三色预告干扰。简单模式点一下即可，音长自动补足；标准模式按住看剩余条，到时明确提示松开。保留原曲库、琴身与声音。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
