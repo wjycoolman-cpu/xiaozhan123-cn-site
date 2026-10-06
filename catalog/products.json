@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.23",
-      "versionCode": 24,
+      "version": "1.0.24",
+      "versionCode": 25,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 50765861,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.23.apk",
-      "filename": "pocket-piano-1.0.23.apk",
-      "sha256": "f565843f2c60a8ef1603d9c48a91e452c1f15c7af224b4a9c4bda3ef777eca93",
+      "sizeBytes": 50782245,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.24.apk",
+      "filename": "pocket-piano-1.0.24.apk",
+      "sha256": "ed543100506a1123c463742b16c23dde240579a953845e19e60dca697e42a472",
       "releaseNotes": [
-        "默认当前键唯一实亮，按键角上的方向和淡小点预告下一位置；重复音原键提示再点。新增可直接触摸的十孔口琴吹吸音页面。提供0.65倍慢练和可选两步预告。曲库返回复用搜索结果和位置，修复宽屏列表崩溃；更新中断最多自动续传两次。"
+        "完整包最多四路并行分段保存进度，显示实际下载速度；有精确原包时支持同源原证书签名的增量更新，本地重建后仍验证完整APK和原签名。原曲库和音色保留。旧版首次升级仍需完整包，装入本版后后续更新才可使用新下载器。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
