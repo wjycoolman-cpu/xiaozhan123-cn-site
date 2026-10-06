@@ -42,7 +42,20 @@ jobs:
           import hashlib,json,shutil,subprocess,zipfile
           root=Path.cwd();out=root/'_site';out.mkdir()
           files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          # Piano: deploy the current signed version plus the newest staged package.
+          # Historical APKs remain in Git; unrelated products are copied unchanged.
+          piano_files=[n for n in files if n.startswith('pocket-piano/releases/pocket-piano-') and n.endswith('.apk')]
+          def piano_version(n):
+              return tuple(int(v) for v in Path(n).stem.removeprefix('pocket-piano-').split('.'))
+          newest_piano=max(piano_files,key=piano_version) if piano_files else None
+          envelope=json.loads((root/'pocket-piano/update.json').read_text())
+          import base64
+          current_piano=json.loads(base64.b64decode(envelope['payload']))['url'].split('xiaozhan123.cn/',1)[1]
+          keep_piano={current_piano,newest_piano}
+          assert current_piano in piano_files
           for name in filter(None,files):
+              if name in piano_files and name not in keep_piano:
+                  continue
               if name.startswith('.github/'):
                   continue
               source=root/name
