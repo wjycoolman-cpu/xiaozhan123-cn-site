@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.21",
-      "versionCode": 22,
+      "version": "1.0.22",
+      "versionCode": 23,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 45089767,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.21.apk",
-      "filename": "pocket-piano-1.0.21.apk",
-      "sha256": "0e45e4d8300acd42ec27182a1be802abc96bc8c052d0011b2df7d3b5c2d95f1c",
+      "sizeBytes": 50765173,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.22.apk",
+      "filename": "pocket-piano-1.0.22.apk",
+      "sha256": "0d5b23a7249e9a6c003fb99b84b0dbb43e170db6af8b372259622655c79439a3",
       "releaseNotes": [
-        "亮键跟弹改为当前实亮1、下一步淡描边2，降低三色预告干扰。简单模式点一下即可，音长自动补足；标准模式按住看剩余条，到时明确提示松开。保留原曲库、琴身与声音。"
+        "新增128种真实GM采样音色，总计162种，包含清音、闷音、过载和失真电吉他及多种贝斯。启动直接采用所选乐器方向；打开、换曲、重练和从头后等待点开始，保留两步提示和自动音长。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
