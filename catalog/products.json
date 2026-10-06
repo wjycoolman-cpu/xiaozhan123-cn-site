@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.19",
-      "versionCode": 20,
+      "version": "1.0.20",
+      "versionCode": 21,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 56203871,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.19.apk",
-      "filename": "pocket-piano-1.0.19.apk",
-      "sha256": "d5dc3728fd5d40d217a47174ae56e9e9c61b6a772d5310da302aae6b15b1b0ee",
+      "sizeBytes": 45089919,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.20.apk",
+      "filename": "pocket-piano-1.0.20.apk",
+      "sha256": "f04a4cbcc19016c441fa368fc298783b20b1d2d825c41f8161f6233b6e24014a",
       "releaseNotes": [
-        "新增提琴四弦指板、吉他、管乐和敲击音条的直接触摸演奏；34个现有音色接入对应页面。钢琴、计算器、科学仪器、打击垫和新乐器同时预告蓝1、紫2、橙3三步按键，同位置重复音显示多个编号。保留原音高、固定键位、持音和真实页面视频导出。新增乐器使用合成音色及简化触奏。"
+        "支持暂停后继续、回到开头后等待播放，各乐器收起栏仍可暂停。保留原音色和全部已内置曲库，通过无损压缩减小安装包；更新下载支持同源断线续传。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
