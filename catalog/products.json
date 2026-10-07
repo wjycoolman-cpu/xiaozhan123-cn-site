@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.25",
-      "versionCode": 26,
+      "version": "1.0.26",
+      "versionCode": 27,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 50790631,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.25.apk",
-      "filename": "pocket-piano-1.0.25.apk",
-      "sha256": "95c24f19d1458453c7414443905bfc10d10fd407666b8e024e7d1341382abc24",
+      "sizeBytes": 52427276,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.26.apk",
+      "filename": "pocket-piano-1.0.26.apk",
+      "sha256": "108c47efd3bb4d03ffcf65ed04bd055b0c5209ca28d7714bf25024c6e2c48762",
       "releaseNotes": [
-        "新增音乐可视化：双行五线谱随演奏流动，高低声部分色、逐音头发光，支持纸面透视和清晰平谱、暂停与从头，以及同页视频导出。原曲库、音色和四路并行及原签名增量更新保留。"
+        "新增可弹音乐掌机、7种小游戏和8种复古音色；新增吉他指板及慢速扫弦练习；可选钢琴皮肤和配色；打击垫改为清楚的双色暗面和局部敲击反馈。更新支持精确版本增量补丁、并行下载与断点续传，并区分下载和合并进度。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
