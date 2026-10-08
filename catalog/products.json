@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.28",
-      "versionCode": 29,
+      "version": "1.0.29",
+      "versionCode": 30,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 52434128,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.28.apk",
-      "filename": "pocket-piano-1.0.28.apk",
-      "sha256": "3eeb5bce324e8f136f40cc36d99d5bb5aad88082e25e35e40b10b93a2902ad12",
+      "sizeBytes": 52436424,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.29.apk",
+      "filename": "pocket-piano-1.0.29.apk",
+      "sha256": "cc1dea9d981b064433ea56d9ea63edecd8153968974eb7cce215902df66a0a04",
       "releaseNotes": [
-        "继续打磨全白音乐掌机与直接弹奏页面：白壳外角、偏心摇杆底座和主帽明暗更连贯；自由弹奏合并重复说明，提琴琴体露出更多；跟弹、自动和视频保留完整两排谱与音长提示，多指持奏切换保护原触点。保留原灰蓝钢琴、音乐计算器、曲库、原音高、录制与更新入口。实体手机触感、听感及长期流畅度未以模拟器结果代替验收。"
+        "1.0.29：细化音乐掌机与提琴画面。\n修正白色掌机正面三角阴影和摇杆开孔错位，保留八个按键及对应谱面。\n提琴改为窄指板与完整琴身轮廓，细化琴桥、音孔和尾板；保留大触控区域、多指弹奏和音长提示。\n复验受影响的跟弹、暂停、从头播放与应用内视频导出。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
