@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.29",
-      "versionCode": 30,
+      "version": "1.0.30",
+      "versionCode": 31,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 52436424,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.29.apk",
-      "filename": "pocket-piano-1.0.29.apk",
-      "sha256": "cc1dea9d981b064433ea56d9ea63edecd8153968974eb7cce215902df66a0a04",
+      "sizeBytes": 52538152,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.30.apk",
+      "filename": "pocket-piano-1.0.30.apk",
+      "sha256": "39da66c77ce70e2f6ab9fa1fba3ceb85f3bf94cf547581a3b15eef03e3c56780",
       "releaseNotes": [
-        "1.0.29：细化音乐掌机与提琴画面。\n修正白色掌机正面三角阴影和摇杆开孔错位，保留八个按键及对应谱面。\n提琴改为窄指板与完整琴身轮廓，细化琴桥、音孔和尾板；保留大触控区域、多指弹奏和音长提示。\n复验受影响的跟弹、暂停、从头播放与应用内视频导出。"
+        "掌机按键和屏幕重新调整：正常键帽比例、较大的触摸区域、五款屏幕扩大、边框匹配。游戏入口可直接切换俄罗斯方块、数字合并、贪吃蛇和打砖块；上方符号对应实体按键。新增已授权CAD部件与环境材质。8种复古音色可选择并调音量，修复松手/取消后持续响，保留钢琴延音。真实页面整曲视频采用单帧预备流水线；同模拟器短/30秒导出计时减少约两成，实际手机速度因设备而异。保留原曲库、演奏控制和数据。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
