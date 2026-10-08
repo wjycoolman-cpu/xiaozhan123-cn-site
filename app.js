@@ -1,7 +1,7 @@
 (() => {
  'use strict';
  const $ = s => document.querySelector(s);
- let catalog, filter = 'all', selected, activeFeedback, toastTimer;
+ let catalog, filter = 'app', selected, activeFeedback, toastTimer;
  const feedbackClient = window.AppCenterFeedback ? window.AppCenterFeedback.create() : Promise.reject(Error('client_unavailable'));
  feedbackClient.catch(() => {});
  let feedbackSequence = 0, draftSequence = 0;
@@ -33,9 +33,16 @@
  }
  function actions(p) { return `${action(p)}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
  function card(p) { return `<article class="product-card ${p.kind==='game'?'game-card':'app-card'} ${esc(p.theme)}" ${p.kind==='app'&&ready(p)?`draggable="true" data-drag="${esc(p.id)}"`:''}>${icon(p)}<div class="product-content"><div class="card-heading"><h3>${esc(p.name)}</h3></div><p class="summary">${esc(p.summary)}</p>${p.version?`<p class="app-meta">${esc(p.version)} · ${size(p.sizeBytes)}</p>`:''}<div class="card-actions">${actions(p)}</div></div></article>`; }
+ function setFilter(kind) {
+  if (!['app', 'game'].includes(kind)) return;
+  filter = kind;
+  document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === kind)));
+  $('#search').placeholder = kind === 'app' ? '搜索应用' : '搜索游戏';
+  if (catalog) render();
+ }
  function render() {
   const q = $('#search').value.trim().toLocaleLowerCase();
-  const list = catalog.products.filter(p => (filter === 'all' || p.kind === filter) && [p.name,...(p.aliases || []),p.category].join(' ').toLocaleLowerCase().includes(q));
+  const list = catalog.products.filter(p => p.kind === filter && [p.name,...(p.aliases || []),p.category].join(' ').toLocaleLowerCase().includes(q));
   $('#game-grid').innerHTML = list.filter(p => p.kind === 'game').map(card).join('');
   $('#app-grid').innerHTML = list.filter(p => p.kind === 'app').map(card).join('');
   $('#games').hidden = !list.some(p => p.kind === 'game'); $('#apps').hidden = !list.some(p => p.kind === 'app'); $('#empty').hidden = !!list.length;
@@ -115,7 +122,7 @@
    try{const client=await feedbackClient,state=await client.get(p.id);renderFeedbackState(p,state);}catch{if(activeFeedback?.id===p.id)feedbackError();}
   }
  }
- document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ filter=el.dataset.filter; document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===el)));render(); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
+ document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ setFilter(el.dataset.filter); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
  document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-drag]');if(!card||!e.dataTransfer)return;const p=product(card.dataset.drag),u=safeUrl(p.downloadUrl);e.dataTransfer.setData('DownloadURL',`${p.mimeType || 'application/vnd.android.package-archive'}:${p.filename||p.id+'.apk'}:${u}`);e.dataTransfer.setData('text/uri-list',u);e.dataTransfer.setData('text/plain',u);e.dataTransfer.effectAllowed='copy';});
  $('#search').addEventListener('input',()=>catalog&&render());
  $('#search-toggle').addEventListener('click',()=>{const open=$('#search-panel').hidden;$('#search-panel').hidden=!open;$('#search-toggle').setAttribute('aria-expanded',String(open));if(open)$('#search').focus();else{$('#search').value='';if(catalog)render();}});
@@ -127,5 +134,5 @@
  $('#feedback-pending').addEventListener('click',async e=>{const el=e.target.closest('button');if(!el||!activeFeedback)return;const p=activeFeedback;if(el.dataset.retryRequest){await preserveDraft();return sendFeedback(p,client=>client.retry(p.id,el.dataset.retryRequest,feedbackEndpoint(p)));}if(el.dataset.viewRequest){const saved=preserveDraft(),ticket=draftSequence;await saved;if(activeFeedback?.id!==p.id||ticket!==draftSequence)return;try{const client=await feedbackClient,state=await client.restoreAttempt(p.id,el.dataset.viewRequest);if(activeFeedback?.id===p.id&&ticket===draftSequence){const form=$('#feedback-form');form.elements.message.value=state.draft.message;form.elements.contact.value=state.draft.contact;renderFeedbackState(p,state);$('#feedback-status').textContent='已载入这次反馈。改写内容后会作为新的反馈发送，旧请求仍会保留。';}}catch{feedbackError();}}});
  $('#share-copy').addEventListener('click',async()=>{if(await copy($('#share-url').value)){toast('链接已复制');$('#share-dialog').close();}else{$('#share-url').select();toast('请长按或使用 Ctrl+C 复制链接');}});
  $('#feedback-form').addEventListener('submit',e=>{e.preventDefault();const p=activeFeedback;if(!p||!feedbackEndpoint(p))return;const form=$('#feedback-form'),message=form.elements.message.value,contact=form.elements.contact.value;return sendFeedback(p,client=>client.submit({productId:p.id,version:p.version||'',message,contact,endpoint:feedbackEndpoint(p)}));});
- fetch('./catalog/products.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(data=>{catalog=data;render();document.title=data.site.name;const admin=safeUrl(data.site.adminUrl);if(admin){$('#admin-link').href=admin;$('#admin-link').hidden=false;}const match=location.hash.match(/^#product=(.+)$/);if(match){try{const p=product(decodeURIComponent(match[1]));if(p)detail(p);}catch{}}}).catch(()=>$('#load-error').hidden=false);
+ fetch('./catalog/products.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(data=>{catalog=data;render();document.title=data.site.name;const admin=safeUrl(data.site.adminUrl);if(admin){$('#admin-link').href=admin;$('#admin-link').hidden=false;}const match=location.hash.match(/^#product=(.+)$/);if(match){try{const p=product(decodeURIComponent(match[1]));if(p){setFilter(p.kind);detail(p);}}catch{}}}).catch(()=>$('#load-error').hidden=false);
 })();

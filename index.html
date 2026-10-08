@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fa"><title>小站 · 游戏与应用</title><link rel="stylesheet" href="./style.css"><script src="./feedback-client.js" defer></script><script src="./app.js?v=stardew-1.0.2" defer></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fa"><title>小站 · 游戏与应用</title><link rel="stylesheet" href="./style.css"><script src="./feedback-client.js" defer></script><script src="./app.js?v=categories-20261008" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#catalog">跳到产品列表</a>
 <header class="site-header"><a class="brand" href="./" aria-label="小站首页"><span class="brand-mark" aria-hidden="true">小</span><span>小站</span></a></header>
 <main>
  <h1 id="catalog" tabindex="-1">游戏与应用</h1>
- <div class="catalog-tools"><div class="filters" role="group" aria-label="筛选产品"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="game" aria-pressed="false">游戏</button><button data-filter="app" aria-pressed="false">应用</button></div><button id="search-toggle" class="icon-button search-toggle" aria-label="搜索产品" aria-controls="search-panel" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button></div>
- <div id="search-panel" class="search-panel" hidden><label for="search" class="sr-only">搜索游戏或应用</label><input id="search" type="search" placeholder="搜索游戏或应用" autocomplete="off"></div>
- <section id="games" class="catalog-section" aria-labelledby="games-title"><div class="section-heading"><h2 id="games-title">游戏</h2><span>网页游戏</span></div><div id="game-grid" class="game-grid"></div></section>
+ <div class="catalog-tools"><div class="filters" role="group" aria-label="切换应用与游戏"><button data-filter="app" aria-pressed="true">应用</button><button data-filter="game" aria-pressed="false">游戏</button></div><button id="search-toggle" class="icon-button search-toggle" aria-label="搜索产品" aria-controls="search-panel" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button></div>
+ <div id="search-panel" class="search-panel" hidden><label for="search" class="sr-only">搜索游戏或应用</label><input id="search" type="search" placeholder="搜索应用" autocomplete="off"></div>
+ <section id="games" hidden class="catalog-section" aria-labelledby="games-title"><div class="section-heading"><h2 id="games-title">游戏</h2><span>网页游戏</span></div><div id="game-grid" class="game-grid"></div></section>
  <section id="apps" class="catalog-section" aria-labelledby="apps-title"><div class="section-heading"><h2 id="apps-title">应用</h2><span>手机与电脑工具</span></div><div id="app-grid" class="app-grid"></div></section>
  <p id="empty" class="empty" hidden>没有找到相关产品。试试另一个名字。</p><p id="load-error" class="empty" hidden>产品列表暂时无法加载，请刷新重试。</p>
 </main>
