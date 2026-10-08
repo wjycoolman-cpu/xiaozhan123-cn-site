@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.26",
-      "versionCode": 27,
+      "version": "1.0.27",
+      "versionCode": 28,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 52427276,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.26.apk",
-      "filename": "pocket-piano-1.0.26.apk",
-      "sha256": "108c47efd3bb4d03ffcf65ed04bd055b0c5209ca28d7714bf25024c6e2c48762",
+      "sizeBytes": 52429936,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.27.apk",
+      "filename": "pocket-piano-1.0.27.apk",
+      "sha256": "4545031f6366a79a658f6abc552680683788f084420f516bd38139bf4632da67",
       "releaseNotes": [
-        "新增可弹音乐掌机、7种小游戏和8种复古音色；新增吉他指板及慢速扫弦练习；可选钢琴皮肤和配色；打击垫改为清楚的双色暗面和局部敲击反馈。更新支持精确版本增量补丁、并行下载与断点续传，并区分下载和合并进度。"
+        "优化钢琴实体键面、黑键反射和蓝色落块的层次；提琴补充琴体木纹、琴桥与金属弦，吹管和敲击条补充机构细节。全白掌机圆按钮与主摇杆沿原模型剖面细化，保留键位、游戏布局和原比例视频。整理演奏栏、音色选择和弹层，曲库分开显示曲名、作者和离线状态。保留显式开始、暂停、从头、固定琴键、多指连奏和原曲时序；提供精确匹配旧包的增量更新。实际手机手感和主观视觉仍待使用验证。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
