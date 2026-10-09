@@ -75,16 +75,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.30",
-      "versionCode": 31,
+      "version": "1.0.31",
+      "versionCode": 32,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 52538152,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.30.apk",
-      "filename": "pocket-piano-1.0.30.apk",
-      "sha256": "39da66c77ce70e2f6ab9fa1fba3ceb85f3bf94cf547581a3b15eef03e3c56780",
+      "sizeBytes": 52543340,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.31.apk",
+      "filename": "pocket-piano-1.0.31.apk",
+      "sha256": "304f133d0c326a0245928bb58390a5b22cda9001ee584db3df411386150271ad",
       "releaseNotes": [
-        "掌机按键和屏幕重新调整：正常键帽比例、较大的触摸区域、五款屏幕扩大、边框匹配。游戏入口可直接切换俄罗斯方块、数字合并、贪吃蛇和打砖块；上方符号对应实体按键。新增已授权CAD部件与环境材质。8种复古音色可选择并调音量，修复松手/取消后持续响，保留钢琴延音。真实页面整曲视频采用单帧预备流水线；同模拟器短/30秒导出计时减少约两成，实际手机速度因设备而异。保留原曲库、演奏控制和数据。"
+        "网页钢琴上线：电脑键盘多键和弦、曲库按需加载、MIDI导入、录制与简谱文本导出。掌机修复圆形按键触区误报，补上不支持WebGL2或模型准备失败时的可弹兼容显示；保留暂停、从头等待手动开始及实际页面视频导出。网页曲库列表下载量减少约66%，实际网络速度仍取决于访问线路。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
