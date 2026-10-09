@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>词间</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="android-fonts.css">
+  <script src="demo-isolation.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="practice.js" defer></script>
+  <script src="memory-aids.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" aria-busy="true"><div class="boot"><div class="brandmark"><img src="icon.svg" alt=""></div><p>正在打开词卡…</p></div></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+</body>
+</html>
