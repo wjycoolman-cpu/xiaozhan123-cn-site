@@ -291,7 +291,8 @@
       ],
       "feedback": {
         "endpoint": ""
-      }
+      },
+      "demoUrl": "/yuji/demo/"
     }
   ]
 }
