@@ -1,0 +1,7 @@
+本候选沿用正式弹钢琴 APP 1.0.31 的实际声音实现。
+1. Salamander Grand Piano / Alexander Holm / CC BY 3.0：原 APP 的 48kHz 单声道 PCM 子集；保留原有处理，不称完整力度音库。
+2. 128 个 GM 音色：TimGM6mb.sf2，2004 Tim Brechbill、2010 David Bolton，GPL-2。原库未修改；完整许可及版权见 assets/soundfont/GPL-2.txt 与 soundfont-copyright.txt。该 SF2 原文件随对应源码包提供。
+3. TinySoundFont / Bernhard Schelling / MIT：复用正式 tsf.h；新增浏览器 ABI、内存及数学调用适配 native-gm.c；48kHz 单声道、-5dB、384 复音、48 所有权通道沿用原 GM 配置。许可见 assets/soundfont/TinySoundFont-LICENSE.txt。
+4. 其余 42 个音色（含 8 个复古音色）：复用正式 AudioEngine.java/RetroGameSynth.java 的 DSP，TeaVM 0.12.3 编译成 JavaScript，由 AudioWorklet 输出；移植不代表每个名称都是单独录音采样。
+5. TeaVM 0.12.3 / Alexey Andreev 与项目贡献者 / Apache-2.0：编译器和运行库；未修改 TeaVM，许可见 assets/native-licenses/TeaVM-0.12.3-LICENSE.txt。
+浏览器适配属于本项目 GPL-3.0 代码；各声音素材及第三方组件保留各自许可。

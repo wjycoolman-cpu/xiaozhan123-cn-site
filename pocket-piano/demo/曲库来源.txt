@@ -1,0 +1,59 @@
+弹钢琴 — Everyone Piano 歌曲目录来源与格式说明
+
+目录来源
+https://github.com/hsdllcw/everyonepiano-music-database
+快照 commit：688a6e3b4f274e74dec471a3956d20eaf20e46e2
+目录采集日期：2026-10-03
+来源仓库最近更新：2023-07-16
+
+本应用附带上述公开仓库的完整 EOP 文件路径目录快照，共 12 个分类、15,565 个独立路径。同一歌曲的不同编配、简单版、完整版和伴奏版分别保留原始标题。作者字段从文件名推导，并非逐首对照官方 info.json 确认。
+
+分类数量：儿歌 307；其他 55；动漫 2,653；原创 133；原神-风物之诗琴谱 162；影视 1,537；民乐 432；流行 7,976；练习曲 517；经典 655；网络热门 4；轻音乐 1,134。
+
+完整性证据
+GitHub 首次递归目录响应被截断，未用该响应声称整库覆盖。采集程序分别读取上述 12 个分类的树，全部返回 truncated=false，再合并、核对唯一路径和 id。各项保留原始 path、Git blob SHA-1、byteSize 和 commit revision。歌曲文件按选择从公开仓库获取并核对 Git blob SHA-1；目录条目不等于已下载或已成功解码的歌曲。
+开发阶段复算资料：work/eop-research/catalog-complete-tree.json、eop-catalog.json、collect_catalog.py。上述研究文件不要求随 APK 分发。
+
+本快照不是 2026 年官网实时全部新曲。官网后来新增、删除或修改的条目可能不在本快照内。应用另提供官网搜索入口及本机 EOP/MIDI 导入。
+官网：https://www.everyonepiano.cn/
+
+数据分享与版权
+来源 README 声明“本库 EOP 文件数据已得到授权”，并附授权对话图片：
+https://github.com/hsdllcw/everyonepiano-music-database/blob/main/license.png
+图片对话明确允许 EOP 文件分享；另对大量 PNG 曲谱图片分享表示不允许。本应用使用 EOP 路径目录和公开 EOP 获取入口，不把该说明扩展为图谱图片的批量再分发许可。
+
+仓库根目录采用 MIT 许可，完整通知保留在本文件下方。该软件许可及上述分享说明不意味着原歌曲、现代编配和演奏作品的全部著作权已转移，也不构成无限制商业再授权。原歌曲、编配及上传者相关权利仍归各自权利人。Everyone Piano 官方版权声明：
+https://www.everyonepiano.cn/Single-privacypolicy.html
+
+格式互操作研究来源
+https://github.com/emizuki/eop2midi
+研究版本：f1dd408a5a22831434ea0f50fa1d0fb0195afe96
+该参考仓库当前未提供根目录 LICENSE。其 Go 代码及研究生成的 CLI 不随本应用分发。Android EOP 解码器为依据已观察文件字段编写的独立 Java 实现；仅在本地用参考工具和公开样本验证 EOP 200/201/301 的音高、起止时间、复音和攻击力度。
+
+EOP 是演奏事件文件。解码不承诺恢复原谱的指法、小节排版、真实左右手分轨、音源效果或所有控制事件。EOPN/EOPM、图片/PDF 曲谱和音频不因拥有歌曲标题就被标记为可自动演奏的音符数据。
+
+本应用未执行来源仓库的 main.py 抓取程序，也不绕过官网会员、验证码或下载授权。
+
+来源仓库 MIT 许可原文
+
+MIT License
+
+Copyright (c) 2020 hsdllcw
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

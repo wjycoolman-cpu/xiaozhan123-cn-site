@@ -1,0 +1,6 @@
+Wood Table 001 by Dimitrios Savva (photography) and Rico Cilliers (processing) / Poly Haven.
+Primary author metadata: https://api.polyhaven.com/info/wood_table_001
+Source: https://polyhaven.com/a/wood_table_001
+Download: https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_diff_1k.jpg
+License: CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Runtime shader tint, scale and clip only. The JPEG is unchanged.

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'">
+<link rel="icon" href="data:,"><title>音乐可视化</title>
+<style>
+@font-face{font-family:SceneSC;src:url('../full-score/NotoSansSC-Regular.otf') format('opentype');font-weight:400;font-display:block}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#201e2b;font-family:SceneSC,sans-serif}
+#scene{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 55% 47%,#b4a0a037 0,transparent 65%),linear-gradient(145deg,#262531 0%,#51464a 54%,#3d3338 100%);color:#f8f1ea}
+#grain{position:absolute;inset:0;opacity:.12;background:repeating-linear-gradient(13deg,transparent 0,transparent 5px,#ffffff0b 6px,transparent 7px);pointer-events:none}
+header{position:absolute;left:8%;right:8%;top:10%;z-index:4}h1{font-size:clamp(21px,5.8vw,46px);font-weight:400;line-height:1.5;letter-spacing:.08em;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 20px #15152160}
+#caption{margin-top:8px;font-size:clamp(10px,2.4vw,16px);letter-spacing:.22em;color:#ded4d9a8}
+#paper{position:absolute;left:-22%;width:144%;top:38%;height:auto;transform-origin:50% 50%;will-change:transform;filter:drop-shadow(0 8px 22px #15152135)}
+#score{display:block;width:100%;height:auto;overflow:visible}#tiles{pointer-events:none}.vf-stavenote{color:#181624}
+#decoration{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+#empty{position:absolute;left:10%;right:10%;top:65%;text-align:center;font-size:14px;color:#ded4d9b8;display:none}
+#signature{position:absolute;bottom:6%;left:8%;font-size:10px;letter-spacing:.22em;color:#ede1d75e}
+#scene.flat{background:radial-gradient(ellipse at 55% 47%,#c2badc33 0,transparent 70%),linear-gradient(150deg,#292438,#534953 70%,#383342)}
+#scene.flat #paper{left:-8%;width:116%;top:38%}#scene.flat header{top:12%}
+@media (min-aspect-ratio:1/1){header{top:10%;left:9%}h1{font-size:clamp(20px,3.2vw,40px)}#caption{font-size:11px}#paper{top:27%;left:-10%;width:120%}#scene.flat #paper{top:27%;width:108%;left:-4%}#signature{bottom:5%}}
+</style>
+<script src="../full-score/vexflow-4.2.5.js" defer></script><script src="scene.js" defer></script>
+<script src="../native-frame-bridge.js"></script></head><body><main id="scene" aria-label="跟随演奏的双行五线谱"><div id="grain"></div><header><h1 id="title">音乐可视化</h1><div id="caption">PIANO · IN MOTION</div></header><div id="paper"><svg id="score" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 580"><defs><filter id="halo" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="12"/></filter><linearGradient id="upper"><stop stop-color="#ab80fd" stop-opacity="0"/><stop offset="1" stop-color="#ddd0ff"/></linearGradient><linearGradient id="lower"><stop stop-color="#c68d44" stop-opacity="0"/><stop offset="1" stop-color="#ffe0a2"/></linearGradient></defs><g id="staves"></g><g id="tiles"></g><g id="trails"></g><g id="lights"></g></svg></div><svg id="decoration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1600" preserveAspectRatio="none"></svg><div id="empty">这首曲目暂无音符</div><div id="signature">POCKET PIANO</div></main></body></html>

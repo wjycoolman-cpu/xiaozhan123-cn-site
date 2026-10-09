@@ -90,7 +90,7 @@
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       },
       "updateManifestUrl": "https://xiaozhan123.cn/pocket-piano/update.json",
-      "demoUrl": "./pocket-piano/web/"
+      "demoUrl": "/pocket-piano/demo/"
     },
     {
       "id": "mianji",

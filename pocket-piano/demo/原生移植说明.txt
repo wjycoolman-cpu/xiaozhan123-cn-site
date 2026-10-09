@@ -1,0 +1,7 @@
+正式来源：弹钢琴 1.0.31/code32，a04269ef3f99ae16ca5f50a9c87bb6e6fc2f7d1e。
+本候选新增原声音、记谱、引导、图标与乐器绘图的浏览器宿主适配。
+原 Java DSP、Guide、CalculatorLayout、ScoreRowWindow、FullScoreDocument 和绘图路径保留。
+生成副本中的 Android Canvas/View/MotionEvent/JSONObject 调用改由浏览器 Canvas/DOM/JSON 宿主执行；线程池改为浏览器宿主任务，平台电量未知时明确显示未知；这些宿主替换不修改正式 Android 源码。
+计算器、掌机模型/九个小游戏及流光谱面保留原资源；字形、木纹、第三方模型及游戏内核保留随资源提供的许可。所有新增适配源码及构建脚本随 app31-html-source-part*.zip（全部解压到同一目录） 提供。
+图标经原 InstrumentIconView Canvas 绘图转换为 SVG；简谱经原 ScorePageRenderer 绘图转换为 SVG；五线谱仍由原 StaffScorePayload + VexFlow 4.2.5 排版。
+此目录是持续实施候选，完整 APP 同状态一致性验收未完成，不可把本说明或构建成功视为用户认可。

@@ -1,0 +1,62 @@
+弹钢琴 — 音频来源与许可 / Pocket Piano — Audio attribution
+
+Acoustic piano samples
+Instrument: Salamander Grand Piano (Yamaha C5 sample subset)
+Author: Alexander Holm
+License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+License URL: https://creativecommons.org/licenses/by/3.0/
+Original author/license notice:
+https://github.com/Tonejs/audio/blob/master/salamander/README
+Sample distribution used:
+https://tonejs.github.io/audio/salamander/
+
+This application includes 30 samples at minor-third intervals, A0–C8.
+Changes: MP3 sources decoded to 48 kHz, 16-bit, mono PCM WAV; encoder-leading
+silence removed while preserving the attack; tails limited to 8 seconds with a
+20 ms fade at the end. Playback transposes nearby samples and applies velocity,
+attack, release, voice mixing and volume. This modified subset is attributed
+to Alexander Holm; no endorsement by the author is implied.
+
+The original instrument description documents 16 velocity layers; this app's
+Tone.js subset contains one sample per sampled key and scales velocity gain.
+It does not claim the full original velocity/resonance/pedal sample library.
+
+其他音色 / Other timbres
+Electric piano, music box, organ and metronome use waveforms synthesized by
+the application. They contain no third-party sound recordings.
+
+本软件未复制完美钢琴的代码、音色、曲库或商标资产。
+
+
+Retro game synthesis / PolyBLEP adaptation
+Source: https://github.com/martinfinke/PolyBLEP
+Modified into Java band-limited waveform helpers for this application.
+
+PolyBLEP Waveform generator ported from the Jesusonic code by Tale
+http://www.taletn.com/reaper/mono_synth/
+
+Permission has been granted to release this port under the WDL/IPlug license:
+
+    This software is provided 'as-is', without any express or implied
+    warranty.  In no event will the authors be held liable for any damages
+    arising from the use of this software.
+
+    Permission is granted to anyone to use this software for any purpose,
+    including commercial applications, and to alter it and redistribute it
+    freely, subject to the following restrictions:
+
+    1. The origin of this software must not be misrepresented; you must not
+       claim that you wrote the original software. If you use this software
+       in a product, an acknowledgment in the product documentation would be
+       appreciated but is not required.
+    2. Altered source versions must be plainly marked as such, and must not be
+       misrepresented as being the original software.
+    3. This notice may not be removed or altered from any source distribution.
+
+Source: https://github.com/martinfinke/PolyBLEP/blob/master/PolyBLEP.cpp
+RetroGameSynth.java is an ALTERED Java adaptation of the small BLEP/BLAMP
+edge-correction primitives and pulse/triangle/saw equations. Martin Finke /
+Tale are the original authors of the upstream implementation. Patch routing,
+envelope, PWM gate, sample-hold arpeggio, FM, sync and chorus coefficients in
+this project's adaptation are original. It is not the unmodified upstream.
+

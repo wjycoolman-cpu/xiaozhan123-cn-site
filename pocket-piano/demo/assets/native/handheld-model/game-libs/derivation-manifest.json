@@ -1,0 +1,134 @@
+{
+  "upstream": {
+    "schema": "piano-minigame-source26/v1",
+    "checkedAt": "2026-10-07T15:37:42.603338+00:00",
+    "sources": [
+      {
+        "repository": "https://github.com/gabrielecirulli/2048",
+        "commit": "478b6ec346e3787f589e4af751378d06ded4cbbc",
+        "license": "MIT",
+        "licenseActuallyRead": true,
+        "files": [
+          {
+            "relativePath": "LICENSE.txt",
+            "url": "https://raw.githubusercontent.com/gabrielecirulli/2048/478b6ec346e3787f589e4af751378d06ded4cbbc/LICENSE.txt",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\2048\\LICENSE.txt",
+            "bytes": 1083,
+            "sha256": "57e12c39a6ad9d98b2e451065bfdfbd15fc9e0c2ed3bf4dc1d09acab41ff02fc"
+          },
+          {
+            "relativePath": "README.md",
+            "url": "https://raw.githubusercontent.com/gabrielecirulli/2048/478b6ec346e3787f589e4af751378d06ded4cbbc/README.md",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\2048\\README.md",
+            "bytes": 2350,
+            "sha256": "3b624490f45eb6315b00bcaac65cefa713678401c42971b0e65cad8d8ff0ccfc"
+          },
+          {
+            "relativePath": "js/grid.js",
+            "url": "https://raw.githubusercontent.com/gabrielecirulli/2048/478b6ec346e3787f589e4af751378d06ded4cbbc/js/grid.js",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\2048\\js\\grid.js",
+            "bytes": 2526,
+            "sha256": "169428f5ff7f726c38112fcf1c918028cbca3a1d9f9239838fbc7eb4396b9f9a"
+          },
+          {
+            "relativePath": "js/tile.js",
+            "url": "https://raw.githubusercontent.com/gabrielecirulli/2048/478b6ec346e3787f589e4af751378d06ded4cbbc/js/tile.js",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\2048\\js\\tile.js",
+            "bytes": 594,
+            "sha256": "13699e51d62179a6d36874108831a29901a98d6e11329918e64cfb5ee82d58e3"
+          },
+          {
+            "relativePath": "js/game_manager.js",
+            "url": "https://raw.githubusercontent.com/gabrielecirulli/2048/478b6ec346e3787f589e4af751378d06ded4cbbc/js/game_manager.js",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\2048\\js\\game_manager.js",
+            "bytes": 7627,
+            "sha256": "b02baa6b75f8c8cad8606e680b6f73b7c843c61e3a643ee48410022499a649f0"
+          }
+        ],
+        "scope": "actual source for game logic; no third party media downloaded",
+        "runtimeTrial": "pending"
+      },
+      {
+        "repository": "https://github.com/jakesgordon/javascript-tetris",
+        "commit": "e5c0c42f7dac0f3514a55eff656c6e22e95d68ed",
+        "license": "MIT",
+        "licenseActuallyRead": true,
+        "files": [
+          {
+            "relativePath": "LICENSE",
+            "url": "https://raw.githubusercontent.com/jakesgordon/javascript-tetris/e5c0c42f7dac0f3514a55eff656c6e22e95d68ed/LICENSE",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\javascript-tetris\\LICENSE",
+            "bytes": 1103,
+            "sha256": "31744bd674567634d06949f7bbc581ef148583106751dfbafa362b1a3cea116b"
+          },
+          {
+            "relativePath": "README.md",
+            "url": "https://raw.githubusercontent.com/jakesgordon/javascript-tetris/e5c0c42f7dac0f3514a55eff656c6e22e95d68ed/README.md",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\javascript-tetris\\README.md",
+            "bytes": 519,
+            "sha256": "f1ed7e3419a320d1500c737f3464f62db11d2df4ec33ed72c830c1b3c71f05af"
+          },
+          {
+            "relativePath": "index.html",
+            "url": "https://raw.githubusercontent.com/jakesgordon/javascript-tetris/e5c0c42f7dac0f3514a55eff656c6e22e95d68ed/index.html",
+            "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\handheld26\\minigame-sources\\javascript-tetris\\index.html",
+            "bytes": 17883,
+            "sha256": "b18ad94ae7c0c3199d1b42507a20a7c30de35b2e5393c8a05b22bf2ee8e9b468"
+          }
+        ],
+        "scope": "actual source for game logic; no third party media downloaded",
+        "runtimeTrial": "pending"
+      }
+    ]
+  },
+  "originalLogic": {
+    "2048": "three complete unchanged upstream core files inside isolated function",
+    "tetris": [
+      "eachblock",
+      "occupied",
+      "unoccupied",
+      "randomPiece",
+      "move",
+      "rotate",
+      "drop",
+      "dropPiece",
+      "removeLines",
+      "removeLine"
+    ]
+  },
+  "modifications": {
+    "2048": [
+      "isolated seeded RNG",
+      "in-memory adapters",
+      "explicit controller accepted-event attack"
+    ],
+    "tetris": [
+      "seeded RNG and accepted-event gravity",
+      "row0 scan corrected",
+      "no original timer/DOM/art"
+    ]
+  },
+  "candidateFiles": [
+    {
+      "name": "2048-LICENSE.txt",
+      "bytes": 1083,
+      "sha256": "57e12c39a6ad9d98b2e451065bfdfbd15fc9e0c2ed3bf4dc1d09acab41ff02fc"
+    },
+    {
+      "name": "music-2048.js",
+      "bytes": 12694,
+      "sha256": "4c57794b1f80ded6aa270d285ba7128d8ccc938961b80e0fab7bc8bed7fb2935"
+    },
+    {
+      "name": "music-tetris.js",
+      "bytes": 5494,
+      "sha256": "692d1b9d8d6e8f9f5a93c3e7957354673339f8ca8fb7b159cfe79ce6dcc91e2b"
+    },
+    {
+      "name": "TETRIS-LICENSE.txt",
+      "bytes": 1103,
+      "sha256": "31744bd674567634d06949f7bbc581ef148583106751dfbafa362b1a3cea116b"
+    }
+  ],
+  "runtimeTrial": "pending Node mechanics and actual renderer"
+}

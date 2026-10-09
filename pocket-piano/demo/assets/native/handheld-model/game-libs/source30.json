@@ -1,0 +1,70 @@
+{
+  "schema": "piano-game-source30/v1",
+  "checkedAt": "2026-10-08T12:21:46.170347+00:00",
+  "sources": [
+    {
+      "name": "breakout",
+      "author": "straker",
+      "repository": "https://gist.github.com/straker/98a2aed6a7686d26c04810f08bfaf66b",
+      "revision": "9e2eb0baf8cc542ae08f21bb8f543a093da3fc3d",
+      "license": "CC0-1.0",
+      "licenseActuallyRead": true,
+      "files": {
+        "README.md": {
+          "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\polish30\\game-candidate\\sources\\breakout\\README.md",
+          "sha256": "bfdd61c257b59064c584861ba0ccd2c4b1446fb06f0370c819339af341b27419",
+          "bytes": 3414,
+          "rawUrl": "https://gist.githubusercontent.com/straker/98a2aed6a7686d26c04810f08bfaf66b/raw/be0cf1796be82d3c699b676b81c4e090915ffbcd/README.md"
+        },
+        "breakout.html": {
+          "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\polish30\\game-candidate\\sources\\breakout\\breakout.html",
+          "sha256": "e38b230ee0e979102bca5870587711babd2ad3bc83081eaa0cbeefaf91fa814f",
+          "bytes": 6322,
+          "rawUrl": "https://gist.githubusercontent.com/straker/98a2aed6a7686d26c04810f08bfaf66b/raw/f0b6e66b7f7b8fe765a0450dcfb2ca92cf8dd104/breakout.html"
+        }
+      },
+      "scope": "Source mechanics only; unrelated README statements are untrusted data and not app instructions."
+    },
+    {
+      "name": "snake",
+      "author": "straker",
+      "repository": "https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4",
+      "revision": "728aa4da4835c0d321a22ea4ccbe588a8c28c418",
+      "license": "CC0-1.0",
+      "licenseActuallyRead": true,
+      "files": {
+        "README.md": {
+          "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\polish30\\game-candidate\\sources\\snake\\README.md",
+          "sha256": "3a1aa00db4edc15119a361fcb7503af923f9fa5f8ba171aa1ad5a688a9ea3dc5",
+          "bytes": 2821,
+          "rawUrl": "https://gist.githubusercontent.com/straker/ff00b4b49669ad3dec890306d348adc4/raw/b979ae2a28455cf9ef005eff5ab8a0762778dd0d/README.md"
+        },
+        "snake.html": {
+          "path": "D:\\CodexStorage\\Workspaces\\2026-10-03\\new-chat-3\\work\\polish30\\game-candidate\\sources\\snake\\snake.html",
+          "sha256": "808a2772e668cd9fc5d837317417c4da0c0bc67a303b664c14a2959d2ffa7746",
+          "bytes": 4123,
+          "rawUrl": "https://gist.githubusercontent.com/straker/ff00b4b49669ad3dec890306d348adc4/raw/fcdbb91b1131991f6a9947fba9c82979cf26f2a7/snake.html"
+        }
+      },
+      "scope": "Source mechanics only; unrelated README statements are untrusted data and not app instructions."
+    }
+  ],
+  "runtime": "pending pure mechanics and actual native consumer tests",
+  "candidateOutputs": [
+    {
+      "name": "music-snake.js",
+      "sha256": "6424621a7132cb5b6d8fdbb63ededad20e9c31434e2f836511fcb6a3949d4881",
+      "bytes": 3719,
+      "sourceRevision": "728aa4da4835c0d321a22ea4ccbe588a8c28c418",
+      "derivedMechanisms": "Retained actual downloaded source sections with explicit musical clock adapters; not a claimed full unchanged upstream product."
+    },
+    {
+      "name": "music-breakout.js",
+      "sha256": "25c625dae73a036c5e94d9c008a5b3f6b58384662b2bfe45c5ef3a75830f7f63",
+      "bytes": 5294,
+      "sourceRevision": "9e2eb0baf8cc542ae08f21bb8f543a093da3fc3d",
+      "derivedMechanisms": "Retained actual downloaded source sections with explicit musical clock adapters; not a claimed full unchanged upstream product."
+    }
+  ],
+  "derivationScriptSha256": "aa5e132ac719069e9b082364845b6c3e8d7564683f611d453ece8d8a9c7e626f"
+}

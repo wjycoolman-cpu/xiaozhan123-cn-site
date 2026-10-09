@@ -1,0 +1,6 @@
+CC0 1.0 Universal
+Source: Steven Lambert (straker), Basic Snake and Basic Breakout
+The author states: (CC0 1.0 Universal) You are free to use this game and code in any project, personal or commercial.
+Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+Source30.json records exact repository revisions and source content digests.
+Modifications: note event clock, deterministic RNG/snapshots, musical controls and adaptive view.

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=6,user-scalable=yes">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<link rel="icon" href="data:,">
+<title>完整五线谱</title>
+<style>
+@font-face{font-family:ScoreSC;src:url('NotoSansSC-Regular.otf') format('opentype');font-style:normal;font-weight:400;font-display:block}
+html,body{margin:0;width:100%;height:100%;background:#dce4df;font-family:ScoreSC;}
+body{display:flex;align-items:center;justify-content:center;overflow:auto}
+#wrap{position:relative;overflow:hidden;background:white;box-shadow:0 2px 12px #263b2d30;flex-shrink:0}
+#paper{position:absolute;width:595px;height:842px;transform-origin:0 0;background:white}
+svg{display:block}svg text{font-family:ScoreSC;}
+</style>
+<!-- The original adapter installs load/runtime error observers before the engine. -->
+<script src="staff.js" defer></script><script src="vexflow-4.2.5.js" defer></script>
+</head><body><div id="wrap"><div id="paper" aria-label="完整五线谱页面"></div></div></body></html>
