@@ -220,7 +220,8 @@
       ],
       "feedback": {
         "endpoint": ""
-      }
+      },
+      "demoUrl": "/stardew-farm/demo/"
     },
     {
       "id": "resume-studio",

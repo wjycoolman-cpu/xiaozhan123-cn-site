@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>星露谷自动农场 · 一键配置 · HTML 演示</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="manager.css">
+  <script src="manager.js" defer></script>
+</head>
+<body>
+  <aside class="demo-notice" aria-label="浏览器演示范围">Windows 配置器 1.0.0 的界面演示 · 农场核心 1.0.2 · 仅使用独立样例，不操作本机游戏或存档</aside>
+  <div class="app-viewport">
+    <main id="FarmAssistantManager" class="manager" aria-label="星露谷自动农场配置器">
+      <header class="header" data-native="Header">
+        <img class="farm-mark" src="favicon.svg" width="52" height="52" alt="农田幼苗标志" data-native="FarmMark">
+        <div class="headings">
+          <h1 data-native="Heading">星露谷自动农场</h1>
+          <p class="subtitle" data-native="Subtitle">自动种田 · 规整开荒 · 自适应加速</p>
+        </div>
+      </header>
+
+      <section class="card path-card" aria-labelledby="path-heading" data-native="PathCard">
+        <h2 id="path-heading" data-native="PathSectionLabel">游戏位置</h2>
+        <div class="path-row">
+          <input id="GamePath" class="game-path" aria-label="星露谷游戏文件夹" autocomplete="off" spellcheck="false" title="选择 Stardew Valley.exe 所在文件夹，也可以直接粘贴目录。" data-native="GamePath">
+          <button id="BrowseGame" class="button" type="button" data-native="BrowseGame">浏览…(B)</button>
+          <button id="DetectGame" class="button" type="button" data-native="DetectGame">自动检测(D)</button>
+        </div>
+        <div class="badges" aria-label="游戏与组件状态">
+          <span id="game-badge" data-native="GameBadge">游戏：待检测</span>
+          <span id="smapi-badge" data-native="SmapiBadge">SMAPI：待检测</span>
+          <span id="mod-badge" data-native="ModBadge">助手：待检测</span>
+        </div>
+      </section>
+
+      <section class="card configuration-card" aria-labelledby="config-heading" data-native="ConfigurationCard">
+        <h2 id="config-heading" data-native="ConfigSectionLabel">玩法与加速</h2>
+        <div class="options-row">
+          <div class="mode-column">
+            <label for="Preset" class="field-label" data-native="ModeLabel">玩法模式</label>
+            <select id="Preset" aria-label="玩法模式" data-native="Preset">
+              <option value="development">开荒种田（推荐）</option>
+              <option value="rush">收益速进</option>
+              <option value="showcase">观赏演示</option>
+            </select>
+            <p id="mode-description" class="hint" data-native="ModeDescription">优先照料作物，闲暇时沿农田边界规整开荒。</p>
+          </div>
+          <div class="speed-column">
+            <label for="SpeedCeiling" class="field-label" data-native="SpeedLabel">加速上限</label>
+            <input id="SpeedCeiling" type="number" min="1" max="200" step="1" value="200" aria-label="自适应加速上限，1 至 200 档" data-native="SpeedCeiling">
+            <p class="hint speed-hint" data-native="SpeedHint">按电脑负载自动调整<br>目标档位不等于实际倍速</p>
+          </div>
+        </div>
+        <label class="checkbox-row" title="SMAPI 是社区模组的运行组件。缺少时需要联网；已安装时不会再次配置。" data-native="AutoSmapi">
+          <input id="AutoSmapi" type="checkbox" checked>
+          <span>缺少 SMAPI 时，自动配置官方组件</span>
+        </label>
+      </section>
+
+      <section class="status" aria-live="polite" aria-atomic="true" data-native="Status">
+        <h2 id="StatusTitle" data-native="StatusTitle">正在查找游戏…</h2>
+        <p id="StatusDetail" data-native="StatusDetail">也可以使用“浏览”选择游戏文件夹。</p>
+      </section>
+
+      <div class="actions" data-native="Actions">
+        <button id="InstallConfigure" class="button primary" type="button" disabled data-native="InstallConfigure">一键安装并配置(I)</button>
+        <button id="LaunchGame" class="button" type="button" disabled data-native="LaunchGame">启动游戏(L)</button>
+        <button id="CancelOperation" class="button" type="button" hidden data-native="CancelOperation">取消操作</button>
+      </div>
+
+      <section class="operation" aria-label="操作过程" data-native="Operation">
+        <div id="activity" class="activity" role="progressbar" aria-label="正在处理样例操作" hidden data-native="Activity"><span></span></div>
+        <button id="ToggleDetails" class="link" type="button" aria-expanded="false" aria-controls="details-host" data-native="ToggleDetails">查看操作记录</button>
+        <div id="details-host" hidden data-native="DetailsHost">
+          <textarea id="OperationLog" aria-label="操作记录" readonly spellcheck="false" data-native="OperationLog"></textarea>
+        </div>
+      </section>
+
+      <footer class="footer" data-native="Footer">
+        <button id="UninstallAssistant" class="link uninstall" type="button" disabled title="只卸载自动农场助手；保留存档、其他模组和共用 SMAPI。游戏运行时需先正常退出。" data-native="UninstallAssistant">卸载本助手（保留存档）(U)</button>
+        <p class="keys" data-native="Keys">游戏内：F8 开始 / 暂停 · F9 设置</p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="folder-dialog" class="folder-dialog" aria-labelledby="folder-title">
+    <h2 id="folder-title">选择 Stardew Valley.exe 所在的游戏文件夹</h2>
+    <p class="dialog-scope">浏览器不能查看本机游戏目录。此处只选择预设的虚构目录，不读取真实文件。</p>
+    <div id="sample-folders" class="folder-tree" role="group" aria-label="样例游戏目录"></div>
+    <p id="folder-detail" class="folder-detail"></p>
+    <div class="dialog-actions">
+      <button id="folder-ok" class="button" type="button">确定</button>
+      <button id="folder-cancel" class="button" type="button">取消</button>
+    </div>
+  </dialog>
+  <noscript>这份界面演示需要 JavaScript。它不安装模组、不启动游戏，也不修改游戏文件。</noscript>
+</body>
+</html>
