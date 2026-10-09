@@ -32,7 +32,7 @@
   const symbol=p.id==='qingci'?'Aa':p.id==='kfc-order'?'K':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${drawings[p.id]||''}</svg>`;
   return `<div class="product-icon" aria-hidden="true">${symbol}</div>`;
  }
- function actions(p) { return `${action(p)}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
+ function actions(p) { return `${action(p)}${p.id==='pocket-piano'?'<a class="text-button" href="./pocket-piano/web/" aria-label="\u6253\u5f00\u7f51\u9875\u94a2\u7434">\u7f51\u9875\u94a2\u7434 \u2197</a>':''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
  function card(p) { return `<article class="product-card ${p.kind==='game'?'game-card':'app-card'} ${esc(p.theme)}" ${p.kind==='app'&&ready(p)?`draggable="true" data-drag="${esc(p.id)}"`:''}>${icon(p)}<div class="product-content"><div class="card-heading"><h3>${esc(p.name)}</h3></div><p class="summary">${esc(p.summary)}</p>${p.version?`<p class="app-meta">${esc(p.version)} · ${size(p.sizeBytes)}</p>`:''}<div class="card-actions">${actions(p)}</div></div></article>`; }
  function setFilter(kind) {
   if (!['app', 'game'].includes(kind)) return;

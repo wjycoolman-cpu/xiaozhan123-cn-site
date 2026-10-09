@@ -1,0 +1,57 @@
+弹钢琴 · 曲目来源与内容说明
+核对日期：2026-10-03
+
+内置曲目为本项目自行输入音符、编排节奏与钢琴声部的练习版本。
+未复制现代商业钢琴软件的 MIDI、录音、谱面、界面或编曲。
+不附歌词。历史作品的旋律与现代编曲、演奏录音的权利分别处理。
+
+1. 小星星
+   旋律：法国传统曲 Ah, vous dirai-je, maman；本版含全部六个旋律句。
+   历史乐谱参考：Mozart 的 12 Variations, K.265/300e 中主题。
+   https://imslp.org/wiki/12_Variations_on_'Ah,_vous_dirai-je_maman',_K.265/300e_(Mozart,_Wolfgang_Amadeus)
+
+2. 欢乐颂
+   旋律：Ludwig van Beethoven (1770–1827)，第九交响曲第四乐章，1824。
+   本版是欢乐颂主题完整旋律的单声部练习，不是完整交响曲。
+   https://imslp.org/wiki/Symphony_No.9,_Op.125_(Beethoven,_Ludwig_van)
+
+3. 两只老虎
+   旋律：法国传统轮唱 Frère Jacques；本版含全部旋律句，不附中文歌词。
+   历史旋律线索：法国国家图书馆传统歌曲资料、1811 Recueil de Capelle；
+   同名 1977 年流行歌曲不属于本曲。
+   https://fr.wikipedia.org/wiki/Fr%C3%A8re_Jacques_(chanson)
+
+4. 生日快乐
+   旋律：Good Morning to All，Mildred J. Hill (1859–1916)；
+   1893 年出版 Song Stories for the Kindergarten，本版为器乐旋律。
+   来源文献的日期与作者核对：Filson Historical Society 的实体馆藏目录。
+   仅引用馆藏事实，未下载、使用或再分发该馆藏图像。
+   https://filsonhistorical.omeka.net/items/show/1052
+
+5. 新年好
+   采用十九世纪美国民谣 Oh My Darling, Clementine 的旋律，
+   为该旋律自行制作的无歌词简易钢琴练习，不采用现代改编或录音。
+   新年好与 Auld Lang Syne 是不同的旋律。
+   https://en.wikipedia.org/wiki/Oh_My_Darling,_Clementine
+
+6. 友谊地久天长
+   旋律：苏格兰传统民谣 Auld Lang Syne；本版含主歌与副歌。
+   历史出版：1799 年 A Select Collection of Original Scottish Airs。
+   https://imslp.org/wiki/Auld_lang_syne_(Folk_Songs,_Scottish)
+
+7. 卡农主题
+   旋律与低音循环：Johann Pachelbel (1653–1706)，Canon and Gigue in D major, P.37。
+   本版为主题与变奏的简短双手练习，不是完整原作。
+   https://imslp.org/wiki/Canon_and_Gigue_in_D_major,_P.37_(Pachelbel,_Johann)
+
+8. 流光琶音
+   本项目原创练习，基于常见 C / Am / F / G 和弦，未采用第三方曲目。
+
+9. C 大调音阶
+   本项目原创基础音阶练习，无第三方编曲素材。
+
+MIDI 技术参考（没有将这些库打包到应用）：
+MIDI Association，Standard MIDI Files Specification。
+https://midi.org/standard-midi-files-specification
+Mido 作者文档：SMF 0/1、PPQN、速度变换与绝对时间的语义。
+https://mido.readthedocs.io/en/stable/files/midi.html
