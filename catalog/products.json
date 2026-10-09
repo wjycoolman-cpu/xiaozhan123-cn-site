@@ -253,6 +253,39 @@
       "feedback": {
         "endpoint": ""
       }
+    },
+    {
+      "id": "yuji",
+      "name": "羽记",
+      "aliases": [
+        "羽毛球计分器",
+        "羽毛球赛事"
+      ],
+      "kind": "app",
+      "category": "运动计分",
+      "theme": "piano",
+      "summary": "羽毛球计分、对战日程与网站同步",
+      "state": "available",
+      "statusText": "可下载 · 赛事同步已接入",
+      "version": "1.0.1",
+      "versionCode": 2,
+      "packageName": "cn.local.yuji",
+      "compatibility": "Android 8.0 及以上",
+      "sizeBytes": 74770,
+      "downloadUrl": "./yuji/yuji-1.0.1.apk",
+      "filename": "羽记-羽毛球计分器-1.0.1.apk",
+      "sha256": "c8ed7b04fafff73da1304c061162fa4a06fa313ce8fa3c7a60770b1ce103c418",
+      "detailsUrl": "./yuji/help.html",
+      "releaseNotes": [
+        "单打双打姓名、上滑加分/下滑减分、撤销、三局两胜，离线自动保存。",
+        "手动横竖屏切换；红蓝、蓝橙、紫绿主题；对称齿轮和横屏大比分。",
+        "Word/Excel 表格导入预览、对战时间与场地、单淘汰和循环赛、晋级图。",
+        "Word/PPT 单场导出，历史不设固定次数截断。",
+        "手机与网站私人赛事空间双向同步，关联比赛实时比分上传，冲突需明确选择版本。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
     }
   ]
 }
