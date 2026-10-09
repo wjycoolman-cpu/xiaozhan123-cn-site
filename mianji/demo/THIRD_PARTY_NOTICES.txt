@@ -1,0 +1,1 @@
+Roboto and Noto Sans SC: SIL OFL 1.1. fonts.css references official fonts.gstatic.com resources; no font binary is shipped. Offline fallback uses browser system sans-serif. Material Design Icons: Apache 2.0, selected SVG paths embedded in icons.js. License texts retained in assets. Moon art is the mathematical port of SleepUi.kt MoonArt.

@@ -120,7 +120,8 @@
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
       },
-      "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74"
+      "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74",
+      "demoUrl": "/mianji/demo/"
     },
     {
       "id": "qingci",
