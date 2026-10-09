@@ -1,0 +1,1 @@
+window.RESUME_WEB_DEMO=true;document.addEventListener('click',event=>{if(event.target.closest('[data-action=demo-reset]')){event.preventDefault();if(confirm('清除当前浏览器中本演示的全部简历和照片？其他应用数据不受影响。')){localStorage.removeItem('resume-studio-web-demo-v1');location.reload();}}});

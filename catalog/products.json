@@ -254,7 +254,8 @@
       ],
       "feedback": {
         "endpoint": ""
-      }
+      },
+      "demoUrl": "/resume-studio/demo/"
     },
     {
       "id": "yuji",

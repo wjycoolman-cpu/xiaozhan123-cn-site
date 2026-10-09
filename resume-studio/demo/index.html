@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self' about: blob:; worker-src 'self' blob:; connect-src 'self' blob:; object-src 'none'; base-uri 'self'">
+  <title>简历工坊 · 可操作网页演示</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="app"></div>
+  <div id="modal-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input hidden type="file" id="photo-input" accept="image/jpeg,image/png,image/webp,image/heic">
+  <input hidden type="file" id="document-input" accept=".json,.txt,.docx,.pdf,application/json,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+  <script src="vendor/fflate.js"></script>
+  <script src="engine.js"></script>
+  <script src="importer.js"></script>
+  <script src="demo.js"></script><script src="app.js"></script>
+</body>
+</html>

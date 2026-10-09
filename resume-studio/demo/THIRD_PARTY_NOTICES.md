@@ -1,0 +1,55 @@
+# 第三方代码与资源说明
+
+本文记录简历工坊 1.0.0 源码及 APK **实际采用**的第三方代码、schema 与 CMap。原创代码适用根目录 LICENSE；下列上游材料继续适用各自许可证和版权声明，不因项目的 MIT 许可而被替换。
+
+完整上游许可证位于 app/src/main/assets/licenses 及 vendor/cmaps/LICENSE，随源码和 APK 保留。应用内“使用帮助 → 开源组件与许可”提供许可入口。
+
+## 实际采用的组件
+
+| 来源 | 固定版本 / commit | 实际用途与本地位置 | 许可 |
+| --- | --- | --- | --- |
+| Reactive Resume | ba4bec2bd8fef665629d5a4092e1ecfcd5c6880e | 将 Onyx、Azurill 的部分模板结构改写为 engine.js / resume.css 的本机 HTML、CSS 渲染；不是完整上游服务 | MIT；Copyright (c) 2026 Amruth Pillai |
+| JSON Resume schema | 1.3.1；dd0155358c8d85a134d434e49834705243b5eede | app/src/main/assets/schema/resume-schema.json；字段映射与标准参考 | MIT；Copyright 2024 JSON Resume |
+| Mozilla PDF.js / pdfjs-dist | 6.4.299；研究源码 commit 89b500f5e1d98ed89bb90211e45b28730b2d99ac | vendor/pdf.mjs、pdf.worker.mjs；离线提取文字版 PDF 的文字 | Apache License 2.0 |
+| fflate | 0.8.3；dcb3714a6c25db3a2748641019c5277413d09714 | vendor/fflate.js；解压 DOCX 的正文 XML | MIT；Copyright (c) 2026 Arjun Barrett |
+| Adobe CMap 数据 | 随 pdfjs-dist 6.4.299 分发 | vendor/cmaps/*.bcmap；PDF 字符编码映射 | Adobe 三条款许可，全文在 vendor/cmaps/LICENSE；Copyright 1990–2009 Adobe Systems Incorporated |
+
+PDF.js 主库的 Apache 2.0 许可不覆盖其包中所有附属资源的独立声明；本项目保留 CMap 自身的 Adobe 许可。当前未打包 vendor/standard_fonts，使用系统字体，不包含 Foxit 或 Liberation 字体资源。
+
+## Reactive Resume 模板改造范围
+
+上游 [MIT 许可证](https://github.com/reactive-resume/reactive-resume/blob/ba4bec2bd8fef665629d5a4092e1ecfcd5c6880e/LICENSE) 的完整文本保存在 app/src/main/assets/licenses/reactive-resume.txt，并保留在 engine.js 的版权说明中。
+
+实际参考并适配的核心文件：
+
+- [OnyxPage.tsx](https://github.com/reactive-resume/reactive-resume/blob/ba4bec2bd8fef665629d5a4092e1ecfcd5c6880e/packages/pdf/src/templates/onyx/OnyxPage.tsx)：横向身份区、换行的联系方式、细线栏目标题，适配至 F01。
+- [AzurillPage.tsx](https://github.com/reactive-resume/reactive-resume/blob/ba4bec2bd8fef665629d5a4092e1ecfcd5c6880e/packages/pdf/src/templates/azurill/AzurillPage.tsx)：居中标题、双栏主体，适配至 F13；空心节点时间轴关系适配至 F25。
+
+改造将上游 React / Forme 组件转换为本项目 HTML、CSS，实现共用 JSON Resume 字段映射、中文栏目、可选照片、栏目隐藏及本机原生 PDF 输出。其他设计族与 25 组预设是本项目的扩展组织方式；不能把 1,000 款样式说成来自上游的 1,000 个独立模板。
+
+本项目没有采用 Reactive Resume 的账号、数据库、存储、在线导出服务或完整运行时，不需要启动其服务器。
+
+## JSON Resume schema
+
+schema 源自 [固定 commit 的 schema.json](https://github.com/jsonresume/jsonresume.org/blob/dd0155358c8d85a134d434e49834705243b5eede/packages/schema/schema.json)，上游 [MIT 许可证](https://github.com/jsonresume/jsonresume.org/blob/dd0155358c8d85a134d434e49834705243b5eede/packages/schema/LICENSE.md) 完整保存在 app/src/main/assets/licenses/json-resume.txt。
+
+schema 文件直接保留上游内容。本应用内部资料包含扩展字段和自由格式日期，因此采用说明为“JSON Resume 字段兼容”，不宣称内部资料已经通过整个 schema 的校验。照片、模板设置、收藏等全量资料使用本应用备份保存。
+
+## PDF.js 与 CMap
+
+PDF.js 发布包见 [官方 npm 包 6.4.299](https://www.npmjs.com/package/pdfjs-dist/v/6.4.299)，[上游 Apache 2.0 许可证](https://github.com/mozilla/pdf.js/blob/89b500f5e1d98ed89bb90211e45b28730b2d99ac/LICENSE) 保存在 app/src/main/assets/licenses/pdfjs.txt。
+
+本项目把匹配版本的 API、worker 和 CMap 放在本地 assets 中，通过本机 importer.js 调用。当前只提取文字，使用 useSystemFonts: true 与 disableFontFace: true，不提供 OCR，也未打包 PDF.js 的额外渲染字体。修改范围是项目调用和资源选择，PDF.js 库代码保留其上游声明。
+
+CMap 的独立许可允许带条件的源码与二进制再分发：必须保留版权、许可条件及免责文本，不得以 Adobe 或贡献者名称作未经许可的背书。本项目将完整文本随 CMap 一并保存为 app/src/main/assets/vendor/cmaps/LICENSE。
+
+## fflate
+
+发布包见 [官方 npm 包 0.8.3](https://www.npmjs.com/package/fflate/v/0.8.3)，[固定 commit 的 MIT 许可证](https://github.com/101arrowz/fflate/blob/dcb3714a6c25db3a2748641019c5277413d09714/LICENSE) 完整保存在 app/src/main/assets/licenses/fflate.txt。vendor/fflate.js 为该版本的浏览器 UMD 分发文件；项目解析 DOCX 的代码属于 importer.js，不宣称 fflate 本身负责识别简历结构。
+
+## 交付与修改
+
+复制、修改或再分发本项目时，保留上述完整许可证、版权声明及本文件的对应归属；若修改第三方代码，在对应来源记录中说明修改范围。源码包不包含签名私钥、密码、个人简历或用户照片。
+
+模板研究中的 OpenResume、JSON Resume CLI 和 Noto Sans SC 没有被打包进当前应用。OpenResume 的 AGPL 许可与本项目已采用的 MIT 模板代码分别归属，不把研究参考误报为实际分发组件。
+
