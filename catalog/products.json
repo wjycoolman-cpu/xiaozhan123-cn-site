@@ -218,6 +218,41 @@
       "feedback": {
         "endpoint": ""
       }
+    },
+    {
+      "id": "resume-studio",
+      "name": "简历工坊",
+      "aliases": [
+        "离线简历",
+        "简历模板",
+        "个人简历",
+        "Resume Studio"
+      ],
+      "kind": "app",
+      "category": "Android 简历工具",
+      "theme": "words",
+      "summary": "先看完整示例，再填写或导入资料；1000款样式、照片、默认一页，离线生成PDF并分享。",
+      "state": "published",
+      "statusText": "Android 版已发布",
+      "version": "1.0.1",
+      "compatibility": "Android 8.0及以上 · 文字PDF导入需较新WebView",
+      "sizeBytes": 1862911,
+      "sha256": "6f1ac3135ed4643cd3030ebc0a173fb58183114dd6a140d633209cfd70213bbf",
+      "filename": "ResumeStudio-1.0.1.apk",
+      "downloadLabel": "下载 APK",
+      "mimeType": "application/vnd.android.package-archive",
+      "downloadUrl": "/resume-studio/releases/ResumeStudio-1.0.1.apk",
+      "detailsUrl": "/resume-studio/",
+      "sourceUrl": "/resume-studio/releases/ResumeStudio-1.0.1-source.zip",
+      "releaseNotes": [
+        "未填资料也能查看完整虚构示例；示例和个人资料分离。",
+        "40个基础设计族×25组预设，共1000款可选样式。",
+        "导入/填写后自动套入模板，支持照片裁剪、多份简历与备份。",
+        "默认一页、可选两页；离线PDF保存及QQ/微信分享入口。"
+      ],
+      "feedback": {
+        "endpoint": ""
+      }
     }
   ]
 }
