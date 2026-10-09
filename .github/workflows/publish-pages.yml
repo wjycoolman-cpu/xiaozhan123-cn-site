@@ -58,6 +58,9 @@ jobs:
                   continue
               if name.startswith('.github/'):
                   continue
+              # Full corresponding source stays public in Git; avoid duplicating these archives in Pages.
+              if name in {'pocket-piano/demo/source/app31-html-source-part2.zip', 'pocket-piano/demo/source/app31-html-source-part1.zip'}:
+                  continue
               source=root/name
               assert source.is_file() and not source.is_symlink(),name
               dest=out/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,dest)
