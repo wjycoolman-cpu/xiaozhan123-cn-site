@@ -184,7 +184,8 @@
       "packageName": "com.smartquestionbank.app",
       "filename": "SmartQuestionBank-Android-v10324.apk",
       "sha256": "bfdfe386f2f9444ed0efed45d29c3e257a6708aefacf4aa2411df609e0429156",
-      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/exercise-practice-app/update.json"
+      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/exercise-practice-app/update.json",
+      "demoUrl": "/question-bank/demo/"
     },
     {
       "id": "stardew-farm",
