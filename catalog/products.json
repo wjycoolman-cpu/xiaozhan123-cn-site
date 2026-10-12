@@ -125,9 +125,11 @@
     },
     {
       "id": "qingci",
-      "name": "词间",
+      "name": "背单词",
       "aliases": [
-        "英语学习"
+        "英语学习",
+        "词间",
+        "轻词四级"
       ],
       "kind": "app",
       "category": "学习",
@@ -136,23 +138,20 @@
       "summary": "四级、六级英语词汇学习",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.0.6",
-      "versionCode": 7,
+      "version": "1.0.9",
+      "versionCode": 10,
       "packageName": "com.qingci.cet4",
       "compatibility": "Android 6.0 及以上",
-      "sizeBytes": 6351896,
-      "downloadUrl": "./qingci-app/releases/qingci-1.0.6.apk",
-      "filename": "qingci-1.0.6.apk",
-      "sha256": "082141495103c76d2882b0ba0e6820b4f673ad40be6da07eed1c24372ace2591",
-      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/qingci-app/update.json",
+      "sizeBytes": 6340029,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.9.apk",
+      "filename": "qingci-1.0.9.apk",
+      "sha256": "6a524efa1f89251d81f08d7f4c6f8d73e520651efed47f8c93e791d84d4f4d4c",
+      "updateManifestUrl": "https://xiaozhan123.cn/qingci-app/update.json",
       "releaseNotes": [
-        "应用名称显示为“词间”，保留原包名、签名证书与已有学习记录。",
-        "首页简化，学习、统计、词书和练习分区更清楚。",
-        "每日目标只影响当天进度，达到目标后仍可继续学习。",
-        "保留四级、六级、独立进度及离线英语朗读。"
+        "修复反馈、词音与远程更新的服务地址；更新从小站官网获取并验证原始发布签名。保留现有四级、六级学习记录与设置。开启 Android 代码压缩和混淆。"
       ],
       "feedback": {
-        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+        "formUrl": "https://beidanci-feedback-one-question.wjycoolman.chatgpt.site"
       },
       "demoUrl": "/qingci/demo/"
     },
