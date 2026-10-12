@@ -13,7 +13,8 @@
   try {
    const page = new URL(location.href), u = new URL(value, page);
    const localPage = ['localhost', '127.0.0.1', '[::1]'].includes(page.hostname);
-   if (u.username || u.password || u.origin !== page.origin) return '';
+   const approvedSubtitleRelease = u.href === 'https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.0.0/SubtitleStudio-1.0.0-Windows.zip';
+   if (u.username || u.password || (u.origin !== page.origin && !approvedSubtitleRelease)) return '';
    return u.protocol === 'https:' || (u.protocol === 'http:' && localPage) ? u.href : '';
   } catch { return ''; }
  }
@@ -21,6 +22,7 @@
  function action(p) { const url = safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); return ready(p) ? `<a class="button primary" href="${esc(url)}" ${p.kind === 'app' ? `download="${esc(p.filename || p.id + '.apk')}" data-download="${esc(p.id)}"` : ''}>${p.kind === 'game' ? '开始游戏' : esc(p.downloadLabel || '下载 APK')}</a>` : `<button class="button disabled" disabled>${esc(p.statusText || '准备中')}</button>`; }
  function icon(p) {
   const drawings={
+   'subtitle-studio':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h4m-4 4h4m3-4h3m-3 4h3"/>',
    'resume-studio':'<path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/>',
    'stardew-farm':'<path d="M12 14V6m0 5C6 11 5 8 5 5c4 0 7 1 7 5m0-1c0-4 3-5 7-5 0 4-2 6-7 6M4 16h16M4 20h16"/>',
    skymyth:'<path d="M12 3 14.3 9.7 21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Z"/>',

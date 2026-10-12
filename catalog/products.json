@@ -295,6 +295,38 @@
         "endpoint": ""
       },
       "demoUrl": "/yuji/demo/"
+    },
+    {
+      "id": "subtitle-studio",
+      "name": "中英字幕工坊",
+      "aliases": [
+        "视频字幕",
+        "中英文字幕",
+        "字幕识别"
+      ],
+      "kind": "app",
+      "category": "视频制作",
+      "symbol": "CC",
+      "theme": "subtitle",
+      "summary": "中英文识别、双语字幕与自由样式",
+      "state": "available",
+      "statusText": "可下载",
+      "version": "1.0.0",
+      "compatibility": "Windows 10/11 64位；网页版推荐 Chrome / Edge",
+      "sizeBytes": 248745712,
+      "downloadUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.0.0/SubtitleStudio-1.0.0-Windows.zip",
+      "filename": "SubtitleStudio-1.0.0-Windows.zip",
+      "mimeType": "application/zip",
+      "downloadLabel": "下载 Windows 版",
+      "demoUrl": "/subtitle-studio/",
+      "sha256": "5e148abb9eacc8ce4b076cb60f82ab51f62171e559b30504c3c85541ac4dc0f8",
+      "releaseNotes": [
+        "声音识别中英文，生成原文与双语字幕，可手动校对时间与文字。",
+        "六种模板，思源黑体/宋体/霞鹜文楷及本机字体，字号颜色描边阴影行距和位置可调。",
+        "本机处理，Windows版快速导出MP4，网页版真实识别、翻译和字幕编辑；首次下载模型后复用。",
+        "本机反馈导出与签名更新；识别和机器翻译仍需校对。"
+      ],
+      "updateManifestUrl": "https://xiaozhan123.cn/subtitle-studio/update.json"
     }
   ]
 }
