@@ -8,6 +8,30 @@ const next = document.querySelector('#next');
 let doc, current = 1;
 const rendered = new Set();
 let queue = Promise.resolve();
+class DocumentChunks extends pdfjs.PDFDataRangeTransport {
+  constructor(base) { super(7771451,new Uint8Array()); this.base=base;this.cache=new Map();this.controller=new AbortController(); }
+  async chunk(n) {
+    if(!this.cache.has(n))this.cache.set(n,fetch(new URL(`chunks/${String(n).padStart(3,'0')}.bin`,this.base),{signal:this.controller.signal}).then(async response=>{
+      if(!response.ok)throw Error(`Document chunk HTTP ${response.status}`);
+      const data=new Uint8Array(await response.arrayBuffer());
+      if(data.length!==Math.min(131072,7771451-n*131072))throw Error('Document chunk is incomplete');
+      return data;
+    }));
+    return this.cache.get(n);
+  }
+  requestDataRange(begin,end) {
+    const first=Math.floor(begin/131072),last=Math.floor((end-1)/131072);
+    Promise.all(Array.from({length:last-first+1},(_,i)=>this.chunk(first+i))).then(parts=>{
+      const data=new Uint8Array(end-begin);
+      for(let i=0;i<parts.length;i++){
+        const start=(first+i)*131072,from=Math.max(begin,start),to=Math.min(end,start+parts[i].length);
+        data.set(parts[i].subarray(from-start,to-start),from-begin);
+      }
+      this.onDataRange(begin,data);
+    }).catch(error=>{status.textContent='页面加载失败，请刷新重试，或下载 PDF 原文件。';console.error(error);});
+  }
+  abort() { this.controller.abort(); }
+}
 function update(n) {
   current = n; input.value = n;
   prev.disabled = n === 1; next.disabled = n === doc.numPages;
@@ -46,7 +70,7 @@ async function render(n, holder) {
 }
 try {
   const asset = name => new URL(name,import.meta.url).href;
-  const loading = pdfjs.getDocument({url:asset('high-value-life-guide-mobile.pdf'),cMapUrl:asset('vendor/cmaps/'),cMapPacked:true,standardFontDataUrl:asset('vendor/standard_fonts/'),wasmUrl:asset('vendor/wasm/'),iccUrl:asset('vendor/iccs/'),isEvalSupported:false,disableStream:true,disableAutoFetch:true});
+  const loading = pdfjs.getDocument({range:new DocumentChunks(import.meta.url),cMapUrl:asset('vendor/cmaps/'),cMapPacked:true,standardFontDataUrl:asset('vendor/standard_fonts/'),wasmUrl:asset('vendor/wasm/'),iccUrl:asset('vendor/iccs/'),isEvalSupported:false,disableStream:true,disableAutoFetch:true});
   loading.onProgress = ({loaded,total}) => { status.textContent = total ? `正在加载文档… ${Math.min(100,Math.round(loaded/total*100))}%` : '正在加载文档…'; };
   doc = await loading.promise;
   const first = await doc.getPage(1); const size = first.getViewport({scale:1}); first.cleanup();
