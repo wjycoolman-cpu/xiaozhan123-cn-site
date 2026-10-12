@@ -138,20 +138,21 @@
       "summary": "四级、六级英语词汇学习",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.0.10",
-      "versionCode": 11,
+      "version": "1.0.11",
+      "versionCode": 12,
       "packageName": "com.qingci.cet4",
       "compatibility": "Android 6.0 及以上",
-      "sizeBytes": 6340759,
-      "downloadUrl": "./qingci-app/releases/qingci-1.0.10.apk",
-      "filename": "qingci-1.0.10.apk",
-      "sha256": "2ceb26b12adab9e05f12c7862e0bb076a350d3230552937a95e49ad643f98ec1",
+      "sizeBytes": 9150305,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.11.apk",
+      "filename": "qingci-1.0.11.apk",
+      "sha256": "b64bdfde392fb50a702d710c878ca9b0f5e35fc55e200168583acd00f1a301e5",
       "updateManifestUrl": "https://xiaozhan123.cn/qingci-app/update.json",
       "releaseNotes": [
-        "修复更新下载中断后从头开始的问题，加入最多五次重试的断点续传。",
-        "保留更新清单签名、包大小、SHA256、包名和发布证书校验；安装遵循 Android 系统权限与确认。",
-        "继承官网更新、CloudBase 主动反馈与四种声音按需缓存的连通修复。",
-        "扫码反馈新入口为 xiaozhan123.cn/beidanci/feedback/，直接进入 APP 同一私有信箱；微信审核及手机验收尚未完成。"
+        "发音默认舒缓，新增慢速与正常速度，放慢自然词音时保持音高。",
+        "口音、音色、语速分别选择；新增 Bella、Michael 两种独立声线，共六种声音可试听。",
+        "增加朗读次数和两次之间停顿；关闭设置、切换单词或离开应用停止排队朗读。",
+        "删除图像联想、拼写自测及含反向拼写的旧短时训练，首页保持简洁。",
+        "保留原包名、签名、学习记录和设置。"
       ],
       "feedback": {
         "formUrl": "https://xiaozhan123.cn/beidanci/feedback/"
