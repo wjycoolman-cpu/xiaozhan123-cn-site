@@ -138,20 +138,23 @@
       "summary": "四级、六级英语词汇学习",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.0.9",
-      "versionCode": 10,
+      "version": "1.0.10",
+      "versionCode": 11,
       "packageName": "com.qingci.cet4",
       "compatibility": "Android 6.0 及以上",
-      "sizeBytes": 6340029,
-      "downloadUrl": "./qingci-app/releases/qingci-1.0.9.apk",
-      "filename": "qingci-1.0.9.apk",
-      "sha256": "6a524efa1f89251d81f08d7f4c6f8d73e520651efed47f8c93e791d84d4f4d4c",
+      "sizeBytes": 6340759,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.10.apk",
+      "filename": "qingci-1.0.10.apk",
+      "sha256": "2ceb26b12adab9e05f12c7862e0bb076a350d3230552937a95e49ad643f98ec1",
       "updateManifestUrl": "https://xiaozhan123.cn/qingci-app/update.json",
       "releaseNotes": [
-        "修复反馈、词音与远程更新的服务地址；更新从小站官网获取并验证原始发布签名。保留现有四级、六级学习记录与设置。开启 Android 代码压缩和混淆。"
+        "修复更新下载中断后从头开始的问题，加入最多五次重试的断点续传。",
+        "保留更新清单签名、包大小、SHA256、包名和发布证书校验；安装遵循 Android 系统权限与确认。",
+        "继承官网更新、CloudBase 主动反馈与四种声音按需缓存的连通修复。",
+        "扫码反馈新入口为 xiaozhan123.cn/beidanci/feedback/，直接进入 APP 同一私有信箱；微信审核及手机验收尚未完成。"
       ],
       "feedback": {
-        "formUrl": "https://beidanci-feedback-one-question.wjycoolman.chatgpt.site"
+        "formUrl": "https://xiaozhan123.cn/beidanci/feedback/"
       },
       "demoUrl": "/qingci/demo/"
     },
