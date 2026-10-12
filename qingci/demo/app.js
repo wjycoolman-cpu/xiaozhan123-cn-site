@@ -10,7 +10,7 @@
   const clone = typeof window.structuredClone === 'function' ? window.structuredClone.bind(window) : value => JSON.parse(JSON.stringify(value));
   const native = () => window.AndroidBridge || null;
   const STORE = 'qingci.cet4.state.v1';
-  const APP_VERSION = '1.0.9';
+  const APP_VERSION = '1.0.10';
   const BOOKS = [
     {id:'ecdict-cet4',name:'四级',code:'CET-4',file:'words.json'},
     {id:'ecdict-cet6',name:'六级',code:'CET-6',file:'words-cet6.json'},
