@@ -46,7 +46,9 @@ async function render(n, holder) {
 }
 try {
   const asset = name => new URL(name,import.meta.url).href;
-  doc = await pdfjs.getDocument({url:asset('high-value-life-guide-mobile.pdf'),cMapUrl:asset('vendor/cmaps/'),cMapPacked:true,standardFontDataUrl:asset('vendor/standard_fonts/'),wasmUrl:asset('vendor/wasm/'),iccUrl:asset('vendor/iccs/'),isEvalSupported:false}).promise;
+  const loading = pdfjs.getDocument({url:asset('high-value-life-guide-mobile.pdf'),cMapUrl:asset('vendor/cmaps/'),cMapPacked:true,standardFontDataUrl:asset('vendor/standard_fonts/'),wasmUrl:asset('vendor/wasm/'),iccUrl:asset('vendor/iccs/'),isEvalSupported:false,disableStream:true,disableAutoFetch:true});
+  loading.onProgress = ({loaded,total}) => { status.textContent = total ? `正在加载文档… ${Math.min(100,Math.round(loaded/total*100))}%` : '正在加载文档…'; };
+  doc = await loading.promise;
   const first = await doc.getPage(1); const size = first.getViewport({scale:1}); first.cleanup();
   document.querySelector('#page-total').textContent = doc.numPages;
   input.max = doc.numPages; input.disabled = false; update(1);
