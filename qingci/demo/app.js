@@ -4,13 +4,11 @@
   const $ = s => document.querySelector(s);
   const app = $('#app'), modalRoot = $('#modal-root');
   const E = () => window.QingciEngine;
-  const P = () => window.QingciPractice;
-  const memoryAid = w => window.QingciMemoryAids?.lookup(w?.word || '');
   // Persisted app state and dictionary entries contain JSON values only.
   const clone = typeof window.structuredClone === 'function' ? window.structuredClone.bind(window) : value => JSON.parse(JSON.stringify(value));
   const native = () => window.AndroidBridge || null;
   const STORE = 'qingci.cet4.state.v1';
-  const APP_VERSION = '1.0.10';
+  const APP_VERSION = '1.0.11';
   const BOOKS = [
     {id:'ecdict-cet4',name:'四级',code:'CET-4',file:'words.json'},
     {id:'ecdict-cet6',name:'六级',code:'CET-6',file:'words-cet6.json'},
@@ -19,27 +17,41 @@
   let words = [], wordMap = new Map(), state, current = null, revealed = false;
   let page = 'study', mode = 'all', focus = false, extraNew = 0, undoItem = null;
   let query = '', filter = 'all', listLimit = 60, searchTimer, toastTimer, dueTimer;
-  let modalType = null, detailId = null, quiz = null, loadError = null, storageError = false;
+  let modalType = null, detailId = null, loadError = null, storageError = false;
   let modalOpener = null, modalReturnTarget = null, filteredCache = null, statsCache = null, feedbackDraft = '';
   let dictionariesReady = false, queuedImport = null;
-  let practiceUI = null;
+  let browserSpeechGeneration = 0;
   let updateStatus = {state:'idle',message:'可在这里查看更新进度'};
   const feedbackStatuses = new Map();
   const feedbackStates = new Set(['queued','sending','accepted','duplicate','permanent_failed','retryable_failed']);
   const feedbackIdPattern = /^qf_[0-9a-f]{32}$/;
   const VOICE_STORE = 'qingci.voice-profile';
   const VOICES = [
-    {key:'us',accent:'en-US',profile:'female',name:'美式女声',detail:'Heart · 美式英语'},
-    {key:'us-male',accent:'en-US',profile:'male',name:'美式男声',detail:'Fenrir · 美式英语'},
-    {key:'uk',accent:'en-GB',profile:'female',name:'英式女声',detail:'Emma · 英式英语'},
-    {key:'uk-male',accent:'en-GB',profile:'male',name:'英式男声',detail:'Fable · 英式英语'},
+    {key:'us',accent:'en-US',profile:'female',name:'Heart 女声',detail:'美式英语'},
+    {key:'us-male',accent:'en-US',profile:'male',name:'Fenrir 男声',detail:'美式英语'},
+    {key:'us-bella',accent:'en-US',profile:'female',name:'Bella 女声',detail:'美式英语'},
+    {key:'us-michael',accent:'en-US',profile:'male',name:'Michael',detail:'美式男声'},
+    {key:'uk',accent:'en-GB',profile:'female',name:'Emma 女声',detail:'英式英语'},
+    {key:'uk-male',accent:'en-GB',profile:'male',name:'Fable 男声',detail:'英式英语'},
   ];
   let voiceProfile = 'female';
   try {voiceProfile=(native()?.getVoiceProfile?.() || localStorage.getItem(VOICE_STORE))==='male'?'male':'female';}catch(_){}
-  const selectedVoice = () => VOICES.find(v=>v.accent===state.settings.accent && v.profile===voiceProfile) || VOICES[0];
-  const lastPracticeIds = new Map();
-  const visualWordCache = new Map();
-  const lastQuizIds = new Map();
+  const voiceKeys = {};
+  for(const accent of ['en-US','en-GB']) {
+    try {voiceKeys[accent]=native()?.getVoiceKey?.(accent)||localStorage.getItem('qingci.voice-key.'+accent);}catch(_){}
+  }
+  const selectedVoice = () => VOICES.find(v=>v.accent===state.settings.accent && v.key===voiceKeys[v.accent])
+    || VOICES.find(v=>v.accent===state.settings.accent && v.profile===voiceProfile) || VOICES[0];
+  const SPEEDS = [{rate:.65,name:'慢速'},{rate:.8,name:'舒缓'},{rate:1,name:'正常'}];
+  const SPEECH_STORE = 'qingci.speech-settings.v1';
+  let speechSettings={rate:.8,repeats:1,gapMs:1200};
+  try {
+    const value=JSON.parse(native()?.getSpeechSettings?.()||localStorage.getItem(SPEECH_STORE)||'{}');
+    if(Number.isFinite(value.rate)&&value.rate>=.6&&value.rate<=1)speechSettings.rate=value.rate;
+    if([1,2,3].includes(value.repeats))speechSettings.repeats=value.repeats;
+    if([500,1200,2000,3000].includes(value.gapMs))speechSettings.gapMs=value.gapMs;
+  }catch(_){}
+  const speedName = () => SPEEDS.find(v=>Math.abs(v.rate-speechSettings.rate)<.01)?.name || '自定速度';
   const activeBook = () => BOOKS.find(b=>b.id===libraryState?.activeWordbook) || BOOKS[0];
   const shapes = {
     more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
@@ -61,7 +73,6 @@
     clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
     export:'<path d="M5 14v6h14v-6M12 16V3m-4 4 4-4 4 4"/>',
     import:'<path d="M5 14v6h14v-6M12 3v13m-4-4 4 4 4-4"/>',
-    quiz:'<path d="m15 4 5 5-10 10-6 1 1-6L15 4ZM12 7l5 5"/>',
     mail:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/>',
     down:'<path d="m7 10 5 5 5-5"/>',
   };
@@ -86,6 +97,9 @@
     toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
   }
   window.onNativeMessage = notify;
+  window.onNativeVoiceFallback = () => {
+    const status=$('#voice-preview-status');if(status)status.textContent='这段词音暂时不可用，已尝试手机离线英语语音。';
+  };
   window.onNativeExport = success => notify(success ? '文件已保存' : '未保存文件，学习记录仍在手机中');
   window.onNativeImport = text => {if(dictionariesReady)receiveImport(text);else queuedImport=text;};
   window.onNativeBack = () => window.handleBack();
@@ -179,15 +193,20 @@
     const bridge = native();
     if (bridge?.speak) {bridge.speak(word,state.settings.accent); return;}
     if ('speechSynthesis' in window) {
-      speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = state.settings.accent; utterance.rate = .88;
-      const chosen = speechSynthesis.getVoices().find(v=>v.lang.toLowerCase()===utterance.lang.toLowerCase());
-      if (chosen) utterance.voice=chosen;
-      utterance.onerror = ev => {if(ev.error !== 'canceled' && ev.error !== 'interrupted') notify('没有可用的英语语音，请在手机语音设置中添加英语语音包');};
-      speechSynthesis.speak(utterance);
+      stopSpeech();const generation=browserSpeechGeneration;
+      const play=remaining=>{
+        if(generation!==browserSpeechGeneration||document.hidden)return;
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = state.settings.accent; utterance.rate = speechSettings.rate; utterance.pitch = 1;
+        const chosen = speechSynthesis.getVoices().find(v=>v.lang.toLowerCase()===utterance.lang.toLowerCase());
+        if(chosen)utterance.voice=chosen;
+        utterance.onend=()=>{if(remaining>0&&generation===browserSpeechGeneration)setTimeout(()=>play(remaining-1),speechSettings.gapMs);};
+        utterance.onerror=ev=>{if(ev.error!=='canceled'&&ev.error!=='interrupted')notify('没有可用的英语语音，请在手机语音设置中添加英语语音包');};
+        speechSynthesis.speak(utterance);
+      };play(speechSettings.repeats-1);
     } else notify('当前环境不支持朗读，安卓安装版可调用手机英语语音');
   }
-  function stopSpeech() {try{native()?.stopSpeech?.(); if('speechSynthesis' in window) speechSynthesis.cancel();}catch(_) {}}
+  function stopSpeech() {browserSpeechGeneration++;try{native()?.stopSpeech?.(); if('speechSynthesis' in window) speechSynthesis.cancel();}catch(_) {}}
 
   function topbar() {
     return `<header class="topbar"><div class="brand"><div class="brandmark"><img src="icon.svg" alt=""></div><div class="brand-title">背单词</div></div><div class="top-actions"><button class="book-switch" data-action="books" aria-label="切换词书，当前${activeBook().name}" aria-haspopup="dialog">${activeBook().name}${icon('down')}</button>${round('focus','focus','专注背词','plain')}${page==='study'?round('study-options','more','学习选项','plain study-options'):''}</div></header>`;
@@ -232,7 +251,7 @@
     const s=stats();
     const w=current?.word;
     const saved=w&&state.favorites.includes(w.id);
-    openModal('学习选项',`<p class="small muted study-menu-progress">今日新词 ${s.newToday} / ${s.goal} · ${s.due} 词待复习</p><div class="study-menu">${w?`<button class="study-menu-row" data-action="detail" data-id="${esc(w.id)}"><span>${icon('book')}单词详情</span>${icon('arrow')}</button><button class="study-menu-row" data-action="favorite"><span>${icon('star')}${saved?'取消收藏':'收藏这个词'}</span>${saved?icon('check'):icon('arrow')}</button>`:''}<button class="study-menu-row" data-action="undo" ${!undoItem?'disabled':''}><span>${icon('undo')}撤销上一词</span></button>${w&&revealed&&memoryAid(w)?`<button class="study-menu-row" data-action="memory-aid" data-id="${esc(w.id)}"><span>${icon('leaf')}图像联想</span>${icon('arrow')}</button>`:''}</div><p class="settings-label menu-label">学习模式</p><div class="choice-grid study-mode-choices">${[['all','日常背词'],['review','只复习']].map(([value,label])=>`<button class="choice ${mode===value?'active':''}" data-action="mode" data-mode="${value}" aria-pressed="${mode===value}"><strong>${label}</strong></button>`).join('')}</div><button class="text-button menu-help" data-action="help">${icon('clock')}复习与评分说明</button><p class="note">每日目标是进度参考，达到后可继续背词。详情、收藏和撤销都在这里。</p>`,'study-options');
+    openModal('学习选项',`<p class="small muted study-menu-progress">今日新词 ${s.newToday} / ${s.goal} · ${s.due} 词待复习</p><div class="study-menu">${w?`<button class="study-menu-row" data-action="detail" data-id="${esc(w.id)}"><span>${icon('book')}单词详情</span>${icon('arrow')}</button><button class="study-menu-row" data-action="favorite"><span>${icon('star')}${saved?'取消收藏':'收藏这个词'}</span>${saved?icon('check'):icon('arrow')}</button>`:''}<button class="study-menu-row" data-action="undo" ${!undoItem?'disabled':''}><span>${icon('undo')}撤销上一词</span></button></div><p class="settings-label menu-label">学习模式</p><div class="choice-grid study-mode-choices">${[['all','日常背词'],['review','只复习']].map(([value,label])=>`<button class="choice ${mode===value?'active':''}" data-action="mode" data-mode="${value}" aria-pressed="${mode===value}"><strong>${label}</strong></button>`).join('')}</div><button class="text-button menu-help" data-action="help">${icon('clock')}复习与评分说明</button><p class="note">每日目标是进度参考，达到后可继续背词。详情、收藏和撤销都在这里。</p>`,'study-options');
   }
   function filteredWords() {
     const q=query.trim().toLowerCase();
@@ -269,27 +288,32 @@
   }
   function progressPage() {
     const s=stats();
-    return `<div class="pagehead"><div><h1>学习进度</h1></div><div class="streak">已坚持 ${s.streak} 天</div></div><div class="stats-grid"><div class="stat-block"><p class="eyebrow">今天新学</p><p class="stat-value">${s.newToday}<small>/ ${s.goal} 词</small></p><p class="small muted">目标可以随时调整</p></div><div class="stat-block"><p class="eyebrow">今天复习</p><p class="stat-value">${s.reviewsToday}<small>词</small></p><p class="small muted">${s.due} 词现在待复习</p></div><div class="stat-block"><p class="eyebrow">累计接触</p><p class="stat-value">${s.seen}<small>词</small></p><p class="small muted">词书共 ${words.length.toLocaleString()} 词</p></div><div class="stat-block"><p class="eyebrow">易忘词</p><p class="stat-value">${s.difficult||0}<small>词</small></p><button class="text-button" data-action="open-difficult">去巩固 ${icon('arrow')}</button></div></div><section class="panel"><div class="section-title"><h2>最近 7 天</h2><span class="small muted">练习次数</span></div><div class="chart" aria-label="最近七天练习次数">${(s.week||[]).map((d,i)=>`<div class="day-column ${i===6?'today':''}"><span class="day-count">${d.total||'—'}</span><div class="day-bar" data-count="${d.total}"></div><small>${esc(d.label)}</small></div>`).join('')}</div></section><section class="section"><div class="section-title"><h2>换个方式，检验记忆</h2></div><button class="primary" data-action="practice">记忆训练 · 最多 6 词</button><p class="small muted training-caption">回忆词义 → 反向拼写 → 错词隔题补练</p><button class="secondary" data-action="visual-gallery">图像联想 · ${visualWords().length} 张精选卡</button><button class="secondary legacy-quiz" data-action="quiz">${icon('quiz')}拼写自测 · 最多 10 词</button></section><p class="note">“接触过”不等于“完全掌握”。按真实记忆选择按钮，让复习时间更适合你。</p>`;
+    return `<div class="pagehead"><div><h1>学习进度</h1></div><div class="streak">已坚持 ${s.streak} 天</div></div><div class="stats-grid"><div class="stat-block"><p class="eyebrow">今天新学</p><p class="stat-value">${s.newToday}<small>/ ${s.goal} 词</small></p><p class="small muted">目标可以随时调整</p></div><div class="stat-block"><p class="eyebrow">今天复习</p><p class="stat-value">${s.reviewsToday}<small>词</small></p><p class="small muted">${s.due} 词现在待复习</p></div><div class="stat-block"><p class="eyebrow">累计接触</p><p class="stat-value">${s.seen}<small>词</small></p><p class="small muted">词书共 ${words.length.toLocaleString()} 词</p></div><div class="stat-block"><p class="eyebrow">易忘词</p><p class="stat-value">${s.difficult||0}<small>词</small></p><button class="text-button" data-action="open-difficult">去巩固 ${icon('arrow')}</button></div></div><section class="panel"><div class="section-title"><h2>最近 7 天</h2><span class="small muted">练习次数</span></div><div class="chart" aria-label="最近七天练习次数">${(s.week||[]).map((d,i)=>`<div class="day-column ${i===6?'today':''}"><span class="day-count">${d.total||'—'}</span><div class="day-bar" data-count="${d.total}"></div><small>${esc(d.label)}</small></div>`).join('')}</div></section><p class="note">“接触过”不等于“完全掌握”。按真实记忆选择按钮，让复习时间更适合你。</p>`;
   }
   const row = (title,caption,action,tail='') => `<button class="setting-row setting-button" data-action="${action}"><div><div class="setting-label">${title}</div>${caption?`<p class="setting-caption">${caption}</p>`:''}</div>${tail||icon('arrow')}</button>`;
   const switchRow = (title,caption,key) => `<div class="setting-row"><div><div class="setting-label">${title}</div><p class="setting-caption">${caption}</p></div><button class="toggle ${state.settings[key]?'on':''}" data-action="toggle" data-key="${key}" role="switch" aria-checked="${!!state.settings[key]}" aria-label="${title}"></button></div>`;
   function settingsPage() {
     const themes={system:'跟随系统',light:'浅色',dark:'深色'};
-    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('发音','四种自然合成声线，可试听与切换','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存四级与六级的全部学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆、图像联想和跨日复习','help')}${row('版本与更新',APP_VERSION+' · 官网更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','ECDICT 四级与六级词集 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
+    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('口音与音色','英式或美式，六种独立声线可试听','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${row('语速与重复','慢速、舒缓、正常，设置朗读次数与停顿','speech',`<span class="setting-value">${speedName()} · ${speechSettings.repeats} 次</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存四级与六级的全部学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆，再按记忆情况安排跨日复习','help')}${row('版本与更新',APP_VERSION+' · 官网更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','ECDICT 四级与六级词集 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
   }
 
   function openModal(title,html,type) {
+    const sameModal=modalType===type;
+    const priorScroll=sameModal?modalRoot.querySelector('.modal-content')?.scrollTop||0:0;
+    const priorFocus=sameModal&&document.activeElement?.dataset?{...document.activeElement.dataset}:null;
     if(!modalType){modalOpener=document.activeElement;modalReturnTarget=modalOpener?.dataset?{...modalOpener.dataset}:null;}
     modalType=type;
-    modalRoot.innerHTML=`<div class="modal-shade" data-action="dismiss"><section class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-handle"></div><div class="modal-header"><h2>${title}</h2>${round('close','close','关闭','plain')}</div><div class="modal-content">${html}</div></section></div>`;
+    modalRoot.innerHTML=`<div class="modal-shade ${sameModal?'steady':''}" data-action="dismiss"><section class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-handle"></div><div class="modal-header"><h2>${title}</h2>${round('close','close','关闭','plain')}</div><div class="modal-content">${html}</div></section></div>`;
     document.body.classList.add('modal-open');
-    const first=modalRoot.querySelector('input,textarea,button');if(first) first.focus({preventScroll:true});
+    const preserved=priorFocus?.action?Array.from(modalRoot.querySelectorAll('[data-action]')).find(el=>Object.entries(priorFocus).every(([key,value])=>el.dataset[key]===value)):null;
+    const first=preserved||modalRoot.querySelector('input,textarea,button');if(first) first.focus({preventScroll:true});
+    if(sameModal)modalRoot.querySelector('.modal-content').scrollTop=priorScroll;
     app.setAttribute('inert','');app.setAttribute('aria-hidden','true');
   }
   function closeModal() {
     if(modalType==='import')pendingImport=null;
     modalRoot.innerHTML='';document.body.classList.remove('modal-open');app.removeAttribute('inert');app.removeAttribute('aria-hidden');
-    modalType=null;detailId=null;quiz=null;practiceUI=null;stopSpeech();
+    modalType=null;detailId=null;stopSpeech();
     let returnTo=modalOpener?.isConnected?modalOpener:null;
     if(!returnTo && modalReturnTarget?.action)returnTo=Array.from(app.querySelectorAll('[data-action]')).find(el=>Object.entries(modalReturnTarget).every(([key,value])=>el.dataset[key]===value));
     if(returnTo)returnTo.focus({preventScroll:true});
@@ -315,7 +339,7 @@
     const w=wordMap.get(id);if(!w) return;
     detailId=id;
     const saved=state.favorites.includes(id);
-    openModal('单词详情',`<div class="word-center"><h2 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h2><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic+'/':'')}</p><button class="audio" data-action="detail-audio" data-id="${esc(id)}">${icon('sound')}播放发音</button></div><div class="meaning">${esc(w.meaning)}</div>${memoryAid(w)?`<button class="secondary" data-action="memory-aid" data-id="${esc(w.id)}">图像联想 ${icon('arrow')}</button>`:''}${w.forms?`<div class="forms">${esc(formatForms(w.forms))}</div>`:''}<button class="secondary" data-action="detail-favorite" data-id="${esc(id)}">${icon('star')}${saved?'已收藏 · 点此取消':'收藏这个词'}</button>${state.cards[id]?`<p class="small muted">下次复习：${new Date(state.cards[id].due).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</p>`:'<p class="small muted">还未开始学习</p>'}`,'detail');
+    openModal('单词详情',`<div class="word-center"><h2 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h2><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic+'/':'')}</p><button class="audio" data-action="detail-audio" data-id="${esc(id)}">${icon('sound')}播放发音</button></div><div class="meaning">${esc(w.meaning)}</div>${w.forms?`<div class="forms">${esc(formatForms(w.forms))}</div>`:''}<button class="secondary" data-action="detail-favorite" data-id="${esc(id)}">${icon('star')}${saved?'已收藏 · 点此取消':'收藏这个词'}</button>${state.cards[id]?`<p class="small muted">下次复习：${new Date(state.cards[id].due).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</p>`:'<p class="small muted">还未开始学习</p>'}`,'detail');
   }
   function formatForms(raw) {
     const names={p:'过去式',d:'过去分词',i:'现在分词',3:'第三人称单数',s:'复数',r:'比较级',t:'最高级',0:'原形',1:'原形'};
@@ -324,33 +348,47 @@
   function showChoices(which) {
     if(which==='goal') openModal('每天新学多少词？','<p class="small muted">复习优先，新词目标随时可改。建议从 20 词开始。</p><div class="choice-grid">'+[10,20,30,50].map(n=>`<button class="choice ${state.settings.dailyGoal===n?'active':''}" data-action="set-goal" data-value="${n}"><strong>${n} 词</strong><small>${n===10?'轻松起步':n===20?'日常积累':n===30?'多学一点':'集中学习'}</small></button>`).join('')+'</div>','goal');
     if(which==='accent') showVoices();
+    if(which==='speech') showSpeech();
     if(which==='theme') openModal('选择外观','<div class="choice-grid">'+[['system','跟随系统'],['light','浅色'],['dark','深色']].map(([v,l])=>`<button class="choice ${state.settings.theme===v?'active':''}" data-action="set-theme" data-value="${v}"><strong>${l}</strong></button>`).join('')+'</div>','theme');
   }
   function showVoices() {
-    const chosen=selectedVoice().key;
-    openModal('选择发音',`<p class="small muted">先试听，再选一个你喜欢的声音。</p><div class="voice-grid">${VOICES.map(v=>`<section class="voice-choice ${chosen===v.key?'active':''}"><button class="voice-select" data-action="set-voice" data-value="${v.key}" aria-pressed="${chosen===v.key}"><span class="voice-label"><strong>${v.name}</strong><small>${v.detail}</small></span><span class="voice-selected" aria-hidden="true">${chosen===v.key?icon('check'):''}</span></button><button class="voice-preview" data-action="preview-voice" data-value="${v.key}" aria-label="试听${v.name}">${icon('sound')}试听</button></section>`).join('')}</div><p id="voice-preview-status" class="small muted voice-status" role="status" aria-live="polite"></p><p class="note voice-note">四种声音为自然合成发音。常用词可离线播放，其余词音首次联网播放后缓存；未缓存或网络不可用时使用手机离线英语语音。${native()?'':'浏览器预览只展示选择界面，试听声音请使用 Android 安装版。'}</p>`,'accent');
+    const chosen=selectedVoice().key, accent=state.settings.accent;
+    openModal('口音与音色',`<p class="small muted">选择口音，再试听喜欢的声音。</p><div class="speech-options accent-options" role="group" aria-label="口音">${[['en-US','美式'],['en-GB','英式']].map(([key,label])=>`<button class="speech-option ${accent===key?'active':''}" data-action="set-accent" data-value="${key}" aria-pressed="${accent===key}">${label}</button>`).join('')}</div><div class="voice-grid">${VOICES.filter(v=>v.accent===accent).map(v=>`<section class="voice-choice ${chosen===v.key?'active':''}"><button class="voice-select" data-action="set-voice" data-value="${v.key}" aria-pressed="${chosen===v.key}"><span class="voice-label"><strong>${v.name}</strong><small>${v.detail}</small></span><span class="voice-selected" aria-hidden="true">${chosen===v.key?icon('check'):''}</span></button><button class="voice-preview" data-action="preview-voice" data-value="${v.key}" aria-label="试听${v.name}">${icon('sound')}试听</button></section>`).join('')}</div><p id="voice-preview-status" class="small muted voice-status" role="status" aria-live="polite"></p><p class="note voice-note">试听只播放一次，使用当前语速。常用词可离线播放，其余词音首次联网后缓存；无法取得词音时使用手机离线英语语音。${native()?'':'浏览器预览的六种声线需在 Android 安装版中试听。'}</p>`,'accent');
   }
   function chooseVoice(key) {
-    const voice=VOICES.find(v=>v.key===key);if(!voice)return;
-    const previous=clone(state),next=clone(state);next.settings.accent=voice.accent;
-    if(!persist(next))return;
+    const voice=VOICES.find(v=>v.key===key && v.accent===state.settings.accent);if(!voice)return;
     let saved=false;
     try {
-      const bridge=native();
-      if(bridge) {const result=bridge.setVoiceProfile?.(voice.profile);saved=result===true||result==='true';}
-      else {localStorage.setItem(VOICE_STORE,voice.profile);saved=true;}
+      if(native()) {const result=native().setVoiceKey?.(key);saved=result===true||result==='true';}
+      else {localStorage.setItem('qingci.voice-key.'+voice.accent,key);saved=true;}
     }catch(_){}
-    if(!saved){
-      if(persist(previous))notify('声音设置未保存，请重试。');
-      else {closeModal();render();notify('口音已保存，声线保存失败。请重新选择声音。');}
-      return;
-    }
-    voiceProfile=voice.profile;closeModal();render();notify('已选择'+voice.name);
+    if(!saved){notify('声音设置未保存，请重试');return;}
+    voiceKeys[voice.accent]=key;stopSpeech();render();showVoices();
+  }
+  function chooseAccent(accent) {
+    if(!['en-US','en-GB'].includes(accent))return;
+    const next=clone(state);next.settings.accent=accent;
+    if(persist(next)){stopSpeech();render();showVoices();}
+  }
+  function showSpeech() {
+    const options=(key,choices)=>`<div class="speech-options" role="group" aria-label="${key==='rate'?'语速':key==='repeats'?'朗读次数':'两次间隔'}">${choices.map(([value,label])=>`<button class="speech-option ${Math.abs(speechSettings[key]-value)<.01?'active':''}" data-action="set-speech" data-key="${key}" data-value="${value}" aria-pressed="${Math.abs(speechSettings[key]-value)<.01}">${label}</button>`).join('')}</div>`;
+    openModal('语速与重复',`<h3 class="speech-heading">语速</h3>${options('rate',SPEEDS.map(v=>[v.rate,v.name]))}<p class="small muted">放慢自然词音时保持原音高。</p><h3 class="speech-heading">朗读次数</h3>${options('repeats',[[1,'1 次'],[2,'2 次'],[3,'3 次']])}<h3 class="speech-heading">两次朗读之间停顿</h3>${options('gapMs',[[500,'0.5 秒'],[1200,'1.2 秒'],[2000,'2 秒'],[3000,'3 秒']])}<button class="secondary speech-preview-button" data-action="preview-sequence">${icon('sound')}试听当前设置</button><p id="voice-preview-status" class="small muted voice-status" role="status" aria-live="polite"></p><p class="note">切换单词、关闭设置或离开应用会停止朗读。每次调整立即保存。</p>`,'speech');
+  }
+  function changeSpeech(key,value) {
+    const allowed={rate:[.65,.8,1],repeats:[1,2,3],gapMs:[500,1200,2000,3000]};
+    if(!allowed[key]?.includes(value))return;
+    const next={...speechSettings,[key]:value};let saved=false;
+    try {
+      if(native()){const result=native().setSpeechSettings?.(next.rate,next.repeats,next.gapMs);saved=result===true||result==='true';}
+      else{localStorage.setItem(SPEECH_STORE,JSON.stringify(next));saved=true;}
+    }catch(_){}
+    if(!saved){notify('播放设置未保存，请重试');return;}
+    speechSettings=next;stopSpeech();render();showSpeech();
   }
   function previewVoice(key) {
     const voice=VOICES.find(v=>v.key===key);if(!voice)return;
     try {
-      if(typeof native()?.previewVoice!=='function'){notify('四种声音可在 Android 安装版中试听');return;}
+      if(typeof native()?.previewVoice!=='function'){notify('这些声线可在 Android 安装版中试听');return;}
       stopSpeech();
       const result=native().previewVoice(key);
       if(result===false||result==='false'){notify('试听暂不可用，请重试');return;}
@@ -457,95 +495,8 @@
     const history=$('#feedback-history');if(history)history.innerHTML=feedbackHistory();
     if(send)sendFeedbackItem(item);else feedbackNotice('已保存到本机，尚未发送。');
   }
-  function help() {openModal('按真实记忆选择',`<p class="small">先想意思，再看答案：</p><div class="feedback-item"><strong>忘了</strong><p class="small muted">没有想起或想错了。词会较快回来，并加入易忘词。</p></div><div class="feedback-item"><strong>模糊</strong><p class="small muted">想对了，但费劲或不确定。比“记住”更早复习。</p></div><div class="feedback-item"><strong>记住</strong><p class="small muted">能正确想起。按学习历史安排下次复习。</p></div><p class="note">复习由离线 FSRS 引擎安排。按钮上的时间是此刻的预计间隔，按下后保存实际安排。到期复习优先，每日目标是新词进度参考，达到后仍可继续背词。</p><div class="feedback-item"><strong>短时记忆训练</strong><p class="small muted">进度页选一组已学词，先回忆中文再反向拼写。词义回忆由你对照后自评，拼写按词条检查；借助提示的题会单独标记。错词至少隔两题后最多补练一次，题目不足时留待下一组。</p></div><div class="feedback-item"><strong>图像联想</strong><p class="small muted">精选联想卡用场景或概念图提示一个意思。想不起来再展开线索；也可以在释义和详情里看图。图示不能代替完整释义，也不是所有词都适合。</p></div><p class="note">依靠图像或答案才想起时，请按提示前的真实记忆评分。短训练不改正式复习安排；本轮答对仍需要之后跨日回忆，才能检验是否保持。</p>`,'help');}
-
-  function aidMarkup(w,{hintOnly=false}={}) {
-    const a=memoryAid(w);if(!a)return '';
-    return `<div class="memory-aid"><div class="memory-illustration">${a.svg}</div><p class="eyebrow">${esc(a.kind)}${hintOnly?' · 已使用提示':''}</p><p class="memory-scene">${esc(hintOnly?a.cue:a.scene)}</p>${hintOnly?'':`<p class="small muted">帮助联想：${esc(a.sense)}。图示只对应这个义项，请结合完整释义。</p>`}</div>`;
-  }
-  function showMemoryAid(id) {
-    const w=wordMap.get(id);if(!w||!memoryAid(w))return;
-    openModal('图像联想',`<h3 class="aid-word" lang="en">${esc(w.word)}</h3>${aidMarkup(w)}<div class="meaning aid-meaning">${esc(w.meaning)}</div><p class="note">看完闭眼想一遍画面，再试着说出词义。下一次先回忆，再展开提示。</p><button class="primary" data-action="close">继续背词</button>`,'memory-aid');
-  }
-  function visualWords() {
-    const book=activeBook().id;if(visualWordCache.has(book))return visualWordCache.get(book);
-    const index=new Map(words.map(w=>[w.word,w]));
-    const value=(window.QingciMemoryAids?.entries()||[]).map(a=>index.get(a.word)).filter(Boolean);
-    visualWordCache.set(book,value);return value;
-  }
-  function showVisualGallery() {
-    const list=visualWords();
-    openModal('图像联想',`<p class="small muted">${activeBook().name}词书 · ${list.length} 张原创联想卡。先看懂一个意思，再尝试独立回忆。</p><button class="primary" data-action="practice-visual">用图像卡练一组 · 最多 6 词</button><div class="aid-gallery">${list.map(w=>`<button class="aid-tile" data-action="memory-aid" data-id="${esc(w.id)}"><span class="aid-thumbnail">${memoryAid(w).svg}</span><strong lang="en">${esc(w.word)}</strong><span>${esc(memoryAid(w).sense)}</span></button>`).join('')}</div><p class="note">抽象词用概念关系图辅助理解。图示覆盖这些精选词的一个义项，并不代表词书中所有词都已配图。</p>`,'visual-gallery');
-  }
-  function shuffleWords(items) {
-    const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
-  }
-  function recallCue(w) {
-    const token=w.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    return w.meaning.replace(new RegExp('\\b'+token+'\\b','gi'),'____');
-  }
-  function startPractice({ids=null,visual=false}={}) {
-    if(!P()){notify('记忆训练暂时无法打开，请重新打开应用');return;}
-    const pool=ids?ids.map(id=>wordMap.get(id)).filter(Boolean):visual?visualWords():words.filter(w=>state.cards[w.id]);
-    const candidates=pool.filter(w=>/^[a-z]+(?:[-'][a-z]+)*$/i.test(w.word));
-    if(!candidates.length){notify('先学几个单词，再来检验记忆；也可以先试图像联想卡');return;}
-    const trouble=new Set(state.difficult),previous=lastPracticeIds.get(activeBook().id)||new Set();
-    const sample=a=>shuffleWords(a.filter(w=>!previous.has(w.id))).concat(shuffleWords(a.filter(w=>previous.has(w.id))));
-    const chosen=sample(candidates.filter(w=>trouble.has(w.id))).concat(sample(candidates.filter(w=>!trouble.has(w.id)))).slice(0,6);
-    lastPracticeIds.set(activeBook().id,new Set(chosen.map(w=>w.id)));
-    stopSpeech();practiceUI={session:P().createSession(chosen,{limit:6,retryGap:2}),revealed:false,hinted:false,aidOpen:false,input:'',feedback:null};showPractice();
-  }
-  function submitPractice(response) {
-    const ui=practiceUI;if(!ui||ui.feedback)return;
-    const item=P().current(ui.session);if(!item)return;
-    const answer=$('#practice-input')?.value||ui.input;
-    const result=P().advance(ui.session,item.direction==='zh-to-en'?{answer,usedHint:ui.hinted}:{result:ui.hinted?'hint':response});
-    ui.session=result.state;ui.feedback={item,result:result.outcome,answer};showPractice();
-  }
-  function showPractice() {
-    const ui=practiceUI;if(!ui)return;
-    if(ui.feedback){
-      const {item,result,answer}=ui.feedback,w=wordMap.get(item.id);
-      const correct=result.result==='correct';
-      openModal('对照答案',`<p class="eyebrow">${item.attempt==='retry'?'隔题补练':'首次回忆'} · ${item.direction==='en-to-zh'?'回忆词义':'反向拼写'}</p><h3 class="practice-word" lang="en">${esc(w.word)}</h3><p class="practice-status">${correct?'本题独立答对':ui.hinted?'借助线索 · 稍后再独立试一次':'再记一下这个词'}</p>${item.direction==='zh-to-en'&&answer?`<p class="small muted">你的拼写：<span lang="en">${esc(answer)}</span></p>`:''}<div class="meaning practice-meaning">${esc(w.meaning)}</div>${memoryAid(w)?aidMarkup(w):''}<button class="primary" data-action="practice-next">${P().current(ui.session)?'下一题':'看看本轮结果'} ${icon('arrow')}</button><p class="note">补练有题目间隔；这次答对不代表已经长期掌握。</p>`,'practice');practiceUI=ui;return;
-    }
-    const item=P().current(ui.session);if(!item){showPracticeSummary();return;}
-    const w=wordMap.get(item.id),reverse=item.direction==='zh-to-en';
-    const question=reverse?`<div class="practice-cue meaning">${esc(recallCue(w))}</div><input id="practice-input" lang="en" placeholder="想一想，再输入英文" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" aria-label="记忆训练英文拼写" value="${esc(ui.input)}">`:`<h3 class="practice-word" lang="en">${esc(w.word)}</h3><p class="small muted">先在心里说出中文意思，再对照答案。</p>`;
-    const revealed=!reverse&&ui.revealed?`<div class="meaning practice-meaning">${esc(w.meaning)}</div><p class="small muted">对照前，你是否独立想起了意思？</p><div class="practice-grades"><button class="outline" data-action="practice-grade" data-result="wrong">没想起来</button><button class="primary" data-action="practice-grade" data-result="correct">${ui.hinted?'借线索想起':'想起来了'}</button></div>`:'';
-    const action=reverse?'<button class="primary" data-action="practice-check">检查拼写</button><button class="text-button practice-skip" data-action="practice-skip">我暂时想不起来</button>':ui.revealed?'':'<button class="primary" data-action="practice-reveal">对照答案</button>';
-    openModal(`记忆训练 · 第 ${item.questionNumber} 题`,`<p class="practice-step eyebrow">${item.attempt==='retry'?'隔题补练':reverse?'② 回忆英文':'① 回忆词义'} · ${reverse?'中文 → 英文':'英文 → 中文'}</p>${question}${ui.aidOpen?aidMarkup(w,{hintOnly:true}):''}${!ui.revealed&&memoryAid(w)?`<button class="text-button aid-hint" data-action="practice-hint" ${ui.aidOpen?'disabled':''}>${ui.aidOpen?'本题已使用线索':'想不起来？给我图像线索'}</button>`:''}${revealed}${action}<p class="note">先尝试回忆，再看提示。短训练不会更改你的正式复习时间或今日计数。</p>`,'practice');practiceUI=ui;
-    if(reverse)$('#practice-input')?.focus({preventScroll:true});
-  }
-  function showPracticeSummary() {
-    const ui=practiceUI;if(!ui)return;
-    const report=P().summary(ui.session);
-    const total=report.totalWords;
-    const first={recall:report.firstPass['en-to-zh'],spelling:report.firstPass['zh-to-en']};
-    const trouble=report.needsPractice||[];
-    const ids=trouble.map(x=>typeof x==='string'?x:x.id);
-    ui.retryIds=[...new Set(ids)];
-    openModal('本轮训练完成',`<div class="quiz-result"><div class="finish-art">${icon('check')}</div><h2>给记忆做个小检查</h2><p class="small muted">首次独立回忆的结果，和借线索、补练分开看。</p></div><div class="practice-summary"><div><span>词义回忆 · 首次独立</span><strong>${first.recall.correct} / ${total}</strong></div><div><span>反向拼写 · 首次独立</span><strong>${first.spelling.correct} / ${total}</strong></div></div><p class="small muted">首次借助提示 ${first.recall.hint+first.spelling.hint} 题 · 本轮补练答对 ${report.retry.correct} 题${report.unavailableItems.length?` · ${report.unavailableItems.length} 题留待稍后再练`:''}</p>${ui.retryIds.length?`<section class="quiz-review"><h3>这些词还值得再练</h3>${ui.retryIds.map(id=>wordMap.get(id)).filter(Boolean).map(w=>{const record=report.records.find(x=>x.id===w.id);const issues=Object.entries(record.directions).filter(([,x])=>x.initial!=='correct').map(([direction,x])=>({direction,correctedThisSession:x.retry==='correct',retryStatus:x.retryStatus}));return `<div class="feedback-item"><strong lang="en">${esc(w.word)}</strong><p class="small muted">${esc(w.meaning.replace(/\n/g,' · '))}</p><p class="feedback-meta">${issues.map(x=>(x.direction==='en-to-zh'?'词义':'拼写')+'：'+(x.correctedThisSession?'本轮补练已答对':x.retryStatus==='unavailable'?'留待稍后再练':'仍需独立回忆')).join(' · ')}</p></div>`;}).join('')}</section><button class="primary" data-action="practice-retry">再练这组错词</button>`:'<p class="note">本轮两方向都能独立想起。之后仍按到期安排复习，检查跨日保持。</p>'}<p class="note">每个方向最多补练一次，至少隔开两道其他题。题目不足时会留下错词，稍后再练；本轮结果不会替代跨日复习。</p><button class="secondary" data-action="practice">换一组已学词</button><button class="text-button quiz-done" data-action="close">回到学习</button>`,'practice');practiceUI=ui;
-  }
-  function startQuiz() {
-    const candidates=words.filter(w=>state.cards[w.id] && /^[a-z]+(?:[- ][a-z]+)*$/i.test(w.word));
-    if(!candidates.length){notify('先背几个单词，再来做拼写自测');return;}
-    const trouble=new Set(state.difficult), previous=lastQuizIds.get(activeBook().id)||new Set();
-    const shuffle=items=>{const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-    const sample=pool=>shuffle(pool.filter(w=>!previous.has(w.id))).concat(shuffle(pool.filter(w=>previous.has(w.id))));
-    const chosen=sample(candidates.filter(w=>trouble.has(w.id))).concat(sample(candidates.filter(w=>!trouble.has(w.id)))).slice(0,10);
-    lastQuizIds.set(activeBook().id,new Set(chosen.map(w=>w.id)));
-    quiz={list:chosen,index:0,correct:0,checked:false,answer:'',result:false,wrong:[]};
-    showQuiz();
-  }
-  function showQuiz() {
-    const q=quiz;
-    if(q.index>=q.list.length) {
-      openModal('自测完成',`<div class="quiz-result"><div class="finish-art">${icon('check')}</div><h2>${q.correct} / ${q.list.length} 拼写正确</h2><p class="small muted">易忘词优先抽取，自测不改变正式复习安排。</p></div>${q.wrong.length?`<section class="quiz-review"><h3>这组再记一下</h3>${q.wrong.map(w=>`<div class="feedback-item"><strong lang="en">${esc(w.word)}</strong><p class="small muted">${esc(w.meaning.replace(/\n/g,' · '))}</p></div>`).join('')}</section>`:''}<button class="primary" data-action="quiz">再测一组</button><button class="text-button quiz-done" data-action="close">回到学习</button>`,'quiz');quiz=q;return;
-    }
-    const w=q.list[q.index];
-    openModal(`拼写自测 ${q.index+1} / ${q.list.length}`,`<p class="quiz-prompt">${esc(recallCue(w))}</p><input id="quiz-input" lang="en" placeholder="输入英文单词" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="输入英文单词" value="${esc(q.answer)}" ${q.checked?'disabled':''}>${q.checked?`<div class="quiz-answer"><strong>${q.result?'拼写正确':'再记一下：'+esc(w.word)}</strong><p class="small muted">${esc(w.phonetic)}</p></div><button class="primary" data-action="quiz-next">${q.index+1===q.list.length?'查看结果':'下一词'} ${icon('arrow')}</button>`:'<button class="primary" data-action="quiz-check">检查拼写</button><button class="text-button" data-action="quiz-skip">我暂时想不起来</button>'}`,'quiz');quiz=q;
-    if(!q.checked) $('#quiz-input')?.focus();
+  function help() {
+    openModal('按真实记忆选择',`<p class="small">先想意思，再看答案：</p><div class="feedback-item"><strong>忘了</strong><p class="small muted">没有想起或想错了。词会较快回来，并加入易忘词。</p></div><div class="feedback-item"><strong>模糊</strong><p class="small muted">想对了，但费劲或不确定。比“记住”更早复习。</p></div><div class="feedback-item"><strong>记住</strong><p class="small muted">能正确想起。按学习历史安排下次复习。</p></div><p class="note">复习由离线 FSRS 引擎安排，到期复习优先。每日目标只作新词进度参考，达到后可继续背词；没有额外打卡或积分要求。</p>`,'help');
   }
 
   function rate(rating) {
@@ -601,9 +552,12 @@
     if(act==='more'){listLimit+=60;$('#list-results').innerHTML=libraryResults();return;}
     if(act==='clear-search'){clearTimeout(searchTimer);query='';listLimit=60;$('#search').value='';updateSearchResults();$('#search').focus();return;}
     if(act==='open-difficult'){filter='difficult';query='';navigate('library');return;}
-    if(['goal','accent','theme'].includes(act)){showChoices(act);return;}
+    if(['goal','accent','speech','theme'].includes(act)){showChoices(act);return;}
     if(act==='set-goal'){changeSetting('dailyGoal',Number(button.dataset.value));return;}
     if(act==='set-voice'){chooseVoice(button.dataset.value);return;}
+    if(act==='set-accent'){chooseAccent(button.dataset.value);return;}
+    if(act==='set-speech'){changeSpeech(button.dataset.key,Number(button.dataset.value));return;}
+    if(act==='preview-sequence'){stopSpeech();speak('state');const status=$('#voice-preview-status');if(status)status.textContent='正在试听 '+speedName()+' · '+speechSettings.repeats+' 次';return;}
     if(act==='preview-voice'){previewVoice(button.dataset.value);return;}
     if(act==='set-theme'){changeSetting('theme',button.dataset.value);return;}
     if(act==='toggle'){const key=button.dataset.key;if(['autoSpeak','autoUpdate','diagnosticsEnabled'].includes(key))changeSetting(key,!state.settings[key]);return;}
@@ -618,21 +572,8 @@
     if(act==='version'){showVersion();return;}
     if(act==='check-update'){if(native()?.checkUpdate)native().checkUpdate();else notify('请在 Android 安装版中检查更新');return;}
     if(act==='resume-update'){if(native()?.resumeUpdate)native().resumeUpdate();else notify('请在系统安装页面完成必要操作');return;}
-    if(act==='credits'){openModal('词库与开源许可',`<p class="small">词库：ECDICT，skywind3000<br>四级词书 ${dictionaries[BOOKS[0].id].length.toLocaleString()} 词；六级词书 ${dictionaries[BOOKS[1].id].length.toLocaleString()} 词。保留中文释义、音标和词形。</p><p class="note">六级词书包含四级基础词与六级标签词，按词条去重。标签词集不代表官方完整考试大纲，也不保证每个词必考。音标来自词库。四种自然合成词音由 Kokoro 生成，未缓存时可回退手机离线英语语音。</p><p class="small">复习引擎：ts-fsrs（MIT）<br>词库许可：ECDICT（MIT）<br>自然合成发音：Kokoro（Apache-2.0 模型）<br>完整版权声明随应用打包保存。</p><button class="outline" data-action="license">查看版权声明</button>`,'credits');return;}
+    if(act==='credits'){openModal('词库与开源许可',`<p class="small">词库：ECDICT，skywind3000<br>四级词书 ${dictionaries[BOOKS[0].id].length.toLocaleString()} 词；六级词书 ${dictionaries[BOOKS[1].id].length.toLocaleString()} 词。保留中文释义、音标和词形。</p><p class="note">六级词书包含四级基础词与六级标签词，按词条去重。标签词集不代表官方完整考试大纲，也不保证每个词必考。音标来自词库。六种自然合成词音由 Kokoro 生成，未缓存时可回退手机离线英语语音。</p><p class="small">复习引擎：ts-fsrs（MIT）<br>词库许可：ECDICT（MIT）<br>自然合成发音：Kokoro（Apache-2.0 模型）<br>完整版权声明随应用打包保存。</p><button class="outline" data-action="license">查看版权声明</button>`,'credits');return;}
     if(act==='license'){fetch('licenses.txt').then(r=>{if(!r.ok)throw Error('read');return r.text();}).then(t=>openModal('版权声明',`<pre class="small">${esc(t)}</pre>`,'license')).catch(()=>notify('请查看源码包中的完整 LICENSE 文件'));return;}
-    if(act==='quiz'){startQuiz();return;}
-    if(act==='quiz-check'||act==='quiz-skip'){if(!quiz || quiz.checked)return;quiz.answer=$('#quiz-input').value;quiz.result=act!=='quiz-skip'&&quiz.answer.trim().toLowerCase()===quiz.list[quiz.index].word.toLowerCase();if(quiz.result)quiz.correct++;else quiz.wrong.push(quiz.list[quiz.index]);quiz.checked=true;showQuiz();return;}
-    if(act==='quiz-next'){if(!quiz || !quiz.checked)return;quiz.index++;quiz.checked=false;quiz.answer='';showQuiz();return;}
-    if(act==='memory-aid'){showMemoryAid(button.dataset.id);return;}
-    if(act==='visual-gallery'){showVisualGallery();return;}
-    if(act==='practice'||act==='practice-visual'){startPractice({visual:act==='practice-visual'});return;}
-    if(act==='practice-retry'){const ids=practiceUI?.retryIds;if(ids?.length)startPractice({ids});return;}
-    if(act==='practice-hint'){if(practiceUI&&!practiceUI.feedback){practiceUI.input=$('#practice-input')?.value||'';practiceUI.hinted=true;practiceUI.aidOpen=true;showPractice();}return;}
-    if(act==='practice-reveal'){if(practiceUI&&!practiceUI.feedback){practiceUI.revealed=true;showPractice();}return;}
-    if(act==='practice-grade'){if(practiceUI?.revealed)submitPractice(button.dataset.result);return;}
-    if(act==='practice-check'){submitPractice();return;}
-    if(act==='practice-skip'){if(practiceUI){practiceUI.input='';const input=$('#practice-input');if(input)input.value='';submitPractice('wrong');}return;}
-    if(act==='practice-next'){if(practiceUI?.feedback){practiceUI.feedback=null;practiceUI.revealed=false;practiceUI.hinted=false;practiceUI.aidOpen=false;practiceUI.input='';showPractice();}return;}
     if(act==='reload'){location.reload();return;}
     if(act==='raw-export'){try{const text=native()?.readState?.()||localStorage.getItem(STORE);if(text)exportFile(text,'背单词-原记录恢复.json');else notify('没有可导出的记录');}catch(_){notify('无法读取原记录，请先保留应用');}return;}
   }
@@ -640,7 +581,6 @@
   document.addEventListener('input',ev=>{
     if(ev.target.id==='search'){query=ev.target.value;listLimit=60;clearTimeout(searchTimer);searchTimer=setTimeout(updateSearchResults,100);}
     if(ev.target.id==='feedback-text')feedbackDraft=ev.target.value;
-    if(ev.target.id==='practice-input'&&practiceUI)practiceUI.input=ev.target.value;
   });
   document.addEventListener('keydown',ev=>{
     if(ev.key==='Escape'){if(window.handleBack())ev.preventDefault();}
@@ -651,8 +591,6 @@
       else if(first && !ev.shiftKey && (document.activeElement===last || !modalRoot.contains(document.activeElement))){ev.preventDefault();first.focus();}
     }
     if(ev.key==='Enter'&&ev.target.id==='search'){ev.preventDefault();clearTimeout(searchTimer);updateSearchResults();ev.target.blur();}
-    if(ev.key==='Enter' && ev.target.id==='quiz-input'){ev.preventDefault();const b=modalRoot.querySelector('[data-action="quiz-check"]');if(b)handleAction(b,ev);}
-    if(ev.key==='Enter' && ev.target.id==='practice-input'&&!ev.isComposing){ev.preventDefault();const b=modalRoot.querySelector('[data-action="practice-check"]');if(b)handleAction(b,ev);}
     if(ev.key===' ' && page==='study'&&!modalType&&!['INPUT','TEXTAREA','BUTTON'].includes(ev.target.tagName)){ev.preventDefault();if(!revealed){revealed=true;render();}}
   });
   $('#import-file').addEventListener('change',async ev=>{const file=ev.target.files[0];if(!file)return;try{if(file.size>E().constants.MAX_BACKUP_BYTES)notify('备份文件过大，未修改记录');else receiveImport(await file.text());}catch(_){notify('文件无法读取，当前记录保持完整。请重新选择备份。');}finally{ev.target.value='';}});
@@ -688,5 +626,5 @@
   }
   boot();
   // Local QA accessor: immutable snapshot, no state mutation or device operations.
-  window.QingciDebug={snapshot:()=>({state:state?clone(state):null,library:libraryState?clone(libraryState):null,activeWordbook:activeBook().id,current:current?clone(current):null,page,mode,extraNew,revealed,storageError,loadError:loadError?.message,practice:practiceUI?{session:clone(practiceUI.session),current:P().current(practiceUI.session),summary:P().summary(practiceUI.session),revealed:practiceUI.revealed,hinted:practiceUI.hinted,feedback:clone(practiceUI.feedback)}:null})};
+  window.QingciDebug={snapshot:()=>({state:state?clone(state):null,library:libraryState?clone(libraryState):null,activeWordbook:activeBook().id,current:current?clone(current):null,page,mode,extraNew,revealed,storageError,loadError:loadError?.message})};
 })();
