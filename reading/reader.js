@@ -71,7 +71,7 @@ async function render(n, holder) {
 try {
   const asset = name => new URL(name,import.meta.url).href;
   const loading = pdfjs.getDocument({range:new DocumentChunks(import.meta.url),cMapUrl:asset('vendor/cmaps/'),cMapPacked:true,standardFontDataUrl:asset('vendor/standard_fonts/'),wasmUrl:asset('vendor/wasm/'),iccUrl:asset('vendor/iccs/'),isEvalSupported:false,disableStream:true,disableAutoFetch:true});
-  loading.onProgress = ({loaded,total}) => { status.textContent = total ? `正在加载文档… ${Math.min(100,Math.round(loaded/total*100))}%` : '正在加载文档…'; };
+  loading.onProgress = ({loaded,total}) => { if(!doc) status.textContent = total ? `正在加载文档… ${Math.min(100,Math.round(loaded/total*100))}%` : '正在加载文档…'; };
   doc = await loading.promise;
   const first = await doc.getPage(1); const size = first.getViewport({scale:1}); first.cleanup();
   document.querySelector('#page-total').textContent = doc.numPages;
