@@ -9,7 +9,7 @@
       return original.call(this,owns(key)?prefix+key:key,...args);
     };
   }
-  window.BeidanciDemo = Object.freeze({version:'1.0.6',storagePrefix:prefix,nativeFeatures:'unavailable; APP operation-specific explanations remain active',uploadsEnabled:false});
+  window.BeidanciDemo = Object.freeze({version:'1.0.9',storagePrefix:prefix,nativeFeatures:'unavailable; APP operation-specific explanations remain active',uploadsEnabled:false});
   document.addEventListener('click',event=>{
     if(event.target.closest('[data-action="audio"]')) {
       const toast=document.getElementById('toast');

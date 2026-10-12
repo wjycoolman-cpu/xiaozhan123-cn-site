@@ -10,7 +10,7 @@
   const clone = typeof window.structuredClone === 'function' ? window.structuredClone.bind(window) : value => JSON.parse(JSON.stringify(value));
   const native = () => window.AndroidBridge || null;
   const STORE = 'qingci.cet4.state.v1';
-  const APP_VERSION = '1.0.6';
+  const APP_VERSION = '1.0.9';
   const BOOKS = [
     {id:'ecdict-cet4',name:'四级',code:'CET-4',file:'words.json'},
     {id:'ecdict-cet6',name:'六级',code:'CET-6',file:'words-cet6.json'},
@@ -109,7 +109,7 @@
   function showVersion() {
     try {const status=native()?.getUpdateStatus?.();if(status)window.onNativeUpdateStatus(status);}catch(_){}
     const connected=Boolean(native()?.getUpdateStatus);
-    openModal('版本与更新',`<p class="small">词间 ${APP_VERSION}<br>四级与六级学习记录保存在手机中</p><p class="note">${connected?'更新来自你的 CloudBase。自动更新开启时，启动或回到应用会检查已发布的新版本。':'浏览器预览不安装应用；Android 安装版可检查 CloudBase 更新。'}</p><p id="update-status" class="small" role="status" aria-live="polite"></p><progress id="update-progress" max="100" value="0" aria-label="新版下载进度" hidden></progress><button id="check-update" class="secondary" data-action="check-update">检查更新</button><button id="resume-update" class="outline" data-action="resume-update" hidden>继续系统安装</button>`,'version');
+    openModal('版本与更新',`<p class="small">背单词 ${APP_VERSION}<br>四级与六级学习记录保存在手机中</p><p class="note">${connected?'更新来自小站官网。自动更新开启时，启动或回到应用会检查已发布的新版本。':'浏览器预览不安装应用；Android 安装版可检查官网更新。'}</p><p id="update-status" class="small" role="status" aria-live="polite"></p><progress id="update-progress" max="100" value="0" aria-label="新版下载进度" hidden></progress><button id="check-update" class="secondary" data-action="check-update">检查更新</button><button id="resume-update" class="outline" data-action="resume-update" hidden>继续系统安装</button>`,'version');
     renderUpdateStatus();
   }
 
@@ -190,7 +190,7 @@
   function stopSpeech() {try{native()?.stopSpeech?.(); if('speechSynthesis' in window) speechSynthesis.cancel();}catch(_) {}}
 
   function topbar() {
-    return `<header class="topbar"><div class="brand"><div class="brandmark"><img src="icon.svg" alt=""></div><div class="brand-title">词间</div></div><div class="top-actions"><button class="book-switch" data-action="books" aria-label="切换词书，当前${activeBook().name}" aria-haspopup="dialog">${activeBook().name}${icon('down')}</button>${round('focus','focus','专注背词','plain')}${page==='study'?round('study-options','more','学习选项','plain study-options'):''}</div></header>`;
+    return `<header class="topbar"><div class="brand"><div class="brandmark"><img src="icon.svg" alt=""></div><div class="brand-title">背单词</div></div><div class="top-actions"><button class="book-switch" data-action="books" aria-label="切换词书，当前${activeBook().name}" aria-haspopup="dialog">${activeBook().name}${icon('down')}</button>${round('focus','focus','专注背词','plain')}${page==='study'?round('study-options','more','学习选项','plain study-options'):''}</div></header>`;
   }
   function navigation() {
     return `<nav class="nav" aria-label="主导航">${[['study','cards','背词'],['library','book','词库'],['progress','chart','进度'],['settings','settings','设置']].map(([id,glyph,label])=>`<button class="navbutton ${page===id?'active':''}" data-action="nav" data-page="${id}" ${page===id?'aria-current="page"':''}>${icon(glyph)}<span>${label}</span></button>`).join('')}</nav>`;
@@ -275,7 +275,7 @@
   const switchRow = (title,caption,key) => `<div class="setting-row"><div><div class="setting-label">${title}</div><p class="setting-caption">${caption}</p></div><button class="toggle ${state.settings[key]?'on':''}" data-action="toggle" data-key="${key}" role="switch" aria-checked="${!!state.settings[key]}" aria-label="${title}"></button></div>`;
   function settingsPage() {
     const themes={system:'跟随系统',light:'浅色',dark:'深色'};
-    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('发音','四种自然合成声线，可试听与切换','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存四级与六级的全部学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆、图像联想和跨日复习','help')}${row('版本与更新',APP_VERSION+' · CloudBase 更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','ECDICT 四级与六级词集 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
+    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('发音','四种自然合成声线，可试听与切换','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存四级与六级的全部学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆、图像联想和跨日复习','help')}${row('版本与更新',APP_VERSION+' · 官网更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','ECDICT 四级与六级词集 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
   }
 
   function openModal(title,html,type) {
@@ -365,7 +365,7 @@
       closeModal();render();
     }
   }
-  function exportFile(text,name='词间-学习备份.json') {
+  function exportFile(text,name='背单词-学习备份.json') {
     if(native()?.exportData) {native().exportData(text);return;}
     const blob=new Blob([text],{type:'application/json'}),url=URL.createObjectURL(blob);
     const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),3000);notify('备份已生成，请查看下载文件');
@@ -634,7 +634,7 @@
     if(act==='practice-skip'){if(practiceUI){practiceUI.input='';const input=$('#practice-input');if(input)input.value='';submitPractice('wrong');}return;}
     if(act==='practice-next'){if(practiceUI?.feedback){practiceUI.feedback=null;practiceUI.revealed=false;practiceUI.hinted=false;practiceUI.aidOpen=false;practiceUI.input='';showPractice();}return;}
     if(act==='reload'){location.reload();return;}
-    if(act==='raw-export'){try{const text=native()?.readState?.()||localStorage.getItem(STORE);if(text)exportFile(text,'词间-原记录恢复.json');else notify('没有可导出的记录');}catch(_){notify('无法读取原记录，请先保留应用');}return;}
+    if(act==='raw-export'){try{const text=native()?.readState?.()||localStorage.getItem(STORE);if(text)exportFile(text,'背单词-原记录恢复.json');else notify('没有可导出的记录');}catch(_){notify('无法读取原记录，请先保留应用');}return;}
   }
   document.addEventListener('click',ev=>{const button=ev.target.closest('[data-action]');if(!button||button.disabled)return;handleAction(button,ev);});
   document.addEventListener('input',ev=>{
