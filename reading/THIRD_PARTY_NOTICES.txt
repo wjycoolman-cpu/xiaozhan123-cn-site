@@ -1,0 +1,4 @@
+This reader uses Mozilla PDF.js (pdfjs-dist 6.4.299).
+Source: https://github.com/mozilla/pdf.js
+License: Apache License 2.0. See vendor/LICENSE.
+Additional notices for bundled resources are retained within their directories.
