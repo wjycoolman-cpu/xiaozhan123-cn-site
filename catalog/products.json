@@ -110,17 +110,20 @@
       "summary": "四级、六级英语词汇学习",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.0.13",
-      "versionCode": 14,
+      "version": "1.0.14",
+      "versionCode": 15,
       "packageName": "com.qingci.cet4",
       "compatibility": "Android 6.0 及以上",
-      "sizeBytes": 25386375,
-      "downloadUrl": "./qingci-app/releases/qingci-1.0.13.apk",
-      "filename": "qingci-1.0.13.apk",
-      "sha256": "7d57a697af78a99b7eea46488ad5dfe2cbd618b65a3a5c404dcb09eab4baff15",
+      "sizeBytes": 37146496,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.14.apk",
+      "filename": "qingci-1.0.14.apk",
+      "sha256": "14c2d1f7c395b0f420d97701ad731addd2610bb0d71c36f937ac0e4d322675d5",
       "updateManifestUrl": "https://xiaozhan123.cn/qingci-app/update.json",
       "releaseNotes": [
-        "新增基础常用800词，六种音色全部离线可听。新增44个英式音标入门卡片、132次例词试听入口与发音要点。兼容旧记录与旧备份，首页保持简洁。 基础词的列表、中文搜索及详情统一展示常用义。"
+        "默认四级与六级；基础常用词和音标改到设置中自主开启。",
+        "44 个音标可直接点按试听独立音素，说明与例词分开。",
+        "基础例词逐词独立生成，隔离连续切片尾音；保留真实词尾。",
+        "关闭扩展学习保留进度，沿用原包名、签名与播放偏好。"
       ],
       "feedback": {
         "formUrl": "https://xiaozhan123.cn/beidanci/feedback/"

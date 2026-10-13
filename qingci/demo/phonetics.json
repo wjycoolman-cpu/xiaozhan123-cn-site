@@ -1,7 +1,7 @@
 {
   "schema": "qingci-phonetics/v1",
   "accent": "en-GB",
-  "description": "常见英式教学记法；通过例词听声音，非单独音素录音。不同地区及词典记法可能不同。",
+  "description": "常见英式教学记法；音标直接音素合成试听与逐词独立生成的例词。不同地区与词典记法可能不同。",
   "lessons": [
     {
       "id": "i-long",
@@ -26,7 +26,15 @@
           "ipa": "ɡriːn",
           "meaning": "绿色"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/i-long.m4a",
+        "bytes": 6285,
+        "sha256": "3e3a9485cc6448799a806cd577bba952927096098ba2feb452d09c2a9b6239f4",
+        "durationMs": 663,
+        "phonemes": "iː",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "i-short",
@@ -51,7 +59,15 @@
           "ipa": "sɪt",
           "meaning": "坐"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/i-short.m4a",
+        "bytes": 3734,
+        "sha256": "29b681d9d7278db4395dd8b39a45509e46fb68dcff6cc5fd3133481be559fc68",
+        "durationMs": 509,
+        "phonemes": "ɪ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "e",
@@ -76,7 +92,15 @@
           "ipa": "red",
           "meaning": "红色"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/e.m4a",
+        "bytes": 3646,
+        "sha256": "bc0d8790648adb43ee57841d31bcd6e0c04e4c417806bbaa198ae4647b58e8f6",
+        "durationMs": 509,
+        "phonemes": "e",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ae",
@@ -101,7 +125,15 @@
           "ipa": "ˈæpəl",
           "meaning": "苹果"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ae.m4a",
+        "bytes": 3322,
+        "sha256": "bae05a7af353689af63409b35a77205ee7454cb55dc5e4a08aabd1347cc311d1",
+        "durationMs": 513,
+        "phonemes": "æ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "a-long",
@@ -126,7 +158,15 @@
           "ipa": "pɑːk",
           "meaning": "公园"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/a-long.m4a",
+        "bytes": 4393,
+        "sha256": "32a1344a7000c29485d29465ea6868aae559c2638b9e7bcb6ecdc7c003f09439",
+        "durationMs": 613,
+        "phonemes": "ɑː",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "o-short",
@@ -151,7 +191,15 @@
           "ipa": "bɒks",
           "meaning": "盒子"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/o-short.m4a",
+        "bytes": 3213,
+        "sha256": "d67cd2fdce50a5647662df5128ba9fb450e23c98bc6f8390552f83e508e02a5a",
+        "durationMs": 534,
+        "phonemes": "ɒ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "o-long",
@@ -176,7 +224,15 @@
           "ipa": "fɔː",
           "meaning": "四"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/o-long.m4a",
+        "bytes": 4449,
+        "sha256": "d291c8e0d30345d2619df120e215c19e61996d252b0c9fa091fc6b9720a6a880",
+        "durationMs": 609,
+        "phonemes": "ɔː",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "u-short",
@@ -201,7 +257,15 @@
           "ipa": "fʊt",
           "meaning": "脚"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/u-short.m4a",
+        "bytes": 3469,
+        "sha256": "7e8c9aabad0d9066349311cdf78f8afb54b6028d60df86aa974163d45217e729",
+        "durationMs": 509,
+        "phonemes": "ʊ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "u-long",
@@ -226,7 +290,15 @@
           "ipa": "skuːl",
           "meaning": "学校"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/u-long.m4a",
+        "bytes": 3959,
+        "sha256": "6cf0c634ae06bd41d027abdf0a1bbc7e0f21972e8430032defd3eea60d12aa74",
+        "durationMs": 634,
+        "phonemes": "uː",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "uh",
@@ -251,7 +323,15 @@
           "ipa": "bʌs",
           "meaning": "公交车"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/uh.m4a",
+        "bytes": 3174,
+        "sha256": "acb5a2a81876b1bb97d2502675dde7d70d2745cb9c4956143a13eda6d51baa1d",
+        "durationMs": 534,
+        "phonemes": "ʌ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "er",
@@ -276,7 +356,15 @@
           "ipa": "wɜːk",
           "meaning": "工作"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/er.m4a",
+        "bytes": 3401,
+        "sha256": "d27a05ab6cbe8001ddcfcd6ed10089a0feaf13eaf22a82b8cbe8cf3c5ab17142",
+        "durationMs": 588,
+        "phonemes": "ɜː",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "schwa",
@@ -301,7 +389,15 @@
           "ipa": "bəˈnɑːnə",
           "meaning": "香蕉"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/schwa.m4a",
+        "bytes": 3135,
+        "sha256": "f4627f4d5edeab093f7c353da7c464f945f0582b2cda3b8b6101910ee0634ea7",
+        "durationMs": 509,
+        "phonemes": "ə",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ei",
@@ -326,7 +422,15 @@
           "ipa": "reɪn",
           "meaning": "雨"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ei.m4a",
+        "bytes": 5876,
+        "sha256": "e356604360622317bd3613e1705d0dc91a9571a9972a8c0907acf905a5aa9a87",
+        "durationMs": 688,
+        "phonemes": "eɪ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ai",
@@ -351,7 +455,15 @@
           "ipa": "faɪv",
           "meaning": "五"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ai.m4a",
+        "bytes": 4294,
+        "sha256": "78266001c52c153ea42b936f7e8b84e467a643ef2688ab81865dd80a511933fa",
+        "durationMs": 638,
+        "phonemes": "aɪ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "oi",
@@ -376,7 +488,15 @@
           "ipa": "kɔɪn",
           "meaning": "硬币"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/oi.m4a",
+        "bytes": 4366,
+        "sha256": "51b3bade390ad55085f37adb94d5da549c60eb40eda3470fb05eafed2f320d5f",
+        "durationMs": 663,
+        "phonemes": "ɔɪ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ou",
@@ -401,7 +521,15 @@
           "ipa": "nəʊ",
           "meaning": "不"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ou.m4a",
+        "bytes": 4252,
+        "sha256": "558883dd6830ae3ae632ad01db668e72364840027420ef4a862f9b48ffb49cb9",
+        "durationMs": 588,
+        "phonemes": "əʊ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "au",
@@ -426,7 +554,15 @@
           "ipa": "maʊθ",
           "meaning": "嘴"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/au.m4a",
+        "bytes": 4286,
+        "sha256": "059dbb7d6fd8c90076382c8a3631a33e201c561ebb55f308428164c309e18162",
+        "durationMs": 613,
+        "phonemes": "aʊ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ia",
@@ -451,7 +587,15 @@
           "ipa": "hɪə",
           "meaning": "这里"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ia.m4a",
+        "bytes": 4261,
+        "sha256": "ccd0f05e232ca65f2522de3dede8a5e8da036f94ad90d6a63ab0d183d5744d75",
+        "durationMs": 613,
+        "phonemes": "ɪə",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ea",
@@ -476,7 +620,15 @@
           "ipa": "beə",
           "meaning": "熊"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ea.m4a",
+        "bytes": 5475,
+        "sha256": "d031664fd945b5c67ba6662e33d2e31c9932e73eef2a461eea198c6f37c59d14",
+        "durationMs": 688,
+        "phonemes": "eə",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ua",
@@ -501,7 +653,15 @@
           "ipa": "ʃʊə",
           "meaning": "确定的"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ua.m4a",
+        "bytes": 3639,
+        "sha256": "0c5eec3b4c9bd1b77c0a1757c8b4d9e10bc23d86784870f9a339abe964d1790e",
+        "durationMs": 584,
+        "phonemes": "ʊə",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "p",
@@ -526,7 +686,15 @@
           "ipa": "kʌp",
           "meaning": "杯子"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/p.m4a",
+        "bytes": 2766,
+        "sha256": "678ad427020d468ae11a537a6f893c4e2d77b3375f6084996755260584f63990",
+        "durationMs": 456,
+        "phonemes": "p",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "b",
@@ -551,7 +719,15 @@
           "ipa": "dʒɒb",
           "meaning": "工作"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/b.m4a",
+        "bytes": 2784,
+        "sha256": "97ed0a1017cc7611efe9695bfd3efef4347e1df3bb5626f2e91311dee548ff62",
+        "durationMs": 456,
+        "phonemes": "b",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "t",
@@ -576,7 +752,15 @@
           "ipa": "kæt",
           "meaning": "猫"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/t.m4a",
+        "bytes": 2654,
+        "sha256": "8e796281486b63e42d744bd6d4c6c61e2426b7e288220febe3bba36c798d942e",
+        "durationMs": 459,
+        "phonemes": "t",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "d",
@@ -601,7 +785,15 @@
           "ipa": "bed",
           "meaning": "床"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/d.m4a",
+        "bytes": 2797,
+        "sha256": "5aed5b3cea9ac40071c26cfdae37581448cb9ea03f237bd93d5fbea46ec2374c",
+        "durationMs": 456,
+        "phonemes": "d",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "k",
@@ -626,7 +818,15 @@
           "ipa": "bʊk",
           "meaning": "书"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/k.m4a",
+        "bytes": 2980,
+        "sha256": "8a7ca30d41c4dc4d9960c539b90830449bc5994454f065b2dc11c0fac135a286",
+        "durationMs": 456,
+        "phonemes": "k",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "g",
@@ -651,7 +851,15 @@
           "ipa": "bæɡ",
           "meaning": "包"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/g.m4a",
+        "bytes": 3388,
+        "sha256": "9c6dfa0eb9dbd6351312c93123ffa0afa47ed37a66f1cdfd8885e0459107eefa",
+        "durationMs": 456,
+        "phonemes": "ɡ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "f",
@@ -676,7 +884,15 @@
           "ipa": "liːf",
           "meaning": "叶子"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/f.m4a",
+        "bytes": 2861,
+        "sha256": "4e581571cb48c13ee2fa5b58546740a0671239f24c82a23475a6071cdee153ae",
+        "durationMs": 477,
+        "phonemes": "f",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "v",
@@ -701,7 +917,15 @@
           "ipa": "lʌv",
           "meaning": "爱"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/v.m4a",
+        "bytes": 2920,
+        "sha256": "a6a343da296f5ce844932e6868b7f866a68d1c8c6f609af40cbd3b8c7c157ede",
+        "durationMs": 484,
+        "phonemes": "v",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "th",
@@ -726,7 +950,15 @@
           "ipa": "maʊθ",
           "meaning": "嘴"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/th.m4a",
+        "bytes": 3448,
+        "sha256": "21b4679f48fd6efcfa83a26a229bed600ce3841dbcfbb2c4fcbd0e2f24981394",
+        "durationMs": 481,
+        "phonemes": "θ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "dh",
@@ -751,7 +983,15 @@
           "ipa": "ˈbrʌðə",
           "meaning": "兄弟"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/dh.m4a",
+        "bytes": 2821,
+        "sha256": "f1bf06b80caf26b9e1a3e66cdd23f466d7c619df7b524120f1544eda8c851c09",
+        "durationMs": 456,
+        "phonemes": "ð",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "s",
@@ -776,7 +1016,15 @@
           "ipa": "bʌs",
           "meaning": "公交车"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/s.m4a",
+        "bytes": 2717,
+        "sha256": "619cc25c9689fd7e2c3cb4a198cff0bdeaf86571f0a15d7eb4fee17fb26ce834",
+        "durationMs": 456,
+        "phonemes": "s",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "z",
@@ -801,7 +1049,15 @@
           "ipa": "ˈiːzi",
           "meaning": "容易的"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/z.m4a",
+        "bytes": 3427,
+        "sha256": "649647be5712132359446515ddd11fad52c1c555994f9c5070053e7e64722ba8",
+        "durationMs": 484,
+        "phonemes": "z",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "sh",
@@ -826,7 +1082,15 @@
           "ipa": "fɪʃ",
           "meaning": "鱼"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/sh.m4a",
+        "bytes": 2922,
+        "sha256": "e99353d3ebaffa76dc10cda7aeca5e6ecd9fe1410c31acb73443ada7b2ba1fe8",
+        "durationMs": 484,
+        "phonemes": "ʃ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "zh",
@@ -851,7 +1115,15 @@
           "ipa": "ˈvɪʒən",
           "meaning": "视力"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/zh.m4a",
+        "bytes": 3425,
+        "sha256": "4098ab2fe6e1cb5095e191f37b45d48ae93bc3ed4a6e15a96da8b3a2cc88bda0",
+        "durationMs": 481,
+        "phonemes": "ʒ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "h",
@@ -876,7 +1148,15 @@
           "ipa": "hɒt",
           "meaning": "热的"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/h.m4a",
+        "bytes": 3359,
+        "sha256": "243bad432cf1a7005f157099d9a678fb7f19094abc67e0d91c70ccdfcf84a58e",
+        "durationMs": 456,
+        "phonemes": "h",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ch",
@@ -901,7 +1181,15 @@
           "ipa": "wɒtʃ",
           "meaning": "观看"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ch.m4a",
+        "bytes": 2829,
+        "sha256": "0dbb6de95b6d766eec568c8b5b1cf3e7c21ea64844c8c867b04d38e192d3b32e",
+        "durationMs": 456,
+        "phonemes": "ʧ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "j",
@@ -926,7 +1214,15 @@
           "ipa": "ˈɒrɪndʒ",
           "meaning": "橙子"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/j.m4a",
+        "bytes": 2830,
+        "sha256": "03003cc7c08f6e1f18c5aa2f95fe5f3d45a5bb33bf701c6cc789c6f053fe3686",
+        "durationMs": 477,
+        "phonemes": "ʤ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "m",
@@ -951,7 +1247,15 @@
           "ipa": "neɪm",
           "meaning": "名字"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/m.m4a",
+        "bytes": 3029,
+        "sha256": "a2a415fa395756f93c5186c4842cf01ef69478fef0b2e3a2f7b70e335cb9ea40",
+        "durationMs": 484,
+        "phonemes": "m",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "n",
@@ -976,7 +1280,15 @@
           "ipa": "sʌn",
           "meaning": "太阳"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/n.m4a",
+        "bytes": 2901,
+        "sha256": "01217791b3fba7e574fd42ee828e8a738276779f1b6c4f8495c825094758f311",
+        "durationMs": 484,
+        "phonemes": "n",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "ng",
@@ -1001,7 +1313,15 @@
           "ipa": "lɒŋ",
           "meaning": "长的"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/ng.m4a",
+        "bytes": 2998,
+        "sha256": "cd1e6f0d37a226c9f0fb723711f3df17783f8787578872f69686cf14b5c7c746",
+        "durationMs": 484,
+        "phonemes": "ŋ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "l",
@@ -1026,7 +1346,15 @@
           "ipa": "skuːl",
           "meaning": "学校"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/l.m4a",
+        "bytes": 2946,
+        "sha256": "509180bfba87161722274225e5ce22d4fbb125b64446fdb4db063482510e2e2e",
+        "durationMs": 484,
+        "phonemes": "l",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "r",
@@ -1051,7 +1379,15 @@
           "ipa": "raɪt",
           "meaning": "正确的"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/r.m4a",
+        "bytes": 2888,
+        "sha256": "d95c7d815ee1bfe5383e295b98e3cd86f318a32395105cf016e1eb871009dd05",
+        "durationMs": 481,
+        "phonemes": "ɹ",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "y",
@@ -1076,7 +1412,15 @@
           "ipa": "ˈjeləʊ",
           "meaning": "黄色"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/y.m4a",
+        "bytes": 2766,
+        "sha256": "90e088ab62a35dab25eacb704e6d20afca2c94632fb761e394acf553cefb7402",
+        "durationMs": 456,
+        "phonemes": "j",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     },
     {
       "id": "w",
@@ -1101,7 +1445,15 @@
           "ipa": "wʌn",
           "meaning": "一"
         }
-      ]
+      ],
+      "audio": {
+        "path": "phoneme-audio/w.m4a",
+        "bytes": 2729,
+        "sha256": "955a0a1114fdceb54a144867a8274289f4f98abd916f351b8fa01f4b83590d1a",
+        "durationMs": 456,
+        "phonemes": "w",
+        "source": "Kokoro-82M / bf_emma / direct phoneme input"
+      }
     }
   ],
   "sources": [
