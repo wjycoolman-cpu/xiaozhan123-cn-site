@@ -1,6 +1,11 @@
 (function (global) {
   'use strict';
-  const PRODUCTS = new Set(['skymyth', 'pocket-piano', 'kfc-order', 'mianji', 'qingci', 'question-bank']);
+  const PRODUCTS = new Set(['skymyth', 'pocket-piano', 'mianji', 'qingci', 'question-bank', 'stardew-farm', 'resume-studio', 'yuji', 'subtitle-studio', 'website']);
+  const LEGACY_PRODUCTS = new Set(['kfc-order']);
+  const GATEWAY_ORIGIN = 'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com';
+  const APPROVED_ENDPOINT = GATEWAY_ORIGIN + '/v1/functions/qingci-feedback';
+  const DEVICE_KEY = 'website-feedback-anonymous-device-v1';
+  let deviceId, authSession;
   const SCHEMA = 'app-center-feedback/v1';
   const ACK_SCHEMA = 'app-center-feedback-ack/v1';
   const DB_NAME = 'app-center-feedback-private-v1';
@@ -9,7 +14,7 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   const emptyState = () => ({ schema: 'feedback-draft/v1', draft: { message: '', contact: '', updatedAt: 0, intentId: null }, attempts: [] });
   const sameContent = (draft, payload) => draft.message === payload.message && draft.contact === payload.contact;
-  const requireProduct = id => { if (!PRODUCTS.has(id)) throw new Error('unsupported_product'); };
+  const requireProduct = id => { if (!PRODUCTS.has(id) && !LEGACY_PRODUCTS.has(id)) throw new Error('unsupported_product'); };
   const encoder = new TextEncoder();
   const utf8Length = value => encoder.encode(value).byteLength;
   const validTimestamp = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
@@ -31,8 +36,7 @@
     try {
       const page = new URL(global.location.href), u = new URL(value, page);
       if (u.username || u.password || u.href.includes('?') || u.href.includes('#')) return '';
-      const approved = 'https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1';
-      if (value === approved) return approved;
+      if (value === APPROVED_ENDPOINT) return APPROVED_ENDPOINT;
       const loopback = ['localhost', '127.0.0.1', '[::1]'];
       return loopback.includes(page.hostname) && loopback.includes(u.hostname) && u.protocol === 'http:' ? u.href : '';
     } catch { return ''; }
@@ -61,12 +65,66 @@
     const keys = ['schema', 'requestId', 'productId', 'version', 'message', 'contact', 'source', 'createdAt'];
     return p && typeof p === 'object' && !Array.isArray(p) && Object.keys(p).length === keys.length &&
       keys.every(k => Object.prototype.hasOwnProperty.call(p, k) && typeof p[k] === 'string') &&
-      p.schema === SCHEMA && /^wf_[a-f0-9]{32}$/.test(p.requestId) && p.productId === productId && PRODUCTS.has(productId) && p.source === 'app-center' &&
+      p.schema === SCHEMA && /^wf_[a-f0-9]{32}$/.test(p.requestId) && p.productId === productId && (PRODUCTS.has(productId) || LEGACY_PRODUCTS.has(productId)) && p.source === 'app-center' &&
       p.version.length <= 80 && !/[\u0000-\u001f\u007f-\u009f]/.test(p.version) && validTimestamp(p.createdAt) &&
       Array.from(p.message).length >= 3 && Array.from(p.message).length <= 4000 && utf8Length(p.message) <= 12 * 1024 &&
       Array.from(p.contact).length <= 160 && !forbiddenControls(p.message) && !forbiddenControls(p.contact) && utf8Length(JSON.stringify(p)) <= 16 * 1024;
   }
   const savedPayloadValid = (p, productId) => validPayload(p, productId) || validLegacyPayload(p, productId);
+
+  function anonymousDeviceId() {
+    if (deviceId) return deviceId;
+    try { deviceId = global.localStorage.getItem(DEVICE_KEY); } catch {}
+    if (!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(deviceId || '')) {
+      if (!global.crypto?.getRandomValues) throw new Error('secure_random_unavailable');
+      const bytes = global.crypto.getRandomValues(new Uint8Array(16));
+      bytes[6] = (bytes[6] & 15) | 64; bytes[8] = (bytes[8] & 63) | 128;
+      const hex = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+      deviceId = [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16), hex.slice(16, 20), hex.slice(20)].join('-');
+      try { global.localStorage.setItem(DEVICE_KEY, deviceId); } catch {}
+    }
+    return deviceId;
+  }
+
+  function parseSmallJson(text, limit = 4096) {
+    try { return typeof text === 'string' && text.length <= limit ? JSON.parse(text) : null; } catch { return null; }
+  }
+
+  async function anonymousToken(signal) {
+    if (authSession && Date.now() < authSession.until) return authSession.value;
+    const response = await fetch(GATEWAY_ORIGIN + '/auth/v1/signin/anonymously', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'x-device-id': anonymousDeviceId() },
+      body: '{}', signal, credentials: 'omit', mode: 'cors', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer'
+    });
+    const body = parseSmallJson(await response.text(), 32768);
+    if (!response.ok || !body || typeof body.access_token !== 'string' || !body.access_token || body.access_token.length > 16384 ||
+        !Number.isFinite(body.expires_in) || body.expires_in <= 0 || body.expires_in > 86400 ||
+        (body.token_type !== undefined && String(body.token_type).toLowerCase() !== 'bearer')) throw new Error('anonymous_auth_unavailable');
+    authSession = { value: body.access_token, until: Date.now() + Math.max(0, body.expires_in - 60) * 1000 };
+    return authSession.value;
+  }
+
+  async function gatewayDelivery(rawPayload, signal) {
+    const envelope = JSON.stringify({ httpMethod: 'POST', headers: { 'content-type': 'application/json' }, body: rawPayload });
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const usedToken = await anonymousToken(signal);
+      const response = await fetch(APPROVED_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: 'Bearer ' + usedToken },
+        body: envelope, signal, credentials: 'omit', mode: 'cors', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer'
+      });
+      const wrapper = response.ok ? parseSmallJson(await response.text(), 16384) : null;
+      const validWrapper = wrapper && !Array.isArray(wrapper) && Number.isInteger(wrapper.statusCode) && wrapper.statusCode >= 100 && wrapper.statusCode <= 599 &&
+        typeof wrapper.body === 'string' && wrapper.body.length <= 4096 && (wrapper.isBase64Encoded === undefined || wrapper.isBase64Encoded === false);
+      if (response.status === 401 || (validWrapper && wrapper.statusCode === 401)) {
+        if (authSession?.value === usedToken) authSession = null;
+        if (attempt === 0) continue;
+        return { status: 401, ok: false, authenticationFailure: true };
+      }
+      if (!response.ok) return { status: response.status, ok: false };
+      if (!validWrapper) return { status: 200, ok: true, body: null };
+      return { status: wrapper.statusCode, ok: wrapper.statusCode >= 200 && wrapper.statusCode < 300, body: parseSmallJson(wrapper.body) };
+    }
+  }
 
   function prune(value, productId, now) {
     if (!value || value.schema !== 'feedback-draft/v1' || !value.draft || !Array.isArray(value.attempts)) throw new Error('invalid_saved_state');
@@ -156,7 +214,7 @@
 
   async function create(options = {}) {
     const now = options.now || Date.now;
-    const timeoutMs = Number.isFinite(options.timeoutMs) ? Math.max(10, Math.min(15000, options.timeoutMs)) : 15000;
+    const timeoutMs = Number.isFinite(options.timeoutMs) ? Math.max(10, Math.min(20000, options.timeoutMs)) : 20000;
     const store = await vault(now);
     const cache = new Map(), serial = new Map(), inFlight = new Set();
     function storageNotice() {
@@ -205,13 +263,18 @@
       const controller = new AbortController(), timer = setTimeout(() => controller.abort(), timeoutMs);
       let outcome;
       try {
-        const response = await fetch(target, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: controller.signal, credentials: 'omit', mode: 'cors', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer' });
+        const rawPayload = JSON.stringify(payload);
+        let response;
+        if (target === APPROVED_ENDPOINT) response = await gatewayDelivery(rawPayload, controller.signal);
+        else {
+          const reply = await fetch(target, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: rawPayload, signal: controller.signal, credentials: 'omit', mode: 'cors', cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer' });
+          response = { status: reply.status, ok: reply.ok, body: reply.ok ? parseSmallJson(await reply.text()) : null };
+        }
         if (response.status === 409) outcome = { kind: 'conflict', reason: 'id_conflict', payload };
+        else if (response.authenticationFailure) outcome = { kind: 'uncertain', reason: 'auth_unavailable', payload };
         else if (!response.ok) outcome = { kind: response.status === 408 || response.status === 429 || response.status >= 500 ? 'uncertain' : 'rejected', reason: 'http_' + response.status, payload };
         else {
-          const text = await response.text();
-          let body;
-          try { if (text.length > 4096) throw new Error(); body = JSON.parse(text); } catch { body = null; }
+          const body = response.body;
           outcome = body && !Array.isArray(body) && body.schema === ACK_SCHEMA && body.requestId === payload.requestId && body.productId === productId && ['accepted', 'duplicate'].includes(body.status) ?
             { kind: 'accepted', receiptStatus: body.status, payload } : { kind: 'uncertain', reason: 'ack_mismatch', payload };
         }

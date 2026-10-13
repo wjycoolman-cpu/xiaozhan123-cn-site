@@ -1,78 +1,49 @@
 <!doctype html>
 <html lang="zh-CN">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f6f5f1">
-<meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-q5lqEXqDI9adCSw1HNKNOM+8jKcSygBKldHO6/3qs/A='; style-src 'sha256-fg/jOIWiMiKJHCdULryxQbdQje+uNBSxslEqpJbFHmQ='; connect-src https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com; img-src 'self'; base-uri 'none'; form-action 'none'">
-<title>背单词 · 一句话建议</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#f6f5f1;color:#242821;font-family:system-ui,-apple-system,sans-serif}main{max-width:600px;margin:auto;padding:56px 24px max(36px,env(safe-area-inset-bottom))}.brand{display:block;color:#656b61;font-size:14px;letter-spacing:.06em;margin-bottom:52px;text-decoration:none}.label{font-size:12px;color:#73796f;margin-bottom:18px}h1{font-size:clamp(26px,6vw,34px);line-height:1.5;font-weight:600;letter-spacing:-.035em;margin:0 0 18px}p{font-size:15px;line-height:1.85;color:#646b60}textarea{display:block;width:100%;margin-top:28px;padding:18px;min-height:190px;resize:vertical;border:1px solid #d7dbd2;border-radius:15px;background:#fff;font:inherit;line-height:1.8;color:#242821}textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #566751;outline-offset:3px}.count{text-align:right;font-size:12px;color:#72796c;margin:9px 2px 24px}button{border:0;border-radius:12px;background:#2e3d2b;color:#fff;padding:16px 24px;font:inherit;font-weight:600;width:100%;cursor:pointer}button:disabled{opacity:.65;cursor:wait}.privacy{font-size:12px;margin-top:24px;text-align:center;line-height:1.8}#status{font-size:14px;min-height:24px;color:#865023}#thanks{padding-top:34px}[hidden]{display:none!important}@media(max-width:420px){main{padding-top:38px}.brand{margin-bottom:40px}}
-</style>
-<main>
- <a class="brand" href="/">背单词 / 使用反馈</a>
- <section id="question">
-  <div class="label">只有一题 · 约 30 秒</div>
-  <h1 id="prompt">使用「背单词」后，<br>你最希望改进什么？</h1>
-  <p id="hint">遇到的问题、不方便的操作，或最想增加的功能，都可以告诉我。</p>
-  <form id="form">
-   <textarea id="answer" aria-labelledby="prompt" aria-describedby="hint" maxlength="2000" required placeholder="如果能举一个具体例子，会更有帮助。"></textarea>
-   <div class="count"><span id="length">0</span> / 2000</div>
-   <button id="submit" type="submit">提交建议</button>
-   <p id="status" role="status" aria-live="polite"></p>
-  </form>
-  <p class="privacy">不要求姓名或联系方式，仅供开发者查看。<br>点击提交后，建议将保存到开发者的私有反馈信箱。<br>请勿填写密码等敏感信息。</p>
- </section>
- <section id="thanks" hidden tabindex="-1">
-  <div class="label">已成功收到</div><h1>谢谢你，<br>让背单词更好用。</h1>
-  <p>你的建议已保存，开发者会在后续改进时查看。现在可以关闭页面。</p>
- </section>
-</main>
-<script>'use strict';
-(() => {
- const base = 'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com';
- const form = document.querySelector('#form'), answer = document.querySelector('#answer');
- const button = document.querySelector('#submit'), status = document.querySelector('#status');
- const uuid = () => crypto.randomUUID();
- let device;
- try { device = localStorage.getItem('beidanci-feedback-device'); if (!device) { device = uuid(); localStorage.setItem('beidanci-feedback-device', device); } } catch { device = uuid(); }
- let auth = null, pending = null, busy = false;
- async function request(path, body, headers = {}) {
-  const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 20000);
-  try {
-   const r = await fetch(base + path, {method:'POST',headers:{'Content-Type':'application/json',...headers},body:JSON.stringify(body),signal:controller.signal,credentials:'omit',cache:'no-store'});
-   const data = await r.json();
-   if (!r.ok) { const error = new Error('request_failed'); error.status = r.status; throw error; }
-   return data;
-  } finally { clearTimeout(timer); }
- }
- async function token() {
-  if (auth && Date.now() < auth.until) return auth.value;
-  const data = await request('/auth/v1/signin/anonymously', {}, {'x-device-id':device});
-  if (!data.access_token || !Number.isFinite(data.expires_in)) throw new Error('auth_failed');
-  auth = {value:data.access_token,until:Date.now() + Math.max(0,data.expires_in - 60) * 1000};
-  return auth.value;
- }
- answer.addEventListener('input', () => { document.querySelector('#length').textContent = answer.value.length; });
- form.addEventListener('submit', async event => {
-  event.preventDefault(); if (busy) return;
-  const text = answer.value.trim();
-  if (!text || text.length > 2000) { status.textContent = '请填写 1–2000 字的建议。'; return; }
-  if (!pending || pending.text !== text) pending = {schema:'qingci-feedback/v1',packageName:'com.qingci.cet4',id:'qf_' + uuid().replaceAll('-',''),text,createdAt:new Date().toISOString(),version:'0.0.0'};
-  busy = true; button.disabled = true; answer.readOnly = true; status.textContent = '正在提交…';
-  try {
-   let result;
-   for (let attempt = 0; attempt < 2; attempt++) {
-    try { result = await request('/v1/functions/qingci-feedback', {httpMethod:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(pending)}, {Authorization:'Bearer ' + await token()}); break; }
-    catch (error) { if (error.status !== 401 || attempt !== 0) throw error; auth = null; }
-   }
-   const ack = JSON.parse(result.body);
-   if (result.statusCode !== 200 || ack.schema !== 'qingci-feedback-ack/v1' || ack.id !== pending.id || !['accepted','duplicate'].includes(ack.status)) throw new Error('unconfirmed');
-   document.querySelector('#question').hidden = true; document.querySelector('#thanks').hidden = false; document.querySelector('#thanks').focus();
-   answer.value = ''; pending = null;
-  } catch {
-   status.textContent = '暂未确认送达。你的文字仍保留在这里，请稍后重试；重复提交同一条不会重复收件。';
-  } finally { busy = false; button.disabled = false; answer.readOnly = false; }
- });
-})();
-</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self' https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>网站反馈 · 小站</title>
+  <link rel="canonical" href="https://xiaozhan123.cn/feedback/?product=qingci">
+  <link rel="stylesheet" href="/feedback/form.css">
+  <script src="/feedback-client.js" defer></script>
+  <script src="/feedback/form.js" defer></script>
+</head>
+<body data-legacy-feedback="qingci">
+  <header class="site-header"><a href="/" class="brand">小站</a><span>网站反馈</span></header>
+  <main>
+    <section class="intro"><h1>使用反馈</h1><p>遇到的问题、不方便的操作，或希望增加的功能，都可以告诉我。</p><p class="source-note" id="source-note" hidden></p></section>
+    <section class="receipt" id="receipt" hidden tabindex="-1" aria-labelledby="receipt-title">
+      <h2 id="receipt-title">已收到</h2><p id="receipt-message"></p>
+      <p class="receipt-number">反馈编号 <code id="receipt-id"></code></p>
+      <p class="muted">这表示反馈已进入开发者信箱，处理情况由开发者后续记录。</p>
+    </section>
+    <form id="form" novalidate>
+      <div class="field"><label for="product">反馈对象</label><select id="product" name="product" aria-describedby="product-version product-error" disabled>
+        <option value="">请选择反馈对象</option>
+        <option value="website">网站整体</option>
+        <option value="skymyth">天空传说</option>
+        <option value="pocket-piano">弹钢琴</option>
+        <option value="mianji">眠迹</option>
+        <option value="qingci">背单词</option>
+        <option value="question-bank">智能题库</option>
+        <option value="stardew-farm">星露谷自动农场助手</option>
+        <option value="resume-studio">简历工坊</option>
+        <option value="yuji">羽记</option>
+        <option value="subtitle-studio">中英字幕工坊</option>
+      </select><p class="field-note" id="product-version"></p><p class="field-error" id="product-error" hidden></p></div>
+      <div class="field"><label for="answer">反馈内容</label><textarea id="answer" name="message" rows="7" maxlength="8000" aria-describedby="answer-hint message-count message-error" placeholder="例如：我进行了什么操作，出现了什么问题，希望怎样改进。" required></textarea><div class="field-meta"><span id="answer-hint">3–4000 字</span><span id="message-count">0 / 4000</span></div><p class="field-error" id="message-error" hidden></p></div>
+      <div class="field"><label for="contact">联系方式 <span class="optional">选填</span></label><input id="contact" name="contact" type="text" maxlength="320" autocomplete="off" aria-describedby="contact-hint contact-error" placeholder="邮箱、QQ 或其他方便回复的方式"><p class="field-note" id="contact-hint">最多 160 字；留空也可以发送。</p><p class="field-error" id="contact-error" hidden></p></div>
+      <div class="form-actions"><button id="submit" class="primary" type="submit" disabled>正在准备…</button><button id="clear-draft" class="text-button" type="button" disabled>清空当前草稿</button></div>
+      <p id="status" class="status" role="status" aria-live="polite" tabindex="-1">正在准备反馈表单…</p>
+      <p id="draft-state" class="field-note" role="status" aria-live="polite"></p>
+    </form>
+    <section id="pending" class="pending" hidden aria-labelledby="pending-title"><h2 id="pending-title">待确认与未发送</h2><p class="muted">未确认的反馈保留原编号，重试同一条不会重复收件。</p><div id="pending-list"></div></section>
+    <footer class="privacy"><p>只发送你填写的文字、可选联系方式和产品版本；不读取应用内的文件或记录。反馈仅供开发者查看。</p><a href="/">返回小站</a></footer>
+    <noscript><p class="status error">请启用 JavaScript 后使用反馈表单。当前内容尚未发送。</p></noscript>
+  </main>
+</body>
 </html>

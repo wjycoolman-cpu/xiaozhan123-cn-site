@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self' https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>网站反馈 · 小站</title>
+  <link rel="canonical" href="https://xiaozhan123.cn/feedback/">
+  <link rel="stylesheet" href="/feedback/form.css">
+  <script src="/feedback-client.js" defer></script>
+  <script src="/feedback/form.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a href="/" class="brand">小站</a><span>网站反馈</span></header>
+  <main>
+    <section class="intro"><h1>使用反馈</h1><p>遇到的问题、不方便的操作，或希望增加的功能，都可以告诉我。</p><p class="source-note" id="source-note" hidden></p></section>
+    <section class="receipt" id="receipt" hidden tabindex="-1" aria-labelledby="receipt-title">
+      <h2 id="receipt-title">已收到</h2><p id="receipt-message"></p>
+      <p class="receipt-number">反馈编号 <code id="receipt-id"></code></p>
+      <p class="muted">这表示反馈已进入开发者信箱，处理情况由开发者后续记录。</p>
+    </section>
+    <form id="form" novalidate>
+      <div class="field"><label for="product">反馈对象</label><select id="product" name="product" aria-describedby="product-version product-error" disabled>
+        <option value="">请选择反馈对象</option>
+        <option value="website">网站整体</option>
+        <option value="skymyth">天空传说</option>
+        <option value="pocket-piano">弹钢琴</option>
+        <option value="mianji">眠迹</option>
+        <option value="qingci">背单词</option>
+        <option value="question-bank">智能题库</option>
+        <option value="stardew-farm">星露谷自动农场助手</option>
+        <option value="resume-studio">简历工坊</option>
+        <option value="yuji">羽记</option>
+        <option value="subtitle-studio">中英字幕工坊</option>
+      </select><p class="field-note" id="product-version"></p><p class="field-error" id="product-error" hidden></p></div>
+      <div class="field"><label for="answer">反馈内容</label><textarea id="answer" name="message" rows="7" maxlength="8000" aria-describedby="answer-hint message-count message-error" placeholder="例如：我进行了什么操作，出现了什么问题，希望怎样改进。" required></textarea><div class="field-meta"><span id="answer-hint">3–4000 字</span><span id="message-count">0 / 4000</span></div><p class="field-error" id="message-error" hidden></p></div>
+      <div class="field"><label for="contact">联系方式 <span class="optional">选填</span></label><input id="contact" name="contact" type="text" maxlength="320" autocomplete="off" aria-describedby="contact-hint contact-error" placeholder="邮箱、QQ 或其他方便回复的方式"><p class="field-note" id="contact-hint">最多 160 字；留空也可以发送。</p><p class="field-error" id="contact-error" hidden></p></div>
+      <div class="form-actions"><button id="submit" class="primary" type="submit" disabled>正在准备…</button><button id="clear-draft" class="text-button" type="button" disabled>清空当前草稿</button></div>
+      <p id="status" class="status" role="status" aria-live="polite" tabindex="-1">正在准备反馈表单…</p>
+      <p id="draft-state" class="field-note" role="status" aria-live="polite"></p>
+    </form>
+    <section id="pending" class="pending" hidden aria-labelledby="pending-title"><h2 id="pending-title">待确认与未发送</h2><p class="muted">未确认的反馈保留原编号，重试同一条不会重复收件。</p><div id="pending-list"></div></section>
+    <footer class="privacy"><p>只发送你填写的文字、可选联系方式和产品版本；不读取应用内的文件或记录。反馈仅供开发者查看。</p><a href="/">返回小站</a></footer>
+    <noscript><p class="status error">请启用 JavaScript 后使用反馈表单。当前内容尚未发送。</p></noscript>
+  </main>
+</body>
+</html>

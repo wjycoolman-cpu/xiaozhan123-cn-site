@@ -302,7 +302,12 @@
       "sha256": "CFB677DFB5BA47A21A99E3E8D3D990352A8FD2FED7512180FE45F9BCC5C825DC"
     }
   },
-  "overlays": {},
+  "overlays": {
+    "index.html": {
+      "bytes": 18862,
+      "sha256": "62C0CFD84191D32AD741DD75DB25DA8597298AEE54061D8B83FFEC50C46B11ED"
+    }
+  },
   "effective_files": {
     ".nojekyll": {
       "bytes": 0,

@@ -31,7 +31,8 @@
         "下载资源约123 MB，保留分段缓存和原站后备；当前为单人试炼。"
       ],
       "feedback": {
-        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=skymyth"
       }
     },
     {
@@ -59,7 +60,8 @@
         "独立首页：打开应用直接选择歌曲、乐器和弹奏方式，不再把主入口放在演奏页弹窗里。首页提供九种常用乐器和三种弹奏方式，选择后仍留在首页，点进入演奏才显示琴键；返回首页暂停并保留进度，等待手动继续。横屏左右分区，竖屏上下排列。保留曲库、音色、录制与导出及原签名增量更新。"
       ],
       "feedback": {
-        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=pocket-piano"
       },
       "updateManifestUrl": "https://xiaozhan123.cn/pocket-piano/update.json",
       "demoUrl": "/pocket-piano/demo/"
@@ -90,7 +92,8 @@
         "保留自动监测、睡眠趋势及本机记录。"
       ],
       "feedback": {
-        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=mianji"
       },
       "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74",
       "demoUrl": "/mianji/demo/"
@@ -126,7 +129,8 @@
         "关闭扩展学习保留进度，沿用原包名、签名与播放偏好。"
       ],
       "feedback": {
-        "formUrl": "https://xiaozhan123.cn/beidanci/feedback/"
+        "formUrl": "/feedback/?product=qingci",
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback"
       },
       "demoUrl": "/qingci/demo/"
     },
@@ -152,7 +156,8 @@
         "新版完成验收后会更新下载入口。"
       ],
       "feedback": {
-        "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=question-bank"
       },
       "versionCode": 10324,
       "packageName": "com.smartquestionbank.app",
@@ -194,7 +199,8 @@
         "自动化当前集中于农场；钓鱼、矿洞与全剧情仍是后续扩展。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=stardew-farm"
       },
       "demoUrl": "/stardew-farm/demo/"
     },
@@ -230,7 +236,8 @@
         "默认一页、可选两页；离线PDF保存及QQ/微信分享入口。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=resume-studio"
       },
       "demoUrl": "/resume-studio/demo/"
     },
@@ -264,7 +271,8 @@
         "手机与网站私人赛事空间双向同步，关联比赛实时比分上传，冲突需明确选择版本。"
       ],
       "feedback": {
-        "endpoint": ""
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=yuji"
       },
       "demoUrl": "/yuji/demo/"
     },
@@ -301,7 +309,11 @@
         "网页字体与识别运行库准备显示状态，支持取消与超时提示，按实际字幕加载字集后再导出。"
       ],
       "updateManifestUrl": "https://xiaozhan123.cn/subtitle-studio/update.json",
-      "webVersion": "1.1.2"
+      "webVersion": "1.1.2",
+      "feedback": {
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=subtitle-studio"
+      }
     }
   ]
 }
