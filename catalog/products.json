@@ -287,7 +287,7 @@
       "filename": "SubtitleStudio-1.1.0-Windows.zip",
       "mimeType": "application/zip",
       "downloadLabel": "下载 Windows 版",
-      "demoUrl": "/subtitle-studio/",
+      "demoUrl": "/subtitle-studio/?v=1.1.1",
       "sha256": "55189c0558405e2489f060e89378277db2fa3d052876be910eb969da0c48069e",
       "releaseNotes": [
         "逐句试听、前后句与播放处定位、倍速校对，长字幕列表保持分页。",
