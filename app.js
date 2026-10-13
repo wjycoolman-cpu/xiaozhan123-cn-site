@@ -16,7 +16,7 @@
   try {
    const page = new URL(location.href), u = new URL(value, page);
    const localPage = ['localhost', '127.0.0.1', '[::1]'].includes(page.hostname);
-   const approvedSubtitleRelease = u.href === 'https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.0/SubtitleStudio-1.1.0-Windows.zip';
+   const approvedSubtitleRelease = ["https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.0/SubtitleStudio-1.1.0-Windows.zip","https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-Windows.zip","https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-source.zip"].includes(u.href);
    if (u.username || u.password || (u.origin !== page.origin && !approvedSubtitleRelease)) return '';
    return u.protocol === 'https:' || (u.protocol === 'http:' && localPage) ? u.href : '';
   } catch { return ''; }

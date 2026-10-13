@@ -204,7 +204,7 @@
       async write(id, state, revision) {
         const times = state.attempts.map(a => Date.parse(a.payload.createdAt) + TTL);
         for (const draft of state.savedDrafts || []) times.push(draft.updatedAt + TTL);
-        if (state.draft.message || state.draft.contact) times.push(state.draft.updatedAt + TTL);
+        if (state.draft.message || state.draft.contact || state.draft.context?.source === 'app') times.push(state.draft.updatedAt + TTL);
         let record;
         if (times.length) {
           const iv = global.crypto.getRandomValues(new Uint8Array(12));

@@ -1,9 +1,9 @@
 {
   "name": "简历工坊",
   "package": "cn.local.resumestudio",
-  "versionName": "1.0.1",
-  "versionCode": 2,
-  "apkUrl": "https://xiaozhan123.cn/resume-studio/releases/ResumeStudio-1.0.1.apk",
-  "apkBytes": 1862911,
-  "sha256": "6f1ac3135ed4643cd3030ebc0a173fb58183114dd6a140d633209cfd70213bbf"
+  "versionName": "1.0.3",
+  "versionCode": 4,
+  "apkUrl": "https://xiaozhan123.cn/resume-studio/releases/ResumeStudio-1.0.3.apk",
+  "apkBytes": 1867078,
+  "sha256": "9ca1d41c920e749ec0fc9296915ec6c62ad371dbafc54f2c7270c9504ef24b56"
 }

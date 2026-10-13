@@ -48,15 +48,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.38",
-      "versionCode": 39,
+      "version": "1.0.39",
+      "versionCode": 40,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
       "sizeBytes": 57618889,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.38.apk",
-      "filename": "pocket-piano-1.0.38.apk",
-      "sha256": "3b2976ee15f6ee098eb9d1b9146f884682d7afa477a7e1556eab74313474e9a4",
+      "downloadUrl": "/pocket-piano/releases/pocket-piano-1.0.39.apk",
+      "filename": "pocket-piano-1.0.39.apk",
+      "sha256": "ccfc9d146a1ea04efb5521fdbe658f5a0f8277846969b75bb84bebfeb8cd2504",
       "releaseNotes": [
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
         "独立首页：打开应用直接选择歌曲、乐器和弹奏方式，不再把主入口放在演奏页弹窗里。首页提供九种常用乐器和三种弹奏方式，选择后仍留在首页，点进入演奏才显示琴键；返回首页暂停并保留进度，等待手动继续。横屏左右分区，竖屏上下排列。保留曲库、音色、录制与导出及原签名增量更新。"
       ],
       "feedback": {
@@ -79,23 +80,25 @@
       "summary": "自动推测休息时间，查看睡眠趋势",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.1.2",
-      "versionCode": 4,
+      "version": "1.1.4",
+      "versionCode": 6,
       "packageName": "com.mianji.app",
       "compatibility": "Android 9.0 及以上",
       "sizeBytes": 2628247,
-      "downloadUrl": "./mianji/releases/mianji-1.1.2.apk",
-      "filename": "mianji-1.1.2.apk",
+      "downloadUrl": "/mianji/releases/mianji-1.1.4.apk",
+      "filename": "mianji-1.1.4.apk",
       "updateManifestUrl": "https://xiaozhan123.cn/mianji/update.json",
       "releaseNotes": [
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
         "接通小站安装包与自动检查更新。",
-        "保留自动监测、睡眠趋势及本机记录。"
+        "保留自动监测、睡眠趋势及本机记录。",
+        "旧版本保存的未发送反馈可载入，保留原文与原版本再转到网站。"
       ],
       "feedback": {
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
         "formUrl": "/feedback/?product=mianji"
       },
-      "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74",
+      "sha256": "0bd22538a8c42bb2c91605c8502f25971e4baf42f7fb119f4125457b1b1cd2a5",
       "demoUrl": "/mianji/demo/"
     },
     {
@@ -136,9 +139,10 @@
     },
     {
       "id": "question-bank",
-      "name": "智能题库",
+      "name": "题库",
       "aliases": [
-        "答题"
+        "答题",
+        "智能题库"
       ],
       "kind": "app",
       "category": "学习",
@@ -147,23 +151,23 @@
       "summary": "整理题库，练习与复习错题",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.3.24",
+      "version": "1.3.28",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 70013741,
-      "downloadUrl": "./exercise-practice-app/SmartQuestionBank-Android-v10324.apk",
+      "sizeBytes": 2698182,
+      "downloadUrl": "/exercise-practice-app/SmartQuestionBank-Android-v10328.apk",
       "releaseNotes": [
-        "目前提供已正式发布的 1.3.24 版本。",
-        "新版完成验收后会更新下载入口。"
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
+        "沿用已验证的 Word/Excel 导入、练习与错题功能；旧版本固定的失效更新地址需安装本版后切换。"
       ],
       "feedback": {
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
         "formUrl": "/feedback/?product=question-bank"
       },
-      "versionCode": 10324,
+      "versionCode": 10328,
       "packageName": "com.smartquestionbank.app",
-      "filename": "SmartQuestionBank-Android-v10324.apk",
-      "sha256": "bfdfe386f2f9444ed0efed45d29c3e257a6708aefacf4aa2411df609e0429156",
-      "updateManifestUrl": "https://scac-pudong-map-d5fxlisie96d7d00-1458711699.tcloudbaseapp.com/exercise-practice-app/update.json",
+      "filename": "SmartQuestionBank-Android-v10328.apk",
+      "sha256": "24f3a9b41d49b38f06a8885fdf74a156969fa43d26170dd67e2f80015506dba8",
+      "updateManifestUrl": "https://xiaozhan123.cn/exercise-practice-app/update.json",
       "demoUrl": "/question-bank/demo/"
     },
     {
@@ -220,17 +224,18 @@
       "summary": "先看完整示例，再填写或导入资料；1000款样式、照片、默认一页，离线生成PDF并分享。",
       "state": "published",
       "statusText": "Android 版已发布",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "compatibility": "Android 8.0及以上 · 文字PDF导入需较新WebView",
-      "sizeBytes": 1862911,
-      "sha256": "6f1ac3135ed4643cd3030ebc0a173fb58183114dd6a140d633209cfd70213bbf",
-      "filename": "ResumeStudio-1.0.1.apk",
+      "sizeBytes": 1867078,
+      "sha256": "9ca1d41c920e749ec0fc9296915ec6c62ad371dbafc54f2c7270c9504ef24b56",
+      "filename": "ResumeStudio-1.0.3.apk",
       "downloadLabel": "下载 APK",
       "mimeType": "application/vnd.android.package-archive",
-      "downloadUrl": "/resume-studio/releases/ResumeStudio-1.0.1.apk",
+      "downloadUrl": "/resume-studio/releases/ResumeStudio-1.0.3.apk",
       "detailsUrl": "/resume-studio/",
-      "sourceUrl": "/resume-studio/releases/ResumeStudio-1.0.1-source.zip",
+      "sourceUrl": "/resume-studio/releases/ResumeStudio-1.0.3-source.zip",
       "releaseNotes": [
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
         "未填资料也能查看完整虚构示例；示例和个人资料分离。",
         "40个基础设计族×25组预设，共1000款可选样式。",
         "导入/填写后自动套入模板，支持照片裁剪、多份简历与备份。",
@@ -240,7 +245,9 @@
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
         "formUrl": "/feedback/?product=resume-studio"
       },
-      "demoUrl": "/resume-studio/demo/"
+      "demoUrl": "/resume-studio/demo/",
+      "versionCode": 4,
+      "packageName": "cn.local.resumestudio"
     },
     {
       "id": "yuji",
@@ -255,16 +262,18 @@
       "summary": "羽毛球计分、对战日程与网站同步",
       "state": "available",
       "statusText": "可下载 · 赛事同步已接入",
-      "version": "1.0.1",
-      "versionCode": 2,
+      "version": "1.0.4",
+      "versionCode": 5,
       "packageName": "cn.local.yuji",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 74770,
-      "downloadUrl": "./yuji/yuji-1.0.1.apk",
-      "filename": "羽记-羽毛球计分器-1.0.1.apk",
-      "sha256": "c8ed7b04fafff73da1304c061162fa4a06fa313ce8fa3c7a60770b1ce103c418",
+      "sizeBytes": 12879956,
+      "downloadUrl": "./yuji/yuji-1.0.4.apk",
+      "filename": "羽记-羽毛球计分器-1.0.4.apk",
+      "sha256": "48bc214c07d2dbd43daa0ca870d0f55f642ca2c9fd7a9c3e0f33f97f5c87bbb1",
       "detailsUrl": "./yuji/help.html",
       "releaseNotes": [
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
+        "保留已正式交付 1.0.3 的相机辅助计分与赛事同步功能；网页演示不代表手机相机运行。",
         "单打双打姓名、上滑加分/下滑减分、撤销、三局两胜，离线自动保存。",
         "手动横竖屏切换；红蓝、蓝橙、紫绿主题；对称齿轮和横屏大比分。",
         "Word/Excel 表格导入预览、对战时间与场地、单淘汰和循环赛、晋级图。",
@@ -275,7 +284,8 @@
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
         "formUrl": "/feedback/?product=yuji"
       },
-      "demoUrl": "/yuji/demo/"
+      "demoUrl": "/yuji/demo/",
+      "sourceUrl": "/yuji/releases/Yuji-1.0.4-source.zip"
     },
     {
       "id": "subtitle-studio",
@@ -292,16 +302,17 @@
       "summary": "中英文识别、双语字幕与自由样式",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.1.0",
+      "version": "1.1.3",
       "compatibility": "Windows 10/11 64位；网页版推荐 Chrome / Edge",
-      "sizeBytes": 252716639,
-      "downloadUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.0/SubtitleStudio-1.1.0-Windows.zip",
-      "filename": "SubtitleStudio-1.1.0-Windows.zip",
+      "sizeBytes": 252839552,
+      "downloadUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-Windows.zip",
+      "filename": "SubtitleStudio-1.1.3-Windows.zip",
       "mimeType": "application/zip",
       "downloadLabel": "下载 Windows 版",
       "demoUrl": "/subtitle-studio/?v=1.1.2",
-      "sha256": "55189c0558405e2489f060e89378277db2fa3d052876be910eb969da0c48069e",
+      "sha256": "424402a736804bf5429d96b4a69f8fa72c71311fef82607cd235d2aff1dabcdb",
       "releaseNotes": [
+        "应用内反馈可带入小站表单；在网页确认发送并收到编号后，进入网站私有总信箱。本机草稿和旧反馈保留。",
         "逐句试听、前后句与播放处定位、倍速校对，长字幕列表保持分页。",
         "翻译方向可选，默认只补空译文，保护手动校对结果。",
         "安全保存草稿与上一有效版本恢复；输入校验、取消保护和错误恢复改进。",
@@ -314,7 +325,8 @@
       "feedback": {
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
         "formUrl": "/feedback/?product=subtitle-studio"
-      }
+      },
+      "sourceUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-source.zip"
     }
   ]
 }

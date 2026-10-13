@@ -1,12 +1,1 @@
-{
-  "schema": "mianji-update/v1",
-  "channel": "released",
-  "packageName": "com.mianji.app",
-  "versionCode": 4,
-  "versionName": "1.1.2",
-  "apkUrl": "https://xiaozhan123.cn/mianji/releases/mianji-1.1.2.apk",
-  "sha256": "1f1943444bd6bda76ff232f12f0ae36181e84d96e5ee44761fd2322e6fccbf74",
-  "size": 2628247,
-  "publishedAt": "2026-10-04T13:53:15.077Z",
-  "releaseNotes": "接入小站下载与自动检查更新；新增反馈待发队列。"
-}
+{"schema":"mianji-update/v1","channel":"released","packageName":"com.mianji.app","versionCode":6,"versionName":"1.1.4","apkUrl":"https://xiaozhan123.cn/mianji/releases/mianji-1.1.4.apk","size":2628247,"sha256":"0bd22538a8c42bb2c91605c8502f25971e4baf42f7fb119f4125457b1b1cd2a5","publishedAt":"2026-10-13T20:00:59Z","releaseNotes":"接通小站统一反馈：在网页确认发送，保留本机旧反馈和草稿；打开浏览器不会标记已送达。"}
