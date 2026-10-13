@@ -280,24 +280,25 @@
       "summary": "中英文识别、双语字幕与自由样式",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "compatibility": "Windows 10/11 64位；网页版推荐 Chrome / Edge",
-      "sizeBytes": 248745712,
-      "downloadUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.0.0/SubtitleStudio-1.0.0-Windows.zip",
-      "filename": "SubtitleStudio-1.0.0-Windows.zip",
+      "sizeBytes": 252716639,
+      "downloadUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.0/SubtitleStudio-1.1.0-Windows.zip",
+      "filename": "SubtitleStudio-1.1.0-Windows.zip",
       "mimeType": "application/zip",
       "downloadLabel": "下载 Windows 版",
       "demoUrl": "/subtitle-studio/",
-      "sha256": "5e148abb9eacc8ce4b076cb60f82ab51f62171e559b30504c3c85541ac4dc0f8",
+      "sha256": "55189c0558405e2489f060e89378277db2fa3d052876be910eb969da0c48069e",
       "releaseNotes": [
-        "声音识别中英文，生成原文与双语字幕，可手动校对时间与文字。",
-        "六种模板，思源黑体/宋体/霞鹜文楷及本机字体，字号颜色描边阴影行距和位置可调。",
-        "本机处理，Windows版快速导出MP4，网页版真实识别、翻译和字幕编辑；首次下载模型后复用。",
-        "本机反馈导出与签名更新；识别和机器翻译仍需校对。",
-        "网页1.0.1：优化声音解码与常用字体加载，导出时直接捕获视频原声音；Windows版保持1.0.0。"
+        "逐句试听、前后句与播放处定位、倍速校对，长字幕列表保持分页。",
+        "翻译方向可选，默认只补空译文，保护手动校对结果。",
+        "安全保存草稿与上一有效版本恢复；输入校验、取消保护和错误恢复改进。",
+        "双语 ASS 重新导入保留原文与译文；网页导出恢复播放位置与速度。",
+        "保留中英文识别、多字体多模板、本机处理与 Windows 快速 MP4 导出。",
+        "网页字体准备显示进度，支持取消与超时提示，按实际字幕加载字集后再导出。"
       ],
       "updateManifestUrl": "https://xiaozhan123.cn/subtitle-studio/update.json",
-      "webVersion": "1.0.1"
+      "webVersion": "1.1.1"
     }
   ]
 }
