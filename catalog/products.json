@@ -35,34 +35,6 @@
       }
     },
     {
-      "id": "last-defense",
-      "name": "人类大战僵尸",
-      "aliases": [
-        "最后防线"
-      ],
-      "kind": "game",
-      "category": "生存防守",
-      "symbol": "⌖",
-      "theme": "defense",
-      "summary": "丧尸生存与防守",
-      "state": "published",
-      "statusText": "可直接试玩",
-      "version": "1.10.0.3 · 网页试玩",
-      "compatibility": "电脑浏览器，推荐 Chrome / Edge",
-      "sizeBytes": 276740655,
-      "playUrl": "./last-defense/1.10.0.3-feedback15/index.html",
-      "downloadUrl": "",
-      "releaseNotes": [
-        "真实3D雨夜街区生存，军人角色拥有待机、行走、射击和换弹动作，并保留武器成长。",
-        "支持常用升级偏好，手雷武器与弹射枪可在四个武器槽中搭配。",
-        "可在游戏内发送反馈；网络不畅时先保留在本机，之后可以重试。",
-        "首次进入约需加载264 MB，成长进度保存在当前浏览器。"
-      ],
-      "feedback": {
-        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.service.tcloudbase.com/website-feedback"
-      }
-    },
-    {
       "id": "pocket-piano",
       "name": "弹钢琴",
       "aliases": [

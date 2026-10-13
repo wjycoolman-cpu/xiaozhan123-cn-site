@@ -26,7 +26,6 @@
    'resume-studio':'<path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/>',
    'stardew-farm':'<path d="M12 14V6m0 5C6 11 5 8 5 5c4 0 7 1 7 5m0-1c0-4 3-5 7-5 0 4-2 6-7 6M4 16h16M4 20h16"/>',
    skymyth:'<path d="M12 3 14.3 9.7 21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Z"/>',
-   'last-defense':'<path d="M12 3 20 6v6c0 5-5 8-8 10-3-2-8-5-8-10V6Z"/><path d="M8 12h8M12 8v8"/>',
    'pocket-piano':'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 13v7m6-7v7M7 4v9h3V4m4 0v9h3V4"/>',
    mianji:'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/>',
    'question-bank':'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8.5 12l2.5 2.5 4.5-5"/>'
