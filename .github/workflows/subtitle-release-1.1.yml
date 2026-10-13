@@ -1,0 +1,32 @@
+name: Reconstruct verified SubtitleStudio 1.1 release
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: subtitle-studio-release-1.1
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/release-deltas/subtitle-studio-1.1.0
+      - name: Reconstruct exact verified archive and upload to existing draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          delta=.github/release-deltas/subtitle-studio-1.1.0
+          echo "de1b95ae6bf67b1cd8f658759e9292c0709dd38aa4a668bd4247e3968d1faf0b  $delta/update.delta.zip" | sha256sum -c -
+          mkdir -p /tmp/subtitle-release
+          gh release download subtitle-studio-v1.0.0 --repo "$GITHUB_REPOSITORY" --pattern SubtitleStudio-1.0.0-Windows.zip --dir /tmp/subtitle-release
+          python3 "$delta/apply.py" /tmp/subtitle-release/SubtitleStudio-1.0.0-Windows.zip "$delta/update.delta.zip" /tmp/subtitle-release/SubtitleStudio-1.1.0-Windows.zip
+          echo '55189c0558405e2489f060e89378277db2fa3d052876be910eb969da0c48069e  /tmp/subtitle-release/SubtitleStudio-1.1.0-Windows.zip' | sha256sum -c -
+          gh release upload subtitle-studio-v1.1.0 /tmp/subtitle-release/SubtitleStudio-1.1.0-Windows.zip --repo "$GITHUB_REPOSITORY"
