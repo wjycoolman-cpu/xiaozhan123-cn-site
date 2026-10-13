@@ -287,7 +287,7 @@
       "filename": "SubtitleStudio-1.1.0-Windows.zip",
       "mimeType": "application/zip",
       "downloadLabel": "下载 Windows 版",
-      "demoUrl": "/subtitle-studio/?v=1.1.1",
+      "demoUrl": "/subtitle-studio/?v=1.1.2",
       "sha256": "55189c0558405e2489f060e89378277db2fa3d052876be910eb969da0c48069e",
       "releaseNotes": [
         "逐句试听、前后句与播放处定位、倍速校对，长字幕列表保持分页。",
@@ -295,10 +295,10 @@
         "安全保存草稿与上一有效版本恢复；输入校验、取消保护和错误恢复改进。",
         "双语 ASS 重新导入保留原文与译文；网页导出恢复播放位置与速度。",
         "保留中英文识别、多字体多模板、本机处理与 Windows 快速 MP4 导出。",
-        "网页字体准备显示进度，支持取消与超时提示，按实际字幕加载字集后再导出。"
+        "网页字体与识别运行库准备显示状态，支持取消与超时提示，按实际字幕加载字集后再导出。"
       ],
       "updateManifestUrl": "https://xiaozhan123.cn/subtitle-studio/update.json",
-      "webVersion": "1.1.1"
+      "webVersion": "1.1.2"
     }
   ]
 }
