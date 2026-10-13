@@ -1,5 +1,7 @@
 (() => {
  'use strict';
+ const homeCopy = {"pocket-piano":"随手弹奏、跟随曲谱，记录自己的旋律。","mianji":"记录休息时长，看看自己的作息趋势。","qingci":"学习四六级词汇，聆听发音并复习。","question-bank":"整理自己的题库，练习与复习错题。","stardew-farm":"配置种田与开荒，让农场自动运转。","resume-studio":"挑选模板，填写资料，预览你的简历。","yuji":"轻松记录羽毛球比分，管理对战日程。","subtitle-studio":"识别声音、校对双语字幕，自由调整样式。"};
+ const homeActions = {"pocket-piano":"在线弹奏","mianji":"查看演示","qingci":"开始学习","question-bank":"在线练习","stardew-farm":"查看演示","resume-studio":"体验设计","yuji":"体验计分","subtitle-studio":"开始制作"};
  const $ = s => document.querySelector(s);
  let catalog, filter = 'app', selected, activeFeedback, toastTimer;
  const feedbackClient = window.AppCenterFeedback ? window.AppCenterFeedback.create() : Promise.reject(Error('client_unavailable'));
@@ -34,12 +36,15 @@
   const symbol=p.id==='qingci'?'Aa':p.id==='kfc-order'?'K':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${drawings[p.id]||''}</svg>`;
   return `<div class="product-icon" aria-hidden="true">${symbol}</div>`;
  }
- function demoAction(p) { const u=safeUrl(p.demoUrl); return u ? `<a class="button secondary" href="${esc(u)}">在线体验</a>` : ""; }
+ function demoAction(p) { const u=safeUrl(p.demoUrl); return u ? `<a class="button secondary" href="${esc(u)}">${esc(homeActions[p.id] || "在线体验")}</a>` : ""; }
  function actions(p) { return `${demoAction(p)}${action(p)}${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步 ↗</a>':''}${p.id==='pocket-piano'?'<a class="text-button" href="./pocket-piano/web/" aria-label="\u6253\u5f00\u7f51\u9875\u94a2\u7434">\u7f51\u9875\u94a2\u7434 \u2197</a>':''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
- function card(p) { return `<article class="product-card ${p.kind==='game'?'game-card':'app-card'} ${esc(p.theme)}" ${p.kind==='app'&&ready(p)?`draggable="true" data-drag="${esc(p.id)}"`:''}>${icon(p)}<div class="product-content"><div class="card-heading"><h3>${esc(p.name)}</h3></div><p class="summary">${esc(p.summary)}</p>${p.version?`<p class="app-meta">${esc(p.version)} · ${size(p.sizeBytes)}</p>`:''}<div class="card-actions">${actions(p)}</div></div></article>`; }
+ function preview(p) {
+ return '<button class="product-visual" data-detail="'+esc(p.id)+'" aria-label="查看'+esc(p.name)+'详情">'+icon(p)+'</button>';
+ }
+ function card(p) { return '<article class="product-card '+(p.kind==='game'?'game-card':'app-card')+' '+esc(p.theme)+'" '+(p.kind==='app'&&ready(p)?'draggable="true" data-drag="'+esc(p.id)+'"':'')+'>'+preview(p)+'<div class="product-content"><div class="card-heading"><h3>'+esc(p.name)+'</h3></div><p class="summary">'+esc(homeCopy[p.id]||p.summary)+'</p><div class="card-actions">'+actions(p)+'</div></div></article>'; }
  function setFilter(kind) {
   if (!['app', 'game'].includes(kind)) return;
-  filter = kind;
+  filter = kind; $("#catalog").textContent=kind==="app"?"应用":"游戏";
   document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === kind)));
   $('#search').placeholder = kind === 'app' ? '搜索应用' : '搜索游戏';
   if (catalog) render();
@@ -126,7 +131,7 @@
    try{const client=await feedbackClient,state=await client.get(p.id);renderFeedbackState(p,state);}catch{if(activeFeedback?.id===p.id)feedbackError();}
   }
  }
- document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ setFilter(el.dataset.filter); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
+ document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ setFilter(el.dataset.filter); if(el.closest(".side-nav")) document.querySelector(".catalog-tools").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
  document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-drag]');if(!card||!e.dataTransfer)return;const p=product(card.dataset.drag),u=safeUrl(p.downloadUrl);e.dataTransfer.setData('DownloadURL',`${p.mimeType || 'application/vnd.android.package-archive'}:${p.filename||p.id+'.apk'}:${u}`);e.dataTransfer.setData('text/uri-list',u);e.dataTransfer.setData('text/plain',u);e.dataTransfer.effectAllowed='copy';});
  $('#search').addEventListener('input',()=>catalog&&render());
  $('#search-toggle').addEventListener('click',()=>{const open=$('#search-panel').hidden;$('#search-panel').hidden=!open;$('#search-toggle').setAttribute('aria-expanded',String(open));if(open)$('#search').focus();else{$('#search').value='';if(catalog)render();}});

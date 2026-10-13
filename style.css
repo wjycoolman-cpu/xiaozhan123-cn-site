@@ -125,3 +125,62 @@ textarea { resize:vertical; }
 @media(prefers-reduced-motion:reduce) { .primary:active { transform:none; } }
 
 .sleep .product-icon { background:#566a92; }
+
+/* Current design: quiet grayscale directory. No hero, colored cover, or slogan. */
+:root{--ink:#171717;--muted:#717171;--line:#e7e7e7;--accent:#171717;--paper:#fff;--green:#3c3c3c}
+html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{background:#fff;color:#171717;font-family:Arial,"Microsoft YaHei UI","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.site-header{position:fixed;inset:0 auto 0 0;width:190px;max-width:none;height:auto;margin:0;padding:44px 24px 26px;display:flex;flex-direction:column;align-items:stretch;border-right:1px solid #ededed;background:#fafafa;z-index:10}
+.brand{font-size:27px;font-weight:600;letter-spacing:-1px;line-height:1.2;gap:0;margin:0 10px 46px;width:fit-content}
+.brand-dot{color:#171717;padding-left:2px;font-size:31px}
+.side-nav{display:flex;flex-direction:column;gap:7px}
+.side-nav button,.side-nav>a{display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:44px;padding:9px 14px;background:none;border:0;border-radius:7px;color:#737373;font-size:14px}
+.side-nav button[aria-pressed=true]{background:#eaeaea;color:#171717}
+.side-nav button:hover,.side-nav>a:hover{background:#f0f0f0;color:#171717}
+.side-nav button span:last-child,.side-nav>a span:last-child{opacity:0;font-size:16px}
+.side-nav button[aria-pressed=true] span:last-child,.side-nav button:hover span:last-child,.side-nav a:hover span:last-child{opacity:1}
+.sidebar-bottom{margin-top:auto;padding:0 12px;font-size:11px;color:#737373}
+.sidebar-bottom>a{display:flex;align-items:center;gap:7px;min-height:44px}
+main,footer{width:calc(100% - 190px);max-width:1300px;margin-left:190px;padding-left:clamp(28px,5vw,80px);padding-right:clamp(28px,5vw,80px)}
+main{padding-top:49px;padding-bottom:50px}
+.catalog-tools{height:60px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;border:0;padding:0;margin:0 0 14px}
+.catalog-tools h1{font-size:31px;font-weight:500;line-height:1.3;letter-spacing:-.8px;margin:0}
+.search-toggle{display:flex;align-items:center;gap:8px;min-height:40px;height:40px;padding:0 4px;font-size:12px;color:#737373;border-radius:5px;background:none}
+.search-toggle[aria-expanded=true],.search-toggle:hover{background:#f5f5f5;color:#171717}
+.search-panel{margin:0 0 24px}.search-panel input{border:1px solid #dedede;border-radius:8px;font-size:14px;background:#fafafa;color:#171717;padding:12px 15px}
+.catalog-section{margin-top:0}.app-grid,.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:52px;row-gap:0}
+.product-card{display:flex;align-items:flex-start;gap:18px;min-width:0;padding:29px 0 24px;min-height:183px;border:0;border-bottom:1px solid #e8e8e8;border-radius:0;background:none}
+.product-visual{flex:none;width:48px;height:48px;margin:2px 0 0;padding:0;border:0;border-radius:12px;background:#f3f3f3;color:#171717;display:grid;place-items:center}
+.product-visual:hover{background:#e9e9e9}
+.product-icon,.sky .product-icon,.defense .product-icon,.piano .product-icon,.kfc .product-icon,.words .product-icon,.quiz .product-icon,.sleep .product-icon,.subtitle .product-icon{width:48px;height:48px;border-radius:12px;background:#f3f3f3;color:#202020;display:grid;place-items:center;flex:none}
+.product-icon svg{width:29px;height:29px;stroke-width:1.35}
+.product-icon img{width:34px;height:34px;object-fit:contain;filter:grayscale(1)}
+.product-visual:hover .product-icon{background:#e9e9e9}
+.product-content{flex:1;min-width:0;padding:0;display:flex;flex-direction:column;min-height:130px}
+.card-heading h3{font-size:20px;font-weight:500;line-height:1.45;letter-spacing:-.4px;margin:0}
+.summary{font-size:13px;line-height:1.8;color:#727272;margin:7px 0 0;min-height:23px}
+.card-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px;row-gap:4px}
+.product-content>.card-actions{padding-top:17px;margin-top:auto;gap:12px}
+.product-content .button,.product-content .text-button{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0;font-size:12px;font-weight:400;background:none;border:0;border-radius:0;color:#6b6b6b;white-space:nowrap}
+.product-content .button.secondary{color:#171717;font-weight:600}
+.product-content .button.secondary:after{content:'↗';font-weight:400;padding-left:6px;font-size:14px}
+.product-content .button:hover,.product-content .text-button:hover{color:#000;text-decoration:underline;text-underline-offset:4px;background:none}
+.product-content .more-button{margin-left:auto;color:#727272;font-size:12px;min-width:36px}
+.product-content .text-button:not(.more-button){font-size:11px}
+#reading{padding-top:38px;margin-top:30px;scroll-margin-top:30px}.section-heading{margin-bottom:14px}.section-heading h2{font-size:20px;font-weight:500;line-height:1.4;margin:0}.section-heading>span{font-size:11px;color:#737373}
+.reading-card{border-bottom:0;gap:18px;align-items:center;padding:15px 0;min-height:130px}.reading-symbol{width:48px;height:65px;flex:none;background:#f0f0f0;border-left:3px solid #d0d0d0;border-radius:0 3px 3px 0;display:grid;place-items:center;color:#505050;font:22px Georgia,serif}
+.reading-card .card-heading h3{font-size:18px}.reading-card .muted{font-size:12px;margin:6px 0}.reading-card .card-actions{margin:0;gap:22px}.reading-card .button{font-size:12px;min-height:40px;padding:0;background:none;color:#666;border-radius:0}.reading-card .primary{color:#171717;font-weight:500}.reading-card .primary:after{content:'↗';padding-left:7px}
+footer{padding-top:24px;padding-bottom:30px;position:relative;font-size:11px;display:flex;align-items:flex-start;justify-content:flex-start;border:0;gap:20px}footer:before{content:'';position:absolute;top:0;left:clamp(28px,5vw,80px);right:clamp(28px,5vw,80px);height:1px;background:#e8e8e8}.installation-help p{max-width:650px;font-size:12px;color:#737373;line-height:1.8}.installation-help summary{font-size:12px;min-height:40px}
+.button{border-radius:6px;font-weight:400}.primary{background:#171717;color:#fff}.primary:hover{background:#333}.primary:active{background:#000}.secondary{background:#eee;color:#333}.disabled,.button:disabled{background:#eee;color:#737373}.badge,.badge.available{color:#505050;background:#ececec}
+.icon-button,.text-button{color:#737373}.icon-button:hover,.text-button:hover{background:#eee;color:#171717}
+dialog{background:#fff;color:#171717;border:1px solid #e5e5e5;border-radius:13px;padding:28px;box-shadow:0 20px 80px #0002}dialog::backdrop{background:#0005;backdrop-filter:blur(4px)}
+dialog .button{font-size:13px}dialog .product-icon{background:#f3f3f3;color:#202020}.detail-meta{border-color:#e7e7e7}.muted,.notes,.draft-note,.channel-note,.form-status,.form-status.success{color:#717171}
+form input,form textarea,#share-url{background:#fafafa;color:#171717;border:1px solid #ddd;border-radius:7px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #454545;outline-offset:4px}
+.toast{background:#171717;color:#fff;border-radius:8px}.empty{font-size:13px;color:#717171;padding:40px 0}.skip-link{z-index:40}
+@media(min-width:1650px){main,footer{margin-left:max(190px,calc((100vw - 1300px + 190px)/2))}}
+@media(max-width:1100px){.site-header{width:156px;padding:37px 18px 25px}main,footer{width:calc(100% - 156px);margin-left:156px;padding-left:35px;padding-right:35px}.app-grid,.game-grid{column-gap:30px}.product-card{gap:14px}.card-heading h3{font-size:18px}.summary{font-size:12px}.product-content .button,.product-content .text-button{font-size:11px}.product-content>.card-actions{gap:10px}footer:before{left:35px;right:35px}}
+@media(max-width:850px) and (min-width:701px){.app-grid,.game-grid{grid-template-columns:1fr}.product-content{min-height:110px}.product-card{min-height:155px}.card-heading h3{font-size:20px}.summary{font-size:13px}.product-content .button,.product-content .text-button{font-size:12px}}
+@media(max-width:700px){html{scroll-padding-top:90px}.site-header{position:sticky;inset:auto;top:0;width:100%;height:calc(70px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 21px 0;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid #ececec;background:#fafafaf5;backdrop-filter:blur(12px)}.brand{font-size:24px;margin:0}.brand-dot{font-size:28px}.side-nav{flex-direction:row;gap:2px}.side-nav button,.side-nav>a{font-size:12px;min-height:42px;padding:8px 12px}.side-nav button span:last-child,.side-nav a span:last-child{display:none}.sidebar-bottom{display:none}main,footer{width:100%;margin:0;padding-left:22px;padding-right:22px}main{padding-top:28px;padding-bottom:34px}.catalog-tools{height:46px;margin-bottom:9px;align-items:center}.catalog-tools h1{font-size:27px}.app-grid,.game-grid{grid-template-columns:1fr;gap:0}.product-card{min-height:163px;padding:24px 0;gap:15px}.product-content{min-height:115px}.card-heading h3{font-size:19px}.summary{font-size:12px;line-height:1.8}.product-content>.card-actions{padding-top:12px;gap:15px}.product-content .button,.product-content .text-button{font-size:12px;min-height:44px}.product-content .text-button:not(.more-button){font-size:11px}.product-content .more-button{min-width:44px;min-height:44px}.product-icon,.product-visual{width:43px;height:43px;border-radius:11px}.product-icon svg{width:27px;height:27px}.product-icon img{width:30px;height:30px}#reading{margin-top:24px;padding-top:22px;scroll-margin-top:90px}.section-heading h2{font-size:19px}.reading-card{min-height:120px;gap:15px}.reading-symbol{width:43px;height:61px}.reading-card .card-heading h3{font-size:17px}.reading-card .button{min-height:44px}.reading-card .muted{font-size:11px}.reading-card .card-actions{gap:18px}footer{padding-top:20px;padding-bottom:28px}footer:before{left:22px;right:22px}.installation-help summary,.installation-help p{font-size:11px}dialog{padding:23px;max-height:calc(100dvh - 32px - env(safe-area-inset-bottom))}.detail-identity h2{font-size:21px}.detail-meta{gap:12px}.toast{bottom:calc(20px + env(safe-area-inset-bottom))}}
+@media(max-width:350px){.product-content>.card-actions{gap:12px}.product-content .button,.product-content .text-button{font-size:11px}.product-card{gap:12px}.product-icon,.product-visual{width:38px;height:38px}.card-heading h3{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
