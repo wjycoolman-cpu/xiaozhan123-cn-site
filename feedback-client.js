@@ -12,7 +12,7 @@
   const TTL = 7 * 24 * 60 * 60 * 1000;
   const MAX_PENDING = 20;
   const clone = value => JSON.parse(JSON.stringify(value));
-  const emptyState = () => ({ schema: 'feedback-draft/v1', draft: { message: '', contact: '', updatedAt: 0, intentId: null }, attempts: [] });
+  const emptyState = () => ({ schema: 'feedback-draft/v1', draft: { message: '', contact: '', updatedAt: 0, intentId: null }, attempts: [], savedDrafts: [] });
   const sameContent = (draft, payload) => draft.message === payload.message && draft.contact === payload.contact;
   const requireProduct = id => { if (!PRODUCTS.has(id) && !LEGACY_PRODUCTS.has(id)) throw new Error('unsupported_product'); };
   const encoder = new TextEncoder();
@@ -20,6 +20,13 @@
   const validTimestamp = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
   const forbiddenControls = value => /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/.test(value);
   const singleLineControls = value => /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(value);
+  const validContext = value => value === undefined || value === null || (value && typeof value==='object' && !Array.isArray(value) &&
+    Object.keys(value).length===2 && ['app','app-center'].includes(value.source) && typeof value.version==='string' &&
+    validUnicode(value.version) && Array.from(value.version).length<=80 && !singleLineControls(value.version));
+  const sameContext = (left, right) => (left?.source || 'app-center') === (right?.source || 'app-center') &&
+    ((left?.source || 'app-center') !== 'app' || left.version === right?.version);
+  const draftValid = draft => draft && typeof draft.message==='string' && typeof draft.contact==='string' &&
+    draft.message.length<=8000 && draft.contact.length<=320 && Number.isFinite(draft.updatedAt) && validContext(draft.context);
   function validUnicode(value) {
     for (let i = 0; i < value.length; i++) {
       const code = value.charCodeAt(i);
@@ -45,7 +52,7 @@
   function payloadError(p, productId) {
     const keys = ['schema', 'requestId', 'productId', 'version', 'message', 'contact', 'source', 'createdAt'];
     if (!p || typeof p !== 'object' || Array.isArray(p) || Object.keys(p).length !== keys.length || !keys.every(k => Object.prototype.hasOwnProperty.call(p, k) && typeof p[k] === 'string' && validUnicode(p[k]))) return 'invalid_fields';
-    if (p.schema !== SCHEMA || !/^wf_[a-f0-9]{32}$/.test(p.requestId) || p.productId !== productId || !PRODUCTS.has(productId) || p.source !== 'app-center') return 'invalid_identity';
+    if (p.schema !== SCHEMA || !/^wf_[a-f0-9]{32}$/.test(p.requestId) || p.productId !== productId || !PRODUCTS.has(productId) || !['app-center','app'].includes(p.source)) return 'invalid_identity';
     if (Array.from(p.version).length > 80 || singleLineControls(p.version)) return 'invalid_version';
     if (!validTimestamp(p.createdAt)) return 'invalid_time';
     if (Array.from(p.message).length < 3 || Array.from(p.message).length > 4000) return 'message_length';
@@ -129,7 +136,10 @@
   function prune(value, productId, now) {
     if (!value || value.schema !== 'feedback-draft/v1' || !value.draft || !Array.isArray(value.attempts)) throw new Error('invalid_saved_state');
     const draft = value.draft;
-    if (typeof draft.message !== 'string' || typeof draft.contact !== 'string' || draft.message.length > 8000 || draft.contact.length > 320 || !Number.isFinite(draft.updatedAt)) throw new Error('invalid_saved_draft');
+    if (!draftValid(draft)) throw new Error('invalid_saved_draft');
+    if (value.savedDrafts === undefined) value.savedDrafts = [];
+    if (!Array.isArray(value.savedDrafts) || value.savedDrafts.length>1 || value.savedDrafts.some(item=>!draftValid(item))) throw new Error('invalid_saved_draft');
+    value.savedDrafts = value.savedDrafts.filter(item=>item.updatedAt + TTL > now);
     if (value.attempts.length > MAX_PENDING || value.attempts.some(a => !savedPayloadValid(a.payload, productId) || !['uncertain', 'conflict', 'rejected'].includes(a.state))) throw new Error('invalid_saved_attempt');
     value.attempts = value.attempts.filter(a => Date.parse(a.payload.createdAt) + TTL > now);
     if (draft.updatedAt + TTL <= now) value.draft = emptyState().draft;
@@ -193,6 +203,7 @@
       },
       async write(id, state, revision) {
         const times = state.attempts.map(a => Date.parse(a.payload.createdAt) + TTL);
+        for (const draft of state.savedDrafts || []) times.push(draft.updatedAt + TTL);
         if (state.draft.message || state.draft.contact) times.push(state.draft.updatedAt + TTL);
         let record;
         if (times.length) {
@@ -246,11 +257,14 @@
       serial.set(id, next.catch(() => {}));
       return next;
     }
-    function setDraftOnState(state, message, contact) {
-      if (state.draft.message === message && state.draft.contact === contact) return;
+    function setDraftOnState(state, message, contact, context) {
+      const contextChanged = context !== undefined && !sameContext(state.draft.context, context);
+      if (state.draft.message === message && state.draft.contact === contact && !contextChanged) return;
       const associated = state.attempts.find(a => a.payload.requestId === state.draft.intentId);
-      if (associated && !sameContent({ message, contact }, associated.payload)) state.draft.intentId = null;
+      if (associated && (!sameContent({ message, contact }, associated.payload) ||
+          (contextChanged && !sameContext(context, {source:associated.payload.source,version:associated.payload.version})))) state.draft.intentId = null;
       state.draft.message = message; state.draft.contact = contact; state.draft.updatedAt = now();
+      if(context !== undefined) {if(context?.source==='app')state.draft.context=clone(context);else delete state.draft.context;}
     }
     function requestId() {
       if (!global.crypto?.getRandomValues) throw new Error('secure_random_unavailable');
@@ -297,14 +311,36 @@
     return {
       endpoint,
       async get(productId) { return (await mutate(productId, () => {})).state; },
-      async setDraft(productId, message, contact = '') {
-        if (typeof message !== 'string' || typeof contact !== 'string' || message.length > 8000 || contact.length > 320) throw new Error('invalid_draft');
-        return (await mutate(productId, state => setDraftOnState(state, message, contact))).state;
+      async setDraft(productId, message, contact = '', context) {
+        if (typeof message !== 'string' || typeof contact !== 'string' || message.length > 8000 || contact.length > 320 || !validContext(context)) throw new Error('invalid_draft');
+        return (await mutate(productId, state => setDraftOnState(state, message, contact, context))).state;
+      },
+      async importDraft(productId, text, contact, version, source = 'app') {
+        if(typeof text!=='string'||typeof contact!=='string'||!validUnicode(text)||!validUnicode(contact)||
+            Array.from(text).length>4000||utf8Length(text)>12*1024||forbiddenControls(text)||Array.from(contact).length>160||singleLineControls(contact)||!['app','app-center'].includes(source)||!validContext({source,version}))throw new Error('invalid_handoff');
+        return (await mutate(productId,state=>{
+          const message=text||contact?text:state.draft.message, address=text||contact?contact:state.draft.contact, context=source==='app'?{source,version}:null;
+          const changing=!sameContent(state.draft,{message,contact:address})||!sameContext(state.draft.context,context);
+          const alreadyPending=state.attempts.some(item=>item.payload.requestId===state.draft.intentId&&sameContent(state.draft,item.payload));
+          if(changing&&(state.draft.message||state.draft.contact)&&!alreadyPending){
+            const old=state.savedDrafts[0];
+            if(old&&(!sameContent(old,state.draft)||!sameContext(old.context,state.draft.context)))throw new Error('protected_draft_limit');
+            state.savedDrafts=[clone(state.draft)];
+          }
+          setDraftOnState(state,message,address,context);
+        })).state;
+      },
+      async restoreSavedDraft(productId) {
+        return (await mutate(productId,state=>{
+          const saved=state.savedDrafts[0];if(!saved)throw new Error('missing_saved_draft');
+          state.savedDrafts=state.draft.message||state.draft.contact?[clone(state.draft)]:[];
+          state.draft=clone(saved);state.draft.updatedAt=now();
+        })).state;
       },
       async restoreAttempt(productId, id) {
-        return (await mutate(productId, state => { const a = state.attempts.find(a => a.payload.requestId === id); if (!a) throw new Error('missing_request'); state.draft = { message: a.payload.message, contact: a.payload.contact, updatedAt: now(), intentId: id }; })).state;
+        return (await mutate(productId, state => { const a = state.attempts.find(a => a.payload.requestId === id); if (!a) throw new Error('missing_request'); state.draft = { message: a.payload.message, contact: a.payload.contact, updatedAt: now(), intentId: id }; if(a.payload.source==='app')state.draft.context={source:'app',version:a.payload.version}; })).state;
       },
-      async submit({ productId, version = '', message, contact = '', endpoint: value }) {
+      async submit({ productId, version = '', message, contact = '', source = 'app-center', endpoint: value }) {
         const target = endpoint(value); if (!target) throw new Error('endpoint_unavailable');
         requireProduct(productId);
         if (typeof message !== 'string' || typeof contact !== 'string' || message.length > 8000 || contact.length > 320) return { kind: 'invalid_input', reason: typeof contact !== 'string' || contact.length > 320 ? 'contact_length' : 'message_length', state: (await mutate(productId, () => {})).state };
@@ -315,9 +351,11 @@
           if (item && item.state !== 'uncertain') return { error: item.state };
           if (!item) {
             if (state.attempts.length >= MAX_PENDING) return { error: 'queue_full' };
-            fresh ||= { schema: SCHEMA, requestId: requestId(), productId, version, message, contact, source: 'app-center', createdAt: new Date(now()).toISOString() };
+            const actualVersion=source==='app'&&state.draft.context?.source==='app'?state.draft.context.version:version;
+            fresh ||= { schema: SCHEMA, requestId: requestId(), productId, version:actualVersion, message, contact, source, createdAt: new Date(now()).toISOString() };
             const reason = payloadError(fresh, productId);
             if (reason) return { error: 'invalid_input', reason };
+            if(source==='app')state.draft.context={source,version:actualVersion};else delete state.draft.context;
             item = { payload: fresh, state: 'uncertain', reason: 'pending' }; state.attempts.push(item); state.draft.intentId = fresh.requestId;
           }
           return { payload: clone(item.payload) };
@@ -334,7 +372,7 @@
       async clearDraft(productId) { return (await mutate(productId, state => { state.draft = emptyState().draft; })).state; },
       async clearProduct(productId) {
         requireProduct(productId);
-        const result = await mutate(productId, state => { state.draft = emptyState().draft; state.attempts = []; });
+        const result = await mutate(productId, state => { state.draft = emptyState().draft; state.attempts = []; state.savedDrafts = []; });
         let localClearConfirmed = store.storage.mode === 'encrypted';
         if (!localClearConfirmed) { try { localClearConfirmed = await store.erase(productId); } catch {} }
         return { ...result.state, localClearConfirmed };
