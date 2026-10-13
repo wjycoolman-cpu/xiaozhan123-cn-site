@@ -1,0 +1,1111 @@
+{
+  "schema": "qingci-phonetics/v1",
+  "accent": "en-GB",
+  "description": "常见英式教学记法；通过例词听声音，非单独音素录音。不同地区及词典记法可能不同。",
+  "lessons": [
+    {
+      "id": "i-long",
+      "symbol": "iː",
+      "group": "vowel",
+      "title": "长元音",
+      "tip": "嘴角轻轻向两侧展开，舌前部抬高。保持同一个声音，不要读成字母 E。",
+      "note": "与 /ɪ/ 比较：sheep 和 ship，口型和音质也不同，不只是长短。",
+      "examples": [
+        {
+          "word": "sheep",
+          "ipa": "ʃiːp",
+          "meaning": "绵羊"
+        },
+        {
+          "word": "see",
+          "ipa": "siː",
+          "meaning": "看见"
+        },
+        {
+          "word": "green",
+          "ipa": "ɡriːn",
+          "meaning": "绿色"
+        }
+      ]
+    },
+    {
+      "id": "i-short",
+      "symbol": "ɪ",
+      "group": "vowel",
+      "title": "短元音",
+      "tip": "嘴唇放松，舌前部略抬高，比 /iː/ 更低、更松。",
+      "note": "不要把 ship 读成 sheep。",
+      "examples": [
+        {
+          "word": "ship",
+          "ipa": "ʃɪp",
+          "meaning": "船"
+        },
+        {
+          "word": "fish",
+          "ipa": "fɪʃ",
+          "meaning": "鱼"
+        },
+        {
+          "word": "sit",
+          "ipa": "sɪt",
+          "meaning": "坐"
+        }
+      ]
+    },
+    {
+      "id": "e",
+      "symbol": "e",
+      "group": "vowel",
+      "title": "前元音",
+      "tip": "嘴自然张开，舌前部抬起，开口比 /ɪ/ 大。",
+      "note": "有的词典用 /ɛ/ 标这个音；这里沿用常见英式教学记法 /e/。",
+      "examples": [
+        {
+          "word": "bed",
+          "ipa": "bed",
+          "meaning": "床"
+        },
+        {
+          "word": "egg",
+          "ipa": "eɡ",
+          "meaning": "鸡蛋"
+        },
+        {
+          "word": "red",
+          "ipa": "red",
+          "meaning": "红色"
+        }
+      ]
+    },
+    {
+      "id": "ae",
+      "symbol": "æ",
+      "group": "vowel",
+      "title": "前元音",
+      "tip": "张口较大，舌前部放低，嘴唇不圆。",
+      "note": "比较 bed /e/ 与 bad /æ/，不要都读成汉语“诶”。",
+      "examples": [
+        {
+          "word": "cat",
+          "ipa": "kæt",
+          "meaning": "猫"
+        },
+        {
+          "word": "bag",
+          "ipa": "bæɡ",
+          "meaning": "包"
+        },
+        {
+          "word": "apple",
+          "ipa": "ˈæpəl",
+          "meaning": "苹果"
+        }
+      ]
+    },
+    {
+      "id": "a-long",
+      "symbol": "ɑː",
+      "group": "vowel",
+      "title": "长元音",
+      "tip": "张口，舌头放低并略向后，嘴唇不圆。",
+      "note": "本课用非卷舌英式示例；美式 car 通常带 /r/。",
+      "examples": [
+        {
+          "word": "car",
+          "ipa": "kɑː",
+          "meaning": "汽车"
+        },
+        {
+          "word": "father",
+          "ipa": "ˈfɑːðə",
+          "meaning": "父亲"
+        },
+        {
+          "word": "park",
+          "ipa": "pɑːk",
+          "meaning": "公园"
+        }
+      ]
+    },
+    {
+      "id": "o-short",
+      "symbol": "ɒ",
+      "group": "vowel",
+      "title": "短元音",
+      "tip": "嘴张开，舌头低而靠后，嘴唇轻轻收圆。",
+      "note": "美式 hot 常用 /ɑ/；本课固定听英式例词。",
+      "examples": [
+        {
+          "word": "hot",
+          "ipa": "hɒt",
+          "meaning": "热的"
+        },
+        {
+          "word": "dog",
+          "ipa": "dɒɡ",
+          "meaning": "狗"
+        },
+        {
+          "word": "box",
+          "ipa": "bɒks",
+          "meaning": "盒子"
+        }
+      ]
+    },
+    {
+      "id": "o-long",
+      "symbol": "ɔː",
+      "group": "vowel",
+      "title": "长元音",
+      "tip": "舌头靠后，嘴唇圆起，开口比 /ɒ/ 小。",
+      "note": "不同地区可能合并部分元音；不要把一个口音当成唯一读法。",
+      "examples": [
+        {
+          "word": "door",
+          "ipa": "dɔː",
+          "meaning": "门"
+        },
+        {
+          "word": "ball",
+          "ipa": "bɔːl",
+          "meaning": "球"
+        },
+        {
+          "word": "four",
+          "ipa": "fɔː",
+          "meaning": "四"
+        }
+      ]
+    },
+    {
+      "id": "u-short",
+      "symbol": "ʊ",
+      "group": "vowel",
+      "title": "短元音",
+      "tip": "嘴唇略圆，舌后部抬高但保持放松。",
+      "note": "book 的元音不是 food 的 /uː/。",
+      "examples": [
+        {
+          "word": "book",
+          "ipa": "bʊk",
+          "meaning": "书"
+        },
+        {
+          "word": "good",
+          "ipa": "ɡʊd",
+          "meaning": "好的"
+        },
+        {
+          "word": "foot",
+          "ipa": "fʊt",
+          "meaning": "脚"
+        }
+      ]
+    },
+    {
+      "id": "u-long",
+      "symbol": "uː",
+      "group": "vowel",
+      "title": "长元音",
+      "tip": "嘴唇圆起，舌头抬高，声音平稳；现代英音舌位常较靠前。",
+      "note": "与 /ʊ/ 比较时也注意舌位，不要只机械拉长。",
+      "examples": [
+        {
+          "word": "food",
+          "ipa": "fuːd",
+          "meaning": "食物"
+        },
+        {
+          "word": "blue",
+          "ipa": "bluː",
+          "meaning": "蓝色"
+        },
+        {
+          "word": "school",
+          "ipa": "skuːl",
+          "meaning": "学校"
+        }
+      ]
+    },
+    {
+      "id": "uh",
+      "symbol": "ʌ",
+      "group": "vowel",
+      "title": "短元音",
+      "tip": "嘴唇放松，嘴稍张开，舌头处于中低位置。",
+      "note": "常见于重读音节；不要与非重读的 /ə/ 混淆。",
+      "examples": [
+        {
+          "word": "cup",
+          "ipa": "kʌp",
+          "meaning": "杯子"
+        },
+        {
+          "word": "sun",
+          "ipa": "sʌn",
+          "meaning": "太阳"
+        },
+        {
+          "word": "bus",
+          "ipa": "bʌs",
+          "meaning": "公交车"
+        }
+      ]
+    },
+    {
+      "id": "er",
+      "symbol": "ɜː",
+      "group": "vowel",
+      "title": "长元音",
+      "tip": "嘴唇放松，舌头在口腔中部，英式示例不卷舌。",
+      "note": "美式 bird 通常用带卷舌的 /ɝ/；本课例词为英式。",
+      "examples": [
+        {
+          "word": "bird",
+          "ipa": "bɜːd",
+          "meaning": "鸟"
+        },
+        {
+          "word": "girl",
+          "ipa": "ɡɜːl",
+          "meaning": "女孩"
+        },
+        {
+          "word": "work",
+          "ipa": "wɜːk",
+          "meaning": "工作"
+        }
+      ]
+    },
+    {
+      "id": "schwa",
+      "symbol": "ə",
+      "group": "vowel",
+      "title": "弱读元音",
+      "tip": "嘴和舌头放松，轻而短地发声，常出现在非重读音节。",
+      "note": "about 的第一个音节很轻；ˈ 表示后面音节重读。",
+      "examples": [
+        {
+          "word": "about",
+          "ipa": "əˈbaʊt",
+          "meaning": "关于"
+        },
+        {
+          "word": "teacher",
+          "ipa": "ˈtiːtʃə",
+          "meaning": "老师"
+        },
+        {
+          "word": "banana",
+          "ipa": "bəˈnɑːnə",
+          "meaning": "香蕉"
+        }
+      ]
+    },
+    {
+      "id": "ei",
+      "symbol": "eɪ",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从 /e/ 附近滑向 /ɪ/，一次连续滑动。",
+      "note": "不要把两个部分读成分开的两个音节。",
+      "examples": [
+        {
+          "word": "day",
+          "ipa": "deɪ",
+          "meaning": "天"
+        },
+        {
+          "word": "name",
+          "ipa": "neɪm",
+          "meaning": "名字"
+        },
+        {
+          "word": "rain",
+          "ipa": "reɪn",
+          "meaning": "雨"
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "symbol": "aɪ",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从低而张开的元音位置滑向 /ɪ/。",
+      "note": "起点充分张口，末尾不要另加“衣”。",
+      "examples": [
+        {
+          "word": "my",
+          "ipa": "maɪ",
+          "meaning": "我的"
+        },
+        {
+          "word": "time",
+          "ipa": "taɪm",
+          "meaning": "时间"
+        },
+        {
+          "word": "five",
+          "ipa": "faɪv",
+          "meaning": "五"
+        }
+      ]
+    },
+    {
+      "id": "oi",
+      "symbol": "ɔɪ",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从靠后、圆唇的 /ɔ/ 附近滑向 /ɪ/，嘴唇渐渐放松。",
+      "note": "保持一个音节，不拆成“哦—衣”。",
+      "examples": [
+        {
+          "word": "boy",
+          "ipa": "bɔɪ",
+          "meaning": "男孩"
+        },
+        {
+          "word": "toy",
+          "ipa": "tɔɪ",
+          "meaning": "玩具"
+        },
+        {
+          "word": "coin",
+          "ipa": "kɔɪn",
+          "meaning": "硬币"
+        }
+      ]
+    },
+    {
+      "id": "ou",
+      "symbol": "əʊ",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从中央元音滑向 /ʊ/，嘴唇逐渐收圆。",
+      "note": "美式常记为 /oʊ/；本课示范 /əʊ/。",
+      "examples": [
+        {
+          "word": "go",
+          "ipa": "ɡəʊ",
+          "meaning": "去"
+        },
+        {
+          "word": "home",
+          "ipa": "həʊm",
+          "meaning": "家"
+        },
+        {
+          "word": "no",
+          "ipa": "nəʊ",
+          "meaning": "不"
+        }
+      ]
+    },
+    {
+      "id": "au",
+      "symbol": "aʊ",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从低而张开的位置滑向 /ʊ/，嘴唇逐渐收圆。",
+      "note": "起点和终点之间连续过渡，不分成两个音节。",
+      "examples": [
+        {
+          "word": "now",
+          "ipa": "naʊ",
+          "meaning": "现在"
+        },
+        {
+          "word": "house",
+          "ipa": "haʊs",
+          "meaning": "房子"
+        },
+        {
+          "word": "mouth",
+          "ipa": "maʊθ",
+          "meaning": "嘴"
+        }
+      ]
+    },
+    {
+      "id": "ia",
+      "symbol": "ɪə",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从 /ɪ/ 附近滑向放松的中央元音 /ə/。",
+      "note": "部分现代英式读法更接近长元音；词典与地区会有差异。",
+      "examples": [
+        {
+          "word": "ear",
+          "ipa": "ɪə",
+          "meaning": "耳朵"
+        },
+        {
+          "word": "near",
+          "ipa": "nɪə",
+          "meaning": "附近"
+        },
+        {
+          "word": "here",
+          "ipa": "hɪə",
+          "meaning": "这里"
+        }
+      ]
+    },
+    {
+      "id": "ea",
+      "symbol": "eə",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从 /e/ 附近向中央放松，保持连贯。",
+      "note": "部分现代英音趋向 /ɛː/；这里介绍传统教学记法。",
+      "examples": [
+        {
+          "word": "hair",
+          "ipa": "heə",
+          "meaning": "头发"
+        },
+        {
+          "word": "chair",
+          "ipa": "tʃeə",
+          "meaning": "椅子"
+        },
+        {
+          "word": "bear",
+          "ipa": "beə",
+          "meaning": "熊"
+        }
+      ]
+    },
+    {
+      "id": "ua",
+      "symbol": "ʊə",
+      "group": "diphthong",
+      "title": "双元音",
+      "tip": "从 /ʊ/ 附近滑向 /ə/，嘴唇由略圆到放松。",
+      "note": "这一组变化较大：许多英式说话者把这些词读成含 /ɔː/ 的形式，都是常见变体。",
+      "examples": [
+        {
+          "word": "tour",
+          "ipa": "tʊə",
+          "meaning": "游览"
+        },
+        {
+          "word": "poor",
+          "ipa": "pʊə",
+          "meaning": "贫穷的"
+        },
+        {
+          "word": "sure",
+          "ipa": "ʃʊə",
+          "meaning": "确定的"
+        }
+      ]
+    },
+    {
+      "id": "p",
+      "symbol": "p",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "双唇闭合，积住气后放开；声带不振动。",
+      "note": "不要在词尾另加“坡”或 /ə/；词首重读时通常有送气。",
+      "examples": [
+        {
+          "word": "pen",
+          "ipa": "pen",
+          "meaning": "笔"
+        },
+        {
+          "word": "apple",
+          "ipa": "ˈæpəl",
+          "meaning": "苹果"
+        },
+        {
+          "word": "cup",
+          "ipa": "kʌp",
+          "meaning": "杯子"
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "symbol": "b",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "双唇闭合再放开，发声时声带参与振动。",
+      "note": "和 /p/ 用同一发音部位，注意清浊差异。",
+      "examples": [
+        {
+          "word": "book",
+          "ipa": "bʊk",
+          "meaning": "书"
+        },
+        {
+          "word": "boy",
+          "ipa": "bɔɪ",
+          "meaning": "男孩"
+        },
+        {
+          "word": "job",
+          "ipa": "dʒɒb",
+          "meaning": "工作"
+        }
+      ]
+    },
+    {
+      "id": "t",
+      "symbol": "t",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "舌尖抵住上齿龈，堵住气流后放开，声带不振动。",
+      "note": "词尾不用另加一个元音；实际口语可有不同释放方式。",
+      "examples": [
+        {
+          "word": "tea",
+          "ipa": "tiː",
+          "meaning": "茶"
+        },
+        {
+          "word": "time",
+          "ipa": "taɪm",
+          "meaning": "时间"
+        },
+        {
+          "word": "cat",
+          "ipa": "kæt",
+          "meaning": "猫"
+        }
+      ]
+    },
+    {
+      "id": "d",
+      "symbol": "d",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "舌尖抵上齿龈再放开，声带参与振动。",
+      "note": "与 /t/ 对照，注意声带和气流。",
+      "examples": [
+        {
+          "word": "day",
+          "ipa": "deɪ",
+          "meaning": "天"
+        },
+        {
+          "word": "door",
+          "ipa": "dɔː",
+          "meaning": "门"
+        },
+        {
+          "word": "bed",
+          "ipa": "bed",
+          "meaning": "床"
+        }
+      ]
+    },
+    {
+      "id": "k",
+      "symbol": "k",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "舌后部抵软腭，堵气后放开，声带不振动。",
+      "note": "同一个音可以写成 c、k 等不同字母。",
+      "examples": [
+        {
+          "word": "cat",
+          "ipa": "kæt",
+          "meaning": "猫"
+        },
+        {
+          "word": "key",
+          "ipa": "kiː",
+          "meaning": "钥匙"
+        },
+        {
+          "word": "book",
+          "ipa": "bʊk",
+          "meaning": "书"
+        }
+      ]
+    },
+    {
+      "id": "g",
+      "symbol": "ɡ",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "舌后部抵软腭再放开，声带参与振动。",
+      "note": "音标 /ɡ/ 表示声音，不代表字母 g 在每个词中都这样读。",
+      "examples": [
+        {
+          "word": "go",
+          "ipa": "ɡəʊ",
+          "meaning": "去"
+        },
+        {
+          "word": "green",
+          "ipa": "ɡriːn",
+          "meaning": "绿色"
+        },
+        {
+          "word": "bag",
+          "ipa": "bæɡ",
+          "meaning": "包"
+        }
+      ]
+    },
+    {
+      "id": "f",
+      "symbol": "f",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "上齿轻碰下唇，让气流从缝隙通过，声带不振动。",
+      "note": "轻轻摩擦，不要把下唇咬紧。",
+      "examples": [
+        {
+          "word": "fish",
+          "ipa": "fɪʃ",
+          "meaning": "鱼"
+        },
+        {
+          "word": "food",
+          "ipa": "fuːd",
+          "meaning": "食物"
+        },
+        {
+          "word": "leaf",
+          "ipa": "liːf",
+          "meaning": "叶子"
+        }
+      ]
+    },
+    {
+      "id": "v",
+      "symbol": "v",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "上齿轻碰下唇，摩擦发声，声带振动。",
+      "note": "/v/ 有唇齿接触；/w/ 用圆唇，不能互换。",
+      "examples": [
+        {
+          "word": "very",
+          "ipa": "ˈveri",
+          "meaning": "很"
+        },
+        {
+          "word": "five",
+          "ipa": "faɪv",
+          "meaning": "五"
+        },
+        {
+          "word": "love",
+          "ipa": "lʌv",
+          "meaning": "爱"
+        }
+      ]
+    },
+    {
+      "id": "th",
+      "symbol": "θ",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "舌尖轻靠上齿或稍在齿间，让气流通过，声带不振动。",
+      "note": "不要替换成 /s/ 或 /f/；舌头不用用力伸出。",
+      "examples": [
+        {
+          "word": "think",
+          "ipa": "θɪŋk",
+          "meaning": "想"
+        },
+        {
+          "word": "three",
+          "ipa": "θriː",
+          "meaning": "三"
+        },
+        {
+          "word": "mouth",
+          "ipa": "maʊθ",
+          "meaning": "嘴"
+        }
+      ]
+    },
+    {
+      "id": "dh",
+      "symbol": "ð",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "舌尖轻靠上齿或齿间，摩擦发声，声带振动。",
+      "note": "与 /θ/ 用相近口型，但这一音声带振动。",
+      "examples": [
+        {
+          "word": "this",
+          "ipa": "ðɪs",
+          "meaning": "这个"
+        },
+        {
+          "word": "mother",
+          "ipa": "ˈmʌðə",
+          "meaning": "母亲"
+        },
+        {
+          "word": "brother",
+          "ipa": "ˈbrʌðə",
+          "meaning": "兄弟"
+        }
+      ]
+    },
+    {
+      "id": "s",
+      "symbol": "s",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "舌头接近上齿龈，留下窄缝，让气流摩擦通过。",
+      "note": "不振动声带；与 /ʃ/ 比较，舌位更靠前。",
+      "examples": [
+        {
+          "word": "see",
+          "ipa": "siː",
+          "meaning": "看见"
+        },
+        {
+          "word": "sun",
+          "ipa": "sʌn",
+          "meaning": "太阳"
+        },
+        {
+          "word": "bus",
+          "ipa": "bʌs",
+          "meaning": "公交车"
+        }
+      ]
+    },
+    {
+      "id": "z",
+      "symbol": "z",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "口型近似 /s/，让气流摩擦，同时声带振动。",
+      "note": "词中的字母 s 也可能读 /z/。",
+      "examples": [
+        {
+          "word": "zoo",
+          "ipa": "zuː",
+          "meaning": "动物园"
+        },
+        {
+          "word": "zero",
+          "ipa": "ˈzɪərəʊ",
+          "meaning": "零"
+        },
+        {
+          "word": "easy",
+          "ipa": "ˈiːzi",
+          "meaning": "容易的"
+        }
+      ]
+    },
+    {
+      "id": "sh",
+      "symbol": "ʃ",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "舌前部略向后抬起，嘴唇可略突出，让气流摩擦通过。",
+      "note": "声带不振动；不要和 /s/ 混淆。",
+      "examples": [
+        {
+          "word": "sheep",
+          "ipa": "ʃiːp",
+          "meaning": "绵羊"
+        },
+        {
+          "word": "ship",
+          "ipa": "ʃɪp",
+          "meaning": "船"
+        },
+        {
+          "word": "fish",
+          "ipa": "fɪʃ",
+          "meaning": "鱼"
+        }
+      ]
+    },
+    {
+      "id": "zh",
+      "symbol": "ʒ",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "口型近似 /ʃ/，摩擦发声时声带振动。",
+      "note": "与 /dʒ/ 区分：这里没有开头的阻塞释放。",
+      "examples": [
+        {
+          "word": "measure",
+          "ipa": "ˈmeʒə",
+          "meaning": "测量"
+        },
+        {
+          "word": "pleasure",
+          "ipa": "ˈpleʒə",
+          "meaning": "愉快"
+        },
+        {
+          "word": "vision",
+          "ipa": "ˈvɪʒən",
+          "meaning": "视力"
+        }
+      ]
+    },
+    {
+      "id": "h",
+      "symbol": "h",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "喉部轻轻送出气流，口型为后面的元音作准备。",
+      "note": "不要读成汉语“喝”，也不要添加一个多余元音。",
+      "examples": [
+        {
+          "word": "hat",
+          "ipa": "hæt",
+          "meaning": "帽子"
+        },
+        {
+          "word": "home",
+          "ipa": "həʊm",
+          "meaning": "家"
+        },
+        {
+          "word": "hot",
+          "ipa": "hɒt",
+          "meaning": "热的"
+        }
+      ]
+    },
+    {
+      "id": "ch",
+      "symbol": "tʃ",
+      "group": "consonant",
+      "title": "清辅音",
+      "tip": "先在齿龈附近短暂堵气，再连续释放成 /ʃ/ 的摩擦。",
+      "note": "/tʃ/ 作为一个塞擦音，不拆成两个音节。",
+      "examples": [
+        {
+          "word": "chair",
+          "ipa": "tʃeə",
+          "meaning": "椅子"
+        },
+        {
+          "word": "teacher",
+          "ipa": "ˈtiːtʃə",
+          "meaning": "老师"
+        },
+        {
+          "word": "watch",
+          "ipa": "wɒtʃ",
+          "meaning": "观看"
+        }
+      ]
+    },
+    {
+      "id": "j",
+      "symbol": "dʒ",
+      "group": "consonant",
+      "title": "浊辅音",
+      "tip": "短暂堵气后释放成摩擦音，声带参与振动。",
+      "note": "与 /tʃ/ 对照，注意清浊差异。",
+      "examples": [
+        {
+          "word": "job",
+          "ipa": "dʒɒb",
+          "meaning": "工作"
+        },
+        {
+          "word": "juice",
+          "ipa": "dʒuːs",
+          "meaning": "果汁"
+        },
+        {
+          "word": "orange",
+          "ipa": "ˈɒrɪndʒ",
+          "meaning": "橙子"
+        }
+      ]
+    },
+    {
+      "id": "m",
+      "symbol": "m",
+      "group": "consonant",
+      "title": "鼻音",
+      "tip": "双唇闭合，声带振动，让气流从鼻腔通过。",
+      "note": "词尾双唇闭合即可，不另加元音。",
+      "examples": [
+        {
+          "word": "mother",
+          "ipa": "ˈmʌðə",
+          "meaning": "母亲"
+        },
+        {
+          "word": "my",
+          "ipa": "maɪ",
+          "meaning": "我的"
+        },
+        {
+          "word": "name",
+          "ipa": "neɪm",
+          "meaning": "名字"
+        }
+      ]
+    },
+    {
+      "id": "n",
+      "symbol": "n",
+      "group": "consonant",
+      "title": "鼻音",
+      "tip": "舌尖抵上齿龈，声带振动，气流从鼻腔通过。",
+      "note": "与 /ŋ/ 比较，舌尖在前。",
+      "examples": [
+        {
+          "word": "no",
+          "ipa": "nəʊ",
+          "meaning": "不"
+        },
+        {
+          "word": "name",
+          "ipa": "neɪm",
+          "meaning": "名字"
+        },
+        {
+          "word": "sun",
+          "ipa": "sʌn",
+          "meaning": "太阳"
+        }
+      ]
+    },
+    {
+      "id": "ng",
+      "symbol": "ŋ",
+      "group": "consonant",
+      "title": "鼻音",
+      "tip": "舌后部抵软腭，声带振动，气流从鼻腔通过。",
+      "note": "sing 的末尾通常只有 /ŋ/，不额外补一个 /ɡ/。",
+      "examples": [
+        {
+          "word": "sing",
+          "ipa": "sɪŋ",
+          "meaning": "唱歌"
+        },
+        {
+          "word": "thing",
+          "ipa": "θɪŋ",
+          "meaning": "东西"
+        },
+        {
+          "word": "long",
+          "ipa": "lɒŋ",
+          "meaning": "长的"
+        }
+      ]
+    },
+    {
+      "id": "l",
+      "symbol": "l",
+      "group": "consonant",
+      "title": "边音",
+      "tip": "舌尖轻触上齿龈，气流从舌头两侧通过，声带振动。",
+      "note": "词尾 /l/ 舌位可能较靠后，与词首略有不同。",
+      "examples": [
+        {
+          "word": "love",
+          "ipa": "lʌv",
+          "meaning": "爱"
+        },
+        {
+          "word": "leaf",
+          "ipa": "liːf",
+          "meaning": "叶子"
+        },
+        {
+          "word": "school",
+          "ipa": "skuːl",
+          "meaning": "学校"
+        }
+      ]
+    },
+    {
+      "id": "r",
+      "symbol": "r",
+      "group": "consonant",
+      "title": "近音",
+      "tip": "舌前部接近齿龈后方但不接触，不颤舌，声带振动。",
+      "note": "英语词典常写 /r/，实际常为 [ɹ]。本课英式词尾 r 不一定发音。",
+      "examples": [
+        {
+          "word": "red",
+          "ipa": "red",
+          "meaning": "红色"
+        },
+        {
+          "word": "rain",
+          "ipa": "reɪn",
+          "meaning": "雨"
+        },
+        {
+          "word": "right",
+          "ipa": "raɪt",
+          "meaning": "正确的"
+        }
+      ]
+    },
+    {
+      "id": "y",
+      "symbol": "j",
+      "group": "consonant",
+      "title": "近音",
+      "tip": "舌前部接近硬腭，迅速滑向后面的元音，声带振动。",
+      "note": "音标 /j/ 不是英语字母 J 的读音，而像 yes 开头。",
+      "examples": [
+        {
+          "word": "yes",
+          "ipa": "jes",
+          "meaning": "是"
+        },
+        {
+          "word": "you",
+          "ipa": "juː",
+          "meaning": "你"
+        },
+        {
+          "word": "yellow",
+          "ipa": "ˈjeləʊ",
+          "meaning": "黄色"
+        }
+      ]
+    },
+    {
+      "id": "w",
+      "symbol": "w",
+      "group": "consonant",
+      "title": "近音",
+      "tip": "双唇收圆，舌后部抬高，迅速滑向后面的元音。",
+      "note": "/w/ 不用上齿碰下唇，与 /v/ 区分。",
+      "examples": [
+        {
+          "word": "water",
+          "ipa": "ˈwɔːtə",
+          "meaning": "水"
+        },
+        {
+          "word": "we",
+          "ipa": "wiː",
+          "meaning": "我们"
+        },
+        {
+          "word": "one",
+          "ipa": "wʌn",
+          "meaning": "一"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "https://learnenglish.britishcouncil.org/apps/learnenglish-sounds-right",
+    "https://www.internationalphoneticassociation.org/content/ipa-chart"
+  ]
+}

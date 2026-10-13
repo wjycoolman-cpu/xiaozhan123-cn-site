@@ -110,21 +110,17 @@
       "summary": "四级、六级英语词汇学习",
       "state": "published",
       "statusText": "可下载",
-      "version": "1.0.11",
-      "versionCode": 12,
+      "version": "1.0.13",
+      "versionCode": 14,
       "packageName": "com.qingci.cet4",
       "compatibility": "Android 6.0 及以上",
-      "sizeBytes": 9150305,
-      "downloadUrl": "./qingci-app/releases/qingci-1.0.11.apk",
-      "filename": "qingci-1.0.11.apk",
-      "sha256": "b64bdfde392fb50a702d710c878ca9b0f5e35fc55e200168583acd00f1a301e5",
+      "sizeBytes": 25386375,
+      "downloadUrl": "./qingci-app/releases/qingci-1.0.13.apk",
+      "filename": "qingci-1.0.13.apk",
+      "sha256": "7d57a697af78a99b7eea46488ad5dfe2cbd618b65a3a5c404dcb09eab4baff15",
       "updateManifestUrl": "https://xiaozhan123.cn/qingci-app/update.json",
       "releaseNotes": [
-        "发音默认舒缓，新增慢速与正常速度，放慢自然词音时保持音高。",
-        "口音、音色、语速分别选择；新增 Bella、Michael 两种独立声线，共六种声音可试听。",
-        "增加朗读次数和两次之间停顿；关闭设置、切换单词或离开应用停止排队朗读。",
-        "删除图像联想、拼写自测及含反向拼写的旧短时训练，首页保持简洁。",
-        "保留原包名、签名、学习记录和设置。"
+        "新增基础常用800词，六种音色全部离线可听。新增44个英式音标入门卡片、132次例词试听入口与发音要点。兼容旧记录与旧备份，首页保持简洁。 基础词的列表、中文搜索及详情统一展示常用义。"
       ],
       "feedback": {
         "formUrl": "https://xiaozhan123.cn/beidanci/feedback/"

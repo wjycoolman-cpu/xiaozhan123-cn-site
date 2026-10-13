@@ -1,0 +1,8002 @@
+[
+  {
+    "id": "hello",
+    "word": "hello",
+    "phonetic": "hə'ləu",
+    "meaning": "interj. 喂, 嘿",
+    "pos": "",
+    "rank": 1,
+    "forms": "s:hellos",
+    "commonMeaning": "你好；喂（打招呼）"
+  },
+  {
+    "id": "yes",
+    "word": "yes",
+    "phonetic": "jes",
+    "meaning": "adv. 是\nn. 是, 同意\nv. 同意",
+    "pos": "",
+    "rank": 2,
+    "forms": "",
+    "commonMeaning": "是；好的（肯定回答）"
+  },
+  {
+    "id": "no",
+    "word": "no",
+    "phonetic": "nəʊ",
+    "meaning": "n. 不, 拒绝, 否决票\na. 没有, 不是, 绝非\nadv. 不",
+    "pos": "",
+    "rank": 3,
+    "forms": "",
+    "commonMeaning": "不；不是；没有"
+  },
+  {
+    "id": "please",
+    "word": "please",
+    "phonetic": "pli:z",
+    "meaning": "adv. 请\nvt. 使高兴, 合...的心意, 取悦\nvi. 使人满意, 讨好, 愿意, 敬请",
+    "pos": "",
+    "rank": 4,
+    "forms": "p:pleased/3:pleases/d:pleased/i:pleasing",
+    "commonMeaning": "请"
+  },
+  {
+    "id": "thanks",
+    "word": "thanks",
+    "phonetic": "",
+    "meaning": "n. 感谢, 谢意, 谢忱\ninterj. 谢谢, 谢谢你",
+    "pos": "",
+    "rank": 5,
+    "forms": "0:thank/1:3/s:thanks",
+    "commonMeaning": "谢谢"
+  },
+  {
+    "id": "sorry",
+    "word": "sorry",
+    "phonetic": "'sɒri",
+    "meaning": "a. 难过的, 悲哀的, 遗憾的",
+    "pos": "",
+    "rank": 6,
+    "forms": "r:sorrier",
+    "commonMeaning": "抱歉；遗憾的"
+  },
+  {
+    "id": "good",
+    "word": "good",
+    "phonetic": "ɡʊd",
+    "meaning": "n. 善行, 好处, 利益\na. 好的, 优良的, 上等的, 愉快的, 有益的, 好心的, 慈善的, 虔诚的",
+    "pos": "",
+    "rank": 7,
+    "forms": "t:best/r:better",
+    "commonMeaning": "好的；不错的"
+  },
+  {
+    "id": "morning",
+    "word": "morning",
+    "phonetic": "'mɒ:niŋ",
+    "meaning": "n. 早晨, 早上, 初期",
+    "pos": "",
+    "rank": 8,
+    "forms": "s:mornings",
+    "commonMeaning": "早晨； 早上； 初期"
+  },
+  {
+    "id": "afternoon",
+    "word": "afternoon",
+    "phonetic": "'ɑ:ftə'nu:n",
+    "meaning": "n. 午后, 下午",
+    "pos": "",
+    "rank": 9,
+    "forms": "s:afternoons",
+    "commonMeaning": "午后； 下午"
+  },
+  {
+    "id": "evening",
+    "word": "evening",
+    "phonetic": "'i:vniŋ",
+    "meaning": "n. 傍晚, 晚间, 末期",
+    "pos": "",
+    "rank": 10,
+    "forms": "1:i/0:even/s:evenings",
+    "commonMeaning": "傍晚； 晚间； 末期"
+  },
+  {
+    "id": "night",
+    "word": "night",
+    "phonetic": "nait",
+    "meaning": "n. 夜, 夜晚, 晚上, 黑暗, 夜晚的工作\n[法] 夜, 黑夜, 黑暗",
+    "pos": "",
+    "rank": 11,
+    "forms": "s:nights",
+    "commonMeaning": "夜； 夜晚； 晚上"
+  },
+  {
+    "id": "goodbye",
+    "word": "goodbye",
+    "phonetic": "gud'bai",
+    "meaning": "interj. 再见",
+    "pos": "",
+    "rank": 12,
+    "forms": "s:goodbyes",
+    "commonMeaning": "再见"
+  },
+  {
+    "id": "welcome",
+    "word": "welcome",
+    "phonetic": "'welkəm",
+    "meaning": "n. 欢迎, 欢迎词\na. 受欢迎的, 可随意的, 可喜的\nvt. 欢迎, 接待\ninterj. 欢迎",
+    "pos": "",
+    "rank": 13,
+    "forms": "d:welcomed/p:welcomed/3:welcomes/i:welcoming/s:welcomes",
+    "commonMeaning": "欢迎；受欢迎的"
+  },
+  {
+    "id": "name",
+    "word": "name",
+    "phonetic": "neɪm",
+    "meaning": "n. 名字, 名称, 姓名, 名义, 名誉, 文件名\nvt. 命名, 称呼, 任命, 提名, 列举\na. 姓名的, 据以取名的\n[计] 名称, 文件名, 姓名",
+    "pos": "",
+    "rank": 14,
+    "forms": "s:names/d:named/p:named/i:naming/3:names",
+    "commonMeaning": "名字；给……取名"
+  },
+  {
+    "id": "i",
+    "word": "I",
+    "phonetic": "aɪ",
+    "meaning": "pron. 我\n[计] 电流, 中断, 指令, 指示符",
+    "pos": "",
+    "rank": 15,
+    "forms": "",
+    "commonMeaning": "我"
+  },
+  {
+    "id": "you",
+    "word": "you",
+    "phonetic": "juː",
+    "meaning": "pron. 你, 你们",
+    "pos": "",
+    "rank": 16,
+    "forms": "",
+    "commonMeaning": "你； 你们"
+  },
+  {
+    "id": "he",
+    "word": "he",
+    "phonetic": "hi:",
+    "meaning": "pron. 他\nn. 男孩, 男人, 雄性动物",
+    "pos": "",
+    "rank": 17,
+    "forms": "",
+    "commonMeaning": "他"
+  },
+  {
+    "id": "she",
+    "word": "she",
+    "phonetic": "ʃi:",
+    "meaning": "pron. 她",
+    "pos": "",
+    "rank": 18,
+    "forms": "",
+    "commonMeaning": "她"
+  },
+  {
+    "id": "it",
+    "word": "it",
+    "phonetic": "it",
+    "meaning": "pron. 它\n[计] 信息论, 输入终端, 智能终端, 内捕获",
+    "pos": "",
+    "rank": 19,
+    "forms": "",
+    "commonMeaning": "它"
+  },
+  {
+    "id": "we",
+    "word": "we",
+    "phonetic": "wiː",
+    "meaning": "pron. 我们",
+    "pos": "",
+    "rank": 20,
+    "forms": "",
+    "commonMeaning": "我们"
+  },
+  {
+    "id": "they",
+    "word": "they",
+    "phonetic": "ðei",
+    "meaning": "pron. 他们, 它们",
+    "pos": "",
+    "rank": 21,
+    "forms": "",
+    "commonMeaning": "他们； 它们"
+  },
+  {
+    "id": "me",
+    "word": "me",
+    "phonetic": "mi:",
+    "meaning": "pron. 我",
+    "pos": "",
+    "rank": 22,
+    "forms": "s:mes",
+    "commonMeaning": "我"
+  },
+  {
+    "id": "him",
+    "word": "him",
+    "phonetic": "him",
+    "meaning": "pron. 他",
+    "pos": "",
+    "rank": 23,
+    "forms": "s:hims",
+    "commonMeaning": "他"
+  },
+  {
+    "id": "her",
+    "word": "her",
+    "phonetic": "hə:",
+    "meaning": "pron. 她的, 她",
+    "pos": "",
+    "rank": 24,
+    "forms": "i:hering",
+    "commonMeaning": "她的； 她"
+  },
+  {
+    "id": "us",
+    "word": "us",
+    "phonetic": "ʌs",
+    "meaning": "pron. 我们\n[经] 美国",
+    "pos": "",
+    "rank": 25,
+    "forms": "",
+    "commonMeaning": "我们（宾格）"
+  },
+  {
+    "id": "them",
+    "word": "them",
+    "phonetic": "ðem",
+    "meaning": "pron. 他们, 她们, 它们",
+    "pos": "",
+    "rank": 26,
+    "forms": "s:thems",
+    "commonMeaning": "他们； 她们； 它们"
+  },
+  {
+    "id": "my",
+    "word": "my",
+    "phonetic": "maɪ",
+    "meaning": "pron. 我的\n[医] 迈尔(热容单位)",
+    "pos": "",
+    "rank": 27,
+    "forms": "",
+    "commonMeaning": "我的"
+  },
+  {
+    "id": "your",
+    "word": "your",
+    "phonetic": "juə",
+    "meaning": "pron. 你的, 你们的",
+    "pos": "",
+    "rank": 28,
+    "forms": "",
+    "commonMeaning": "你的； 你们的"
+  },
+  {
+    "id": "his",
+    "word": "his",
+    "phonetic": "hiz",
+    "meaning": "pron. 他的\n[化] 组氨酸",
+    "pos": "",
+    "rank": 29,
+    "forms": "",
+    "commonMeaning": "他的"
+  },
+  {
+    "id": "our",
+    "word": "our",
+    "phonetic": "'auə",
+    "meaning": "pron. 我们的",
+    "pos": "",
+    "rank": 30,
+    "forms": "",
+    "commonMeaning": "我们的"
+  },
+  {
+    "id": "their",
+    "word": "their",
+    "phonetic": "ðєə",
+    "meaning": "pron. 他们的",
+    "pos": "",
+    "rank": 31,
+    "forms": "",
+    "commonMeaning": "他们的"
+  },
+  {
+    "id": "this",
+    "word": "this",
+    "phonetic": "ðɪs",
+    "meaning": "pron. 这, 本\na. 这, 本\nadv. 这么",
+    "pos": "",
+    "rank": 32,
+    "forms": "",
+    "commonMeaning": "这； 本"
+  },
+  {
+    "id": "that",
+    "word": "that",
+    "phonetic": "ðæt",
+    "meaning": "a. 那, 那个\nconj. 以致, 因为\npron. 那\nadv. 那么, 那样",
+    "pos": "",
+    "rank": 33,
+    "forms": "",
+    "commonMeaning": "那； 那个"
+  },
+  {
+    "id": "these",
+    "word": "these",
+    "phonetic": "ði:z",
+    "meaning": "pron. 这些",
+    "pos": "",
+    "rank": 34,
+    "forms": "",
+    "commonMeaning": "这些"
+  },
+  {
+    "id": "those",
+    "word": "those",
+    "phonetic": "ðəuz",
+    "meaning": "pron. 那些",
+    "pos": "",
+    "rank": 35,
+    "forms": "",
+    "commonMeaning": "那些"
+  },
+  {
+    "id": "a",
+    "word": "a",
+    "phonetic": "ei",
+    "meaning": "第一个字母 A; 一个; 第一的\\r\nart. [计] 累加器, 加法器, 地址, 振幅, 模拟, 区域, 面积, 汇编, 组件, 异步",
+    "pos": "",
+    "rank": 36,
+    "forms": "",
+    "commonMeaning": "一个（用于辅音音素前）"
+  },
+  {
+    "id": "an",
+    "word": "an",
+    "phonetic": "æn",
+    "meaning": "art. 一",
+    "pos": "",
+    "rank": 37,
+    "forms": "",
+    "commonMeaning": "一个（用于元音音素前）"
+  },
+  {
+    "id": "the",
+    "word": "the",
+    "phonetic": "ðə",
+    "meaning": "art. 那",
+    "pos": "",
+    "rank": 38,
+    "forms": "",
+    "commonMeaning": "这／那（特指的人或事物）"
+  },
+  {
+    "id": "and",
+    "word": "and",
+    "phonetic": "ænd",
+    "meaning": "conj. 和, 与\n[计] 与",
+    "pos": "",
+    "rank": 39,
+    "forms": "",
+    "commonMeaning": "和； 与"
+  },
+  {
+    "id": "or",
+    "word": "or",
+    "phonetic": "ɒ:",
+    "meaning": "conj. 或, 或者\n[计] 或",
+    "pos": "",
+    "rank": 40,
+    "forms": "",
+    "commonMeaning": "或； 或者"
+  },
+  {
+    "id": "but",
+    "word": "but",
+    "phonetic": "bʌt",
+    "meaning": "prep. 除了\nconj. 但是\nadv. 仅仅",
+    "pos": "",
+    "rank": 41,
+    "forms": "",
+    "commonMeaning": "但是；除了"
+  },
+  {
+    "id": "if",
+    "word": "if",
+    "phonetic": "if",
+    "meaning": "conj. 如果, 是否, 无论何时, 假设, 即使\nn. 条件\n[计] DOS批处理命令:根据所测试的条件决定是否执行另一条命令",
+    "pos": "",
+    "rank": 42,
+    "forms": "",
+    "commonMeaning": "如果；是否"
+  },
+  {
+    "id": "in",
+    "word": "in",
+    "phonetic": "in",
+    "meaning": "prep. 在...期间, 在...之内, 处于...之中, 从事于, 按照, 穿着\nadv. 进入, 朝里, 在里面, 在屋里\na. 在里面的, 在朝的\nn. 执政者, 交情",
+    "pos": "",
+    "rank": 43,
+    "forms": "",
+    "commonMeaning": "在...期间； 在...之内； 处于...之中"
+  },
+  {
+    "id": "on",
+    "word": "on",
+    "phonetic": "ɒn",
+    "meaning": "prep. 在...之上\nadv. ...上去\na. 正起作用的\n[计] 打开",
+    "pos": "",
+    "rank": 44,
+    "forms": "",
+    "commonMeaning": "在...之上"
+  },
+  {
+    "id": "at",
+    "word": "at",
+    "phonetic": "æt",
+    "meaning": "prep. 在, 向, 对\n[计] 地址转换器, 异常传输, 自动订票",
+    "pos": "",
+    "rank": 45,
+    "forms": "",
+    "commonMeaning": "在； 向； 对"
+  },
+  {
+    "id": "to",
+    "word": "to",
+    "phonetic": "tu:",
+    "meaning": "prep. 到, 向, 趋于\nadv. 向前",
+    "pos": "",
+    "rank": 46,
+    "forms": "",
+    "commonMeaning": "到； 向； 趋于"
+  },
+  {
+    "id": "from",
+    "word": "from",
+    "phonetic": "frɒm",
+    "meaning": "prep. 从, 来自, 根据",
+    "pos": "",
+    "rank": 47,
+    "forms": "",
+    "commonMeaning": "从； 来自； 根据"
+  },
+  {
+    "id": "of",
+    "word": "of",
+    "phonetic": "ɒv",
+    "meaning": "prep. 的, 属于",
+    "pos": "",
+    "rank": 48,
+    "forms": "",
+    "commonMeaning": "的； 属于"
+  },
+  {
+    "id": "for",
+    "word": "for",
+    "phonetic": "fɒ:",
+    "meaning": "prep. 为, 因为, 至于\nconj. 因为\n[计] DOS批处理命令:对一组参数重复执行指定的命令",
+    "pos": "",
+    "rank": 49,
+    "forms": "",
+    "commonMeaning": "为了；给；因为"
+  },
+  {
+    "id": "with",
+    "word": "with",
+    "phonetic": "wið",
+    "meaning": "prep. 和...在一起, 以, 由于",
+    "pos": "",
+    "rank": 50,
+    "forms": "",
+    "commonMeaning": "和...在一起； 以； 由于"
+  },
+  {
+    "id": "without",
+    "word": "without",
+    "phonetic": "wi'ðaut",
+    "meaning": "prep. 没有, 不, 在...之外\nadv. 在外面, 户外\nn. 外面, 外部",
+    "pos": "",
+    "rank": 51,
+    "forms": "",
+    "commonMeaning": "没有； 不； 在...之外"
+  },
+  {
+    "id": "by",
+    "word": "by",
+    "phonetic": "bai",
+    "meaning": "prep. 被, 经, 由, 在...之旁\nadv. 经过, 在近处",
+    "pos": "",
+    "rank": 52,
+    "forms": "",
+    "commonMeaning": "被； 经； 由"
+  },
+  {
+    "id": "up",
+    "word": "up",
+    "phonetic": "ʌp",
+    "meaning": "a. 向上的, 起床的, 涨的\nadv. 向上, 上涨\nprep. 在...上面, 向...的较高处",
+    "pos": "",
+    "rank": 53,
+    "forms": "d:upped/0:up/i:upping/3:up/1:3/p:upped/s:ups",
+    "commonMeaning": "向上的； 起床的； 涨的"
+  },
+  {
+    "id": "down",
+    "word": "down",
+    "phonetic": "daun",
+    "meaning": "a. 向下的\nadv. 下, 下去, 降下\nprep. 往下, 沿着\nn. 丘陵, 软毛, 开阔的高地\n[计] 向下, 退下命令",
+    "pos": "",
+    "rank": 54,
+    "forms": "s:downs/i:downing/p:downed/3:downs/d:downed",
+    "commonMeaning": "向下的"
+  },
+  {
+    "id": "out",
+    "word": "out",
+    "phonetic": "aut",
+    "meaning": "a. 外面的, 熄灭的, 结束的\nadv. 在外, 熄灭, 出现\nprep. 出自, 离去, 向",
+    "pos": "",
+    "rank": 55,
+    "forms": "i:outing/p:outed/3:outs/d:outed",
+    "commonMeaning": "外面的； 熄灭的； 结束的"
+  },
+  {
+    "id": "over",
+    "word": "over",
+    "phonetic": "'əuvə",
+    "meaning": "adv. 结束, 越过, 从头到尾\nprep. 在...之上, 遍于...之上, 越过\na. 上面的\nvt. 越过",
+    "pos": "",
+    "rank": 56,
+    "forms": "s:overs",
+    "commonMeaning": "结束； 越过； 从头到尾"
+  },
+  {
+    "id": "under",
+    "word": "under",
+    "phonetic": "'ʌndə",
+    "meaning": "prep. 在...之下, 低于\na. 下面的, 从属的\nadv. 在下面",
+    "pos": "",
+    "rank": 57,
+    "forms": "",
+    "commonMeaning": "在...之下； 低于"
+  },
+  {
+    "id": "here",
+    "word": "here",
+    "phonetic": "hɪə",
+    "meaning": "adv. 在这里, 此时, 这里\nn. 这里",
+    "pos": "",
+    "rank": 58,
+    "forms": "",
+    "commonMeaning": "在这里； 此时； 这里"
+  },
+  {
+    "id": "there",
+    "word": "there",
+    "phonetic": "ðєə",
+    "meaning": "adv. 在那里",
+    "pos": "",
+    "rank": 59,
+    "forms": "",
+    "commonMeaning": "在那里"
+  },
+  {
+    "id": "now",
+    "word": "now",
+    "phonetic": "naʊ",
+    "meaning": "adv. 现在, 刚才, 目前\nn. 现在\na. 现在的\nconj. 由于",
+    "pos": "",
+    "rank": 60,
+    "forms": "",
+    "commonMeaning": "现在； 刚才； 目前"
+  },
+  {
+    "id": "then",
+    "word": "then",
+    "phonetic": "ðen",
+    "meaning": "adv. 然后, 当时\nconj. 然后, 当时\nn. 那时",
+    "pos": "",
+    "rank": 61,
+    "forms": "",
+    "commonMeaning": "然后； 当时"
+  },
+  {
+    "id": "today",
+    "word": "today",
+    "phonetic": "tə'dei",
+    "meaning": "n. 今天, 当今, 现在\nadv. 今天, 当今",
+    "pos": "",
+    "rank": 62,
+    "forms": "s:todays",
+    "commonMeaning": "今天； 当今； 现在"
+  },
+  {
+    "id": "tomorrow",
+    "word": "tomorrow",
+    "phonetic": "tə'mɒ:rəu",
+    "meaning": "n. 明天, 未来\nadv. 明天, 未来地",
+    "pos": "",
+    "rank": 63,
+    "forms": "s:tomorrows",
+    "commonMeaning": "明天； 未来"
+  },
+  {
+    "id": "yesterday",
+    "word": "yesterday",
+    "phonetic": "'jestədi",
+    "meaning": "n. 昨天\nadv. 昨天",
+    "pos": "",
+    "rank": 64,
+    "forms": "",
+    "commonMeaning": "昨天"
+  },
+  {
+    "id": "always",
+    "word": "always",
+    "phonetic": "'ɒ:lweiz",
+    "meaning": "adv. 总是, 始终",
+    "pos": "",
+    "rank": 65,
+    "forms": "",
+    "commonMeaning": "总是； 始终"
+  },
+  {
+    "id": "often",
+    "word": "often",
+    "phonetic": "'ɒ:fn",
+    "meaning": "adv. 时常, 常常",
+    "pos": "",
+    "rank": 66,
+    "forms": "",
+    "commonMeaning": "时常； 常常"
+  },
+  {
+    "id": "sometimes",
+    "word": "sometimes",
+    "phonetic": "'sʌmtaimz",
+    "meaning": "adv. 有时, 时常, 往往",
+    "pos": "",
+    "rank": 67,
+    "forms": "",
+    "commonMeaning": "有时； 时常； 往往"
+  },
+  {
+    "id": "never",
+    "word": "never",
+    "phonetic": "'nevə",
+    "meaning": "adv. 从不, 决不, 不曾\n[法] 永不, 决不, 从来没有",
+    "pos": "",
+    "rank": 68,
+    "forms": "",
+    "commonMeaning": "从不； 决不； 不曾"
+  },
+  {
+    "id": "not",
+    "word": "not",
+    "phonetic": "nɒt",
+    "meaning": "adv. 不, 非, 未\n[计] 非",
+    "pos": "",
+    "rank": 69,
+    "forms": "",
+    "commonMeaning": "不； 非； 未"
+  },
+  {
+    "id": "very",
+    "word": "very",
+    "phonetic": "ˈveri",
+    "meaning": "a. 真正的, 恰好的, 十足的, 特有的\nadv. 非常, 完全",
+    "pos": "",
+    "rank": 70,
+    "forms": "",
+    "commonMeaning": "真正的； 恰好的； 十足的"
+  },
+  {
+    "id": "too",
+    "word": "too",
+    "phonetic": "tu:",
+    "meaning": "adv. 也, 非常, 太",
+    "pos": "",
+    "rank": 71,
+    "forms": "",
+    "commonMeaning": "也； 非常； 太"
+  },
+  {
+    "id": "also",
+    "word": "also",
+    "phonetic": "'ɒ:lsəu",
+    "meaning": "adv. 也, 并且, 同样地",
+    "pos": "",
+    "rank": 72,
+    "forms": "",
+    "commonMeaning": "也； 并且； 同样地"
+  },
+  {
+    "id": "again",
+    "word": "again",
+    "phonetic": "ə'gein",
+    "meaning": "adv. 再一次, 又, 到原处",
+    "pos": "",
+    "rank": 73,
+    "forms": "",
+    "commonMeaning": "再一次； 又； 到原处"
+  },
+  {
+    "id": "all",
+    "word": "all",
+    "phonetic": "ɒ:l",
+    "meaning": "a. 所有的, 全部的, 一切的\nadv. 全部, 全然\npron. 全部\nn. 全部",
+    "pos": "",
+    "rank": 74,
+    "forms": "",
+    "commonMeaning": "所有的； 全部的； 一切的"
+  },
+  {
+    "id": "some",
+    "word": "some",
+    "phonetic": "sʌm",
+    "meaning": "pron. 一些, 一部分, 若干\nadv. 大约\na. 一些的, 少许的, 某一的",
+    "pos": "",
+    "rank": 75,
+    "forms": "",
+    "commonMeaning": "一些； 一部分； 若干"
+  },
+  {
+    "id": "any",
+    "word": "any",
+    "phonetic": "'eni",
+    "meaning": "a. 任何的\npron. 任何",
+    "pos": "",
+    "rank": 76,
+    "forms": "",
+    "commonMeaning": "任何的"
+  },
+  {
+    "id": "many",
+    "word": "many",
+    "phonetic": "'meni",
+    "meaning": "n. 多数, 多数人\na. 许多的\npron. 许多",
+    "pos": "",
+    "rank": 77,
+    "forms": "",
+    "commonMeaning": "多数； 多数人"
+  },
+  {
+    "id": "much",
+    "word": "much",
+    "phonetic": "mʌtʃ",
+    "meaning": "n. 大量, 许多, 重要的事\na. 很多的, 重要的\nadv. 多, 甚, 几乎",
+    "pos": "",
+    "rank": 78,
+    "forms": "",
+    "commonMeaning": "大量； 许多； 重要的事"
+  },
+  {
+    "id": "more",
+    "word": "more",
+    "phonetic": "mɒ:",
+    "meaning": "n. 更多\na. 多的, 程度较大的, 更大的\nadv. 多, 更多, 进一步\n[计] DOS外部命令:显示满屏后自动暂停, 并显示:\"--More--\", 按任意键继续",
+    "pos": "",
+    "rank": 79,
+    "forms": "",
+    "commonMeaning": "更多"
+  },
+  {
+    "id": "most",
+    "word": "most",
+    "phonetic": "məust",
+    "meaning": "n. 最多, 最大\na. 大多数的, 几乎全部的, 最多的\nadv. 最, 最多, 极其",
+    "pos": "",
+    "rank": 80,
+    "forms": "",
+    "commonMeaning": "最多； 最大"
+  },
+  {
+    "id": "other",
+    "word": "other",
+    "phonetic": "'ʌðə",
+    "meaning": "a. 其他的, 另外的, 从前的\npron. 其他的, 他人, 另外一个",
+    "pos": "",
+    "rank": 81,
+    "forms": "s:others",
+    "commonMeaning": "其他的； 另外的； 从前的"
+  },
+  {
+    "id": "same",
+    "word": "same",
+    "phonetic": "seim",
+    "meaning": "a. 相同的, 同样的\npron. 相同的人(或事物)\nadv. 同样地",
+    "pos": "",
+    "rank": 82,
+    "forms": "",
+    "commonMeaning": "相同的； 同样的"
+  },
+  {
+    "id": "one",
+    "word": "one",
+    "phonetic": "wʌn",
+    "meaning": "n. 一(个)\npron. 一, 任何人\nnum. 一, 一个\na. 一致的, 完整的",
+    "pos": "",
+    "rank": 83,
+    "forms": "s:ones",
+    "commonMeaning": "一；一个"
+  },
+  {
+    "id": "two",
+    "word": "two",
+    "phonetic": "tu:",
+    "meaning": "num. 二, 二个",
+    "pos": "",
+    "rank": 84,
+    "forms": "",
+    "commonMeaning": "二；两个"
+  },
+  {
+    "id": "three",
+    "word": "three",
+    "phonetic": "θriː",
+    "meaning": "num. 三, 三个",
+    "pos": "",
+    "rank": 85,
+    "forms": "",
+    "commonMeaning": "num. 三； 三个"
+  },
+  {
+    "id": "four",
+    "word": "four",
+    "phonetic": "fɔː",
+    "meaning": "num. 四, 四个\n[机] 四冲程循环",
+    "pos": "",
+    "rank": 86,
+    "forms": "",
+    "commonMeaning": "num. 四； 四个"
+  },
+  {
+    "id": "five",
+    "word": "five",
+    "phonetic": "faɪv",
+    "meaning": "num. 五, 五个",
+    "pos": "",
+    "rank": 87,
+    "forms": "",
+    "commonMeaning": "num. 五； 五个"
+  },
+  {
+    "id": "six",
+    "word": "six",
+    "phonetic": "siks",
+    "meaning": "num. 六, 六个",
+    "pos": "",
+    "rank": 88,
+    "forms": "",
+    "commonMeaning": "num. 六； 六个"
+  },
+  {
+    "id": "seven",
+    "word": "seven",
+    "phonetic": "'sevn",
+    "meaning": "num. 七, 七个",
+    "pos": "",
+    "rank": 89,
+    "forms": "",
+    "commonMeaning": "num. 七； 七个"
+  },
+  {
+    "id": "eight",
+    "word": "eight",
+    "phonetic": "eit",
+    "meaning": "num. 八, 八个",
+    "pos": "",
+    "rank": 90,
+    "forms": "",
+    "commonMeaning": "num. 八； 八个"
+  },
+  {
+    "id": "nine",
+    "word": "nine",
+    "phonetic": "nain",
+    "meaning": "num. 九, 九个",
+    "pos": "",
+    "rank": 91,
+    "forms": "",
+    "commonMeaning": "num. 九； 九个"
+  },
+  {
+    "id": "ten",
+    "word": "ten",
+    "phonetic": "ten",
+    "meaning": "num. 十, 十个",
+    "pos": "",
+    "rank": 92,
+    "forms": "",
+    "commonMeaning": "num. 十； 十个"
+  },
+  {
+    "id": "eleven",
+    "word": "eleven",
+    "phonetic": "i'levn",
+    "meaning": "num. 十一, 十一个",
+    "pos": "",
+    "rank": 93,
+    "forms": "",
+    "commonMeaning": "num. 十一； 十一个"
+  },
+  {
+    "id": "twelve",
+    "word": "twelve",
+    "phonetic": "twelv",
+    "meaning": "num. 十二, 十二个",
+    "pos": "",
+    "rank": 94,
+    "forms": "",
+    "commonMeaning": "num. 十二； 十二个"
+  },
+  {
+    "id": "thirteen",
+    "word": "thirteen",
+    "phonetic": "'θə:'ti:n",
+    "meaning": "num. 十三, 十三个",
+    "pos": "",
+    "rank": 95,
+    "forms": "",
+    "commonMeaning": "num. 十三； 十三个"
+  },
+  {
+    "id": "fourteen",
+    "word": "fourteen",
+    "phonetic": "'fɒ:'ti:n",
+    "meaning": "num. 十四, 十四个",
+    "pos": "",
+    "rank": 96,
+    "forms": "",
+    "commonMeaning": "num. 十四； 十四个"
+  },
+  {
+    "id": "fifteen",
+    "word": "fifteen",
+    "phonetic": "'fif'ti:n",
+    "meaning": "num. 十五, 十五个",
+    "pos": "",
+    "rank": 97,
+    "forms": "",
+    "commonMeaning": "num. 十五； 十五个"
+  },
+  {
+    "id": "sixteen",
+    "word": "sixteen",
+    "phonetic": "'siks'ti:n",
+    "meaning": "num. 十六, 十六个",
+    "pos": "",
+    "rank": 98,
+    "forms": "",
+    "commonMeaning": "num. 十六； 十六个"
+  },
+  {
+    "id": "seventeen",
+    "word": "seventeen",
+    "phonetic": "sevn'ti:n",
+    "meaning": "num. 十七, 十七个",
+    "pos": "",
+    "rank": 99,
+    "forms": "",
+    "commonMeaning": "num. 十七； 十七个"
+  },
+  {
+    "id": "eighteen",
+    "word": "eighteen",
+    "phonetic": "'ei'ti:n",
+    "meaning": "num. 十八, 十八个",
+    "pos": "",
+    "rank": 100,
+    "forms": "",
+    "commonMeaning": "num. 十八； 十八个"
+  },
+  {
+    "id": "nineteen",
+    "word": "nineteen",
+    "phonetic": ".nain'ti:n",
+    "meaning": "num. 十九, 十九个",
+    "pos": "",
+    "rank": 101,
+    "forms": "",
+    "commonMeaning": "num. 十九； 十九个"
+  },
+  {
+    "id": "twenty",
+    "word": "twenty",
+    "phonetic": "'twenti",
+    "meaning": "num. 二十, 二十个",
+    "pos": "",
+    "rank": 102,
+    "forms": "",
+    "commonMeaning": "num. 二十； 二十个"
+  },
+  {
+    "id": "thirty",
+    "word": "thirty",
+    "phonetic": "'θə:ti",
+    "meaning": "num. 三十, 三十个",
+    "pos": "",
+    "rank": 103,
+    "forms": "",
+    "commonMeaning": "num. 三十； 三十个"
+  },
+  {
+    "id": "forty",
+    "word": "forty",
+    "phonetic": "'fɒ:ti",
+    "meaning": "num. 四十, 四十个",
+    "pos": "",
+    "rank": 104,
+    "forms": "",
+    "commonMeaning": "num. 四十； 四十个"
+  },
+  {
+    "id": "fifty",
+    "word": "fifty",
+    "phonetic": "'fifti",
+    "meaning": "num. 五十, 五十个",
+    "pos": "",
+    "rank": 105,
+    "forms": "",
+    "commonMeaning": "num. 五十； 五十个"
+  },
+  {
+    "id": "sixty",
+    "word": "sixty",
+    "phonetic": "'siksti",
+    "meaning": "num. 六十, 六十个",
+    "pos": "",
+    "rank": 106,
+    "forms": "",
+    "commonMeaning": "num. 六十； 六十个"
+  },
+  {
+    "id": "seventy",
+    "word": "seventy",
+    "phonetic": "'sevnti",
+    "meaning": "num. 七十, 七十个",
+    "pos": "",
+    "rank": 107,
+    "forms": "",
+    "commonMeaning": "num. 七十； 七十个"
+  },
+  {
+    "id": "eighty",
+    "word": "eighty",
+    "phonetic": "'eiti",
+    "meaning": "num. 八十, 八十个",
+    "pos": "",
+    "rank": 108,
+    "forms": "",
+    "commonMeaning": "num. 八十； 八十个"
+  },
+  {
+    "id": "ninety",
+    "word": "ninety",
+    "phonetic": "'nainti",
+    "meaning": "num. 九十, 九十个",
+    "pos": "",
+    "rank": 109,
+    "forms": "",
+    "commonMeaning": "num. 九十； 九十个"
+  },
+  {
+    "id": "hundred",
+    "word": "hundred",
+    "phonetic": "'hʌndrəd",
+    "meaning": "n. 百, 百个东西\nnum. 百, 百个\na. 一百的, 许多的",
+    "pos": "",
+    "rank": 110,
+    "forms": "",
+    "commonMeaning": "百； 百个东西"
+  },
+  {
+    "id": "first",
+    "word": "first",
+    "phonetic": "fə:st",
+    "meaning": "adv. 首先, 第一, 优先\na. 第一的\nnum. 第一\nn. 开始, 第一",
+    "pos": "",
+    "rank": 111,
+    "forms": "",
+    "commonMeaning": "首先； 第一； 优先"
+  },
+  {
+    "id": "second",
+    "word": "second",
+    "phonetic": "'sekənd",
+    "meaning": "n. 秒, 瞬间, 第二名, 支持者, 助手\na. 第二的, 其次的, 次要的, 附加的, 辅助的\nnum. 第二\nvt. 当...助手, 支持",
+    "pos": "",
+    "rank": 112,
+    "forms": "s:seconds/d:seconded/p:seconded/i:seconding/3:seconds",
+    "commonMeaning": "秒； 瞬间； 第二名"
+  },
+  {
+    "id": "third",
+    "word": "third",
+    "phonetic": "θə:d",
+    "meaning": "num. 第三, 三分之一\n[机] 第三; 第三的",
+    "pos": "",
+    "rank": 113,
+    "forms": "",
+    "commonMeaning": "num. 第三； 三分之一"
+  },
+  {
+    "id": "last",
+    "word": "last",
+    "phonetic": "lɑ:st",
+    "meaning": "a. 最后的, 末尾的, 最近的\nvi. 持续, 支持, 维持\nvt. 使维持, 够...用\nadv. 最后, 后来\nn. 最后, 末尾, 鞋楦头",
+    "pos": "",
+    "rank": 114,
+    "forms": "p:lasted/3:lasts/i:lasting/d:lasted",
+    "commonMeaning": "最后的； 末尾的； 最近的"
+  },
+  {
+    "id": "next",
+    "word": "next",
+    "phonetic": "'nekst",
+    "meaning": "n. 下一个\na. 下一个的, 其次的, 贴近的\nadv. 然后, 下次, 次于\n[计] 近邻干扰",
+    "pos": "",
+    "rank": 115,
+    "forms": "",
+    "commonMeaning": "下一个"
+  },
+  {
+    "id": "mother",
+    "word": "mother",
+    "phonetic": "ˈmʌðə",
+    "meaning": "n. 母亲, 修女院长\nvt. 产生, 照看, 收养",
+    "pos": "",
+    "rank": 116,
+    "forms": "s:mothers/i:mothering/p:mothered/3:mothers/d:mothered",
+    "commonMeaning": "母亲； 修女院长"
+  },
+  {
+    "id": "father",
+    "word": "father",
+    "phonetic": "ˈfɑːðə",
+    "meaning": "n. 父亲, 祖先, 长辈, 神父, 创始者\nvt. 当...的父亲, 保护, 创作, 发明, 培养",
+    "pos": "",
+    "rank": 117,
+    "forms": "s:fathers/d:fathered/i:fathering/p:fathered/3:fathers",
+    "commonMeaning": "父亲； 祖先； 长辈"
+  },
+  {
+    "id": "parent",
+    "word": "parent",
+    "phonetic": "'perənt",
+    "meaning": "n. 父母, 父母亲, 根源\n[法] 父亲, 母亲, 根源",
+    "pos": "",
+    "rank": 118,
+    "forms": "s:parents",
+    "commonMeaning": "父母； 父母亲； 根源"
+  },
+  {
+    "id": "family",
+    "word": "family",
+    "phonetic": "'fæməli",
+    "meaning": "n. 家庭, 家人, 族\na. 家庭的",
+    "pos": "",
+    "rank": 119,
+    "forms": "s:families",
+    "commonMeaning": "家庭； 家人； 族"
+  },
+  {
+    "id": "sister",
+    "word": "sister",
+    "phonetic": "'sistə",
+    "meaning": "n. 姐妹, 姐, 妹, 护士, 修女\nvt. 姐妹般对待",
+    "pos": "",
+    "rank": 120,
+    "forms": "s:sisters",
+    "commonMeaning": "姐妹； 姐； 妹"
+  },
+  {
+    "id": "brother",
+    "word": "brother",
+    "phonetic": "ˈbrʌðə",
+    "meaning": "n. 兄弟",
+    "pos": "",
+    "rank": 121,
+    "forms": "s:brothers",
+    "commonMeaning": "兄弟"
+  },
+  {
+    "id": "baby",
+    "word": "baby",
+    "phonetic": "'beibi",
+    "meaning": "n. 婴孩\n[医] 婴儿",
+    "pos": "",
+    "rank": 122,
+    "forms": "s:babies/i:babying/p:babied/3:babies/d:babied",
+    "commonMeaning": "婴孩"
+  },
+  {
+    "id": "child",
+    "word": "child",
+    "phonetic": "tʃaild",
+    "meaning": "n. 孩子, 产物, 追随者\n[医] 儿童",
+    "pos": "",
+    "rank": 123,
+    "forms": "s:children",
+    "commonMeaning": "孩子； 产物； 追随者"
+  },
+  {
+    "id": "boy",
+    "word": "boy",
+    "phonetic": "bɔɪ",
+    "meaning": "n. 男孩\n[法] 男孩, 少年, 儿子",
+    "pos": "",
+    "rank": 124,
+    "forms": "s:boys",
+    "commonMeaning": "男孩"
+  },
+  {
+    "id": "girl",
+    "word": "girl",
+    "phonetic": "ɡɜːl",
+    "meaning": "n. 女孩, 少女, 女佣",
+    "pos": "",
+    "rank": 125,
+    "forms": "s:girls",
+    "commonMeaning": "女孩； 少女； 女佣"
+  },
+  {
+    "id": "man",
+    "word": "man",
+    "phonetic": "mæn",
+    "meaning": "n. 男人, 人类, 人\nvt. 为...配备人手, 操纵, 使振奋\n[计] 城域网, 手册",
+    "pos": "",
+    "rank": 126,
+    "forms": "s:men/d:manned/i:manning/p:manned/3:mans",
+    "commonMeaning": "男人； 人类； 人"
+  },
+  {
+    "id": "woman",
+    "word": "woman",
+    "phonetic": "'wumən",
+    "meaning": "n. 女人, 妇女, 女仆\na. 女用的, 女性的, 妇女的\nvt. 贬称...为女人, 使成女人腔",
+    "pos": "",
+    "rank": 127,
+    "forms": "s:women",
+    "commonMeaning": "女人； 妇女； 女仆"
+  },
+  {
+    "id": "friend",
+    "word": "friend",
+    "phonetic": "frend",
+    "meaning": "n. 朋友, 支持者, 赞助者\n[法] 朋友, 友人, 赞助者",
+    "pos": "",
+    "rank": 128,
+    "forms": "s:friends",
+    "commonMeaning": "朋友； 支持者； 赞助者"
+  },
+  {
+    "id": "people",
+    "word": "people",
+    "phonetic": "'pi:pl",
+    "meaning": "n. 人, 人民, 民族, 平民\nvt. 使住满人, 居住于",
+    "pos": "",
+    "rank": 129,
+    "forms": "s:peoples/i:peopling/p:peopled/3:peoples/d:peopled",
+    "commonMeaning": "人； 人民； 民族"
+  },
+  {
+    "id": "person",
+    "word": "person",
+    "phonetic": "'pə:sn",
+    "meaning": "n. 人, 人身, 人称\n[法] 人, 法人, 人身",
+    "pos": "",
+    "rank": 130,
+    "forms": "s:persons",
+    "commonMeaning": "人； 人身； 人称"
+  },
+  {
+    "id": "teacher",
+    "word": "teacher",
+    "phonetic": "ˈtiːtʃə",
+    "meaning": "n. 教师, 老师, 导师",
+    "pos": "",
+    "rank": 131,
+    "forms": "s:teachers",
+    "commonMeaning": "教师； 老师； 导师"
+  },
+  {
+    "id": "student",
+    "word": "student",
+    "phonetic": "'stju:dnt",
+    "meaning": "n. 学生, 研究者, 学者",
+    "pos": "",
+    "rank": 132,
+    "forms": "s:students",
+    "commonMeaning": "学生； 研究者； 学者"
+  },
+  {
+    "id": "doctor",
+    "word": "doctor",
+    "phonetic": "'dɒktə",
+    "meaning": "n. 医生, 博士\nvt. 授以博士学位, 诊断, 修改\nvi. 行医",
+    "pos": "",
+    "rank": 133,
+    "forms": "s:doctors/i:doctoring/p:doctored/3:doctors/d:doctored",
+    "commonMeaning": "医生； 博士"
+  },
+  {
+    "id": "nurse",
+    "word": "nurse",
+    "phonetic": "nə:s",
+    "meaning": "n. 护士, 保姆, 奶妈\nvt. 看护, 照顾, 培养\nvi. 喂奶, 看护病人",
+    "pos": "",
+    "rank": 134,
+    "forms": "s:nurses/i:nursing/p:nursed/d:nursed/3:nurses",
+    "commonMeaning": "护士； 保姆； 奶妈"
+  },
+  {
+    "id": "worker",
+    "word": "worker",
+    "phonetic": "'wə:kə",
+    "meaning": "n. 工人, 劳动者\n[经] 工人, 劳工, 劳动者",
+    "pos": "",
+    "rank": 135,
+    "forms": "s:workers",
+    "commonMeaning": "工人； 劳动者"
+  },
+  {
+    "id": "home",
+    "word": "home",
+    "phonetic": "həʊm",
+    "meaning": "n. 家, 避难所, 故乡\na. 家庭的, 国内的, 打中目标的\nadv. 在家, 在本国, 打中目标地\n[计] 返回始位",
+    "pos": "",
+    "rank": 136,
+    "forms": "s:homes/i:homing/p:homed/3:homes/d:homed",
+    "commonMeaning": "家； 避难所； 故乡"
+  },
+  {
+    "id": "house",
+    "word": "house",
+    "phonetic": "haʊs",
+    "meaning": "n. 房子, 住宅, 机构, 议院, 家族, 家庭\nvt. 给...房子住, 收藏\nvi. 住, 躲藏",
+    "pos": "",
+    "rank": 137,
+    "forms": "s:houses/i:housing/d:housed/3:houses/p:housed",
+    "commonMeaning": "房子； 住宅； 机构"
+  },
+  {
+    "id": "room",
+    "word": "room",
+    "phonetic": "ru:m",
+    "meaning": "n. 房间, 空位, 场所\nvi. 住宿, 居住\nvt. 留宿",
+    "pos": "",
+    "rank": 138,
+    "forms": "s:rooms/i:rooming/p:roomed/3:rooms/d:roomed",
+    "commonMeaning": "房间； 空位； 场所"
+  },
+  {
+    "id": "door",
+    "word": "door",
+    "phonetic": "dɔː",
+    "meaning": "n. 门",
+    "pos": "",
+    "rank": 139,
+    "forms": "s:doors",
+    "commonMeaning": "门"
+  },
+  {
+    "id": "window",
+    "word": "window",
+    "phonetic": "'windəu",
+    "meaning": "n. 窗户, 窗子, 窗口\nvt. 给...开窗\n[计] 窗口",
+    "pos": "",
+    "rank": 140,
+    "forms": "s:windows",
+    "commonMeaning": "窗户； 窗子； 窗口"
+  },
+  {
+    "id": "wall",
+    "word": "wall",
+    "phonetic": "wɒ:l",
+    "meaning": "n. 墙, 墙壁, 垣, 内壁, 分界物, 屏障\na. 墙的\nvt. 给...建墙, 禁闭, 用墙围住\n[计] 背景墙",
+    "pos": "",
+    "rank": 141,
+    "forms": "s:walls/d:walled/i:walling/p:walled/3:walls",
+    "commonMeaning": "墙； 墙壁； 垣"
+  },
+  {
+    "id": "floor",
+    "word": "floor",
+    "phonetic": "flɒ:",
+    "meaning": "n. 地板, 楼层, 底部, 底价\nvt. 铺地板, 打倒\nn. 地面, 地板, 基底\n[计] 基底",
+    "pos": "",
+    "rank": 142,
+    "forms": "s:floors/d:floored/p:floored/i:flooring/3:floors",
+    "commonMeaning": "地板； 楼层； 底部"
+  },
+  {
+    "id": "roof",
+    "word": "roof",
+    "phonetic": "ru:f",
+    "meaning": "n. 屋顶, 室顶\nvt. 给...盖屋顶, 遮蔽",
+    "pos": "",
+    "rank": 143,
+    "forms": "s:roofs/d:roofed/i:roofing/p:roofed/3:roofs",
+    "commonMeaning": "屋顶； 室顶"
+  },
+  {
+    "id": "kitchen",
+    "word": "kitchen",
+    "phonetic": "'kitʃin",
+    "meaning": "n. 厨房, 全套炊具\n[医] 厨房",
+    "pos": "",
+    "rank": 144,
+    "forms": "s:kitchens",
+    "commonMeaning": "厨房； 全套炊具"
+  },
+  {
+    "id": "bathroom",
+    "word": "bathroom",
+    "phonetic": "'bɑ:θru:m",
+    "meaning": "n. 浴室, 厕所",
+    "pos": "",
+    "rank": 145,
+    "forms": "s:bathrooms",
+    "commonMeaning": "浴室； 厕所"
+  },
+  {
+    "id": "bedroom",
+    "word": "bedroom",
+    "phonetic": "'bedrum",
+    "meaning": "n. 卧室",
+    "pos": "",
+    "rank": 146,
+    "forms": "s:bedrooms",
+    "commonMeaning": "卧室"
+  },
+  {
+    "id": "bed",
+    "word": "bed",
+    "phonetic": "bed",
+    "meaning": "n. 床, 睡眠处, 河床, 底座, 路基, 一层\nvt. 提供宿处, 栽种, 安装\nvi. 睡, 形成坚实的一层",
+    "pos": "",
+    "rank": 147,
+    "forms": "s:beds/d:bedded/i:bedding/p:bedded/3:beds",
+    "commonMeaning": "床； 睡眠处； 河床"
+  },
+  {
+    "id": "chair",
+    "word": "chair",
+    "phonetic": "tʃeə",
+    "meaning": "n. 椅子, 显要的席位, 主席\nvt. 使入座, 使就任要职",
+    "pos": "",
+    "rank": 148,
+    "forms": "s:chairs/d:chaired/p:chaired/i:chairing/3:chairs",
+    "commonMeaning": "椅子； 显要的席位； 主席"
+  },
+  {
+    "id": "table",
+    "word": "table",
+    "phonetic": "'teibl",
+    "meaning": "n. 桌子, 餐桌, 工作台, 铭文, 表格, 表, 高原, 平地层\nvt. 搁置, 嵌合, 制表, 把...列入议事日程\n[计] 表格, 模拟运算表",
+    "pos": "",
+    "rank": 149,
+    "forms": "s:tables/d:tabled/p:tabled/i:tabling/3:tables",
+    "commonMeaning": "桌子； 餐桌； 工作台"
+  },
+  {
+    "id": "desk",
+    "word": "desk",
+    "phonetic": "desk",
+    "meaning": "n. 书桌, 办公桌, 工作台",
+    "pos": "",
+    "rank": 150,
+    "forms": "s:desks",
+    "commonMeaning": "书桌； 办公桌； 工作台"
+  },
+  {
+    "id": "sofa",
+    "word": "sofa",
+    "phonetic": "'səufə",
+    "meaning": "n. 沙发",
+    "pos": "",
+    "rank": 151,
+    "forms": "s:sofas",
+    "commonMeaning": "沙发"
+  },
+  {
+    "id": "lamp",
+    "word": "lamp",
+    "phonetic": "læmp",
+    "meaning": "n. 灯\nvt. 照亮\n[计] 逻辑模拟分析系统",
+    "pos": "",
+    "rank": 152,
+    "forms": "s:lamps",
+    "commonMeaning": "灯"
+  },
+  {
+    "id": "light",
+    "word": "light",
+    "phonetic": "lait",
+    "meaning": "n. 光, 光亮, 灯, 日光, 发光体, 光源, 杰出人物, 火花, 眼光\na. 轻的, 少量的, 轻微的, 轻快的, 轻浮的, 明亮的, 淡色的, 容易的\nvt. 点燃, 照亮\nvi. 点着, 变亮, 突降, 偶然碰到\nadv. 轻地",
+    "pos": "",
+    "rank": 153,
+    "forms": "s:lights/p:lit/d:lit/r:lighter/i:lighting/t:lightest/3:lights",
+    "commonMeaning": "光；灯；轻的"
+  },
+  {
+    "id": "key",
+    "word": "key",
+    "phonetic": "kiː",
+    "meaning": "n. 钥匙, 键, 解答, 关键, 要害, 基调, 线索, 答案, 暗礁\nvt. 调音, 锁上, 提供线索\nvi. 使用钥匙\n[计] 键, 密钥",
+    "pos": "",
+    "rank": 154,
+    "forms": "s:keys/d:keyed/i:keying/p:keyed/3:keys",
+    "commonMeaning": "钥匙； 键； 解答"
+  },
+  {
+    "id": "box",
+    "word": "box",
+    "phonetic": "bɒks",
+    "meaning": "n. 盒子, 箱, 方框, 一巴掌\nvt. 装...入盒中, 装箱, 打耳光\nvi. 拳击\n[计] 方框",
+    "pos": "",
+    "rank": 155,
+    "forms": "s:boxes/d:boxed/p:boxed/i:boxing/3:boxes",
+    "commonMeaning": "盒子； 箱； 方框"
+  },
+  {
+    "id": "bag",
+    "word": "bag",
+    "phonetic": "bæɡ",
+    "meaning": "n. 袋子, 袋状物\nvt. 使膨大, 装袋, 猎获",
+    "pos": "",
+    "rank": 156,
+    "forms": "s:bags/p:bagged/d:bagged/i:bagging/3:bags",
+    "commonMeaning": "袋子； 袋状物"
+  },
+  {
+    "id": "book",
+    "word": "book",
+    "phonetic": "bʊk",
+    "meaning": "n. 书, 书籍, 帐簿, 名册, 工作簿\nv. 登记, 预订\n[计] 工作簿",
+    "pos": "",
+    "rank": 157,
+    "forms": "s:books/d:booked/p:booked/i:booking/3:books",
+    "commonMeaning": "书； 书籍； 帐簿"
+  },
+  {
+    "id": "pen",
+    "word": "pen",
+    "phonetic": "pen",
+    "meaning": "n. 钢笔, 笔, 笔调, 笔杆子, 作家, 围栏, 栅栏, 禽畜\nvt. 写, 关入栏中, 囚禁\nvi. 动笔, 写作",
+    "pos": "",
+    "rank": 158,
+    "forms": "s:pens/p:penned/d:penned/i:penning/3:pens",
+    "commonMeaning": "钢笔； 笔； 笔调"
+  },
+  {
+    "id": "pencil",
+    "word": "pencil",
+    "phonetic": "'pensl",
+    "meaning": "n. 铅笔, 色笔, 眉笔, 画笔, 光线束\nvt. 用铅笔写或涂, 草拟",
+    "pos": "",
+    "rank": 159,
+    "forms": "s:pencils/d:pencilled/p:pencilled/i:pencilling/3:pencils",
+    "commonMeaning": "铅笔； 色笔； 眉笔"
+  },
+  {
+    "id": "paper",
+    "word": "paper",
+    "phonetic": "'peipə",
+    "meaning": "n. 纸, 文件, 文章, 报纸, 证券, 证件\nvt. 用纸糊, 贴壁纸于, 用纸包装\nvi. 贴壁纸\na. 纸做的, 纸上的",
+    "pos": "",
+    "rank": 160,
+    "forms": "s:papers/d:papered/i:papering/p:papered/3:papers",
+    "commonMeaning": "纸； 文件； 文章"
+  },
+  {
+    "id": "page",
+    "word": "page",
+    "phonetic": "peidʒ",
+    "meaning": "n. 页, 记录, 事件, 专栏, 男侍\nvt. 标明...的页数, 翻...的书页, 分页排版, 呼叫, 侍候\nvi. 翻书页, 侍侯\n[计] 页; 页面",
+    "pos": "",
+    "rank": 161,
+    "forms": "s:pages/i:paging/p:paged/3:pages/d:paged",
+    "commonMeaning": "页； 记录； 事件"
+  },
+  {
+    "id": "picture",
+    "word": "picture",
+    "phonetic": "'piktʃə",
+    "meaning": "n. 图画, 照片, 景色, 美丽如画的人(或物), 化身, 生动的描述, 想像, 形象思维\nvt. 画, 拍摄, 用图说明, 描写, 想像\n[计] 图象; 形象; 字形",
+    "pos": "",
+    "rank": 162,
+    "forms": "s:pictures/d:pictured/p:pictured/i:picturing/3:pictures",
+    "commonMeaning": "图画； 照片； 景色"
+  },
+  {
+    "id": "photo",
+    "word": "photo",
+    "phonetic": "'fəutəu",
+    "meaning": "n. 相片, 照片, 逼真的描绘\nv. 照相\na. 照相的, 摄影用的, 详细记录的, 逼真的, 酷似的",
+    "pos": "",
+    "rank": 163,
+    "forms": "s:photos",
+    "commonMeaning": "相片； 照片； 逼真的描绘"
+  },
+  {
+    "id": "phone",
+    "word": "phone",
+    "phonetic": "fəun",
+    "meaning": "n. 电话, 受话器, 耳机\nvt. 打电话给\nvi. 打电话",
+    "pos": "",
+    "rank": 164,
+    "forms": "p:phoned/s:phones/i:phoning/d:phoned/3:phones",
+    "commonMeaning": "电话； 受话器； 耳机"
+  },
+  {
+    "id": "computer",
+    "word": "computer",
+    "phonetic": "kəm'pju:tə",
+    "meaning": "n. 电脑, 电子计算机\n[计] 计算机",
+    "pos": "",
+    "rank": 165,
+    "forms": "s:computers",
+    "commonMeaning": "电脑； 电子计算机"
+  },
+  {
+    "id": "clock",
+    "word": "clock",
+    "phonetic": "klɒk",
+    "meaning": "n. 时钟, 计时器, (袜子上的)绣花边花\nvt. 绣花样, 记时, 记录\nvi. 记录时间\n[计] 时钟",
+    "pos": "",
+    "rank": 166,
+    "forms": "s:clocks/p:clocked/d:clocked/i:clocking/3:clocks",
+    "commonMeaning": "时钟； 计时器； (袜子上的)绣花边花"
+  },
+  {
+    "id": "watch",
+    "word": "watch",
+    "phonetic": "wɒtʃ",
+    "meaning": "n. 观察, 手表, 看守, 守护, 监视, 值班人\nvt. 看, 注视, 照顾, 看守, 守护, 监视\nvi. 观看, 注视, 守侯",
+    "pos": "",
+    "rank": 167,
+    "forms": "i:watching/p:watched/d:watched/3:watches/s:watches",
+    "commonMeaning": "观看；手表"
+  },
+  {
+    "id": "school",
+    "word": "school",
+    "phonetic": "skuːl",
+    "meaning": "n. 学校, 鱼群, 门派, 学派\nvt. 教育, 训练, 培养\nvi. 成群地游",
+    "pos": "",
+    "rank": 168,
+    "forms": "s:schools/i:schooling/d:schooled/p:schooled/3:schools",
+    "commonMeaning": "学校； 鱼群； 门派"
+  },
+  {
+    "id": "class",
+    "word": "class",
+    "phonetic": "klɑ:s",
+    "meaning": "n. 班级, 阶级, 种类, 课\nvt. 分类\n[计] 类别; 类; 种类; 类程",
+    "pos": "",
+    "rank": 169,
+    "forms": "s:classes/d:classed/i:classing/p:classed/3:classes",
+    "commonMeaning": "班级； 阶级； 种类"
+  },
+  {
+    "id": "lesson",
+    "word": "lesson",
+    "phonetic": "'lesn",
+    "meaning": "n. 课, 课业, 教训",
+    "pos": "",
+    "rank": 170,
+    "forms": "s:lessons",
+    "commonMeaning": "课； 课业； 教训"
+  },
+  {
+    "id": "word",
+    "word": "word",
+    "phonetic": "wə:d",
+    "meaning": "n. 话, 消息, 词, 诺言, 命令\nvt. 用言辞表达\n[计] 字",
+    "pos": "",
+    "rank": 171,
+    "forms": "s:words/d:worded/i:wording/p:worded/3:words",
+    "commonMeaning": "话； 消息； 词"
+  },
+  {
+    "id": "letter",
+    "word": "letter",
+    "phonetic": "'letə",
+    "meaning": "n. 信, 字母, 证书, 字面意义, 铅字, 学问, 出租人\nvt. 写字母于, 在...上刻字母, 用字母标明\nvi. 写印刷体字\n[计] 字母",
+    "pos": "",
+    "rank": 172,
+    "forms": "s:letters/p:lettered/i:lettering/3:letters/d:lettered",
+    "commonMeaning": "字母；信"
+  },
+  {
+    "id": "sound",
+    "word": "sound",
+    "phonetic": "saund",
+    "meaning": "n. 声音, 语音, 吵闹, 声调, 听力范围, 探条, 海峡\na. 健全的, 可靠的, 合理的, 健康的, 彻底的, 资金充实的\nadv. 彻底地, 充分地\nvi. 发出声音, 回响, 测深, 试探, 听起来\nvt. 使发声, 宣告, 听诊, 测...深, 试探\n[计] 声音",
+    "pos": "",
+    "rank": 173,
+    "forms": "3:sounds/s:sounds/p:sounded/i:sounding/d:sounded/r:sounder",
+    "commonMeaning": "声音；听起来"
+  },
+  {
+    "id": "music",
+    "word": "music",
+    "phonetic": "'mju:zik",
+    "meaning": "n. 音乐, 乐曲",
+    "pos": "",
+    "rank": 174,
+    "forms": "s:musics",
+    "commonMeaning": "音乐； 乐曲"
+  },
+  {
+    "id": "song",
+    "word": "song",
+    "phonetic": "sɒŋ",
+    "meaning": "n. 歌, 曲, 鸣声, 歌唱, 歌曲, 诗歌",
+    "pos": "",
+    "rank": 175,
+    "forms": "s:songs",
+    "commonMeaning": "歌； 曲； 鸣声"
+  },
+  {
+    "id": "game",
+    "word": "game",
+    "phonetic": "geim",
+    "meaning": "n. 比赛, 玩耍, 比分, 得胜, 比赛规则, 策略, 游戏, 野味\nvi. 赌博\na. 勇敢的, 有胆量的, 关于野味的, 跛的\n[计] 博弈; 对策",
+    "pos": "",
+    "rank": 176,
+    "forms": "s:games/i:gaming/p:gamed/3:games/d:gamed",
+    "commonMeaning": "比赛； 玩耍； 比分"
+  },
+  {
+    "id": "toy",
+    "word": "toy",
+    "phonetic": "tɔɪ",
+    "meaning": "n. 玩具, 小玩艺儿, 小型的东西, 消遣\na. 供玩耍的, 作为玩具的\nvi. 玩弄, 戏弄, 调情",
+    "pos": "",
+    "rank": 177,
+    "forms": "s:toys/p:toyed/i:toying/d:toyed/3:toys",
+    "commonMeaning": "玩具； 小玩艺儿； 小型的东西"
+  },
+  {
+    "id": "ball",
+    "word": "ball",
+    "phonetic": "bɔːl",
+    "meaning": "n. 球, 舞会, 球状物\nv. 捏成球形",
+    "pos": "",
+    "rank": 178,
+    "forms": "s:balls/p:balled/i:balling/3:balls/d:balled",
+    "commonMeaning": "球； 舞会； 球状物"
+  },
+  {
+    "id": "cat",
+    "word": "cat",
+    "phonetic": "kæt",
+    "meaning": "n. 猫, 恶妇\nvi. 呕吐\n计算机辅助教育, 计算机辅助测试, 计算机辅助翻译, 计算机辅助排版\n[计] 计算机辅助教学, 计算机辅助翻译, 计算机辅助排字, 计算机辅助测试",
+    "pos": "",
+    "rank": 179,
+    "forms": "s:cats/i:catting/p:catted/3:cats/d:catted",
+    "commonMeaning": "猫； 恶妇"
+  },
+  {
+    "id": "dog",
+    "word": "dog",
+    "phonetic": "dɒɡ",
+    "meaning": "n. 狗, 坏蛋\nvt. 跟踪, 尾随",
+    "pos": "",
+    "rank": 180,
+    "forms": "s:dogs/d:dogged/p:dogged/i:dogging/3:dogs",
+    "commonMeaning": "狗； 坏蛋"
+  },
+  {
+    "id": "bird",
+    "word": "bird",
+    "phonetic": "bɜːd",
+    "meaning": "n. 鸟, 羽毛球\nvi. 打鸟",
+    "pos": "",
+    "rank": 181,
+    "forms": "s:birds/i:birding/p:birded/3:birds/d:birded",
+    "commonMeaning": "鸟； 羽毛球"
+  },
+  {
+    "id": "fish",
+    "word": "fish",
+    "phonetic": "fɪʃ",
+    "meaning": "n. 鱼, 鱼肉, 鱼类, 接合板\nvt. 钓, 钓鱼, 查出, 用接合板连接\nvi. 捕鱼, 钓鱼, 用钩捞取, 摸索寻找",
+    "pos": "",
+    "rank": 182,
+    "forms": "s:fishes/p:fished/i:fishing/d:fished/3:fishes",
+    "commonMeaning": "鱼； 鱼肉； 鱼类"
+  },
+  {
+    "id": "horse",
+    "word": "horse",
+    "phonetic": "hɒ:s",
+    "meaning": "n. 马, 骑兵, 脚架\nvi. 骑马, 取笑\nvt. 使骑马, 系马于",
+    "pos": "",
+    "rank": 183,
+    "forms": "s:horses/i:horsing/p:horsed/3:horses/d:horsed",
+    "commonMeaning": "马； 骑兵； 脚架"
+  },
+  {
+    "id": "cow",
+    "word": "cow",
+    "phonetic": "kau",
+    "meaning": "n. 母牛, 母兽\nvt. 威胁",
+    "pos": "",
+    "rank": 184,
+    "forms": "s:cows/d:cowed/p:cowed/i:cowing/3:cows",
+    "commonMeaning": "母牛； 母兽"
+  },
+  {
+    "id": "pig",
+    "word": "pig",
+    "phonetic": "pig",
+    "meaning": "n. 猪, 猪肉, 贪婪的人, 猪一样的人\nv. 生小猪, 象猪般地生活",
+    "pos": "",
+    "rank": 185,
+    "forms": "s:pigs/i:pigging/p:pigged/3:pigs/d:pigged",
+    "commonMeaning": "猪； 猪肉； 贪婪的人"
+  },
+  {
+    "id": "sheep",
+    "word": "sheep",
+    "phonetic": "ʃiːp",
+    "meaning": "n. 羊, 胆小者",
+    "pos": "",
+    "rank": 186,
+    "forms": "s:sheeps",
+    "commonMeaning": "羊； 胆小者"
+  },
+  {
+    "id": "rabbit",
+    "word": "rabbit",
+    "phonetic": "'ræbit",
+    "meaning": "n. 兔子\nvi. 猎兔\nvt. 让...见鬼去",
+    "pos": "",
+    "rank": 187,
+    "forms": "s:rabbits/i:rabbiting/p:rabbited/3:rabbits/d:rabbited",
+    "commonMeaning": "兔子"
+  },
+  {
+    "id": "duck",
+    "word": "duck",
+    "phonetic": "dʌk",
+    "meaning": "n. 鸭子\nvi. 没入水中, 闪避\nvt. 猛按...入水, 躲避",
+    "pos": "",
+    "rank": 188,
+    "forms": "s:ducks/p:ducked/i:ducking/d:ducked/3:ducks",
+    "commonMeaning": "鸭子"
+  },
+  {
+    "id": "chicken",
+    "word": "chicken",
+    "phonetic": "'tʃikin",
+    "meaning": "n. 小鸡, 鸡肉",
+    "pos": "",
+    "rank": 189,
+    "forms": "s:chickens/p:chickened/d:chickened/i:chickening",
+    "commonMeaning": "小鸡； 鸡肉"
+  },
+  {
+    "id": "animal",
+    "word": "animal",
+    "phonetic": "'æniməl",
+    "meaning": "n. 动物\n[医] 动物",
+    "pos": "",
+    "rank": 190,
+    "forms": "s:animals",
+    "commonMeaning": "动物"
+  },
+  {
+    "id": "apple",
+    "word": "apple",
+    "phonetic": "ˈæpəl",
+    "meaning": "n. 苹果, 家伙\n[医] 苹果",
+    "pos": "",
+    "rank": 191,
+    "forms": "s:apples",
+    "commonMeaning": "苹果； 家伙"
+  },
+  {
+    "id": "banana",
+    "word": "banana",
+    "phonetic": "bəˈnɑːnə",
+    "meaning": "n. 香蕉",
+    "pos": "",
+    "rank": 192,
+    "forms": "s:bananas",
+    "commonMeaning": "香蕉"
+  },
+  {
+    "id": "orange",
+    "word": "orange",
+    "phonetic": "ˈɒrɪndʒ",
+    "meaning": "n. 柑橘, 桔子, 橘色\na. 橘色的",
+    "pos": "",
+    "rank": 193,
+    "forms": "s:oranges",
+    "commonMeaning": "柑橘； 桔子； 橘色"
+  },
+  {
+    "id": "grape",
+    "word": "grape",
+    "phonetic": "greip",
+    "meaning": "n. 葡萄, 葡萄树\n[医] 葡萄",
+    "pos": "",
+    "rank": 194,
+    "forms": "s:grapes",
+    "commonMeaning": "葡萄； 葡萄树"
+  },
+  {
+    "id": "pear",
+    "word": "pear",
+    "phonetic": "pєə",
+    "meaning": "n. 梨子, 梨树, 梨木\n[机] 梨木",
+    "pos": "",
+    "rank": 195,
+    "forms": "s:pears",
+    "commonMeaning": "梨子； 梨树； 梨木"
+  },
+  {
+    "id": "peach",
+    "word": "peach",
+    "phonetic": "pi:tʃ",
+    "meaning": "n. 桃子, 桃树, 桃色, 美人儿, 极好的事物\nvt. 告发\nvi. 告密, 检举",
+    "pos": "",
+    "rank": 196,
+    "forms": "s:peaches/i:peaching/p:peached/3:peaches/d:peached",
+    "commonMeaning": "桃子； 桃树； 桃色"
+  },
+  {
+    "id": "lemon",
+    "word": "lemon",
+    "phonetic": "'lemən",
+    "meaning": "n. 柠檬, 柠檬树, 柠檬色\n[医] 柠檬",
+    "pos": "",
+    "rank": 197,
+    "forms": "s:lemons",
+    "commonMeaning": "柠檬； 柠檬树； 柠檬色"
+  },
+  {
+    "id": "potato",
+    "word": "potato",
+    "phonetic": "pə'teitəu",
+    "meaning": "n. 马铃薯",
+    "pos": "",
+    "rank": 198,
+    "forms": "s:potatoes",
+    "commonMeaning": "马铃薯"
+  },
+  {
+    "id": "tomato",
+    "word": "tomato",
+    "phonetic": "tə'mɑ:təu",
+    "meaning": "n. 番茄, 西红柿",
+    "pos": "",
+    "rank": 199,
+    "forms": "s:tomatoes",
+    "commonMeaning": "番茄； 西红柿"
+  },
+  {
+    "id": "carrot",
+    "word": "carrot",
+    "phonetic": "'kærət",
+    "meaning": "n. 胡萝卜\n[医] 胡萝卜",
+    "pos": "",
+    "rank": 200,
+    "forms": "s:carrots",
+    "commonMeaning": "胡萝卜"
+  },
+  {
+    "id": "onion",
+    "word": "onion",
+    "phonetic": "'ʌnjən",
+    "meaning": "n. 洋葱\nvt. 因洋葱使掉泪",
+    "pos": "",
+    "rank": 201,
+    "forms": "s:onions",
+    "commonMeaning": "洋葱"
+  },
+  {
+    "id": "egg",
+    "word": "egg",
+    "phonetic": "eɡ",
+    "meaning": "n. 蛋, 卵\nvt. 挑唆, 煽动, 调蛋黄",
+    "pos": "",
+    "rank": 202,
+    "forms": "s:eggs/p:egged/i:egging/3:eggs/d:egged",
+    "commonMeaning": "蛋； 卵"
+  },
+  {
+    "id": "bread",
+    "word": "bread",
+    "phonetic": "bred",
+    "meaning": "n. 面包, 生计, 食物\nvt. 裹以面包屑",
+    "pos": "",
+    "rank": 203,
+    "forms": "s:breads/i:breading/p:breaded/3:breads/d:breaded",
+    "commonMeaning": "面包； 生计； 食物"
+  },
+  {
+    "id": "rice",
+    "word": "rice",
+    "phonetic": "rais",
+    "meaning": "n. 米, 米饭, 稻\nvt. 将...压成米粒状",
+    "pos": "",
+    "rank": 204,
+    "forms": "s:rices/i:ricing/p:riced/3:rices/d:riced",
+    "commonMeaning": "米； 米饭； 稻"
+  },
+  {
+    "id": "noodle",
+    "word": "noodle",
+    "phonetic": "'nu:dl",
+    "meaning": "n. 面条, 笨蛋",
+    "pos": "",
+    "rank": 205,
+    "forms": "s:noodles/3:noodles/i:noodling/p:noodled",
+    "commonMeaning": "面条； 笨蛋"
+  },
+  {
+    "id": "meat",
+    "word": "meat",
+    "phonetic": "mi:t",
+    "meaning": "n. 肉, 餐, 食物\n[经] 肉类",
+    "pos": "",
+    "rank": 206,
+    "forms": "s:meats",
+    "commonMeaning": "肉； 餐； 食物"
+  },
+  {
+    "id": "beef",
+    "word": "beef",
+    "phonetic": "bi:f",
+    "meaning": "n. 牛肉, 肌肉\nvt. 养(牛), 宰(牛)\nvi. 抱怨, 告发",
+    "pos": "",
+    "rank": 207,
+    "forms": "d:beefed/i:beefing/p:beefed/s:beefs/3:beefs",
+    "commonMeaning": "牛肉； 肌肉"
+  },
+  {
+    "id": "pork",
+    "word": "pork",
+    "phonetic": "pɒ:k",
+    "meaning": "n. 猪肉\n[医] 猪肉",
+    "pos": "",
+    "rank": 208,
+    "forms": "i:porking",
+    "commonMeaning": "猪肉"
+  },
+  {
+    "id": "fruit",
+    "word": "fruit",
+    "phonetic": "fru:t",
+    "meaning": "n. 水果, 果类, 结果\n[医] 果实, 种实",
+    "pos": "",
+    "rank": 209,
+    "forms": "s:fruits/i:fruiting/p:fruited/3:fruits/d:fruited",
+    "commonMeaning": "水果； 果类； 结果"
+  },
+  {
+    "id": "vegetable",
+    "word": "vegetable",
+    "phonetic": "'vedʒətəbl",
+    "meaning": "n. 蔬菜, 植物, 无精打采之人\na. 蔬菜的, 植物的",
+    "pos": "",
+    "rank": 210,
+    "forms": "s:vegetables",
+    "commonMeaning": "蔬菜； 植物； 无精打采之人"
+  },
+  {
+    "id": "food",
+    "word": "food",
+    "phonetic": "fuːd",
+    "meaning": "n. 食物, 养料\n[医] 食物, 食品",
+    "pos": "",
+    "rank": 211,
+    "forms": "s:foods",
+    "commonMeaning": "食物； 养料"
+  },
+  {
+    "id": "water",
+    "word": "water",
+    "phonetic": "ˈwɔːtə",
+    "meaning": "n. 水, 雨水, 海水, 水位, 水面, 流水\nvt. 给...浇水, 供以水, 注入水, 使湿\nvi. 流泪, 流口水, 加水\na. 水的, 水上的, 水生的, 含水的",
+    "pos": "",
+    "rank": 212,
+    "forms": "s:waters/d:watered/i:watering/3:waters/p:watered",
+    "commonMeaning": "水； 雨水； 海水"
+  },
+  {
+    "id": "milk",
+    "word": "milk",
+    "phonetic": "milk",
+    "meaning": "n. 奶, 乳状物\nvt. 挤乳, 榨取\nvi. 产乳",
+    "pos": "",
+    "rank": 213,
+    "forms": "d:milked/i:milking/s:milks/p:milked/3:milks",
+    "commonMeaning": "奶； 乳状物"
+  },
+  {
+    "id": "tea",
+    "word": "tea",
+    "phonetic": "tiː",
+    "meaning": "n. 茶, 茶叶\n[医] 茶, 茶剂, 浸剂",
+    "pos": "",
+    "rank": 214,
+    "forms": "s:teas",
+    "commonMeaning": "茶； 茶叶"
+  },
+  {
+    "id": "coffee",
+    "word": "coffee",
+    "phonetic": "'kɒfi",
+    "meaning": "n. 咖啡, 咖啡色\n[医] 咖啡, 咖啡豆",
+    "pos": "",
+    "rank": 215,
+    "forms": "s:coffees",
+    "commonMeaning": "咖啡； 咖啡色"
+  },
+  {
+    "id": "juice",
+    "word": "juice",
+    "phonetic": "dʒuːs",
+    "meaning": "n. 汁, 活力, 体液\nvt. 挤出汁来, 加汁",
+    "pos": "",
+    "rank": 216,
+    "forms": "s:juices",
+    "commonMeaning": "汁； 活力； 体液"
+  },
+  {
+    "id": "sugar",
+    "word": "sugar",
+    "phonetic": "'ʃugə",
+    "meaning": "n. 糖, 糖块, 甜言蜜语\nvt. 加糖于, 使甜蜜, 粉饰, 美化\nvi. 制成糖",
+    "pos": "",
+    "rank": 217,
+    "forms": "s:sugars/i:sugaring/p:sugared/3:sugars/d:sugared",
+    "commonMeaning": "糖； 糖块； 甜言蜜语"
+  },
+  {
+    "id": "salt",
+    "word": "salt",
+    "phonetic": "sɒ:lt",
+    "meaning": "n. 盐, 风趣, 刺激\na. 含盐的, 咸的, 风趣的, 辛辣的\nvt. 加盐于, 用盐腌",
+    "pos": "",
+    "rank": 218,
+    "forms": "s:salts/d:salted/i:salting/p:salted/3:salts",
+    "commonMeaning": "盐； 风趣； 刺激"
+  },
+  {
+    "id": "oil",
+    "word": "oil",
+    "phonetic": "ɒil",
+    "meaning": "n. 油, 石油, 油画颜料\nvt. 涂油于, 使融化成油状, 加油于\nvi. 加燃油, 融化",
+    "pos": "",
+    "rank": 219,
+    "forms": "s:oils/p:oiled/i:oiling/d:oiled/3:oils",
+    "commonMeaning": "油； 石油； 油画颜料"
+  },
+  {
+    "id": "breakfast",
+    "word": "breakfast",
+    "phonetic": "'brekfəst",
+    "meaning": "n. 早餐",
+    "pos": "",
+    "rank": 220,
+    "forms": "s:breakfasts/p:breakfasted/i:breakfasting/d:breakfasted/3:breakfasts",
+    "commonMeaning": "早餐"
+  },
+  {
+    "id": "lunch",
+    "word": "lunch",
+    "phonetic": "lʌntʃ",
+    "meaning": "n. 午餐",
+    "pos": "",
+    "rank": 221,
+    "forms": "s:lunches/p:lunched/i:lunching/d:lunched/3:lunches",
+    "commonMeaning": "午餐"
+  },
+  {
+    "id": "dinner",
+    "word": "dinner",
+    "phonetic": "'dinə",
+    "meaning": "n. 晚餐, 正餐, 宴会",
+    "pos": "",
+    "rank": 222,
+    "forms": "s:dinners",
+    "commonMeaning": "晚餐； 正餐； 宴会"
+  },
+  {
+    "id": "eat",
+    "word": "eat",
+    "phonetic": "i:t",
+    "meaning": "v. 吃, 腐蚀",
+    "pos": "",
+    "rank": 223,
+    "forms": "i:eating/p:ate/d:eaten/3:eats",
+    "commonMeaning": "吃； 腐蚀"
+  },
+  {
+    "id": "drink",
+    "word": "drink",
+    "phonetic": "driŋk",
+    "meaning": "n. 饮料, 酒\nv. 喝, 喝酒",
+    "pos": "",
+    "rank": 224,
+    "forms": "s:drinks/i:drinking/p:drank/d:drunk/3:drinks",
+    "commonMeaning": "饮料； 酒"
+  },
+  {
+    "id": "cook",
+    "word": "cook",
+    "phonetic": "kuk",
+    "meaning": "n. 厨子, 厨师\nvt. 烹调, 煮饭, 加热\nvi. 在煮着",
+    "pos": "",
+    "rank": 225,
+    "forms": "i:cooking/d:cooked/p:cooked/s:cooks/3:cooks",
+    "commonMeaning": "厨子； 厨师"
+  },
+  {
+    "id": "wash",
+    "word": "wash",
+    "phonetic": "wɒʃ",
+    "meaning": "n. 洗, 洗涤, 冲洗, 洗的衣服, 冲积物, 洼地\nvt. 洗, 洗涤, 洗清, 用水冲洗, 流过, 弄湿, 粉刷, 镀金属薄层于\nvi. 洗涤, 洗澡, 被冲蚀, 漂浮",
+    "pos": "",
+    "rank": 226,
+    "forms": "d:washed/i:washing/p:washed/s:washes/3:washes",
+    "commonMeaning": "洗； 洗涤； 冲洗"
+  },
+  {
+    "id": "clean",
+    "word": "clean",
+    "phonetic": "kli:n",
+    "meaning": "a. 干净的, 清白的, 简洁的\nadv. 清洁地, 完全地\nvt. 清理, 使干净, 出空\nvi. 被搞干净\nn. 打扫",
+    "pos": "",
+    "rank": 227,
+    "forms": "i:cleaning/d:cleaned/r:cleaner/p:cleaned/3:cleans/t:cleanest",
+    "commonMeaning": "干净的； 清白的； 简洁的"
+  },
+  {
+    "id": "sleep",
+    "word": "sleep",
+    "phonetic": "sli:p",
+    "meaning": "n. 睡眠, 静止, 昏迷, 麻木, 长眠, 冬眠\nvi. 睡觉, 睡眠, 静止\nvt. 睡",
+    "pos": "",
+    "rank": 228,
+    "forms": "p:slept/i:sleeping/d:slept/3:sleeps",
+    "commonMeaning": "睡眠； 静止； 昏迷"
+  },
+  {
+    "id": "wake",
+    "word": "wake",
+    "phonetic": "weik",
+    "meaning": "vt. 叫醒, 激发\nvi. 醒来, 醒着, 觉醒, 活跃起来\nn. 守侯, 守夜, 尾迹, 痕迹",
+    "pos": "",
+    "rank": 229,
+    "forms": "p:woke/d:woken/i:waking/3:wakes/s:wakes",
+    "commonMeaning": "叫醒； 激发"
+  },
+  {
+    "id": "read",
+    "word": "read",
+    "phonetic": "ri:d",
+    "meaning": "v. 读, 阅读, 理解\na. 有学问的\nn. 读取, 阅读\n[计] 读取",
+    "pos": "",
+    "rank": 230,
+    "forms": "d:read/0:read/1:dp/i:reading/p:read/3:reads",
+    "commonMeaning": "读； 阅读； 理解"
+  },
+  {
+    "id": "write",
+    "word": "write",
+    "phonetic": "rait",
+    "meaning": "vt. 书写, 著述, 写, 写满, 写信给\nvi. 写, 写字, 写信, 写作, 作曲\n[计] 书写器",
+    "pos": "",
+    "rank": 231,
+    "forms": "p:wrote/d:written/i:writing/3:writes",
+    "commonMeaning": "书写； 著述； 写"
+  },
+  {
+    "id": "listen",
+    "word": "listen",
+    "phonetic": "'lisn",
+    "meaning": "vi. 听, 倾听, 听从\nn. 听, 倾听",
+    "pos": "",
+    "rank": 232,
+    "forms": "p:listened/i:listening/d:listened/3:listens",
+    "commonMeaning": "听； 倾听； 听从"
+  },
+  {
+    "id": "speak",
+    "word": "speak",
+    "phonetic": "spi:k",
+    "meaning": "vi. 说, 说话, 演说, 发言\nvt. 说, 讲, 说出",
+    "pos": "",
+    "rank": 233,
+    "forms": "p:spoke/i:speaking/d:spoken/3:speaks",
+    "commonMeaning": "说； 说话； 演说"
+  },
+  {
+    "id": "say",
+    "word": "say",
+    "phonetic": "sei",
+    "meaning": "vt. 说, 讲, 念, 说明, 指明\nvi. 说, 讲\nn. 意见, 发言权",
+    "pos": "",
+    "rank": 234,
+    "forms": "p:said/3:says/d:said/i:saying",
+    "commonMeaning": "说； 讲； 念"
+  },
+  {
+    "id": "talk",
+    "word": "talk",
+    "phonetic": "tɒ:k",
+    "meaning": "n. 谈话, 交谈, 会谈, 讲话, 演讲, 空谈, 谣言, 方言, 语言\nvi. 讲话, 演讲, 说话, 谈话, 交流, 闲聊, 说闲话\nvt. 讲, 说, 讨论, 谈论\n[计] 对话类, 聊天",
+    "pos": "",
+    "rank": 235,
+    "forms": "i:talking/s:talks/p:talked/d:talked/3:talks",
+    "commonMeaning": "谈话； 交谈； 会谈"
+  },
+  {
+    "id": "ask",
+    "word": "ask",
+    "phonetic": "ɑ:sk",
+    "meaning": "vi. 问, 要求\nvt. 问, 要求, 邀请, 需要",
+    "pos": "",
+    "rank": 236,
+    "forms": "p:asked/d:asked/i:asking/3:asks",
+    "commonMeaning": "问； 要求"
+  },
+  {
+    "id": "answer",
+    "word": "answer",
+    "phonetic": "'ɑ:nsə",
+    "meaning": "n. 答案, 回答, 回报, 答辩\nvt. 回答, 反驳, 适应, 响应, 符合\nvi. 回答, 答应, 负责, 符合, 成功\n[计] 用户问题及答案新闻组",
+    "pos": "",
+    "rank": 237,
+    "forms": "s:answers/p:answered/d:answered/i:answering/3:answers",
+    "commonMeaning": "答案； 回答； 回报"
+  },
+  {
+    "id": "learn",
+    "word": "learn",
+    "phonetic": "lə:n",
+    "meaning": "vt. 学习；认识到；得知",
+    "pos": "",
+    "rank": 238,
+    "forms": "d:learned/i:learning/p:learned/3:learns",
+    "commonMeaning": "学习；认识到；得知"
+  },
+  {
+    "id": "teach",
+    "word": "teach",
+    "phonetic": "ti:tʃ",
+    "meaning": "vt. 教, 讲授, 教导, 教育\nvi. 教书, 教学, 可以教",
+    "pos": "",
+    "rank": 239,
+    "forms": "d:taught/i:teaching/p:taught/3:teaches",
+    "commonMeaning": "教； 讲授； 教导"
+  },
+  {
+    "id": "study",
+    "word": "study",
+    "phonetic": "'stʌdi",
+    "meaning": "n. 学习, 研究, 学科, 论文, 求学, 书房, 试作\nvt. 学习, 读书, 研究, 考虑, 计划\nvi. 学习, 思索",
+    "pos": "",
+    "rank": 240,
+    "forms": "s:studies/i:studying/d:studied/p:studied/3:studies",
+    "commonMeaning": "学习； 研究； 学科"
+  },
+  {
+    "id": "work",
+    "word": "work",
+    "phonetic": "wɜːk",
+    "meaning": "n. 工作, 劳动, 职业, 行为, 功, 作品, 成果, 产品, 工程\nvi. 工作, 劳动, 做, 运转, 起作用, 被加工\nvt. 使工作, 使转动, 开动, 使用, 经营, 使逐渐变得, 造成",
+    "pos": "",
+    "rank": 241,
+    "forms": "i:working/3:works/p:worked/d:worked",
+    "commonMeaning": "工作；起作用"
+  },
+  {
+    "id": "play",
+    "word": "play",
+    "phonetic": "plei",
+    "meaning": "n. 游戏, 游玩, 玩笑, 运动, 比赛, 赌博, 跳动, 表演, 剧本\nv. 玩, 游戏, 假装, 开玩笑, 比赛, 扮演, 演奏, 演戏, 传摇曳, (使)跳动\n[计] 播放",
+    "pos": "",
+    "rank": 242,
+    "forms": "i:playing/p:played/d:played/3:plays/s:plays",
+    "commonMeaning": "游戏； 游玩； 玩笑"
+  },
+  {
+    "id": "help",
+    "word": "help",
+    "phonetic": "help",
+    "meaning": "n. 帮忙, 帮助者, 补救办法, 有益的东西\nvt. 帮助, 帮忙, 接济, 治疗, 款待\nvi. 有用, 救命, 招待\n[计] 帮助, 帮助程序; DOS外部命令: DOS命令的电子文件帮助程序",
+    "pos": "",
+    "rank": 243,
+    "forms": "d:helped/i:helping/p:helped/3:helps/s:helps",
+    "commonMeaning": "帮忙； 帮助者； 补救办法"
+  },
+  {
+    "id": "like",
+    "word": "like",
+    "phonetic": "laik",
+    "meaning": "a. 相似的, 同样的\nvt. 喜欢, 愿意, 想\nvi. 喜欢, 希望\nn. 爱好, 同样的人(或物)\nprep. 象, 如同\nadv. 可能",
+    "pos": "",
+    "rank": 244,
+    "forms": "p:liked/3:likes/d:liked/s:likes/i:liking",
+    "commonMeaning": "相似的； 同样的"
+  },
+  {
+    "id": "love",
+    "word": "love",
+    "phonetic": "lʌv",
+    "meaning": "n. 爱, 恋爱, 爱情, 爱好, 性爱\nvt. 爱, 爱好, 爱慕\nvi. 爱",
+    "pos": "",
+    "rank": 245,
+    "forms": "p:loved/3:loves/d:loved/i:loving/s:loves",
+    "commonMeaning": "爱； 恋爱； 爱情"
+  },
+  {
+    "id": "want",
+    "word": "want",
+    "phonetic": "wɒnt",
+    "meaning": "n. 需要的东西, 缺乏, 贫困, 需要\nvt. 要, 希望, 应该, 缺少\nvi. 生活困苦, 需要, 缺少",
+    "pos": "",
+    "rank": 246,
+    "forms": "p:wanted/3:wants/d:wanted/i:wanting",
+    "commonMeaning": "需要的东西； 缺乏； 贫困"
+  },
+  {
+    "id": "need",
+    "word": "need",
+    "phonetic": "ni:d",
+    "meaning": "n. 需要, 必须, 缺乏\nvt. 需要, 必需\nvi. 贫困, 有必要\naux. 需要",
+    "pos": "",
+    "rank": 247,
+    "forms": "s:needs/3:needs/d:needed/p:needed/i:needing",
+    "commonMeaning": "需要； 必须； 缺乏"
+  },
+  {
+    "id": "know",
+    "word": "know",
+    "phonetic": "nəu",
+    "meaning": "v. 知道, 了解, 认识, 确信",
+    "pos": "",
+    "rank": 248,
+    "forms": "p:knew/d:known/3:knows/i:knowing",
+    "commonMeaning": "知道； 了解； 认识"
+  },
+  {
+    "id": "think",
+    "word": "think",
+    "phonetic": "θɪŋk",
+    "meaning": "vt. 想, 考虑, 想起, 想像, 打算, 认为\nvi. 思考, 料想\nn. 想法\na. 思想的",
+    "pos": "",
+    "rank": 249,
+    "forms": "p:thought/d:thought/i:thinking/3:thinks",
+    "commonMeaning": "想； 考虑； 想起"
+  },
+  {
+    "id": "see",
+    "word": "see",
+    "phonetic": "siː",
+    "meaning": "vt. 看见, 查看, 参观, 游览, 理解, 知道, 同意\nvi. 看, 观看, 注意, 知道, 考虑\nn. 主教的职位",
+    "pos": "",
+    "rank": 250,
+    "forms": "d:seen/p:saw/i:seeing/3:sees",
+    "commonMeaning": "看见； 查看； 参观"
+  },
+  {
+    "id": "look",
+    "word": "look",
+    "phonetic": "luk",
+    "meaning": "n. 一看, 神色, 样子, 面容\nvi. 看, 注意, 朝着, 显得\nvt. 打量, 看上去与...一样, 以眼色(或脸色)显示, 期待",
+    "pos": "",
+    "rank": 251,
+    "forms": "p:looked/i:looking/3:looks/d:looked/s:looks",
+    "commonMeaning": "一看； 神色； 样子"
+  },
+  {
+    "id": "meet",
+    "word": "meet",
+    "phonetic": "mi:t",
+    "meaning": "n. 会, 集会\na. 适宜的, 合适的\nvt. 遇见, 引见, 认识, 满足, 对付\nvi. 相遇, 接触",
+    "pos": "",
+    "rank": 252,
+    "forms": "p:met/d:met/i:meeting/3:meets",
+    "commonMeaning": "会； 集会"
+  },
+  {
+    "id": "find",
+    "word": "find",
+    "phonetic": "faind",
+    "meaning": "vt. 发现, 感到, 找到, 认为, 得到\nvi. 裁决\nn. 发现\n[计] 查找; DOS外部命令:在指定的文件或从键盘输入的文本行中\n寻找指定的字符串, 将符合条件的行或行数输出到标准输出设备上",
+    "pos": "",
+    "rank": 253,
+    "forms": "d:found/p:found/i:finding/3:finds/s:finds",
+    "commonMeaning": "发现； 感到； 找到"
+  },
+  {
+    "id": "give",
+    "word": "give",
+    "phonetic": "giv",
+    "meaning": "n. 弹性, 适应性\nvt. 给, 授予, 供给, 产生, 发表, 付出, 献出, 让出\nvi. 捐赠, 支持不住, 让步",
+    "pos": "",
+    "rank": 254,
+    "forms": "d:given/p:gave/i:giving/3:gives",
+    "commonMeaning": "弹性； 适应性"
+  },
+  {
+    "id": "take",
+    "word": "take",
+    "phonetic": "teik",
+    "meaning": "vt. 拿, 取, 抓, 带领, 获得, 就座, 接受, 吃, 吸引, 采取, 乘, 需要, 花费\nvi. 吃掉对方棋子, 抓住, 起作用, 依法获得财产\nn. 拿, 取, 收成, 奏效",
+    "pos": "",
+    "rank": 255,
+    "forms": "p:took/d:taken/i:taking/3:takes",
+    "commonMeaning": "拿； 取； 抓"
+  },
+  {
+    "id": "get",
+    "word": "get",
+    "phonetic": "get",
+    "meaning": "vt. 得到, 获得, 变成, 使得, 收获, 接通, 抓住, 染上\nvi. 到达, 成为, 变得\nn. (网球等)救球, 生殖, 幼兽\n[计] 取得指令, 获取文件",
+    "pos": "",
+    "rank": 256,
+    "forms": "d:got/p:got/i:getting/3:gets",
+    "commonMeaning": "得到； 获得； 变成"
+  },
+  {
+    "id": "make",
+    "word": "make",
+    "phonetic": "meik",
+    "meaning": "vt. 制造, 安排, 创造, 构成, 使得, 产生, 造成, 整理, 布置, 引起, 到达, 进行\nvi. 开始, 前进, 增大, 被制造, 被处理\nn. 制造, 构造, 性情",
+    "pos": "",
+    "rank": 257,
+    "forms": "d:made/p:made/i:making/3:makes",
+    "commonMeaning": "制造； 安排； 创造"
+  },
+  {
+    "id": "do",
+    "word": "do",
+    "phonetic": "du:",
+    "meaning": "v. 做, 进行, 完成",
+    "pos": "",
+    "rank": 258,
+    "forms": "i:doing/p:did/3:does/d:done",
+    "commonMeaning": "做；用于构成问句或否定句"
+  },
+  {
+    "id": "go",
+    "word": "go",
+    "phonetic": "ɡəʊ",
+    "meaning": "vi. 去, 走, 达到, 运转, 查阅, 消失, 结束, 放弃, 花费, 流传, 趋于, 打算, 剩下\nvt. 以...打赌, 对付, 忍受, 出产, 为被捕者出(保释金)\nn. 去, 尝试, 进行",
+    "pos": "",
+    "rank": 259,
+    "forms": "i:going/p:went/d:gone/3:goes",
+    "commonMeaning": "去； 走； 达到"
+  },
+  {
+    "id": "come",
+    "word": "come",
+    "phonetic": "kʌm",
+    "meaning": "vi. 过来, 来, 到达, 出现, 开始\ninterj. 喂",
+    "pos": "",
+    "rank": 260,
+    "forms": "p:came/i:coming/3:comes/d:come/0:come/1:d",
+    "commonMeaning": "喂"
+  },
+  {
+    "id": "walk",
+    "word": "walk",
+    "phonetic": "wɒ:k",
+    "meaning": "n. 走, 散步, 步行, 行走的路程, 竞走, 散步场所\nvi. 走路, 步行, 处世\nvt. 走过, 遛, 使走, 护送...走",
+    "pos": "",
+    "rank": 261,
+    "forms": "p:walked/i:walking/s:walks/d:walked/3:walks",
+    "commonMeaning": "走； 散步； 步行"
+  },
+  {
+    "id": "run",
+    "word": "run",
+    "phonetic": "rʌn",
+    "meaning": "n. 跑, 赛跑, 奔跑, 奔跑的路程, 趋向, 流出, 运转时间, 连续\nvi. 跑, 奔跑, 跑步, 赛跑, 竞赛, 行驶, 运转, 进行, 蔓延\nvt. 使跑, 参赛, 追究, 驾驶, 开动, 管理, 经营, 使流出, 运行\na. 熔化的, 融化的, 浇铸的\nrun的过去式和过去分词\n[计] 运行",
+    "pos": "",
+    "rank": 262,
+    "forms": "p:ran/i:running/d:run/0:run/1:d/3:runs/s:runs",
+    "commonMeaning": "跑； 赛跑； 奔跑"
+  },
+  {
+    "id": "sit",
+    "word": "sit",
+    "phonetic": "sɪt",
+    "meaning": "vi. 坐, 就座, 坐落\nvt. 使就座, 骑\nn. 坐, 衣服合身",
+    "pos": "",
+    "rank": 263,
+    "forms": "p:sat/i:sitting/3:sits/d:sat",
+    "commonMeaning": "坐； 就座； 坐落"
+  },
+  {
+    "id": "stand",
+    "word": "stand",
+    "phonetic": "stænd",
+    "meaning": "n. 站立, 站住, 停顿, 讲台, 看台, 立场, 法院证人席\nvi. 站, 立, 坐落, 停滞, 位于, 坚持, 维持原状\nvt. 忍受, 使站立, 抵挡",
+    "pos": "",
+    "rank": 264,
+    "forms": "p:stood/i:standing/3:stands/d:stood/s:stands",
+    "commonMeaning": "站立； 站住； 停顿"
+  },
+  {
+    "id": "open",
+    "word": "open",
+    "phonetic": "'əupən",
+    "meaning": "n. 公开, 户外, 空旷\na. 开着的, 开放的, 开阔的, 营业着的, 公开的, 悬而未决的\nvt. 打开, 公开, 开放\nvi. 展开, 开始, 展现\n[计] 打开指令; 打开语句",
+    "pos": "",
+    "rank": 265,
+    "forms": "p:opened/d:opened/i:opening/3:opens",
+    "commonMeaning": "公开； 户外； 空旷"
+  },
+  {
+    "id": "close",
+    "word": "close",
+    "phonetic": "kləuz",
+    "meaning": "n. 结束, 完结\na. 靠近的, 亲近的, 亲密的, 严密的, 关闭的, 狭窄的, 秘密的\nvt. 关, 结束, 使靠近, 封闭, 使接近\nvi. 关闭, 结束, 靠近\nadv. 接近地, 紧密地\n[计] 关闭",
+    "pos": "",
+    "rank": 266,
+    "forms": "p:closed/r:closer/d:closed/i:closing/t:closest/3:closes",
+    "commonMeaning": "结束； 完结"
+  },
+  {
+    "id": "start",
+    "word": "start",
+    "phonetic": "stɑ:t",
+    "meaning": "n. 惊起, 出发, 开端, 起点, 吃惊, 有利条件\nvi. 开始, 出发, 启动, 跳起, 吃惊, 出现, 松动, 脱落, 起价, 参赛\nvt. 使惊起, 开动, 发动, 启动, 开始, 创办, 提议, 使松动, 使脱落, 起用\n[计] 起始",
+    "pos": "",
+    "rank": 267,
+    "forms": "p:started/d:started/3:starts/i:starting/s:starts",
+    "commonMeaning": "惊起； 出发； 开端"
+  },
+  {
+    "id": "stop",
+    "word": "stop",
+    "phonetic": "stɒp",
+    "meaning": "n. 停止, 车站, 逗留, 填塞, 障碍, (风琴的)音栓\nvi. 停止, 被塞住\nvt. 塞住, 堵塞, 阻止, 击落, 停止, 终止, 断绝",
+    "pos": "",
+    "rank": 268,
+    "forms": "p:stopped/d:stopped/i:stopping/3:stops/s:stops",
+    "commonMeaning": "停止； 车站； 逗留"
+  },
+  {
+    "id": "buy",
+    "word": "buy",
+    "phonetic": "bai",
+    "meaning": "vt. 买, 获得\nvi. 买\nn. 购买, 买得的东西",
+    "pos": "",
+    "rank": 269,
+    "forms": "p:bought/i:buying/d:bought/3:buys/s:buys",
+    "commonMeaning": "买； 获得"
+  },
+  {
+    "id": "sell",
+    "word": "sell",
+    "phonetic": "sel",
+    "meaning": "vt. 卖, 背叛, 销售, 出卖\nvi. 卖, 销售\nn. 卖, 推销术, 失望",
+    "pos": "",
+    "rank": 270,
+    "forms": "d:sold/i:selling/p:sold/3:sells",
+    "commonMeaning": "卖； 背叛； 销售"
+  },
+  {
+    "id": "pay",
+    "word": "pay",
+    "phonetic": "pei",
+    "meaning": "n. 薪资, 付款, 补偿\nvt. 支付, 付清, 补偿, 偿还, 对...有利, 为...涂防水物\nvi. 付款, 付出代价, 偿还, 得到报应, 获得好处",
+    "pos": "",
+    "rank": 271,
+    "forms": "d:paid/i:paying/p:paid/3:pays",
+    "commonMeaning": "薪资； 付款； 补偿"
+  },
+  {
+    "id": "use",
+    "word": "use",
+    "phonetic": "ju:s",
+    "meaning": "n. 使用, 习惯, 使用价值, 用法, 使用权\nvt. 使用, 利用, 运用, 耗费\nvi. 惯常",
+    "pos": "",
+    "rank": 272,
+    "forms": "d:used/i:using/p:used/3:uses/s:uses",
+    "commonMeaning": "使用； 习惯； 使用价值"
+  },
+  {
+    "id": "put",
+    "word": "put",
+    "phonetic": "put",
+    "meaning": "vt. 放, 摆, 安置, 移动, 发射, 投掷, 写上, 表达, 使从事, 使受到, 驱使, 赋予\nvi. 出发, 航行, 发芽\nn. 掷, 股票出售权, 笨蛋\na. 固定不动的\n[计] 发送文件",
+    "pos": "",
+    "rank": 273,
+    "forms": "d:put/0:put/1:dp/p:put/i:putting/3:puts",
+    "commonMeaning": "放； 摆； 安置"
+  },
+  {
+    "id": "bring",
+    "word": "bring",
+    "phonetic": "briŋ",
+    "meaning": "vt. 带来, 产生, 促使, 提出\nvi. 生产",
+    "pos": "",
+    "rank": 274,
+    "forms": "d:brought/p:brought/i:bringing/3:brings",
+    "commonMeaning": "带来； 产生； 促使"
+  },
+  {
+    "id": "leave",
+    "word": "leave",
+    "phonetic": "li:v",
+    "meaning": "n. 许可, 告别, 请假, 休假\nvt. 离开, 剩下, 遗忘, 委托, 丢弃\nvi. 出发, 离开, 生叶",
+    "pos": "",
+    "rank": 275,
+    "forms": "d:left/p:left/i:leaving/3:leaves/s:leaves",
+    "commonMeaning": "许可； 告别； 请假"
+  },
+  {
+    "id": "wait",
+    "word": "wait",
+    "phonetic": "weit",
+    "meaning": "n. 等待, 等候\nvt. 等候, 期待, 延缓, 伺候, 推迟\nvi. 等, 等候, 耽搁, 伺候用餐\n[计] 等待",
+    "pos": "",
+    "rank": 276,
+    "forms": "i:waiting/p:waited/d:waited/3:waits/s:waits",
+    "commonMeaning": "等待； 等候"
+  },
+  {
+    "id": "happy",
+    "word": "happy",
+    "phonetic": "'hæpi",
+    "meaning": "a. 快乐的, 幸福的, 愉快的, 恰当的",
+    "pos": "",
+    "rank": 277,
+    "forms": "r:happier/t:happiest",
+    "commonMeaning": "快乐的； 幸福的； 愉快的"
+  },
+  {
+    "id": "sad",
+    "word": "sad",
+    "phonetic": "sæd",
+    "meaning": "a. 忧愁的, 悲哀的",
+    "pos": "",
+    "rank": 278,
+    "forms": "t:saddest/r:sadder",
+    "commonMeaning": "忧愁的； 悲哀的"
+  },
+  {
+    "id": "tired",
+    "word": "tired",
+    "phonetic": "taiəd",
+    "meaning": "a. 疲累的, 疲乏的, 厌倦的",
+    "pos": "",
+    "rank": 279,
+    "forms": "d:tired/0:tired/1:dp/p:tired",
+    "commonMeaning": "疲累的； 疲乏的； 厌倦的"
+  },
+  {
+    "id": "hungry",
+    "word": "hungry",
+    "phonetic": "'hʌŋgi",
+    "meaning": "a. 饥饿的, 荒年的, 渴望的, 不毛的\n[化] 欠鞣皮",
+    "pos": "",
+    "rank": 280,
+    "forms": "r:hungrier/t:hungriest",
+    "commonMeaning": "饥饿的； 荒年的； 渴望的"
+  },
+  {
+    "id": "thirsty",
+    "word": "thirsty",
+    "phonetic": "'θə:sti",
+    "meaning": "a. 口渴的, 渴望的, 干燥的",
+    "pos": "",
+    "rank": 281,
+    "forms": "r:thirstier/t:thirstiest",
+    "commonMeaning": "口渴的； 渴望的； 干燥的"
+  },
+  {
+    "id": "ill",
+    "word": "ill",
+    "phonetic": "il",
+    "meaning": "n. 疾病, 坏事, 罪恶, 灾难\na. 生病的, 邪恶的, 不吉利的, 敌意的, 不良的, 不顺利的\nadv. 有害地, 不幸地, 几乎不",
+    "pos": "",
+    "rank": 282,
+    "forms": "s:ills",
+    "commonMeaning": "疾病； 坏事； 罪恶"
+  },
+  {
+    "id": "busy",
+    "word": "busy",
+    "phonetic": "'bizi",
+    "meaning": "a. 忙碌的, 热闹的, 没空的\nvt. 使忙\nvi. 忙碌\n[计] 忙; 忙碌",
+    "pos": "",
+    "rank": 283,
+    "forms": "t:busiest/p:busied/r:busier/i:busying/d:busied/3:busies",
+    "commonMeaning": "忙碌的； 热闹的； 没空的"
+  },
+  {
+    "id": "free",
+    "word": "free",
+    "phonetic": "fri:",
+    "meaning": "a. 自由的, 享受政治权力的, 允许的, 免费的, 丰富的\nvt. 释放, 解放, 使自由\nadv. 自由地, 免费",
+    "pos": "",
+    "rank": 284,
+    "forms": "d:freed/i:freeing/r:freer/p:freed/3:frees",
+    "commonMeaning": "自由的；空闲的；免费的"
+  },
+  {
+    "id": "ready",
+    "word": "ready",
+    "phonetic": "'redi",
+    "meaning": "n. 预备好的状态, 现款\na. 准备好的, 备用的, 可以使用的\nadv. 预先, 迅速\nvt. 使准备好",
+    "pos": "",
+    "rank": 285,
+    "forms": "s:readies/i:readying/r:readier/d:readied/p:readied/3:readies",
+    "commonMeaning": "预备好的状态； 现款"
+  },
+  {
+    "id": "easy",
+    "word": "easy",
+    "phonetic": "ˈiːzi",
+    "meaning": "a. 容易的, 缓缓的, 舒适的, 从容的, 宽容的, 流畅的, 随便的, 自在的, 疲软的\nadv. 容易地, 慢慢地",
+    "pos": "",
+    "rank": 286,
+    "forms": "r:easier/t:easiest",
+    "commonMeaning": "容易的； 缓缓的； 舒适的"
+  },
+  {
+    "id": "difficult",
+    "word": "difficult",
+    "phonetic": "'difikəlt",
+    "meaning": "a. 困难的",
+    "pos": "",
+    "rank": 287,
+    "forms": "",
+    "commonMeaning": "困难的"
+  },
+  {
+    "id": "big",
+    "word": "big",
+    "phonetic": "big",
+    "meaning": "a. 大的, 重要的\nadv. 大量地",
+    "pos": "",
+    "rank": 288,
+    "forms": "t:biggest/r:bigger",
+    "commonMeaning": "大的； 重要的"
+  },
+  {
+    "id": "small",
+    "word": "small",
+    "phonetic": "smɒ:l",
+    "meaning": "a. 小的, 少的, 小型的, 低微的, 小气的, 细微的\nadv. 些微地\nn. 狭小部分",
+    "pos": "",
+    "rank": 289,
+    "forms": "r:smaller/t:smallest",
+    "commonMeaning": "小的； 少的； 小型的"
+  },
+  {
+    "id": "large",
+    "word": "large",
+    "phonetic": "lɑ:dʒ",
+    "meaning": "a. 大的, 大量的, 宽大的, 广博的\nadv. 大大地, 夸大地",
+    "pos": "",
+    "rank": 290,
+    "forms": "r:larger/t:largest",
+    "commonMeaning": "大的； 大量的； 宽大的"
+  },
+  {
+    "id": "little",
+    "word": "little",
+    "phonetic": "'litl",
+    "meaning": "n. 一点点, 少许, 一会儿, 短时间\na. 小的, 很少的, 幼小的, 琐碎的, 短暂的, 矮小的\nadv. 很少, 稍微, 完全不",
+    "pos": "",
+    "rank": 291,
+    "forms": "",
+    "commonMeaning": "一点点； 少许； 一会儿"
+  },
+  {
+    "id": "long",
+    "word": "long",
+    "phonetic": "lɒŋ",
+    "meaning": "a. 长的, 长久的, 冗长的, 做多头的\nvi. 渴望, 热望, 极想\nadv. 长久, 始终\nn. 长时间, 长信号, 长整型\n[计] 长, 长整型",
+    "pos": "",
+    "rank": 292,
+    "forms": "r:longer/t:longest/p:longed/i:longing/d:longed/3:longs",
+    "commonMeaning": "长的； 长久的； 冗长的"
+  },
+  {
+    "id": "short",
+    "word": "short",
+    "phonetic": "ʃɒ:t",
+    "meaning": "a. 短的, 近的, 矮的, 短期的, 简短的, 少量的\nadv. 简短地, 突然\nn. 扼要, 短片, 缺乏\nvt. 故意少给, 使短路",
+    "pos": "",
+    "rank": 293,
+    "forms": "r:shorter/t:shortest/i:shorting/p:shorted/3:shorts/d:shorted",
+    "commonMeaning": "短的； 近的； 矮的"
+  },
+  {
+    "id": "tall",
+    "word": "tall",
+    "phonetic": "tɒ:l",
+    "meaning": "a. 高的, 长的, 夸大的\nadv. 夸大地",
+    "pos": "",
+    "rank": 294,
+    "forms": "r:taller/t:tallest",
+    "commonMeaning": "高的； 长的； 夸大的"
+  },
+  {
+    "id": "high",
+    "word": "high",
+    "phonetic": "hai",
+    "meaning": "n. 高度, 高处\na. 高的, 高级的, 主要的, 高尚的, 高原的, 高音的, 昂贵的, 傲慢的\nadv. 高度地, 奢侈地",
+    "pos": "",
+    "rank": 295,
+    "forms": "r:higher/t:highest/s:highs",
+    "commonMeaning": "高度； 高处"
+  },
+  {
+    "id": "low",
+    "word": "low",
+    "phonetic": "ləu",
+    "meaning": "n. 低点, 低价, 低, 牛叫声\na. 低的, 消沉的, 低等的, 浅的, 卑贱的\nadv. 低下地, 谦卑地, 低\nvi. 牛叫",
+    "pos": "",
+    "rank": 296,
+    "forms": "r:lower/t:lowest/s:lows/d:lowed/i:lowing/p:lowed/3:lows",
+    "commonMeaning": "低点； 低价； 低"
+  },
+  {
+    "id": "old",
+    "word": "old",
+    "phonetic": "əuld",
+    "meaning": "n. 以前, 往昔\na. 老的, 旧的, 古老的, 年长的, 老练的",
+    "pos": "",
+    "rank": 297,
+    "forms": "r:older/t:oldest/s:olds",
+    "commonMeaning": "以前； 往昔"
+  },
+  {
+    "id": "new",
+    "word": "new",
+    "phonetic": "nju:",
+    "meaning": "a. 新的, 陌生的, 最近的, 不熟悉的\n[法] 新发现的, 新的, 重新开始的",
+    "pos": "",
+    "rank": 298,
+    "forms": "r:newer/t:newest",
+    "commonMeaning": "新的； 陌生的； 最近的"
+  },
+  {
+    "id": "young",
+    "word": "young",
+    "phonetic": "jʌŋ",
+    "meaning": "a. 年轻的, 无经验的, 朝气蓬勃的\nn. 青年们, 幼小动物, 崽",
+    "pos": "",
+    "rank": 299,
+    "forms": "r:younger/t:youngest",
+    "commonMeaning": "年轻的； 无经验的； 朝气蓬勃的"
+  },
+  {
+    "id": "hot",
+    "word": "hot",
+    "phonetic": "hɒt",
+    "meaning": "a. 热的, 热心的, 辣的, 热情的, 激动的, 猛烈的, 紧迫的\nadv. 热, 紧迫地",
+    "pos": "",
+    "rank": 300,
+    "forms": "r:hotter/t:hottest/i:hotting/s:hots",
+    "commonMeaning": "热的； 热心的； 辣的"
+  },
+  {
+    "id": "cold",
+    "word": "cold",
+    "phonetic": "kəuld",
+    "meaning": "n. 感冒, 寒冷\na. 寒冷的, 冷淡的, 冷静的\nadv. 完全地",
+    "pos": "",
+    "rank": 301,
+    "forms": "r:colder/s:colds/t:coldest",
+    "commonMeaning": "感冒； 寒冷"
+  },
+  {
+    "id": "warm",
+    "word": "warm",
+    "phonetic": "wɒ:m",
+    "meaning": "a. 暖和的, 暖的, 温暖的, 热烈的, 兴奋的, 激烈的, 多情的, 色情的\nvt. 使温暖, 弄热, 使兴奋, 使充满仇恨\nvi. 变暖和, 变温暖, 取暖, 激动, 同情, 爱好\nn. 暖, 保暖物",
+    "pos": "",
+    "rank": 302,
+    "forms": "r:warmer/i:warming/d:warmed/p:warmed/t:warmest/3:warms",
+    "commonMeaning": "暖和的； 暖的； 温暖的"
+  },
+  {
+    "id": "cool",
+    "word": "cool",
+    "phonetic": "ku:l",
+    "meaning": "n. 凉爽, 凉爽的空气\na. 凉爽的, 冷淡的, 冷静的\nvi. 冷却, 平息\nvt. 使冷却, 使平静",
+    "pos": "",
+    "rank": 303,
+    "forms": "r:cooler/i:cooling/d:cooled/3:cools/p:cooled/t:coolest",
+    "commonMeaning": "凉爽； 凉爽的空气"
+  },
+  {
+    "id": "fast",
+    "word": "fast",
+    "phonetic": "fɑ:st",
+    "meaning": "a. 快速的, 紧的\nadv. 很快地, 紧紧地, 彻底地\nn. 绝食, 斋戒\nvi. 绝食, 斋戒",
+    "pos": "",
+    "rank": 304,
+    "forms": "r:faster/t:fastest/i:fasting/p:fasted/s:fasts/d:fasted/3:fasts",
+    "commonMeaning": "快速的； 紧的"
+  },
+  {
+    "id": "slow",
+    "word": "slow",
+    "phonetic": "sləu",
+    "meaning": "a. 慢的, 缓慢的, 迟缓的, 迟钝的, 冷漠的, 落后的\nadv. 慢地, 迟缓地\nv. (使)慢下来",
+    "pos": "",
+    "rank": 305,
+    "forms": "r:slower/i:slowing/p:slowed/d:slowed/3:slows/t:slowest",
+    "commonMeaning": "慢的； 缓慢的； 迟缓的"
+  },
+  {
+    "id": "dirty",
+    "word": "dirty",
+    "phonetic": "'də:ti",
+    "meaning": "a. 肮脏的, 卑鄙的\nvt. 弄脏\nvi. 变脏",
+    "pos": "",
+    "rank": 306,
+    "forms": "t:dirtiest/r:dirtier/i:dirtying/p:dirtied/d:dirtied/3:dirties",
+    "commonMeaning": "肮脏的； 卑鄙的"
+  },
+  {
+    "id": "beautiful",
+    "word": "beautiful",
+    "phonetic": "'bju:tiful",
+    "meaning": "a. 美丽的",
+    "pos": "",
+    "rank": 307,
+    "forms": "",
+    "commonMeaning": "美丽的"
+  },
+  {
+    "id": "nice",
+    "word": "nice",
+    "phonetic": "nais",
+    "meaning": "a. 美好的, 和蔼的, 正派的, 做得好的, 精密的, 细微的, 挑剔的, 谨慎的",
+    "pos": "",
+    "rank": 308,
+    "forms": "r:nicer/t:nicest",
+    "commonMeaning": "美好的； 和蔼的； 正派的"
+  },
+  {
+    "id": "right",
+    "word": "right",
+    "phonetic": "raɪt",
+    "meaning": "n. 权利, 右边, 正义, 右派, 公正\na. 正确的, 对的, 恰当的, 正常的, 正直的, 正面的, 右方的\nadv. 正确地, 以有利结果, 一直, 直接, 向右\nvt. 扶直, 整理, 纠正, 伸冤, 使昭雪\nvi. 恢复平衡\n[计] 右, 权利",
+    "pos": "",
+    "rank": 309,
+    "forms": "s:rights/i:righting/p:righted/3:rights/d:righted",
+    "commonMeaning": "正确的；右边的"
+  },
+  {
+    "id": "wrong",
+    "word": "wrong",
+    "phonetic": "rɒŋ",
+    "meaning": "a. 错误的, 不正当的, 失常的\nadv. 错误地",
+    "pos": "",
+    "rank": 310,
+    "forms": "s:wrongs/i:wronging/p:wronged/3:wrongs/d:wronged",
+    "commonMeaning": "错误的； 不正当的； 失常的"
+  },
+  {
+    "id": "black",
+    "word": "black",
+    "phonetic": "blæk",
+    "meaning": "n. 黑色, 黑颜料\na. 黑色的",
+    "pos": "",
+    "rank": 311,
+    "forms": "s:blacks/p:blacked/r:blacker/t:blackest/d:blacked/i:blacking/3:blacks",
+    "commonMeaning": "黑色； 黑颜料"
+  },
+  {
+    "id": "white",
+    "word": "white",
+    "phonetic": "hwait",
+    "meaning": "n. 白色, 洁白, 眼白, 白种人, 蛋白\na. 白色的, 纯洁的, 白种的, 苍白的, 空白的, 幸运的",
+    "pos": "",
+    "rank": 312,
+    "forms": "s:whites/r:whiter/i:whiting/p:whited/3:whites/d:whited",
+    "commonMeaning": "白色； 洁白； 眼白"
+  },
+  {
+    "id": "red",
+    "word": "red",
+    "phonetic": "red",
+    "meaning": "a. 红的, 红色的, 红肿的, 流血的\nn. 红色, 红颜料, 赤字\n[计] 简化, 减少",
+    "pos": "",
+    "rank": 313,
+    "forms": "s:reds/r:redder",
+    "commonMeaning": "红的； 红色的； 红肿的"
+  },
+  {
+    "id": "blue",
+    "word": "blue",
+    "phonetic": "bluː",
+    "meaning": "n. 蓝色\na. 蓝色的, 下流的, 忧郁的\nvt. 染成蓝色\nvi. 变蓝",
+    "pos": "",
+    "rank": 314,
+    "forms": "s:blues/i:bluing/p:blued/3:blues/d:blued",
+    "commonMeaning": "蓝色"
+  },
+  {
+    "id": "green",
+    "word": "green",
+    "phonetic": "ɡriːn",
+    "meaning": "n. 绿色, 绿色颜料\na. 绿色的, 未成熟的, 新鲜的, 青春的, 无经验的, 脸色发青的",
+    "pos": "",
+    "rank": 315,
+    "forms": "s:greens/r:greener/t:greenest",
+    "commonMeaning": "绿色； 绿色颜料"
+  },
+  {
+    "id": "yellow",
+    "word": "yellow",
+    "phonetic": "ˈjeləʊ",
+    "meaning": "n. 黄色\na. 黄色的",
+    "pos": "",
+    "rank": 316,
+    "forms": "s:yellows/r:yellower/i:yellowing/p:yellowed/3:yellows/d:yellowed",
+    "commonMeaning": "黄色"
+  },
+  {
+    "id": "brown",
+    "word": "brown",
+    "phonetic": "braun",
+    "meaning": "n. 褐色\na. 褐色的\nv. (使)变褐色",
+    "pos": "",
+    "rank": 317,
+    "forms": "s:browns/p:browned/r:browner/d:browned/i:browning/3:browns",
+    "commonMeaning": "褐色"
+  },
+  {
+    "id": "pink",
+    "word": "pink",
+    "phonetic": "piŋk",
+    "meaning": "n. 粉红色, 石竹花, 化身, 典范, 头面人物, 极度\na. 粉红的, 石竹科的, 比较激进的, 脸色发红的, 精致的, 有点下流的\nvt. 刺, 扎, 刺痛, 射伤, 使面红耳赤, 使变粉红色\nvi. 变粉红色",
+    "pos": "",
+    "rank": 318,
+    "forms": "s:pinks/r:pinker/i:pinking/p:pinked/3:pinks/d:pinked",
+    "commonMeaning": "粉红色； 石竹花； 化身"
+  },
+  {
+    "id": "purple",
+    "word": "purple",
+    "phonetic": "'pə:pl",
+    "meaning": "n. 紫色, 帝位\na. 紫色的, 帝王的, 华而不实的\nv. (使)成紫色",
+    "pos": "",
+    "rank": 319,
+    "forms": "s:purples/d:purpled/i:purpling/p:purpled/3:purples/r:purpler/t:purplest",
+    "commonMeaning": "紫色； 帝位"
+  },
+  {
+    "id": "grey",
+    "word": "grey",
+    "phonetic": "grei",
+    "meaning": "n. 灰色\na. 灰色的, 阴沉的\nv. (使)成灰色",
+    "pos": "",
+    "rank": 320,
+    "forms": "s:greys/i:greying/d:greyed/p:greyed/3:greys",
+    "commonMeaning": "灰色"
+  },
+  {
+    "id": "day",
+    "word": "day",
+    "phonetic": "deɪ",
+    "meaning": "n. 天, 日子, 白天, 工作日\n[医] 日(一昼夜), 昼, 白天",
+    "pos": "",
+    "rank": 321,
+    "forms": "s:days",
+    "commonMeaning": "天； 日子； 白天"
+  },
+  {
+    "id": "week",
+    "word": "week",
+    "phonetic": "wi:k",
+    "meaning": "n. 星期, 周",
+    "pos": "",
+    "rank": 322,
+    "forms": "s:weeks",
+    "commonMeaning": "星期； 周"
+  },
+  {
+    "id": "month",
+    "word": "month",
+    "phonetic": "mʌnθ",
+    "meaning": "n. 月\n[经] 月",
+    "pos": "",
+    "rank": 323,
+    "forms": "s:months",
+    "commonMeaning": "月"
+  },
+  {
+    "id": "year",
+    "word": "year",
+    "phonetic": "jiə",
+    "meaning": "n. 年, 年度, 年龄\n[经] 年度",
+    "pos": "",
+    "rank": 324,
+    "forms": "s:years",
+    "commonMeaning": "年； 年度； 年龄"
+  },
+  {
+    "id": "hour",
+    "word": "hour",
+    "phonetic": "auə",
+    "meaning": "n. 小时, 钟头, 时间, ...点钟, 课时",
+    "pos": "",
+    "rank": 325,
+    "forms": "s:hours",
+    "commonMeaning": "小时； 钟头； 时间"
+  },
+  {
+    "id": "minute",
+    "word": "minute",
+    "phonetic": "'minit. mai'nju:t",
+    "meaning": "n. 分, 分钟, 片刻, 备忘录, 笔记\nvt. 记录, 摘录, 测定时间\na. 微小的, 详细的",
+    "pos": "",
+    "rank": 326,
+    "forms": "s:minutes/3:minutes",
+    "commonMeaning": "分； 分钟； 片刻"
+  },
+  {
+    "id": "time",
+    "word": "time",
+    "phonetic": "taɪm",
+    "meaning": "n. 时间, 时侯, 时机, 时期, 期限, 次数, 节拍, 暂停, 规定时间\nvt. 测定...的时间, 记录...的时间, 计时, 定时\na. 时间的, 记时的, 定时的, 定期的, 分期的\n[计] DOS内部命令:用于显示或设定系统的时间",
+    "pos": "",
+    "rank": 327,
+    "forms": "s:times/d:timed/i:timing/p:timed/3:times",
+    "commonMeaning": "时间； 时侯； 时机"
+  },
+  {
+    "id": "spring",
+    "word": "spring",
+    "phonetic": "spriŋ",
+    "meaning": "n. 春天, 弹簧, 跳跃, 弹性, 活力, 泉, 源泉\na. 春天的\nvi. 跳, 弹跳, 涌出, 生长, 裂开, 高耸\nvt. 使跳起, 使爆炸, 突然提出",
+    "pos": "",
+    "rank": 328,
+    "forms": "s:springs/p:sprang/d:sprung/i:springing/3:springs",
+    "commonMeaning": "春天；弹簧"
+  },
+  {
+    "id": "summer",
+    "word": "summer",
+    "phonetic": "'sʌmə",
+    "meaning": "n. 夏季, 全盛时期\nvi. 避暑, 过夏天\n[计] 加法器",
+    "pos": "",
+    "rank": 329,
+    "forms": "s:summers/i:summering/p:summered/3:summers/d:summered",
+    "commonMeaning": "夏季； 全盛时期"
+  },
+  {
+    "id": "autumn",
+    "word": "autumn",
+    "phonetic": "'ɒ:təm",
+    "meaning": "n. 秋天, 成熟期",
+    "pos": "",
+    "rank": 330,
+    "forms": "",
+    "commonMeaning": "秋天； 成熟期"
+  },
+  {
+    "id": "winter",
+    "word": "winter",
+    "phonetic": "'wintə",
+    "meaning": "n. 冬季, 萧条期, 衰退期\na. 冬天的\nvt. 使度过冬天\nvi. 过冬",
+    "pos": "",
+    "rank": 331,
+    "forms": "s:winters/i:wintering/p:wintered/3:winters/d:wintered",
+    "commonMeaning": "冬季； 萧条期； 衰退期"
+  },
+  {
+    "id": "monday",
+    "word": "Monday",
+    "phonetic": "'mʌndi",
+    "meaning": "n. 星期一",
+    "pos": "",
+    "rank": 332,
+    "forms": "s:mondays",
+    "commonMeaning": "星期一"
+  },
+  {
+    "id": "tuesday",
+    "word": "Tuesday",
+    "phonetic": "'tju:zdi",
+    "meaning": "n. 星期二",
+    "pos": "",
+    "rank": 333,
+    "forms": "s:tuesdays",
+    "commonMeaning": "星期二"
+  },
+  {
+    "id": "wednesday",
+    "word": "Wednesday",
+    "phonetic": "'wenzdi",
+    "meaning": "n. 星期三",
+    "pos": "",
+    "rank": 334,
+    "forms": "s:wednesdays",
+    "commonMeaning": "星期三"
+  },
+  {
+    "id": "thursday",
+    "word": "Thursday",
+    "phonetic": "'θə:zdi",
+    "meaning": "n. 星期四",
+    "pos": "",
+    "rank": 335,
+    "forms": "s:thursdays",
+    "commonMeaning": "星期四"
+  },
+  {
+    "id": "friday",
+    "word": "Friday",
+    "phonetic": "'fraidi",
+    "meaning": "n. 星期五",
+    "pos": "",
+    "rank": 336,
+    "forms": "s:fridays",
+    "commonMeaning": "星期五"
+  },
+  {
+    "id": "saturday",
+    "word": "Saturday",
+    "phonetic": "'sætədi",
+    "meaning": "n. 星期六",
+    "pos": "",
+    "rank": 337,
+    "forms": "s:saturdays",
+    "commonMeaning": "星期六"
+  },
+  {
+    "id": "sunday",
+    "word": "Sunday",
+    "phonetic": "'sʌndi",
+    "meaning": "n. 星期日\na. 星期日的, 业余的\nvi. 度星期日",
+    "pos": "",
+    "rank": 338,
+    "forms": "s:sundays/f:Sundays",
+    "commonMeaning": "星期日"
+  },
+  {
+    "id": "january",
+    "word": "January",
+    "phonetic": "'dʒænjuəri",
+    "meaning": "n. 一月",
+    "pos": "",
+    "rank": 339,
+    "forms": "",
+    "commonMeaning": "一月"
+  },
+  {
+    "id": "february",
+    "word": "February",
+    "phonetic": "'februəri",
+    "meaning": "n. 二月",
+    "pos": "",
+    "rank": 340,
+    "forms": "",
+    "commonMeaning": "二月"
+  },
+  {
+    "id": "march",
+    "word": "March",
+    "phonetic": "mɑ:tʃ",
+    "meaning": "n. 三月, 进行, 行军, 步伐, 长途跋涉, 进行曲, 边界\nvi. 进军, 前进, 交界\nvt. 使行军, 使行进",
+    "pos": "",
+    "rank": 341,
+    "forms": "p:marched/s:marches/i:marching/d:marched/3:marches",
+    "commonMeaning": "三月； 进行； 行军"
+  },
+  {
+    "id": "april",
+    "word": "April",
+    "phonetic": "'eiprəl",
+    "meaning": "n. 四月",
+    "pos": "",
+    "rank": 342,
+    "forms": "",
+    "commonMeaning": "四月"
+  },
+  {
+    "id": "may",
+    "word": "May",
+    "phonetic": "mei",
+    "meaning": "n. 五月\naux. 愿能, 可以, 愿意",
+    "pos": "",
+    "rank": 343,
+    "forms": "",
+    "commonMeaning": "五月"
+  },
+  {
+    "id": "june",
+    "word": "June",
+    "phonetic": "dʒu:n",
+    "meaning": "n. 六月",
+    "pos": "",
+    "rank": 344,
+    "forms": "",
+    "commonMeaning": "六月"
+  },
+  {
+    "id": "july",
+    "word": "July",
+    "phonetic": "dʒu:'lai",
+    "meaning": "n. 七月",
+    "pos": "",
+    "rank": 345,
+    "forms": "",
+    "commonMeaning": "七月"
+  },
+  {
+    "id": "august",
+    "word": "August",
+    "phonetic": "ɒ:'gʌst. 'ɒ:gəst",
+    "meaning": "n. 八月\na. 威严的, 令人敬畏的",
+    "pos": "",
+    "rank": 346,
+    "forms": "",
+    "commonMeaning": "八月"
+  },
+  {
+    "id": "september",
+    "word": "September",
+    "phonetic": "sep'tembə",
+    "meaning": "n. 九月",
+    "pos": "",
+    "rank": 347,
+    "forms": "",
+    "commonMeaning": "九月"
+  },
+  {
+    "id": "october",
+    "word": "October",
+    "phonetic": "ɒk'təubə",
+    "meaning": "n. 十月",
+    "pos": "",
+    "rank": 348,
+    "forms": "",
+    "commonMeaning": "十月"
+  },
+  {
+    "id": "november",
+    "word": "November",
+    "phonetic": "nəu'vembə",
+    "meaning": "n. 十一月",
+    "pos": "",
+    "rank": 349,
+    "forms": "",
+    "commonMeaning": "十一月"
+  },
+  {
+    "id": "december",
+    "word": "December",
+    "phonetic": "di'sembə",
+    "meaning": "n. 十二月",
+    "pos": "",
+    "rank": 350,
+    "forms": "",
+    "commonMeaning": "十二月"
+  },
+  {
+    "id": "sun",
+    "word": "sun",
+    "phonetic": "sʌn",
+    "meaning": "n. 太阳, 日, 日光, 阳光\nvt. 晒\nvi. 晒太阳",
+    "pos": "",
+    "rank": 351,
+    "forms": "s:suns/i:sunning/p:sunned/3:suns/d:sunned",
+    "commonMeaning": "太阳； 日； 日光"
+  },
+  {
+    "id": "moon",
+    "word": "moon",
+    "phonetic": "mu:n",
+    "meaning": "n. 月亮, 月球, 月光\nvi. 闲荡\nvt. 虚度",
+    "pos": "",
+    "rank": 352,
+    "forms": "s:moons/i:mooning/p:mooned/3:moons/d:mooned",
+    "commonMeaning": "月亮； 月球； 月光"
+  },
+  {
+    "id": "star",
+    "word": "star",
+    "phonetic": "stɑ:",
+    "meaning": "n. 星, 恒星, 星形物, 运气, 明星\nvt. 以星状物装饰, 用星号标, 使成为明星\nvi. 变成明星",
+    "pos": "",
+    "rank": 353,
+    "forms": "s:stars/i:starring/p:starred/3:stars/d:starred",
+    "commonMeaning": "星； 恒星； 星形物"
+  },
+  {
+    "id": "sky",
+    "word": "sky",
+    "phonetic": "skai",
+    "meaning": "n. 天空, 天色, 天堂\nvt. 击向空中, 挂在高处\nvi. 高涨",
+    "pos": "",
+    "rank": 354,
+    "forms": "s:skies/p:skied/d:skied/i:skying/3:skies",
+    "commonMeaning": "天空； 天色； 天堂"
+  },
+  {
+    "id": "rain",
+    "word": "rain",
+    "phonetic": "reɪn",
+    "meaning": "n. 雨, 下雨, 雨天\nvi. 下雨\nvt. 使大量落下",
+    "pos": "",
+    "rank": 355,
+    "forms": "i:raining/3:rains/s:rains/p:rained/d:rained",
+    "commonMeaning": "雨； 下雨； 雨天"
+  },
+  {
+    "id": "snow",
+    "word": "snow",
+    "phonetic": "snəu",
+    "meaning": "n. 雪, 积雪, 下雪, 雪花形干扰\nvi. 下雪, 似雪般落下\nvt. 使雪白, 用雪覆盖, 使像雪般落下",
+    "pos": "",
+    "rank": 356,
+    "forms": "i:snowing/s:snows/p:snowed/d:snowed/3:snows",
+    "commonMeaning": "雪； 积雪； 下雪"
+  },
+  {
+    "id": "wind",
+    "word": "wind",
+    "phonetic": "wind",
+    "meaning": "n. 风, 气息, 气味, 呼吸, 风声, 趋势, 空谈, 卷绕, 弯曲\nvt. 使通风, 嗅出, 使喘气, 吹号角, 上发条, 缠绕, 包, 绞起, 吊起, 使弯曲, 使迂回\nvi. 嗅出猎物, 吹响号角, 卷曲, 蜿蜒, 迂回, 缠绕",
+    "pos": "",
+    "rank": 357,
+    "forms": "s:winds/i:winding/p:wound/d:wound/3:winds",
+    "commonMeaning": "风； 气息； 气味"
+  },
+  {
+    "id": "weather",
+    "word": "weather",
+    "phonetic": "'weðə",
+    "meaning": "n. 天气, 气象, 处境\na. 迎风的\nvt. 使受风吹雨打, 侵蚀, 使风化, 经受住\nvi. 风化, 受侵蚀, 经受风雨",
+    "pos": "",
+    "rank": 358,
+    "forms": "d:weathered/s:weathers/p:weathered/i:weathering/3:weathers",
+    "commonMeaning": "天气； 气象； 处境"
+  },
+  {
+    "id": "air",
+    "word": "air",
+    "phonetic": "єə",
+    "meaning": "n. 空气, 旋律, 态度\nvt. 晾, 使通风, 夸耀",
+    "pos": "",
+    "rank": 359,
+    "forms": "d:aired/s:airs/i:airing/p:aired/3:airs",
+    "commonMeaning": "空气； 旋律； 态度"
+  },
+  {
+    "id": "river",
+    "word": "river",
+    "phonetic": "'rivə",
+    "meaning": "n. 河, 江\n[法] 河流, 江河, 内河",
+    "pos": "",
+    "rank": 360,
+    "forms": "s:rivers",
+    "commonMeaning": "河； 江"
+  },
+  {
+    "id": "sea",
+    "word": "sea",
+    "phonetic": "si:",
+    "meaning": "n. 海, 海洋, 海浪, 大量\n[法] 海, 海洋",
+    "pos": "",
+    "rank": 361,
+    "forms": "s:seas",
+    "commonMeaning": "海； 海洋； 海浪"
+  },
+  {
+    "id": "lake",
+    "word": "lake",
+    "phonetic": "leik",
+    "meaning": "n. 湖, 池, 色淀\nv. (使)血球溶解",
+    "pos": "",
+    "rank": 362,
+    "forms": "s:lakes",
+    "commonMeaning": "湖； 池； 色淀"
+  },
+  {
+    "id": "mountain",
+    "word": "mountain",
+    "phonetic": "'mauntin",
+    "meaning": "n. 山, 山脉, 大堆",
+    "pos": "",
+    "rank": 363,
+    "forms": "s:mountains",
+    "commonMeaning": "山； 山脉； 大堆"
+  },
+  {
+    "id": "tree",
+    "word": "tree",
+    "phonetic": "tri:",
+    "meaning": "n. 树, 木料, 树状物\nvt. 把...赶上树\n[计] 树; DOS外部命令:显示指定磁盘驱动器的目录结构",
+    "pos": "",
+    "rank": 364,
+    "forms": "s:trees/i:treeing/p:treed/3:trees/d:treed",
+    "commonMeaning": "树； 木料； 树状物"
+  },
+  {
+    "id": "flower",
+    "word": "flower",
+    "phonetic": "'flauə",
+    "meaning": "n. 花, 开花植物, 精华, 盛时\nvi. 开花, 发育, 旺盛, 成熟\nvt. 用花装饰, 使开花",
+    "pos": "",
+    "rank": 365,
+    "forms": "s:flowers/d:flowered/i:flowering/3:flowers/p:flowered",
+    "commonMeaning": "花； 开花植物； 精华"
+  },
+  {
+    "id": "grass",
+    "word": "grass",
+    "phonetic": "græs",
+    "meaning": "n. 草, 草原, 牧场\n[医] 草, 禾本",
+    "pos": "",
+    "rank": 366,
+    "forms": "s:grasses/p:grassed/d:grassed/i:grassing/3:grasses",
+    "commonMeaning": "草； 草原； 牧场"
+  },
+  {
+    "id": "leaf",
+    "word": "leaf",
+    "phonetic": "liːf",
+    "meaning": "n. 叶, 树叶, 花瓣, 页\nvi. 生叶, 翻书页\nvt. 在...上长叶, 翻...的页",
+    "pos": "",
+    "rank": 367,
+    "forms": "s:leaves/i:leafing/p:leafed/3:leafs/d:leafed",
+    "commonMeaning": "叶； 树叶； 花瓣"
+  },
+  {
+    "id": "hand",
+    "word": "hand",
+    "phonetic": "hænd",
+    "meaning": "n. 手, 爪, 指针, 掌握, 协助, 人手, 手艺, 手迹, 支配, 插手\nvt. 交给, 支持, 搀扶",
+    "pos": "",
+    "rank": 368,
+    "forms": "s:hands/p:handed/d:handed/i:handing/3:hands",
+    "commonMeaning": "手； 爪； 指针"
+  },
+  {
+    "id": "arm",
+    "word": "arm",
+    "phonetic": "ɑ:m",
+    "meaning": "n. 手臂, 袖子, 狭长港湾, 武器\nvt. 武装, 装备\nvi. 武装起来\n[计] 异步应答方式; 自动货品销路管理",
+    "pos": "",
+    "rank": 369,
+    "forms": "s:arms/d:armed/i:arming/p:armed/3:arms",
+    "commonMeaning": "手臂； 袖子； 狭长港湾"
+  },
+  {
+    "id": "leg",
+    "word": "leg",
+    "phonetic": "leg",
+    "meaning": "n. 腿, 假腿, 路程\nvi. 走, 跑",
+    "pos": "",
+    "rank": 370,
+    "forms": "s:legs",
+    "commonMeaning": "腿； 假腿； 路程"
+  },
+  {
+    "id": "foot",
+    "word": "foot",
+    "phonetic": "fʊt",
+    "meaning": "n. 脚, 步调, 英尺, 底部, 末尾, 步兵\nvt. 走在...上, 给...换底, 支付\nvi. 跳舞, 步行, 总计",
+    "pos": "",
+    "rank": 371,
+    "forms": "s:feet/i:footing/p:footed/3:foots/d:footed",
+    "commonMeaning": "脚； 步调； 英尺"
+  },
+  {
+    "id": "head",
+    "word": "head",
+    "phonetic": "hed",
+    "meaning": "n. 头, 头脑, 领袖, 脑袋, 最前的部分\nvt. 为首, 朝向, 前进, 用头顶\nvi. 朝特定方向行进, (作物)结穗\na. 头的, 在顶端的, 主要的\n[计] 磁头; 冲头",
+    "pos": "",
+    "rank": 372,
+    "forms": "s:heads/i:heading/d:headed/p:headed/3:heads",
+    "commonMeaning": "头； 头脑； 领袖"
+  },
+  {
+    "id": "face",
+    "word": "face",
+    "phonetic": "feis",
+    "meaning": "n. 脸, 面容, 正面, 外观\nvt. 面对, 朝, 正视, 面临\nvi. 朝, 向\n[计] 现场可改变的控制元件",
+    "pos": "",
+    "rank": 373,
+    "forms": "i:facing/s:faces/d:faced/p:faced/3:faces",
+    "commonMeaning": "脸； 面容； 正面"
+  },
+  {
+    "id": "eye",
+    "word": "eye",
+    "phonetic": "ai",
+    "meaning": "n. 眼睛, 视力, 看\nvt. 看, 注视",
+    "pos": "",
+    "rank": 374,
+    "forms": "s:eyes/p:eyed/i:eyeing/d:eyed/3:eyes",
+    "commonMeaning": "眼睛； 视力； 看"
+  },
+  {
+    "id": "ear",
+    "word": "ear",
+    "phonetic": "ɪə",
+    "meaning": "n. 耳朵, 倾听, 听觉, 穗\nvi. 抽穗",
+    "pos": "",
+    "rank": 375,
+    "forms": "s:ears",
+    "commonMeaning": "耳朵； 倾听； 听觉"
+  },
+  {
+    "id": "nose",
+    "word": "nose",
+    "phonetic": "nəuz",
+    "meaning": "n. 鼻子, 突出部分, 嗅觉\nvt. 嗅到, 探出, 用鼻子触\nvi. 闻, 嗅, 探听, 告密",
+    "pos": "",
+    "rank": 376,
+    "forms": "s:noses/i:nosing/p:nosed/d:nosed/3:noses",
+    "commonMeaning": "鼻子； 突出部分； 嗅觉"
+  },
+  {
+    "id": "mouth",
+    "word": "mouth",
+    "phonetic": "maʊθ",
+    "meaning": "n. 嘴, 口, 口腔, 口状物\nvi. 装腔作势说话, 做鬼脸\nvt. 说出, 做作地说",
+    "pos": "",
+    "rank": 377,
+    "forms": "s:mouths/p:mouthed/i:mouthing/d:mouthed/3:mouths",
+    "commonMeaning": "嘴； 口； 口腔"
+  },
+  {
+    "id": "hair",
+    "word": "hair",
+    "phonetic": "heə",
+    "meaning": "n. 头发, 毛发, 些微\n[医] 毛, 发",
+    "pos": "",
+    "rank": 378,
+    "forms": "s:hairs",
+    "commonMeaning": "头发； 毛发； 些微"
+  },
+  {
+    "id": "body",
+    "word": "body",
+    "phonetic": "'bɒdi",
+    "meaning": "n. 身体, 人, 尸体, 主要部分, 团体\nvt. 赋以形体\n[计] 体",
+    "pos": "",
+    "rank": 379,
+    "forms": "s:bodies/i:bodying/p:bodied/3:bodies/d:bodied",
+    "commonMeaning": "身体； 人； 尸体"
+  },
+  {
+    "id": "tooth",
+    "word": "tooth",
+    "phonetic": "tu:θ",
+    "meaning": "n. 牙齿, 齿状物, 爱好\nvt. 装以齿, 将...切成齿状\nvi. 啮合",
+    "pos": "",
+    "rank": 380,
+    "forms": "s:teeth",
+    "commonMeaning": "牙齿； 齿状物； 爱好"
+  },
+  {
+    "id": "heart",
+    "word": "heart",
+    "phonetic": "hɑ:t",
+    "meaning": "n. 心, 心脏, 中心, 内心, 感情, 精神, 心情, 宝贝儿\nvt. 鼓励",
+    "pos": "",
+    "rank": 381,
+    "forms": "s:hearts",
+    "commonMeaning": "心； 心脏； 中心"
+  },
+  {
+    "id": "clothes",
+    "word": "clothes",
+    "phonetic": "kləuðz",
+    "meaning": "n. 衣服",
+    "pos": "",
+    "rank": 382,
+    "forms": "s:clothes/0:clothes/1:s",
+    "commonMeaning": "衣服"
+  },
+  {
+    "id": "shirt",
+    "word": "shirt",
+    "phonetic": "ʃə:t",
+    "meaning": "n. 衬衫, 内衣, 汗衫",
+    "pos": "",
+    "rank": 383,
+    "forms": "s:shirts",
+    "commonMeaning": "衬衫； 内衣； 汗衫"
+  },
+  {
+    "id": "coat",
+    "word": "coat",
+    "phonetic": "kəut",
+    "meaning": "n. 外套\nvt. 外面覆盖, 给...穿外套",
+    "pos": "",
+    "rank": 384,
+    "forms": "s:coats/d:coated/i:coating/p:coated/3:coats",
+    "commonMeaning": "外套"
+  },
+  {
+    "id": "dress",
+    "word": "dress",
+    "phonetic": "dres",
+    "meaning": "n. 服装, 覆盖物\nvi. 穿着\nvt. 给...穿衣, 整理",
+    "pos": "",
+    "rank": 385,
+    "forms": "d:dressed/s:dresses/i:dressing/p:dressed/3:dresses",
+    "commonMeaning": "服装； 覆盖物"
+  },
+  {
+    "id": "skirt",
+    "word": "skirt",
+    "phonetic": "skə:t",
+    "meaning": "n. 裙子, 下摆, 边缘, 郊区\nvt. 位于...边缘, 绕过, 回避\nvi. 位于边缘",
+    "pos": "",
+    "rank": 386,
+    "forms": "s:skirts/p:skirted/i:skirting/3:skirts/d:skirted",
+    "commonMeaning": "裙子； 下摆； 边缘"
+  },
+  {
+    "id": "trousers",
+    "word": "trousers",
+    "phonetic": "'trauzəz",
+    "meaning": "pl. 裤子, 长裤",
+    "pos": "",
+    "rank": 387,
+    "forms": "s:trousers/0:trousers/1:s",
+    "commonMeaning": "pl. 裤子； 长裤"
+  },
+  {
+    "id": "shoe",
+    "word": "shoe",
+    "phonetic": "ʃu:",
+    "meaning": "n. 鞋, 靴, 外胎\nvt. 给...穿鞋, 为马钉蹄铁",
+    "pos": "",
+    "rank": 388,
+    "forms": "s:shoes/d:shod/i:shoeing/p:shod/3:shoes",
+    "commonMeaning": "鞋； 靴； 外胎"
+  },
+  {
+    "id": "sock",
+    "word": "sock",
+    "phonetic": "sɒk",
+    "meaning": "n. 短袜, 鞋垫, 一击\nvt. 重击, 猛投, 给...穿袜\nvi. 打击\nadv. 正着地, 不偏不倚地\na. 非常成功的",
+    "pos": "",
+    "rank": 389,
+    "forms": "s:socks/d:socked/i:socking/p:socked/3:socks",
+    "commonMeaning": "短袜； 鞋垫； 一击"
+  },
+  {
+    "id": "hat",
+    "word": "hat",
+    "phonetic": "hæt",
+    "meaning": "n. 帽子\nvt. 给...戴帽子",
+    "pos": "",
+    "rank": 390,
+    "forms": "s:hats/p:hatted/i:hatting/3:hats/d:hatted",
+    "commonMeaning": "帽子"
+  },
+  {
+    "id": "bus",
+    "word": "bus",
+    "phonetic": "bʌs",
+    "meaning": "n. 公共汽车\n[计] 总线; 汇流条; 母线",
+    "pos": "",
+    "rank": 391,
+    "forms": "s:buses/i:bussing/p:bussed/3:busses/d:bussed",
+    "commonMeaning": "公共汽车"
+  },
+  {
+    "id": "car",
+    "word": "car",
+    "phonetic": "kɑː",
+    "meaning": "n. 汽车, 客车\n[机] 车",
+    "pos": "",
+    "rank": 392,
+    "forms": "s:cars",
+    "commonMeaning": "汽车； 客车"
+  },
+  {
+    "id": "bike",
+    "word": "bike",
+    "phonetic": "baik",
+    "meaning": "n. 自行车, 脚踏车",
+    "pos": "",
+    "rank": 393,
+    "forms": "s:bikes/i:biking/p:biked/3:bikes/d:biked",
+    "commonMeaning": "自行车； 脚踏车"
+  },
+  {
+    "id": "train",
+    "word": "train",
+    "phonetic": "trein",
+    "meaning": "n. 火车, 列车, 行列, 长队, 一连串的后果, 顺序\nvt. 训练, 教育, 对准\nvi. 受训练, 锻炼",
+    "pos": "",
+    "rank": 394,
+    "forms": "d:trained/s:trains/i:training/p:trained/3:trains",
+    "commonMeaning": "火车；训练"
+  },
+  {
+    "id": "plane",
+    "word": "plane",
+    "phonetic": "plein",
+    "meaning": "n. 平面, 扁平物, 机翼, 飞机, 水准, 地位\na. 平的, 平面的\nvt. 将...刨平, 刨平, 掠过水面\nvi. 翱翔, 乘飞机旅行, 刨掉",
+    "pos": "",
+    "rank": 395,
+    "forms": "s:planes/i:planing/p:planed/d:planed/3:planes",
+    "commonMeaning": "平面； 扁平物； 机翼"
+  },
+  {
+    "id": "boat",
+    "word": "boat",
+    "phonetic": "bəut",
+    "meaning": "n. 船\nvi. 乘船\nvt. 以船运",
+    "pos": "",
+    "rank": 396,
+    "forms": "s:boats/i:boating/p:boated/3:boats/d:boated",
+    "commonMeaning": "船"
+  },
+  {
+    "id": "road",
+    "word": "road",
+    "phonetic": "rəud",
+    "meaning": "n. 路, 道路, 公路, 途径, 方法\n[法] 公路, 道路, 行车道",
+    "pos": "",
+    "rank": 397,
+    "forms": "s:roads",
+    "commonMeaning": "路； 道路； 公路"
+  },
+  {
+    "id": "street",
+    "word": "street",
+    "phonetic": "stri:t",
+    "meaning": "n. 街道, 马路, 街区\na. 街道的",
+    "pos": "",
+    "rank": 398,
+    "forms": "s:streets",
+    "commonMeaning": "街道； 马路； 街区"
+  },
+  {
+    "id": "city",
+    "word": "city",
+    "phonetic": "'siti",
+    "meaning": "n. 城市, 市\n[法] 都市, 城市, 市",
+    "pos": "",
+    "rank": 399,
+    "forms": "s:cities",
+    "commonMeaning": "城市； 市"
+  },
+  {
+    "id": "town",
+    "word": "town",
+    "phonetic": "taun",
+    "meaning": "n. 城镇, 市, 镇\n[法] 城镇, 城市, 闹市",
+    "pos": "",
+    "rank": 400,
+    "forms": "s:towns",
+    "commonMeaning": "城镇； 市； 镇"
+  },
+  {
+    "id": "country",
+    "word": "country",
+    "phonetic": "'kʌntri",
+    "meaning": "n. 国家, 乡村, 地区, 故乡\na. 乡下的, 农村的\n[计] DOS外部命令:用于设定国家代码, 包括日期时间及货币格式",
+    "pos": "",
+    "rank": 401,
+    "forms": "s:countries",
+    "commonMeaning": "国家； 乡村； 地区"
+  },
+  {
+    "id": "shop",
+    "word": "shop",
+    "phonetic": "ʃɒp",
+    "meaning": "n. 商店, 工厂, 车间\nvi. 购物, 到处寻找\nvt. 选购",
+    "pos": "",
+    "rank": 402,
+    "forms": "s:shops/i:shopping/p:shopped/3:shops/d:shopped",
+    "commonMeaning": "商店； 工厂； 车间"
+  },
+  {
+    "id": "store",
+    "word": "store",
+    "phonetic": "stɒ:",
+    "meaning": "n. 商店, 贮藏, 仓库, 备用品, 存储器\nvt. 储存, 贮藏, 供给\nvi. 贮藏\na. 贮藏的, 现成的\n[计] 存储器操作; 存储",
+    "pos": "",
+    "rank": 403,
+    "forms": "s:stores/d:stored/p:stored/i:storing/3:stores",
+    "commonMeaning": "商店； 贮藏； 仓库"
+  },
+  {
+    "id": "market",
+    "word": "market",
+    "phonetic": "'mɑ:kit",
+    "meaning": "n. 市场, 交易, 集市, 推销地区, 行情, 市面, 销路\nvt. 在市场上交易, 使上市, 销售\nvi. 在市场上买卖",
+    "pos": "",
+    "rank": 404,
+    "forms": "s:markets/d:marketed/p:marketed/i:marketing/3:markets",
+    "commonMeaning": "市场； 交易； 集市"
+  },
+  {
+    "id": "hospital",
+    "word": "hospital",
+    "phonetic": "'hɒspitəl",
+    "meaning": "n. 医院\n[医] 医院",
+    "pos": "",
+    "rank": 405,
+    "forms": "s:hospitals",
+    "commonMeaning": "医院"
+  },
+  {
+    "id": "park",
+    "word": "park",
+    "phonetic": "pɑːk",
+    "meaning": "n. 公园, 停车处\nvt. 停车, 置于\nvi. 停车",
+    "pos": "",
+    "rank": 406,
+    "forms": "s:parks/d:parked/p:parked/i:parking/3:parks",
+    "commonMeaning": "公园； 停车处"
+  },
+  {
+    "id": "library",
+    "word": "library",
+    "phonetic": "'laibrəri",
+    "meaning": "n. 图书馆, 藏书, 库\n[计] 库",
+    "pos": "",
+    "rank": 407,
+    "forms": "s:libraries",
+    "commonMeaning": "图书馆； 藏书； 库"
+  },
+  {
+    "id": "station",
+    "word": "station",
+    "phonetic": "'steiʃən",
+    "meaning": "n. 车站, 站, 局, 驻地, 位置, 身分, 地位\nvt. 安置, 配置, 驻扎\n[计] 站",
+    "pos": "",
+    "rank": 408,
+    "forms": "s:stations/d:stationed/i:stationing/p:stationed/3:stations",
+    "commonMeaning": "车站； 站； 局"
+  },
+  {
+    "id": "airport",
+    "word": "airport",
+    "phonetic": "'єəpɒ:t",
+    "meaning": "n. 飞机场\n[机] 航空站, 机场",
+    "pos": "",
+    "rank": 409,
+    "forms": "s:airports",
+    "commonMeaning": "飞机场"
+  },
+  {
+    "id": "hotel",
+    "word": "hotel",
+    "phonetic": "həu'tel",
+    "meaning": "n. 旅馆, 客栈",
+    "pos": "",
+    "rank": 410,
+    "forms": "s:hotels",
+    "commonMeaning": "旅馆； 客栈"
+  },
+  {
+    "id": "bank",
+    "word": "bank",
+    "phonetic": "bæŋk",
+    "meaning": "n. 银行, 堤, 岸\n[医] 库",
+    "pos": "",
+    "rank": 411,
+    "forms": "s:banks/i:banking/d:banked/p:banked/3:banks",
+    "commonMeaning": "银行； 堤； 岸"
+  },
+  {
+    "id": "money",
+    "word": "money",
+    "phonetic": "'mʌni",
+    "meaning": "n. 金钱, 一笔款, 财富, 货币, 金额\n[经] 货币, 金钱, 财产",
+    "pos": "",
+    "rank": 412,
+    "forms": "s:moneys",
+    "commonMeaning": "金钱； 一笔款； 财富"
+  },
+  {
+    "id": "price",
+    "word": "price",
+    "phonetic": "prais",
+    "meaning": "n. 价格, 代价, 价值\nvt. 定...的价格",
+    "pos": "",
+    "rank": 413,
+    "forms": "s:prices/d:priced/i:pricing/p:priced/3:prices",
+    "commonMeaning": "价格； 代价； 价值"
+  },
+  {
+    "id": "map",
+    "word": "map",
+    "phonetic": "mæp",
+    "meaning": "n. 地图, 天体图, 映像\nvt. 映射, 绘制...地图, 计划\n[计] 实用程序, 映射, 制造自动化协议",
+    "pos": "",
+    "rank": 414,
+    "forms": "s:maps/d:mapped/i:mapping/p:mapped/3:maps",
+    "commonMeaning": "地图； 天体图； 映像"
+  },
+  {
+    "id": "ticket",
+    "word": "ticket",
+    "phonetic": "'tikit",
+    "meaning": "n. 票, 券, 车票, 标签, 入场券, 证明书\nvt. 加标签于, 为...购票",
+    "pos": "",
+    "rank": 415,
+    "forms": "s:tickets/i:ticketing/p:ticketed/3:tickets/d:ticketed",
+    "commonMeaning": "票； 券； 车票"
+  },
+  {
+    "id": "trip",
+    "word": "trip",
+    "phonetic": "trip",
+    "meaning": "n. 旅行, 绊倒, 摔倒, 失足, 差错, 旅程\nvt. 使跌倒, 使犯错, 使失败\nvi. 轻快地走, 绊倒, 失误, 犯错, 结巴, 旅行, 远足",
+    "pos": "",
+    "rank": 416,
+    "forms": "s:trips/i:tripping/p:tripped/3:trips/d:tripped",
+    "commonMeaning": "旅行； 绊倒； 摔倒"
+  },
+  {
+    "id": "holiday",
+    "word": "holiday",
+    "phonetic": "'hɒlədi",
+    "meaning": "n. 假日, 假期, 节日\nvi. 度假",
+    "pos": "",
+    "rank": 417,
+    "forms": "s:holidays/i:holidaying/3:holidays/p:holidayed/d:holidayed",
+    "commonMeaning": "假日； 假期； 节日"
+  },
+  {
+    "id": "beach",
+    "word": "beach",
+    "phonetic": "bi:tʃ",
+    "meaning": "n. 海滩",
+    "pos": "",
+    "rank": 418,
+    "forms": "s:beaches/p:beached/d:beached/i:beaching/3:beaches",
+    "commonMeaning": "海滩"
+  },
+  {
+    "id": "farm",
+    "word": "farm",
+    "phonetic": "fɑ:m",
+    "meaning": "n. 农场, 农田\nvt. 耕种\nvi. 种田",
+    "pos": "",
+    "rank": 419,
+    "forms": "s:farms/d:farmed/p:farmed/i:farming/3:farms",
+    "commonMeaning": "农场； 农田"
+  },
+  {
+    "id": "office",
+    "word": "office",
+    "phonetic": "'ɒfis",
+    "meaning": "n. 办公室, 部, 公职, 职责\n[化] 办公室",
+    "pos": "",
+    "rank": 420,
+    "forms": "s:offices",
+    "commonMeaning": "办公室； 部； 公职"
+  },
+  {
+    "id": "job",
+    "word": "job",
+    "phonetic": "dʒɒb",
+    "meaning": "n. 工作, 零活, 职业, 事情\nvi. 做零工, 打杂, 做股票经纪, 假公济私\nvt. 代客买卖, 批发, 承包, 欺骗\n[计] 作业",
+    "pos": "",
+    "rank": 421,
+    "forms": "s:jobs/i:jobbing/p:jobbed/3:jobs/d:jobbed",
+    "commonMeaning": "工作； 零活； 职业"
+  },
+  {
+    "id": "sport",
+    "word": "sport",
+    "phonetic": "spɒ:t",
+    "meaning": "n. 运动, 游戏, 娱乐, 消遣, 玩笑\na. 运动的, 户外穿戴的\nvi. 游戏, 参加体育运动, 戏弄, 产生变种\nvt. 炫耀, 使产生变种",
+    "pos": "",
+    "rank": 422,
+    "forms": "s:sports/p:sported/i:sporting/3:sports/d:sported",
+    "commonMeaning": "运动； 游戏； 娱乐"
+  },
+  {
+    "id": "swim",
+    "word": "swim",
+    "phonetic": "swim",
+    "meaning": "n. 游泳, 漂浮, 潮流, 眩晕\nvi. 游泳, 游, 漂浮, 浸, 覆盖, 充溢, 大量拥有, 旋转, 眩晕\nvt. 游过, 使浮起",
+    "pos": "",
+    "rank": 423,
+    "forms": "i:swimming/p:swam/3:swims/d:swum/s:swims",
+    "commonMeaning": "游泳； 漂浮； 潮流"
+  },
+  {
+    "id": "jump",
+    "word": "jump",
+    "phonetic": "dʒʌmp",
+    "meaning": "n. 跳跃, 跳动, 暴涨, 惊跳\nvt. 跳跃, 跃过, 突升, 使跳跃\nvi. 跳跃, 跳, 跳动, 暴涨\n[计] 转移, 跳转",
+    "pos": "",
+    "rank": 424,
+    "forms": "p:jumped/i:jumping/d:jumped/3:jumps/s:jumps",
+    "commonMeaning": "跳跃； 跳动； 暴涨"
+  },
+  {
+    "id": "dance",
+    "word": "dance",
+    "phonetic": "dæns. dɑ:ns",
+    "meaning": "n. 跳舞, 舞蹈, 舞会\nv. 跳舞",
+    "pos": "",
+    "rank": 425,
+    "forms": "i:dancing/p:danced/s:dances/d:danced/3:dances",
+    "commonMeaning": "跳舞； 舞蹈； 舞会"
+  },
+  {
+    "id": "draw",
+    "word": "draw",
+    "phonetic": "drɒ:",
+    "meaning": "vi. 拉, 拖, 拔剑\nvt. 拖拉, 挨近, 领取, 打成平局, 引导, 抽签决定, 画, 描写, 制订, 草拟, 吸引\nn. 拉, 拖, 拔出, 抽签, 平局\n[计] 翻牌, 绘图",
+    "pos": "",
+    "rank": 426,
+    "forms": "d:drawn/p:drew/i:drawing/3:draws/s:draws",
+    "commonMeaning": "拉； 拖； 拔剑"
+  },
+  {
+    "id": "sing",
+    "word": "sing",
+    "phonetic": "sɪŋ",
+    "meaning": "vi. 唱, 唱歌, 演唱, 鸣, 啼\nvt. 唱, 歌颂\nn. 嗖嗖声",
+    "pos": "",
+    "rank": 427,
+    "forms": "i:singing/p:sang/d:sung/3:sings",
+    "commonMeaning": "唱； 唱歌； 演唱"
+  },
+  {
+    "id": "travel",
+    "word": "travel",
+    "phonetic": "'trævl",
+    "meaning": "n. 旅行, 游历, 行进\nvi. 旅行, 行进, 移动, 被传播\nvt. 旅行, 通过, 使移动",
+    "pos": "",
+    "rank": 428,
+    "forms": "i:travelling/p:travelled/d:travelled/s:travels/3:travels",
+    "commonMeaning": "旅行； 游历； 行进"
+  },
+  {
+    "id": "drive",
+    "word": "drive",
+    "phonetic": "draiv",
+    "meaning": "n. 驾车, 快车道, 推进力, 驱动, 动力, 击球, 驱动器\nvt. 开车, 驱使, 推动, 驾驶\nvi. 开车, 猛击, 飞跑\n[计] 驱动器",
+    "pos": "",
+    "rank": 429,
+    "forms": "p:drove/d:driven/i:driving/3:drives/s:drives",
+    "commonMeaning": "驾车； 快车道； 推进力"
+  },
+  {
+    "id": "ride",
+    "word": "ride",
+    "phonetic": "raid",
+    "meaning": "n. 骑马, 乘坐, 乘车, 搭便车\nvt. 骑, 乘坐, 压迫, 控制\nvi. 骑马, 乘车, 漂游",
+    "pos": "",
+    "rank": 430,
+    "forms": "i:riding/p:rode/d:ridden/s:rides/3:rides",
+    "commonMeaning": "骑马； 乘坐； 乘车"
+  },
+  {
+    "id": "turn",
+    "word": "turn",
+    "phonetic": "tə:n",
+    "meaning": "n. 转弯, 转动, 旋转, 翻转, 一圈, 顺次, 改动, 变化, 性格, 特色, 形状, 转折\nvt. 使旋转, 转弯, 转动, 使转向, 驱赶, 阻挡, 兑换, 改写, 使作对, 绕过, 使流通\nvi. 转动, 转弯, 转向, 翻转, 回转, 改变, 转身, 变成, 变质, 晕眩, 易脱手",
+    "pos": "",
+    "rank": 431,
+    "forms": "p:turned/d:turned/i:turning/3:turns/s:turns",
+    "commonMeaning": "转弯； 转动； 旋转"
+  },
+  {
+    "id": "front",
+    "word": "front",
+    "phonetic": "frʌnt",
+    "meaning": "n. 前面, 开头, 前线, 阵线, 态度\nvt. 面对, 朝向, 对抗\nvi. 朝向",
+    "pos": "",
+    "rank": 432,
+    "forms": "s:fronts/i:fronting/d:fronted/p:fronted/3:fronts",
+    "commonMeaning": "前面； 开头； 前线"
+  },
+  {
+    "id": "back",
+    "word": "back",
+    "phonetic": "bæk",
+    "meaning": "a. 后面的\nvt. 使后退, 支持\nvi. 倒退, 背靠\nadv. 向后地\nn. 背部, 后面",
+    "pos": "",
+    "rank": 433,
+    "forms": "d:backed/s:backs/p:backed/i:backing/3:backs",
+    "commonMeaning": "后面的"
+  },
+  {
+    "id": "left",
+    "word": "left",
+    "phonetic": "left",
+    "meaning": "a. 左边的, 左倾的, 左侧的, 左派的\nadv. 在左面\nn. 左, 左面, 左派\nleave的过去式和过去分词",
+    "pos": "",
+    "rank": 434,
+    "forms": "0:leave/1:dp/d:left/p:left",
+    "commonMeaning": "左边；leave 的过去式／过去分词"
+  },
+  {
+    "id": "inside",
+    "word": "inside",
+    "phonetic": "'in'said",
+    "meaning": "n. 内部, 内脏, 内幕\na. 内部的, 秘密的, 户内的\nadv. 在里面\nprep. 在...之内",
+    "pos": "",
+    "rank": 435,
+    "forms": "s:insides",
+    "commonMeaning": "内部； 内脏； 内幕"
+  },
+  {
+    "id": "outside",
+    "word": "outside",
+    "phonetic": "'aut'said",
+    "meaning": "n. 外面, 外表, 外界\na. 外面的, 外表的, 外界的\nadv. 外面, 外表, 外界",
+    "pos": "",
+    "rank": 436,
+    "forms": "",
+    "commonMeaning": "外面； 外表； 外界"
+  },
+  {
+    "id": "near",
+    "word": "near",
+    "phonetic": "nɪə",
+    "meaning": "a. 近的, 近亲的, 近似的\nadv. 接近, 亲近\nprep. 靠近, 近似于\nv. 接近, 走近",
+    "pos": "",
+    "rank": 437,
+    "forms": "t:nearest/r:nearer/i:nearing/p:neared/3:nears/d:neared",
+    "commonMeaning": "近的； 近亲的； 近似的"
+  },
+  {
+    "id": "far",
+    "word": "far",
+    "phonetic": "fɑ:",
+    "meaning": "a. 远的, 久远的, 遥远的\nadv. 甚远地, 很, 到很深的程度, 到很远的距离",
+    "pos": "",
+    "rank": 438,
+    "forms": "r:further/t:furthest",
+    "commonMeaning": "远的； 久远的； 遥远的"
+  },
+  {
+    "id": "where",
+    "word": "where",
+    "phonetic": "hwєə",
+    "meaning": "adv. 在哪里\npron. 哪里\nn. 地点",
+    "pos": "",
+    "rank": 439,
+    "forms": "",
+    "commonMeaning": "在哪里"
+  },
+  {
+    "id": "when",
+    "word": "when",
+    "phonetic": "hwen",
+    "meaning": "conj. 当...的时候\nadv. 何时, 什么时候\npron. 什么时侯\nn. 时间",
+    "pos": "",
+    "rank": 440,
+    "forms": "",
+    "commonMeaning": "当...的时候"
+  },
+  {
+    "id": "what",
+    "word": "what",
+    "phonetic": "hwɒt",
+    "meaning": "pron. 什么\ninterj. 怎么, 多么\na. 什么的\nadv. 到什么程度",
+    "pos": "",
+    "rank": 441,
+    "forms": "",
+    "commonMeaning": "怎么； 多么"
+  },
+  {
+    "id": "who",
+    "word": "who",
+    "phonetic": "hu:",
+    "meaning": "pron. 谁",
+    "pos": "",
+    "rank": 442,
+    "forms": "",
+    "commonMeaning": "谁"
+  },
+  {
+    "id": "why",
+    "word": "why",
+    "phonetic": "hwai",
+    "meaning": "adv. 为什么\nn. 原因, 理由",
+    "pos": "",
+    "rank": 443,
+    "forms": "",
+    "commonMeaning": "为什么"
+  },
+  {
+    "id": "how",
+    "word": "how",
+    "phonetic": "hau",
+    "meaning": "adv. 如何, 怎样, 多少, 多么\nn. 方式",
+    "pos": "",
+    "rank": 444,
+    "forms": "",
+    "commonMeaning": "如何； 怎样； 多少"
+  },
+  {
+    "id": "which",
+    "word": "which",
+    "phonetic": "hwitʃ",
+    "meaning": "pron. 哪一个, 那一个",
+    "pos": "",
+    "rank": 445,
+    "forms": "",
+    "commonMeaning": "哪一个； 那一个"
+  },
+  {
+    "id": "can",
+    "word": "can",
+    "phonetic": "kæn",
+    "meaning": "vt. 装罐\nn. 罐头, 容器\naux. 能, 可以\n[计] 作废字符",
+    "pos": "",
+    "rank": 446,
+    "forms": "s:cans/i:/p:could/3:can/d:",
+    "commonMeaning": "能够；可以"
+  },
+  {
+    "id": "could",
+    "word": "could",
+    "phonetic": "kud",
+    "meaning": "aux. 可以, 能",
+    "pos": "",
+    "rank": 447,
+    "forms": "",
+    "commonMeaning": "能够；可以（也用于委婉表达）"
+  },
+  {
+    "id": "will",
+    "word": "will",
+    "phonetic": "wil",
+    "meaning": "n. 意志, 决心, 意愿, 意向, 干劲, 遗嘱\nvt. 用意志的力量驱使, 决意, 愿意, 立遗嘱\nvi. 下决心, 愿意\naux. 将, 愿意, 必须",
+    "pos": "",
+    "rank": 448,
+    "forms": "i:willing/p:willed/3:wills/d:willed",
+    "commonMeaning": "将；愿意"
+  },
+  {
+    "id": "would",
+    "word": "would",
+    "phonetic": "wud",
+    "meaning": "aux. 将, 愿意",
+    "pos": "",
+    "rank": 449,
+    "forms": "",
+    "commonMeaning": "会；愿意（也用于委婉表达）"
+  },
+  {
+    "id": "should",
+    "word": "should",
+    "phonetic": "ʃud",
+    "meaning": "aux. 应该, 将要",
+    "pos": "",
+    "rank": 450,
+    "forms": "",
+    "commonMeaning": "应该"
+  },
+  {
+    "id": "must",
+    "word": "must",
+    "phonetic": "mʌst",
+    "meaning": "n. 必须, 未发酵葡萄汁, 绝对必要的事物\naux. 必须",
+    "pos": "",
+    "rank": 451,
+    "forms": "",
+    "commonMeaning": "必须"
+  },
+  {
+    "id": "have",
+    "word": "have",
+    "phonetic": "hæv",
+    "meaning": "vt. 有, 怀有, 拿, 进行\naux. 已经",
+    "pos": "",
+    "rank": 452,
+    "forms": "i:having/p:had/3:has/d:had",
+    "commonMeaning": "有；拥有"
+  },
+  {
+    "id": "be",
+    "word": "be",
+    "phonetic": "bi:",
+    "meaning": "v. 是, 表示, 在\n[计] 后端, 总线允许",
+    "pos": "",
+    "rank": 453,
+    "forms": "p:was/3:is/d:been/i:being",
+    "commonMeaning": "是；成为；存在"
+  },
+  {
+    "id": "am",
+    "word": "am",
+    "phonetic": "æm",
+    "meaning": "be的单数第一人称\n[计] 存取管理程序, 寻址方式, 地址标记, 变址数, 调幅, 辅助存储器",
+    "pos": "",
+    "rank": 454,
+    "forms": "s:ams/r:amer",
+    "commonMeaning": "是（be 的第一人称单数现在式）"
+  },
+  {
+    "id": "is",
+    "word": "is",
+    "phonetic": "iz",
+    "meaning": "be的现在式第三人称\n[计] 加下标次序, 信息系统, 国际标准, 中间系统",
+    "pos": "",
+    "rank": 455,
+    "forms": "0:be/1:3",
+    "commonMeaning": "是（be 的第三人称单数现在式）"
+  },
+  {
+    "id": "are",
+    "word": "are",
+    "phonetic": "ɑ:",
+    "meaning": "be的现在时复数或第二人称单数",
+    "pos": "",
+    "rank": 456,
+    "forms": "s:ares",
+    "commonMeaning": "是（be 的复数或第二人称现在式）"
+  },
+  {
+    "id": "was",
+    "word": "was",
+    "phonetic": "wɒz",
+    "meaning": "be的过去式",
+    "pos": "",
+    "rank": 457,
+    "forms": "",
+    "commonMeaning": "be的过去式"
+  },
+  {
+    "id": "were",
+    "word": "were",
+    "phonetic": "wə:",
+    "meaning": "be的过去式",
+    "pos": "",
+    "rank": 458,
+    "forms": "1:p/0:be",
+    "commonMeaning": "be的过去式"
+  },
+  {
+    "id": "been",
+    "word": "been",
+    "phonetic": "bi:n",
+    "meaning": "be的过去分词",
+    "pos": "",
+    "rank": 459,
+    "forms": "1:d/0:be/s:beens",
+    "commonMeaning": "be的过去分词"
+  },
+  {
+    "id": "being",
+    "word": "being",
+    "phonetic": "'bi:iŋ",
+    "meaning": "n. 存在, 性质, 生命, 人, 生物, be的现在分词",
+    "pos": "",
+    "rank": 460,
+    "forms": "1:i/0:be/s:beings",
+    "commonMeaning": "存在； 性质； 生命"
+  },
+  {
+    "id": "has",
+    "word": "has",
+    "phonetic": "hæz",
+    "meaning": "have的第三人称单数现在式",
+    "pos": "",
+    "rank": 461,
+    "forms": "1:3/0:have",
+    "commonMeaning": "有（have 的第三人称单数）"
+  },
+  {
+    "id": "had",
+    "word": "had",
+    "phonetic": "hæd",
+    "meaning": "have的过去式和过去分词",
+    "pos": "",
+    "rank": 462,
+    "forms": "1:pd/0:have/s:hads",
+    "commonMeaning": "有（have 的过去式／过去分词）"
+  },
+  {
+    "id": "did",
+    "word": "did",
+    "phonetic": "did",
+    "meaning": "do的过去式",
+    "pos": "",
+    "rank": 463,
+    "forms": "1:p/0:do/s:dids",
+    "commonMeaning": "do 的过去式"
+  },
+  {
+    "id": "done",
+    "word": "done",
+    "phonetic": "dʌn",
+    "meaning": "a. 完成了的, 好了的\ndo的过去分词",
+    "pos": "",
+    "rank": 464,
+    "forms": "1:d/0:do",
+    "commonMeaning": "do 的过去分词"
+  },
+  {
+    "id": "does",
+    "word": "does",
+    "phonetic": "dʌz; dəz",
+    "meaning": "v. 做；工作；有用（do的第三人称单数形式）",
+    "pos": "",
+    "rank": 465,
+    "forms": "0:doe/1:s",
+    "commonMeaning": "do 的第三人称单数现在式"
+  },
+  {
+    "id": "went",
+    "word": "went",
+    "phonetic": "went",
+    "meaning": "go的过去式",
+    "pos": "",
+    "rank": 466,
+    "forms": "0:go/1:p",
+    "commonMeaning": "go的过去式"
+  },
+  {
+    "id": "gone",
+    "word": "gone",
+    "phonetic": "gɒn",
+    "meaning": "a. 离去的, 死去的, 用完的\ngo的过去分词",
+    "pos": "",
+    "rank": 467,
+    "forms": "0:go/1:d/s:gones",
+    "commonMeaning": "离去的； 死去的； 用完的"
+  },
+  {
+    "id": "best",
+    "word": "best",
+    "phonetic": "best",
+    "meaning": "a. 最好的\nadv. 最好地\nn. 最好的人",
+    "pos": "",
+    "rank": 468,
+    "forms": "0:good/1:t/r:best/3:bests/d:bested/i:besting/p:bested",
+    "commonMeaning": "最好的"
+  },
+  {
+    "id": "better",
+    "word": "better",
+    "phonetic": "'betə",
+    "meaning": "a. 较好的\nadv. 比较好",
+    "pos": "",
+    "rank": 469,
+    "forms": "0:good/1:r/d:bettered/s:betters/i:bettering/p:bettered/3:betters",
+    "commonMeaning": "较好的"
+  },
+  {
+    "id": "bad",
+    "word": "bad",
+    "phonetic": "bæd",
+    "meaning": "a. 坏的\nn. 坏\nadv. 坏地",
+    "pos": "",
+    "rank": 470,
+    "forms": "r:worse/t:worst",
+    "commonMeaning": "坏的"
+  },
+  {
+    "id": "worse",
+    "word": "worse",
+    "phonetic": "wə:s",
+    "meaning": "n. 更坏的事, 更恶劣的事, 败局\na. 更坏的, 更恶劣的\nadv. 更坏地, 更恶劣地",
+    "pos": "",
+    "rank": 471,
+    "forms": "0:bad/1:r",
+    "commonMeaning": "更坏的事； 更恶劣的事； 败局"
+  },
+  {
+    "id": "worst",
+    "word": "worst",
+    "phonetic": "wə:st",
+    "meaning": "n. 最坏, 最坏的时候\na. 最坏的, 最恶劣的, 最不利的\nadv. 最坏, 最糟",
+    "pos": "",
+    "rank": 472,
+    "forms": "0:bad/1:t/d:worsted/3:worsts/r:worst/i:/p:",
+    "commonMeaning": "最坏； 最坏的时候"
+  },
+  {
+    "id": "great",
+    "word": "great",
+    "phonetic": "greit",
+    "meaning": "a. 大的, 非常的, 主要的, 重大的, 崇高的, 伟大的\nadv. 顺利地, 得意地\nn. 全部, 大人物, 大师",
+    "pos": "",
+    "rank": 473,
+    "forms": "r:greater/t:greatest/s:greats",
+    "commonMeaning": "大的； 非常的； 主要的"
+  },
+  {
+    "id": "fine",
+    "word": "fine",
+    "phonetic": "fain",
+    "meaning": "n. 罚款, 罚金, 晴天, 精细\na. 好的, 晴朗的, 健康的, 细小的, 精细的\nvt. 罚款, 精炼, 澄清\nvi. 变清, 变细\nadv. 很好\n[计] 精细",
+    "pos": "",
+    "rank": 474,
+    "forms": "t:finest/d:fined/s:fines/r:finer/p:fined/3:fines/i:fining",
+    "commonMeaning": "好的；晴朗的"
+  },
+  {
+    "id": "interesting",
+    "word": "interesting",
+    "phonetic": "'intristiŋ",
+    "meaning": "a. 有趣的",
+    "pos": "",
+    "rank": 475,
+    "forms": "i:interesting/0:interesting/1:i",
+    "commonMeaning": "有趣的"
+  },
+  {
+    "id": "important",
+    "word": "important",
+    "phonetic": "im'pɒ:tənt",
+    "meaning": "a. 重要的, 有地位的, 大量的, 显要的, 自负的\n[计] 要点",
+    "pos": "",
+    "rank": 476,
+    "forms": "",
+    "commonMeaning": "重要的； 有地位的； 大量的"
+  },
+  {
+    "id": "together",
+    "word": "together",
+    "phonetic": "tə'geðə",
+    "meaning": "adv. 一起, 共同, 彼此",
+    "pos": "",
+    "rank": 477,
+    "forms": "",
+    "commonMeaning": "一起； 共同； 彼此"
+  },
+  {
+    "id": "alone",
+    "word": "alone",
+    "phonetic": "ə'ləun",
+    "meaning": "a. 孤独的, 单独的, 独自的\nadv. 独自地",
+    "pos": "",
+    "rank": 478,
+    "forms": "",
+    "commonMeaning": "孤独的； 单独的； 独自的"
+  },
+  {
+    "id": "every",
+    "word": "every",
+    "phonetic": "'evri",
+    "meaning": "a. 每一, 所有的",
+    "pos": "",
+    "rank": 479,
+    "forms": "",
+    "commonMeaning": "每一； 所有的"
+  },
+  {
+    "id": "each",
+    "word": "each",
+    "phonetic": "i:tʃ",
+    "meaning": "a. 每个, 每一\nadv. 每个\npron. 每个, 个人, 各自",
+    "pos": "",
+    "rank": 480,
+    "forms": "",
+    "commonMeaning": "每个； 每一"
+  },
+  {
+    "id": "both",
+    "word": "both",
+    "phonetic": "bəuθ",
+    "meaning": "a. 两者的\nadv. 两者都\npron. 两者",
+    "pos": "",
+    "rank": 481,
+    "forms": "",
+    "commonMeaning": "两者的"
+  },
+  {
+    "id": "enough",
+    "word": "enough",
+    "phonetic": "i'nʌf",
+    "meaning": "n. 充足, 够, 很多\na. 充足的, 足够\nadv. 足够\ninterj. 够了",
+    "pos": "",
+    "rank": 482,
+    "forms": "",
+    "commonMeaning": "够了"
+  },
+  {
+    "id": "only",
+    "word": "only",
+    "phonetic": "'əunli",
+    "meaning": "a. 唯一的, 仅有的, 最佳的\nadv. 只有, 仅仅, 只能\nconj. 但是, 不过",
+    "pos": "",
+    "rank": 483,
+    "forms": "",
+    "commonMeaning": "唯一的； 仅有的； 最佳的"
+  },
+  {
+    "id": "just",
+    "word": "just",
+    "phonetic": "dʒʌst",
+    "meaning": "a. 正直的, 合理的, 正确的, 应得的\nadv. 刚刚, 正好, 仅仅",
+    "pos": "",
+    "rank": 484,
+    "forms": "",
+    "commonMeaning": "刚刚；只是；正好"
+  },
+  {
+    "id": "even",
+    "word": "even",
+    "phonetic": "'i:vən",
+    "meaning": "a. 平坦的, 相等的, 连贯的, 均等的, 公平的, 偶数的, 平均的, 平衡的, 恰好的\nvt. 使平坦, 使相等\nvi. 变平, 成为相等\nadv. 甚至, 实际上, 完全, 十分\nn. 偶数, 偶校验\n[计] 偶数, 偶校验",
+    "pos": "",
+    "rank": 485,
+    "forms": "i:evening/p:evened/3:evens/d:evened",
+    "commonMeaning": "甚至；平的"
+  },
+  {
+    "id": "still",
+    "word": "still",
+    "phonetic": "stil",
+    "meaning": "n. 蒸馏室, 寂静, 剧照\nv. 蒸馏, (使)平静, (使)静止\na. 静止的, 不动的, 静寂的, 不起泡的, 静物摄影的\nadv. 仍然, 更, 静止地\nconj. 然而, 但是",
+    "pos": "",
+    "rank": 486,
+    "forms": "s:stills/i:stilling/p:stilled/3:stills/d:stilled",
+    "commonMeaning": "仍然；静止的"
+  },
+  {
+    "id": "already",
+    "word": "already",
+    "phonetic": "ɒ:l'redi",
+    "meaning": "adv. 已经, 早已",
+    "pos": "",
+    "rank": 487,
+    "forms": "",
+    "commonMeaning": "已经； 早已"
+  },
+  {
+    "id": "soon",
+    "word": "soon",
+    "phonetic": "su:n",
+    "meaning": "adv. 不久, 早, 快, 宁可",
+    "pos": "",
+    "rank": 488,
+    "forms": "",
+    "commonMeaning": "不久； 早； 快"
+  },
+  {
+    "id": "really",
+    "word": "really",
+    "phonetic": "'riəli",
+    "meaning": "adv. 实际上, 真实地, 实在",
+    "pos": "",
+    "rank": 489,
+    "forms": "",
+    "commonMeaning": "实际上； 真实地； 实在"
+  },
+  {
+    "id": "maybe",
+    "word": "maybe",
+    "phonetic": "'meibi:",
+    "meaning": "adv. 也许, 大概\nn. 可能性",
+    "pos": "",
+    "rank": 490,
+    "forms": "",
+    "commonMeaning": "也许； 大概"
+  },
+  {
+    "id": "because",
+    "word": "because",
+    "phonetic": "bi'kɒ:z",
+    "meaning": "conj. 因为",
+    "pos": "",
+    "rank": 491,
+    "forms": "",
+    "commonMeaning": "因为"
+  },
+  {
+    "id": "before",
+    "word": "before",
+    "phonetic": "bi'fɒ:",
+    "meaning": "prep. 在...之前\nconj. 在...之前\nadv. 在前",
+    "pos": "",
+    "rank": 492,
+    "forms": "",
+    "commonMeaning": "在...之前"
+  },
+  {
+    "id": "after",
+    "word": "after",
+    "phonetic": "'ɑ:ftə",
+    "meaning": "prep. 在...之后, 由于\nconj. 在...之后\nadv. 后来",
+    "pos": "",
+    "rank": 493,
+    "forms": "",
+    "commonMeaning": "在...之后； 由于"
+  },
+  {
+    "id": "during",
+    "word": "during",
+    "phonetic": "'djuəriŋ",
+    "meaning": "prep. 在...的时候",
+    "pos": "",
+    "rank": 494,
+    "forms": "",
+    "commonMeaning": "在...的时候"
+  },
+  {
+    "id": "until",
+    "word": "until",
+    "phonetic": "ən'til",
+    "meaning": "prep. 直到, 在...以前\nconj. 直到...时, 在...以前",
+    "pos": "",
+    "rank": 495,
+    "forms": "",
+    "commonMeaning": "直到； 在...以前"
+  },
+  {
+    "id": "through",
+    "word": "through",
+    "phonetic": "θru:",
+    "meaning": "adv. 穿越, 从头至尾, 到底, 因为\nprep. 经过, 穿过\na. 对穿的, 直达的, 完结的",
+    "pos": "",
+    "rank": 496,
+    "forms": "",
+    "commonMeaning": "穿越； 从头至尾； 到底"
+  },
+  {
+    "id": "around",
+    "word": "around",
+    "phonetic": "ə'raund",
+    "meaning": "prep. 包围, 在...周围, 四处\nadv. 兜着圈子, 在附近, 到处",
+    "pos": "",
+    "rank": 497,
+    "forms": "",
+    "commonMeaning": "包围； 在...周围； 四处"
+  },
+  {
+    "id": "between",
+    "word": "between",
+    "phonetic": "bi'twi:n",
+    "meaning": "prep. 在...之间",
+    "pos": "",
+    "rank": 498,
+    "forms": "",
+    "commonMeaning": "在...之间"
+  },
+  {
+    "id": "across",
+    "word": "across",
+    "phonetic": "ə'krɒs",
+    "meaning": "prep. 越过, 穿过, 与...相交叉, 在...的对面\nadv. 交叉, 到另一边, 在对面, 成十字",
+    "pos": "",
+    "rank": 499,
+    "forms": "",
+    "commonMeaning": "越过； 穿过； 与...相交叉"
+  },
+  {
+    "id": "along",
+    "word": "along",
+    "phonetic": "ə'lɒŋ",
+    "meaning": "adv. 平行地, 向前\nprep. 沿着",
+    "pos": "",
+    "rank": 500,
+    "forms": "",
+    "commonMeaning": "平行地； 向前"
+  },
+  {
+    "id": "than",
+    "word": "than",
+    "phonetic": "ðæn",
+    "meaning": "conj. 比, 除...外\nprep. 比",
+    "pos": "",
+    "rank": 501,
+    "forms": "",
+    "commonMeaning": "比； 除...外"
+  },
+  {
+    "id": "while",
+    "word": "while",
+    "phonetic": "hwail",
+    "meaning": "n. 一会儿, (一段)时间\nconj. 当...的时候, 虽然\nvt. 消磨",
+    "pos": "",
+    "rank": 502,
+    "forms": "",
+    "commonMeaning": "一会儿； (一段)时间"
+  },
+  {
+    "id": "since",
+    "word": "since",
+    "phonetic": "sins",
+    "meaning": "prep. 自...以后, 自...以来\nadv. 自那时以后\nconj. 既然, 自...以后, 自...以来",
+    "pos": "",
+    "rank": 503,
+    "forms": "",
+    "commonMeaning": "自...以后； 自...以来"
+  },
+  {
+    "id": "about",
+    "word": "about",
+    "phonetic": "əˈbaʊt",
+    "meaning": "prep. 在...周围, 大约, 有关, 关于\nadv. 大约, 四处, 在附近, 周围",
+    "pos": "",
+    "rank": 504,
+    "forms": "",
+    "commonMeaning": "在...周围； 大约； 有关"
+  },
+  {
+    "id": "into",
+    "word": "into",
+    "phonetic": "'intu:",
+    "meaning": "prep. 进入...之内, 朝..., 深入...之中, 成为...状况",
+    "pos": "",
+    "rank": 505,
+    "forms": "",
+    "commonMeaning": "进入...之内； 朝...； 深入...之中"
+  },
+  {
+    "id": "onto",
+    "word": "onto",
+    "phonetic": "'ɒntu:",
+    "meaning": "prep. 在...之上",
+    "pos": "",
+    "rank": 506,
+    "forms": "s:ontos",
+    "commonMeaning": "在...之上"
+  },
+  {
+    "id": "off",
+    "word": "off",
+    "phonetic": "ɒf",
+    "meaning": "a. 关着的, 不再生效的, 处于...境况的, 休假的, 空闲的\nadv. 走开, ...掉, ...下, 休息, 出发, 隔断\nprep. 离开, 脱落, 不在从事......, 在...之外\nvi. 离开, 滚开\nvt. 杀死\nn. 关闭状态\n[计] 关闭, 清屏命令",
+    "pos": "",
+    "rank": 507,
+    "forms": "i:offing/p:offed/3:offs/d:offed",
+    "commonMeaning": "关着的； 不再生效的； 处于...境况的"
+  },
+  {
+    "id": "way",
+    "word": "way",
+    "phonetic": "wei",
+    "meaning": "n. 路, 路线, 路途, 方法, 道路, 情形, 规模, 习惯, 行业, 方面\nadv. 远远地, 非常",
+    "pos": "",
+    "rank": 508,
+    "forms": "s:ways",
+    "commonMeaning": "路； 路线； 路途"
+  },
+  {
+    "id": "thing",
+    "word": "thing",
+    "phonetic": "θɪŋ",
+    "meaning": "n. 事物, 东西, 物, 用品, 事, 事件, 情况, 行为, 特征",
+    "pos": "",
+    "rank": 509,
+    "forms": "s:things",
+    "commonMeaning": "事物； 东西； 物"
+  },
+  {
+    "id": "place",
+    "word": "place",
+    "phonetic": "pleis",
+    "meaning": "n. 地方, 地点, 位置, 住所, 座位, 地位, 处境, 特权, 空间, 余地, 职务, 位\nvt. 放置, 寄予, 认出, 评定, 任命\nvi. 名次列前",
+    "pos": "",
+    "rank": 510,
+    "forms": "s:places/d:placed/i:placing/p:placed/3:places",
+    "commonMeaning": "地方； 地点； 位置"
+  },
+  {
+    "id": "part",
+    "word": "part",
+    "phonetic": "pɑ:t",
+    "meaning": "n. 部分, 局部, 零件, 要素, 等分, 职责, 角色, 部位\nvt. 分开, 分离, 断绝, 区别, 分配\nvi. 分开, 断裂, 分手\na. 部分的, 局部的\nadv. 部分地, 有些",
+    "pos": "",
+    "rank": 511,
+    "forms": "s:parts/d:parted/p:parted/i:parting/3:parts",
+    "commonMeaning": "部分"
+  },
+  {
+    "id": "end",
+    "word": "end",
+    "phonetic": "end",
+    "meaning": "n. 结束, 终点, 目标, 末端, 梢, 死亡, 残余\nv. 结束, 终结, 终止\n[计] 端; 结束",
+    "pos": "",
+    "rank": 512,
+    "forms": "p:ended/s:ends/d:ended/i:ending/3:ends",
+    "commonMeaning": "结束； 终点； 目标"
+  },
+  {
+    "id": "middle",
+    "word": "middle",
+    "phonetic": "'midl",
+    "meaning": "n. 中央, 中间, 腰部\na. 中央的, 中庸的, 中间的",
+    "pos": "",
+    "rank": 513,
+    "forms": "s:middles/i:middling/p:middled/3:middles/d:middled",
+    "commonMeaning": "中央； 中间； 腰部"
+  },
+  {
+    "id": "number",
+    "word": "number",
+    "phonetic": "'nʌmbə",
+    "meaning": "n. 数, 数字, 数目, 号码\nvt. 数, 计算, 共计\nvi. 计算, 报数\n[计] 数字",
+    "pos": "",
+    "rank": 514,
+    "forms": "s:numbers/d:numbered/p:numbered/i:numbering/0:numb/1:r/3:numbs",
+    "commonMeaning": "数字；号码"
+  },
+  {
+    "id": "color",
+    "word": "color",
+    "phonetic": "'kʌlə",
+    "meaning": "n. 颜色, 面色, 颜料, 外貌\nvt. 把...涂上颜色, 粉饰, 使脸红, 歪曲\nvi. 变色",
+    "pos": "",
+    "rank": 515,
+    "forms": "s:colors/i:coloring/p:colored/3:colors/d:colored",
+    "commonMeaning": "颜色； 面色； 颜料"
+  },
+  {
+    "id": "size",
+    "word": "size",
+    "phonetic": "saiz",
+    "meaning": "n. 大小, 尺寸, 规模, 尺码, 能力, 浆料\nvt. 上浆, 依大小排列\nvi. 可比拟\na. 一定大小的, 一定尺寸的",
+    "pos": "",
+    "rank": 516,
+    "forms": "s:sizes/d:sized/i:sizing/p:sized/3:sizes",
+    "commonMeaning": "大小； 尺寸； 规模"
+  },
+  {
+    "id": "age",
+    "word": "age",
+    "phonetic": "eidʒ",
+    "meaning": "n. 年龄, 老年, 成年, 寿命, 时代, 时期\nv. 变老, 成熟",
+    "pos": "",
+    "rank": 517,
+    "forms": "s:ages/d:aged/i:ageing/3:ages/p:aged",
+    "commonMeaning": "年龄； 老年； 成年"
+  },
+  {
+    "id": "bottle",
+    "word": "bottle",
+    "phonetic": "'bɒtl",
+    "meaning": "n. 瓶子, 酒瓶\nvt. 装瓶, 抑制, 围困",
+    "pos": "",
+    "rank": 518,
+    "forms": "s:bottles/d:bottled/p:bottled/i:bottling/3:bottles",
+    "commonMeaning": "瓶子； 酒瓶"
+  },
+  {
+    "id": "glass",
+    "word": "glass",
+    "phonetic": "glɑ:s",
+    "meaning": "n. 玻璃, 玻璃杯, 透镜\nvt. 装玻璃于, 反射, 反映\nvi. 成玻璃状",
+    "pos": "",
+    "rank": 519,
+    "forms": "s:glasses/i:glassing/p:glassed/3:glasses/d:glassed",
+    "commonMeaning": "玻璃； 玻璃杯； 透镜"
+  },
+  {
+    "id": "cup",
+    "word": "cup",
+    "phonetic": "kʌp",
+    "meaning": "n. 杯子, 茶杯, 优胜杯\nvt. 使成杯状, 为...拔火罐",
+    "pos": "",
+    "rank": 520,
+    "forms": "s:cups/i:cupping/3:cups/p:cupped/d:cupped",
+    "commonMeaning": "杯子； 茶杯； 优胜杯"
+  },
+  {
+    "id": "plate",
+    "word": "plate",
+    "phonetic": "pleit",
+    "meaning": "n. 碟, 盘子, 盆中物, 金属板, 图版, 金银餐具, 印版, 金属牌(照)\nvt. 镀金, 电镀, 用金属板固定, 给...装钢板, 为...制印版",
+    "pos": "",
+    "rank": 521,
+    "forms": "s:plates/d:plated/i:plating/p:plated/3:plates",
+    "commonMeaning": "碟； 盘子； 盆中物"
+  },
+  {
+    "id": "spoon",
+    "word": "spoon",
+    "phonetic": "spu:n",
+    "meaning": "n. 匙, 调羹, 匙形工具\nvt. 以匙舀起, 调情, 使成匙状",
+    "pos": "",
+    "rank": 522,
+    "forms": "s:spoons/p:spooned/i:spooning/d:spooned/3:spoons",
+    "commonMeaning": "匙； 调羹； 匙形工具"
+  },
+  {
+    "id": "knife",
+    "word": "knife",
+    "phonetic": "naif",
+    "meaning": "n. 小刀, 匕首\nvt. 切割, 伤害, 切, 戳\nvi. 劈开, 穿过",
+    "pos": "",
+    "rank": 523,
+    "forms": "s:knives/d:knifed/i:knifing/p:knifed/3:knifes",
+    "commonMeaning": "小刀； 匕首"
+  },
+  {
+    "id": "fork",
+    "word": "fork",
+    "phonetic": "fɒ:k",
+    "meaning": "n. 叉子, 叉状物, 分岔\nvi. 分支, 分歧\nvt. 做成叉形, 叉起\n[计] 派生指令",
+    "pos": "",
+    "rank": 524,
+    "forms": "s:forks/p:forked/i:forking/d:forked/3:forks",
+    "commonMeaning": "叉子； 叉状物； 分岔"
+  },
+  {
+    "id": "cheese",
+    "word": "cheese",
+    "phonetic": "tʃi:z",
+    "meaning": "n. 乳酪\n[化] 干酪",
+    "pos": "",
+    "rank": 525,
+    "forms": "d:cheesed/0:cheese/i:cheesing/3:cheese/1:3/p:cheesed/s:cheeses",
+    "commonMeaning": "乳酪"
+  },
+  {
+    "id": "butter",
+    "word": "butter",
+    "phonetic": "'bʌtə",
+    "meaning": "n. 奶油, 黄油\nvt. 涂黄油于",
+    "pos": "",
+    "rank": 526,
+    "forms": "d:buttered/i:buttering/p:buttered/s:butters/3:butters",
+    "commonMeaning": "奶油； 黄油"
+  },
+  {
+    "id": "cake",
+    "word": "cake",
+    "phonetic": "keik",
+    "meaning": "n. 蛋糕, 块, 饼\nvt. 使结块, 加块状物于\nvi. 结块",
+    "pos": "",
+    "rank": 527,
+    "forms": "s:cakes/d:caked/i:caking/p:caked/3:cakes",
+    "commonMeaning": "蛋糕； 块； 饼"
+  },
+  {
+    "id": "biscuit",
+    "word": "biscuit",
+    "phonetic": "'biskit",
+    "meaning": "n. 饼干\n[化] 素坯; 饼干",
+    "pos": "",
+    "rank": 528,
+    "forms": "s:biscuits",
+    "commonMeaning": "饼干"
+  },
+  {
+    "id": "sandwich",
+    "word": "sandwich",
+    "phonetic": "'sændwitʃ",
+    "meaning": "n. 三明治, 夹心面包, 夹层板\nvt. 插入, 夹入, 把...制成三明治",
+    "pos": "",
+    "rank": 529,
+    "forms": "s:sandwiches/d:sandwiched/i:sandwiching/p:sandwiched/3:sandwiches",
+    "commonMeaning": "三明治； 夹心面包； 夹层板"
+  },
+  {
+    "id": "soup",
+    "word": "soup",
+    "phonetic": "su:p",
+    "meaning": "n. 汤, 马力\nvt. 加速, 增加马力",
+    "pos": "",
+    "rank": 530,
+    "forms": "s:soups/p:souped/i:souping/3:soups/d:souped",
+    "commonMeaning": "汤； 马力"
+  },
+  {
+    "id": "salad",
+    "word": "salad",
+    "phonetic": "'sæləd",
+    "meaning": "n. 色拉",
+    "pos": "",
+    "rank": 531,
+    "forms": "s:salads",
+    "commonMeaning": "色拉"
+  },
+  {
+    "id": "chocolate",
+    "word": "chocolate",
+    "phonetic": "'tʃɒkəlit",
+    "meaning": "n. 巧克力\na. 巧克力制的",
+    "pos": "",
+    "rank": 532,
+    "forms": "s:chocolates",
+    "commonMeaning": "巧克力"
+  },
+  {
+    "id": "ice",
+    "word": "ice",
+    "phonetic": "ais",
+    "meaning": "n. 冰, 冰淇淋, 糖衣, 冷若冰霜, 矜持, 贿赂\nvt. 使结冰, 冰镇, 覆以糖衣\nvi. 结冰",
+    "pos": "",
+    "rank": 533,
+    "forms": "i:icing/s:ices/d:iced/p:iced/3:ices",
+    "commonMeaning": "冰"
+  },
+  {
+    "id": "cream",
+    "word": "cream",
+    "phonetic": "kri:m",
+    "meaning": "n. 乳酪, 奶油, 面霜\n[医] 乳油, 乳皮; 乳膏, 霜",
+    "pos": "",
+    "rank": 534,
+    "forms": "s:creams/i:creaming/d:creamed/p:creamed/3:creams",
+    "commonMeaning": "奶油；乳霜"
+  },
+  {
+    "id": "boot",
+    "word": "boot",
+    "phonetic": "bu:t",
+    "meaning": "n. 长靴, 踢, 解雇, 效用\nvt. 使穿靴, 踢, 解雇, 有用\n[计] 引导, 自举",
+    "pos": "",
+    "rank": 535,
+    "forms": "s:boots/d:booted/p:booted/i:booting/3:boots",
+    "commonMeaning": "长靴； 踢； 解雇"
+  },
+  {
+    "id": "wear",
+    "word": "wear",
+    "phonetic": "wєə",
+    "meaning": "n. 穿着, 戴, 使用, 耗损, 服装, 耐久性\nvt. 穿着, 戴, 留(须、发等), 呈现, 磨损, 磨成, 耗损, 使疲乏, 消磨\nvi. 磨损, 变旧, 耐久, 渐变, 渐渐消失",
+    "pos": "",
+    "rank": 536,
+    "forms": "i:wearing/p:wore/d:worn/3:wears",
+    "commonMeaning": "穿着； 戴； 使用"
+  },
+  {
+    "id": "tell",
+    "word": "tell",
+    "phonetic": "tel",
+    "meaning": "vt. 告诉, 说, 吩咐, 断定, 知道\nvi. 讲述, 泄密, 告发, 表明",
+    "pos": "",
+    "rank": 537,
+    "forms": "p:told/d:told/i:telling/3:tells",
+    "commonMeaning": "告诉； 说； 吩咐"
+  },
+  {
+    "id": "show",
+    "word": "show",
+    "phonetic": "ʃəu",
+    "meaning": "n. 显示, 表现, 展览, 卖弄, 炫耀, 外观, 演出, 洋相\nvt. 表示, 显示, 展现, 陈列, 演出, 表明, 指出, 带领\nvi. 露面, 显现, 演出\n[计] 显示",
+    "pos": "",
+    "rank": 538,
+    "forms": "d:shown/p:showed/3:shows/i:showing/s:shows",
+    "commonMeaning": "显示； 表现； 展览"
+  },
+  {
+    "id": "build",
+    "word": "build",
+    "phonetic": "bild",
+    "meaning": "v. 建立, 建筑\nn. 构造, 体格",
+    "pos": "",
+    "rank": 539,
+    "forms": "d:built/i:building/p:built/3:builds",
+    "commonMeaning": "建立； 建筑"
+  },
+  {
+    "id": "carry",
+    "word": "carry",
+    "phonetic": "'kæri",
+    "meaning": "n. 进位, 射程, 运载\nvt. 携带, 运送, 支持, 传送, 包含\nvi. 被携带, 能达到\n[计] 进位; 进位数",
+    "pos": "",
+    "rank": 540,
+    "forms": "d:carried/i:carrying/p:carried/3:carries",
+    "commonMeaning": "进位； 射程； 运载"
+  },
+  {
+    "id": "send",
+    "word": "send",
+    "phonetic": "send",
+    "meaning": "vt. 发送, 使进入, 寄, 派遣, 发射, 使陷于\nvi. 寄信, 派人, 播送\nn. (船的)上升运动\n[计] 发送",
+    "pos": "",
+    "rank": 541,
+    "forms": "d:sent/p:sent/i:sending/3:sends",
+    "commonMeaning": "发送； 使进入； 寄"
+  },
+  {
+    "id": "forget",
+    "word": "forget",
+    "phonetic": "fə'get",
+    "meaning": "vt. 忘记, 忽略, 忘\nvi. 忘记",
+    "pos": "",
+    "rank": 542,
+    "forms": "d:forgotten/p:forgot/i:forgetting/3:forgets",
+    "commonMeaning": "忘记； 忽略； 忘"
+  },
+  {
+    "id": "remember",
+    "word": "remember",
+    "phonetic": "ri'membə",
+    "meaning": "vt. 记得, 回忆起, 记住, 铭记, 纪念\nvi. 记得",
+    "pos": "",
+    "rank": 543,
+    "forms": "p:remembered/d:remembered/i:remembering/3:remembers",
+    "commonMeaning": "记得； 回忆起； 记住"
+  },
+  {
+    "id": "feel",
+    "word": "feel",
+    "phonetic": "fi:l",
+    "meaning": "vt. 感觉, 觉得, 触摸, 以为\nvi. 有知觉, 摸索, 同情\nn. 感觉, 觉得, 触摸",
+    "pos": "",
+    "rank": 544,
+    "forms": "p:felt/i:feeling/d:felt/3:feels",
+    "commonMeaning": "感觉； 觉得； 触摸"
+  },
+  {
+    "id": "hear",
+    "word": "hear",
+    "phonetic": "hiə",
+    "meaning": "vt. 听到, 倾听, 听说, 审理\nvi. 听见, 听",
+    "pos": "",
+    "rank": 545,
+    "forms": "d:heard/p:heard/i:hearing/3:hears",
+    "commonMeaning": "听到； 倾听； 听说"
+  },
+  {
+    "id": "hold",
+    "word": "hold",
+    "phonetic": "həuld",
+    "meaning": "n. 把握, 把持力, 柄, 控制, 掌握, 监禁\nvt. 保存, 握住, 拿住, 占据, 持有, 拥有\nvi. 支持, 持续, 有效\nn. 保留\n[计] 保留",
+    "pos": "",
+    "rank": 546,
+    "forms": "d:held/p:held/i:holding/3:holds/s:holds",
+    "commonMeaning": "把握； 把持力； 柄"
+  },
+  {
+    "id": "keep",
+    "word": "keep",
+    "phonetic": "ki:p",
+    "meaning": "n. 生计, 维持, 保持\nvt. 保持, 保存, 遵守, 看守, 整理, 维持, 履行, 经营, 拘留, 记帐\nvi. 保持, 继续不断",
+    "pos": "",
+    "rank": 547,
+    "forms": "p:kept/d:kept/i:keeping/3:keeps",
+    "commonMeaning": "生计； 维持； 保持"
+  },
+  {
+    "id": "let",
+    "word": "let",
+    "phonetic": "let",
+    "meaning": "vt. 让, 假设, 出租, 排放, 妨碍\nvi. 出租, 被承包\nn. 出租屋, 障碍",
+    "pos": "",
+    "rank": 548,
+    "forms": "i:letting/d:let/0:let/1:dp/p:let/3:lets",
+    "commonMeaning": "让； 假设； 出租"
+  },
+  {
+    "id": "lose",
+    "word": "lose",
+    "phonetic": "lu:z",
+    "meaning": "vt. 遗失, 损失, 丢失, 使失去, 错过, 浪费, 迷失, 使迷路, 输去, 使沉溺于\nvi. 受损失, 失败",
+    "pos": "",
+    "rank": 549,
+    "forms": "d:lost/p:lost/i:losing/3:loses",
+    "commonMeaning": "遗失； 损失； 丢失"
+  },
+  {
+    "id": "move",
+    "word": "move",
+    "phonetic": "mu:v",
+    "meaning": "n. 移动, 迁居, 步骤\nvt. 移动, 开动, 感动, 搬(家)\nvi. 移动, 离开, 运行, 迁移, 摇动, 搬家, 交往, 进展, 脱手\n[计] 移动; 传送; DOS外部命令:移动文件, 它可将文件移动到指定的地方",
+    "pos": "",
+    "rank": 550,
+    "forms": "i:moving/p:moved/d:moved/3:moves/s:moves",
+    "commonMeaning": "移动； 迁居； 步骤"
+  },
+  {
+    "id": "pass",
+    "word": "pass",
+    "phonetic": "pæs",
+    "meaning": "n. 经过, 要隘, 途径, 通行, 护照, 及格\nvt. 经过, 越过, 通过, 批准, 度过, 传递, 忽略\nvi. 经过, 变化, 流通, 及格, 宣判, 终止, 消逝, 被忽略, 不叫牌, 传递\n[计] 遍",
+    "pos": "",
+    "rank": 551,
+    "forms": "d:passed/p:passed/i:passing/3:passes/s:passes",
+    "commonMeaning": "经过； 要隘； 途径"
+  },
+  {
+    "id": "return",
+    "word": "return",
+    "phonetic": "ri'tə:n",
+    "meaning": "n. 回来, 返回, 来回票, 归还, 报答, 利润率, 报告书\na. 返回的, 回程的, 报答的, 反向的, 重现的, 复原的\nvi. 返回, 归还, 回来\nvt. 归还, 还, 回报, 产生, 反射, 报告, 申报, 退回\n[计] 返回",
+    "pos": "",
+    "rank": 552,
+    "forms": "p:returned/d:returned/i:returning/s:returns/3:returns",
+    "commonMeaning": "回来； 返回； 来回票"
+  },
+  {
+    "id": "save",
+    "word": "save",
+    "phonetic": "seiv",
+    "meaning": "n. 救球\nvt. 解救, 挽救, 储蓄, 保存, 节省, 保留\nvi. 挽救, 节省, 救球\nprep. 除...之外\n[计] 保存",
+    "pos": "",
+    "rank": 553,
+    "forms": "d:saved/p:saved/i:saving/3:saves/s:saves",
+    "commonMeaning": "救球"
+  },
+  {
+    "id": "share",
+    "word": "share",
+    "phonetic": "ʃєə",
+    "meaning": "n. 部分, 参与, 一份, 参股, 份额\nvt. 均分, 分担, 分享, 分配, 共有\nvi. 分享\n[计] 共享; DOS外部命令:在网络或多工系统中提供文件共享\n文件锁定及检测磁盘更动和对超过32MB硬盘分区的支持",
+    "pos": "",
+    "rank": 554,
+    "forms": "s:shares/d:shared/i:sharing/p:shared/3:shares",
+    "commonMeaning": "部分； 参与； 一份"
+  },
+  {
+    "id": "try",
+    "word": "try",
+    "phonetic": "trai",
+    "meaning": "n. 尝试, 试验, 审理, 审判\nvt. 试, 尝试, 试验, 考验, 审问, 提炼\nvi. 尝试, 试图",
+    "pos": "",
+    "rank": 555,
+    "forms": "i:trying/p:tried/d:tried/3:tries/s:tries",
+    "commonMeaning": "尝试； 试验； 审理"
+  },
+  {
+    "id": "visit",
+    "word": "visit",
+    "phonetic": "'vizit",
+    "meaning": "n. 拜访, 访问, 游览, 视察\nvt. 拜访, 访问, 参观, 视察, 降临\nvi. 访问, 参观, 闲谈",
+    "pos": "",
+    "rank": 556,
+    "forms": "p:visited/s:visits/d:visited/i:visiting/3:visits",
+    "commonMeaning": "拜访； 访问； 游览"
+  },
+  {
+    "id": "win",
+    "word": "win",
+    "phonetic": "win",
+    "meaning": "vt. 赢得, 打胜, 成功\nvi. 获胜, 达到, 影响\nn. 胜利, 赢, 收益",
+    "pos": "",
+    "rank": 557,
+    "forms": "p:won/d:won/i:winning/3:wins/s:wins",
+    "commonMeaning": "赢得； 打胜； 成功"
+  },
+  {
+    "id": "break",
+    "word": "break",
+    "phonetic": "breik",
+    "meaning": "n. 休息, 中断, 破裂处, 绝交, 破晓, 突变\nvt. 打破, 弄破, 弄坏, 破坏, 违反, 打断, 削弱, 放弃\nvi. 破碎, 决裂, 破晓, 突变, 变弱, 暂停\nn. 分隔符\n[计] 分隔符; 中断; DOS内部命令:设定扫描中断按键的时机",
+    "pos": "",
+    "rank": 558,
+    "forms": "p:broke/d:broken/i:breaking/3:breaks/s:breaks",
+    "commonMeaning": "打破；休息"
+  },
+  {
+    "id": "change",
+    "word": "change",
+    "phonetic": "tʃeindʒ",
+    "meaning": "n. 变化, 找回的零钱, 找头, 更换\nvt. 改变, 更换, 兑换",
+    "pos": "",
+    "rank": 559,
+    "forms": "s:changes/d:changed/i:changing/p:changed/3:changes",
+    "commonMeaning": "变化； 找回的零钱； 找头"
+  },
+  {
+    "id": "check",
+    "word": "check",
+    "phonetic": "tʃek",
+    "meaning": "n. 检查, 支票, 阻止物, 寄物牌, 象棋中将军\nvt. 检查, 阻止, 核对, 寄存, 托运\nvi. 逐项相符, 开支票\n[计] 复选",
+    "pos": "",
+    "rank": 560,
+    "forms": "i:checking/d:checked/p:checked/s:checks/3:checks",
+    "commonMeaning": "检查； 支票； 阻止物"
+  },
+  {
+    "id": "cut",
+    "word": "cut",
+    "phonetic": "kʌt",
+    "meaning": "n. 切口, 割伤, 降低, 切, 割, 砍, 削, 伤口, 削减, 缩短, 删节, 通路\na. 经切割的, 缩减的\nvt. 切, 割, 减少, 刺痛, 开辟, 雕刻, 删节, 缩短, 停止, 排斥, 切断, 关, 显出\nvi. 切, 割, 砍, 刺痛, 相交, 抄近路, 剪辑\n[计] 剪切",
+    "pos": "",
+    "rank": 561,
+    "forms": "d:cut/0:cut/1:dp/s:cuts/i:cutting/p:cut/3:cuts",
+    "commonMeaning": "切口； 割伤； 降低"
+  },
+  {
+    "id": "grow",
+    "word": "grow",
+    "phonetic": "grəu",
+    "meaning": "vt. 种植, 使长满\nvi. 生长, 变成, 发展",
+    "pos": "",
+    "rank": 562,
+    "forms": "p:grew/d:grown/i:growing/3:grows",
+    "commonMeaning": "种植； 使长满"
+  },
+  {
+    "id": "happen",
+    "word": "happen",
+    "phonetic": "'hæpən",
+    "meaning": "vi. 发生, 发生, 恰巧",
+    "pos": "",
+    "rank": 563,
+    "forms": "p:happened/3:happens/d:happened/i:happening",
+    "commonMeaning": "发生； 发生； 恰巧"
+  },
+  {
+    "id": "hope",
+    "word": "hope",
+    "phonetic": "həup",
+    "meaning": "n. 希望, 信心, 期待\nv. 希望, 期望, 信赖",
+    "pos": "",
+    "rank": 564,
+    "forms": "i:hoping/d:hoped/p:hoped/s:hopes/3:hopes",
+    "commonMeaning": "希望； 信心； 期待"
+  },
+  {
+    "id": "live",
+    "word": "live",
+    "phonetic": "liv.laiv",
+    "meaning": "a. 活的, 生动的, 精力充沛的, 实况转播的\nvi. 活, 生存, 居住\nvt. 过着, 度过, 经历\nadv. 实况地",
+    "pos": "",
+    "rank": 565,
+    "forms": "p:lived/i:living/3:lives/d:lived/s:lives",
+    "commonMeaning": "活的； 生动的； 精力充沛的"
+  },
+  {
+    "id": "miss",
+    "word": "miss",
+    "phonetic": "mis",
+    "meaning": "n. 失误, 避免, 失败, 小姐\nvt. 未得到, 未达到, 未听到, 未觉察, 逃脱, 遗漏, 错过, 思念\nvi. 失败, 击不中",
+    "pos": "",
+    "rank": 566,
+    "forms": "d:missed/p:missed/i:missing/3:misses/s:misses",
+    "commonMeaning": "想念；错过"
+  },
+  {
+    "id": "offer",
+    "word": "offer",
+    "phonetic": "'ɒfə",
+    "meaning": "n. 给予(物), 出价, 提议, 意图, 报价\nvt. 提供, 出价, 奉献, 试图, 使出现, 演出\nvi. 出现, 献祭, 提议, 求婚",
+    "pos": "",
+    "rank": 567,
+    "forms": "d:offered/3:offers/i:offering/p:offered/s:offers",
+    "commonMeaning": "给予(物)； 出价； 提议"
+  },
+  {
+    "id": "order",
+    "word": "order",
+    "phonetic": "'ɒ:də",
+    "meaning": "n. 次序, 规则, 命令\nvi. 命令, 定货\nvt. 整理, 命令, 定购\nn. 顺序, 阶数\n[计] 顺序, 阶数",
+    "pos": "",
+    "rank": 568,
+    "forms": "s:orders/d:ordered/p:ordered/i:ordering/3:orders",
+    "commonMeaning": "顺序；订购；命令"
+  },
+  {
+    "id": "pull",
+    "word": "pull",
+    "phonetic": "pul",
+    "meaning": "vt. 拉, 拖, 拔, 牵, 撕开, 吸引\nvi. 拉, 拖, 拔, 有吸引力\nn. 拉, 拖, 拔, 拉力, 牵引力, 划船, 吸引",
+    "pos": "",
+    "rank": 569,
+    "forms": "p:pulled/i:pulling/d:pulled/3:pulls/s:pulls",
+    "commonMeaning": "拉； 拖； 拔"
+  },
+  {
+    "id": "push",
+    "word": "push",
+    "phonetic": "puʃ",
+    "meaning": "n. 推, 推动, 奋斗, 攻击, 进取心\nvt. 推, 推动, 使伸出, 推行, 逼迫, 增加\nvi. 推, 推进, 增加, 努力争取",
+    "pos": "",
+    "rank": 570,
+    "forms": "p:pushed/i:pushing/d:pushed/3:pushes",
+    "commonMeaning": "推； 推动； 奋斗"
+  },
+  {
+    "id": "reach",
+    "word": "reach",
+    "phonetic": "ri:tʃ",
+    "meaning": "n. 伸出, 延伸, 区域, 范围, 流域, 岬\nvt. 到达, 达到, 伸出, 延伸, 影响\nvi. 达到, 延伸, 伸出手, 传到",
+    "pos": "",
+    "rank": 571,
+    "forms": "p:reached/d:reached/i:reaching/3:reaches/s:reaches",
+    "commonMeaning": "伸出； 延伸； 区域"
+  },
+  {
+    "id": "rest",
+    "word": "rest",
+    "phonetic": "rest",
+    "meaning": "n. 休息, 睡眠, 安息, 稍息, 静止, 支架, 休息处, 其余者, 剩余部分\nvi. 休息, 睡, 长眠, 安心, 静止, 停止, 安置, 依赖\nvt. 使休息, 使支撑, 把...寄托于",
+    "pos": "",
+    "rank": 572,
+    "forms": "i:resting/p:rested/3:rests/s:rests/d:rested",
+    "commonMeaning": "休息； 睡眠； 安息"
+  },
+  {
+    "id": "stay",
+    "word": "stay",
+    "phonetic": "stei",
+    "meaning": "n. 停留, 逗留, 制止, 延缓, 停止, 支柱, 支撑物, 支索\nvt. 制止, 延缓, 坚持, 支持, 支撑, 用支索固定\nvi. 停留, 逗留, 暂停, 坚持, 中止",
+    "pos": "",
+    "rank": 573,
+    "forms": "p:stayed/i:staying/d:stayed/3:stays/s:stays",
+    "commonMeaning": "停留； 逗留； 制止"
+  },
+  {
+    "id": "thank",
+    "word": "thank",
+    "phonetic": "θæŋk",
+    "meaning": "n. 谢意, 感谢\nvt. 谢谢, 感谢",
+    "pos": "",
+    "rank": 574,
+    "forms": "p:thanked/i:thanking/d:thanked/3:thanks",
+    "commonMeaning": "谢意； 感谢"
+  },
+  {
+    "id": "touch",
+    "word": "touch",
+    "phonetic": "tʌtʃ",
+    "meaning": "n. 触觉, 碰, 触, 机灵, 轻触, 格调, 少许, 缺点, 弹力\nvt. 接触, 触摸, 触及, 使接触, 达到, 涉及, 影响到, 使轻度受害, 感动\nvi. 触摸, 接近, 涉及, 提到",
+    "pos": "",
+    "rank": 575,
+    "forms": "p:touched/d:touched/i:touching/s:touches/3:touches",
+    "commonMeaning": "触觉； 碰； 触"
+  },
+  {
+    "id": "understand",
+    "word": "understand",
+    "phonetic": ".ʌndə'stænd",
+    "meaning": "vt. 理解, 了解, 领会, 听说, 懂\nvi. 懂得, 认为",
+    "pos": "",
+    "rank": 576,
+    "forms": "d:understood/p:understood/i:understanding/3:understands",
+    "commonMeaning": "理解； 了解； 领会"
+  },
+  {
+    "id": "worry",
+    "word": "worry",
+    "phonetic": "'wʌri",
+    "meaning": "n. 担心, 烦恼, 忧虑, 苦恼, 撕咬\nvt. 使烦恼, 使焦虑, 使苦恼, 困扰, 折磨, 撕咬\nvi. 烦恼, 担心, 撕咬",
+    "pos": "",
+    "rank": 577,
+    "forms": "s:worries/p:worried/3:worries/i:worrying/d:worried",
+    "commonMeaning": "担心； 烦恼； 忧虑"
+  },
+  {
+    "id": "careful",
+    "word": "careful",
+    "phonetic": "'kєəful",
+    "meaning": "a. 小心的, 谨慎的",
+    "pos": "",
+    "rank": 578,
+    "forms": "",
+    "commonMeaning": "小心的； 谨慎的"
+  },
+  {
+    "id": "clever",
+    "word": "clever",
+    "phonetic": "'klevə",
+    "meaning": "a. 聪明的, 精明的",
+    "pos": "",
+    "rank": 579,
+    "forms": "r:cleverer/t:cleverest",
+    "commonMeaning": "聪明的； 精明的"
+  },
+  {
+    "id": "kind",
+    "word": "kind",
+    "phonetic": "kaind",
+    "meaning": "n. 种类, 性质, 方式\na. 亲切的, 仁慈的, 和蔼的",
+    "pos": "",
+    "rank": 580,
+    "forms": "s:kinds/r:kinder/t:kindest",
+    "commonMeaning": "友善的；种类"
+  },
+  {
+    "id": "polite",
+    "word": "polite",
+    "phonetic": "pə'lait",
+    "meaning": "a. 有礼貌的, 文雅的, 客气的, 有教养的",
+    "pos": "",
+    "rank": 581,
+    "forms": "t:politest/r:politer",
+    "commonMeaning": "有礼貌的； 文雅的； 客气的"
+  },
+  {
+    "id": "quiet",
+    "word": "quiet",
+    "phonetic": "'kwaiət",
+    "meaning": "n. 安静, 闲适, 平静\na. 安静的, 静止的, 寂静的, 朴素的, 从容的, 暗中的\nvi. 平静下来\nvt. 使平静, 使平息, 使安心, 安慰",
+    "pos": "",
+    "rank": 582,
+    "forms": "r:quieter/t:quietest/p:quieted/i:quieting/3:quiets/d:quieted",
+    "commonMeaning": "安静； 闲适； 平静"
+  },
+  {
+    "id": "strong",
+    "word": "strong",
+    "phonetic": "strɒŋ",
+    "meaning": "a. 强壮的, 坚固的, 坚强的, 强烈的, 有力的, 优良的\nadv. 强劲地, 有力地, 猛烈地",
+    "pos": "",
+    "rank": 583,
+    "forms": "r:stronger/t:strongest",
+    "commonMeaning": "强壮的； 坚固的； 坚强的"
+  },
+  {
+    "id": "weak",
+    "word": "weak",
+    "phonetic": "wi:k",
+    "meaning": "a. 不牢固的, 弱的, 虚弱的, 软弱的, 无力的, 无权力的, (论据等)不充分的\n[经] 疲软的",
+    "pos": "",
+    "rank": 584,
+    "forms": "r:weaker/t:weakest",
+    "commonMeaning": "不牢固的； 弱的； 虚弱的"
+  },
+  {
+    "id": "rich",
+    "word": "rich",
+    "phonetic": "ri:tʃ",
+    "meaning": "a. 富裕的, 富饶的, 浓厚的, 贵重的",
+    "pos": "",
+    "rank": 585,
+    "forms": "r:richer/t:richest",
+    "commonMeaning": "富裕的； 富饶的； 浓厚的"
+  },
+  {
+    "id": "poor",
+    "word": "poor",
+    "phonetic": "pʊə",
+    "meaning": "a. 贫穷的, 贫乏的, 不幸的, 可怜的, 拙劣的, 卑鄙的\n[经] 低劣的, 不良的",
+    "pos": "",
+    "rank": 586,
+    "forms": "r:poorer/t:poorest",
+    "commonMeaning": "贫穷的； 贫乏的； 不幸的"
+  },
+  {
+    "id": "dear",
+    "word": "dear",
+    "phonetic": "'diə",
+    "meaning": "n. 亲爱的人\na. 亲爱的, 昂贵的, 严重的, 急迫的\ninterj. 啊\nadv. 深爱地, 高价地",
+    "pos": "",
+    "rank": 587,
+    "forms": "t:dearest/r:dearer/s:dears",
+    "commonMeaning": "啊"
+  },
+  {
+    "id": "different",
+    "word": "different",
+    "phonetic": "'difərənt",
+    "meaning": "a. 不同的\n[机] 差动, 微分的, 差速器",
+    "pos": "",
+    "rank": 588,
+    "forms": "",
+    "commonMeaning": "不同的"
+  },
+  {
+    "id": "dry",
+    "word": "dry",
+    "phonetic": "drai",
+    "meaning": "a. 干的, 无酒的, 枯燥无味的, 干燥的\nvt. 把...弄干\nvi. 变干\nn. 干, 干涸",
+    "pos": "",
+    "rank": 589,
+    "forms": "d:dried/i:drying/p:dried/3:dries/r:drier/t:driest/s:dries",
+    "commonMeaning": "干的； 无酒的； 枯燥无味的"
+  },
+  {
+    "id": "wet",
+    "word": "wet",
+    "phonetic": "wet",
+    "meaning": "n. 湿气, 潮湿, 水分, 雨天\na. 湿的, 潮的, 搞错的, 下雨的, 反对禁酒的\nvi. 变湿\nvt. 使...湿",
+    "pos": "",
+    "rank": 590,
+    "forms": "d:wet/0:wet/1:dp/p:wet/r:wetter/i:wetting/t:wettest/s:wets/3:wets",
+    "commonMeaning": "湿气； 潮湿； 水分"
+  },
+  {
+    "id": "full",
+    "word": "full",
+    "phonetic": "ful",
+    "meaning": "n. 全部, 完整\na. 充满的, 完全的, 丰富的, 完美的, 丰满的, 详尽的\nadv. 完全地, 整整, 十分\nvt. 把(衣服等)缝得宽松, 漂洗\n[计] 完整",
+    "pos": "",
+    "rank": 591,
+    "forms": "r:fuller/t:fullest",
+    "commonMeaning": "全部； 完整"
+  },
+  {
+    "id": "empty",
+    "word": "empty",
+    "phonetic": "'empti",
+    "meaning": "a. 空的, 空虚的, 空腹的, 空洞的\nn. 空的东西, 空车\nvt. 倒空, 使变空, 使排出\nvi. 流空\n[计] 空",
+    "pos": "",
+    "rank": 592,
+    "forms": "d:emptied/p:emptied/i:emptying/3:empties/s:empties/r:emptier/t:emptiest",
+    "commonMeaning": "空的； 空虚的； 空腹的"
+  },
+  {
+    "id": "heavy",
+    "word": "heavy",
+    "phonetic": "'hevi",
+    "meaning": "a. 重的, 巨大的, 沉重的, 笨重的, 过度的\nadv. 沉重地\nn. 重物, 严肃角色",
+    "pos": "",
+    "rank": 593,
+    "forms": "r:heavier/t:heaviest/s:heavies",
+    "commonMeaning": "重的； 巨大的； 沉重的"
+  },
+  {
+    "id": "hard",
+    "word": "hard",
+    "phonetic": "hɑ:d",
+    "meaning": "a. 坚硬的, 硬的, 难的, 艰苦的, 困难的, 坚固的, 猛烈的, 艰难的, 结实的, 确实的\nadv. 坚硬地, 努力地, 辛苦地, 接近地, 猛烈地, 牢固地",
+    "pos": "",
+    "rank": 594,
+    "forms": "r:harder/t:hardest",
+    "commonMeaning": "坚硬的； 硬的； 难的"
+  },
+  {
+    "id": "soft",
+    "word": "soft",
+    "phonetic": "sɒft",
+    "meaning": "a. 软的, 温和的, 柔和的, 柔滑的, 温柔的, 软弱的, 坡度小的, 笨的, 纸币的\nn. 柔软的东西, 笨人, 纸币\nadv. 柔软地, 温和地",
+    "pos": "",
+    "rank": 595,
+    "forms": "r:softer/t:softest",
+    "commonMeaning": "软的； 温和的； 柔和的"
+  },
+  {
+    "id": "sweet",
+    "word": "sweet",
+    "phonetic": "swi:t",
+    "meaning": "n. 甜蜜, 糖果, 情人\na. 甜的, 芳香的, 悦耳的, 漂亮的, 和蔼的, 不咸的, 灵活的, 轻快的",
+    "pos": "",
+    "rank": 596,
+    "forms": "s:sweets/r:sweeter/t:sweetest",
+    "commonMeaning": "甜蜜； 糖果； 情人"
+  },
+  {
+    "id": "sour",
+    "word": "sour",
+    "phonetic": "'sauə",
+    "meaning": "a. 酸的, 酸臭的, 发酵的, 愠怒的, 讨厌的, 拙劣的, 不健全的\nvi. 变酸, 发酵, 厌烦, 变坏\nvt. 使变酸, 使失望\nn. 酸味, 酸饮料",
+    "pos": "",
+    "rank": 597,
+    "forms": "d:soured/p:soured/3:sours/i:souring/r:sourer/t:sourest",
+    "commonMeaning": "酸的； 酸臭的； 发酵的"
+  },
+  {
+    "id": "round",
+    "word": "round",
+    "phonetic": "raund",
+    "meaning": "n. 圆, 圆形物, 巡回, 循环, 一轮, 一回合, 一局, 范围, 轮唱\na. 圆的, 球形的, 丰满的, 肥胖的, 完全的, 大概的, 完美的, 圆润的\nprep. 围着, 附近, 绕过, 在...周围\nadv. 围绕着, 在周围, 迂回地, 挨个, 朝反方向\nvt. 弄圆, 使成圆形, 绕行, 完成, 围捕, 把...四舍五入\nvi. 变圆, 发胖, 环行, 拐弯, 进展",
+    "pos": "",
+    "rank": 598,
+    "forms": "s:rounds/p:rounded/d:rounded/i:rounding/3:rounds/r:rounder",
+    "commonMeaning": "圆； 圆形物； 巡回"
+  },
+  {
+    "id": "straight",
+    "word": "straight",
+    "phonetic": "streit",
+    "meaning": "n. 直线, 直\na. 直的, 笔直的, 正直的, 直接的, 连续的, 整齐的\nadv. 直接地, 立即, 不断地",
+    "pos": "",
+    "rank": 599,
+    "forms": "r:straighter/s:straights/t:straightest",
+    "commonMeaning": "直线； 直"
+  },
+  {
+    "id": "safe",
+    "word": "safe",
+    "phonetic": "seif",
+    "meaning": "n. 保险箱, 冷藏室\na. 安全的, 可靠的, 平安的, 稳健的, 有把握的",
+    "pos": "",
+    "rank": 600,
+    "forms": "r:safer/t:safest/s:safes",
+    "commonMeaning": "保险箱； 冷藏室"
+  },
+  {
+    "id": "dangerous",
+    "word": "dangerous",
+    "phonetic": "'deindʒərəs",
+    "meaning": "a. 危险的\n[法] 危险的, 危害的",
+    "pos": "",
+    "rank": 601,
+    "forms": "",
+    "commonMeaning": "危险的"
+  },
+  {
+    "id": "sure",
+    "word": "sure",
+    "phonetic": "ʃʊə",
+    "meaning": "a. 确信, 必然的, 必定的\nadv. 当然, 确实地, 无疑地",
+    "pos": "",
+    "rank": 602,
+    "forms": "t:surest/r:surer",
+    "commonMeaning": "确信； 必然的； 必定的"
+  },
+  {
+    "id": "true",
+    "word": "true",
+    "phonetic": "tru:",
+    "meaning": "a. 真实的, 正确的, 忠诚的, 可靠的, 纯粹的, 正式的\nn. 真实, 准确\nadv. 真实地, 准确地",
+    "pos": "",
+    "rank": 603,
+    "forms": "r:truer/t:truest/i:truing/p:trued/3:trues/d:trued",
+    "commonMeaning": "真实的； 正确的； 忠诚的"
+  },
+  {
+    "id": "false",
+    "word": "false",
+    "phonetic": "fɒ:ls",
+    "meaning": "a. 错误的, 虚伪的, 假的, 不老实的\nadv. 不准确地, 欺诈地",
+    "pos": "",
+    "rank": 604,
+    "forms": "",
+    "commonMeaning": "错误的； 虚伪的； 假的"
+  },
+  {
+    "id": "early",
+    "word": "early",
+    "phonetic": "'ə:li",
+    "meaning": "a. 早的, 早熟的\nadv. 很早, 初",
+    "pos": "",
+    "rank": 605,
+    "forms": "r:earlier/t:earliest",
+    "commonMeaning": "早的； 早熟的"
+  },
+  {
+    "id": "late",
+    "word": "late",
+    "phonetic": "leit",
+    "meaning": "a. 迟的, 晚的, 已故的\nadv. 很晚, 很迟, 晚",
+    "pos": "",
+    "rank": 606,
+    "forms": "r:later/t:latest",
+    "commonMeaning": "迟的； 晚的； 已故的"
+  },
+  {
+    "id": "ship",
+    "word": "ship",
+    "phonetic": "ʃɪp",
+    "meaning": "n. 船, 舰\nvt. 以船运送, 装船, 运送\nvi. 上船, 乘船",
+    "pos": "",
+    "rank": 607,
+    "forms": "s:ships/d:shipped/i:shipping/p:shipped/3:ships",
+    "commonMeaning": "船； 舰"
+  },
+  {
+    "id": "coin",
+    "word": "coin",
+    "phonetic": "kɔɪn",
+    "meaning": "n. 硬币, 金钱, 货币\nvt. 铸币, 创造, 杜撰",
+    "pos": "",
+    "rank": 608,
+    "forms": "s:coins/p:coined/d:coined/i:coining/3:coins",
+    "commonMeaning": "硬币； 金钱； 货币"
+  },
+  {
+    "id": "bear",
+    "word": "bear",
+    "phonetic": "beə",
+    "meaning": "n. 熊\nvt. 忍受, 支承, 产生, 怀有, 通过卖空使跌价\nvi. 忍受, 结果实, 压挤, 行进, 转向",
+    "pos": "",
+    "rank": 609,
+    "forms": "d:born/i:bearing/p:bore/3:bears/s:bears",
+    "commonMeaning": "熊"
+  },
+  {
+    "id": "tour",
+    "word": "tour",
+    "phonetic": "tʊə",
+    "meaning": "n. 旅游, 观光旅行, 任期\nvi. 旅行, 周游, 巡回\nvt. 周游, 观光, 游历, 使巡回演出",
+    "pos": "",
+    "rank": 610,
+    "forms": "s:tours/i:touring/p:toured/d:toured/3:tours",
+    "commonMeaning": "旅游； 观光旅行； 任期"
+  },
+  {
+    "id": "zoo",
+    "word": "zoo",
+    "phonetic": "zuː",
+    "meaning": "n. 动物园",
+    "pos": "",
+    "rank": 611,
+    "forms": "s:zoos",
+    "commonMeaning": "动物园"
+  },
+  {
+    "id": "zero",
+    "word": "zero",
+    "phonetic": "ˈzɪərəʊ",
+    "meaning": "n. 零, 零点, 零度, 无, 乌有, 最低点\na. 零的, 没有的\nvt. 调零, 对(炮火等)作协调校正\n[计] 零",
+    "pos": "",
+    "rank": 612,
+    "forms": "s:zeros/i:zeroing/p:zeroed/3:zeroes/d:zeroed",
+    "commonMeaning": "零； 零点； 零度"
+  },
+  {
+    "id": "measure",
+    "word": "measure",
+    "phonetic": "ˈmeʒə",
+    "meaning": "n. 尺寸, 量度器, 量度标准, 测量, 量具, 程度, 范围, 限度, 分寸, 措施, 方法\nvt. 测量, 测度, 估量, 权衡, 调节, 拿(自己或自己的力量等)作较量\nvi. 度量",
+    "pos": "",
+    "rank": 613,
+    "forms": "s:measures/d:measured/i:measuring/p:measured/3:measures",
+    "commonMeaning": "尺寸； 量度器； 量度标准"
+  },
+  {
+    "id": "pleasure",
+    "word": "pleasure",
+    "phonetic": "ˈpleʒə",
+    "meaning": "n. 快乐, 愉快, 令人高兴的事, 娱乐, 希望\nv. (使)高兴",
+    "pos": "",
+    "rank": 614,
+    "forms": "s:pleasures/i:pleasuring",
+    "commonMeaning": "快乐； 愉快； 令人高兴的事"
+  },
+  {
+    "id": "vision",
+    "word": "vision",
+    "phonetic": "ˈvɪʒən",
+    "meaning": "n. 视觉, 眼光, 视力, 幻想\nvt. 梦见, 想象, 显示",
+    "pos": "",
+    "rank": 615,
+    "forms": "s:visions",
+    "commonMeaning": "视觉； 眼光； 视力"
+  },
+  {
+    "id": "as",
+    "word": "as",
+    "phonetic": "æz",
+    "meaning": "adv. 同样地, 例如\nprep. 做为, 当作\nconj. 当...之时, 以...的方式, 像...一样, 因为\n[计] 高级系统, 先进系统, 辅助存储器, 自治系统",
+    "pos": "",
+    "rank": 616,
+    "forms": "",
+    "commonMeaning": "同样地； 例如"
+  },
+  {
+    "id": "so",
+    "word": "so",
+    "phonetic": "səu",
+    "meaning": "adv. 如此, 如是, 如...那样\nconj. 所以, 因此\npron. 这样",
+    "pos": "",
+    "rank": 617,
+    "forms": "",
+    "commonMeaning": "如此； 如是； 如...那样"
+  },
+  {
+    "id": "its",
+    "word": "its",
+    "phonetic": "its",
+    "meaning": "pron. 它的",
+    "pos": "",
+    "rank": 618,
+    "forms": "",
+    "commonMeaning": "它的"
+  },
+  {
+    "id": "well",
+    "word": "well",
+    "phonetic": "wel",
+    "meaning": "n. 井, 泉水, 源泉, 好\nv. 涌出\na. 健康的, 良好的, 适宜的, 恰当的\nadv. 很好地, 适当地, 好意地, 很, 完全\ninterj. 好啦",
+    "pos": "",
+    "rank": 619,
+    "forms": "s:wells/i:welling/p:welled/3:wells/d:welled",
+    "commonMeaning": "好啦"
+  },
+  {
+    "id": "life",
+    "word": "life",
+    "phonetic": "laif",
+    "meaning": "n. 生活, 生命, 人生, 世事, 生物, 寿命, 一生, 生命力, 灵魂, 无期徒刑\n[医] 生活, 生存, 生命, 寿命",
+    "pos": "",
+    "rank": 620,
+    "forms": "s:lives",
+    "commonMeaning": "生活； 生命； 人生"
+  },
+  {
+    "id": "call",
+    "word": "call",
+    "phonetic": "kɒ:l",
+    "meaning": "n. 呼叫, 访问, 打电话, 号召, 召集, 要求\nvt. 呼叫, 召集, 打电话\nvi. 叫喊, 访问, 叫牌\n[计] 调用; 呼叫; DOS内部命令:在批处理文件中调用另一个批处理文件",
+    "pos": "",
+    "rank": 621,
+    "forms": "d:called/p:called/i:calling/s:calls/3:calls",
+    "commonMeaning": "呼叫； 访问； 打电话"
+  },
+  {
+    "id": "world",
+    "word": "world",
+    "phonetic": "wə:ld",
+    "meaning": "n. 世界, 地球, 宇宙, 万物, 世人, 人间, 领域, 世事, 世故, 社会生活, 大量\n[法] 世界, 地球, 世人",
+    "pos": "",
+    "rank": 622,
+    "forms": "s:worlds",
+    "commonMeaning": "世界； 地球； 宇宙"
+  },
+  {
+    "id": "state",
+    "word": "state",
+    "phonetic": "steit",
+    "meaning": "n. 州, 状态, 情形, 国家, 政府, 领土, 国务, 社会地位\na. 国家的, 正式的, 礼仪用的, 州的\nvt. 说明, 陈述, 规定\n[计] 状态",
+    "pos": "",
+    "rank": 623,
+    "forms": "s:states/p:stated/d:stated/3:states/i:stating",
+    "commonMeaning": "州； 状态； 情形"
+  },
+  {
+    "id": "become",
+    "word": "become",
+    "phonetic": "bi'kʌm",
+    "meaning": "vi. 变成, 变得\nvt. 适合",
+    "pos": "",
+    "rank": 624,
+    "forms": "p:became/d:become/0:become/1:d/3:becomes/i:becoming",
+    "commonMeaning": "变成； 变得"
+  },
+  {
+    "id": "something",
+    "word": "something",
+    "phonetic": "'sʌmθiŋ",
+    "meaning": "pron. 某事, 某物",
+    "pos": "",
+    "rank": 625,
+    "forms": "",
+    "commonMeaning": "某事； 某物"
+  },
+  {
+    "id": "another",
+    "word": "another",
+    "phonetic": "ə'nʌðə",
+    "meaning": "a. 另外的, 再一的, 不同的\npron. 又一个, 另一个, 类似的另一个",
+    "pos": "",
+    "rank": 626,
+    "forms": "",
+    "commonMeaning": "另外的； 再一的； 不同的"
+  },
+  {
+    "id": "own",
+    "word": "own",
+    "phonetic": "əun",
+    "meaning": "n. 自己的\na. 自己的, 嫡亲的, 同胞的\nvt. 拥有, 支配, 自认, 承认, 顺从于\nvi. 承认, 供认",
+    "pos": "",
+    "rank": 627,
+    "forms": "d:owned/3:owns/p:owned/i:owning",
+    "commonMeaning": "自己的"
+  },
+  {
+    "id": "mean",
+    "word": "mean",
+    "phonetic": "mi:n",
+    "meaning": "a. 低劣的, 卑贱的, 简陋的, 吝啬的, 惭愧的, 平均的, 中间的, 普通的\nvt. 意谓, 想要, 意欲, 预定\nvi. 用意, 有意义\nn. 平均数, 中间, 中庸",
+    "pos": "",
+    "rank": 628,
+    "forms": "3:means/p:meant/d:meant/i:meaning",
+    "commonMeaning": "意思是；意味着"
+  },
+  {
+    "id": "group",
+    "word": "group",
+    "phonetic": "gru:p",
+    "meaning": "n. 团体, 组, 团, 群\nv. 聚合, 成群\n[计] 创建组; 组, 用户组",
+    "pos": "",
+    "rank": 629,
+    "forms": "s:groups/d:grouped/p:grouped/i:grouping/3:groups",
+    "commonMeaning": "团体； 组； 团"
+  },
+  {
+    "id": "begin",
+    "word": "begin",
+    "phonetic": "bi'gin",
+    "meaning": "v. 开始\n[计] 开始",
+    "pos": "",
+    "rank": 630,
+    "forms": "p:began/i:beginning/d:begun/3:begins",
+    "commonMeaning": "开始"
+  },
+  {
+    "id": "seem",
+    "word": "seem",
+    "phonetic": "si:m",
+    "meaning": "vi. 象是, 似乎",
+    "pos": "",
+    "rank": 631,
+    "forms": "3:seems/p:seemed/d:seemed/i:seeming",
+    "commonMeaning": "象是； 似乎"
+  },
+  {
+    "id": "problem",
+    "word": "problem",
+    "phonetic": "'prɒbləm",
+    "meaning": "n. 问题, 难题\na. 成问题的, 难处理的",
+    "pos": "",
+    "rank": 632,
+    "forms": "s:problems",
+    "commonMeaning": "问题； 难题"
+  },
+  {
+    "id": "might",
+    "word": "might",
+    "phonetic": "mait",
+    "meaning": "n. 力量, 权力\naux. 可能, 也许",
+    "pos": "",
+    "rank": 633,
+    "forms": "",
+    "commonMeaning": "力量； 权力"
+  },
+  {
+    "id": "american",
+    "word": "american",
+    "phonetic": "ə'merikən",
+    "meaning": "n. 美国人\na. 美国的, 美洲的",
+    "pos": "",
+    "rank": 634,
+    "forms": "s:americans",
+    "commonMeaning": "美国人"
+  },
+  {
+    "id": "against",
+    "word": "against",
+    "phonetic": "ə'geinst",
+    "meaning": "prep. 反对, 对着, 倚靠",
+    "pos": "",
+    "rank": 635,
+    "forms": "",
+    "commonMeaning": "反对； 对着； 倚靠"
+  },
+  {
+    "id": "such",
+    "word": "such",
+    "phonetic": "sʌtʃ",
+    "meaning": "a. 如此的, 这样的",
+    "pos": "",
+    "rank": 636,
+    "forms": "",
+    "commonMeaning": "如此的； 这样的"
+  },
+  {
+    "id": "few",
+    "word": "few",
+    "phonetic": "fju:",
+    "meaning": "a. 很少的, 不多的, 少数的\nn. 少数",
+    "pos": "",
+    "rank": 637,
+    "forms": "",
+    "commonMeaning": "很少的； 不多的； 少数的"
+  },
+  {
+    "id": "company",
+    "word": "company",
+    "phonetic": "'kʌmpəni",
+    "meaning": "n. 公司, 友伴, 交往, 连队, 朋友, 一群\nvt. 陪伴\nvi. 交往",
+    "pos": "",
+    "rank": 638,
+    "forms": "s:companies/i:companying/p:companied/3:companies/d:companied",
+    "commonMeaning": "公司； 友伴； 交往"
+  },
+  {
+    "id": "question",
+    "word": "question",
+    "phonetic": "'kwestʃən",
+    "meaning": "n. 问题, 询问\nv. 询问, 审问, 怀疑\n[计] 询问",
+    "pos": "",
+    "rank": 639,
+    "forms": "s:questions/d:questioned/p:questioned/i:questioning/3:questions",
+    "commonMeaning": "问题； 询问"
+  },
+  {
+    "id": "government",
+    "word": "government",
+    "phonetic": "'gʌvənmənt",
+    "meaning": "n. 政府, 内阁\n[经] 政府, 政治, 政体",
+    "pos": "",
+    "rank": 640,
+    "forms": "s:governments",
+    "commonMeaning": "政府； 内阁"
+  },
+  {
+    "id": "point",
+    "word": "point",
+    "phonetic": "pɒint",
+    "meaning": "n. 点, 小数点, 标点, 地点, 要点, 特点, 尖端, 分数, 得分, 穴位\nvt. 弄尖, 强调, 指出, 加标点于, 瞄准\nvi. 指, 指向, 表明",
+    "pos": "",
+    "rank": 641,
+    "forms": "s:points/p:pointed/i:pointing/3:points/d:pointed",
+    "commonMeaning": "点； 小数点； 标点"
+  },
+  {
+    "id": "believe",
+    "word": "believe",
+    "phonetic": "bi'li:v",
+    "meaning": "v. 相信",
+    "pos": "",
+    "rank": 642,
+    "forms": "p:believed/3:believes/d:believed/i:believing",
+    "commonMeaning": "相信"
+  },
+  {
+    "id": "area",
+    "word": "area",
+    "phonetic": "'єəriə",
+    "meaning": "n. 区域, 面积, 范围, 空地\n[计] 区域",
+    "pos": "",
+    "rank": 643,
+    "forms": "s:areas",
+    "commonMeaning": "区域； 面积； 范围"
+  },
+  {
+    "id": "national",
+    "word": "national",
+    "phonetic": "'næʃənəl",
+    "meaning": "a. 国家的, 国立的, 全国性的, 民族的\n[经] 全国性的, 国家的, 国民的",
+    "pos": "",
+    "rank": 644,
+    "forms": "s:nationals",
+    "commonMeaning": "国家的； 国立的； 全国性的"
+  },
+  {
+    "id": "story",
+    "word": "story",
+    "phonetic": "'stɒ:ri",
+    "meaning": "n. 故事, 小说, 传奇, 描述, 阅历, 经历, 层",
+    "pos": "",
+    "rank": 645,
+    "forms": "s:stories",
+    "commonMeaning": "故事； 小说； 传奇"
+  },
+  {
+    "id": "fact",
+    "word": "fact",
+    "phonetic": "fækt",
+    "meaning": "n. 事实, 真实性, 真相, 细节, 论据",
+    "pos": "",
+    "rank": 646,
+    "forms": "s:facts",
+    "commonMeaning": "事实； 真实性； 真相"
+  },
+  {
+    "id": "lot",
+    "word": "lot",
+    "phonetic": "lɒt",
+    "meaning": "n. 运气, 签, 抽签, 份额, 许多, 一堆\nvt. 划分\nvi. 抽签, 抓阄",
+    "pos": "",
+    "rank": 647,
+    "forms": "i:lotting/p:lotted/3:lots/d:lotted",
+    "commonMeaning": "运气； 签； 抽签"
+  },
+  {
+    "id": "though",
+    "word": "though",
+    "phonetic": "ðəu",
+    "meaning": "adv. 然而, 可是\nconj. 虽然, 纵然",
+    "pos": "",
+    "rank": 648,
+    "forms": "",
+    "commonMeaning": "然而； 可是"
+  },
+  {
+    "id": "business",
+    "word": "business",
+    "phonetic": "'biznis",
+    "meaning": "n. 生意, 事情, 业务, 商业, 商行, 职责\n[经] 企业, 商业, 营业",
+    "pos": "",
+    "rank": 649,
+    "forms": "s:businesses",
+    "commonMeaning": "生意； 事情； 业务"
+  },
+  {
+    "id": "side",
+    "word": "side",
+    "phonetic": "said",
+    "meaning": "n. 旁边, 侧, 方面, 胁, 侧边, 血统\na. 旁的, 侧的, 次要的\nvt. 同意, 支持\nvi. 支持, 赞助",
+    "pos": "",
+    "rank": 650,
+    "forms": "s:sides/p:sided/d:sided/i:siding/3:sides",
+    "commonMeaning": "旁边； 侧； 方面"
+  },
+  {
+    "id": "provide",
+    "word": "provide",
+    "phonetic": "prə'vaid",
+    "meaning": "vt. 提供, 供应, 规定, 预备\nvi. 作准备, 抚养, 规定",
+    "pos": "",
+    "rank": 651,
+    "forms": "d:provided/3:provides/i:providing/p:provided",
+    "commonMeaning": "提供； 供应； 规定"
+  },
+  {
+    "id": "service",
+    "word": "service",
+    "phonetic": "'sə:vis",
+    "meaning": "n. 服务, 贡献, 雇佣, 公职, 服役, 功劳, 仪式, 送达, 行政部门\nvt. 保养, 维修\na. 武装部队的, 服务性的, 仆人的, 耐用的\n[计] 服务, 业务",
+    "pos": "",
+    "rank": 652,
+    "forms": "s:services/d:serviced/i:servicing/p:serviced/3:services",
+    "commonMeaning": "服务； 贡献； 雇佣"
+  },
+  {
+    "id": "away",
+    "word": "away",
+    "phonetic": "ə'wei",
+    "meaning": "adv. 离去",
+    "pos": "",
+    "rank": 653,
+    "forms": "",
+    "commonMeaning": "离去"
+  },
+  {
+    "id": "yet",
+    "word": "yet",
+    "phonetic": "jet",
+    "meaning": "adv. 还, 尚, 仍然, 已经, 然而\nconj. 然而",
+    "pos": "",
+    "rank": 654,
+    "forms": "",
+    "commonMeaning": "还； 尚； 仍然"
+  },
+  {
+    "id": "line",
+    "word": "line",
+    "phonetic": "lain",
+    "meaning": "n. 列, 线, 绳, 电线, 线路, 路线, 航线, 作业线, 界线, 战线, 外形, 排, 家系\nvt. 排成一行, 顺...排列, 划线于, 加衬里, 使有线条, 使起皱纹\nvi. 排队\n[计] 线路",
+    "pos": "",
+    "rank": 655,
+    "forms": "s:lines/d:lined/i:lining/p:lined/3:lines",
+    "commonMeaning": "列； 线； 绳"
+  },
+  {
+    "id": "among",
+    "word": "among",
+    "phonetic": "ə'mʌŋ",
+    "meaning": "prep. 在...之中",
+    "pos": "",
+    "rank": 656,
+    "forms": "",
+    "commonMeaning": "在...之中"
+  },
+  {
+    "id": "ever",
+    "word": "ever",
+    "phonetic": "'evə",
+    "meaning": "adv. 曾经, 究竟, 永远",
+    "pos": "",
+    "rank": 657,
+    "forms": "",
+    "commonMeaning": "曾经； 究竟； 永远"
+  },
+  {
+    "id": "however",
+    "word": "however",
+    "phonetic": "hau'evə",
+    "meaning": "adv. 然而, 无论如何, 究竟怎样\nconj. 然而, 可是",
+    "pos": "",
+    "rank": 658,
+    "forms": "",
+    "commonMeaning": "然而； 无论如何； 究竟怎样"
+  },
+  {
+    "id": "member",
+    "word": "member",
+    "phonetic": "'membə",
+    "meaning": "n. 成员, 会员\n[医] │肢, 肢体",
+    "pos": "",
+    "rank": 659,
+    "forms": "s:members",
+    "commonMeaning": "成员； 会员"
+  },
+  {
+    "id": "law",
+    "word": "law",
+    "phonetic": "lɒ:",
+    "meaning": "n. 法律, 法则, 定律, 法律的制约, 法学, 司法界, 诉讼\nv. 起诉",
+    "pos": "",
+    "rank": 660,
+    "forms": "s:laws",
+    "commonMeaning": "法律； 法则； 定律"
+  },
+  {
+    "id": "almost",
+    "word": "almost",
+    "phonetic": "'ɒ:lməust",
+    "meaning": "adv. 几乎, 差不多",
+    "pos": "",
+    "rank": 661,
+    "forms": "",
+    "commonMeaning": "几乎； 差不多"
+  },
+  {
+    "id": "include",
+    "word": "include",
+    "phonetic": "in'klu:d",
+    "meaning": "vt. 包括, 把...算入, 包住\n[计] DOS内部命令:在CONFIG.SYS文件的一个配置块中包含另一配置块的内容",
+    "pos": "",
+    "rank": 662,
+    "forms": "3:includes/d:included/p:included/i:including",
+    "commonMeaning": "包括； 把...算入； 包住"
+  },
+  {
+    "id": "continue",
+    "word": "continue",
+    "phonetic": "kən'tinju:",
+    "meaning": "vi. 继续, 延续, 延长\nvt. 使继续, 使延长",
+    "pos": "",
+    "rank": 663,
+    "forms": "p:continued/3:continues/d:continued/i:continuing",
+    "commonMeaning": "继续； 延续； 延长"
+  },
+  {
+    "id": "set",
+    "word": "set",
+    "phonetic": "set",
+    "meaning": "n. 日落, 同伙, 组合, 集合, 装置\nvt. 放, 安置, 放置, 设定, 使凝结, 点燃, 确定, 点缀, 使就位, 树立, 分配, 调整\nvi. 日落, 凝固, 定型, 搁住, 结果, 适合\na. 决心的, 规定的, 故意的, 持久的, 固定的, 老套的, 准备好的\n[计] 设置; DOS内部命令:改变或显示分配给环境变量的值",
+    "pos": "",
+    "rank": 664,
+    "forms": "d:set/0:set/1:dp/p:set/i:setting/s:sets/3:sets",
+    "commonMeaning": "日落； 同伙； 组合"
+  },
+  {
+    "id": "once",
+    "word": "once",
+    "phonetic": "wʌns",
+    "meaning": "adv. 一次, 曾经, 一旦\nconj. 一旦, 一经\nn. 一次\na. 从前的",
+    "pos": "",
+    "rank": 665,
+    "forms": "",
+    "commonMeaning": "一次； 曾经； 一旦"
+  },
+  {
+    "id": "least",
+    "word": "least",
+    "phonetic": "li:st",
+    "meaning": "n. 最少, 最小, 最小限度\na. 最少的, 最小的\nadv. 最小, 最少",
+    "pos": "",
+    "rank": 666,
+    "forms": "",
+    "commonMeaning": "最少； 最小； 最小限度"
+  },
+  {
+    "id": "president",
+    "word": "president",
+    "phonetic": "'prezidənt",
+    "meaning": "n. 总统, 总裁, 董事长, (学院)院长, (大学)校长, 主管人, 主持人\n[经] 总经理, 董事长, 总裁",
+    "pos": "",
+    "rank": 667,
+    "forms": "s:presidents",
+    "commonMeaning": "总统； 总裁； 董事长"
+  },
+  {
+    "id": "real",
+    "word": "real",
+    "phonetic": "'riəl",
+    "meaning": "a. 真的, 真实的, 实际的, 实在的, 不动(产)的, 实数的\nn. 实数, 现实\nadv. 真正地",
+    "pos": "",
+    "rank": 668,
+    "forms": "",
+    "commonMeaning": "真的； 真实的； 实际的"
+  },
+  {
+    "id": "team",
+    "word": "team",
+    "phonetic": "ti:m",
+    "meaning": "n. 队, 组\nvt. 把马(牛)套在同一辆车上, 把...编成一组\nvi. 驾驶卡车, 协作",
+    "pos": "",
+    "rank": 669,
+    "forms": "s:teams/d:teamed/p:teamed/i:teaming/3:teams",
+    "commonMeaning": "队； 组"
+  },
+  {
+    "id": "several",
+    "word": "several",
+    "phonetic": "'sevərəl",
+    "meaning": "a. 几个的, 一些的, 各自的\npron. 几个",
+    "pos": "",
+    "rank": 670,
+    "forms": "",
+    "commonMeaning": "几个的； 一些的； 各自的"
+  },
+  {
+    "id": "idea",
+    "word": "idea",
+    "phonetic": "ai'diə",
+    "meaning": "n. 主意, 办法, 理想, 思想, 概念, 意见\n[医] 观念, 思想",
+    "pos": "",
+    "rank": 671,
+    "forms": "s:ideas",
+    "commonMeaning": "主意； 办法； 理想"
+  },
+  {
+    "id": "kid",
+    "word": "kid",
+    "phonetic": "kid",
+    "meaning": "n. 小山羊, 小山羊肉, 小孩, 欺骗\na. 小山羊皮制的\nv. 哄骗, 嘲弄",
+    "pos": "",
+    "rank": 672,
+    "forms": "s:kids/i:kidding/p:kidded/3:kids/d:kidded",
+    "commonMeaning": "小山羊； 小山羊肉； 小孩"
+  },
+  {
+    "id": "information",
+    "word": "information",
+    "phonetic": ".infə'meiʃən",
+    "meaning": "n. 消息, 知识, 通知, 情报, 信息, 问讯处, 起诉\n[计] 信息",
+    "pos": "",
+    "rank": 673,
+    "forms": "",
+    "commonMeaning": "消息； 知识； 通知"
+  },
+  {
+    "id": "nothing",
+    "word": "nothing",
+    "phonetic": "'nʌθiŋ",
+    "meaning": "n. 无, 不关紧要之事, 零\nadv. 毫不, 决不\ninterj. 什么也没有, 无",
+    "pos": "",
+    "rank": 674,
+    "forms": "",
+    "commonMeaning": "什么也没有； 无"
+  },
+  {
+    "id": "ago",
+    "word": "ago",
+    "phonetic": "ə'gəu",
+    "meaning": "adv. 以前",
+    "pos": "",
+    "rank": 675,
+    "forms": "",
+    "commonMeaning": "以前"
+  },
+  {
+    "id": "lead",
+    "word": "lead",
+    "phonetic": "li:d. led",
+    "meaning": "n. 铅, 铅条, 领导, 超前量, 领引, 榜样, 主角, 导线\nvt. 引导, 带领, 领导, 指挥, 致使, 加铅于, 用铅包\nvi. 领导, 带头, 导致, 用测深锤测深, 被铅覆盖\na. 带头的, 最重要的",
+    "pos": "",
+    "rank": 676,
+    "forms": "p:led/d:led/i:leading/3:leads/s:leads/0:lead/1:d",
+    "commonMeaning": "铅； 铅条； 领导"
+  },
+  {
+    "id": "social",
+    "word": "social",
+    "phonetic": "'səuʃəl",
+    "meaning": "a. 社会的, 群居的, 社交的\nn. 联欢会",
+    "pos": "",
+    "rank": 677,
+    "forms": "",
+    "commonMeaning": "社会的； 群居的； 社交的"
+  },
+  {
+    "id": "whether",
+    "word": "whether",
+    "phonetic": "'hweðə",
+    "meaning": "conj. 是否, 不论\npron. 两个中的哪一个",
+    "pos": "",
+    "rank": 678,
+    "forms": "",
+    "commonMeaning": "是否； 不论"
+  },
+  {
+    "id": "follow",
+    "word": "follow",
+    "phonetic": "'fɒləu",
+    "meaning": "vt. 跟随, 沿行, 遵循, 追求\nvi. 跟随, 接着\nn. 跟随, 追随",
+    "pos": "",
+    "rank": 679,
+    "forms": "i:following/d:followed/3:follows/p:followed",
+    "commonMeaning": "跟随； 沿行； 遵循"
+  },
+  {
+    "id": "anything",
+    "word": "anything",
+    "phonetic": "'eniθiŋ",
+    "meaning": "pron. 任何事",
+    "pos": "",
+    "rank": 680,
+    "forms": "",
+    "commonMeaning": "任何事"
+  },
+  {
+    "id": "create",
+    "word": "create",
+    "phonetic": "kri:'eit",
+    "meaning": "vt. 创造, 建造, 引起, 任命",
+    "pos": "",
+    "rank": 681,
+    "forms": "d:created/i:creating/3:creates/p:created",
+    "commonMeaning": "创造； 建造； 引起"
+  },
+  {
+    "id": "public",
+    "word": "public",
+    "phonetic": "'pʌblik",
+    "meaning": "n. 公众, 民众\na. 公众的, 公共的, 公立的, 公用的",
+    "pos": "",
+    "rank": 682,
+    "forms": "",
+    "commonMeaning": "公众； 民众"
+  },
+  {
+    "id": "level",
+    "word": "level",
+    "phonetic": "'levl",
+    "meaning": "n. 水平, 水准, 平地\na. 同高的, 平坦的, 齐平的, 水平的\nvt. 弄平, 夷平, 使同等, 瞄准, 对准\nvi. 变平, 拉平\n[计] 级别",
+    "pos": "",
+    "rank": 683,
+    "forms": "s:levels/d:levelled/p:levelled/i:levelling/3:levels",
+    "commonMeaning": "水平； 水准； 平地"
+  },
+  {
+    "id": "allow",
+    "word": "allow",
+    "phonetic": "ə'lau",
+    "meaning": "vt. 允许, 同意给予, 承认\nvi. 容许, 猜想\n[计] 允许命令",
+    "pos": "",
+    "rank": 684,
+    "forms": "d:allowed/i:allowing/3:allows/p:allowed",
+    "commonMeaning": "允许； 同意给予； 承认"
+  },
+  {
+    "id": "add",
+    "word": "add",
+    "phonetic": "æd",
+    "meaning": "vt. 增加, 添加, 附带说明, 计算...总和\nvi. 做加法, 积累而成, 增添\n[计] 加法",
+    "pos": "",
+    "rank": 685,
+    "forms": "p:added/d:added/i:adding/3:adds",
+    "commonMeaning": "增加； 添加； 附带说明"
+  },
+  {
+    "id": "spend",
+    "word": "spend",
+    "phonetic": "spend",
+    "meaning": "vt. 花费, 浪费, 度过, 消耗, 消磨\nvi. 花费, 用尽",
+    "pos": "",
+    "rank": 686,
+    "forms": "d:spent/p:spent/i:spending/3:spends",
+    "commonMeaning": "花费； 浪费； 度过"
+  },
+  {
+    "id": "health",
+    "word": "health",
+    "phonetic": "'helθ",
+    "meaning": "n. 健康, 卫生, 蓬勃, 健康状态\n[医] 健康",
+    "pos": "",
+    "rank": 687,
+    "forms": "",
+    "commonMeaning": "健康； 卫生； 蓬勃"
+  },
+  {
+    "id": "art",
+    "word": "art",
+    "phonetic": "ɑ:t",
+    "meaning": "n. 艺术, 人文科学, 技术, 巧妙, 诡计, 美术\n[计] 实际保持时间, 特许权和资源表, 平均检索时间, 平均运行时间",
+    "pos": "",
+    "rank": 688,
+    "forms": "s:arts",
+    "commonMeaning": "艺术； 人文科学； 技术"
+  },
+  {
+    "id": "war",
+    "word": "war",
+    "phonetic": "wɒ:",
+    "meaning": "n. 战争, 战争状态, 战术, 军事, 冲突, 斗争, 竞争\nvi. 进行战争, 作战, 打仗, 战斗\na. 战争的, 战时用的",
+    "pos": "",
+    "rank": 689,
+    "forms": "s:wars/i:warring/p:warred/3:wars/d:warred",
+    "commonMeaning": "战争； 战争状态； 战术"
+  },
+  {
+    "id": "history",
+    "word": "history",
+    "phonetic": "'histəri",
+    "meaning": "n. 历史, 过去, 经历, 发展过程, 历史学, 过去的事, 历史记录\n[计] 历史记录",
+    "pos": "",
+    "rank": 690,
+    "forms": "s:histories",
+    "commonMeaning": "历史； 过去； 经历"
+  },
+  {
+    "id": "party",
+    "word": "party",
+    "phonetic": "'pɑ:ti",
+    "meaning": "n. 宴会, 党, 政党, 团体, 当事人, 聚会\nv. 举办聚会",
+    "pos": "",
+    "rank": 691,
+    "forms": "s:parties/i:partying/p:partied/3:parties/d:partied",
+    "commonMeaning": "宴会； 党； 政党"
+  },
+  {
+    "id": "result",
+    "word": "result",
+    "phonetic": "ri'zʌlt",
+    "meaning": "n. 结果, 成绩, 答案\nvi. 产生, 结果, 致使\n[计] 结果",
+    "pos": "",
+    "rank": 692,
+    "forms": "s:results/p:resulted/i:resulting/d:resulted/3:results",
+    "commonMeaning": "结果； 成绩； 答案"
+  },
+  {
+    "id": "reason",
+    "word": "reason",
+    "phonetic": "'ri:zn",
+    "meaning": "n. 理由, 原因, 理智, 道理, 前提, 理性\nvt. 说服, 推论, 辩论\nvi. 推论, 劝说, 思考",
+    "pos": "",
+    "rank": 693,
+    "forms": "s:reasons/p:reasoned/i:reasoning/3:reasons/d:reasoned",
+    "commonMeaning": "理由； 原因； 理智"
+  },
+  {
+    "id": "research",
+    "word": "research",
+    "phonetic": "ri'sə:tʃ",
+    "meaning": "n. 研究, 调查, 考察\nvi. 研究, 调查",
+    "pos": "",
+    "rank": 694,
+    "forms": "i:researching/d:researched/s:researches/p:researched/3:researches",
+    "commonMeaning": "研究； 调查； 考察"
+  },
+  {
+    "id": "himself",
+    "word": "himself",
+    "phonetic": "him'self",
+    "meaning": "pron. 他自己, 他亲自",
+    "pos": "",
+    "rank": 695,
+    "forms": "",
+    "commonMeaning": "他自己； 他亲自"
+  },
+  {
+    "id": "moment",
+    "word": "moment",
+    "phonetic": "'məumənt",
+    "meaning": "n. 片刻, 瞬间, 重要, 阶段, 力矩\n[医] 片刻, 瞬间, 时机, 因素, 矩",
+    "pos": "",
+    "rank": 696,
+    "forms": "s:moments",
+    "commonMeaning": "片刻； 瞬间； 重要"
+  },
+  {
+    "id": "force",
+    "word": "force",
+    "phonetic": "fɒ:s",
+    "meaning": "n. 力量, 武力, 势力, 影响力, 军队, 力, 效力\nvt. 强迫, 强夺, 推动, 提高\n[计] 人工转移; 强制",
+    "pos": "",
+    "rank": 697,
+    "forms": "s:forces/d:forced/p:forced/i:forcing/3:forces",
+    "commonMeaning": "力量； 武力； 势力"
+  },
+  {
+    "id": "education",
+    "word": "education",
+    "phonetic": ".edju'keiʃən",
+    "meaning": "n. 教育, 训练, 教育学\n[医] 教育, 训练",
+    "pos": "",
+    "rank": 698,
+    "forms": "",
+    "commonMeaning": "教育； 训练； 教育学"
+  },
+  {
+    "id": "although",
+    "word": "although",
+    "phonetic": "ɒ:l'ðou",
+    "meaning": "conj. 虽然, 尽管",
+    "pos": "",
+    "rank": 699,
+    "forms": "",
+    "commonMeaning": "虽然； 尽管"
+  },
+  {
+    "id": "toward",
+    "word": "toward",
+    "phonetic": "tə'wɒ:d",
+    "meaning": "prep. 向, 对于, 为了\na. 即将来临的, 进行中的",
+    "pos": "",
+    "rank": 700,
+    "forms": "",
+    "commonMeaning": "向； 对于； 为了"
+  },
+  {
+    "id": "able",
+    "word": "able",
+    "phonetic": "'eibl",
+    "meaning": "a. 能干的, 能够的",
+    "pos": "",
+    "rank": 701,
+    "forms": "",
+    "commonMeaning": "能干的； 能够的"
+  },
+  {
+    "id": "policy",
+    "word": "policy",
+    "phonetic": "'pɒlisi",
+    "meaning": "n. 政策, 方针, 策略, 保险单\n[医] 凭单, 保险单",
+    "pos": "",
+    "rank": 702,
+    "forms": "s:policies",
+    "commonMeaning": "政策； 方针； 策略"
+  },
+  {
+    "id": "everything",
+    "word": "everything",
+    "phonetic": "'evriθiŋ",
+    "meaning": "pron. 每件事物, 所有事物",
+    "pos": "",
+    "rank": 703,
+    "forms": "",
+    "commonMeaning": "每件事物； 所有事物"
+  },
+  {
+    "id": "consider",
+    "word": "consider",
+    "phonetic": "kən'sidŋ",
+    "meaning": "v. 考虑, 思考, 认为",
+    "pos": "",
+    "rank": 704,
+    "forms": "d:considered/i:considering/p:considered/3:considers",
+    "commonMeaning": "考虑； 思考； 认为"
+  },
+  {
+    "id": "appear",
+    "word": "appear",
+    "phonetic": "ə'piə",
+    "meaning": "vi. 出现, 显得, 来到\n[法] 出庭, 到案, 出现",
+    "pos": "",
+    "rank": 705,
+    "forms": "p:appeared/3:appears/i:appearing/d:appeared",
+    "commonMeaning": "出现； 显得； 来到"
+  },
+  {
+    "id": "probably",
+    "word": "probably",
+    "phonetic": "'prɒbəbli",
+    "meaning": "adv. 大概, 或许",
+    "pos": "",
+    "rank": 706,
+    "forms": "",
+    "commonMeaning": "大概； 或许"
+  },
+  {
+    "id": "human",
+    "word": "human",
+    "phonetic": "'hju:mən",
+    "meaning": "n. 人, 人类\na. 人类的, 似人类的, 人性的, 有同情心的",
+    "pos": "",
+    "rank": 707,
+    "forms": "s:humans",
+    "commonMeaning": "人； 人类"
+  },
+  {
+    "id": "serve",
+    "word": "serve",
+    "phonetic": "sə:v",
+    "meaning": "vt. 可作...用, 服务, 经历, 招待, 供应, 送交, 对待\nvi. 服务, 服役, 侍应, 适合, 有用, 开球\nn. 发球, 轮到发球",
+    "pos": "",
+    "rank": 708,
+    "forms": "d:served/i:serving/p:served/3:serves/s:serves",
+    "commonMeaning": "可作...用； 服务； 经历"
+  },
+  {
+    "id": "die",
+    "word": "die",
+    "phonetic": "dai",
+    "meaning": "vi. 死亡, 消逝, 平息, 熄灭, 漠然, 渴望\nvt. 死\nn. 骰子, 冲模",
+    "pos": "",
+    "rank": 709,
+    "forms": "p:died/d:died/i:dying/3:dies/s:dies",
+    "commonMeaning": "死亡； 消逝； 平息"
+  },
+  {
+    "id": "expect",
+    "word": "expect",
+    "phonetic": "iks'pekt",
+    "meaning": "vt. 预期, 盼望, 期待",
+    "pos": "",
+    "rank": 710,
+    "forms": "d:expected/i:expecting/p:expected/3:expects",
+    "commonMeaning": "预期； 盼望； 期待"
+  },
+  {
+    "id": "sense",
+    "word": "sense",
+    "phonetic": "sens",
+    "meaning": "n. 感应, 感觉, 感官, 意识, 观念, 情理, 知觉, 理智\nvt. 感觉, 觉察, 检测\n[计] 阅读; 检测",
+    "pos": "",
+    "rank": 711,
+    "forms": "s:senses/p:sensed/i:sensing/d:sensed/3:senses",
+    "commonMeaning": "感应； 感觉； 感官"
+  },
+  {
+    "id": "fall",
+    "word": "fall",
+    "phonetic": "fɒ:l",
+    "meaning": "n. 落下, 瀑布, 采伐量, 下降, 落差, 降低, 堕落, 秋天\nvi. 倒下, 落下, 来临, 失守, 阵亡, 下跌, 减弱, 倾斜, 垮台, 轮到, 变成, 降低\na. 秋天的",
+    "pos": "",
+    "rank": 712,
+    "forms": "p:fell/d:fallen/i:falling/3:falls/s:falls",
+    "commonMeaning": "落下；下降；秋天（美式）"
+  },
+  {
+    "id": "plan",
+    "word": "plan",
+    "phonetic": "plæn",
+    "meaning": "n. 计划, 方案, 策略, 方法, 进度表, 程序表, 平面图, 设计图, 轮廓, 示意图\nvt. 计划, 设计, 意欲\nvi. 订计划",
+    "pos": "",
+    "rank": 713,
+    "forms": "s:plans/i:planning/d:planned/3:plans/p:planned",
+    "commonMeaning": "计划； 方案； 策略"
+  },
+  {
+    "id": "college",
+    "word": "college",
+    "phonetic": "'kɒlidʒ",
+    "meaning": "n. 学院, 大学, 学会",
+    "pos": "",
+    "rank": 714,
+    "forms": "s:colleges",
+    "commonMeaning": "学院； 大学； 学会"
+  },
+  {
+    "id": "interest",
+    "word": "interest",
+    "phonetic": "'intrist",
+    "meaning": "n. 兴趣, 嗜好, 利息, 利益, 爱好, 趣味, 势力\nvt. 使感兴趣, 与...有关系",
+    "pos": "",
+    "rank": 715,
+    "forms": "s:interests/3:interests/p:interested/d:interested/i:interesting",
+    "commonMeaning": "兴趣； 嗜好； 利息"
+  },
+  {
+    "id": "death",
+    "word": "death",
+    "phonetic": "deθ",
+    "meaning": "n. 死亡\n[医] 死亡",
+    "pos": "",
+    "rank": 716,
+    "forms": "s:deaths",
+    "commonMeaning": "死亡"
+  },
+  {
+    "id": "course",
+    "word": "course",
+    "phonetic": "kɒ:s",
+    "meaning": "n. 课程, 路线, 过程, 一道菜, 道路\nv. 追, (使)跑",
+    "pos": "",
+    "rank": 717,
+    "forms": "s:courses/i:coursing/p:coursed/3:courses/d:coursed",
+    "commonMeaning": "课程； 路线； 过程"
+  },
+  {
+    "id": "someone",
+    "word": "someone",
+    "phonetic": "'sʌmwʌn",
+    "meaning": "pron. 有人, 某人",
+    "pos": "",
+    "rank": 718,
+    "forms": "",
+    "commonMeaning": "有人； 某人"
+  },
+  {
+    "id": "experience",
+    "word": "experience",
+    "phonetic": "ik'spiəriəns",
+    "meaning": "n. 经历, 经验, 体验\nvt. 经历, 经验, 体验",
+    "pos": "",
+    "rank": 719,
+    "forms": "s:experiences/d:experienced/i:experiencing/p:experienced/3:experiences",
+    "commonMeaning": "经历； 经验； 体验"
+  },
+  {
+    "id": "behind",
+    "word": "behind",
+    "phonetic": "bi'haind",
+    "meaning": "adv. 在后地\nprep. 在...背后",
+    "pos": "",
+    "rank": 720,
+    "forms": "",
+    "commonMeaning": "在后地"
+  },
+  {
+    "id": "kill",
+    "word": "kill",
+    "phonetic": "kil",
+    "meaning": "n. 杀, 杀戮, 小河\nvt. 杀, 破坏, 消灭, 使终止, 抵消, 否决\nvi. 杀死\n[计] 删除",
+    "pos": "",
+    "rank": 721,
+    "forms": "d:killed/i:killing/p:killed/3:kills",
+    "commonMeaning": "杀； 杀戮； 小河"
+  },
+  {
+    "id": "remain",
+    "word": "remain",
+    "phonetic": "ri'mein",
+    "meaning": "vi. 保持, 逗留, 剩余\n[法] 停留, 居住, 继续",
+    "pos": "",
+    "rank": 722,
+    "forms": "3:remains/p:remained/d:remained/i:remaining/s:remains",
+    "commonMeaning": "保持； 逗留； 剩余"
+  },
+  {
+    "id": "suggest",
+    "word": "suggest",
+    "phonetic": "səg'dʒest",
+    "meaning": "vt. 提议, 建议, 促成, 暗示, 启发, 使人想起\n[法] 建议, 提出, 提议",
+    "pos": "",
+    "rank": 723,
+    "forms": "3:suggests/d:suggested/p:suggested/i:suggesting",
+    "commonMeaning": "提议； 建议； 促成"
+  },
+  {
+    "id": "control",
+    "word": "control",
+    "phonetic": "kən'trəul",
+    "meaning": "n. 控制, 管理, 克制, 控制器, 操纵装置\nvt. 控制, 操纵, 抑制\n[计] 控制; 控制器",
+    "pos": "",
+    "rank": 724,
+    "forms": "s:controls/d:controlled/i:controlling/3:controls/p:controlled",
+    "commonMeaning": "控制； 管理； 克制"
+  },
+  {
+    "id": "raise",
+    "word": "raise",
+    "phonetic": "reiz",
+    "meaning": "n. 上升, 高地, 增高\nvt. 升起, 举起, 唤起, 提高, 使出现, 使复活, 提出, 筹集, 饲养",
+    "pos": "",
+    "rank": 725,
+    "forms": "d:raised/p:raised/i:raising/3:raises",
+    "commonMeaning": "上升； 高地； 增高"
+  },
+  {
+    "id": "care",
+    "word": "care",
+    "phonetic": "kєə",
+    "meaning": "n. 小心, 照料, 忧虑\nvi. 关心, 介意\nvt. 在意, 喜欢",
+    "pos": "",
+    "rank": 726,
+    "forms": "p:cared/3:cares/d:cared/i:caring/s:cares",
+    "commonMeaning": "小心； 照料； 忧虑"
+  },
+  {
+    "id": "perhaps",
+    "word": "perhaps",
+    "phonetic": "pə'hæps",
+    "meaning": "adv. 也许, 大概",
+    "pos": "",
+    "rank": 727,
+    "forms": "",
+    "commonMeaning": "也许； 大概"
+  },
+  {
+    "id": "field",
+    "word": "field",
+    "phonetic": "fi:ld",
+    "meaning": "n. 领域, 田地, 场地, 战场, 场, 域\nvt. 使...晒在场上, 使上场\na. 田间的, 野生的, 野外的, 田赛的\n[计] 域, 字段",
+    "pos": "",
+    "rank": 728,
+    "forms": "s:fields/i:fielding/p:fielded/d:fielded/3:fields",
+    "commonMeaning": "领域； 田地； 场地"
+  },
+  {
+    "id": "else",
+    "word": "else",
+    "phonetic": "els",
+    "meaning": "a. 别的, 其他的\nadv. 另外, 否则, 不然",
+    "pos": "",
+    "rank": 729,
+    "forms": "",
+    "commonMeaning": "别的； 其他的"
+  },
+  {
+    "id": "require",
+    "word": "require",
+    "phonetic": "ri'kwaiə",
+    "meaning": "vt. 需要, 命令, 要求\n[法] 需要, 要求, 命令",
+    "pos": "",
+    "rank": 730,
+    "forms": "d:required/3:requires/i:requiring/p:required",
+    "commonMeaning": "需要； 命令； 要求"
+  },
+  {
+    "id": "development",
+    "word": "development",
+    "phonetic": "di'veləpmənt",
+    "meaning": "n. 发展\n[化] 展开",
+    "pos": "",
+    "rank": 731,
+    "forms": "s:developments",
+    "commonMeaning": "发展"
+  },
+  {
+    "id": "themselves",
+    "word": "themselves",
+    "phonetic": "ðəm'selvz",
+    "meaning": "pron. 他们自己, 她们自己, 它们自己",
+    "pos": "",
+    "rank": 732,
+    "forms": "",
+    "commonMeaning": "他们自己； 她们自己； 它们自己"
+  },
+  {
+    "id": "report",
+    "word": "report",
+    "phonetic": "ri'pɒ:t",
+    "meaning": "n. 报告, 报道, 传说, 案情报告, 爆炸声, 成绩单\nvt. 报告, 汇报, 转述, 报道, 揭发, 使报到\nvi. 报告, 写报道, 报到\n[计] 报告",
+    "pos": "",
+    "rank": 733,
+    "forms": "d:reported/s:reports/p:reported/3:reports/i:reporting",
+    "commonMeaning": "报告； 报道； 传说"
+  },
+  {
+    "id": "role",
+    "word": "role",
+    "phonetic": "rəul",
+    "meaning": "n. 角色, 职责, 任务\n[医] 作用, 功用",
+    "pos": "",
+    "rank": 734,
+    "forms": "s:roles",
+    "commonMeaning": "角色； 职责； 任务"
+  },
+  {
+    "id": "effort",
+    "word": "effort",
+    "phonetic": "'efət",
+    "meaning": "n. 努力, 成就",
+    "pos": "",
+    "rank": 735,
+    "forms": "s:efforts",
+    "commonMeaning": "努力； 成就"
+  },
+  {
+    "id": "decide",
+    "word": "decide",
+    "phonetic": "di'said",
+    "meaning": "v. 决定, 判决",
+    "pos": "",
+    "rank": 736,
+    "forms": "p:decided/d:decided/i:deciding/3:decides",
+    "commonMeaning": "决定； 判决"
+  },
+  {
+    "id": "possible",
+    "word": "possible",
+    "phonetic": "'pɒsəbl",
+    "meaning": "a. 可能的, 潜在的, 合适的\nn. 可能性, 可能的事物",
+    "pos": "",
+    "rank": 737,
+    "forms": "",
+    "commonMeaning": "可能的； 潜在的； 合适的"
+  },
+  {
+    "id": "drug",
+    "word": "drug",
+    "phonetic": "drʌg",
+    "meaning": "n. 药, 麻药, 麻醉药\nvi. 吸毒\nvt. 使服麻醉药, 使麻木",
+    "pos": "",
+    "rank": 738,
+    "forms": "s:drugs/d:drugged/p:drugged/i:drugging/3:drugs",
+    "commonMeaning": "药； 麻药； 麻醉药"
+  },
+  {
+    "id": "leader",
+    "word": "leader",
+    "phonetic": "'li:də",
+    "meaning": "n. 领导者, 社论, 指挥, 领袖, 领唱者, 前导字符\n[计] 前导字符",
+    "pos": "",
+    "rank": 739,
+    "forms": "s:leaders",
+    "commonMeaning": "领导者； 社论； 指挥"
+  },
+  {
+    "id": "voice",
+    "word": "voice",
+    "phonetic": "vɒis",
+    "meaning": "n. 声音, 嗓音, 嗓子, 愿望, 发言权, 表达, 喉舌, 语态\nvt. 表达, 吐露, 调音",
+    "pos": "",
+    "rank": 740,
+    "forms": "s:voices/d:voiced/p:voiced/i:voicing/3:voices",
+    "commonMeaning": "声音； 嗓音； 嗓子"
+  },
+  {
+    "id": "wife",
+    "word": "wife",
+    "phonetic": "waif",
+    "meaning": "n. 妻子, 太太, 夫人\n[法] 妻子, 已婚妇女",
+    "pos": "",
+    "rank": 741,
+    "forms": "s:wives",
+    "commonMeaning": "妻子； 太太； 夫人"
+  },
+  {
+    "id": "whole",
+    "word": "whole",
+    "phonetic": "həul",
+    "meaning": "n. 全部, 全体, 整体, 完全之体系\na. 所有的, 完整的, 完全的, 纯粹的",
+    "pos": "",
+    "rank": 742,
+    "forms": "s:wholes",
+    "commonMeaning": "全部； 全体； 整体"
+  },
+  {
+    "id": "police",
+    "word": "police",
+    "phonetic": "pə'li:s",
+    "meaning": "n. 警察, 警察当局, 治安\nvt. 维持治安, 管辖",
+    "pos": "",
+    "rank": 743,
+    "forms": "s:police/0:police/1:s/i:policing/d:policed/p:policed/3:polices",
+    "commonMeaning": "警察； 警察当局； 治安"
+  },
+  {
+    "id": "mind",
+    "word": "mind",
+    "phonetic": "maind",
+    "meaning": "n. 思想, 愿望, 智力, 记忆, 心理, 情绪, 理智, 主意, 心意\nvi. 介意, 注意, 留心\nvt. 注意, 留意, 专心于, 照看, 介意",
+    "pos": "",
+    "rank": 744,
+    "forms": "s:minds/d:minded/i:minding/p:minded/3:minds",
+    "commonMeaning": "思想； 愿望； 智力"
+  },
+  {
+    "id": "decision",
+    "word": "decision",
+    "phonetic": "di'siʒən",
+    "meaning": "n. 决定, 决心, 决断\n[计] 判定",
+    "pos": "",
+    "rank": 745,
+    "forms": "s:decisions",
+    "commonMeaning": "决定； 决心； 决断"
+  },
+  {
+    "id": "explain",
+    "word": "explain",
+    "phonetic": "ik'splein",
+    "meaning": "v. 解释, 说明",
+    "pos": "",
+    "rank": 746,
+    "forms": "p:explained/d:explained/3:explains/i:explaining",
+    "commonMeaning": "解释； 说明"
+  },
+  {
+    "id": "son",
+    "word": "son",
+    "phonetic": "sʌn",
+    "meaning": "n. 儿子, 女婿, 子孙\n[法] 儿子, 女婿, 养子",
+    "pos": "",
+    "rank": 747,
+    "forms": "s:sons",
+    "commonMeaning": "儿子； 女婿； 子孙"
+  },
+  {
+    "id": "develop",
+    "word": "develop",
+    "phonetic": "di'veləp",
+    "meaning": "vt. 发展, 使发达, 进步, 洗印, 显影\nvi. 发展, 生长",
+    "pos": "",
+    "rank": 748,
+    "forms": "d:developed/i:developing/p:developed/3:develops",
+    "commonMeaning": "发展； 使发达； 进步"
+  },
+  {
+    "id": "difference",
+    "word": "difference",
+    "phonetic": "'difərəns",
+    "meaning": "n. 不同, 差异\n[计] 差分",
+    "pos": "",
+    "rank": 749,
+    "forms": "s:differences",
+    "commonMeaning": "不同； 差异"
+  },
+  {
+    "id": "receive",
+    "word": "receive",
+    "phonetic": "ri'si:v",
+    "meaning": "vt. 收到, 接到, 得到, 接待, 迎接, 承受\nvi. 收到, 会客\n[计] 接收",
+    "pos": "",
+    "rank": 750,
+    "forms": "d:received/p:received/i:receiving/3:receives",
+    "commonMeaning": "收到； 接到； 得到"
+  },
+  {
+    "id": "value",
+    "word": "value",
+    "phonetic": "'vælju:",
+    "meaning": "n. 价值, 价格, 购买力, 评价, 估价, 计算结果\nvt. 评价, 估价, 重视\n[计] 计算结果",
+    "pos": "",
+    "rank": 751,
+    "forms": "s:values/d:valued/p:valued/i:valuing/3:values",
+    "commonMeaning": "价值； 价格； 购买力"
+  },
+  {
+    "id": "international",
+    "word": "international",
+    "phonetic": ".intə'næʃənəl",
+    "meaning": "a. 国际的\nn. 国别设定\n[计] 国别设定",
+    "pos": "",
+    "rank": 752,
+    "forms": "s:internationals",
+    "commonMeaning": "国际的"
+  },
+  {
+    "id": "building",
+    "word": "building",
+    "phonetic": "'bildiŋ",
+    "meaning": "n. 建筑物, 建筑\n[法] 营造, 建筑, 建筑物",
+    "pos": "",
+    "rank": 753,
+    "forms": "0:build/1:i/s:buildings/i:building",
+    "commonMeaning": "建筑物； 建筑"
+  },
+  {
+    "id": "action",
+    "word": "action",
+    "phonetic": "'ækʃən",
+    "meaning": "n. 行动, 活动, 动作, 作用, 战斗, 行为, 诉讼\nvt. 对...起诉\n[计] 方式",
+    "pos": "",
+    "rank": 754,
+    "forms": "s:actions/i:actioning/p:actioned/3:actions",
+    "commonMeaning": "行动； 活动； 动作"
+  },
+  {
+    "id": "model",
+    "word": "model",
+    "phonetic": "'mɒdəl",
+    "meaning": "n. 模型, 模范, 模特儿\na. 模范的, 作模型用的\nvi. 做模型, 做模特儿\nvt. 使模仿, 塑造\n[计] 模型",
+    "pos": "",
+    "rank": 755,
+    "forms": "s:models/d:modelled/i:modelling/p:modelled/3:models",
+    "commonMeaning": "模型； 模范； 模特儿"
+  },
+  {
+    "id": "join",
+    "word": "join",
+    "phonetic": "dʒɒin",
+    "meaning": "vi. 参加, 结合, 加入\nvt. 连接, 结合, 参加, 加入\nn. 连接, 结合, 接合点\n[计] 连接; 汇合指令",
+    "pos": "",
+    "rank": 756,
+    "forms": "p:joined/d:joined/i:joining/3:joins/s:joins",
+    "commonMeaning": "参加； 结合； 加入"
+  },
+  {
+    "id": "season",
+    "word": "season",
+    "phonetic": "'si:zn",
+    "meaning": "n. 季节, 时节, 当令期, 时期\nvt. 给...调味, 使成熟, 使老练, 缓和\nvi. 变干燥",
+    "pos": "",
+    "rank": 757,
+    "forms": "s:seasons/i:seasoning/p:seasoned/3:seasons/d:seasoned",
+    "commonMeaning": "季节； 时节； 当令期"
+  },
+  {
+    "id": "society",
+    "word": "society",
+    "phonetic": "sə'saiəti",
+    "meaning": "n. 社会；社交界；交往；社团",
+    "pos": "",
+    "rank": 758,
+    "forms": "s:societies",
+    "commonMeaning": "社会；社交界；交往"
+  },
+  {
+    "id": "director",
+    "word": "director",
+    "phonetic": "di'rektə",
+    "meaning": "n. 主管, 导演, 董事\n[计] 寻向偶极子; 指挥仪",
+    "pos": "",
+    "rank": 759,
+    "forms": "s:directors",
+    "commonMeaning": "主管； 导演； 董事"
+  },
+  {
+    "id": "position",
+    "word": "position",
+    "phonetic": "pə'ziʃən",
+    "meaning": "n. 位置, 地位, 身分, 形势, 姿势, 立场, 职位, 状态, 阵地\nvt. 安置, 决定...的位置\n[计] 位置",
+    "pos": "",
+    "rank": 760,
+    "forms": "s:positions/d:positioned/i:positioning/3:positions/p:positioned",
+    "commonMeaning": "位置； 地位； 身分"
+  },
+  {
+    "id": "agree",
+    "word": "agree",
+    "phonetic": "ə'gri:",
+    "meaning": "vi. 同意, 赞成, 应允, 适合\nvt. 承认, 认定, 同意",
+    "pos": "",
+    "rank": 761,
+    "forms": "d:agreed/p:agreed/3:agrees/i:agreeing",
+    "commonMeaning": "同意； 赞成； 应允"
+  },
+  {
+    "id": "especially",
+    "word": "especially",
+    "phonetic": "i'speʃəli",
+    "meaning": "adv. 尤其, 特别, 格外",
+    "pos": "",
+    "rank": 762,
+    "forms": "",
+    "commonMeaning": "尤其； 特别； 格外"
+  },
+  {
+    "id": "record",
+    "word": "record",
+    "phonetic": "ri'kɒ:d",
+    "meaning": "n. 记录, 履历, 档案, 审判记录, 最高纪录, 唱片\nvt. 记录, 记载, 标明, 将...录音\nvi. 记录, 录音, 可被录音\na. 创纪录的\n[计] 录制, 记录",
+    "pos": "",
+    "rank": 763,
+    "forms": "s:records/d:recorded/p:recorded/i:recording/3:records",
+    "commonMeaning": "记录； 履历； 档案"
+  },
+  {
+    "id": "pick",
+    "word": "pick",
+    "phonetic": "pik",
+    "meaning": "n. 精选, 选择, 掘, 精华, 牙签, 鹤嘴锄\nv. 摘, 掘, 凿, 挖, 挑选\n[计] 拾取",
+    "pos": "",
+    "rank": 764,
+    "forms": "p:picked/i:picking/d:picked/3:picks/s:picks",
+    "commonMeaning": "精选； 选择； 掘"
+  },
+  {
+    "id": "special",
+    "word": "special",
+    "phonetic": "'speʃəl",
+    "meaning": "n. 专辑, 专车, 号外, 特别的东西, 负有特别任务的人员\na. 特别的, 专门的, 特殊的, 额外的, 附加的, 特别亲密的",
+    "pos": "",
+    "rank": 765,
+    "forms": "s:specials",
+    "commonMeaning": "专辑； 专车； 号外"
+  },
+  {
+    "id": "space",
+    "word": "space",
+    "phonetic": "speis",
+    "meaning": "n. 位置, 空间, 距离, 太空, 空白, 间隔, (期刊等的)篇幅\nvt. 隔开, 分隔\nvi. 留间隔\n[计] 空白, 空格校验",
+    "pos": "",
+    "rank": 766,
+    "forms": "s:spaces/d:spaced/i:spacing/p:spaced/3:spaces",
+    "commonMeaning": "位置； 空间； 距离"
+  },
+  {
+    "id": "ground",
+    "word": "ground",
+    "phonetic": "graund",
+    "meaning": "n. 土地, 战场, 场地, 地面, 范围\na. 土地的, 地面上的\nvt. 放在地上, 使搁浅, 打基础, 给...以训练\nvi. 搁浅, 落地, 根据, 基于\na. 磨过的\ngrind的过去式和过去分词",
+    "pos": "",
+    "rank": 767,
+    "forms": "s:grounds/d:grounded/p:grounded/0:grind/1:dp/i:grinding/3:grinds",
+    "commonMeaning": "土地； 战场； 场地"
+  },
+  {
+    "id": "form",
+    "word": "form",
+    "phonetic": "fɒ:m",
+    "meaning": "n. 形状, 形体, 类型, 方式, 表格, 形式\nv. 形成, 排列, (使)组成\nn. 表单\n[计] 表单",
+    "pos": "",
+    "rank": 768,
+    "forms": "s:forms/d:formed/p:formed/i:forming/3:forms",
+    "commonMeaning": "形状； 形体； 类型"
+  },
+  {
+    "id": "whose",
+    "word": "whose",
+    "phonetic": "hu:z",
+    "meaning": "pron. 谁的",
+    "pos": "",
+    "rank": 769,
+    "forms": "",
+    "commonMeaning": "谁的"
+  },
+  {
+    "id": "everyone",
+    "word": "everyone",
+    "phonetic": "'evriwʌn",
+    "meaning": "pron. 每个人, 人人\n[计] 系统中的一个组名",
+    "pos": "",
+    "rank": 770,
+    "forms": "",
+    "commonMeaning": "每个人； 人人"
+  },
+  {
+    "id": "couple",
+    "word": "couple",
+    "phonetic": "'kʌpl",
+    "meaning": "n. 对, 夫妇, 数个\nvt. 使成双, 连接, 使成婚, 把...联系起来\nvi. 结合, 成婚",
+    "pos": "",
+    "rank": 771,
+    "forms": "s:couples/p:coupled/d:coupled/i:coupling/3:couples",
+    "commonMeaning": "对； 夫妇； 数个"
+  },
+  {
+    "id": "hit",
+    "word": "hit",
+    "phonetic": "hit",
+    "meaning": "n. 打击, 打, 冲撞, 讽刺\nvt. 打, 打击, 碰撞, 打中, 袭击, 偶然碰上\nvi. 打, 打中, 打击, 碰撞, 偶然碰上\n[计] 击中; 找到; 瞬时打扰",
+    "pos": "",
+    "rank": 772,
+    "forms": "p:hit/0:hit/1:pd/d:hit/i:hitting/3:hits/s:hits",
+    "commonMeaning": "打击； 打； 冲撞"
+  },
+  {
+    "id": "activity",
+    "word": "activity",
+    "phonetic": "æk'tiviti",
+    "meaning": "n. 活动, 行动, 活跃, 活力\n[计] 活动",
+    "pos": "",
+    "rank": 773,
+    "forms": "s:activities",
+    "commonMeaning": "活动； 行动； 活跃"
+  },
+  {
+    "id": "produce",
+    "word": "produce",
+    "phonetic": "prə'dju:s",
+    "meaning": "n. 生产品, 物产, 后代\nvt. 产生, 生产, 提出, 出示\nvi. 生产, 制造",
+    "pos": "",
+    "rank": 774,
+    "forms": "d:produced/p:produced/i:producing/3:produces",
+    "commonMeaning": "生产品； 物产； 后代"
+  },
+  {
+    "id": "half",
+    "word": "half",
+    "phonetic": "hɑ:f",
+    "meaning": "n. 一半, 半场, 不完全\na. 一半的, 不完全的, 部分的, 半场的\nadv. 一半地, 部分地, 在某种程度上地, 几乎",
+    "pos": "",
+    "rank": 775,
+    "forms": "s:halves",
+    "commonMeaning": "一半； 半场； 不完全"
+  },
+  {
+    "id": "situation",
+    "word": "situation",
+    "phonetic": ".sitju'eiʃən",
+    "meaning": "n. 情形, 境遇, 位置\n[医] 情境, 处境",
+    "pos": "",
+    "rank": 776,
+    "forms": "s:situations",
+    "commonMeaning": "情形； 境遇； 位置"
+  },
+  {
+    "id": "cost",
+    "word": "cost",
+    "phonetic": "kɒst",
+    "meaning": "n. 代价, 价值, 费用\nvi. 花费\nvt. 使失去, 值, 使花费",
+    "pos": "",
+    "rank": 777,
+    "forms": "s:costs/3:costs/i:costing/p:cost/0:cost/1:pd/d:cost",
+    "commonMeaning": "代价； 价值； 费用"
+  },
+  {
+    "id": "industry",
+    "word": "industry",
+    "phonetic": "'indəstri",
+    "meaning": "n. 勤劳, 工业, 企业, 产业, 有组织的劳动\n[经] 工业, 实业",
+    "pos": "",
+    "rank": 778,
+    "forms": "s:industries",
+    "commonMeaning": "勤劳； 工业； 企业"
+  },
+  {
+    "id": "itself",
+    "word": "itself",
+    "phonetic": "it'self",
+    "meaning": "pron. 它本身, 它自己",
+    "pos": "",
+    "rank": 779,
+    "forms": "",
+    "commonMeaning": "它本身； 它自己"
+  },
+  {
+    "id": "either",
+    "word": "either",
+    "phonetic": "'i:ðə",
+    "meaning": "a. (两者之中)任一的, (两者之中)各一的\npron. (两者之中)任一\nconj. 或, 要么",
+    "pos": "",
+    "rank": 780,
+    "forms": "",
+    "commonMeaning": "(两者之中)任一的； (两者之中)各一的"
+  },
+  {
+    "id": "cover",
+    "word": "cover",
+    "phonetic": "'kʌvə",
+    "meaning": "n. 盖子, 封面, 藉口\nvt. 覆盖, 掩饰, 保护, 掩护, 包括\nvi. 覆盖",
+    "pos": "",
+    "rank": 781,
+    "forms": "d:covered/i:covering/3:covers/p:covered/s:covers",
+    "commonMeaning": "盖子； 封面； 藉口"
+  },
+  {
+    "id": "quite",
+    "word": "quite",
+    "phonetic": "kwait",
+    "meaning": "adv. 相当, 完全, 十分",
+    "pos": "",
+    "rank": 782,
+    "forms": "",
+    "commonMeaning": "相当； 完全； 十分"
+  },
+  {
+    "id": "clear",
+    "word": "clear",
+    "phonetic": "kliə",
+    "meaning": "a. 清楚的, 明确的, 澄清的\nadv. 清晰地\nvt. 澄清, 清除障碍\nvi. 放晴, 变清澈\nn. 空隙\n[计] 清除",
+    "pos": "",
+    "rank": 783,
+    "forms": "d:cleared/r:clearer/p:cleared/i:clearing/t:clearest/3:clears",
+    "commonMeaning": "清楚的； 明确的； 澄清的"
+  },
+  {
+    "id": "practice",
+    "word": "practice",
+    "phonetic": "'præktis",
+    "meaning": "n. 实践, 练习, 实行, 惯例, 习惯, 开业\nv. 实践, 实行, 练习, 实习, 业务",
+    "pos": "",
+    "rank": 784,
+    "forms": "s:practices/3:practices/i:practicing/p:practiced/d:practiced",
+    "commonMeaning": "实践； 练习； 实行"
+  },
+  {
+    "id": "piece",
+    "word": "piece",
+    "phonetic": "pi:s",
+    "meaning": "n. 块, 片, 篇, 碎片, 部分, 部件, 标准量\nvt. 修补, 修理, 拼合, 接线头\nvi. 吃零食",
+    "pos": "",
+    "rank": 785,
+    "forms": "s:pieces/i:piecing/d:pieced/p:pieced/3:pieces",
+    "commonMeaning": "块； 片； 篇"
+  },
+  {
+    "id": "land",
+    "word": "land",
+    "phonetic": "lænd",
+    "meaning": "n. 陆地, 地面, 地界, 地产, 国土, 土地\nvi. 登陆, 登岸, 到达\nvt. 使上岸, 使登陆, 使到达\n[计] 连接盘; 焊盘",
+    "pos": "",
+    "rank": 786,
+    "forms": "s:lands/p:landed/d:landed/i:landing/3:lands",
+    "commonMeaning": "陆地； 地面； 地界"
+  },
+  {
+    "id": "recent",
+    "word": "recent",
+    "phonetic": "'ri:snt",
+    "meaning": "a. 最近的, 近代的, 最新的\n[经] 最近的, 新进的",
+    "pos": "",
+    "rank": 787,
+    "forms": "",
+    "commonMeaning": "最近的； 近代的； 最新的"
+  },
+  {
+    "id": "describe",
+    "word": "describe",
+    "phonetic": "di'skraib",
+    "meaning": "vt. 描述, 描绘, 画",
+    "pos": "",
+    "rank": 788,
+    "forms": "d:described/p:described/3:describes/i:describing",
+    "commonMeaning": "描述； 描绘； 画"
+  },
+  {
+    "id": "patient",
+    "word": "patient",
+    "phonetic": "'peiʃənt",
+    "meaning": "n. 病人, 承受者\na. 忍耐的, 容忍的, 有耐性的, 坚忍的",
+    "pos": "",
+    "rank": 789,
+    "forms": "s:patients",
+    "commonMeaning": "病人； 承受者"
+  },
+  {
+    "id": "news",
+    "word": "news",
+    "phonetic": "nju:z",
+    "meaning": "n. 新闻, 消息, 报导\n[法] 新闻, 消息, 新闻报导",
+    "pos": "",
+    "rank": 790,
+    "forms": "",
+    "commonMeaning": "新闻； 消息； 报导"
+  },
+  {
+    "id": "test",
+    "word": "test",
+    "phonetic": "test",
+    "meaning": "n. 测试, 试验, 化验, 检验, 考验, 甲壳\nvt. 测试, 试验, 化验\nvi. 接受测验, 进行测试",
+    "pos": "",
+    "rank": 791,
+    "forms": "s:tests/d:tested/i:testing/p:tested/3:tests",
+    "commonMeaning": "测试； 试验； 化验"
+  },
+  {
+    "id": "movie",
+    "word": "movie",
+    "phonetic": "'mu:vi",
+    "meaning": "n. 电影",
+    "pos": "",
+    "rank": 792,
+    "forms": "s:movies",
+    "commonMeaning": "电影"
+  },
+  {
+    "id": "certain",
+    "word": "certain",
+    "phonetic": "'sə:tən",
+    "meaning": "a. 确定的, 某一个的, 必然的\n[法] 确凿的, 无疑的, 可靠的",
+    "pos": "",
+    "rank": 793,
+    "forms": "",
+    "commonMeaning": "确定的； 某一个的； 必然的"
+  },
+  {
+    "id": "north",
+    "word": "north",
+    "phonetic": "nɒ:θ",
+    "meaning": "n. 北方, 北\na. 北的, 北方的\nadv. 向北方, 在北方",
+    "pos": "",
+    "rank": 794,
+    "forms": "",
+    "commonMeaning": "北方； 北"
+  },
+  {
+    "id": "personal",
+    "word": "personal",
+    "phonetic": "'pə:snl",
+    "meaning": "a. 私人的, 涉及隐私的, 有人性的, 人称的, 亲自的, 身体的\n[医] 人的; 个人的, 自身的",
+    "pos": "",
+    "rank": 795,
+    "forms": "",
+    "commonMeaning": "私人的； 涉及隐私的； 有人性的"
+  },
+  {
+    "id": "technology",
+    "word": "technology",
+    "phonetic": "tek'nɒlədʒi",
+    "meaning": "n. 技术, 工业技术, 术语\n[医] 技术学, 工艺学",
+    "pos": "",
+    "rank": 796,
+    "forms": "s:technologies",
+    "commonMeaning": "技术； 工业技术； 术语"
+  },
+  {
+    "id": "catch",
+    "word": "catch",
+    "phonetic": "kætʃ",
+    "meaning": "n. 捕捉, 陷阱, 捕捉之物, 抓, 拉手\nvt. 捕捉, 赶上, 感染, 听清楚\nvi. 抓住, 燃着",
+    "pos": "",
+    "rank": 797,
+    "forms": "d:caught/p:caught/i:catching/3:catches/s:catches",
+    "commonMeaning": "捕捉； 陷阱； 捕捉之物"
+  },
+  {
+    "id": "step",
+    "word": "step",
+    "phonetic": "step",
+    "meaning": "n. 步骤, 步, 步幅, 脚步声, 踏级, 步伐, 短距离, 步态, 手段, 等级\nvt. 踏, 以步测量, 跨步, 使成阶梯状\nvi. 跨步, 轻快地走, 跳舞, 踩, 踏上, 行走\n[计] 步骤",
+    "pos": "",
+    "rank": 798,
+    "forms": "s:steps/p:stepped/i:stepping/d:stepped/3:steps",
+    "commonMeaning": "步骤； 步； 步幅"
+  },
+  {
+    "id": "attention",
+    "word": "attention",
+    "phonetic": "ə'tenʃən",
+    "meaning": "n. 注意, 注意力\n[计] 引起注意信号",
+    "pos": "",
+    "rank": 799,
+    "forms": "s:attentions",
+    "commonMeaning": "注意； 注意力"
+  },
+  {
+    "id": "film",
+    "word": "film",
+    "phonetic": "film",
+    "meaning": "n. 软片, 薄膜, 胶卷, 电影\nvt. 覆以薄膜, 拍摄\nvi. 生薄膜, 拍电影",
+    "pos": "",
+    "rank": 800,
+    "forms": "s:films/i:filming/d:filmed/p:filmed/3:films",
+    "commonMeaning": "软片； 薄膜； 胶卷"
+  }
+]

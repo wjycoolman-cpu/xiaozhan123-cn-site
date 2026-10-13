@@ -2035,11 +2035,13 @@
   const APP_ID = 'com.qingci.cet4';
   const WORD_BOOK = 'ecdict-cet4';
   const WORD_BOOK_CET6 = 'ecdict-cet6';
-  const WORD_BOOKS = Object.freeze([WORD_BOOK, WORD_BOOK_CET6]);
+  const WORD_BOOK_BASIC = 'ecdict-basic';
+  const LEGACY_WORD_BOOKS = Object.freeze([WORD_BOOK, WORD_BOOK_CET6]);
+  const WORD_BOOKS = Object.freeze([...LEGACY_WORD_BOOKS, WORD_BOOK_BASIC]);
   const STATE_SCHEMA = 1;
-  const LIBRARY_SCHEMA = 2;
+  const LIBRARY_SCHEMA = 3;
   const BACKUP_FORMAT = 1;
-  const LIBRARY_BACKUP_FORMAT = 2;
+  const LIBRARY_BACKUP_FORMAT = 3;
   const ENGINE_VERSION = '1.0.2';
   const FSRS_VERSION = '5.4.2';
 
@@ -2464,13 +2466,18 @@
   }
 
   function assertWordbook(value, label) {
-    if (!WORD_BOOKS.includes(value)) fail(`${label} must be ${WORD_BOOK} or ${WORD_BOOK_CET6}`);
+    if (!WORD_BOOKS.includes(value)) fail(`${label} must be a supported wordbook`);
     return value;
   }
 
   function normalizeWordIdsByBook(value) {
     if (value === undefined || value === null) return null;
     const map = assertPlainObject(value, 'wordIdsByBook');
+    const keys = Object.keys(map);
+    if (!keys.includes(WORD_BOOK_BASIC)) {
+      assertExactKeys(map, LEGACY_WORD_BOOKS, 'wordIdsByBook');
+      return { ...map, [WORD_BOOK_BASIC]: undefined };
+    }
     assertExactKeys(map, WORD_BOOKS, 'wordIdsByBook');
     return map;
   }
@@ -2500,6 +2507,7 @@
       books: {
         [WORD_BOOK]: cet4,
         [WORD_BOOK_CET6]: cet6,
+        [WORD_BOOK_BASIC]: copyGlobalFields(cet4, createState()),
       },
     };
   }
@@ -2513,6 +2521,7 @@
       books: {
         [WORD_BOOK]: cet4,
         [WORD_BOOK_CET6]: copyGlobalFields(cet4, createState()),
+        [WORD_BOOK_BASIC]: copyGlobalFields(cet4, createState()),
       },
     };
   }
@@ -2531,10 +2540,11 @@
     }
 
     assertExactKeys(library, LIBRARY_KEYS, 'library');
-    if (library.schema !== LIBRARY_SCHEMA) fail(`unsupported library schema: ${String(library.schema)}`);
+    if (library.schema !== 2 && library.schema !== LIBRARY_SCHEMA) fail(`unsupported library schema: ${String(library.schema)}`);
     const activeWordbook = assertWordbook(library.activeWordbook, 'library.activeWordbook');
     const booksInput = assertPlainObject(library.books, 'library.books');
-    assertExactKeys(booksInput, WORD_BOOKS, 'library.books');
+    assertExactKeys(booksInput, library.schema === 2 ? LEGACY_WORD_BOOKS : WORD_BOOKS, 'library.books');
+    if (library.schema === 2 && activeWordbook === WORD_BOOK_BASIC) fail('legacy active wordbook is invalid');
     const books = {
       [WORD_BOOK]: normalizeState(booksInput[WORD_BOOK], idMap ? idMap[WORD_BOOK] : undefined),
       [WORD_BOOK_CET6]: normalizeState(booksInput[WORD_BOOK_CET6], idMap ? idMap[WORD_BOOK_CET6] : undefined),
@@ -2542,6 +2552,10 @@
     if (!globalFieldsMatch(books[WORD_BOOK], books[WORD_BOOK_CET6])) {
       fail('library books have inconsistent global settings or feedback');
     }
+    books[WORD_BOOK_BASIC] = library.schema === 2
+      ? copyGlobalFields(books[WORD_BOOK], createState())
+      : normalizeState(booksInput[WORD_BOOK_BASIC], idMap ? idMap[WORD_BOOK_BASIC] : undefined);
+    if (!globalFieldsMatch(books[WORD_BOOK], books[WORD_BOOK_BASIC])) fail('library books have inconsistent global settings or feedback');
     return { schema: LIBRARY_SCHEMA, activeWordbook, books };
   }
 
@@ -2851,15 +2865,16 @@
       return migrated;
     }
 
-    if (backup.format === LIBRARY_BACKUP_FORMAT) {
+    if (backup.format === 2 || backup.format === LIBRARY_BACKUP_FORMAT) {
       assertExactKeys(backup, ['app', 'format', 'exportedAt', 'wordbooks', 'state'], 'backup');
       if (
         !Array.isArray(backup.wordbooks) ||
-        backup.wordbooks.length !== WORD_BOOKS.length ||
-        WORD_BOOKS.some((id, index) => backup.wordbooks[index] !== id)
+        (backup.format === 2 ? LEGACY_WORD_BOOKS : WORD_BOOKS).length !== backup.wordbooks.length ||
+        (backup.format === 2 ? LEGACY_WORD_BOOKS : WORD_BOOKS).some((id, index) => backup.wordbooks[index] !== id)
       ) {
         fail('backup wordbooks do not match');
       }
+      if (backup.state.schema !== backup.format) fail('backup schema and format do not match');
       return normalizeLibraryState(backup.state, wordIdsByBook);
     }
 

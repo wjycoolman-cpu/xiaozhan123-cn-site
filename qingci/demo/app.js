@@ -8,10 +8,11 @@
   const clone = typeof window.structuredClone === 'function' ? window.structuredClone.bind(window) : value => JSON.parse(JSON.stringify(value));
   const native = () => window.AndroidBridge || null;
   const STORE = 'qingci.cet4.state.v1';
-  const APP_VERSION = '1.0.11';
+  const APP_VERSION = '1.0.13';
   const BOOKS = [
     {id:'ecdict-cet4',name:'四级',code:'CET-4',file:'words.json'},
     {id:'ecdict-cet6',name:'六级',code:'CET-6',file:'words-cet6.json'},
+    {id:'ecdict-basic',name:'基础常用',code:'BASIC',file:'words-basic.json'},
   ];
   let dictionaries = {}, idsByBook = {}, searchIndexes = {}, wordMaps = {}, libraryState;
   let words = [], wordMap = new Map(), state, current = null, revealed = false;
@@ -237,7 +238,7 @@
     const w=current.word;
     let preview;
     try{preview=E().preview(state,w.id,new Date());}catch(_){preview={again:{label:'稍后'},hard:{label:'较早复习'},good:{label:'按记忆安排'}};}
-    return `${focusHeader}<div class="study-stage"><section class="word-card quiet-word ${revealed?'revealed':''}" aria-label="单词学习卡"><div class="word-center"><h1 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h1><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic.replace(/^\/|\/$/g,'')+'/':'')}</p><button class="audio" data-action="audio" aria-label="朗读 ${esc(w.word)}">${icon('sound')}${state.settings.accent==='en-GB'?'英式':'美式'}发音</button></div>${revealed?`<div class="answer"><div class="meaning">${esc(w.meaning)}</div><p class="meaning-hint" hidden>向上滑动，查看完整释义</p></div>`:''}</section></div><div class="actions study-actions">${revealed?`<div class="ratings" aria-label="评估记忆"><button class="grade again" data-action="rate" data-rating="again"><span class="grade-top">忘了</span><span>${esc(preview.again.label)}</span></button><button class="grade hard" data-action="rate" data-rating="hard"><span class="grade-top">模糊</span><span>${esc(preview.hard.label)}</span></button><button class="grade good" data-action="rate" data-rating="good"><span class="grade-top">记住</span><span>${esc(preview.good.label)}</span></button></div>`:'<button class="primary reveal-button" data-action="reveal">查看词义</button>'}</div>`;
+    return `${focusHeader}<div class="study-stage"><section class="word-card quiet-word ${revealed?'revealed':''}" aria-label="单词学习卡"><div class="word-center"><h1 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h1><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic.replace(/^\/|\/$/g,'')+'/':'')}</p><button class="audio" data-action="audio" aria-label="朗读 ${esc(w.word)}">${icon('sound')}${state.settings.accent==='en-GB'?'英式':'美式'}发音</button></div>${revealed?`<div class="answer"><div class="meaning">${esc(w.commonMeaning||w.meaning)}</div><p class="meaning-hint" hidden>向上滑动，查看完整释义</p></div>`:''}</section></div><div class="actions study-actions">${revealed?`<div class="ratings" aria-label="评估记忆"><button class="grade again" data-action="rate" data-rating="again"><span class="grade-top">忘了</span><span>${esc(preview.again.label)}</span></button><button class="grade hard" data-action="rate" data-rating="hard"><span class="grade-top">模糊</span><span>${esc(preview.hard.label)}</span></button><button class="grade good" data-action="rate" data-rating="good"><span class="grade-top">记住</span><span>${esc(preview.good.label)}</span></button></div>`:'<button class="primary reveal-button" data-action="reveal">查看词义</button>'}</div>`;
   }
   function finishCard(s) {
     const onlyReview=mode==='review';
@@ -274,7 +275,7 @@
   }
   function libraryPage() {
     const s=stats();
-    return `<div class="pagehead"><div><h1>我的词库</h1><p class="eyebrow">${activeBook().name}词书 · ${words.length.toLocaleString()} 词</p></div></div><div class="searchbox">${icon('search')}<input id="search" type="search" placeholder="搜索单词或中文释义" value="${esc(query)}" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-label="搜索单词或中文释义"><button class="clear-search" data-action="clear-search" aria-label="清空搜索" ${query?'':'hidden'}>×</button></div><div class="filters">${[['all','全部',null],['favorite','收藏',s.favorites],['difficult','易忘',s.difficult||0],['seen','已学',s.seen]].map(([id,label,count])=>`<button class="pill ${filter===id?'active':''}" data-action="filter" data-filter="${id}">${label}${count!==null?` <span class="count">${count}</span>`:''}</button>`).join('')}</div><div id="list-results" aria-live="polite" aria-atomic="false">${libraryResults()}</div>`;
+    return `<div class="pagehead"><div><h1>我的词库</h1><p class="eyebrow">${activeBook().name}词书 · ${words.length.toLocaleString()} 词</p></div></div><button class="phonetics-entry" data-action="phonetics"><span class="phonetics-mark" aria-hidden="true">/æ/</span><span><strong>音标入门</strong><small>44 个音标 · 发音要点与例词试听</small></span>${icon('arrow')}</button><div class="searchbox">${icon('search')}<input id="search" type="search" placeholder="搜索单词或中文释义" value="${esc(query)}" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-label="搜索单词或中文释义"><button class="clear-search" data-action="clear-search" aria-label="清空搜索" ${query?'':'hidden'}>×</button></div><div class="filters">${[['all','全部',null],['favorite','收藏',s.favorites],['difficult','易忘',s.difficult||0],['seen','已学',s.seen]].map(([id,label,count])=>`<button class="pill ${filter===id?'active':''}" data-action="filter" data-filter="${id}">${label}${count!==null?` <span class="count">${count}</span>`:''}</button>`).join('')}</div><div id="list-results" aria-live="polite" aria-atomic="false">${libraryResults()}</div>`;
   }
   function updateSearchResults() {
     if(page!=='library')return;
@@ -284,7 +285,7 @@
   function libraryResults() {
     const list=filteredWords();
     if(!list.length) return `<div class="empty">${icon('book')}<h2>${query?'没有找到这个词':filter==='favorite'?'还没有收藏':filter==='difficult'?'暂时没有易忘词':'还没有学习记录'}</h2><p class="small">${query?'换个关键词，试试中文或英文。':filter==='favorite'?'背词时点星标，把想再看的词留下。':filter==='difficult'?'选择“忘了”的词会先留在这里，记牢后移出。':'从首页开始第一张词卡。'}</p></div>`;
-    return `<div class="list-meta"><span>${list.length.toLocaleString()} 个词</span><span>点开查看完整释义</span></div><div class="word-list">${list.slice(0,listLimit).map(w=>`<button class="word-row" data-action="detail" data-id="${esc(w.id)}"><div><div class="row-word" lang="en">${esc(w.word)}</div><div class="row-meaning">${esc(w.meaning.replace(/\n/g,' · '))}</div></div><div class="row-indicator">${state.favorites.includes(w.id)?icon('star','star'):''}${icon('arrow')}</div></button>`).join('')}</div>${list.length>listLimit?`<button class="outline load-more" data-action="more">再看 ${Math.min(60,list.length-listLimit)} 个词</button>`:''}`;
+    return `<div class="list-meta"><span>${list.length.toLocaleString()} 个词</span><span>点开查看完整释义</span></div><div class="word-list">${list.slice(0,listLimit).map(w=>`<button class="word-row" data-action="detail" data-id="${esc(w.id)}"><div><div class="row-word" lang="en">${esc(w.word)}</div><div class="row-meaning">${esc((w.commonMeaning||w.meaning).replace(/\n/g,' · '))}</div></div><div class="row-indicator">${state.favorites.includes(w.id)?icon('star','star'):''}${icon('arrow')}</div></button>`).join('')}</div>${list.length>listLimit?`<button class="outline load-more" data-action="more">再看 ${Math.min(60,list.length-listLimit)} 个词</button>`:''}`;
   }
   function progressPage() {
     const s=stats();
@@ -294,7 +295,7 @@
   const switchRow = (title,caption,key) => `<div class="setting-row"><div><div class="setting-label">${title}</div><p class="setting-caption">${caption}</p></div><button class="toggle ${state.settings[key]?'on':''}" data-action="toggle" data-key="${key}" role="switch" aria-checked="${!!state.settings[key]}" aria-label="${title}"></button></div>`;
   function settingsPage() {
     const themes={system:'跟随系统',light:'浅色',dark:'深色'};
-    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('口音与音色','英式或美式，六种独立声线可试听','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${row('语速与重复','慢速、舒缓、正常，设置朗读次数与停顿','speech',`<span class="setting-value">${speedName()} · ${speechSettings.repeats} 次</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存四级与六级的全部学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆，再按记忆情况安排跨日复习','help')}${row('版本与更新',APP_VERSION+' · 官网更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','ECDICT 四级与六级词集 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
+    return `<div class="pagehead"><div><h1>设置</h1></div></div><p class="settings-label">学习偏好</p><div class="settings-group">${row('每日新词',activeBook().name+'日常目标，到期复习优先','goal',`<span class="setting-value">${state.settings.dailyGoal} 词 / 天</span>`)}${row('口音与音色','英式或美式，六种独立声线可试听','accent',`<span class="setting-value">${selectedVoice().name}</span>`)}${row('语速与重复','慢速、舒缓、正常，设置朗读次数与停顿','speech',`<span class="setting-value">${speedName()} · ${speechSettings.repeats} 次</span>`)}${switchRow('自动朗读','翻开下一词时播放发音','autoSpeak')}${row('外观','浅色、深色或跟随系统','theme',`<span class="setting-value">${themes[state.settings.theme]}</span>`)}</div><p class="settings-label">学习记录</p><div class="settings-group">${row('导出备份','保存所有词书的学习记录','export',icon('export'))}${row('恢复备份','预览后确认，保留当前记录的导出入口','import',icon('import'))}</div><p class="settings-label">帮助与反馈</p><div class="settings-group">${row('反馈与建议','主动发送，离线保留并重试','feedback',icon('mail'))}${row('记忆方法与复习','先回忆，再按记忆情况安排跨日复习','help')}${row('版本与更新',APP_VERSION+' · 官网更新','version')}${switchRow('自动检查更新','启动或回到应用时检查，可随时关闭','autoUpdate')}${switchRow('本地故障记录','只保留错误类型，最多 30 条，不上传','diagnosticsEnabled')}${row('词库来源与许可','基础常用、四级与六级 · 开源许可','credits')}</div><p class="footnote">不登录 · 学习记录保存在本机<br>卸载应用前，建议先导出备份</p>`;
   }
 
   function openModal(title,html,type) {
@@ -323,8 +324,8 @@
     openModal('选择词书',`<div class="book-choices">${BOOKS.map(b=>{
       const s=E().summary(libraryState.books[b.id],dictionaries[b.id],new Date());
       const selected=b.id===activeBook().id;
-      return `<button class="book-choice ${selected?'active':''}" data-action="select-book" data-book="${b.id}" aria-pressed="${selected}"><span class="book-code">${b.code}</span><span class="book-info"><strong>${b.name}词书</strong><small>${dictionaries[b.id].length.toLocaleString()} 词 · 已学 ${s.seen} 词</small></span>${selected?icon('check'):icon('arrow')}</button>`;
-    }).join('')}</div><p class="note">两套词书分别记录学习进度与每日目标。切换后继续背，原来的记录会保留。</p>`,'books');
+      return `<button class="book-choice ${selected?'active':''}" data-action="select-book" data-book="${b.id}" aria-pressed="${selected}"><span class="book-code">${b.code}</span><span class="book-info"><strong>${b.name}词书</strong><small>${dictionaries[b.id].length.toLocaleString()} 词 · 已学 ${s.seen} 词${b.id==='ecdict-basic'?' · 日常入门':''}</small></span>${selected?icon('check'):icon('arrow')}</button>`;
+    }).join('')}</div><p class="note">各词书分别记录学习进度与每日目标。切换后继续背，原来的记录会保留。</p>`,'books');
   }
   function switchBook(id) {
     if(!BOOKS.some(b=>b.id===id))return;
@@ -339,8 +340,47 @@
     const w=wordMap.get(id);if(!w) return;
     detailId=id;
     const saved=state.favorites.includes(id);
-    openModal('单词详情',`<div class="word-center"><h2 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h2><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic+'/':'')}</p><button class="audio" data-action="detail-audio" data-id="${esc(id)}">${icon('sound')}播放发音</button></div><div class="meaning">${esc(w.meaning)}</div>${w.forms?`<div class="forms">${esc(formatForms(w.forms))}</div>`:''}<button class="secondary" data-action="detail-favorite" data-id="${esc(id)}">${icon('star')}${saved?'已收藏 · 点此取消':'收藏这个词'}</button>${state.cards[id]?`<p class="small muted">下次复习：${new Date(state.cards[id].due).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</p>`:'<p class="small muted">还未开始学习</p>'}`,'detail');
+    openModal('单词详情',`<div class="word-center"><h2 class="word ${w.word.length>15?'long':''}" lang="en">${esc(w.word)}</h2><p class="phonetic" lang="en">${esc(w.phonetic?'/'+w.phonetic+'/':'')}</p><button class="audio" data-action="detail-audio" data-id="${esc(id)}">${icon('sound')}播放发音</button></div><div class="meaning">${esc(w.commonMeaning||w.meaning)}</div>${w.commonMeaning?`<details class="ipa-help"><summary>更多词典释义</summary><div class="meaning">${esc(w.meaning)}</div></details>`:''}${w.forms?`<div class="forms">${esc(formatForms(w.forms))}</div>`:''}<button class="secondary" data-action="detail-favorite" data-id="${esc(id)}">${icon('star')}${saved?'已收藏 · 点此取消':'收藏这个词'}</button>${state.cards[id]?`<p class="small muted">下次复习：${new Date(state.cards[id].due).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</p>`:'<p class="small muted">还未开始学习</p>'}`,'detail');
   }
+
+  let phoneticsData=null,phoneticsLoading=null,phoneticsGroup='vowel';
+  const phoneticsGroups={vowel:'元音',diphthong:'双元音',consonant:'辅音'};
+  async function showPhonetics(group=phoneticsGroup) {
+    stopSpeech();phoneticsGroup=group;
+    if(!phoneticsData){
+      openModal('音标入门','<p class="small muted">正在打开离线音标课…</p>','phonetics');
+      try{
+        if(!phoneticsLoading)phoneticsLoading=fetch('phonetics.json').then(r=>{if(!r.ok)throw Error('missing');return r.json();});
+        const data=await phoneticsLoading;
+        if(data.schema!=='qingci-phonetics/v1'||data.lessons?.length!==44)throw Error('invalid');
+        phoneticsData=data;
+      }catch(_){phoneticsLoading=null;if(modalType==='phonetics')openModal('音标入门','<p class="note">音标课暂时无法读取，背词记录不受影响。</p><button class="outline" data-action="phonetics">重新打开</button>','phonetics');return;}
+      if(modalType!=='phonetics')return;
+    }
+    const lessons=phoneticsData.lessons.filter(l=>l.group===group);
+    openModal('音标入门',`<p class="small muted">英式入门 · 听例词，体会词里的声音</p><div class="filters ipa-tabs" role="group" aria-label="音标分类">${Object.entries(phoneticsGroups).map(([id,name])=>`<button class="pill ${id===group?'active':''}" data-action="ipa-group" data-group="${id}" aria-pressed="${id===group}">${name}</button>`).join('')}</div><div class="ipa-grid">${lessons.map(l=>`<button class="ipa-tile" data-action="ipa-lesson" data-id="${l.id}" aria-label="学习音标 ${l.symbol}，例词 ${l.examples[0].word}"><strong lang="en">/${l.symbol}/</strong><span lang="en">${l.examples[0].word}</span></button>`).join('')}</div><details class="ipa-help"><summary>第一次学音标</summary><p class="small">音标表示声音，字母表示拼写。同一个字母可以对应不同声音；先听一个例词，再看发音要点，轻声跟读。</p><p class="small">ˈ 表示后面音节重读，ː 是长音标记。本课使用常见英式教学记法；词库或其他口音的标法可能不同。</p></details>`,'phonetics');
+  }
+  function showPhoneticLesson(id) {
+    const l=phoneticsData?.lessons.find(l=>l.id===id);if(!l)return;
+    stopSpeech();
+    const list=phoneticsData.lessons.filter(x=>x.group===l.group),index=list.findIndex(x=>x.id===id);
+    openModal('音标入门',`<button class="text-button ipa-back" data-action="ipa-group" data-group="${l.group}">‹ ${phoneticsGroups[l.group]} · ${index+1} / ${list.length}</button><div class="ipa-hero"><p class="eyebrow">${l.title}</p><h3 lang="en">/${l.symbol}/</h3></div><p class="ipa-tip">${esc(l.tip)}</p><p class="settings-label">听例词 · 英式</p><div class="ipa-examples">${l.examples.map(e=>`<button class="ipa-example" data-action="ipa-audio" data-word="${esc(e.word)}" aria-label="试听英式例词 ${esc(e.word)}"><span><strong lang="en">${esc(e.word)}</strong><small>${esc(e.meaning)}</small></span><span class="ipa-transcription" lang="en">/${esc(e.ipa)}/</span>${icon('sound')}</button>`).join('')}</div><p id="ipa-play-status" class="small muted" role="status" aria-live="polite">点例词试听，再轻声跟读。</p><details class="ipa-help"><summary>读音提醒</summary><p class="small">${esc(l.note)}</p><p class="small">这里播放整个例词，不是单独音素。例词沿用当前英式音色与语速设置；不更改你的背词口音。</p></details><div class="ipa-navigation"><button class="outline" data-action="ipa-lesson" data-id="${list[Math.max(0,index-1)].id}" ${index===0?'disabled':''}>上一个</button>${index<list.length-1?`<button class="primary" data-action="ipa-lesson" data-id="${list[index+1].id}">下一个</button>`:`<button class="primary" data-action="ipa-group" data-group="${l.group}">返回${phoneticsGroups[l.group]}</button>`}</div>`,'phonetic-lesson');
+    modalRoot.querySelector('.modal-content').scrollTop=0;
+  }
+  function playPhoneticExample(word) {
+    if(!phoneticsData?.lessons.some(l=>l.examples.some(e=>e.word===word)))return;
+    stopSpeech();
+    try{
+      if(native()?.speak)native().speak(word,'en-GB');
+      else if(window.speechSynthesis && window.SpeechSynthesisUtterance){
+        const utterance=new SpeechSynthesisUtterance(word);utterance.lang='en-GB';utterance.rate=speechSettings.rate;utterance.pitch=1;
+        const voice=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang));if(voice)utterance.voice=voice;
+        speechSynthesis.speak(utterance);
+      }else{notify('当前设备没有可用的英语发音');return;}
+      const status=$('#ipa-play-status');if(status)status.textContent='试听例词：'+word+' · 英式';
+    }catch(_){notify('例词暂时无法播放，请重试');}
+  }
+
   function formatForms(raw) {
     const names={p:'过去式',d:'过去分词',i:'现在分词',3:'第三人称单数',s:'复数',r:'比较级',t:'最高级',0:'原形',1:'原形'};
     return raw.split('/').map(part=>{const index=part.indexOf(':'); if(index<0)return part;const tag=part.slice(0,index);return (names[tag]||'相关词形')+'：'+part.slice(index+1).replace(/,/g,' / ');}).join('\n');
@@ -414,11 +454,19 @@
     try {
       if(typeof text!=='string'||text.length>E().constants.MAX_BACKUP_BYTES) throw new Error('备份文件过大');
       let incoming=E().parseLibraryBackup(text,idsByBook);
-      const legacy=JSON.parse(text).format===1;
+      const format=JSON.parse(text).format;
+      const legacy=format===1;
       if(legacy && libraryState)incoming=E().setBookState(libraryState,BOOKS[0].id,incoming.books[BOOKS[0].id],idsByBook[BOOKS[0].id]);
+      if(format===2 && libraryState){
+        const existing=E().getBookState(libraryState,'ecdict-basic');
+        const imported=incoming.books['ecdict-basic'];
+        for(const key of Object.keys(imported.settings))if(key!=='dailyGoal')existing.settings[key]=imported.settings[key];
+        existing.feedback=clone(imported.feedback);
+        incoming=E().setBookState(incoming,'ecdict-basic',existing,idsByBook['ecdict-basic']);
+      }
       pendingImport=incoming;
       const counts=BOOKS.map(b=>{const s=E().summary(incoming.books[b.id],dictionaries[b.id],new Date());return `${b.name}：已学 ${s.seen} 词，收藏 ${s.favorites} 词`;}).join('<br>');
-      openModal('确认恢复学习记录',`<p class="warning-note">${counts}<br>${legacy?'这是旧版四级备份，已有六级记录会保留。<br>':''}恢复会替换当前${legacy?'四级':'两套词书'}的学习记录。${state?'先导出当前记录，可以随时恢复。':'当前原记录无法解析，请确认选中了自己的完整备份。'}</p>${state?`<button class="outline" data-action="export">${icon('export')}先备份当前记录</button>`:''}<button class="primary" data-action="confirm-import">恢复这份备份</button><button class="text-button" data-action="close">取消，保留当前记录</button>`,'import');
+      openModal('确认恢复学习记录',`<p class="warning-note">${counts}<br>${legacy?'这是旧版四级备份，已有六级和基础词书记录会保留。<br>':format===2?'这是旧版两词书备份，已有基础词书记录会保留。<br>':''}恢复会替换当前${legacy?'四级':format===2?'四级与六级':'所有词书'}的学习记录。${state?'先导出当前记录，可以随时恢复。':'当前原记录无法解析，请确认选中了自己的完整备份。'}</p>${state?`<button class="outline" data-action="export">${icon('export')}先备份当前记录</button>`:''}<button class="primary" data-action="confirm-import">恢复这份备份</button><button class="text-button" data-action="close">取消，保留当前记录</button>`,'import');
     } catch(err) {pendingImport=null;notify('无法恢复：'+(err.message||'备份格式不正确')+'。当前记录保持完整。');}
   }
   function showFeedback() {
@@ -545,6 +593,10 @@
       return;
     }
     if(act==='extra'){extraNew+=10;refreshCurrent();render();return;}
+    if(act==='phonetics'){showPhonetics();return;}
+    if(act==='ipa-group'){if(phoneticsGroups[button.dataset.group])showPhonetics(button.dataset.group);return;}
+    if(act==='ipa-lesson'){showPhoneticLesson(button.dataset.id);return;}
+    if(act==='ipa-audio'){playPhoneticExample(button.dataset.word);return;}
     if(act==='detail'){showDetail(button.dataset.id);return;}
     if(act==='detail-audio'){const w=wordMap.get(button.dataset.id);if(w)speak(w.word);return;}
     if(act==='detail-favorite'){if(persist(E().toggleFavorite(state,button.dataset.id))){const id=button.dataset.id;render();showDetail(id);}return;}
@@ -572,7 +624,7 @@
     if(act==='version'){showVersion();return;}
     if(act==='check-update'){if(native()?.checkUpdate)native().checkUpdate();else notify('请在 Android 安装版中检查更新');return;}
     if(act==='resume-update'){if(native()?.resumeUpdate)native().resumeUpdate();else notify('请在系统安装页面完成必要操作');return;}
-    if(act==='credits'){openModal('词库与开源许可',`<p class="small">词库：ECDICT，skywind3000<br>四级词书 ${dictionaries[BOOKS[0].id].length.toLocaleString()} 词；六级词书 ${dictionaries[BOOKS[1].id].length.toLocaleString()} 词。保留中文释义、音标和词形。</p><p class="note">六级词书包含四级基础词与六级标签词，按词条去重。标签词集不代表官方完整考试大纲，也不保证每个词必考。音标来自词库。六种自然合成词音由 Kokoro 生成，未缓存时可回退手机离线英语语音。</p><p class="small">复习引擎：ts-fsrs（MIT）<br>词库许可：ECDICT（MIT）<br>自然合成发音：Kokoro（Apache-2.0 模型）<br>完整版权声明随应用打包保存。</p><button class="outline" data-action="license">查看版权声明</button>`,'credits');return;}
+    if(act==='credits'){openModal('词库与开源许可',`<p class="small">词库：ECDICT，skywind3000<br>四级词书 ${dictionaries[BOOKS[0].id].length.toLocaleString()} 词；六级词书 ${dictionaries[BOOKS[1].id].length.toLocaleString()} 词。基础常用词书 ${dictionaries['ecdict-basic'].length} 词。保留中文释义、音标和词形。</p><p class="note">六级词书包含四级基础词与六级标签词，按词条去重。标签词集不代表官方完整考试大纲，也不保证每个词必考。基础词书按日常入门用途选词，与考试词书可能重叠，不宣称官方大纲或CEFR等级。音标入门为原创中文说明，参考 British Council Sounds Right 与国际音标资料，采用常见英式教学记法与整词试听；词库音标来自 ECDICT。六种自然合成词音由 Kokoro 生成，未缓存时可回退手机离线英语语音。</p><p class="small">复习引擎：ts-fsrs（MIT）<br>词库许可：ECDICT（MIT）<br>自然合成发音：Kokoro（Apache-2.0 模型）<br>完整版权声明随应用打包保存。</p><button class="outline" data-action="license">查看版权声明</button>`,'credits');return;}
     if(act==='license'){fetch('licenses.txt').then(r=>{if(!r.ok)throw Error('read');return r.text();}).then(t=>openModal('版权声明',`<pre class="small">${esc(t)}</pre>`,'license')).catch(()=>notify('请查看源码包中的完整 LICENSE 文件'));return;}
     if(act==='reload'){location.reload();return;}
     if(act==='raw-export'){try{const text=native()?.readState?.()||localStorage.getItem(STORE);if(text)exportFile(text,'背单词-原记录恢复.json');else notify('没有可导出的记录');}catch(_){notify('无法读取原记录，请先保留应用');}return;}
@@ -614,7 +666,7 @@
         const response=await fetch(b.file);if(!response.ok)throw new Error(b.name+'离线词库未载入');
         const entries=await response.json();if(!Array.isArray(entries)||!entries.length)throw new Error(b.name+'离线词库为空');
         dictionaries[b.id]=entries;idsByBook[b.id]=entries.map(w=>w.id);wordMaps[b.id]=new Map(entries.map(w=>[w.id,w]));
-        searchIndexes[b.id]=new Map(entries.map(w=>[w.id,{word:w.word.toLowerCase(),meaning:w.meaning.toLowerCase()}]));
+        searchIndexes[b.id]=new Map(entries.map(w=>[w.id,{word:w.word.toLowerCase(),meaning:[w.commonMeaning||'',w.meaning].join('\n').toLowerCase()}]));
       }));
       dictionariesReady=true;
       libraryState=readSaved();activateSavedBook();
