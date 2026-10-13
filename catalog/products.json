@@ -47,16 +47,16 @@
       "summary": "手机上的钢琴键盘",
       "state": "available",
       "statusText": "可下载",
-      "version": "1.0.31",
-      "versionCode": 32,
+      "version": "1.0.37",
+      "versionCode": 38,
       "packageName": "com.pocketpiano.app",
       "compatibility": "Android 8.0 及以上",
-      "sizeBytes": 52543340,
-      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.31.apk",
-      "filename": "pocket-piano-1.0.31.apk",
-      "sha256": "304f133d0c326a0245928bb58390a5b22cda9001ee584db3df411386150271ad",
+      "sizeBytes": 57618889,
+      "downloadUrl": "./pocket-piano/releases/pocket-piano-1.0.37.apk",
+      "filename": "pocket-piano-1.0.37.apk",
+      "sha256": "071f00991b214735286538503aeafe727cebb0c011390a83f1d3d7005df899ba",
       "releaseNotes": [
-        "网页钢琴上线：电脑键盘多键和弦、曲库按需加载、MIDI导入、录制与简谱文本导出。掌机修复圆形按键触区误报，补上不支持WebGL2或模型准备失败时的可弹兼容显示；保留暂停、从头等待手动开始及实际页面视频导出。网页曲库列表下载量减少约66%，实际网络速度仍取决于访问线路。"
+        "新增主菜单，默认只显示歌曲、开始/暂停/继续和从头；进阶快捷键可在设置中开启。统一曲库、乐器、设置与工具页面，修复菜单返回与音色选择引起的操作问题，清晰显示窄音符顺序。包含游戏口琴、1437首新增CC0曲目及原签名完整性检查。启动与选曲均等待手动开始。支持符合原安装包身份的增量更新。"
       ],
       "feedback": {
         "endpoint": "https://scac-pudong-map-d5fxlisie96d7d00.service.tcloudbase.com/app-center-feedback-v1"
