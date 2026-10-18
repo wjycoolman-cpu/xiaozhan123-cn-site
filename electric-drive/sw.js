@@ -40,17 +40,16 @@ async function validated(response,file,storedObject=false){
 // This immutable public mirror contains the exact authenticated R10 payloads.
 // Local fixtures and other builds keep their original route.
 const R10_SOURCE='https://raw.githubusercontent.com/wjycoolman-cpu/xiaozhan123-cn-site/19e3f8fdc791214436ec5430e2314530b6d7098b/electric-drive/';
-let fastSourceAvailable=true;
 function downloadSources(url,file){
   const scope=new URL(SCOPE),prefix=new URL('builds/r10-20261018-01/',SCOPE).href;
-  if(!fastSourceAvailable||!file.wire||scope.origin!=='https://xiaozhan123.cn'||scope.pathname!=='/electric-drive/'||!url.startsWith(prefix))return [url];
+  if(!file.wire||scope.origin!=='https://xiaozhan123.cn'||scope.pathname!=='/electric-drive/'||!url.startsWith(prefix))return [url];
   return [R10_SOURCE+url.slice(SCOPE.length),url];
 }
 async function download(url,file,onBytes){
   const sources=downloadSources(url,file);let lastError;
   for(let i=0;i<sources.length;i++){
     try{return await downloadFrom(sources[i],file,onBytes);}
-    catch(error){lastError=error;if(i<sources.length-1)fastSourceAvailable=false;}
+    catch(error){lastError=error;}
   }
   throw lastError;
 }
