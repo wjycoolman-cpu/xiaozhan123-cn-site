@@ -1,3 +1,4 @@
+import {readTimeOfDayPreference,bindLightingSettings} from './lighting-settings.js';
 import { DriveCore } from './core.js';
 import { DriveAudio } from './audio.js';
 import { GAME_VERSION, GAME_BUILD } from './build-info.js';
@@ -6,7 +7,7 @@ import { updateRaceInterface, raceInterfaceSnapshot } from './race-interface.js'
 const $=id=>document.getElementById(id),show=(id,yes)=>$(id).classList.toggle('hidden',!yes);
 const audio=new DriveAudio();let core,world,lastFrame=performance.now(),accumulator=0,frames=[],eventCursor=0,uiClock=0,lastStatus='',runNumber=0,lastCoinCount=0;
 const query=new URLSearchParams(location.search),qa=query.has('qa');
-let diagnostics;
+let diagnostics,lightingSettings;
 const diagnosticsReady=import('./diagnostics.js').then(({createDiagnostics})=>{
   diagnostics=createDiagnostics({version:GAME_VERSION,build:GAME_BUILD,scopeURL:new URL('./',import.meta.url).href});
   $('diagnosticsControl').replaceChildren();diagnostics.mountControl($('diagnosticsControl'));
@@ -105,11 +106,12 @@ function frame(now){
 async function boot(){
   try{
     const [visuals,encounters]=await Promise.all([import('./world.js'),import('./encounters.js').catch(()=>({ENCOUNTERS:[]}))]);
-    core=new DriveCore(encounters.ENCOUNTERS||[],encounters.TUTORIAL||[],encounters.OPENING_COINS||[]);world=visuals.createWorld($('game'),{quality:'auto',reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches});
+    core=new DriveCore(encounters.ENCOUNTERS||[],encounters.TUTORIAL||[],encounters.OPENING_COINS||[]);world=visuals.createWorld($('game'),{timeOfDay:readTimeOfDayPreference(),quality:'auto',reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches});
     if(world.ready)await world.ready;
+    lightingSettings=bindLightingSettings({world});
     metrics.worldReady=true;bind();syncStatus();ui();show('loading',false);
     if(location.hostname==='127.0.0.1'){const heartbeat=()=>fetch('/__heartbeat',{cache:'no-store'}).catch(()=>{});heartbeat();setInterval(heartbeat,25000);}
-    if(qa){Object.defineProperty(window,'__DRIVE_QA__',{value:{snapshot:()=>({...core.snapshot(),audio:audio.getMetrics(),interface:raceInterfaceSnapshot(),metrics:{...metrics,frameSamples:[...frames],drawCalls:world.renderer?.info?.render?.calls,triangles:world.renderer?.info?.render?.triangles}}),version:GAME_VERSION},writable:false});}
+    if(qa){Object.defineProperty(window,'__DRIVE_QA__',{value:{snapshot:()=>({...core.snapshot(),audio:audio.getMetrics(),interface:raceInterfaceSnapshot(),lighting:lightingSettings.snapshot(),metrics:{...metrics,frameSamples:[...frames],drawCalls:world.renderer?.info?.render?.calls,triangles:world.renderer?.info?.render?.triangles}}),version:GAME_VERSION},writable:false});}
     lastFrame=performance.now();requestAnimationFrame(frame);
   }catch(error){metrics.errors.push(String(error.stack||error));$('fatalReason').textContent='资源未能完整载入。请重新载入；若仍失败，可通过反馈入口报告。';show('loading',false);show('fatal',true);console.error(error);void diagnosticsReady.then(async d=>{await d?.captureDisplayedFatal({displayed:true,code:'startup_failed',stage:'boot',error});void d?.retry();});}
 }

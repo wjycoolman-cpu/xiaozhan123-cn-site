@@ -11,7 +11,7 @@ const encoder = new TextEncoder(), decoder = new TextDecoder();
 const aad = encoder.encode(STATE_SCHEMA);
 const ownFiles = new Set([
   'game.js', 'core.js', 'world.js', 'track.js', 'encounters.js', 'audio.js',
-  'pbr-city.js', 'landmarks.js', 'hero-support.js', 'carrier-vehicle.js', 'combat-visuals.js', 'road-detail.js', 'pursuit-visuals.js', 'postfx.js', 'race-interface.js', 'N8AO.js', 'EffectComposer.js', 'UnrealBloomPass.js', 'OutputPass.js', 'ShaderPass.js', 'FXAAShader.js',
+  'pbr-city.js', 'landmarks.js', 'hero-support.js', 'carrier-vehicle.js', 'combat-visuals.js', 'road-detail.js', 'pursuit-visuals.js', 'postfx.js', 'race-interface.js', 'lighting-settings.js', 'N8AO.js', 'EffectComposer.js', 'UnrealBloomPass.js', 'OutputPass.js', 'ShaderPass.js', 'FXAAShader.js',
   'loader.js', 'web-update-client.js', 'three.module.js', 'three.core.js',
   'GLTFLoader.js', 'DRACOLoader.js', 'KTX2Loader.js', 'MeshoptDecoder.js',
 ]);

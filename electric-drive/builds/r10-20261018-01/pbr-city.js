@@ -5,19 +5,21 @@ import {createDuskSky} from './dusk-sky.js';
 import { trackPoint, installTrackWarp } from './track.js';
 import { AUTHORED_BUILDING_LOTS } from './landmarks.js';
 import {applyWindowLighting} from './urban-lighting.js';
+import {TIME_OF_DAY_PROFILES,normalizeTimeOfDay} from './time-of-day.js';
 
 // Poly Haven CC0: actual selected facade meshes, Asphalt 02 and Venice Sunset.
 // See assets/pbr-city/SOURCE_AND_LICENSE.md. Buildings are rigid instances;
 // their anchors follow the road, while each window stays architectural.
-export async function createPbrCity({ scene, renderer, roadMaterial, concreteMaterial, distanceUniform, ownG, ownM, ownT }) {
+export async function createPbrCity({ scene, renderer, roadMaterial, concreteMaterial, distanceUniform, ownG, ownM, ownT, roomLightUniform, timeOfDay='day' }) {
   const url = path => new URL('./assets/pbr-city/' + path, import.meta.url).href;
   const tl = new THREE.TextureLoader();
-  const [facade, diffuse, normal, roughness,hdr] = await Promise.all([
+  const [facade, diffuse, normal, roughness,hdr,dayHdr] = await Promise.all([
     new GLTFLoader().loadAsync(url('urban-facade-selected.glb')),
     tl.loadAsync(url('asphalt/asphalt_02_diff_1k.jpg')),
     tl.loadAsync(url('asphalt/asphalt_02_nor_gl_1k.jpg')),
     tl.loadAsync(url('asphalt/asphalt_02_rough_1k.jpg')),
     new HDRLoader().loadAsync(new URL('./assets/sky/qwantani_sunset_puresky_2k.hdr',import.meta.url).href),
+    new HDRLoader().loadAsync(new URL('./assets/sky/kloofendal_48d_partly_cloudy_puresky_2k.hdr',import.meta.url).href),
   ]);
   const roadTextures = [diffuse, normal, roughness];
   for (const t of roadTextures) {
@@ -28,7 +30,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   diffuse.colorSpace = THREE.SRGBColorSpace;
   roadMaterial.map = diffuse; roadMaterial.normalMap = normal;
   roadMaterial.roughnessMap = roughness; roadMaterial.color.set(0xb7b7b7);
-  roadMaterial.normalScale.set(.18, .18); roadMaterial.roughness = .76;
+  roadMaterial.normalScale.set(.40, .40); roadMaterial.roughness = .76;
   roadMaterial.metalness = 0; roadMaterial.needsUpdate = true;
   const priorRoadCompile=roadMaterial.onBeforeCompile,priorRoadKey=roadMaterial.customProgramCacheKey.bind(roadMaterial);
   roadMaterial.onBeforeCompile=function(shader,r){
@@ -47,14 +49,24 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   concreteMaterial.roughnessMap=concreteRoughness;concreteMaterial.normalScale.set(.14,.14);
   concreteMaterial.needsUpdate=true;
   const pmrem = new THREE.PMREMGenerator(renderer);
-  ownT(hdr);const atmosphere=createDuskSky({photo:hdr,ownG,ownM});
+  ownT(hdr);ownT(dayHdr);const atmosphere=createDuskSky({photo:hdr,dayPhoto:dayHdr,ownG,ownM});
   scene.background=null;scene.add(atmosphere);
   // Real HDR cloud structure and its dusk grade supply the PBR environment once.
   const environmentScene=new THREE.Scene();environmentScene.add(atmosphere.clone());
-  const environment=pmrem.fromScene(environmentScene,0,.1,760);
-  scene.environment=environment.texture;scene.environmentIntensity=1.4;
+  const environments=new Map();
+  for(const mode of ['day','dusk']){
+    atmosphere.material.uniforms.daylight.value=mode==='day'?1:0;
+    environments.set(mode,pmrem.fromScene(environmentScene,0,.1,760));
+  }
+  function setTimeOfDay(value){
+    const mode=normalizeTimeOfDay(value);
+    atmosphere.material.uniforms.daylight.value=mode==='day'?1:0;
+    scene.environment=environments.get(mode).texture;
+    scene.environmentIntensity=TIME_OF_DAY_PROFILES[mode].environmentIntensity;
+  }
+  setTimeOfDay(timeOfDay);
   scene.environmentRotation.set(0,0,0);
-  scene.userData.duskAtmosphere={source:'Poly Haven Qwantani Sunset Pure Sky 2K / CC0; photographic clouds with linear-light dusk grade',sunDirection:[-62,3.2,-90],photoRotation:3.35,cloudLogRange:atmosphere.material.userData.cloudLogRange,environmentCaptures:1,perFrameEnvironmentCaptures:0};
+  scene.userData.duskAtmosphere={source:'Poly Haven Qwantani Sunset Pure Sky 2K / CC0; photographic clouds with readable linear-light dusk grade',sunDirection:[-62,28,-90],photoRotation:3.35,cloudLogRange:atmosphere.material.userData.cloudLogRange,environmentCaptures:2,perFrameEnvironmentCaptures:0,daySource:'Poly Haven Kloofendal 48d Partly Cloudy Pure Sky 2K / CC0',dayPhotoRotation:2.77};
   pmrem.dispose();
 
   const parts = new Map(), buckets = new Map();
@@ -75,7 +87,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
         material.transmission = 0; material.transparent = false; material.opacity = 1;
         material.depthWrite = true; material.roughness = .24; material.metalness = .32;
         material.color.set(0x879fa5);
-        applyWindowLighting(material);
+        applyWindowLighting(material,roomLightUniform);
       }
       for (const t of Object.values(material)) if (t?.isTexture) {
         ownT(t); t.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
@@ -316,5 +328,5 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   }
   scene.userData.pbrCity = { buildings:specs.filter(b=>!b.street).length,streetBlocks:specs.filter(b=>b.street).length,sourceTriangles:3245,batches:batches.length,cells:[...buckets.values()].reduce((n,b)=>n+b.instances.length,0),roadTexelSizeMetres:3,sky:'Photographic Qwantani Sunset 2K / graded dusk / CC0',rigidBuildings:true,routePeriodMetres:1240,flatCityGround:true,detailVisibilityMetres:[-510,65],streetVisibilityMetres:[-390,65],regions:[{from:0,to:190,form:'close street canyon and authored corners'},{from:190,to:400,form:'setback Bistro bend'},{from:400,to:600,form:'left low roofs and bridge / right wall'},{from:600,to:860,form:'left authored streets / right lower roofs and skyline'}],crossing:{atMetres:460,undersideHeight:6.55,deckThickness:1.15}};
   update(0);
-  return { update, updateSky:camera=>{atmosphere.position.copy(camera.position);atmosphere.updateMatrixWorld();}, dispose: () => environment.dispose() };
+  return { update, setTimeOfDay, environmentCount:environments.size, updateSky:camera=>{atmosphere.position.copy(camera.position);atmosphere.updateMatrixWorld();}, dispose: () => {for(const target of environments.values())target.dispose();} };
 }

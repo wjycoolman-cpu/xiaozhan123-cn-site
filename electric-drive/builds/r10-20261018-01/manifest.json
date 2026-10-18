@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "app": "electric-drive",
-  "build": "r9-20261018-01",
-  "version": "0.6.0",
+  "build": "r10-20261018-01",
+  "version": "0.7.0",
   "entry": "index.html",
   "files": [
     {
@@ -611,6 +611,16 @@
       ]
     },
     {
+      "path": "assets/R10-DAYLIGHT-SOURCES.md",
+      "bytes": 1663,
+      "sha256": "b702a3c60c612adfa70d2445ec9bd35a6cfe05b55f1de298cd0cb295d4623acd",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
       "path": "assets/R9-SCENE-SOURCES.md",
       "bytes": 3192,
       "sha256": "c2e3a6c4109158b152037944378f52806daaba1815757124af0a8747f1b6a7fb",
@@ -627,6 +637,26 @@
       "accept": [
         "text/plain"
       ]
+    },
+    {
+      "path": "assets/sky/kloofendal_48d_partly_cloudy_puresky_2k.hdr",
+      "bytes": 5451493,
+      "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198",
+      "accept": [
+        "image/vnd.radiance",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/sky/kloofendal_48d_partly_cloudy_puresky_2k.hdr.edz",
+        "bytes": 3624660,
+        "sha256": "55751619fa52af5ea23cdc67824490553097ed572254625e4f445976c706c753",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
     },
     {
       "path": "assets/sky/qwantani_sunset_puresky_2k.hdr",
@@ -680,8 +710,8 @@
     },
     {
       "path": "build-info.js",
-      "bytes": 79,
-      "sha256": "c6fb7c6c1aecc9ad659150beaf54628bfce72d3011059b22136550738235121a",
+      "bytes": 80,
+      "sha256": "fea991008a52adc50c73d4cd587b9e670d2a2f03c04262d4722dcb58bf30cac5",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -720,8 +750,8 @@
     },
     {
       "path": "diagnostics.js",
-      "bytes": 26496,
-      "sha256": "4423eaf77e5b7051ad207159254d2a6397f838aa2ad6c736b4eb7ec04ec818e3",
+      "bytes": 26520,
+      "sha256": "727963dc2fb4ca287a24f2d6751af40c810b6bfc758db09413ecde631ec57966",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -730,8 +760,8 @@
     },
     {
       "path": "dusk-sky.js",
-      "bytes": 3073,
-      "sha256": "997fe93d4a27bcec31236494e7be536731a9748c0887836b94adcdfecfd89aa1",
+      "bytes": 3641,
+      "sha256": "87362ed630aee9167f74e69ef6642dc85a0f8562e47eca3a3b9a9e780711b085",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -750,8 +780,8 @@
     },
     {
       "path": "game.js",
-      "bytes": 15621,
-      "sha256": "d8d8adcc0ab8d510b965aaa785732b7b712663774c780fb980347ca3e1634896",
+      "bytes": 15850,
+      "sha256": "cc360e0984f0f445615556bc7a86cd220880c002af1c1cf7b19ce22eb2c150eb",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -781,16 +811,26 @@
     },
     {
       "path": "index.html",
-      "bytes": 11647,
-      "sha256": "62751362ee4f941621a7793b24a19501037cd66fdc3b41c5c331701bcd535144",
+      "bytes": 12434,
+      "sha256": "7c23858670df6f1702bc48a0d1c18a58259ae313d9900374ac3a12c0a6e67c6d",
       "accept": [
         "text/html"
       ]
     },
     {
       "path": "landmarks.js",
-      "bytes": 8356,
-      "sha256": "3d5fa4cb7a159235028fea5f8ac6dff0e03327deac3dc0e86a2810e8c300345c",
+      "bytes": 8390,
+      "sha256": "d9adeb7a021aec0cf438ecfd0e13810bd841a5d047431c75490a74fd12cf1df9",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "lighting-settings.js",
+      "bytes": 1937,
+      "sha256": "b303e86eb66d4f97be7565375eea0090b1547e2922fa1d7e42c9e93689ae1268",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -799,8 +839,8 @@
     },
     {
       "path": "pbr-city.js",
-      "bytes": 22206,
-      "sha256": "fc69f609c396dd3b6865e02ae676bd184050b914bd53ef29861d42cdb6b41eb6",
+      "bytes": 23070,
+      "sha256": "1ff7134f6ece0568e96746de9cdc2f4cf3ddb8476c0560184fe49840aebb810f",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -849,15 +889,15 @@
     },
     {
       "path": "style.css",
-      "bytes": 200912,
-      "sha256": "c9692231fff68cdfe61f28f7adb1daa65f2b56d658e96c399002cf10bd5ceb01",
+      "bytes": 204148,
+      "sha256": "4899b6159f44ac42a1022c6c9dfd00f09ee8f517ecd7daf14c97a89e308ea652",
       "accept": [
         "text/css"
       ],
       "wire": {
         "path": "style.css.edz",
-        "bytes": 138140,
-        "sha256": "140f150396507c5460594b73064fa5b6dda00922ee3f10b647eaddbf5c0b0efd",
+        "bytes": 139741,
+        "sha256": "e580b12026f25858d5a388e7f7590bf7e0a0d218a07a07e9792c63a7269b79a4",
         "encoding": "gzip",
         "accept": [
           "application/octet-stream",
@@ -865,6 +905,16 @@
           "application/x-gzip"
         ]
       }
+    },
+    {
+      "path": "time-of-day.js",
+      "bytes": 1020,
+      "sha256": "8521904d37ef436665eb1d7ad6bca7633292baee6f30b4d73fc08cb623a40544",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
     },
     {
       "path": "track.js",
@@ -878,8 +928,8 @@
     },
     {
       "path": "urban-lighting.js",
-      "bytes": 5871,
-      "sha256": "08cb8a0d82d0a57bb8dd99916fff0a5b5f7b7c9c81bafb3261373f502b6d9715",
+      "bytes": 6466,
+      "sha256": "8a141c9241ed3a21351b87f499af505d82a5e675304751ca6527362ea3d2fc19",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -1146,8 +1196,8 @@
     },
     {
       "path": "world.js",
-      "bytes": 78211,
-      "sha256": "f5db117add12b0768cf3590a786bc1e76ad8d092104adc7b00899fbbc1d14e18",
+      "bytes": 80712,
+      "sha256": "94e7cd0dc5f6f74e60b6259776789f26945b412a6e828506bec0857fb7534ca7",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -1155,8 +1205,8 @@
       ],
       "wire": {
         "path": "world.js.edz",
-        "bytes": 24216,
-        "sha256": "1bda9c5dae1ccc4562938f3c86bf9db6fdf4eacd69093e38be177932ef81370d",
+        "bytes": 25031,
+        "sha256": "2c2b58097d93de94b6a87124b621195f8e50686c9d4941f973747ed4b17aab8b",
         "encoding": "gzip",
         "accept": [
           "application/octet-stream",

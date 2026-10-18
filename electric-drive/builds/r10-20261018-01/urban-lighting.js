@@ -1,15 +1,17 @@
 import * as THREE from './vendor/three.module.js';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {trackPoint,installTrackWarp} from './track.js';
+import {TIME_OF_DAY_PROFILES,normalizeTimeOfDay} from './time-of-day.js';
 
 // Applied only to known window/interior materials; source window geometry,
 // textures, silhouettes and world depth remain intact.
-export function applyWindowLighting(material){
+export function applyWindowLighting(material,roomLightUniform={value:1}){
  if(material.userData.r9WindowLighting)return;
  material.userData.r9WindowLighting=true;
  const before=material.onBeforeCompile,key=material.customProgramCacheKey.bind(material);
  material.onBeforeCompile=function(shader,renderer){
   before.call(this,shader,renderer);
+  shader.uniforms.cityRoomLight=roomLightUniform;
   shader.vertexShader='varying vec3 vLitWindowLocal;\nvarying float vLitRoomSeed;\n#ifdef USE_INSTANCING\nattribute float roomSeed;\n#endif\n'+shader.vertexShader;
   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
    vLitWindowLocal=position;
@@ -19,12 +21,12 @@ export function applyWindowLighting(material){
     vLitRoomSeed=0.0;
    #endif
    `);
-  shader.fragmentShader='varying vec3 vLitWindowLocal;\nvarying float vLitRoomSeed;\n'+shader.fragmentShader;
+  shader.fragmentShader='uniform float cityRoomLight;\nvarying vec3 vLitWindowLocal;\nvarying float vLitRoomSeed;\n'+shader.fragmentShader;
   shader.fragmentShader=shader.fragmentShader.replace('#include <emissivemap_fragment>',`#include <emissivemap_fragment>
    vec3 roomCell=floor(vLitWindowLocal/vec3(3.0,3.0,3.0));
    float roomChoice=fract(sin(dot(roomCell,vec3(12.9898,78.233,41.117))+vLitRoomSeed*13.117)*43758.5453);
    float occupiedRoom=step(.88,roomChoice);
-   totalEmissiveRadiance+=occupiedRoom*vec3(.28,.13,.055);`);
+   totalEmissiveRadiance+=occupiedRoom*vec3(.28,.13,.055)*cityRoomLight;`);
  };
  material.customProgramCacheKey=()=>key()+'|r9-stable-selective-window-light-3';
  material.needsUpdate=true;
@@ -83,6 +85,13 @@ export async function createUrbanLighting({scene,ownG,ownM,ownT,distanceUniform}
   scene.userData.urbanLighting.warpDistance=distance;
  }
  scene.userData.urbanLighting={source:'Amazon Lumberyard Bistro / NVIDIA ORCA',license:'CC-BY-4.0',sourceLamp:'Bistro_Research_Exterior_Paris_StreetLight_01a_6257',instances:count,materialBatches:batches.length,sourceLampBounds:allBounds.getSize(new THREE.Vector3()).toArray(),sourceBulbCenter:head.toArray(),dynamicLightPools:2,dynamicShadowLights:0,guardrailStrips:28,geometryTrianglesPerLamp:10790};
- update(0);return{update};
+ function setTimeOfDay(mode){
+  const profile=TIME_OF_DAY_PROFILES[normalizeTimeOfDay(mode)];
+  for(const mesh of batches)if(bulbNames.has(mesh.material.name))mesh.material.emissiveIntensity=profile.streetLights;
+  warmStrip.emissiveIntensity=1.4*profile.stripLights;
+  for(const light of pools)light.intensity=110*profile.streetLights;
+  scene.userData.urbanLighting.timeOfDay=mode;
+ }
+ update(0);return{update,setTimeOfDay};
 }
 

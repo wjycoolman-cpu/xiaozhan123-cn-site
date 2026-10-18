@@ -41,7 +41,7 @@ export const AUTHORED_BUILDING_LOTS=[
 
 // One authored ORCA Bistro landmark, CC BY 4.0. No source texture downloads
 // occur at runtime; attribution and conversion notes live in assets/bistro/.
-export async function createLandmarks({scene,ownG,ownM,ownT}){
+export async function createLandmarks({scene,ownG,ownM,ownT,roomLightUniform}){
  const load=name=>new GLTFLoader().loadAsync(new URL('./assets/bistro/'+name,import.meta.url).href);
  const [main,brick,props,kit]=await Promise.all([load('bistro-building-512.glb'),load('bistro-brick-building-512.glb'),load('bistro-props-light-512.glb'),load('bistro-city-block-kit-512.glb')]);
  const emerald={};await Promise.all(['tower','coffee','toy','streetfront'].map(async name=>{emerald[name]=await new GLTFLoader().loadAsync(new URL('./assets/emerald/emerald-'+name+'.glb',import.meta.url).href);}));
@@ -52,7 +52,7 @@ export async function createLandmarks({scene,ownG,ownM,ownT}){
   if(!o.isMesh)return;meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;ownG(o.geometry);
   for(const m of(Array.isArray(o.material)?o.material:[o.material])){
    ownM(m);m.userData.trackWarpExempt=true;m.envMapIntensity=.95;
-   if(['MASTER_Glass_Exterior','MASTER_Glass_Dirty','MASTER_Glass_Dirty_MASKED','MASTER_Frosted_Glass','MASTER_Room_Interior'].includes(m.name))applyWindowLighting(m);
+   if(['MASTER_Glass_Exterior','MASTER_Glass_Dirty','MASTER_Glass_Dirty_MASKED','MASTER_Frosted_Glass','MASTER_Room_Interior'].includes(m.name))applyWindowLighting(m,roomLightUniform);
    for(const t of Object.values(m))if(t?.isTexture){ownT(t);t.anisotropy=4;}
   }
   o.castShadow=true;o.receiveShadow=true;
