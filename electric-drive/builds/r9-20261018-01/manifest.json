@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "app": "electric-drive",
-  "build": "r8-20261018-01",
-  "version": "0.5.1",
+  "build": "r9-20261018-01",
+  "version": "0.6.0",
   "entry": "index.html",
   "files": [
     {
@@ -102,6 +102,26 @@
         "path": "assets/bistro/bistro-props-light-512.glb.edz",
         "bytes": 2354463,
         "sha256": "58dd2a405481afb13a533f5fea2ccc73e74caba87447461a9a38900518fe9b06",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/bistro/bistro-street-lamp-512.glb",
+      "bytes": 1104432,
+      "sha256": "c821914e3cde9c33fcdc2dbee124ebcdebd3e9f5aa2669ccc8755fbda0654079",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/bistro/bistro-street-lamp-512.glb.edz",
+        "bytes": 870836,
+        "sha256": "c8146fdd2ef541921edccbc629105968f15b25ddec4e7a9262d51e29fe06fb30",
         "encoding": "gzip",
         "accept": [
           "application/octet-stream",
@@ -591,6 +611,16 @@
       ]
     },
     {
+      "path": "assets/R9-SCENE-SOURCES.md",
+      "bytes": 3192,
+      "sha256": "c2e3a6c4109158b152037944378f52806daaba1815757124af0a8747f1b6a7fb",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
       "path": "assets/SFX-SOURCES.txt",
       "bytes": 866,
       "sha256": "7299a454af7444f3348173913572008632028a35bdd9e0d8c86052ae805ae8bb",
@@ -651,7 +681,7 @@
     {
       "path": "build-info.js",
       "bytes": 79,
-      "sha256": "4cf90494c37be9e4900aca634cfe18821a0656dfdb17064d04cd420fc063d3f3",
+      "sha256": "c6fb7c6c1aecc9ad659150beaf54628bfce72d3011059b22136550738235121a",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -690,8 +720,18 @@
     },
     {
       "path": "diagnostics.js",
-      "bytes": 26475,
-      "sha256": "ac5b9c8c3e07fdccb4b79fcfa8e4b254b521a9aac9ce12f98967517474c64e6c",
+      "bytes": 26496,
+      "sha256": "4423eaf77e5b7051ad207159254d2a6397f838aa2ad6c736b4eb7ec04ec818e3",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "dusk-sky.js",
+      "bytes": 3073,
+      "sha256": "997fe93d4a27bcec31236494e7be536731a9748c0887836b94adcdfecfd89aa1",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -710,8 +750,8 @@
     },
     {
       "path": "game.js",
-      "bytes": 15327,
-      "sha256": "3082c8700f94f2cacfa63c17719e0f09cf60cedaccb0f9dc1dd1d4953eea1979",
+      "bytes": 15621,
+      "sha256": "d8d8adcc0ab8d510b965aaa785732b7b712663774c780fb980347ca3e1634896",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -741,16 +781,16 @@
     },
     {
       "path": "index.html",
-      "bytes": 9622,
-      "sha256": "6bacade86997f54296acb8cc75dab713d5754a1225129c4b237d363a14412eba",
+      "bytes": 11647,
+      "sha256": "62751362ee4f941621a7793b24a19501037cd66fdc3b41c5c331701bcd535144",
       "accept": [
         "text/html"
       ]
     },
     {
       "path": "landmarks.js",
-      "bytes": 8095,
-      "sha256": "50d2d4e3f906eb8a0fa52f3c453a1506fb47608c4d3e051a258751bf66f72d14",
+      "bytes": 8356,
+      "sha256": "3d5fa4cb7a159235028fea5f8ac6dff0e03327deac3dc0e86a2810e8c300345c",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -759,8 +799,8 @@
     },
     {
       "path": "pbr-city.js",
-      "bytes": 20863,
-      "sha256": "15892c66d4585931115f5f250002157aafa1f37d59263891993e513f8333ec5c",
+      "bytes": 22206,
+      "sha256": "fc69f609c396dd3b6865e02ae676bd184050b914bd53ef29861d42cdb6b41eb6",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -788,6 +828,16 @@
       ]
     },
     {
+      "path": "race-interface.js",
+      "bytes": 2108,
+      "sha256": "84d99f4467175b4bf810be92a5d037a4168080e7d11a3fbbd8c3ab7bc8df9e31",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
       "path": "road-detail.js",
       "bytes": 4040,
       "sha256": "988604a7ce6860464f8552b2f913434a45a2fb587094eaa0a1c4b9f3c1d38c53",
@@ -799,15 +849,15 @@
     },
     {
       "path": "style.css",
-      "bytes": 197183,
-      "sha256": "aaf7fdb26cdf55c3f7570664a1dd4566d648a4c82ac49e4d8df72f85307b7766",
+      "bytes": 200912,
+      "sha256": "c9692231fff68cdfe61f28f7adb1daa65f2b56d658e96c399002cf10bd5ceb01",
       "accept": [
         "text/css"
       ],
       "wire": {
         "path": "style.css.edz",
-        "bytes": 137135,
-        "sha256": "b290979ee631b829b11cc93d2ec2bfe9395068aa508df3d7f623ae3976accfcf",
+        "bytes": 138140,
+        "sha256": "140f150396507c5460594b73064fa5b6dda00922ee3f10b647eaddbf5c0b0efd",
         "encoding": "gzip",
         "accept": [
           "application/octet-stream",
@@ -820,6 +870,16 @@
       "path": "track.js",
       "bytes": 4722,
       "sha256": "a431e6f73d875c8cf1a443c35106fb3eb365c8716544b64292194487b20ae3fd",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "urban-lighting.js",
+      "bytes": 5871,
+      "sha256": "08cb8a0d82d0a57bb8dd99916fff0a5b5f7b7c9c81bafb3261373f502b6d9715",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -1086,8 +1146,8 @@
     },
     {
       "path": "world.js",
-      "bytes": 77611,
-      "sha256": "75c5f76cfc7008a23b0a36d7f1a801b24f0d44fc4211cad3dff27c8548b6bce7",
+      "bytes": 78211,
+      "sha256": "f5db117add12b0768cf3590a786bc1e76ad8d092104adc7b00899fbbc1d14e18",
       "accept": [
         "text/javascript",
         "application/javascript",
@@ -1095,8 +1155,8 @@
       ],
       "wire": {
         "path": "world.js.edz",
-        "bytes": 24052,
-        "sha256": "03f7782cd0c9a49212fe0f6d18a36ba8be0ff164dd0f789f618f1ee0aa674b46",
+        "bytes": 24216,
+        "sha256": "1bda9c5dae1ccc4562938f3c86bf9db6fdf4eacd69093e38be177932ef81370d",
         "encoding": "gzip",
         "accept": [
           "application/octet-stream",

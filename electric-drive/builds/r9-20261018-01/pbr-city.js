@@ -1,8 +1,10 @@
 import * as THREE from './vendor/three.module.js';
 import { GLTFLoader } from './vendor/GLTFLoader.js';
 import { HDRLoader } from './vendor/HDRLoader.js';
+import {createDuskSky} from './dusk-sky.js';
 import { trackPoint, installTrackWarp } from './track.js';
 import { AUTHORED_BUILDING_LOTS } from './landmarks.js';
+import {applyWindowLighting} from './urban-lighting.js';
 
 // Poly Haven CC0: actual selected facade meshes, Asphalt 02 and Venice Sunset.
 // See assets/pbr-city/SOURCE_AND_LICENSE.md. Buildings are rigid instances;
@@ -10,7 +12,7 @@ import { AUTHORED_BUILDING_LOTS } from './landmarks.js';
 export async function createPbrCity({ scene, renderer, roadMaterial, concreteMaterial, distanceUniform, ownG, ownM, ownT }) {
   const url = path => new URL('./assets/pbr-city/' + path, import.meta.url).href;
   const tl = new THREE.TextureLoader();
-  const [facade, diffuse, normal, roughness, hdr] = await Promise.all([
+  const [facade, diffuse, normal, roughness,hdr] = await Promise.all([
     new GLTFLoader().loadAsync(url('urban-facade-selected.glb')),
     tl.loadAsync(url('asphalt/asphalt_02_diff_1k.jpg')),
     tl.loadAsync(url('asphalt/asphalt_02_nor_gl_1k.jpg')),
@@ -26,7 +28,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   diffuse.colorSpace = THREE.SRGBColorSpace;
   roadMaterial.map = diffuse; roadMaterial.normalMap = normal;
   roadMaterial.roughnessMap = roughness; roadMaterial.color.set(0xb7b7b7);
-  roadMaterial.normalScale.set(.23, .23); roadMaterial.roughness = .94;
+  roadMaterial.normalScale.set(.18, .18); roadMaterial.roughness = .76;
   roadMaterial.metalness = 0; roadMaterial.needsUpdate = true;
   const priorRoadCompile=roadMaterial.onBeforeCompile,priorRoadKey=roadMaterial.customProgramCacheKey.bind(roadMaterial);
   roadMaterial.onBeforeCompile=function(shader,r){
@@ -45,14 +47,14 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   concreteMaterial.roughnessMap=concreteRoughness;concreteMaterial.normalScale.set(.14,.14);
   concreteMaterial.needsUpdate=true;
   const pmrem = new THREE.PMREMGenerator(renderer);
-  pmrem.compileEquirectangularShader();
-  const environment = pmrem.fromEquirectangular(hdr);
-  ownT(hdr);hdr.mapping=THREE.EquirectangularReflectionMapping;
-  scene.background=hdr;scene.backgroundIntensity=.72;scene.backgroundBlurriness=0;
-  // Source sun is at azimuth +35.7deg; place its glow just left of the driving view.
-  scene.backgroundRotation.y=2.80;
-  scene.environment=environment.texture;scene.environmentIntensity=.56;
-  scene.environmentRotation.y=scene.backgroundRotation.y;
+  ownT(hdr);const atmosphere=createDuskSky({photo:hdr,ownG,ownM});
+  scene.background=null;scene.add(atmosphere);
+  // Real HDR cloud structure and its dusk grade supply the PBR environment once.
+  const environmentScene=new THREE.Scene();environmentScene.add(atmosphere.clone());
+  const environment=pmrem.fromScene(environmentScene,0,.1,760);
+  scene.environment=environment.texture;scene.environmentIntensity=1.4;
+  scene.environmentRotation.set(0,0,0);
+  scene.userData.duskAtmosphere={source:'Poly Haven Qwantani Sunset Pure Sky 2K / CC0; photographic clouds with linear-light dusk grade',sunDirection:[-62,3.2,-90],photoRotation:3.35,cloudLogRange:atmosphere.material.userData.cloudLogRange,environmentCaptures:1,perFrameEnvironmentCaptures:0};
   pmrem.dispose();
 
   const parts = new Map(), buckets = new Map();
@@ -73,6 +75,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
         material.transmission = 0; material.transparent = false; material.opacity = 1;
         material.depthWrite = true; material.roughness = .24; material.metalness = .32;
         material.color.set(0x879fa5);
+        applyWindowLighting(material);
       }
       for (const t of Object.values(material)) if (t?.isTexture) {
         ownT(t); t.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
@@ -104,6 +107,13 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
     const open=s>875&&s<1040;
     return open?{setback:38,floors:5}:{setback:28,floors:7};
   }
+  // Actual Poly Haven window/cornice geometry forms a layered middle-distance
+  // skyline. Lower floors stay modeled wherever gaps expose the whole building.
+  for(const[side,setback,metres,columns,floors,depthCells]of[
+    [-1,62,105,6,25,6],[1,72,180,7,30,6],[-1,74,365,5,29,5],
+    [1,65,510,6,24,6],[-1,68,710,7,27,5],[1,78,850,5,33,6],
+    [-1,80,1030,6,24,5],[1,66,1150,7,28,6],
+  ])specs.push({side,x:side*setback,z:-metres,columns,floors,depthCells,yaw:side<0?Math.PI/2:-Math.PI/2,tint:new THREE.Color(side<0?0xc0cbd6:0xd5cec0)});
   for(let i=0;i<20;i++)for(const side of[-1,1]){
     const worldPosition=31+i*62,profile=streetProfile(worldPosition,side);
     // Fit the one Bistro landmark into a real opening, including solid body
@@ -139,7 +149,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
     const key = part.geometry.uuid + ':' + part.material.uuid;
     if (!buckets.has(key)) buckets.set(key, { ...part, instances: [] });
     cell.position.set(x, y, z); cell.rotation.set(0, yaw, 0); cell.scale.set(...scale); cell.updateMatrix();
-    buckets.get(key).instances.push({ building, local: cell.matrix.clone() });
+    buckets.get(key).instances.push({ building, local: cell.matrix.clone(),seed:buckets.get(key).instances.length+building*131 });
   }
   const bodyMat = ownM(parts.get('wall_window_centered_large_01')[0].material.clone());
   bodyMat.userData.trackWarpExempt = true; bodyMat.normalScale?.set(.35, .35);
@@ -205,7 +215,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
       {columns:b.depthCells,yaw:-end*Math.PI/2,x:-end*width/2,z:-depth/2},
       ...(!b.street?[{columns:b.columns,yaw:Math.PI,x:0,z:-depth}]:[]),
     ];
-    const firstVisibleRow=b.street?3:Math.min(b.floors-1,streetProfile((-b.z+1240)%1240).floors-1);
+    const firstVisibleRow=b.street?3:0;
     for (const face of faces) {
       function place(name, col, row) {
         const u = (col - (face.columns - 1) / 2) * 3;
@@ -225,6 +235,7 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
   const buildingMatrices = specs.map(() => new THREE.Matrix4()), active=specs.map(()=>false),anchor = new THREE.Object3D(), matrix = new THREE.Matrix4();
   const batches = [];
   for (const bucket of buckets.values()) {
+    bucket.geometry.setAttribute('roomSeed',new THREE.InstancedBufferAttribute(new Float32Array(bucket.instances.length),1));
     const batch = new THREE.InstancedMesh(bucket.geometry, bucket.material, bucket.instances.length);
     batch.name = 'pbr-city-' + bucket.material.name;
     batch.castShadow=true;batch.receiveShadow=true;
@@ -295,14 +306,15 @@ export async function createPbrCity({ scene, renderer, roadMaterial, concreteMat
       for (let i = 0; i < instances.length; i++) {
         const item=instances[i];if(!active[item.building])continue;
         matrix.multiplyMatrices(buildingMatrices[item.building],item.local);batch.setMatrixAt(visibleCount,matrix);
-        batch.setColorAt(visibleCount,specs[item.building].tint);visibleCount++;
+        batch.setColorAt(visibleCount,specs[item.building].tint);batch.geometry.attributes.roomSeed.setX(visibleCount,item.seed);visibleCount++;
       }
       batch.count=visibleCount;batch.visible=visibleCount>0;
       batch.instanceMatrix.needsUpdate = true;
       batch.instanceColor.needsUpdate=true;
+      batch.geometry.attributes.roomSeed.needsUpdate=true;
     }
   }
-  scene.userData.pbrCity = { buildings:16,streetBlocks:specs.filter(b=>b.street).length,sourceTriangles:3245,batches:batches.length,cells:[...buckets.values()].reduce((n,b)=>n+b.instances.length,0),roadTexelSizeMetres:3,hdr:'Qwantani Sunset Pure Sky 2K',rigidBuildings:true,routePeriodMetres:1240,flatCityGround:true,detailVisibilityMetres:[-510,65],streetVisibilityMetres:[-390,65],regions:[{from:0,to:190,form:'close street canyon and authored corners'},{from:190,to:400,form:'setback Bistro bend'},{from:400,to:600,form:'left low roofs and bridge / right wall'},{from:600,to:860,form:'left authored streets / right lower roofs and skyline'}],crossing:{atMetres:460,undersideHeight:6.55,deckThickness:1.15}};
+  scene.userData.pbrCity = { buildings:specs.filter(b=>!b.street).length,streetBlocks:specs.filter(b=>b.street).length,sourceTriangles:3245,batches:batches.length,cells:[...buckets.values()].reduce((n,b)=>n+b.instances.length,0),roadTexelSizeMetres:3,sky:'Photographic Qwantani Sunset 2K / graded dusk / CC0',rigidBuildings:true,routePeriodMetres:1240,flatCityGround:true,detailVisibilityMetres:[-510,65],streetVisibilityMetres:[-390,65],regions:[{from:0,to:190,form:'close street canyon and authored corners'},{from:190,to:400,form:'setback Bistro bend'},{from:400,to:600,form:'left low roofs and bridge / right wall'},{from:600,to:860,form:'left authored streets / right lower roofs and skyline'}],crossing:{atMetres:460,undersideHeight:6.55,deckThickness:1.15}};
   update(0);
-  return { update, dispose: () => environment.dispose() };
+  return { update, updateSky:camera=>{atmosphere.position.copy(camera.position);atmosphere.updateMatrixWorld();}, dispose: () => environment.dispose() };
 }

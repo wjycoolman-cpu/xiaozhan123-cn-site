@@ -10,7 +10,7 @@
   function progress(p){
     diag.progress=p;$('progress').hidden=false;$('phase').textContent=playing?'正在准备新版':p.repair?'正在恢复已保存的公路':'首次准备公路';
     $('progress').value=p.totalBytes?Math.min(100,p.completedBytes/p.totalBytes*100):0;
-    $('detail').textContent=`本次下载 ${(p.networkBytes/1048576).toFixed(1)} MB · 已保存 ${(p.completedBytes/1048576).toFixed(1)} / ${(p.totalBytes/1048576).toFixed(1)} MB · ${p.completedFiles}/${p.totalFiles}`;
+    $('detail').textContent=`已准备 ${Math.floor(p.totalBytes?p.completedBytes/p.totalBytes*100:0)}% · 本次下载 ${(p.networkBytes/1000000).toFixed(1)} MB`;
     if(playing){updateText=`新版准备中 ${Math.floor(p.totalBytes?p.completedBytes/p.totalBytes*100:0)}%`;updateUi();}
   }
   async function release(){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);try{const r=await fetch(new URL('release.json',base),{cache:'no-store',signal:controller.signal});if(!r.ok||!(r.headers.get('content-type')||'').toLowerCase().includes('json'))throw Error('版本信息暂时不可用');const d=await r.json();if(d?.schema!==1||d.app!=='electric-drive'||typeof d.build!=='string'||!/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/.test(d.build)||d.build.includes('..')||typeof d.version!=='string'||d.version.length>100||d.manifest?.url!==`builds/${d.build}/manifest.json`||!Number.isSafeInteger(d.manifest.bytes)||d.manifest.bytes<=0||!/^[a-f0-9]{64}$/.test(d.manifest.sha256))throw Error('版本信息不匹配');return d;}finally{clearTimeout(timer);}}

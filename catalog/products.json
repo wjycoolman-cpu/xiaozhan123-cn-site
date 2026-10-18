@@ -338,16 +338,16 @@
       "summary": "穿越城市高架，收金币、喷气加速、腾空翻滚，甩开追车与故障车辆。",
       "state": "published",
       "statusText": "可直接试玩",
-      "version": "0.5.1",
+      "version": "0.6.0",
       "compatibility": "支持 WebGL 2 的浏览器；键盘或触屏操作",
-      "sizeBytes": 155966402,
+      "sizeBytes": 156856595,
       "playUrl": "./electric-drive/",
       "downloadUrl": "",
       "releaseNotes": [
-        "警车追逐开场可跳过；收金币、空中动作和擦车撞毁有连续小目标。",
-        "主动喷气加速、滑翔与空翻；避开右侧爆炸电池、后方追车和逐渐停下的故障车。",
-        "采用精细车辆与城市素材，加入夕阳反射、环境遮蔽和局部高光辉光。",
-        "首次下载约156 MB（149 MiB），完成后可离线重开；免费非商业试玩。"
+        "全新驾驶界面：开放式速度仪表、喷气能量和跟随故障车辆的危险提示，支持键盘与触屏。",
+        "精细跑车与真实街景素材，暮色天空、车漆反射、路灯照明和柔和环境遮蔽。",
+        "警车开场可跳过；收金币、喷气、滑翔和空翻；躲开爆炸电池、后方追车与减速停车的故障车。",
+        "首次下载约157 MB（150 MiB），完成后可离线重开；免费非商业试玩。"
       ],
       "feedback": {
         "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",

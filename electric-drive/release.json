@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "app": "electric-drive",
-  "build": "r8-20261018-01",
-  "version": "0.5.1",
+  "build": "r9-20261018-01",
+  "version": "0.6.0",
   "manifest": {
-    "url": "builds/r8-20261018-01/manifest.json",
-    "bytes": 31717,
-    "sha256": "db6b266b47b329cdfd419c80bb682b9ea6c6c96fac2597516e30b494e10a806b"
+    "url": "builds/r9-20261018-01/manifest.json",
+    "bytes": 33427,
+    "sha256": "6359338ef21e9b9fe0d35803de902936ae47bf15c9ec05e6feff89969ac75d61"
   }
 }

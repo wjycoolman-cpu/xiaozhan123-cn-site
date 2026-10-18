@@ -1,20 +1,21 @@
 import * as THREE from './vendor/three.module.js';
 import { GLTFLoader } from './vendor/GLTFLoader.js';
 import { trackPoint } from './track.js';
+import {applyWindowLighting} from './urban-lighting.js';
 
 // Shared physical lots: the street renderer makes room for the same bounds.
 export const AUTHORED_BUILDING_LOTS=[
  {id:'emerald-street-045',asset:'streetfront',worldMetres:45,side:-1,nearEdge:11.5,yaw:0,size:[28.636269,22.283602,77.161617]},
  {id:'bistro-corner-045',asset:'corner',worldMetres:45,side:1,nearEdge:11.5,yaw:Math.PI/2,size:[17.492665,30.331266,23.537243]},
  {id:'bistro-ornate-130',asset:'ornate',worldMetres:130,side:-1,nearEdge:12,yaw:-Math.PI/2,size:[35.945454,27.119085,38.589821]},
- {id:'emerald-toy-105',asset:'toy',worldMetres:105,side:1,nearEdge:11.5,yaw:0,size:[30.149732,25.730001,30.149732]},
+ {id:'bistro-corner-105',asset:'corner',worldMetres:105,side:1,nearEdge:11.5,yaw:Math.PI/2,size:[17.492665,30.331266,23.537243]},
  {id:'emerald-coffee-170',asset:'coffee',worldMetres:170,side:-1,nearEdge:11.5,yaw:0,size:[26.464728,17.905344,26.464733]},
  {id:'emerald-tower-235',asset:'tower',worldMetres:235,side:1,nearEdge:57,yaw:0,size:[30.959252,108.250664,30.867094]},
  {id:'emerald-tower-540',asset:'tower',worldMetres:540,side:-1,nearEdge:48,yaw:Math.PI/2,size:[30.959252,108.250664,30.867094]},
  {id:'emerald-coffee-655',asset:'coffee',worldMetres:655,side:1,nearEdge:15,yaw:Math.PI/2,size:[26.464728,17.905344,26.464733]},
  {id:'bistro-ornate-670',asset:'ornate',worldMetres:670,side:-1,nearEdge:12,yaw:-Math.PI/2,size:[35.945454,27.119085,38.589821]},
  {id:'emerald-street-735',asset:'streetfront',worldMetres:735,side:-1,nearEdge:14,yaw:Math.PI,size:[28.636269,22.283602,77.161617]},
- {id:'emerald-toy-860',asset:'toy',worldMetres:860,side:1,nearEdge:17,yaw:0,size:[30.149732,25.730001,30.149732]},
+ {id:'bistro-brick-860',asset:'brick',worldMetres:860,side:1,nearEdge:17,yaw:Math.PI/2,size:[22.330722,38.424652,23.306484]},
 
  // R7: authored streets carry the near view; repeated modular windows stay behind them.
  // Dimensions are the actual shared GLB bounds, and yaw keeps a source street face toward the driver.
@@ -24,7 +25,7 @@ export const AUTHORED_BUILDING_LOTS=[
   ['brick',895,-1,16,-Math.PI/2],['streetfront',980,-1,16,Math.PI],
   ['arcade',1070,-1,14,0],['coffee',1150,-1,15,0],['corner',1220,-1,13,Math.PI],
   ['arcade',170,1,13,-Math.PI/2],['ornate',290,1,15,Math.PI],
-  ['toy',430,1,16,0],['corner',505,1,14,Math.PI/2],
+  ['brick',430,1,16,Math.PI/2],['corner',505,1,14,Math.PI/2],
   ['arcade',585,1,14,-Math.PI/2],['ornate',730,1,16,Math.PI],
   ['streetfront',800,1,17,Math.PI],['corner',940,1,15,Math.PI/2],
   ['arcade',1020,1,16,-Math.PI/2],['streetfront',1110,1,17,Math.PI],
@@ -51,6 +52,7 @@ export async function createLandmarks({scene,ownG,ownM,ownT}){
   if(!o.isMesh)return;meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;ownG(o.geometry);
   for(const m of(Array.isArray(o.material)?o.material:[o.material])){
    ownM(m);m.userData.trackWarpExempt=true;m.envMapIntensity=.95;
+   if(['MASTER_Glass_Exterior','MASTER_Glass_Dirty','MASTER_Glass_Dirty_MASKED','MASTER_Frosted_Glass','MASTER_Room_Interior'].includes(m.name))applyWindowLighting(m);
    for(const t of Object.values(m))if(t?.isTexture){ownT(t);t.anisotropy=4;}
   }
   o.castShadow=true;o.receiveShadow=true;

@@ -1,6 +1,7 @@
 import { DriveCore } from './core.js';
 import { DriveAudio } from './audio.js';
 import { GAME_VERSION, GAME_BUILD } from './build-info.js';
+import { updateRaceInterface, raceInterfaceSnapshot } from './race-interface.js';
 
 const $=id=>document.getElementById(id),show=(id,yes)=>$(id).classList.toggle('hidden',!yes);
 const audio=new DriveAudio();let core,world,lastFrame=performance.now(),accumulator=0,frames=[],eventCursor=0,uiClock=0,lastStatus='',runNumber=0,lastCoinCount=0;
@@ -79,9 +80,9 @@ function ui(){const s=core.state,p=s.player;
   for(const mission of s.missions){const node=document.querySelector(`[data-mission="${mission.id}"]`);node.querySelector('b').textContent=mission.completeUntil?'完成':`${mission.value}/${mission.target}`;node.querySelector('i').style.transform=`scaleX(${mission.value/mission.target})`;node.classList.toggle('complete',!!mission.completeUntil);}
   const coins=s.coins||0;$('coinCount').textContent=String(coins);$('coinReadout').setAttribute('aria-label',`金币 ${coins}`);$('coinStreak').textContent=s.coinStreak>=5?`×${s.coinStreak}`:'';
   if(coins>lastCoinCount){$('coinReadout').classList.remove('collected');void $('coinReadout').offsetWidth;$('coinReadout').classList.add('collected');}lastCoinCount=coins;
-  $('distance').innerHTML=`${Math.floor(s.distance)}<span> m</span>`;$('speed').textContent=String(Math.floor(s.speed*3.6)).padStart(3,'0');$('score').textContent=String(Math.floor(s.score));$('combo').textContent=s.combo>1?`连续身法 ×${s.combo}`:'身法积分';$('speedFill').style.width=`${Math.min(100,Math.max(0,(s.speed-18)/38*100))}%`;
+  $('distance').innerHTML=s.distance>=1000?`${(s.distance/1000).toFixed(2)}<span> km</span>`:`${Math.floor(s.distance)}<span> m</span>`;$('speed').textContent=String(Math.floor(s.speed*3.6)).padStart(3,'0');$('score').textContent=String(Math.floor(s.score));$('combo').textContent=s.combo>1?`连续身法 ×${s.combo}`:'身法积分';
   const energy=Math.min(1,Math.max(0,p.nitroEnergy));$('nitroFill').style.transform=`scaleX(${energy})`;$('nitroText').textContent=p.nitroActive?'喷射中':energy<.08?'待充能':`${Math.round(energy*100)}%`;
-  const nitroButton=$('nitroButton');nitroButton.classList.toggle('active',p.nitroActive);nitroButton.classList.toggle('empty',energy<.08);nitroButton.setAttribute('aria-pressed',String(p.nitroActive));nitroButton.setAttribute('aria-label',`按住喷气加速，能量 ${Math.round(energy*100)}%`);$('nitroStatus').classList.toggle('active',p.nitroActive);
+  const nitroButton=$('nitroButton');nitroButton.querySelector('small').textContent=p.nitroActive?'喷射中':energy<.08?'待充能':core.nitroExhausted&&core.nitroHeld?'松开重按':'喷气';nitroButton.classList.toggle('active',p.nitroActive);nitroButton.classList.toggle('empty',energy<.08);nitroButton.setAttribute('aria-pressed',String(p.nitroActive));nitroButton.setAttribute('aria-label',`按住喷气加速，能量 ${Math.round(energy*100)}%`);$('nitroStatus').classList.toggle('active',p.nitroActive);
   $('rollFill').style.width=`${(1-p.rollCooldown/1.35)*100}%`;$('rollText').textContent=p.rollCooldown>0?`${p.rollCooldown.toFixed(1)} s`:'就绪';
   $('hearts').setAttribute('aria-label',`剩余 ${p.health} 层护盾`);
   document.querySelector('.desktop-help').classList.toggle('hidden',s.time>7);
@@ -90,6 +91,7 @@ function ui(){const s=core.state,p=s.player;
   document.querySelector('.mission-list').classList.toggle('suppressed',inputIsTouch()&&(visible||s.rearWarning));
   $('eventTitle').textContent=notice.title;$('eventHint').textContent=hintForInput(notice.hint);$('eventLabel').textContent=/BATTERY/.test(notice.label)?'电池预警':/LESSON|TRAIN|PRACTICE/.test(notice.label)||(s.practice&&/WARM/.test(notice.label))?'身法练习':/DRONE/.test(notice.label)?'空中注意':'道路提示';
   show('rearWarning',s.rearWarning&&s.status==='running');const f=s.feedback;$('feedback').dataset.side=p.x>.6?'left':'right';$('feedback').classList.toggle('show',s.time<f.until&&s.status==='running'&&!s.rearWarning&&!(visible&&/BATTERY|REAR/.test(notice.label))&&!(inputIsTouch()&&p.y>.25));$('feedback').replaceChildren(document.createTextNode(f.title),Object.assign(document.createElement('small'),{textContent:f.detail}));
+  updateRaceInterface(s,world);
 }
 function frame(now){
   requestAnimationFrame(frame);const elapsed=now-lastFrame;lastFrame=now;const dt=Math.min(.05,Math.max(0,elapsed/1000));
@@ -107,7 +109,7 @@ async function boot(){
     if(world.ready)await world.ready;
     metrics.worldReady=true;bind();syncStatus();ui();show('loading',false);
     if(location.hostname==='127.0.0.1'){const heartbeat=()=>fetch('/__heartbeat',{cache:'no-store'}).catch(()=>{});heartbeat();setInterval(heartbeat,25000);}
-    if(qa){Object.defineProperty(window,'__DRIVE_QA__',{value:{snapshot:()=>({...core.snapshot(),audio:audio.getMetrics(),metrics:{...metrics,frameSamples:[...frames],drawCalls:world.renderer?.info?.render?.calls,triangles:world.renderer?.info?.render?.triangles}}),version:GAME_VERSION},writable:false});}
+    if(qa){Object.defineProperty(window,'__DRIVE_QA__',{value:{snapshot:()=>({...core.snapshot(),audio:audio.getMetrics(),interface:raceInterfaceSnapshot(),metrics:{...metrics,frameSamples:[...frames],drawCalls:world.renderer?.info?.render?.calls,triangles:world.renderer?.info?.render?.triangles}}),version:GAME_VERSION},writable:false});}
     lastFrame=performance.now();requestAnimationFrame(frame);
   }catch(error){metrics.errors.push(String(error.stack||error));$('fatalReason').textContent='资源未能完整载入。请重新载入；若仍失败，可通过反馈入口报告。';show('loading',false);show('fatal',true);console.error(error);void diagnosticsReady.then(async d=>{await d?.captureDisplayedFatal({displayed:true,code:'startup_failed',stage:'boot',error});void d?.retry();});}
 }
