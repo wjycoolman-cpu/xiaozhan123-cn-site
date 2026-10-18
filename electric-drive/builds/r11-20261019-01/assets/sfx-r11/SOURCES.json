@@ -1,0 +1,44 @@
+{
+  "sources": [
+    "https://kenney.nl/assets/impact-sounds",
+    "https://kenney.nl/assets/sci-fi-sounds"
+  ],
+  "license": "CC0",
+  "files": [
+    {
+      "file": "impactMetal_heavy_000.ogg",
+      "bytes": 6110,
+      "sha256": "e07045693e4a2b3d165c424e3dab4c781d9ff8880a386880ac89a51315d7f831",
+      "archive": "kenney-impact.zip",
+      "original": "Audio/impactMetal_heavy_000.ogg"
+    },
+    {
+      "file": "impactMetal_light_001.ogg",
+      "bytes": 6967,
+      "sha256": "fba69c467ddd85da7b1d82e259f936b876d9ba6a3d6f1b24bdd10468e46bfe08",
+      "archive": "kenney-impact.zip",
+      "original": "Audio/impactMetal_light_001.ogg"
+    },
+    {
+      "file": "impactSoft_heavy_000.ogg",
+      "bytes": 6570,
+      "sha256": "49e7ca88743fca974bb8676ea138b751cfd8f9033b5e7af8736c2a215d6edbc1",
+      "archive": "kenney-impact.zip",
+      "original": "Audio/impactSoft_heavy_000.ogg"
+    },
+    {
+      "file": "spaceEngineSmall_000.ogg",
+      "bytes": 116880,
+      "sha256": "2bec8ff75d81f0c37a6b78bd63beea6c70375e49ee30b0bbe7f38d654d576831",
+      "archive": "kenney-sci-fi.zip",
+      "original": "Audio/spaceEngineSmall_000.ogg"
+    },
+    {
+      "file": "forceField_000.ogg",
+      "bytes": 25672,
+      "sha256": "c2916f2a062c8ddd1aca2826d134fe90847037db31342726ffb0f9097afe339c",
+      "archive": "kenney-sci-fi.zip",
+      "original": "Audio/forceField_000.ogg"
+    }
+  ]
+}

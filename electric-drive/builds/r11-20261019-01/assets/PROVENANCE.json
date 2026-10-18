@@ -1,0 +1,430 @@
+{
+  "format": "palette baked into vertex color; original indexed geometry and node transforms",
+  "downloaded": "2026-10-18",
+  "sources": [
+    "https://kenney.nl/assets/car-kit",
+    "https://kenney.nl/assets/city-kit-commercial"
+  ],
+  "asset_inspection": {
+    "sedan-sports": {
+      "file": "sedan-sports.glb",
+      "sha256": "2889c428ca1dd9c975c3ff760eb8757883490410555ab60b818f712f583826d6",
+      "meshes": [
+        {
+          "name": "wheel-back-right",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "body",
+          "vertices": 1078,
+          "triangles": 712
+        },
+        {
+          "name": "spoiler",
+          "vertices": 78,
+          "triangles": 48
+        },
+        {
+          "name": "wheel-back-left",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-front-left",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-front-right",
+          "vertices": 528,
+          "triangles": 332
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "translation": [
+            -0.3,
+            0.3,
+            -0.659999967
+          ],
+          "name": "wheel-back-right"
+        },
+        {
+          "children": [
+            2
+          ],
+          "mesh": 1,
+          "translation": [
+            0.0,
+            0.15,
+            -0.025
+          ],
+          "name": "body"
+        },
+        {
+          "mesh": 2,
+          "translation": [
+            0.0,
+            0.45,
+            -1.04368615
+          ],
+          "name": "spoiler"
+        },
+        {
+          "mesh": 3,
+          "translation": [
+            0.3,
+            0.3,
+            -0.659999967
+          ],
+          "name": "wheel-back-left"
+        },
+        {
+          "mesh": 4,
+          "translation": [
+            0.3,
+            0.3,
+            0.659999967
+          ],
+          "name": "wheel-front-left"
+        },
+        {
+          "mesh": 5,
+          "translation": [
+            -0.3,
+            0.3,
+            0.659999967
+          ],
+          "name": "wheel-front-right"
+        }
+      ]
+    },
+    "sedan": {
+      "file": "sedan.glb",
+      "sha256": "b532ea7d2c59f7f6b22b138cf1955218a2c1898f1cea932af4d3fd563c3959b7",
+      "meshes": [
+        {
+          "name": "wheel-front-right",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "body",
+          "vertices": 1072,
+          "triangles": 704
+        },
+        {
+          "name": "wheel-back-left",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-back-right",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-front-left",
+          "vertices": 528,
+          "triangles": 332
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "translation": [
+            -0.3,
+            0.3,
+            0.659999967
+          ],
+          "name": "wheel-front-right"
+        },
+        {
+          "mesh": 1,
+          "translation": [
+            0.0,
+            0.15,
+            -0.025
+          ],
+          "name": "body"
+        },
+        {
+          "mesh": 2,
+          "translation": [
+            0.3,
+            0.3,
+            -0.659999967
+          ],
+          "name": "wheel-back-left"
+        },
+        {
+          "mesh": 3,
+          "translation": [
+            -0.3,
+            0.3,
+            -0.659999967
+          ],
+          "name": "wheel-back-right"
+        },
+        {
+          "mesh": 4,
+          "translation": [
+            0.3,
+            0.3,
+            0.659999967
+          ],
+          "name": "wheel-front-left"
+        }
+      ]
+    },
+    "van": {
+      "file": "van.glb",
+      "sha256": "ed4ed56e8e5ed98db050af09ed2062b3b6bb7b93eab1e563cb6774b387b233a1",
+      "meshes": [
+        {
+          "name": "wheel-front-right",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-front-left",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-back-right",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "wheel-back-left",
+          "vertices": 528,
+          "triangles": 332
+        },
+        {
+          "name": "body",
+          "vertices": 1138,
+          "triangles": 754
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "translation": [
+            -0.3,
+            0.3,
+            0.76
+          ],
+          "name": "wheel-front-right"
+        },
+        {
+          "mesh": 1,
+          "translation": [
+            0.3,
+            0.3,
+            0.76
+          ],
+          "name": "wheel-front-left"
+        },
+        {
+          "mesh": 2,
+          "translation": [
+            -0.3,
+            0.3,
+            -0.76
+          ],
+          "name": "wheel-back-right"
+        },
+        {
+          "mesh": 3,
+          "translation": [
+            0.3,
+            0.3,
+            -0.76
+          ],
+          "name": "wheel-back-left"
+        },
+        {
+          "mesh": 4,
+          "translation": [
+            0.0,
+            0.2,
+            0.1
+          ],
+          "name": "body"
+        }
+      ]
+    },
+    "wheel-racing": {
+      "file": "wheel-racing.glb",
+      "sha256": "5d8dbff9da004a2aabc471a12be0a4b70725c49463ec36ec3465b15c0cf64571",
+      "meshes": [
+        {
+          "name": "wheel-racing",
+          "vertices": 528,
+          "triangles": 332
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "wheel-racing"
+        }
+      ]
+    },
+    "building-skyscraper-a": {
+      "file": "building-skyscraper-a.glb",
+      "sha256": "d8339bbb75944ff91d1ec9a70ec6dead71bd98b94a42d3dd0fc1f3b107ddbe85",
+      "meshes": [
+        {
+          "name": "building-skyscraper-a",
+          "vertices": 2118,
+          "triangles": 1292
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-skyscraper-a"
+        }
+      ]
+    },
+    "building-skyscraper-b": {
+      "file": "building-skyscraper-b.glb",
+      "sha256": "3a383e8a0a8819023d30b2aee1c6f40fa6bc28990227a306a86e531f36c6b8d5",
+      "meshes": [
+        {
+          "name": "building-skyscraper-b",
+          "vertices": 2646,
+          "triangles": 1592
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-skyscraper-b"
+        }
+      ]
+    },
+    "building-skyscraper-c": {
+      "file": "building-skyscraper-c.glb",
+      "sha256": "e73c357554f7561fedb8c1cbecf9d7163ba09ada264d661c59a0f0a180e0185f",
+      "meshes": [
+        {
+          "name": "building-skyscraper-c",
+          "vertices": 2862,
+          "triangles": 1704
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-skyscraper-c"
+        }
+      ]
+    },
+    "building-skyscraper-d": {
+      "file": "building-skyscraper-d.glb",
+      "sha256": "5c524ec13be53fff85ace8b328bc2587cba4e93962230e4a0ba98998e53d30b5",
+      "meshes": [
+        {
+          "name": "building-skyscraper-d",
+          "vertices": 3206,
+          "triangles": 1892
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-skyscraper-d"
+        }
+      ]
+    },
+    "building-skyscraper-e": {
+      "file": "building-skyscraper-e.glb",
+      "sha256": "21b58a2f2b18d6a7cf8915e8b947bdb6a6a0706da6cffb5a01677c29f03b5935",
+      "meshes": [
+        {
+          "name": "building-skyscraper-e",
+          "vertices": 1938,
+          "triangles": 1156
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-skyscraper-e"
+        }
+      ]
+    },
+    "building-i": {
+      "file": "building-i.glb",
+      "sha256": "3e572277d3eead30e24668a653ec6a11a488228a219d4902f08638cbca7c3dfe",
+      "meshes": [
+        {
+          "name": "building-i",
+          "vertices": 4012,
+          "triangles": 2544
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-i"
+        }
+      ]
+    },
+    "building-m": {
+      "file": "building-m.glb",
+      "sha256": "1cdc717ac86a0479043ff0d0146142f5dfc2622c0e3aaac484fad5807f94d580",
+      "meshes": [
+        {
+          "name": "building-m",
+          "vertices": 5764,
+          "triangles": 3740
+        }
+      ],
+      "images_baked": [
+        "Textures/colormap.png"
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "building-m"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+CarConcept Traffic Distance LOD — derivative asset
+
+Original: Car Concept, Eric Chadwick / Darmstadt Graphics Group GmbH (2024).
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+License: Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+See CAR-CONCEPT-CREDITS.txt, CAR-CONCEPT-LICENSE.md and CC-BY-4.0.txt for the
+full original attribution and licensing information retained with this project.
+
+Changes made for 极限电驱 R4:
+- Removed cabin/interior and under-hood detail, license/emblem meshes.
+- Corrected the source front-wheel showcase steering before distance rendering.
+- Applied 13 percent mesh collapse LOD, retaining 21,929 triangles in total.
+- Replaced materials with six opaque PBR materials without texture dependencies.
+- Retained four wheel pivots for animated wheels; runtime meshes are instanced.
+- Normal traffic uses varied paint colors; the rear pursuer uses red paint.
+
+This is a generic concept vehicle. No sponsorship, approval or brand identity
+of the original author, Khronos or any car manufacturer is claimed.

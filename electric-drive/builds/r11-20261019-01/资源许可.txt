@@ -1,0 +1,89 @@
+极限电驱 · 第三方资源
+
+Three.js 0.186.1 — MIT
+https://github.com/mrdoob/three.js
+许可原文：vendor/THREE-LICENSE.txt
+
+Kenney Car Kit 3.1 — Creative Commons CC0 1.0
+https://kenney.nl/assets/car-kit
+许可原文：assets/KENNEY-CAR-LICENSE.txt
+
+Kenney City Kit (Commercial) 2.1 — Creative Commons CC0 1.0
+https://kenney.nl/assets/city-kit-commercial
+许可原文：assets/KENNEY-CITY-LICENSE.txt
+来源、模型标识与适配：assets/PROVENANCE.json
+
+Noto Sans SC — SIL Open Font License 1.1
+Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.
+https://github.com/google/fonts/tree/main/ofl/notosanssc
+许可原文：assets/NotoSansSC-OFL.txt
+只嵌入界面所需的官方字体子集，没有单独附带字体文件。
+
+Noto Sans Math — SIL Open Font License 1.1
+https://github.com/google/fonts/tree/main/ofl/notosansmath
+只嵌入界面空翻箭头 U+21BB 所需的官方单字子集，限定该码点使用。
+许可原文：assets/NotoSansMath-OFL.txt；没有单独附带字体文件。
+
+Car Concept — Creative Commons Attribution 4.0 International (CC BY 4.0)
+Eric Chadwick / Darmstadt Graphics Group GmbH，2024。模型与纹理。
+来源：https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+许可：https://creativecommons.org/licenses/by/4.0/
+当前用于交通车的几何LOD、轮组批处理及车漆适配；详见 assets/CAR-CONCEPT-TRAFFIC-CREDITS.txt。
+许可原文与源元数据：assets/CC-BY-4.0.txt、CAR-CONCEPT-LICENSE.md、CAR-CONCEPT-METADATA.json。
+标志及商标权不由CC授权；使用本模型不代表原作者或Khronos背书。
+
+跑酷逻辑、危机事件、界面、原生飞车图标、启动器和项目适配由本项目制作。
+Kenney Sci-Fi Sounds — CC0 1.0，assets/KENNEY-SCI-FI-LICENSE.txt，https://kenney.nl/assets/sci-fi-sounds
+pyranostudios / Air Whoosh — CC0 1.0，https://opengameart.org/content/air-whoosh，来源与许可快照记于 assets/SFX-SOURCES.txt。
+Distance、Nitronic Rush、Asphalt 8、Asphalt Legends、Subway Surfers 等为玩法/画面参考，本包不包含其商业游戏模型、地图或音乐。
+
+Kenney City Roads 2.2 — Creative Commons CC0 1.0
+https://kenney.nl/assets/city-roads
+实际桥面、护栏、桥墩与道路设施；许可原文：assets/city-roads/LICENSE.txt。
+
+Poly Haven Modular Urban Apartments Facade — CC0
+作者 James Ray Cock；https://polyhaven.com/a/modular_urban_apartments_facade
+使用选取并简化的窗墙、门、檐口和屋顶构件，保留UV/法线/材质并在场景中重新组装。
+
+Poly Haven Asphalt 02 — CC0
+作者 Rob Tuytel；https://polyhaven.com/a/asphalt_02
+使用1K颜色、OpenGL法线与粗糙度纹理，按约3米尺度铺设。
+
+Poly Haven Industrial Sunset (Pure Sky) — CC0
+拍摄 Sergej Majboroda，天空编辑 Jarod Guest；https://polyhaven.com/a/industrial_sunset_puresky
+使用1K纯天空HDR作为背景及环境反射，没有把真实城市照片当作本游戏场景。
+Poly Haven许可：https://polyhaven.com/license
+来源和适配详情：assets/pbr-city/SOURCE_AND_LICENSE.md。
+
+Amazon Lumberyard Bistro (2017), Amazon Lumberyard, Open Research Content Archive (ORCA)
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+原始来源：https://developer.nvidia.com/orca/amazon-lumberyard-bistro
+许可：https://creativecommons.org/licenses/by/4.0/
+使用餐馆、砖楼、共享城市楼组中选用的转角商铺/住宅与精选街边物件；缩小贴图、整理几何、重建受光PBR材质、转换为GLB并适配场景。
+来源与修改说明：assets/bistro/SOURCE_AND_LICENSE.md；原始许可和README保存在同目录。
+不表示Amazon或NVIDIA为本游戏背书。
+
+Ferrari 458 Italia — vicent091036，CC BY 4.0
+实际模型来自 Three.js 官方示例：https://threejs.org/examples/webgl_materials_car.html
+模型许可记录：https://github.com/mrdoob/three.js/issues/23089
+许可：https://creativecommons.org/licenses/by/4.0/
+保留原作者署名；Draco解码、自包含GLB导出、轮轴/尺寸/材质和几何支持点适配。
+本游戏将其用作虚构电驱飞车，不代表Tesla、真实量产电车、原厂改装或品牌授权。
+完整来源与改动：assets/PRECISION-ROADSTER-CREDITS.txt。
+
+NVIDIA Emerald Square / ORCA (2017)
+Nicholas Hull, Kate Anderson and Nir Benty / NVIDIA
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+来源：https://developer.nvidia.com/orca/nvidia-emerald-square
+许可：https://creativecommons.org/licenses/by-nc-sa/3.0/
+使用四种完整建筑及 Bus_2；保留造型、重建PBR贴图并转换GLB，接驳车另有尺寸、轮轴和虚构电池架适配。
+这些素材及其改编单独继续适用 CC BY-NC-SA 3.0，不将代码或其他来源素材误标为该许可。
+本版仅作免费非商业展示；不授予商业使用或原作者背书。
+原始许可、作者和修改说明：assets/emerald/LICENSE.txt、README.txt、SOURCE_AND_LICENSE.md。
+
+R7天空：Qwantani Sunset PureSky，Poly Haven，CC0；原始来源与下载地址见 assets/sky/SOURCE_AND_LICENSE.md。
+R7场景与警车改编说明：assets/R7-WORLD-CHANGES.txt。
+
+R8光影后处理：同版 Three.js 0.186.1 官方 EffectComposer / UnrealBloomPass 等模块，MIT；N8AO 2.0.1（固定仓库提交），随原文 CC0 1.0。完整来源、局部修改和独立许可见 vendor/postfx/SOURCE_AND_LICENSE.md、THREE-LICENSE.txt、N8AO-LICENSE.txt。参考示例的场景、车辆及其他媒体未随这些模块复制。
+
+R11音画增量：Kenney Impact Sounds / Sci-Fi Sounds，CC0 1.0；五个原始OGG与两包许可见assets/sfx-r11。Bistro街区贴图重新从原件生成到1K，仍为CC BY 4.0；Emerald远景tower网格减面及512px贴图仍为CC BY-NC-SA 3.0，仅供非商业展示。来源、修改与许可保存在各自资源目录。补充的Noto Sans SC字符仍为SIL OFL 1.1，许可见assets/NotoSansSC-OFL.txt。

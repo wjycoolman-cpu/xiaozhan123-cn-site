@@ -1,0 +1,24 @@
+Ferrari 458 Italia model by vicent091036.
+Model source: https://threejs.org/examples/webgl_materials_car.html
+Official distribution: https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/ferrari.glb
+Original author model: https://sketchfab.com/models/57bf6cc56931426e87494f554df1dab6
+Model license: Creative Commons Attribution 4.0 International (CC BY 4.0).
+License URL: https://creativecommons.org/licenses/by/4.0/
+The Three.js project's media-license inventory identifies this exact model as CC-BY 4.0:
+https://github.com/mrdoob/three.js/issues/23089 (gltf/ferrari.glb entry).
+The original Sketchfab author page was unavailable during the current retrieval;
+the model was obtained anonymously from the official Three.js repository.
+The repository's MIT code license is not used as the model license.
+The current official source binary was compared with Three.js tag r137;
+both have SHA256 cafe3f48da6797aa9bde75ca768bc5b57db366575fd233e90df186ae988a876e.
+
+Local changes: Draco decoded through Blender's glTF importer and re-exported as
+a self-contained uncompressed GLB; world-space mesh transforms baked at load;
+original four wheel axles preserved; display length normalized to 3.95m;
+paint, tire, wheel, glass and light materials adapted to the local game;
+geometry-derived support data generated for the exact displayed mesh and wheel spin.
+
+Use in this local fictional electric-driving game is an artistic adaptation.
+It does not represent a Tesla, an authentic production electric Ferrari,
+brand affiliation, manufacturer authorization or a real vehicle conversion.
+Preserve author, source, license and modification information with this asset.

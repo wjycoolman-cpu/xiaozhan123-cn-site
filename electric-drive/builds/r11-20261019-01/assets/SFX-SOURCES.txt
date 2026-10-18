@@ -1,0 +1,21 @@
+Audio source and license record · 2026-10-18
+
+glide-whoosh.wav
+Original download: https://opengameart.org/sites/default/files/whoosh2_0.wav
+Author: pyranostudios
+Author upload: https://opengameart.org/content/air-whoosh
+The author upload explicitly labels the file CC0.
+License: https://creativecommons.org/publicdomain/zero/1.0/
+5.246599 seconds, 44100 Hz, stereo, WAV; the unmodified source file is included.
+Runtime takes a short high energy segment, applies gain and a fade envelope.
+
+battery-explosion.ogg
+Original file: Audio/explosionCrunch_000.ogg
+Author: Kenney
+Official pack: https://kenney.nl/assets/sci-fi-sounds
+License: Creative Commons CC0 1.0, see KENNEY-SCI-FI-LICENSE.txt.
+0.777460 seconds, 44100 Hz, mono, OGG; the unmodified source file is included.
+
+Decoded peak checks and source identity were verified. Human listening quality is unverified.
+
+R11 real event layers: Kenney official Impact Sounds and Sci-Fi Sounds (CC0 1.0). Exact original OGG paths, SHA256 and download pages are recorded in sfx-r11/SOURCES.json; both original pack licenses are retained. Metal impact, landing body contact, sustained thrust and air-retreat field sounds are driven by actual game events/state. Coin cues retain an original rising tone sequence. Actual browser output and pause/release/mute behavior were captured; human listening remains unverified.
