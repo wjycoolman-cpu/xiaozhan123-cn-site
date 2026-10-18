@@ -1,0 +1,24 @@
+Car Concept
+Model and textures by Eric Chadwick, 2024.
+Copyright owner: Darmstadt Graphics Group GmbH.
+
+Source: KhronosGroup/glTF-Sample-Assets
+https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+The full license is included as CC-BY-4.0.txt.
+
+Adapted for 极限电驱 / Electric Overdrive, R2, 2026-10-18:
+- removed the source license-plate and steering-emblem meshes from the scene;
+- normalized scale and orientation for the game coordinate contract;
+- corrected showcase front-wheel steering for animated driving wheels;
+- merged static parts by compatible material while retaining original geometry;
+- adjusted red paint, tinted glass, black rubber and wheel-rim materials;
+- used opaque tinted transparency instead of a transmission render pass.
+
+The Khronos and 3D Commerce trademarks/logos are excluded from the CC BY
+license. They are not used as game branding or displayed on this adapted car.
+No endorsement by the model author, copyright owner or Khronos is implied.
+
+The original authorship and this notice must remain with redistributed copies.

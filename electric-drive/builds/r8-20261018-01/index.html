@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#141c27">
+  <title>极限电驱 · 云端公路</title>
+  <link rel="icon" href="assets/electric-drive.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+<script defer src="web-update-client.js"></script>
+</head>
+<body data-status="menu">
+  <canvas id="game" aria-label="极限电驱三维城市公路" tabindex="0"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="极限电驱"><img src="assets/electric-drive.svg" alt=""><span>极限电驱<small>云端公路</small></span></a>
+    <div id="runStats" class="run-stats hidden"><span id="modeLabel" class="eyebrow">自由驾驶</span><strong id="distance">0<span> m</span></strong><div id="coinReadout" class="coin-readout" aria-label="金币 0"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="m13 6-5 7h4l-1 5 5-7h-4z"/></svg><b id="coinCount">0</b><span id="coinStreak"></span></div></div>
+    <div class="top-actions"><span class="best-stat">最远 <b id="best">0</b><small> m</small></span><button id="soundBtn" class="icon-button" title="开启声音" aria-label="开启声音"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8c2 2 2 6 0 8"/></svg><span class="sound-state">关</span></button><button id="pauseBtn" class="icon-button hidden" title="暂停 P" aria-label="暂停游戏"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button></div>
+  </header>
+  <main id="menuPanel" class="menu-panel">
+    <p class="menu-caption"><span></span> 单人 · 无尽公路</p>
+    <nav class="menu-list" aria-label="游戏菜单">
+      <button id="startBtn" class="menu-action primary"><span>开始驾驶</span><svg viewBox="0 0 28 28" aria-hidden="true"><path d="m10 6 8 8-8 8"/></svg></button>
+      <button id="practiceBtn" class="menu-action"><span>身法练习</span><small>10 段入门</small></button>
+      <button id="controlsBtn" class="menu-action"><span>操作说明</span><small>按键 / 触控</small></button>
+    </nav>
+    <p class="menu-note">金币充能、喷气加速、侧撞车流。留意电池、故障车与后车。</p>
+    <button id="settingsBtn" class="menu-utility">设置与反馈</button>
+  </main>
+  <div id="sceneLabel" class="scene-label"><span>01</span><div><b>落日高架</b><small>城市上空 / 晴</small></div></div>
+  <footer id="menuFooter" class="menu-footer"><div class="menu-keys"><span><kbd>←</kbd><kbd>→</kbd> 变道</span><span><kbd>空格</kbd> 飞跃 / 按住滑翔</span><span><kbd>Q</kbd><kbd>E</kbd> 空翻</span><span><kbd>Shift</kbd> 喷气</span></div><span class="fiction-note">虚构车辆与事件</span></footer>
+  <div id="introOverlay" class="intro-overlay hidden"><p>警车追上来了</p><h2>冲上高架</h2><div class="intro-track"><i id="introProgress"></i></div><button id="skipIntroBtn">跳过开场 <span>→</span></button></div>
+  <div id="gameHud" class="game-hud hidden"><div class="mission-list" aria-label="本局目标"><div data-mission="coins"><span>收集金币</span><b>0/10</b><em><i></i></em></div><div data-mission="air"><span>飞跃与空翻</span><b>0/3</b><em><i></i></em></div><div data-mission="contact"><span>擦身或撞车</span><b>0/2</b><em><i></i></em></div></div>
+    <div id="eventBanner" class="event-banner" role="status" aria-live="polite"><small id="eventLabel">道路提示</small><div><b id="eventTitle">准备出发</b><span id="eventHint">左右变道，空格飞跃</span></div></div>
+    <div id="rearWarning" class="rear-warning hidden" role="status"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 10 18H2zM12 9v5M12 17v1"/></svg><div><b>后车逼近</b><small>离开红色车道，或飞起躲避</small></div></div>
+    <div id="feedback" class="feedback"></div>
+    <div class="speed-panel"><span class="eyebrow">时速</span><div><strong id="speed">094</strong><span class="speed-unit">km/h</span></div><div class="speed-track"><i id="speedFill"></i></div></div>
+    <div class="status-panel"><div class="shield-status"><span>护盾</span><div id="hearts" aria-label="剩余护盾"><i></i><i></i><i></i></div></div><div class="skill-status"><span>空翻 <b id="rollText">就绪</b></span><div class="skill-track"><i id="rollFill"></i></div></div><div id="nitroStatus" class="skill-status nitro-status"><span>喷气 <b id="nitroText">45%</b></span><div class="skill-track"><i id="nitroFill"></i></div></div></div>
+    <div class="run-meta"><span id="score">0</span><small id="combo">身法积分</small></div>
+    <div class="desktop-help"><span><kbd>A</kbd><kbd>D</kbd> 变道</span><span><kbd>空格</kbd> 飞跃 / 按住滑翔</span><span><kbd>Q</kbd><kbd>E</kbd> 空翻</span><span><kbd>Shift</kbd> 喷气</span></div>
+  </div>
+  <div id="touchControls" class="touch-controls hidden"><div class="steer-buttons"><button data-action="left" aria-label="向左变道">‹</button><button data-action="right" aria-label="向右变道">›</button></div><div class="action-buttons"><button id="nitroButton" data-action="nitro" class="nitro-button" aria-label="按住喷气加速" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v10l-3 3-3-3Z"/><path d="m9 8-4 6h4m6-6 4 6h-4M10 18l2 4 2-4"/></svg><small>喷气</small></button><button data-action="roll" class="roll-button" aria-label="空中翻滚"><span>↻</span><small>空翻</small></button><button data-action="jump" class="jump-button" aria-label="起跳，按住滑翔"><span>↑</span><small>飞跃</small></button></div></div>
+  <div id="controlsPanel" class="scrim hidden" role="dialog" aria-modal="true" aria-labelledby="controlsTitle"><section class="dialog controls-dialog"><span class="eyebrow">驾驶手册</span><h2 id="controlsTitle">用身法冲过车流。</h2><dl class="control-list"><div><dt><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd></dt><dd><b>左右变道</b><span>躲避追车；近距离侧擦交通车，继续深入可撞毁。</span></dd></div><div><dt><kbd>空格</kbd></dt><dd><b>飞跃</b><span>飞过路障和地面爆炸。按住可滑翔。</span></dd></div><div><dt><kbd>Q</kbd><kbd>E</kbd></dt><dd><b>空翻闪避</b><span>先飞起，再用空翻短暂避险。</span></dd></div><div><dt><kbd>Shift</kbd></dt><dd><b>喷气加速</b><span>按住消耗能量，可撞毁交通车。金币、擦身和空翻补能；电池与重障碍仍要躲避。</span></dd></div><div><dt><kbd>P</kbd> / <kbd>Esc</kbd></dt><dd><b>暂停</b><span>离开窗口会自动暂停。</span></dd></div></dl><p class="touch-note">触屏使用下方按钮；按住「飞跃」滑翔，按住「喷气」加速。</p><button id="closeControlsBtn" class="start-button">返回菜单 <span>←</span></button></section></div>
+  <div id="pausePanel" class="scrim hidden" role="dialog" aria-modal="true" aria-labelledby="pauseTitle"><section class="dialog"><span class="eyebrow">驾驶暂停</span><h2 id="pauseTitle">准备好，再出发。</h2><p>车流与计时已暂停。</p><button id="resumeBtn" class="start-button">继续驾驶 <span>→</span></button><button id="pauseRestartBtn" class="secondary-button">重新开始</button><button id="homeBtn" class="text-button">返回菜单</button></section></div>
+  <div id="settingsPanel" class="scrim hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><section class="dialog settings-dialog"><span class="eyebrow">游戏设置</span><h2 id="settingsTitle">设置与反馈</h2><a id="feedbackLink" class="feedback-link" href="https://xiaozhan123.cn/feedback/?product=electric-drive&amp;source=product" target="_blank" rel="noopener noreferrer"><b>意见反馈</b><span>报告问题或建议 ↗</span></a><div id="diagnosticsControl"><p>自动诊断暂不可用</p></div><p class="version-note" id="versionNote"></p><button id="closeSettingsBtn" class="start-button">返回 <span>←</span></button></section></div>
+  <div id="overPanel" class="scrim hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle"><section class="dialog result-dialog"><span class="eyebrow">本次驾驶</span><h2 id="resultTitle">驾驶结束</h2><div class="result-distance"><b id="resultDistance">0</b><span>m</span></div><p id="resultReason"></p><p id="resultMissions" class="result-missions">完成目标 0</p><div class="result-row"><span>金币 <b id="resultCoins">0</b></span><span>撞毁 <b id="resultKnockdowns">0</b></span><span>身法积分 <b id="resultScore">0</b></span><span>最远里程 <b id="resultBest">0 m</b></span></div><button id="restartBtn" class="start-button">再跑一局 <span>→</span></button><button id="resultHomeBtn" class="text-button">返回菜单</button></section></div>
+  <div id="loading" class="loading"><img src="assets/electric-drive.svg" alt=""><b>正在载入公路</b><small>极限电驱</small></div>
+  <div id="fatal" class="scrim hidden"><section class="dialog"><h2>载入未完成</h2><p id="fatalReason"></p><button onclick="location.reload()" class="start-button">重新载入 <span>↻</span></button><a id="fatalFeedbackLink" class="feedback-link" href="https://xiaozhan123.cn/feedback/?product=electric-drive&amp;source=product" target="_blank" rel="noopener noreferrer">意见反馈 ↗</a></section></div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

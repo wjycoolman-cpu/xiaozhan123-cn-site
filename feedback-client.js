@@ -1,6 +1,6 @@
 (function (global) {
   'use strict';
-  const PRODUCTS = new Set(['skymyth', 'pocket-piano', 'mianji', 'qingci', 'question-bank', 'stardew-farm', 'resume-studio', 'yuji', 'subtitle-studio', 'website']);
+  const PRODUCTS = new Set(['skymyth', 'pocket-piano', 'mianji', 'qingci', 'question-bank', 'stardew-farm', 'resume-studio', 'yuji', 'subtitle-studio', 'website', 'electric-drive']);
   const LEGACY_PRODUCTS = new Set(['kfc-order']);
   const GATEWAY_ORIGIN = 'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com';
   const APPROVED_ENDPOINT = GATEWAY_ORIGIN + '/v1/functions/qingci-feedback';

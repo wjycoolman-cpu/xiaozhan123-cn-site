@@ -1,0 +1,1109 @@
+{
+  "schema": 1,
+  "app": "electric-drive",
+  "build": "r8-20261018-01",
+  "version": "0.5.1",
+  "entry": "index.html",
+  "files": [
+    {
+      "path": "参考游戏与资源.txt",
+      "bytes": 4611,
+      "sha256": "a2a0cb29006229c184bb8440fc12c683001fd2e221556cc4e67c0572e8c9d75f",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "资源许可.txt",
+      "bytes": 5662,
+      "sha256": "2b5087bd33f69eff6ae609ccf5852c098ca200322b3c1bcfde23e5775ee8485e",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/battery-explosion.ogg",
+      "bytes": 28274,
+      "sha256": "4b597d658d0ae101f0a030fbeea5fc3a4292ab85f017470a8254a8e7959cbd69",
+      "accept": [
+        "audio/ogg",
+        "application/ogg"
+      ]
+    },
+    {
+      "path": "assets/bistro/bistro-brick-building-512.glb",
+      "bytes": 8915380,
+      "sha256": "9e2b21b17a5d83deba575bfb8d7631b4b43bfbaa3e5c98d24d6078b195cf4e46",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/bistro/bistro-brick-building-512.glb.edz",
+        "bytes": 6612019,
+        "sha256": "911156deaf096950351d4969868e8e03ae9c17fa7aa630a46bf79cbf751d33dd",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/bistro/bistro-building-512.glb",
+      "bytes": 9740188,
+      "sha256": "111cbf7b1713c85ee484dd3bcf4e0b20ba4d55172b8d71d8eec8fbb302747d1a",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/bistro/bistro-building-512.glb.edz",
+        "bytes": 7595384,
+        "sha256": "99e83d91cc480330881f071dfee613b622a39bcbd11cf5347ecfca79e45bf643",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/bistro/bistro-city-block-kit-512.glb",
+      "bytes": 21478784,
+      "sha256": "55fbe9a31058cd891abd92357288dfb3f09545bf45913461f32c36186e99d989",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/bistro/bistro-city-block-kit-512.glb.edz",
+        "bytes": 13605042,
+        "sha256": "2acafa7404019125a58892440d3510253ad352da657bcc3d3ca29840dfc81e0e",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/bistro/bistro-props-light-512.glb",
+      "bytes": 2474716,
+      "sha256": "c3fc8f73e236133722e4ce16d9f8f0f780175f8498a300c65548ee2193517bb5",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/bistro/bistro-props-light-512.glb.edz",
+        "bytes": 2354463,
+        "sha256": "58dd2a405481afb13a533f5fea2ccc73e74caba87447461a9a38900518fe9b06",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/bistro/LICENSE.txt",
+      "bytes": 19044,
+      "sha256": "9a9ef3c33320eebe6126b0c7dc327885806bde242283bbe6e4ae77641ad703e4",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/bistro/SOURCE_AND_LICENSE.md",
+      "bytes": 3402,
+      "sha256": "cf5b43d2da586bd571e0c4c29a77279201362dd51d419544a8b34d5ba30dd82b",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/CAR-CONCEPT-CREDITS.txt",
+      "bytes": 1207,
+      "sha256": "bd2f8ca6957e321e4bf1cbe4fb6b515cddc481952e1edd320d784f6dfd08ed4d",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/CAR-CONCEPT-LICENSE.md",
+      "bytes": 943,
+      "sha256": "e11477f29eab33d1a5c9fc8534f931556faeb2e11a7fee9e4723d917fcfaee50",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/CAR-CONCEPT-METADATA.json",
+      "bytes": 1334,
+      "sha256": "89555a6cb9dc0a4f300abe3cc6476c2d8d77c6f3f2cbde9bf790c1bd320027ed",
+      "accept": [
+        "application/json",
+        "text/json"
+      ]
+    },
+    {
+      "path": "assets/CAR-CONCEPT-TRAFFIC-CREDITS.txt",
+      "bytes": 1137,
+      "sha256": "36c25374081f407461273869cf97471831c190f99436fc3e22d383fadb06ade7",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/CarConcept-TrafficLOD.glb",
+      "bytes": 1269076,
+      "sha256": "1b6bce28cc1fd2305f370005e11e2d9fe8982c7991305e04507db0109ac7eb9e",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/CarConcept-TrafficLOD.glb.edz",
+        "bytes": 937274,
+        "sha256": "1ed2d75e2e2a1259c604f2bf71722f56abc8745bef06b666f5f53b08152e6de4",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/CC-BY-4.0.txt",
+      "bytes": 13034,
+      "sha256": "c8041334a99cb48852b2139253cbde5f8ac87e27f124aed51223e0d5bf0080eb",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/city-roads/bridge-pillar-wide.glb",
+      "bytes": 5488,
+      "sha256": "8e605ee4b59bdb5066a08d32458c0676a2763da483925e9761a28e6a77120b82",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/city-roads/LICENSE.txt",
+      "bytes": 703,
+      "sha256": "d23f51360ca2cd81711bc5b09ddfb28ac94da96d7ca2dbdef12c50f33f35c353",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/city-roads/road-bridge.glb",
+      "bytes": 24796,
+      "sha256": "5e2bdaabddf39b309a3b5d109d7c6423cd68829a8e63960fcc2d23d62c8425b0",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/city-roads/road-straight-barrier.glb",
+      "bytes": 4196,
+      "sha256": "eeaf5469bb34b94e3edaf71c5d7c9da152c0a398f86c9ec6c234a82a42833e4e",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/city-roads/Textures/colormap.png",
+      "bytes": 11428,
+      "sha256": "a48e2962661ae44368ffddf3054f80ed8491d082b757dcc3011184cd9a98b185",
+      "accept": [
+        "image/png"
+      ]
+    },
+    {
+      "path": "assets/electric-drive.ico",
+      "bytes": 85833,
+      "sha256": "0299598d64597b4e4f98ac4cca5275d71ba055ed232e2071db735189845c20b4",
+      "accept": [
+        "image/x-icon",
+        "image/vnd.microsoft.icon"
+      ],
+      "wire": {
+        "path": "assets/electric-drive.ico.edz",
+        "bytes": 85046,
+        "sha256": "eaf32b3ccaa33bf2fd2c25b417cd7459165591a289d2a127cca8fe8edc2b0c79",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/electric-drive.svg",
+      "bytes": 1413,
+      "sha256": "c8befc3522d80dc6ee038be5df8f69318e0d4f676fb5d3c087dcd6b2b70fbaa3",
+      "accept": [
+        "image/svg+xml"
+      ]
+    },
+    {
+      "path": "assets/emerald/emerald-carrier.glb",
+      "bytes": 2702092,
+      "sha256": "695df132e64e40cce9525657b0d873ab3f96a190f154da769161fcba7a9feb86",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/emerald/emerald-carrier.glb.edz",
+        "bytes": 2124205,
+        "sha256": "006d1e3ca1910684acad9a2ddadfc518be4a23d4343f943aa1b1ef250450a2d3",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/emerald/emerald-coffee.glb",
+      "bytes": 17327232,
+      "sha256": "fae129e80e455bda567e30a714047254b5c7815121088ea19881ad6a8179511b",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/emerald/emerald-coffee.glb.edz",
+        "bytes": 15625040,
+        "sha256": "9f12911410ef5874231f6f106ea718548d2b29591a7c6ad504f94708696c43be",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/emerald/emerald-streetfront.glb",
+      "bytes": 34446320,
+      "sha256": "4be011fde748e50bfc20bcb837f2f92e08ab2d4eeff3fa57c808f72b45750f62",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/emerald/emerald-streetfront.glb.edz",
+        "bytes": 29632592,
+        "sha256": "80f09f1aa255010f39090226ec84d8256ebca6e1a84c395b85919ff6fb00ebd6",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/emerald/emerald-tower.glb",
+      "bytes": 54943540,
+      "sha256": "7bd29c97a39a6f4a837c8b636da55e080daeda703541c0217650902cee00ba36",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/emerald/emerald-tower.glb.edz",
+        "bytes": 41590289,
+        "sha256": "e433d9befe39ec5acaad1b78daf24d374b4c09e468815e1441f9ecaa417c7ff0",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/emerald/emerald-toy.glb",
+      "bytes": 14387632,
+      "sha256": "530e493a662a2f04bc8e482cf5f6e211fcf5e87ef87edca4f358635dd7ddb73f",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/emerald/emerald-toy.glb.edz",
+        "bytes": 12584330,
+        "sha256": "4819f937b6cf9e5c112ce13f740fa87711394c278fef0f7b5ae539803c280420",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/emerald/LICENSE.txt",
+      "bytes": 344,
+      "sha256": "9a337ff1b59fa61e0a2c295d95d32c647de4f39d000e8f0d31702865b99bccf1",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/emerald/SOURCE_AND_LICENSE.md",
+      "bytes": 2524,
+      "sha256": "e38bd864ec8d94ae5fe340f2806582495d0a26432ead61e5fac1497cbfdf28ad",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/glide-whoosh.wav",
+      "bytes": 925662,
+      "sha256": "d3fbff5bb78b289af16b2dfa29083f07ef83b0cbaff4514c48dfda16d082b468",
+      "accept": [
+        "audio/wav",
+        "audio/x-wav"
+      ],
+      "wire": {
+        "path": "assets/glide-whoosh.wav.edz",
+        "bytes": 798107,
+        "sha256": "54599c0ab33f668d87cd8c09116ea00e657e26403eaf9a2c0ac23a5ad732cfeb",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/KENNEY-CAR-LICENSE.txt",
+      "bytes": 696,
+      "sha256": "c33b7f6453d134deae7b1b8493717d9ccfa754c25ab97f6de89b88f8fda19b00",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/KENNEY-CITY-LICENSE.txt",
+      "bytes": 708,
+      "sha256": "c38cee408d022e57e44e49f1cd655c2fe0dc881a07b881276b795215cdc0de69",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/kenney-geometry.js",
+      "bytes": 1347060,
+      "sha256": "7f46a68de1672adaad50c65fd0bc787db50c4cf01f65670ed26a127ac3b10742",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "assets/kenney-geometry.js.edz",
+        "bytes": 233410,
+        "sha256": "9ff7996c33ea73fde65132ec7d0c4e2206d6e7e8629a504663545746650e309d",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/KENNEY-SCI-FI-LICENSE.txt",
+      "bytes": 571,
+      "sha256": "a9767b25c3533f69d03af136480efad08efba19a9f0d89616992b34c79fd6186",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/LicenseRef-LegalMark-Khronos.txt",
+      "bytes": 589,
+      "sha256": "2ea9821de870cf8d3faaa115ffc47f56632bf9f98d54d2ac1ce61592040b765c",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/NotoSansMath-OFL.txt",
+      "bytes": 4380,
+      "sha256": "403a95275b469061b7d4371c328e0ada3bc7d63328abe2e88aad5cd243b2fe21",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/NotoSansSC-OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/asphalt/asphalt_02_diff_1k.jpg",
+      "bytes": 731707,
+      "sha256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
+      "accept": [
+        "image/jpeg"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/asphalt/asphalt_02_nor_gl_1k.jpg",
+      "bytes": 1240122,
+      "sha256": "42a1c381b53204e83a982db2864479a30bc127bbdeebb1006f8ee51bff099df3",
+      "accept": [
+        "image/jpeg"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/asphalt/asphalt_02_rough_1k.jpg",
+      "bytes": 544032,
+      "sha256": "70ba3edc65525eb4dc366cf010ca7ae0bd34e0251ff0225c2dad627a873d0712",
+      "accept": [
+        "image/jpeg"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/sky/industrial_sunset_puresky_1k.hdr",
+      "bytes": 1158432,
+      "sha256": "ce8235e4b1b10b620120ceeb32eb3e80af15ea29b09a8625a4bdae647dff328d",
+      "accept": [
+        "image/vnd.radiance",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/pbr-city/sky/industrial_sunset_puresky_1k.hdr.edz",
+        "bytes": 744198,
+        "sha256": "022d85d8fd6ba816a9d91e95dc29fa308b875bf94410f8b079a67330760e5392",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/pbr-city/sky/SOURCE_AND_USAGE.md",
+      "bytes": 3909,
+      "sha256": "e479ecfc1004b745727cd85ccd54e27c905a4dee8ac26dd0a6082ca33dbea263",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/SOURCE_AND_LICENSE.md",
+      "bytes": 1916,
+      "sha256": "e8d7457669b341d71ab0b27174e950a119e1eb4445be4f2e16b621c2692cce53",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/pbr-city/urban-facade-selected.glb",
+      "bytes": 9618684,
+      "sha256": "f6808eaeb4b3a10fdbff6936bc9da6c32563a5b8d58940dba5b36ec05611b12e",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/pbr-city/urban-facade-selected.glb.edz",
+        "bytes": 9458970,
+        "sha256": "34e6d5abded0df43f8627ec8b740952ec82f36f8dac6b7b1df1d8971c6917010",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/PRECISION-ROADSTER-CREDITS.txt",
+      "bytes": 1665,
+      "sha256": "45a77ffdd6e3df2ca3164dd26d5f0872dd14f187fcf9032a5d65892e5c0f0e13",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/PrecisionRoadster.glb",
+      "bytes": 13027692,
+      "sha256": "20601ef434ae1c713784e36a5c1b208340c4cae8a9639625c91023081853112f",
+      "accept": [
+        "model/gltf-binary",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/PrecisionRoadster.glb.edz",
+        "bytes": 5830070,
+        "sha256": "ba63b35d171040f2e064e77d49a61bcd39b413f4f3117dbae012adccc42672f6",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/PROVENANCE.json",
+      "bytes": 9765,
+      "sha256": "32ef41e0ffb3a395e13f4e9dccaf60d9c50c2af32a1cbe7b5386559c8e1d5742",
+      "accept": [
+        "application/json",
+        "text/json"
+      ]
+    },
+    {
+      "path": "assets/SFX-SOURCES.txt",
+      "bytes": 866,
+      "sha256": "7299a454af7444f3348173913572008632028a35bdd9e0d8c86052ae805ae8bb",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "assets/sky/qwantani_sunset_puresky_2k.hdr",
+      "bytes": 4171959,
+      "sha256": "d66e08231e9c09ca40c6d035214ae8efb638782745c82addbb2a063fa32cabef",
+      "accept": [
+        "image/vnd.radiance",
+        "application/octet-stream"
+      ],
+      "wire": {
+        "path": "assets/sky/qwantani_sunset_puresky_2k.hdr.edz",
+        "bytes": 2436997,
+        "sha256": "91c6c61257d33a435362f0e8a3fe560eac6a633a021c2859d7519f086d6009a9",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "assets/sky/SOURCE_AND_LICENSE.md",
+      "bytes": 817,
+      "sha256": "6fc7eb5ae8d09a0f13b78f8d4b025ca4541da72f30ae1609c63d3eb77a3c8968",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "assets/WEB-LOSSLESS-CREDITS.md",
+      "bytes": 1067,
+      "sha256": "965259c3a0bd585d652d3ce15fe27f888b93407e643e0602e637caa408eac234",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "audio.js",
+      "bytes": 20463,
+      "sha256": "dc33f3c67ceff4b3df0555b6fb67193ffe2d4098be45960a88955cff9563a57d",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "build-info.js",
+      "bytes": 79,
+      "sha256": "4cf90494c37be9e4900aca634cfe18821a0656dfdb17064d04cd420fc063d3f3",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "carrier-vehicle.js",
+      "bytes": 4377,
+      "sha256": "748dbfda7ab3041bdf9528d0b61d00addc43076e5cb9119c768e8e525418853f",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "combat-visuals.js",
+      "bytes": 10537,
+      "sha256": "776475bef45dfaece98e35b0ff673e569b3a0e83ec67236c60c32bf5ffdf7898",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "core.js",
+      "bytes": 22666,
+      "sha256": "a5e04ad7b19be9d4085667a92a2e1d98e2b030d64bcd5e2553b092bfc27de770",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "diagnostics.js",
+      "bytes": 26475,
+      "sha256": "ac5b9c8c3e07fdccb4b79fcfa8e4b254b521a9aac9ce12f98967517474c64e6c",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "encounters.js",
+      "bytes": 26918,
+      "sha256": "a4fd8b307b3742c8decf034e0e20b2b10ce3c866cadcc22c71da725973dfcc9a",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "game.js",
+      "bytes": 15327,
+      "sha256": "3082c8700f94f2cacfa63c17719e0f09cf60cedaccb0f9dc1dd1d4953eea1979",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "hero-support.js",
+      "bytes": 70061,
+      "sha256": "2abc404e6143bb9e9343200ae164bb84af9827f89ac3a064aa921f0458143c2d",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "hero-support.js.edz",
+        "bytes": 35717,
+        "sha256": "151fea2d26dba5e1cb69b7287b0761727dd5912bf58a6643d31b0e506cba92ab",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "index.html",
+      "bytes": 9622,
+      "sha256": "6bacade86997f54296acb8cc75dab713d5754a1225129c4b237d363a14412eba",
+      "accept": [
+        "text/html"
+      ]
+    },
+    {
+      "path": "landmarks.js",
+      "bytes": 8095,
+      "sha256": "50d2d4e3f906eb8a0fa52f3c453a1506fb47608c4d3e051a258751bf66f72d14",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "pbr-city.js",
+      "bytes": 20863,
+      "sha256": "15892c66d4585931115f5f250002157aafa1f37d59263891993e513f8333ec5c",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "postfx.js",
+      "bytes": 5253,
+      "sha256": "2ce6d806f239afd54e0afcc9528204df1a37362a6658e7c957b1bb7656aa6289",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "pursuit-visuals.js",
+      "bytes": 7587,
+      "sha256": "15b9d18e5e4a02eb7987f34c09dbeacabaab4fce3c80bb24657f8da51dc54a57",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "road-detail.js",
+      "bytes": 4040,
+      "sha256": "988604a7ce6860464f8552b2f913434a45a2fb587094eaa0a1c4b9f3c1d38c53",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "style.css",
+      "bytes": 197183,
+      "sha256": "aaf7fdb26cdf55c3f7570664a1dd4566d648a4c82ac49e4d8df72f85307b7766",
+      "accept": [
+        "text/css"
+      ],
+      "wire": {
+        "path": "style.css.edz",
+        "bytes": 137135,
+        "sha256": "b290979ee631b829b11cc93d2ec2bfe9395068aa508df3d7f623ae3976accfcf",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "track.js",
+      "bytes": 4722,
+      "sha256": "a431e6f73d875c8cf1a443c35106fb3eb365c8716544b64292194487b20ae3fd",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/BufferGeometryUtils.js",
+      "bytes": 37724,
+      "sha256": "6d4f4f989a5f7e810522aaa36292205e3674878eed9810563417bd13ab9ba4f2",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/GLTFLoader.js",
+      "bytes": 117568,
+      "sha256": "ea6945bc119f46237fab6a9228c3566fe66fff200512b3b96b1a6a32e89cb706",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "vendor/GLTFLoader.js.edz",
+        "bytes": 25938,
+        "sha256": "bb96695a3eb16b4aed2797b31ce1e6b1c15344e7153b732389e7a95ff41247c5",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "vendor/HDRLoader.js",
+      "bytes": 12091,
+      "sha256": "0aba0fbacb70c8dc409558639c45f0c9f2f8367cbcdc95bd028ac1a8b29f76eb",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/N8AO-LICENSE.txt",
+      "bytes": 7047,
+      "sha256": "6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "vendor/postfx/N8AO.js",
+      "bytes": 194438,
+      "sha256": "1eaf0a98f72dfb68d9e21e55818d618079d2b288b241b4f69605cd90adb3030d",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "vendor/postfx/N8AO.js.edz",
+        "bytes": 87229,
+        "sha256": "a6e1e9c06949b45d59e67a8cb3e9db9b6506fbf4805107837ebc40fb55cb0535",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "vendor/postfx/postprocessing/EffectComposer.js",
+      "bytes": 8882,
+      "sha256": "45308dadebd76cf5b834969cd9c77e162905cdb5f479aca26bf0a7b31615301a",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/postprocessing/MaskPass.js",
+      "bytes": 4889,
+      "sha256": "69320db4496d38bf39678641faed2380c3b7a5385f890e7ebf7f5931d7c962bb",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/postprocessing/OutputPass.js",
+      "bytes": 4348,
+      "sha256": "400d955c941821c955d3ee40b46ef3a9778f6b618e3f362088e3e0de1ebd4f4b",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/postprocessing/Pass.js",
+      "bytes": 4425,
+      "sha256": "08c93475757238d1384c558bc2434b0d76871887b291e1cef56842a7adcbf980",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/postprocessing/ShaderPass.js",
+      "bytes": 3379,
+      "sha256": "187226cd606758b3bf577681c08a3b8251467648624825f07fa6bad5f3e97055",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/postprocessing/UnrealBloomPass.js",
+      "bytes": 15954,
+      "sha256": "b325d989b7864ca5b57467d597f7e9f8b56f89758be2a084d5d101d800aa4fa9",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/shaders/CopyShader.js",
+      "bytes": 781,
+      "sha256": "4f5f4144609b0e4f8e3b5775723e743dbc3b89a7f945321f77801658b5b94baa",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/shaders/FXAAShader.js",
+      "bytes": 7129,
+      "sha256": "fd799ba0013aff9377bc78ab17da068b38f4bc5c142e2b7c0d0cd6e9784d58d4",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/shaders/LuminosityHighPassShader.js",
+      "bytes": 1375,
+      "sha256": "9d8bd3b88f976992640341031efd4d8220dc765c947ed437ab974b1b0dd96fbf",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/shaders/OutputShader.js",
+      "bytes": 1979,
+      "sha256": "7dca689f87a98cfafc24221cc854fd68821ff04fbcfacd0e4e4a8867b8515350",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/postfx/SOURCE_AND_LICENSE.md",
+      "bytes": 2682,
+      "sha256": "b15b88001b7649fcd574376f396f95ab5e81babd228444f2a585232fab43a4c5",
+      "accept": [
+        "text/markdown",
+        "text/plain",
+        "application/octet-stream"
+      ]
+    },
+    {
+      "path": "vendor/postfx/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "vendor/SkeletonUtils.js",
+      "bytes": 11547,
+      "sha256": "eedd768765d6553f8082953ab3882e2c86dacc2eb7d180a312d1d52e86bb35c5",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "vendor/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "accept": [
+        "text/plain"
+      ]
+    },
+    {
+      "path": "vendor/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "vendor/three.core.js.edz",
+        "bytes": 286903,
+        "sha256": "72481bcf35cce2bcc15cb06e73a4992e04035d47ee4d196e54a34ea0ec3160df",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "vendor/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "vendor/three.module.js.edz",
+        "bytes": 131133,
+        "sha256": "13261aa19752faa3b4f547a1f9b755d06d9bd949b72ba7a6b1dd2bb0539525c4",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    },
+    {
+      "path": "web-update-client.js",
+      "bytes": 703,
+      "sha256": "0e8d1986e5dbaea18604eaa7217674779e4eaf4813109af3886eda91810ec1eb",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ]
+    },
+    {
+      "path": "world.js",
+      "bytes": 77611,
+      "sha256": "75c5f76cfc7008a23b0a36d7f1a801b24f0d44fc4211cad3dff27c8548b6bce7",
+      "accept": [
+        "text/javascript",
+        "application/javascript",
+        "application/ecmascript"
+      ],
+      "wire": {
+        "path": "world.js.edz",
+        "bytes": 24052,
+        "sha256": "03f7782cd0c9a49212fe0f6d18a36ba8be0ff164dd0f789f618f1ee0aa674b46",
+        "encoding": "gzip",
+        "accept": [
+          "application/octet-stream",
+          "application/gzip",
+          "application/x-gzip"
+        ]
+      }
+    }
+  ]
+}

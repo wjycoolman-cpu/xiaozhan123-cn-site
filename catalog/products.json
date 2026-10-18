@@ -327,6 +327,32 @@
         "formUrl": "/feedback/?product=subtitle-studio"
       },
       "sourceUrl": "https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-source.zip"
+    },
+    {
+      "id": "electric-drive",
+      "name": "极限电驱",
+      "kind": "game",
+      "category": "飞车跑酷",
+      "symbol": "ϟ",
+      "theme": "sky",
+      "summary": "穿越城市高架，收金币、喷气加速、腾空翻滚，甩开追车与故障车辆。",
+      "state": "published",
+      "statusText": "可直接试玩",
+      "version": "0.5.1",
+      "compatibility": "支持 WebGL 2 的浏览器；键盘或触屏操作",
+      "sizeBytes": 155966402,
+      "playUrl": "./electric-drive/",
+      "downloadUrl": "",
+      "releaseNotes": [
+        "警车追逐开场可跳过；收金币、空中动作和擦车撞毁有连续小目标。",
+        "主动喷气加速、滑翔与空翻；避开右侧爆炸电池、后方追车和逐渐停下的故障车。",
+        "采用精细车辆与城市素材，加入夕阳反射、环境遮蔽和局部高光辉光。",
+        "首次下载约156 MB（149 MiB），完成后可离线重开；免费非商业试玩。"
+      ],
+      "feedback": {
+        "endpoint": "https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback",
+        "formUrl": "/feedback/?product=electric-drive&source=product"
+      }
     }
   ]
 }

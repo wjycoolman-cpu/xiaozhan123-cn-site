@@ -25,6 +25,7 @@
  function action(p) { const url = safeUrl(p.kind === 'game' ? p.playUrl : p.downloadUrl); return ready(p) ? `<a class="button primary" href="${esc(url)}" ${p.kind === 'app' ? `download="${esc(p.filename || p.id + '.apk')}" data-download="${esc(p.id)}"` : ''}>${p.kind === 'game' ? '开始游戏' : esc(p.downloadLabel || '下载 APK')}</a>` : `<button class="button disabled" disabled>${esc(p.statusText || '准备中')}</button>`; }
  function icon(p) {
   const drawings={
+   'electric-drive':'<path d="m4 12 2-5h12l2 5v7H4Z"/><path d="M4 12h16M7 19v2m10-2v2M7 15h1m8 0h1m-6-8-1 3h3l-1 3"/>',
    'subtitle-studio':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h4m-4 4h4m3-4h3m-3 4h3"/>',
    'resume-studio':'<path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/>',
    'stardew-farm':'<path d="M12 14V6m0 5C6 11 5 8 5 5c4 0 7 1 7 5m0-1c0-4 3-5 7-5 0 4-2 6-7 6M4 16h16M4 20h16"/>',

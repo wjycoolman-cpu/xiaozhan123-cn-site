@@ -1,0 +1,87 @@
+极限电驱 · 参考游戏与生产资源
+本地版 0.3.0 · 2026-10-18
+
+玩法和画面参考
+
+狂野飙车8 / Asphalt 8
+https://www.gameloft.com/game/asphalt-8
+https://www.youtube.com/watch?v=jpSGZsgga_I
+https://apps.apple.com/us/app/asphalt-8-airborne/id610391947
+已实际观看官方启动预告、官网视频与一段连续腾空预览，研究车辆/道路受光、近中远场景、低机位追车、起飞和落地。宣传转场不当作连续驾驶。没有复制原作车模、赛道、界面、音乐或代码，也不声称本版本已达到其完整商业制作规模。
+
+Distance
+https://store.steampowered.com/app/233610/Distance/
+主要玩法参考：汽车跳跃、旋转、飞行与城市障碍；动作服务避障。
+
+Nitronic Rush
+https://nitronic-rush.com/
+https://nitronic-rush.com/download-game/
+Distance前作的生存驾驶参考。可从作者入口查看或下载；免费游戏不等于允许再分发其模型和音乐。
+
+Subway Surfers
+https://subwaysurfers.com/
+连续避障、简单输入、清楚的路线预告；本游戏保留三车道操作。
+
+art of rally / Absolute Drift
+https://store.steampowered.com/app/550320/art_of_rally/
+https://store.steampowered.com/app/320140/Absolute_Drift/
+实际界面用于菜单、HUD和信息层级研究；未复制界面素材。
+
+实际采用的资产
+
+Car Concept — Eric Chadwick / Darmstadt Graphics Group GmbH，CC BY4.0
+https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+当前用作交通车的几何LOD，保留车身、玻璃、轮组并批处理；改动与署名见 assets/CAR-CONCEPT-TRAFFIC-CREDITS.txt。
+
+Kenney City Roads 2.2 — CC0
+https://kenney.nl/assets/city-roads
+真实桥面、护栏、桥墩与道路设施，接入连续弯道和起伏的高架。
+
+Kenney Car Kit / City Kit (Commercial) — CC0
+https://kenney.nl/assets/car-kit
+https://kenney.nl/assets/city-kit-commercial
+用于交通车基础、货车、远景城市等；Commercial是包名，以CC0许可证为准。
+
+Poly Haven Modular Urban Apartments Facade — James Ray Cock，CC0
+https://polyhaven.com/a/modular_urban_apartments_facade
+实际选取并简化的窗墙、门、檐口和屋顶构件，在游戏内重新组装。
+
+Poly Haven Asphalt 02 — Rob Tuytel，CC0
+https://polyhaven.com/a/asphalt_02
+实际采用颜色、OpenGL法线和粗糙度三图，按约3米尺度铺设。
+
+Poly Haven Industrial Sunset (Pure Sky) — Sergej Majboroda / Jarod Guest，CC0
+https://polyhaven.com/a/industrial_sunset_puresky
+真实云层HDR用于天空和环境反射；游戏城市来自几何场景。
+https://polyhaven.com/license
+
+声音
+Kenney Sci-Fi Sounds — CC0：https://kenney.nl/assets/sci-fi-sounds
+pyranostudios Air Whoosh — CC0：https://opengameart.org/content/air-whoosh
+默认静音，右上按钮可开；声音事件/信号/回收已检，人耳听感尚未确认。
+
+引擎与字体
+Three.js 0.186.1 — MIT：https://threejs.org/
+Noto Sans SC — OFL1.1：https://github.com/google/fonts/tree/main/ofl/notosanssc
+全部运行依赖本地包含；字体只嵌入所需界面字符子集并保留许可。
+
+还实际检查过的现成赛道基础
+KenneyNL/Starter-Kit-Racing：https://github.com/KenneyNL/Starter-Kit-Racing
+代码MIT、模型CC0；实际移植并预览其中16格现成道路布局，供路线组织研究。本版本仍服务飞车跑酷，没有改为封闭赛道绕圈。
+
+以上商业游戏仅为参考；具体随包资产和改动以“资源许可.txt”及assets/vendor中的许可文件为准。
+
+Amazon Lumberyard Bistro / NVIDIA ORCA — CC BY4.0
+https://developer.nvidia.com/orca/amazon-lumberyard-bistro
+实际取得原件，使用餐馆/砖楼及共享楼组中的转角商铺、住宅与少量道具，用作高架弯道旁近景，保留不同屋顶、门窗、阳台和立面结构。
+随包仅包含实际使用的局部GLB与必要许可；原始大素材包、完整街角和重型道具集没有装入运行包。
+
+Ferrari 458 Italia — vicent091036，CC BY4.0
+https://threejs.org/examples/webgl_materials_car.html
+https://github.com/mrdoob/three.js/issues/23089
+精细灯组、座舱、轮组和车身结构；本项目将现成模型适配为虚构电驱飞车的视觉车辆，不表示真实电车或品牌授权。
+
+NVIDIA Emerald Square / ORCA — CC BY-NC-SA3.0
+https://developer.nvidia.com/orca/nvidia-emerald-square
+作者 Nicholas Hull、Kate Anderson、Nir Benty；四种完整建筑与 Bus_2 接驳车实际进入驾驶场景。
+素材与改编保持独立同许可、署名及修改说明；本版免费非商业展示，不授予商业使用。

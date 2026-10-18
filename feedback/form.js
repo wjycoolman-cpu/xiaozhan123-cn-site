@@ -8,7 +8,7 @@
     catch { fragmentClearFailed = true; }
   }
   const ENDPOINT = 'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback';
-  const IDs = new Set(['website', 'skymyth', 'pocket-piano', 'mianji', 'qingci', 'question-bank', 'stardew-farm', 'resume-studio', 'yuji', 'subtitle-studio']);
+  const IDs = new Set(['website', 'skymyth', 'pocket-piano', 'mianji', 'qingci', 'question-bank', 'stardew-farm', 'resume-studio', 'yuji', 'subtitle-studio', 'electric-drive']);
   const $ = id => document.getElementById(id);
   const form = $('form'), select = $('product'), message = $('answer'), contact = $('contact'), submit = $('submit');
   const versions = new Map(), states = new Map();
@@ -71,7 +71,7 @@
   }
   function updateVersion() {
     const native=states.get(active)?.draft?.context;
-    if(native?.source==='app'){ $('product-version').textContent='来自 APP 的实际版本：'+(native.version||'未提供');return; }
+    if(native?.source==='app'){ $('product-version').textContent='来自产品的实际版本：'+(native.version||'未提供');return; }
     const version = versions.get(active) || '';
     $('product-version').textContent = active === 'website' ? '关于网站访问、下载或整体体验。' : active ? (version ? '网站当前版本：' + version : '版本暂未读取，反馈仍可发送。') : '';
   }
@@ -237,7 +237,7 @@
     try{const clean=new URL(location.href);clean.hash='';history.replaceState(null,'',clean.pathname+clean.search);}catch{clearingFailed=true;}
     let incoming;
     try{incoming=incomingFragment(new URLSearchParams(location.search),document.body.dataset.legacyFeedback==='qingci',raw,clearingFailed);}
-    catch{status('来自 APP 或链接的草稿格式、长度或反馈对象不匹配，未导入也未发送。','error');return;}
+    catch{status('来自产品或链接的草稿格式、长度或反馈对象不匹配，未导入也未发送。','error');return;}
     if(!incoming)return;
     const apply=async()=>{
       if(!client||busy||switching){status('当前操作仍在进行，这份 APP 草稿尚未导入。请稍候点击重新导入。','error');return false;}
@@ -272,7 +272,7 @@
     const legacy = document.body.dataset.legacyFeedback === 'qingci';
     let incoming=null, incomingProblem='';
     try { incoming=incomingFragment(query,legacy); }
-    catch { incomingProblem='来自 APP 或链接的草稿格式、长度或反馈对象不匹配，未导入也未发送。'; }
+    catch { incomingProblem='来自产品或链接的草稿格式、长度或反馈对象不匹配，未导入也未发送。'; }
     active = requested === null ? (legacy ? 'qingci' : 'website') : query.getAll('product').length===1&&IDs.has(requested) ? requested : '';
     select.value = active;
     if (legacy || query.get('source') === 'beidanci-qr') {
