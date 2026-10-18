@@ -37,10 +37,27 @@ async function validated(response,file,storedObject=false){
   const contentType=/^(text\/|application\/(?:json|javascript|ecmascript)$)/.test(type)?type+'; charset=utf-8':type;
   return new Response(bytes,{status:200,headers:{'Content-Type':contentType,'X-ED-SHA256':file.sha256}});
 }
+// This immutable public mirror contains the exact authenticated R10 payloads.
+// Local fixtures and other builds keep their original route.
+const R10_SOURCE='https://raw.githubusercontent.com/wjycoolman-cpu/xiaozhan123-cn-site/19e3f8fdc791214436ec5430e2314530b6d7098b/electric-drive/';
+let fastSourceAvailable=true;
+function downloadSources(url,file){
+  const scope=new URL(SCOPE),prefix=new URL('builds/r10-20261018-01/',SCOPE).href;
+  if(!fastSourceAvailable||!file.wire||scope.origin!=='https://xiaozhan123.cn'||scope.pathname!=='/electric-drive/'||!url.startsWith(prefix))return [url];
+  return [R10_SOURCE+url.slice(SCOPE.length),url];
+}
 async function download(url,file,onBytes){
+  const sources=downloadSources(url,file);let lastError;
+  for(let i=0;i<sources.length;i++){
+    try{return await downloadFrom(sources[i],file,onBytes);}
+    catch(error){lastError=error;if(i<sources.length-1)fastSourceAvailable=false;}
+  }
+  throw lastError;
+}
+async function downloadFrom(url,file,onBytes){
   const wire=file.wire,transport=wire||file;
   if(wire&&typeof DecompressionStream!=='function')throw Error('此浏览器不支持 gzip 解压，请使用支持的浏览器后重试。');
-  const controller=new AbortController();let timer=setTimeout(()=>controller.abort(),20000);
+  const controller=new AbortController();let timer=setTimeout(()=>controller.abort(),url.startsWith(R10_SOURCE)?4000:20000);
   const touch=()=>{clearTimeout(timer);timer=setTimeout(()=>controller.abort(),45000);};
   try{
     const r=await fetch(url,{cache:'no-store',credentials:'same-origin',signal:controller.signal});
@@ -61,7 +78,7 @@ async function download(url,file,onBytes){
     catch{throw Error('gzip 解压内容无效或大小不匹配，尚未保存。');}
     const raw=new Uint8Array(rawCount);let rawOffset=0;for(const chunk of expanded){raw.set(chunk,rawOffset);rawOffset+=chunk.length;}
     return await validated(new Response(raw,{status:200,headers:{'Content-Type':file.accept[0]}}),file);
-  }finally{clearTimeout(timer);}
+  }finally{clearTimeout(timer);controller.abort();}
 }
 async function readBuild(id,requireReady=true){
   if(!validId(id))return null;
