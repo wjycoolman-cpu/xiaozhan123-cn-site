@@ -45,7 +45,8 @@ async function download(url,file,onBytes){
   try{
     const r=await fetch(url,{cache:'no-store',credentials:'same-origin',signal:controller.signal});
     if(r.status!==200||r.type==='opaque'||!transport.accept.includes((r.headers.get('Content-Type')||'').split(';')[0].trim().toLowerCase()))throw Error('服务器返回的文件类型或状态不匹配');
-    if(wire&&r.headers.get('Content-Encoding')&&!/^identity$/i.test(r.headers.get('Content-Encoding')))throw Error('压缩传输被服务器再次编码，尚未保存，请重试。');
+    // Fetch has already decoded HTTP Content-Encoding. Authenticate its body
+    // against the application wire size/SHA below before gzip expansion.
     touch();const chunks=[];let count=0;
     if(r.body){const reader=r.body.getReader();for(;;){const {value,done}=await reader.read();if(done)break;touch();count+=value.byteLength;if(count>transport.bytes){controller.abort();throw Error('传输文件大小不匹配');}chunks.push(value);onBytes?.(value.byteLength);}}
     else {const b=new Uint8Array(await r.arrayBuffer());chunks.push(b);count=b.length;onBytes?.(count);}
