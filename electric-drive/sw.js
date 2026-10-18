@@ -37,13 +37,16 @@ async function validated(response,file,storedObject=false){
   const contentType=/^(text\/|application\/(?:json|javascript|ecmascript)$)/.test(type)?type+'; charset=utf-8':type;
   return new Response(bytes,{status:200,headers:{'Content-Type':contentType,'X-ED-SHA256':file.sha256}});
 }
-// This immutable public mirror contains the exact authenticated R10 payloads.
+// Immutable public mirrors contain byte-authenticated R10/R11 payloads.
 // Local fixtures and other builds keep their original route.
 const R10_SOURCE='https://raw.githubusercontent.com/wjycoolman-cpu/xiaozhan123-cn-site/19e3f8fdc791214436ec5430e2314530b6d7098b/electric-drive/';
+const R11_SOURCE='https://raw.githubusercontent.com/wjycoolman-cpu/xiaozhan123-cn-site/ac11788aed1887ae258b1f22ce896ce172696deb/electric-drive/';
 function downloadSources(url,file){
-  const scope=new URL(SCOPE),prefix=new URL('builds/r10-20261018-01/',SCOPE).href;
-  if(!file.wire||scope.origin!=='https://xiaozhan123.cn'||scope.pathname!=='/electric-drive/'||!url.startsWith(prefix))return [url];
-  return [R10_SOURCE+url.slice(SCOPE.length),url];
+  const scope=new URL(SCOPE);
+  if(!file.wire||scope.origin!=='https://xiaozhan123.cn'||scope.pathname!=='/electric-drive/')return [url];
+  const mirror=url.startsWith(new URL('builds/r11-20261019-01/',SCOPE).href)?R11_SOURCE:
+    url.startsWith(new URL('builds/r10-20261018-01/',SCOPE).href)?R10_SOURCE:null;
+  return mirror?[mirror+url.slice(SCOPE.length),url]:[url];
 }
 async function download(url,file,onBytes){
   const sources=downloadSources(url,file);let lastError;
@@ -56,7 +59,7 @@ async function download(url,file,onBytes){
 async function downloadFrom(url,file,onBytes){
   const wire=file.wire,transport=wire||file;
   if(wire&&typeof DecompressionStream!=='function')throw Error('此浏览器不支持 gzip 解压，请使用支持的浏览器后重试。');
-  const controller=new AbortController();let timer=setTimeout(()=>controller.abort(),url.startsWith(R10_SOURCE)?4000:20000);
+  const controller=new AbortController();let timer=setTimeout(()=>controller.abort(),(url.startsWith(R10_SOURCE)||url.startsWith(R11_SOURCE))?4000:20000);
   const touch=()=>{clearTimeout(timer);timer=setTimeout(()=>controller.abort(),45000);};
   try{
     const r=await fetch(url,{cache:'no-store',credentials:'same-origin',signal:controller.signal});

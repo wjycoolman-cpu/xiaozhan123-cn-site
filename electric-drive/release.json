@@ -1,11 +1,22 @@
 {
   "schema": 1,
   "app": "electric-drive",
-  "build": "r10-20261018-01",
-  "version": "0.7.0",
+  "build": "r11-20261019-01",
+  "version": "0.8.0",
   "manifest": {
-    "url": "builds/r10-20261018-01/manifest.json",
-    "bytes": 34904,
-    "sha256": "15edfd19082b0abe15ad3ee451dbc334dd1f158e9200092040db79883d771ec4"
+    "url": "builds/r11-20261019-01/manifest.json",
+    "bytes": 38822,
+    "sha256": "f9d2e48153a6e82f9e2df292cef9eb02ce77551acaa9e3de9fadc2a44e2ae8b3"
+  },
+  "previous": {
+    "schema": 1,
+    "app": "electric-drive",
+    "build": "r10-20261018-01",
+    "version": "0.7.0",
+    "manifest": {
+      "url": "builds/r10-20261018-01/manifest.json",
+      "bytes": 34904,
+      "sha256": "15edfd19082b0abe15ad3ee451dbc334dd1f158e9200092040db79883d771ec4"
+    }
   }
 }
