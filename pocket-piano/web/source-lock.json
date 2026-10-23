@@ -1,5 +1,5 @@
 {
-  "version": "desktop42-20261023",
+  "version": "desktop43-perf1-20261023",
   "sharedSiteBaselineCommit": "471d9b412d9dd61954d890a47cbdb19c0e1cff49",
   "files": {
     "native-synth.js": {
@@ -49,8 +49,8 @@
       "sha256": "9dc77fbc98616b10369fbec57f713089553833f47e26f45d39f8d2ff685dbf6b"
     },
     "app.js": {
-      "bytes": 34573,
-      "sha256": "9bf9e5545046f9abe0db2201c773403b30ea16b0999594007591766a948c35d3"
+      "bytes": 40406,
+      "sha256": "fa5fb76d3a8141325c044df38ac8f1ed6c377d6a871a996cfebd674d4523bbab"
     },
     "build-guide-runtime.py": {
       "bytes": 2155,
@@ -77,8 +77,8 @@
       "sha256": "a96987b12f608b6bab247bd814f424ce119f45ab8c1ac9b950088056f9ae1ac2"
     },
     "index.html": {
-      "bytes": 9792,
-      "sha256": "00734eeaa4c8a7120c707879d42160cabf01a2dbfc58a66769e49287ced2132c"
+      "bytes": 10072,
+      "sha256": "a8939c488c686fd7aeab0d4fb28aa651682f4bc2496be0f974b01194bf85940c"
     },
     "keyboard-layout.css": {
       "bytes": 11171,
@@ -108,9 +108,13 @@
       "bytes": 6570,
       "sha256": "b7861f48c870c003d87a02b648a46fbf729a6fed5e747a491e189d7174e54c2c"
     },
+    "performance.js": {
+      "bytes": 21328,
+      "sha256": "ffa80b322d4949c09f43af2602e7b4e7e6a553ca6b9b3edd47b8ce7d8fba91af"
+    },
     "README.md": {
-      "bytes": 4955,
-      "sha256": "719a721c618765ec75704ad33d8836974ff83f62b11c23a892ea9ca831f3956e"
+      "bytes": 6449,
+      "sha256": "60438460b94efd327d04eb611c75b5f5b2206a1a5807d320e7e22b15dad6242e"
     },
     "staff-practice.js": {
       "bytes": 16866,
@@ -204,5 +208,12 @@
       "bytes": 2987,
       "sha256": "2a09c9ffd58cfb5977dad88275a73fc455e3ea853cb09baacc2ecc6312dee047"
     }
+  },
+  "desktopPerformanceRecording": {
+    "module": "performance.js",
+    "entryBuild": "desktop43-perf1",
+    "schema": "piano-local-performance-v1",
+    "collection": "optional passive memory only, no upload or persistence",
+    "acceptance": "Instrumentation and Node checks do not replace actual browser, paint, device audio, or cold/warm performance samples"
   }
 }

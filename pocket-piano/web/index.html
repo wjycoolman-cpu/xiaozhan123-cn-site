@@ -9,7 +9,7 @@
   <meta name="description" content="打开就用电脑键盘弹钢琴。双手键位、曲库、五线谱跟弹与演奏录制，专为桌面浏览器设计。">
   <link rel="stylesheet" href="./web.css">
   <link rel="stylesheet" href="./keyboard-layout.css">
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=desktop43-perf1"></script>
 </head>
 <body data-view="keys">
 <div class="desktop-app instrument">
@@ -53,7 +53,7 @@
   </div>
 </div>
 <dialog id="settings-dialog"><div class="dialog-head"><div><span class="eyebrow">PRACTICE</span><h2>演奏设置</h2></div><button data-close class="icon-button" aria-label="关闭设置">×</button></div><label class="setting"><span>右手旋律 + 自动伴奏<small>跟弹时只需弹主旋律，并自动补足音长</small></span><input id="simple" type="checkbox"></label><label class="setting"><span>提示下一组音符<small>下一步用淡色边框显示</small></span><input id="preview" type="checkbox" checked></label><label class="setting"><span>持续延音<small>也可以按住空格临时使用延音踏板</small></span><input id="sustain" type="checkbox"></label><p class="dialog-note">逐键音高、左右手八度与力度可在「电脑键位」中的「键盘设置」调整。原谱音高始终保持，可见琴键只决定显示范围。</p></dialog>
-<dialog id="help-dialog"><div class="dialog-head"><div><span class="eyebrow">KEYBOARD FIRST</span><h2>双手放在键盘上，就能弹</h2></div><button data-close class="icon-button" aria-label="关闭说明">×</button></div><div class="shortcut"><kbd>字母区</kbd><span>左手音区。按键图显示对应的音级与音高。</span></div><div class="shortcut"><kbd>数字小键盘</kbd><span>右手音区；无小键盘可切换「笔记本半音布局」。</span></div><div class="shortcut"><kbd>Space</kbd><span>按住延音，松开释放。</span></div><div class="shortcut"><kbd>Enter</kbd><span>开始 / 暂停。小键盘 Enter 是独立音符键。</span></div><div class="shortcut"><kbd>Shift + 音符键</kbd><span>经典布局升半音。</span></div><div class="shortcut"><kbd>Esc</kbd><span>立即停止声音。</span></div><p class="dialog-note">右键按键可编辑映射。输入框、设置弹窗和浏览器快捷键保持正常。和弦逐音按对才推进，重复音需松开再按。部分实体键盘会限制同时按下的按键数。</p></dialog>
+<dialog id="help-dialog"><div class="dialog-head"><div><span class="eyebrow">KEYBOARD FIRST</span><h2>双手放在键盘上，就能弹</h2></div><button data-close class="icon-button" aria-label="关闭说明">×</button></div><div class="shortcut"><kbd>字母区</kbd><span>左手音区。按键图显示对应的音级与音高。</span></div><div class="shortcut"><kbd>数字小键盘</kbd><span>右手音区；无小键盘可切换「笔记本半音布局」。</span></div><div class="shortcut"><kbd>Space</kbd><span>按住延音，松开释放。</span></div><div class="shortcut"><kbd>Enter</kbd><span>开始 / 暂停。小键盘 Enter 是独立音符键。</span></div><div class="shortcut"><kbd>Shift + 音符键</kbd><span>经典布局升半音。</span></div><div class="shortcut"><kbd>Esc</kbd><span>立即停止声音。</span></div><p class="dialog-note">右键按键可编辑映射。输入框、设置弹窗和浏览器快捷键保持正常。和弦逐音按对才推进，重复音需松开再按。部分实体键盘会限制同时按下的按键数。</p><p class="dialog-note">遇到等待或卡顿时，可以下载本页的性能记录。记录只保存在浏览器内，不含曲谱、录音、输入文字或按键内容，也不会自动上传。</p><button id="download-diagnostics">下载性能记录</button></dialog>
 <dialog id="export-dialog"><div class="dialog-head"><div><span class="eyebrow">EXPORT</span><h2>保存你的演奏</h2></div><button data-close class="icon-button" aria-label="关闭导出">×</button></div><p id="export-description">选择一首曲目后，可以导出曲谱、音频和实际演奏画面。</p><div class="export-options"><button id="export-json"><strong>曲谱文件</strong><small>JSON · 可再次导入</small></button><button id="export-wav"><strong>音频</strong><small>WAV · 正式钢琴音源</small></button><button id="export-video"><strong>演奏视频</strong><small>MP4 · 1920 × 1080</small></button></div><p id="export-status" role="status" class="dialog-note">音频和视频在点击生成时才准备资源。</p></dialog>
 </body>
 </html>

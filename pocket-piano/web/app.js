@@ -2,11 +2,50 @@ import {createKeyboardAdapter} from './keyboard-layout.js';
 import {DesktopPianoAudio, pitchesForWindow} from './desktop-audio.js';
 import {SongLibrary, normalizeWebSong} from './library.js';
 
+// Optional diagnostics must never become a dependency of the piano. These
+// fixed operation names/timestamps are buffered in memory while it downloads.
+const PERFORMANCE_BUILD='desktop43-perf1';
+let measurements=null,recentInput=null;
+const measurementQueue=[],measurementCounts=new Map(),pendingPaints=new Set();
+function measureOperation(name,context={},startTime){
+  const now=performance.now(),gesture=!Number.isFinite(startTime)&&recentInput&&now-recentInput.observedAt<100?recentInput:null,input=gesture?gesture.at:now;
+  const begin=Number.isFinite(startTime)?startTime:input;let ended=false;
+  return(outcome='ready',extra={},boundary='async_to_ready')=>{
+    if(ended)return false;ended=true;
+    const item={name,startTime:Math.max(0,begin),endTime:performance.now(),outcome,context:{...context,...extra,trigger:gesture?.type||'programmatic'},boundary};
+    if(measurements)return measurements.ingest(item);
+    const count=measurementCounts.get(name)||0;
+    if(count<16&&measurementQueue.length<64){measurementQueue.push(item);measurementCounts.set(name,count+1);}
+    return true;
+  };
+}
+function measurePaint(finish,outcome='ready',context={},current=()=>true){
+  let frame=null,ended=false;
+  const settle=hidden=>{
+    if(ended)return;ended=true;pendingPaints.delete(settle);if(frame!==null)cancelAnimationFrame(frame);
+    finish(!current()?'canceled':hidden||document.visibilityState==='hidden'?'not_visible':outcome,{...context,stage:'paint_opportunity'},'paint_opportunity');
+  };
+  pendingPaints.add(settle);
+  if(document.visibilityState==='hidden'){settle(true);return;}
+  frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(()=>settle(false));});
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')for(const settle of [...pendingPaints])settle(true);},{passive:true});
+for(const type of ['click','keydown','pointerdown'])document.addEventListener(type,event=>{
+  const now=performance.now(),stamp=Number(event.timeStamp);
+  recentInput={at:Number.isFinite(stamp)&&stamp>=0&&stamp<=now?stamp:now,observedAt:now,type:event.type};measurements?.observeInput(event);
+},{capture:true,passive:true});
+const performanceReady=import('./performance.js').then(({createPerformanceRecorder})=>{
+  measurements=createPerformanceRecorder({build:PERFORMANCE_BUILD});
+  for(const item of measurementQueue)measurements.ingest(item);measurementQueue.length=0;measurementCounts.clear();return measurements;
+}).catch(()=>null);
+const shellTiming=measureOperation('shell.ready',{stage:'dom'},0);
+
 // The desktop shell has no mobile surface or score dependency. Free playing
 // does not wait for a catalog, an engraving engine, or a song to be selected.
 const $=selector=>document.querySelector(selector);
 const all=selector=>[...document.querySelectorAll(selector)];
-const audio=new DesktopPianoAudio(message=>status(message));
+let audioErrors=0;
+const audio=new DesktopPianoAudio(message=>{audioErrors++;status(message);});
 const library=new SongLibrary();
 const black=new Set([1,3,6,8,10]);
 const names=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
@@ -16,10 +55,10 @@ let formal=null,formalPromise=null,adapter=null,staff=null,staffPromise=null;
 let song=null,groups=[],groupIndex=0,position=0,playing=false,mode='free',view='keys';
 let speed=1,base=36,whiteCount=36,playEpoch=0,selectionEpoch=0,modeEpoch=0;
 let origin=0,nextIndex=0,endPrefix=[],lastPrefetch=-Infinity,pedalHeld=false;
-let recording=false,recordStart=0,recordNotes=[],recordOwners=new Map(),recordingPreparing=false,recordingEpoch=0;
+let recording=false,recordStart=0,recordNotes=[],recordOwners=new Map(),recordingPreparing=false,recordingEpoch=0,recordingTiming=null;
 const downs=new Map(),pointers=new Map(),keys=new Map(),rects=new Map();
 let category='全部',results=[],page=0,searchEpoch=0,sessionReady=false,restoringSession=true,offlineSaved=null;
-let lastVisual=0,lastStaff=0,rollDirty=true,loadingSongId='',exportBusy=false,statusTimer=0,pendingResume=null;
+let lastVisual=0,lastStaff=0,rollDirty=true,loadingSongId='',exportBusy=false,statusTimer=0,pendingResume=null,viewEpoch=0;
 const elapsed=ms=>`${Math.floor(Math.max(0,ms)/60000)}:${String(Math.floor(Math.max(0,ms)/1000)%60).padStart(2,'0')}`;
 const noteName=p=>names[p%12]+(Math.floor(p/12)-1);
 const duration=()=>song?Math.max(1,song.durationMs):1;
@@ -114,9 +153,11 @@ function updateLights(){
   $('#instruction').textContent=instruction;rollDirty=true;
 }
 async function playNote(owner,pitch,velocity=85,when=0,length=0){
+  const timing=!when&&!length?measureOperation('audio.ready',{stage:'command'}):null,beforeErrors=audioErrors;
   if(!audio.node)audioState('音源准备中…','loading');
   const voice=await audio.on(owner,pitch,velocity,when);
   if(voice){audioState('钢琴已就绪','ready');if(length>0)audio.off(owner,false,Math.max(audio.context.currentTime,when)+length/1000);}
+  timing?.(voice?'ready':audioErrors>beforeErrors?'failed':'canceled',{},'command_ready');
 }
 function noteDown(owner,pitch,velocity=85){
   cancelRestore();
@@ -167,17 +208,18 @@ function updateTimeline(){
 async function start(){
   cancelRestore();
   if(playing){pause();return;}
-  if(loadingSongId){status('曲谱正在载入，电脑键盘仍可自由弹奏');return;}
+  if(loadingSongId){measureOperation('playback.start',{mode})('canceled');status('曲谱正在载入，电脑键盘仍可自由弹奏');return;}
   if(mode==='free'){
+    const timing=measureOperation('playback.start',{mode,stage:'command'}),epoch=++playEpoch;
     audioState('音源准备中…','loading');
-    try{await audio.unlock();audioState('电脑键盘可演奏','ready');status('直接按电脑键盘，空格控制延音');}catch(error){status(error.message);audioState('点击或按键重试');}
+    try{await audio.unlock();if(epoch!==playEpoch){timing('canceled');return;}audioState('电脑键盘可演奏','ready');status('直接按电脑键盘，空格控制延音');timing('ready',{},'command_ready');}catch(error){timing('failed');status(error.message);audioState('点击或按键重试');}
     return;
   }
   if(!song){status('从左侧曲库选择一首歌曲');loadBuiltins();return;}
-  const epoch=++playEpoch;$('#start').classList.add('preparing');status('正在准备起始音符，其他功能可继续使用');
+  const timing=measureOperation('playback.start',{mode}),epoch=++playEpoch;$('#start').classList.add('preparing');status('正在准备起始音符，其他功能可继续使用');
   try{
-    if(mode==='follow'){await engine();if(epoch!==playEpoch)return;if(!groups.length)makeGroups();}
-    await audio.unlock();if(epoch!==playEpoch)return;
+    if(mode==='follow'){await engine();if(epoch!==playEpoch){timing('canceled');return;}if(!groups.length)makeGroups();}
+    await audio.unlock();if(epoch!==playEpoch){timing('canceled');return;}
     if(position>=duration()){position=0;makeGroups();}
     const startAt=mode==='follow'?(groups[groupIndex]?.start??position):position;
     if(mode==='follow'){
@@ -185,15 +227,16 @@ async function start(){
       if($('#simple').checked)for(const n of current?.accompaniment||[])if(n.start<=startAt+110*speed)pitches.push(n.pitch);
       await audio.prepare(pitches);
     }else await audio.prepareWindow(song,startAt,{lookaheadMs:450,speed});
-    if(epoch!==playEpoch)return;
+    if(epoch!==playEpoch){timing('canceled');return;}
     nextIndex=song.notes.findIndex(n=>n.start>=position);if(nextIndex<0)nextIndex=song.notes.length;
     origin=audio.context.currentTime-position/1000/speed;playing=true;lastPrefetch=-Infinity;
     if(mode==='auto')for(let i=firstOverlapping(position);i<nextIndex;i++){
       const n=song.notes[i];if(n.start+n.duration>position)playNote(`resume-${epoch}-${i}`,n.pitch,n.velocity||85,0,(n.start+n.duration-position)/speed);
     }
     audioState('钢琴已就绪','ready');status('');transportState();updateLights();
+    measurePaint(timing,'ready',{},()=>epoch===playEpoch&&playing);
     audio.prefetchWindow(song,startAt,{lookaheadMs:4500,speed});
-  }catch(error){status(error.message);audioState('音源未就绪，按键重试');}
+  }catch(error){timing('failed');status(error.message);audioState('音源未就绪，按键重试');}
   finally{if(epoch===playEpoch)$('#start').classList.remove('preparing');}
 }
 function shiftRange(delta){
@@ -231,39 +274,53 @@ keyboard.addEventListener('pointermove',event=>{
 for(const type of['pointerup','pointercancel','lostpointercapture'])keyboard.addEventListener(type,event=>{noteUp('pointer-'+event.pointerId);pointers.delete(event.pointerId);});
 
 async function setNotation(next){
+  const epoch=++viewEpoch,timing=measureOperation('view.ready',{view:['keys','staff','waterfall'].includes(next)?next:'keys'});
   view=['keys','staff','waterfall'].includes(next)?next:'keys';document.body.dataset.view=view;
   for(const button of all('.view-tabs button')){button.classList.toggle('selected',button.dataset.view===view);button.setAttribute('aria-pressed',String(button.dataset.view===view));}
   $('#computer-keyboard').hidden=view!=='keys';$('#web-staff-layer').hidden=view!=='staff';roll.hidden=view!=='waterfall';
   $('#workspace-hint').textContent=view==='keys'?'按住发声 · 松手释放':view==='staff'?'高低音谱表 · 原曲数据生成':'音符向琴键方向落下';
   staff?.setActive(view==='staff');rollDirty=true;saveSession();
-  if(view!=='staff'||!song)return;
+  if(view!=='staff'||!song){measurePaint(timing,view==='staff'?'empty':'ready',{},()=>epoch===viewEpoch);return;}
   if(!staffPromise){
     $('#web-staff-layer').innerHTML='<div class="view-placeholder staff-loading">正在准备五线谱…</div>';
     staffPromise=import('./staff-practice.js').then(({StaffPractice})=>{
       $('#web-staff-layer').replaceChildren();staff=new StaffPractice($('#web-staff-layer'));PianoWeb.staffPractice=staff;return staff;
     }).catch(error=>{staffPromise=null;const box=$('#web-staff-layer');box.replaceChildren();const message=document.createElement('div');message.className='view-placeholder';message.textContent='五线谱暂未载入';const retry=document.createElement('button');retry.textContent='重试';retry.onclick=()=>setNotation('staff');message.append(retry);box.append(message);status(error.message);throw error;});
   }
-  try{const renderer=await staffPromise;renderer.setActive(view==='staff');if(view==='staff'){await renderer.setSong(song);renderer.update(currentView());}}
-  catch(_){/* An explicit retry stays in the view; keyboard input remains usable. */}
+  try{
+    const renderer=await staffPromise;
+    if(epoch!==viewEpoch){timing('canceled');return;}
+    renderer.setActive(view==='staff');
+    if(view==='staff'){
+      await renderer.setSong(song);renderer.update(currentView());
+      Promise.resolve(renderer.rendering).then(()=>{
+        if(epoch!==viewEpoch)timing('canceled');
+        else if(renderer.inspect()?.ready)measurePaint(timing,'ready',{},()=>epoch===viewEpoch);
+        else timing('failed');
+      },()=>timing('failed'));
+    }
+  }catch(_){timing('failed');/* Explicit retry remains available; keyboard input stays usable. */}
 }
 for(const button of all('.view-tabs button'))button.onclick=()=>setNotation(button.dataset.view);
 
 async function choose(row,{restore=false,savedPosition=0}={}){
   if(offlineSaved){status('视频正在生成，完成后可以切换曲目');return false;}
   if(!restore)cancelRestore();
+  const timing=measureOperation('song.load',{source:restore?'snapshot':row.builtinIndex?'builtin':row.notes?'custom':'online',stage:'data'},restore?performance.now():undefined);
   const epoch=++selectionEpoch;pause();loadingSongId=row.id;status('正在载入「'+row.title+'」…');renderRows();
   try{
-    const selected=await library.load(row);if(mode==='follow')await engine();if(epoch!==selectionEpoch||offlineSaved)return false;
+    const selected=await library.load(row);if(mode==='follow')await engine();if(epoch!==selectionEpoch||offlineSaved){timing('canceled');return false;}
     pause();
     song=normalizeWebSong(selected);pendingResume=null;position=Math.max(0,Math.min(song.durationMs,savedPosition));nextIndex=0;
     makeGroups();$('#song-title').textContent=song.title;$('#song-kind').textContent='NOW PLAYING';
     $('#song-detail').textContent=[song.subtitle,`${song.bpm} BPM`,elapsed(song.durationMs)].filter(Boolean).join(' · ');
     loadingSongId='';status(song.storageWarning||'曲谱已就绪 · 选择跟弹或自动演奏，按 Enter 开始');
     renderRows();updateTimeline();updateLights();
+    measurePaint(timing,'ready',{count:song.noteCount},()=>epoch===selectionEpoch&&!offlineSaved);
     audio.warmPitches(pitchesForWindow(song,position,{lookaheadMs:450,speed}));
     if(view==='staff')setNotation('staff');
     if(!restore)saveSession();return true;
-  }catch(error){if(epoch===selectionEpoch){loadingSongId='';renderRows();status(error.message);}return false;}
+  }catch(error){timing('failed');if(epoch===selectionEpoch){loadingSongId='';renderRows();status(error.message);}return false;}
 }
 function renderRows(){
   const list=$('#songs');list.replaceChildren();
@@ -289,20 +346,23 @@ function renderRows(){
   $('#paging').hidden=pages<=1;$('#page-label').textContent=(page+1)+' / '+pages;$('#prev-page').disabled=page===0;$('#next-page').disabled=page===pages-1;
 }
 async function search(reset=true){
+  const timing=measureOperation('library.search',{source:library.catalog?'online':'builtin'});
   const epoch=++searchEpoch;if(reset)page=0;
   try{
     const found=library.searchAsync?await library.searchAsync($('#search').value,category):library.search($('#search').value,category);
-    if(epoch!==searchEpoch)return;results=found;renderRows();$('#library-status').textContent=results.length.toLocaleString()+' 首曲目';
-  }catch(error){if(error.name!=='AbortError'&&epoch===searchEpoch)$('#library-status').textContent=error.message;}
+    if(epoch!==searchEpoch){timing('canceled');return;}results=found;renderRows();$('#library-status').textContent=results.length.toLocaleString()+' 首曲目';
+    measurePaint(timing,'ready',{count:results.length},()=>epoch===searchEpoch);
+  }catch(error){timing(error.name==='AbortError'?'canceled':'failed');if(error.name!=='AbortError'&&epoch===searchEpoch)$('#library-status').textContent=error.message;}
 }
 async function loadBuiltins(){
   $('#library-status').textContent='正在读取内置曲目…';
   try{await indexReady;if(!library.rows.length)await library.builtins;await search();}catch(error){$('#library-status').textContent='内置曲目暂不可用';status(error.message);}
 }
 async function loadCatalog(){
+  const timing=measureOperation('library.load',{source:'online'});
   const button=$('#load-catalog');button.textContent='读取中…';$('#library-status').textContent='内置曲目仍可演奏';
-  try{await library.all();button.textContent='在线曲库 ✓';await search();}
-  catch(error){button.textContent='重试在线曲库';status(error.message+'，内置与我的曲目仍可使用');}
+  try{await library.all();button.textContent='在线曲库 ✓';await search();measurePaint(timing);}
+  catch(error){timing('failed');button.textContent='重试在线曲库';status(error.message+'，内置与我的曲目仍可使用');}
 }
 $('#load-builtins').onclick=loadBuiltins;$('#load-catalog').onclick=loadCatalog;
 $('#search').oninput=()=>search();
@@ -322,9 +382,9 @@ async function toggleRecording(){
   if(recordingPreparing){cancelRecordingPreparation();status('已取消录制准备');return;}
   if(!recording){
     pause();audioState('音源准备中…','loading');
-    const epoch=++recordingEpoch;recordingPreparing=true;$('#record').setAttribute('aria-busy','true');$('#record').replaceChildren(document.createElement('span'),document.createTextNode('取消准备'));
-    try{await audio.unlock();if(epoch!==recordingEpoch)return;recordingPreparing=false;$('#record').setAttribute('aria-busy','false');recordNotes=[];recordOwners.clear();recordStart=performance.now();recording=true;$('#record').setAttribute('aria-pressed','true');$('#record').replaceChildren(document.createElement('span'),document.createTextNode('停止录制'));status('正在录制你的弹奏 · 再点录制结束并保存');}
-    catch(error){if(epoch===recordingEpoch){cancelRecordingPreparation();status(error.message);}}return;
+    const timing=measureOperation('recording.start'),epoch=++recordingEpoch;recordingTiming=timing;recordingPreparing=true;$('#record').setAttribute('aria-busy','true');$('#record').replaceChildren(document.createElement('span'),document.createTextNode('取消准备'));
+    try{await audio.unlock();if(epoch!==recordingEpoch){timing('canceled');return;}recordingPreparing=false;recordingTiming=null;$('#record').setAttribute('aria-busy','false');recordNotes=[];recordOwners.clear();recordStart=performance.now();recording=true;$('#record').setAttribute('aria-pressed','true');$('#record').replaceChildren(document.createElement('span'),document.createTextNode('停止录制'));status('正在录制你的弹奏 · 再点录制结束并保存');measurePaint(timing,'ready',{},()=>recording&&epoch===recordingEpoch);}
+    catch(error){timing('failed');if(epoch===recordingEpoch){cancelRecordingPreparation();status(error.message);}}return;
   }
   releasePhysical();recording=false;$('#record').setAttribute('aria-pressed','false');$('#record').replaceChildren(document.createElement('span'),document.createTextNode('录制'));
   if(!recordNotes.length){status('还没有录到音符');return;}
@@ -334,28 +394,36 @@ async function toggleRecording(){
   library.save(recordingSong);download('我的演奏.json',JSON.stringify(recordingSong));await search();status(recordingSong.storageWarning||'已保存在我的曲目，并下载曲谱文件');
 }
 function cancelRecordingPreparation(){
-  if(!recordingPreparing)return;recordingEpoch++;recordingPreparing=false;$('#record').setAttribute('aria-busy','false');
+  if(!recordingPreparing)return;recordingTiming?.('canceled');recordingTiming=null;recordingEpoch++;recordingPreparing=false;$('#record').setAttribute('aria-busy','false');
   $('#record').replaceChildren(document.createElement('span'),document.createTextNode('录制'));
 }
 function showDialog(id){
+  const kind={'#settings-dialog':'settings','#help-dialog':'help','#export-dialog':'export'}[id],timing=measureOperation('menu.open',{kind});
   pause();const dialog=$(id);if(!dialog.open)dialog.showModal();
+  measurePaint(timing,'ready',{},()=>dialog.open);
 }
 for(const button of all('[data-close]'))button.onclick=()=>button.closest('dialog').close();
 $('#settings').onclick=()=>showDialog('#settings-dialog');$('#help').onclick=()=>showDialog('#help-dialog');
+$('#download-diagnostics').onclick=async()=>{
+  status('正在准备本地性能记录，演奏功能可继续使用');
+  const recorder=await performanceReady;if(!recorder){status('性能记录组件暂未就绪，演奏功能不受影响');return;}
+  download('弹钢琴-性能记录.json',JSON.stringify(recorder.snapshot({audioContext:audio.context}),null,2));status('性能记录已下载到本机，未上传');
+};
 $('#export-entry').onclick=()=>{$('#export-description').textContent=song?'当前曲目：'+song.title:'选择一首曲目后，可以导出曲谱、音频和实际演奏画面。';showDialog('#export-dialog');};
 $('#export-json').onclick=()=>{if(!song){$('#export-status').textContent='请先从曲库选择歌曲';return;}download(song.title+'.json',JSON.stringify(song));$('#export-status').textContent='曲谱已下载';};
 async function exportMedia(kind){
   if(exportBusy)return;if(!song){$('#export-status').textContent='请先从曲库选择歌曲';return;}
   if(loadingSongId){$('#export-status').textContent='请等当前曲目载入后再导出';return;}
   const exportSong=song;
+  const timing=measureOperation('export.ready',{kind:kind==='wav'?'wav':'video',stage:'data'});
   exportBusy=true;for(const b of all('.export-options button'))b.disabled=true;
   $('#export-status').textContent='正在准备'+(kind==='wav'?'音频':'视频')+'资源…';
   try{
     const module=await import('./native-video.js');
     if(song!==exportSong||loadingSongId)throw Error('曲目已改变，请重新选择导出');
     const blob=kind==='wav'?await module.exportActualWav():await module.exportActualVideo();
-    download(exportSong.title+'.'+(kind==='wav'?'wav':'mp4'),blob);$('#export-status').textContent='已生成，请查看浏览器下载';
-  }catch(error){$('#export-status').textContent=error.message;status(error.message);}
+    download(exportSong.title+'.'+(kind==='wav'?'wav':'mp4'),blob);$('#export-status').textContent='已生成，请查看浏览器下载';timing('ready');
+  }catch(error){timing('failed');$('#export-status').textContent=error.message;status(error.message);}
   finally{exportBusy=false;for(const b of all('.export-options button'))b.disabled=false;}
 }
 $('#export-wav').onclick=()=>exportMedia('wav');$('#export-video').onclick=()=>exportMedia('video');
@@ -446,16 +514,18 @@ setInterval(()=>{
 addEventListener('resize',()=>{updateRects();rollDirty=true;});
 
 window.PianoWeb={audio,library,press:noteDown,release:noteUp,pause,view:currentView,setNotation,staffPractice:null,
+  diagnosticsSnapshot:()=>measurements?.snapshot({audioContext:audio.context})||{schema:'piano-local-performance-v1',available:false,build:PERFORMANCE_BUILD},
   async selectSong(id){await indexReady;let row=library.search('').find(r=>r.id===id);if(!row){await library.all();row=library.search('').find(r=>r.id===id);}if(!row)throw Error('曲目不存在');return choose(row);},
   setRange(pitch){base=Math.max(21,Math.min(48,Number(pitch)||36));while(black.has(base%12))base--;configureKeys();},
-  inspect(){return{edition:'desktop42',song:song?.id||null,mode,playing,position,base,keyCount:whiteCount,downOwners:[...downs.keys()],audio:audio.inspect(),
+  inspect(){return{edition:'desktop42',build:PERFORMANCE_BUILD,song:song?.id||null,mode,playing,position,base,keyCount:whiteCount,downOwners:[...downs.keys()],audio:audio.inspect(),
     groupIndex,groupCount:groups.length,catalogCount:library.catalog?.count||0,recording,notation:view,keyboardAdapter:adapter.inspect(),staff:staff?.inspect(),sessionReady};},
   webReady:()=>sessionReady&&!!adapter,
   beginOffline(){cancelRestore();selectionEpoch++;loadingSongId='';pause();renderRows();offlineSaved={position,mode};mode='auto';document.body.dataset.exporting='true';return{song,speed,preset:audio.tone,volume:audio.volume,sustain:audio.sustain};},
   async offlineFrame(ms){position=ms;updateTimeline();updateLights();drawRoll();if(view==='staff'&&staff)await staff.offlineFrame(ms,currentView());},
   endOffline(){if(offlineSaved){position=offlineSaved.position;mode=offlineSaved.mode;offlineSaved=null;}delete document.body.dataset.exporting;updateLights();updateTimeline();}
 };
-audio.sustain=false;configureKeys();updateTimeline();requestAnimationFrame(frame);
+audio.sustain=false;configureKeys();updateTimeline();requestAnimationFrame(frame);measurePaint(shellTiming);
+addEventListener('pagehide',event=>{for(const settle of [...pendingPaints])settle(true);if(!event.persisted)measurements?.dispose();});
 const indexReady=fetch(new URL('./builtin-index.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('内置目录未载入');return r.json();}).then(index=>{
   if(!library.rows.length)library.rows=index;search();
 }).catch(()=>{});
