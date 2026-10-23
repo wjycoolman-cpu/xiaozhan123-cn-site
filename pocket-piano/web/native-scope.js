@@ -1,10 +1,25 @@
-import {bindCanvasKeyboard} from './native-canvas-pc.js';
-let unbindPc=null;
-import * as formal from './native-synth.js';let canvas=null,loop=0,sequence=-1,error='';
-export function openScope(){closeScope();canvas=document.createElement('canvas');canvas.id='native-scope-canvas';canvas.setAttribute('aria-label','音乐仪器，一至九演奏按键，真实声音波形');document.querySelector('.instrument').append(canvas);unbindPc=bindCanvasKeyboard(canvas,2,formal.scopePointer);
- const activePointers=new Set();
- const input=(e,action)=>{e.preventDefault();const r=canvas.getBoundingClientRect();formal.scopePointer(action,e.pointerId,e.clientX-r.left,e.clientY-r.top);};canvas.onpointerdown=e=>{activePointers.add(e.pointerId);canvas.setPointerCapture(e.pointerId);input(e,0);};canvas.onpointermove=e=>{if(canvas.hasPointerCapture(e.pointerId))input(e,2);};canvas.onpointerup=e=>{if(!activePointers.delete(e.pointerId))return;input(e,1);if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);};canvas.onpointercancel=e=>{activePointers.clear();input(e,3);};canvas.onlostpointercapture=e=>{if(activePointers.delete(e.pointerId))input(e,1);};
- const draw=()=>{if(!canvas)return;try{const r=canvas.getBoundingClientRect(),d=devicePixelRatio;if(canvas.width!==Math.round(r.width*d)||canvas.height!==Math.round(r.height*d)){canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);}const c=canvas.getContext('2d');c.setTransform(d,0,0,d,0,0);const s=PianoWeb.view(),audio=PianoWeb.audio;if(audio.pcm&&sequence!==audio.pcmSequence){sequence=audio.pcmSequence;formal.scopePcm(audio.pcm);}formal.scopeDraw(c,Math.round(r.width),Math.round(r.height),Number(document.querySelector('#tone').value),s.mode==='free'?0:s.mode==='auto'?1:2,s.position,s.active.map(n=>n.pitch).join(','),s.speed,audio.volume);loop=requestAnimationFrame(draw);}catch(e){error=e.message;document.querySelector('#status').textContent=e.message;}};loop=requestAnimationFrame(draw);
+import * as formal from './native-synth.js';
+import {createDesktopCanvasSurface} from './desktop-canvas-input.js';
+let surface=null,sequence=-1,lastError='';
+const STORAGE_KEY='piano-desktop44-scope',DEFAULT_CONFIGURATION=Object.freeze({count:9,advanced:false,timebase:3,gain:1,frozen:false});
+function restoreConfiguration(){try{const raw=globalThis.localStorage?.getItem(STORAGE_KEY);if(!raw||raw.length>1024)return{...DEFAULT_CONFIGURATION};const value=JSON.parse(raw);
+ if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length===5&&[9,12,16].includes(value.count)&&typeof value.advanced==='boolean'&&Number.isInteger(value.timebase)&&value.timebase>=0&&value.timebase<=5&&typeof value.gain==='number'&&Number.isFinite(value.gain)&&value.gain>=.5&&value.gain<=4&&typeof value.frozen==='boolean')return{count:value.count,advanced:value.advanced,timebase:value.timebase,gain:value.gain,frozen:value.frozen};
+ }catch(_){}return{...DEFAULT_CONFIGURATION};}
+let configuration=restoreConfiguration();
+function saveConfiguration(){try{globalThis.localStorage?.setItem(STORAGE_KEY,JSON.stringify(configuration));}catch(_){}}
+export function openScope(host){
+ closeScope();sequence=-1;formal.scopeConfigure(configuration.count,configuration.advanced,configuration.timebase,configuration.gain,configuration.frozen);
+ surface=createDesktopCanvasSurface({host,id:'native-scope-canvas',label:'科学仪器，电脑1至9演奏按键与正式声音波形',type:2,engine:formal,pointer:formal.scopePointer,
+   draw(context,width,height){const s=window.PianoWeb.view(),audio=window.PianoWeb.audio;
+     if(audio.pcm&&sequence!==audio.pcmSequence){sequence=audio.pcmSequence;formal.scopePcm(audio.pcm);}
+     formal.scopeDraw(context,width,height,Number(document.querySelector('#tone')?.value)||0,s.mode==='free'?0:s.mode==='auto'?1:2,s.position||0,(s.active||[]).map(n=>n.pitch).join(','),s.speed||1,audio.volume);},
+   extra:()=>({configuration:{...configuration},pcmSequence:sequence})});return surface;
 }
-export function closeScope(){unbindPc?.();unbindPc=null;cancelAnimationFrame(loop);if(canvas){formal.scopePointer(3,0,0,0);canvas.remove();canvas=null;}}
-window.App31Scope={inspect(){return{open:!!canvas,error,pcmSequence:sequence};},configure:formal.scopeConfigure};
+export function closeScope(){if(surface){lastError=surface.inspect().error;surface.close();surface=null;}}
+export function handleScopeKey(event,down){return surface?.handleKey(event,down)||false;}
+export function releaseScopeInput(){surface?.releaseInput();}
+export function configureScope(count,advanced,timebase,gain,frozen){
+ configuration={count:[9,12,16].includes(Number(count))?Number(count):9,advanced:!!advanced,timebase:Math.max(0,Math.min(5,Math.round(Number(timebase)||0))),gain:Math.max(.5,Math.min(4,Number(gain)||1)),frozen:!!frozen};
+ surface?.releaseInput();formal.scopeConfigure(configuration.count,configuration.advanced,configuration.timebase,configuration.gain,configuration.frozen);saveConfiguration();surface?.renderNow();return {...configuration};
+}
+window.App31Scope={inspect(){return surface?.inspect()||{open:false,error:lastError,configuration:{...configuration},pcmSequence:sequence};},configure:configureScope,releaseInput:releaseScopeInput};

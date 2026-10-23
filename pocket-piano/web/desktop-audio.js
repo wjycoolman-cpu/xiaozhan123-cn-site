@@ -4,6 +4,7 @@
 import {PianoAudio} from '../demo/audio.js';
 
 export const AUDIO_ASSET_BASE = new URL('../demo/', import.meta.url).href;
+export const DESKTOP_AUDIO_WORKLET = new URL('./desktop-audio-worklet.js', import.meta.url).href;
 const PIANO_PRESETS = new Set([0, 4, 5, 12, 13, 14]);
 const windowIndexes = new WeakMap();
 const validPitches = pitches => [...new Set((pitches || []).filter(p => Number.isInteger(p) && p >= 0 && p <= 127))];
@@ -47,7 +48,12 @@ export class DesktopPianoAudio extends PianoAudio {
     this.coreReady = false;
   }
 
-  assetURL(relative) { return new URL(relative, AUDIO_ASSET_BASE).href; }
+  assetURL(relative) {
+    // The small desktop mixer adds phone41 reed presets 170..175. Its original
+    // 0..169 Java, GM and PCM resources remain in the unchanged shared engine.
+    if (relative === 'native-audio-worklet.js') return DESKTOP_AUDIO_WORKLET;
+    return new URL(relative, AUDIO_ASSET_BASE).href;
+  }
 
   // Resolve assets against the engine directory, independent of document.baseURI.
   getBytes(relative) {
@@ -192,7 +198,7 @@ export class DesktopPianoAudio extends PianoAudio {
       coreReady: this.coreReady, samplePreparations: this.samplePreparations.size,
       backgroundTasks: this.background.size, queued: this.warmQueue.length,
       downloading: this.warmRunning, lastError: this.warmError,
-      assetBase: AUDIO_ASSET_BASE
+      assetBase: AUDIO_ASSET_BASE, worklet: DESKTOP_AUDIO_WORKLET, presetCount: 176
     }};
   }
 }

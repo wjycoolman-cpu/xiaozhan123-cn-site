@@ -1,0 +1,18 @@
+.desktop-recorder{box-sizing:border-box;width:min(560px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow:auto;border:1px solid var(--line,#d2c9bc);border-radius:14px;padding:26px;background:var(--paper,#fffdf8);color:var(--ink,#242324);font:15px/1.65 system-ui,"Segoe UI",sans-serif;box-shadow:0 16px 70px #0004}
+.desktop-recorder::backdrop{background:#16151d85}
+.desktop-recorder h2{margin:0 0 14px;font-size:23px;line-height:1.3}
+.desktop-recorder p{margin:10px 0}
+.desktop-recorder .recorder-instructions{padding:12px 14px;border:1px solid var(--line,#d2c9bc);border-radius:8px}
+.desktop-recorder .recorder-scope{font-size:13px;color:var(--muted,#68646b)}
+.desktop-recorder .recorder-automatic{display:flex;align-items:center;gap:10px;margin:20px 0 12px;cursor:pointer}
+.desktop-recorder .recorder-automatic input{width:18px;height:18px;flex:none;accent-color:var(--accent,#4964c5)}
+.desktop-recorder .recorder-message{min-height:24px;font-size:13px;color:var(--muted,#68646b)}
+.desktop-recorder .recorder-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.desktop-recorder button{min-height:42px;border:1px solid var(--line,#d2c9bc);border-radius:7px;padding:8px 16px;background:var(--paper,#fffdf8);color:var(--ink,#242324);font:inherit;cursor:pointer}
+.desktop-recorder button.recorder-start{background:var(--accent,#4964c5);border-color:var(--accent,#4964c5);color:#fff}
+.desktop-recorder button:focus-visible{outline:3px solid var(--accent,#4964c5);outline-offset:3px}
+.desktop-recorder button:disabled{cursor:default;opacity:.5}
+/* These controls never enter the selected tab recording. The attribute is
+ * private to this session and is removed only by its owning recorder. */
+body[data-desktop-capture] .desktop-recorder,body[data-desktop-capture] dialog,body[data-desktop-capture] dialog::backdrop,body[data-desktop-capture] [role="tooltip"],body[data-desktop-capture] .record-screen-control,body[data-desktop-capture] [data-screen-recording-exclude],body[data-desktop-capture] [data-recording-exclude],body[data-desktop-capture] #presentation-exit{display:none!important}
+@media(max-width:600px){.desktop-recorder{padding:20px;width:calc(100vw - 28px)}.desktop-recorder .recorder-actions{flex-wrap:wrap}.desktop-recorder .recorder-start{flex:1}}

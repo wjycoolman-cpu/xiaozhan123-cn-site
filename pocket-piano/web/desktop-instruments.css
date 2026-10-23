@@ -1,0 +1,4 @@
+/* Desktop work-area sizing only; formal instrument painting is unchanged. */
+.desktop-instrument-host{position:relative;min-width:0;min-height:0;overflow:hidden;background:#17272d;isolation:isolate}
+.desktop-instrument-host>.desktop-instrument-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;margin:0;border:0;touch-action:none;user-select:none;-webkit-user-select:none;outline:none}
+.desktop-instrument-host>.desktop-instrument-canvas:focus-visible{outline:2px solid #6ebdac;outline-offset:-3px}

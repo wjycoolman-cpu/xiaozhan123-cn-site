@@ -1,5 +1,5 @@
 {
-  "version": "desktop43-perf1-20261023",
+  "version": "desktop44-port1-20261023",
   "sharedSiteBaselineCommit": "471d9b412d9dd61954d890a47cbdb19c0e1cff49",
   "files": {
     "native-synth.js": {
@@ -40,17 +40,17 @@
     }
   },
   "hashBasis": "canonical Git/public bytes; local Windows line endings may differ",
-  "desktopEntry": "index.html → app.js; no native mobile surface bootstrap",
-  "fontLoading": "System UI fonts; VexFlow embedded Bravura only when staff selected",
+  "desktopEntry": "index.html → app.js; keyboard-first desktop shell with optional complete instrument/tool workspaces",
+  "fontLoading": "System fonts on screen; fixed VexFlow/Bravura on score request; original OFL CJK bytes only on explicit embedding/print action",
   "builtinLoading": "builtin-index.json and individually selected builtin/NN.json, generated from unchanged shared assets/builtin.json",
   "desktopComponents": {
     ".gitattributes": {
-      "bytes": 138,
-      "sha256": "9dc77fbc98616b10369fbec57f713089553833f47e26f45d39f8d2ff685dbf6b"
+      "bytes": 206,
+      "sha256": "16d73743771a87603377034e92d515c0f49065e22188f90dd08a05c60b81fd99"
     },
     "app.js": {
-      "bytes": 40406,
-      "sha256": "fa5fb76d3a8141325c044df38ac8f1ed6c377d6a871a996cfebd674d4523bbab"
+      "bytes": 67217,
+      "sha256": "32ccfff4b8a99c4ce60f8c0c0c47f1f7765b08f3695bd818c0915f8ed0eee44d"
     },
     "build-guide-runtime.py": {
       "bytes": 2155,
@@ -65,20 +65,88 @@
       "sha256": "e06462ab3a6ee1f20ae53bb455717f8f54a4adcd4b53e07269cc389d24652715"
     },
     "credits.html": {
-      "bytes": 5564,
-      "sha256": "2b7f718f5b97c1a6c2a2f59aea92b8621a6b3bdc79301482a51776fd7106f06e"
+      "bytes": 6392,
+      "sha256": "da92a09ade3b5cd899cea88b3a1f78e8e919ca78d42af1367d5dc9dd07dcfcc6"
+    },
+    "desktop-audio-worklet.js": {
+      "bytes": 8033,
+      "sha256": "2eff2702b249fdb31c3744768b70c3ecc7b07ca9543f9101cbb14748ee7a050b"
     },
     "desktop-audio.js": {
-      "bytes": 9016,
-      "sha256": "c2c6c0a0866e8ba409556697675a8ccde4f9880be91d3e15d10824b8b98336c6"
+      "bytes": 9408,
+      "sha256": "b7ecc1e74403a5665cae67b6c232ba913258d9719f3516cad4152e48d2911bcf"
+    },
+    "desktop-canvas-input.js": {
+      "bytes": 8782,
+      "sha256": "a3baf440aca5ee9d22e7e7cde6111c951c4b9f3e48f78fe9b98e0e3e10e3c778"
+    },
+    "desktop-instruments.css": {
+      "bytes": 520,
+      "sha256": "5b563048e96b4ef2ccad121857468dbf2e167b4cff7dc5fff00bfcd8869b32ba"
+    },
+    "desktop-offline-audio.js": {
+      "bytes": 3223,
+      "sha256": "f3670ce35fd96e75fd70defc3b7cf0d103f66edc58de47cfbc5e2ebd8535c56a"
+    },
+    "desktop-presentation.css": {
+      "bytes": 3433,
+      "sha256": "d98c17f6e797881699bf1de06b5ec56e7f15b7670733f23ddd4ebda0500bfcc2"
+    },
+    "desktop-presentation.js": {
+      "bytes": 5000,
+      "sha256": "e388b7cf864199a57335e536224dd66db990639077aead1eee5a05b4181159b2"
+    },
+    "desktop-recorder.css": {
+      "bytes": 2291,
+      "sha256": "c52d9b40aec2c7698c4d4ac1ab5afbb270380f0a0b3bfeb91221ceb9eaebe0ae"
+    },
+    "desktop-recorder.js": {
+      "bytes": 25796,
+      "sha256": "18c3b0f0978233a42dbde2d24f96c500c8943002399a60e453f7128dba44e964"
+    },
+    "desktop-scenes.css": {
+      "bytes": 1694,
+      "sha256": "934601635b43a0831971bb52678893200585d7e9fdc5a46639e278004613f9a7"
+    },
+    "desktop-scenes.js": {
+      "bytes": 34329,
+      "sha256": "782d44116bd6998b8617602e73f9784511a176de484b3f87c0ee0390592b9ee0"
+    },
+    "desktop-score-worker.js": {
+      "bytes": 3873,
+      "sha256": "d32be132a5bfc197a2f481cdcd14604b9048dfd007118c7a1695590104ac2cff"
+    },
+    "desktop-score.css": {
+      "bytes": 2109,
+      "sha256": "40620586b01d5f42bd341a8b1bbc5cbb501a1c630c1e1ebbd42a9f247686d5fc"
+    },
+    "desktop-score.js": {
+      "bytes": 13695,
+      "sha256": "7271722cd9453de58fd33dc64be783e8f1487542c9090880261c102cdb1aab53"
+    },
+    "desktop-studio.css": {
+      "bytes": 22170,
+      "sha256": "153ca7499a7971ce8c4bfe35c9abbeab91083168d3be06a1e2f466a337ad20ca"
+    },
+    "desktop-tools.js": {
+      "bytes": 36107,
+      "sha256": "5debf6a3755e6fd579fe2dac9ce9bc04f2ce07766d14584b4e240e2a3abb0cb8"
+    },
+    "desktop-workspaces.js": {
+      "bytes": 5659,
+      "sha256": "6b2d1bd558cb828688cb0ca96a58038e18bdeeafac9e131fa5a0dfb91095c4c7"
     },
     "guide-runtime-provenance.json": {
       "bytes": 745,
       "sha256": "a96987b12f608b6bab247bd814f424ce119f45ab8c1ac9b950088056f9ae1ac2"
     },
     "index.html": {
-      "bytes": 10072,
-      "sha256": "a8939c488c686fd7aeab0d4fb28aa651682f4bc2496be0f974b01194bf85940c"
+      "bytes": 15875,
+      "sha256": "1ffc555f16a38efaecf107321ffa89c4cc0b12a095334679681363bf009355bd"
+    },
+    "instruments.json": {
+      "bytes": 26614,
+      "sha256": "f7e2f290e23200838b0a0a7e100fd0691f84df3ca269f4dc91806180319fa1d3"
     },
     "keyboard-layout.css": {
       "bytes": 11171,
@@ -93,28 +161,80 @@
       "sha256": "f236cacd7c329906c6a3d91ca3ec4482b1b7613124266b71a5d31d5cef34c5b3"
     },
     "library-vendor.js": {
-      "bytes": 756,
-      "sha256": "07d5e7f4b5e4fccd66d805f6dbbb445a43114582d33a5093d4f9421a9cfa5e4b"
+      "bytes": 1146,
+      "sha256": "2f4d008b2fe4c32b7f5fcddf6ecc69cba38582279f8e0897fc23780df142f18d"
     },
     "library.js": {
-      "bytes": 15902,
-      "sha256": "27cbe0b8e967f545dcfdbb85ef1ac18b00612381e73f39084af4eb966d9237e0"
+      "bytes": 16305,
+      "sha256": "d09bcf435ad37c6d56cc3676a2fd0f57246dbb5d3a82de9c9182fcf6bffafaa9"
     },
     "LICENSE.txt": {
       "bytes": 35149,
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native-canvas-pc.js": {
+      "bytes": 1485,
+      "sha256": "52a39da6e91e1244ca408abe02474988730c6b9313a9405e3682c0ac8227924f"
+    },
+    "native-pad.js": {
+      "bytes": 3962,
+      "sha256": "c7b309eb8909edfb97a21e2ae5a7744abfd7ed9542523e2018579b013cc82c09"
+    },
+    "native-scope.js": {
+      "bytes": 2993,
+      "sha256": "c45b70648499d5aa9a537370b39e3a13a8a3e04fb6e162b2884312cea1faf2f1"
+    },
+    "native-score.js": {
+      "bytes": 3222,
+      "sha256": "aa57ae5ed14b326933f17f8ad22d6a3fdbae832c9a73a5f91862641873ca350c"
+    },
+    "native-surfaces.js": {
+      "bytes": 10216,
+      "sha256": "8e3ce682a92e63578ca43fb63d5d2c93cfdd9f89bc4a09b7fb75141f8264dc92"
+    },
+    "native-synth.js": {
+      "bytes": 573885,
+      "sha256": "240bf98a858b55b4fda43c3580dd4e045377c5ebab48973dec60075e169d93ed"
+    },
+    "native-tools.js": {
+      "bytes": 15637,
+      "sha256": "4e9d2d6cf7902efb2283408243b4a3f0a2ef5c0ca006460f39b0d5c41262f636"
+    },
+    "native-touch.js": {
+      "bytes": 13247,
+      "sha256": "1fb5d66049c3b43d3c8f36ad69eb9517cbfc1db665d1f1e8201173549ac4fdbc"
+    },
+    "native-video.js": {
+      "bytes": 8146,
+      "sha256": "a2702c0121b28fa47895c20ec892a816607018ba9470340e5e6988c559431d6f"
     },
     "native.js": {
       "bytes": 6570,
       "sha256": "b7861f48c870c003d87a02b648a46fbf729a6fed5e747a491e189d7174e54c2c"
     },
     "performance.js": {
-      "bytes": 21328,
-      "sha256": "ffa80b322d4949c09f43af2602e7b4e7e6a553ca6b9b3edd47b8ce7d8fba91af"
+      "bytes": 22166,
+      "sha256": "f60e8152ff4c4a5ebdedcd5095605bf51a5a54b37f740c6a50c8120af708727d"
+    },
+    "print-score.css": {
+      "bytes": 1239,
+      "sha256": "5c5e0a51cda71f21b0b6bab842ba65658a5f33fd0d558e7ef5c833f4d088a0f6"
+    },
+    "print-score.html": {
+      "bytes": 1346,
+      "sha256": "c3addf095e99cc651aff224689f38651ae5af11b19cf865e1eeaeb4c67dbad7f"
+    },
+    "print-score.js": {
+      "bytes": 5183,
+      "sha256": "d1913efc914f167b11900329a9a30cc4aa758d260cea84a820b65f1850d4cc00"
     },
     "README.md": {
-      "bytes": 6449,
-      "sha256": "60438460b94efd327d04eb611c75b5f5b2206a1a5807d320e7e22b15dad6242e"
+      "bytes": 6999,
+      "sha256": "d2ffa6b86023c0eca11dae093fc767964afe610cd7664a352b0350bfb3216b57"
+    },
+    "shared-glue-provenance.json": {
+      "bytes": 3232,
+      "sha256": "a4c2316466e1298e05870303ca55ac514218c76d48bfd92b51973c755d293246"
     },
     "staff-practice.js": {
       "bytes": 16866,
@@ -207,13 +327,93 @@
     "builtin/16.json": {
       "bytes": 2987,
       "sha256": "2a09c9ffd58cfb5977dad88275a73fc455e3ea853cb09baacc2ecc6312dee047"
+    },
+    "full-score/README.md": {
+      "bytes": 2370,
+      "sha256": "976f04e3faefc787c94872b0489654684fe8a07527e7f3d22ea8f90136bc1dc4"
+    },
+    "full-score/renderer.js": {
+      "bytes": 6936,
+      "sha256": "dc9b94a0356d0b6a39feffdd2bed342c9b9f3561f98c129ac6aae422dcf514ff"
+    },
+    "full-score/svg.js": {
+      "bytes": 1879,
+      "sha256": "f86493e018d5221513766b3bdf91892b0ca96d82092135868fcf27bf1df78f43"
+    },
+    "source/DeltaHarmonicaSynth.java": {
+      "bytes": 2142,
+      "sha256": "a83f64a4645983f39cb8a9c308ddb2526d80e706d31fe303786212a75c06c1e2"
+    },
+    "source/DrumPadBeats.java": {
+      "bytes": 850,
+      "sha256": "55fc0ca972b8cfebdb61fa75198a937f32713f9930516e576f7aeb2af8028c73"
+    },
+    "source/Instruments.java": {
+      "bytes": 7162,
+      "sha256": "d19694bdddc979aa51518bde633a35adc92dbfd0a1fb76bb887847438e3b2582"
+    },
+    "source/TouchInstrumentProfile.java": {
+      "bytes": 5959,
+      "sha256": "b2e7af6513e193ba4b00f59fe7ed4819d263359edb031b6aaad60dde60f9c5a9"
+    },
+    "assets/delta-harmonica/audio-provenance.json": {
+      "bytes": 1254,
+      "sha256": "81d3b83edfc77e0aed3be71905ee04e03f4b4cc7d613b08d6dddfa137d9b386f"
+    },
+    "assets/delta-harmonica/body.png": {
+      "bytes": 2211529,
+      "sha256": "3e2c538e5cfe704f32cc1982513658c791bcce4510d44fc155a24bc7fddecd46"
+    },
+    "assets/delta-harmonica/README.md": {
+      "bytes": 1840,
+      "sha256": "8c2983b877dd1421d0a5ab855828067ba28330c2f23a5657887db2df58da50af"
+    },
+    "assets/delta-harmonica/source/DeltaHarmonicaSynth.java": {
+      "bytes": 2142,
+      "sha256": "a83f64a4645983f39cb8a9c308ddb2526d80e706d31fe303786212a75c06c1e2"
+    },
+    "assets/delta-harmonica/source/Instruments.java": {
+      "bytes": 7162,
+      "sha256": "d19694bdddc979aa51518bde633a35adc92dbfd0a1fb76bb887847438e3b2582"
+    },
+    "assets/delta-harmonica/source/LICENSE": {
+      "bytes": 1541,
+      "sha256": "7faef914e6b9dbec453a24e52dec2cfde50ff9bb9882e00c8fb19a5e987842ed"
+    },
+    "assets/native/visual-stage/fluid.js": {
+      "bytes": 18858,
+      "sha256": "f0e65159abd67967c4bb50749260d04045d4860e5d36dd06fecae2d69c6ccf2c"
+    },
+    "assets/native/visual-stage/LICENSE-NOTICES": {
+      "bytes": 2227,
+      "sha256": "b04facbaf74bad3982eebe147684509e2521c59a76bd5af1f402d04ec604cdc3"
+    },
+    "assets/native/visual-stage/provenance.json": {
+      "bytes": 1540,
+      "sha256": "1998c21cce6eb2ddad19f2cd75921d4fa66440c20e184febfe64ddcc18f939c7"
+    },
+    "assets/native/visual-stage/scene.html": {
+      "bytes": 1168,
+      "sha256": "40c49238a29e3e7fd8de5b621d0df396d5fe7aff6c9fef851bdd7c060bf45824"
+    },
+    "assets/native/visual-stage/stage.js": {
+      "bytes": 35090,
+      "sha256": "ff5dbe0a3cf0d0e9caee1e93740b20f0002f51073a36f50bc7bb24633cc4fd23"
     }
   },
   "desktopPerformanceRecording": {
     "module": "performance.js",
-    "entryBuild": "desktop43-perf1",
+    "entryBuild": "desktop44-port1",
     "schema": "piano-local-performance-v1",
     "collection": "optional passive memory only, no upload or persistence",
     "acceptance": "Instrumentation and Node checks do not replace actual browser, paint, device audio, or cold/warm performance samples"
+  },
+  "desktopPort": {
+    "mobileSource": "1.0.41/code42",
+    "tones": 176,
+    "newAudio": "desktop-audio-worklet.js + desktop-offline-audio.js, same original 170 implementation plus Java delta reed DSP extension",
+    "sourceExtension": "source/DeltaHarmonicaSynth.java, Instruments.java, TouchInstrumentProfile.java and DrumPadBeats.java",
+    "presentation": "Transient clean mode, exact same selected view, separate explicit realtime recorder and offline full-song MP4",
+    "acceptance": "Actual browser, sound, aesthetic quality, fonts, screen capture and MP4/PDF remain unverified while supported host denies browser use"
   }
 }

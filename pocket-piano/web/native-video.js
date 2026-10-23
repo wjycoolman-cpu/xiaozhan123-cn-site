@@ -4,10 +4,20 @@ import * as formal from './native-synth.js';
 let busy=false;
 const reportProgress=text=>{for(const selector of ['#status','#export-status']){const target=document.querySelector(selector);if(target)target.textContent=text;}};
 const frame=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-async function audio(configuration,progress){return new Promise((resolve,reject)=>{const worker=new Worker(new URL('../demo/native-offline-audio.js',import.meta.url),{type:'module'});worker.onerror=e=>{worker.terminate();reject(Error(e.message));};worker.onmessage=e=>{if(e.data.ready)worker.postMessage({...configuration,notes:configuration.song.notes});if(e.data.progress!==undefined)progress(e.data.progress);if(e.data.error){worker.terminate();reject(Error(e.data.error));}if(e.data.pcm){worker.terminate();resolve(new Float32Array(e.data.pcm));}};});}
+function visualStageSnapshot(embedded,ratio){
+ const body=embedded.contentDocument,smoke=body.querySelector('#smoke'),stage=body.querySelector('#stage');
+ if(!smoke||!stage||!smoke.width||!stage.width)throw Error('音乐光影画面尚未就绪');
+ // The scene's painted acknowledgement follows GPU finish. Read the preserved
+ // WebGL fluid layer, then the transparent key/particle layer in display order.
+ const bounds=embedded.getBoundingClientRect(),canvas=document.createElement('canvas');
+ canvas.width=Math.max(1,Math.round(bounds.width*ratio));canvas.height=Math.max(1,Math.round(bounds.height*ratio));
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#03050c';ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.drawImage(smoke,0,0,canvas.width,canvas.height);ctx.drawImage(stage,0,0,canvas.width,canvas.height);return canvas;
+}
+async function audio(configuration,progress){return new Promise((resolve,reject)=>{const worker=new Worker(new URL('./desktop-offline-audio.js',import.meta.url),{type:'module'});worker.onerror=e=>{worker.terminate();reject(Error(e.message));};worker.onmessage=e=>{if(e.data.ready)worker.postMessage({...configuration,notes:configuration.song.notes});if(e.data.progress!==undefined)progress(e.data.progress);if(e.data.error){worker.terminate();reject(Error(e.data.error));}if(e.data.pcm){worker.terminate();resolve(new Float32Array(e.data.pcm));}};});}
 export async function exportActualWav(){
- const view=PianoWeb.view();if(!view.song)throw Error('请先选择歌曲');
- const pcm=await audio({song:view.song,speed:view.speed,preset:Number(document.querySelector('#tone').value),volume:PianoWeb.audio.volume,sustain:PianoWeb.audio.sustain},progress=>reportProgress('生成 WAV '+progress+'%'));
+ const view=PianoWeb.view(),guitar=window.App31Surfaces?.inspect().surface==='touch'&&formal.guitarEnabled(),song=guitar?JSON.parse(formal.guitarSong()):view.song;if(!song)throw Error('请先选择歌曲');
+ const pcm=await audio({song:PianoWeb.outputSong?.(song)||song,speed:view.speed,preset:Number(document.querySelector('#tone').value),volume:PianoWeb.audio.volume,sustain:PianoWeb.audio.sustain},progress=>reportProgress('生成 WAV '+progress+'%'));
  const bytes=new ArrayBuffer(44+pcm.length*2),data=new DataView(bytes),text=(at,value)=>{for(let i=0;i<value.length;i++)data.setUint8(at+i,value.charCodeAt(i));};
  text(0,'RIFF');data.setUint32(4,36+pcm.length*2,true);text(8,'WAVE');text(12,'fmt ');data.setUint32(16,16,true);data.setUint16(20,1,true);data.setUint16(22,1,true);data.setUint32(24,48000,true);data.setUint32(28,96000,true);data.setUint16(32,2,true);data.setUint16(34,16,true);text(36,'data');data.setUint32(40,pcm.length*2,true);for(let i=0;i<pcm.length;i++)data.setInt16(44+i*2,Math.round(Math.max(-1,Math.min(1,pcm[i]))*(pcm[i]<0?32768:32767)),true);
  return new Blob([bytes],{type:'audio/wav'});
@@ -31,7 +41,7 @@ export async function exportActualVideo({seconds=null,width=1920,height=1080,fps
   const nativeCanvas=hasSurfaceLayer?document.querySelector('canvas[id^="native-"]'):null;
   let staticSnapshot=null;
   const captureRatio=Math.max(1,Math.min(3,width*.80/instrument.getBoundingClientRect().width));
-  const captureOptions={pixelRatio:captureRatio,cacheBust:false,filter:node=>node.tagName!=='IFRAME'&&node.id!=='status'};
+  const captureOptions={pixelRatio:captureRatio,cacheBust:false,filter:node=>node.tagName!=='IFRAME'&&node.id!=='status'&&!node.hasAttribute?.('data-presentation-exit')&&!node.hasAttribute?.('data-export-exclude')};
   for(let i=0;i<Math.ceil(total*fps);i++){
    const sample=Math.min(pcm.length,Math.floor(i/fps*48000));PianoWeb.offlinePcm=pcm.subarray(Math.max(0,sample-2048),sample);await PianoWeb.offlineFrame(i/fps*1000*configuration.speed);if(typeof surfaces?.update==='function')await surfaces.update();await frame();
    const viewport=instrument.getBoundingClientRect();
@@ -39,7 +49,7 @@ export async function exportActualVideo({seconds=null,width=1920,height=1080,fps
    const snapshot=staticSnapshot??await toCanvas(instrument,captureOptions);
    if(nativeCanvas){const bounds=nativeCanvas.getBoundingClientRect();snapshot.getContext('2d').drawImage(nativeCanvas,(bounds.left-viewport.left)*captureRatio,(bounds.top-viewport.top)*captureRatio,bounds.width*captureRatio,bounds.height*captureRatio);}
    const embedded=hasSurfaceLayer?document.querySelector('#native-surface-frame'):null;
-   if(embedded){const body=embedded.contentDocument.body,child=await toCanvas(body,{pixelRatio:captureRatio,cacheBust:false}),bounds=embedded.getBoundingClientRect(),cover=document.body.dataset.surface==='calculator'?document.querySelector('.native-toolbar').getBoundingClientRect().height:0;snapshot.getContext('2d').drawImage(child,0,cover*captureRatio,child.width,child.height-cover*captureRatio,(bounds.left-viewport.left)*captureRatio,(bounds.top-viewport.top+cover)*captureRatio,bounds.width*captureRatio,(bounds.height-cover)*captureRatio);}
+   if(embedded){const child=surface==='visualizer'?visualStageSnapshot(embedded,captureRatio):await toCanvas(embedded.contentDocument.body,{pixelRatio:captureRatio,cacheBust:false}),bounds=embedded.getBoundingClientRect(),cover=document.body.dataset.surface==='calculator'?(document.querySelector('.native-toolbar')?.getBoundingClientRect().height||0):0;snapshot.getContext('2d').drawImage(child,0,cover*captureRatio,child.width,child.height-cover*captureRatio,(bounds.left-viewport.left)*captureRatio,(bounds.top-viewport.top+cover)*captureRatio,bounds.width*captureRatio,(bounds.height-cover)*captureRatio);}
    const staff=document.querySelector('#web-staff-layer:not([hidden]) iframe');
    if(staff&&PianoWeb.staffPractice?.inspect().active&&PianoWeb.staffPractice?.inspect().ready&&staff.getBoundingClientRect().width>0&&staff.getBoundingClientRect().height>0){const child=await toCanvas(staff.contentDocument.body,{pixelRatio:captureRatio,cacheBust:false}),bounds=staff.getBoundingClientRect();snapshot.getContext('2d').drawImage(child,(bounds.left-viewport.left)*captureRatio,(bounds.top-viewport.top)*captureRatio,bounds.width*captureRatio,bounds.height*captureRatio);}
    // Reserve space for short-video captions and right-side action buttons.

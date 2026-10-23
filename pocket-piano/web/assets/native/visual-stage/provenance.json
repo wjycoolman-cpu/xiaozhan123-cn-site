@@ -1,0 +1,37 @@
+{
+  "sourceMobileVersion": "1.0.41/code42",
+  "hashBasis": "UTF8 text with canonical LF",
+  "files": [
+    {
+      "file": "scene.html",
+      "mobileCanonicalSha256": "551aac46ae896ecbaf3a6e2bee9c5a17ed1dbffb02792b5a300bfcc2ab552e00",
+      "webCanonicalSha256": "40c49238a29e3e7fd8de5b621d0df396d5fe7aff6c9fef851bdd7c060bf45824",
+      "sameCanonicalSource": false,
+      "change": "Only add same-origin resource CSP metadata to scene wrapper"
+    },
+    {
+      "file": "fluid.js",
+      "mobileCanonicalSha256": "f0e65159abd67967c4bb50749260d04045d4860e5d36dd06fecae2d69c6ccf2c",
+      "webCanonicalSha256": "f0e65159abd67967c4bb50749260d04045d4860e5d36dd06fecae2d69c6ccf2c",
+      "sameCanonicalSource": true,
+      "change": "LF canonical source retained"
+    },
+    {
+      "file": "stage.js",
+      "mobileCanonicalSha256": "ff5dbe0a3cf0d0e9caee1e93740b20f0002f51073a36f50bc7bb24633cc4fd23",
+      "webCanonicalSha256": "ff5dbe0a3cf0d0e9caee1e93740b20f0002f51073a36f50bc7bb24633cc4fd23",
+      "sameCanonicalSource": true,
+      "change": "LF canonical source retained"
+    },
+    {
+      "file": "LICENSE-NOTICES",
+      "mobileCanonicalSha256": "b04facbaf74bad3982eebe147684509e2521c59a76bd5af1f402d04ec604cdc3",
+      "webCanonicalSha256": "b04facbaf74bad3982eebe147684509e2521c59a76bd5af1f402d04ec604cdc3",
+      "sameCanonicalSource": true,
+      "change": "LF canonical source retained"
+    }
+  ],
+  "license": "LICENSE-NOTICES retained",
+  "referenceMotionVerified": false,
+  "realBrowserRenderingAndCapture": "unverified"
+}

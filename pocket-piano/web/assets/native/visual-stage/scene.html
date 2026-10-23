@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>光影琴境</title>
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000;overscroll-behavior:none;touch-action:none;user-select:none;-webkit-user-select:none}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+#stage{pointer-events:auto;touch-action:none}
+#status{position:absolute;left:12px;top:10px;max-width:85%;color:#b5b8c7;font:12px system-ui,sans-serif;pointer-events:none;display:none}
+</style>
+</head>
+<body><canvas id="smoke" aria-hidden="true"></canvas><canvas id="stage" aria-label="光影钢琴，可用多指弹奏"></canvas><div id="status" role="status"></div><script src="fluid.js"></script><script src="stage.js"></script></body>
+</html>

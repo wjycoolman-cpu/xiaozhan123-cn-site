@@ -1,0 +1,23 @@
+{
+  "schema": "desktop176-audio-source-v1",
+  "lineEndings": "All text hashes use canonical LF, including Windows source checkouts.",
+  "license": "Project GPL-3.0; original sampling and third-party licences retained",
+  "phoneVersion": "1.0.41 / code42",
+  "newPresets": [
+    170,
+    171,
+    172,
+    173,
+    174,
+    175
+  ],
+  "originalEngine": "../../../demo/native-synth.js",
+  "originalWorkletSha256": "1c1ca8b95a11b5716978817013badbc52d39badd2cf9600102c7eba453e2cd43",
+  "originalEngineSha256": "3fda73348df6e57322ea6c5ff5c2495b8c18fbe93677f229ad9a05f1e3d6d246",
+  "sourceJava": "a83f64a4645983f39cb8a9c308ddb2526d80e706d31fe303786212a75c06c1e2",
+  "sourceInstruments": "d19694bdddc979aa51518bde633a35adc92dbfd0a1fb76bb887847438e3b2582",
+  "runtime": "2eff2702b249fdb31c3744768b70c3ecc7b07ca9543f9101cbb14748ee7a050b",
+  "offline": "f3670ce35fd96e75fd70defc3b7cf0d103f66edc58de47cfbc5e2ebd8535c56a",
+  "mapping": "Direct Java float-precision reed DSP port, same 48kHz/4096 sine table/deterministic noise/attack/swell/release. No extracted game recordings; original 0..169 compiled engine untouched.",
+  "defaultLoading": "same worklet/core/sampler URLs count; web worklet replaces original worklet, no new heavy font/bank/engine dependency"
+}

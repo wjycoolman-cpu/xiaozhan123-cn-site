@@ -35,25 +35,25 @@
     "file": "native-pad.js",
     "source": "../demo/native-pad.js",
     "sha256": "0b95ac6bf5fd5d0b83630456815652fff16046426ea49add39cebbb49534d4b9",
-    "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "0b95ac6bf5fd5d0b83630456815652fff16046426ea49add39cebbb49534d4b9",
-    "loadedByDesktopEntry": false
+    "change": "Desktop-hosted formal Canvas, shared physical/pointer ownership, validated persisted configuration, original finite beat demonstration",
+    "webSha256": "c7b309eb8909edfb97a21e2ae5a7744abfd7ed9542523e2018579b013cc82c09",
+    "loadedByDesktopEntry": true
   },
   {
     "file": "native-touch.js",
     "source": "../demo/native-touch.js",
     "sha256": "877b60f49bfb532f0f0735d136824eaf14012da28691cb597572006753ac128b",
-    "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "877b60f49bfb532f0f0735d136824eaf14012da28691cb597572006753ac128b",
-    "loadedByDesktopEntry": false
+    "change": "Desktop-hosted formal instrument Canvas plus original eight-hole delta artwork/pitches, guitar configuration, persisted free octave",
+    "webSha256": "1fb5d66049c3b43d3c8f36ad69eb9517cbfc1db665d1f1e8201173549ac4fdbc",
+    "loadedByDesktopEntry": true
   },
   {
     "file": "native-scope.js",
     "source": "../demo/native-scope.js",
     "sha256": "249a53373a1b9477a13156440104356f25473109743b6344d1a5930f55a1e752",
-    "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "249a53373a1b9477a13156440104356f25473109743b6344d1a5930f55a1e752",
-    "loadedByDesktopEntry": false
+    "change": "Desktop-hosted formal scope with real mixed PCM, desktop input ownership and validated persisted configuration",
+    "webSha256": "c45b70648499d5aa9a537370b39e3a13a8a3e04fb6e162b2884312cea1faf2f1",
+    "loadedByDesktopEntry": true
   },
   {
     "file": "native-canvas-pc.js",

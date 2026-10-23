@@ -4,7 +4,7 @@
  */
 export const PERFORMANCE_OPERATIONS = Object.freeze([
   'shell.ready','menu.open','view.ready','song.load','audio.ready','playback.start',
-  'recording.start','export.ready','library.search','library.load','input.command'
+  'recording.start','export.ready','library.search','library.load','input.command','surface.ready'
 ]);
 export const PERFORMANCE_LIMITS = Object.freeze({entries:112,perOperation:16,pending:12,inputAgeMs:1500,tokenAgeMs:300000});
 const OPERATIONS = new Set(PERFORMANCE_OPERATIONS);
@@ -13,6 +13,7 @@ const BOUNDARIES = new Set(['async_to_ready','dom_ready','command_ready','paint_
 const INPUT_TYPES = new Set(['click','pointerdown','pointerup','keydown','keyup','input','change']);
 const ENUMS = {
   view:new Set(['keys','staff','waterfall']), mode:new Set(['free','follow','auto']),
+  surface:new Set(['piano','calculator','pad','touch','scope','handheld','visualizer','music']),
   source:new Set(['builtin','custom','online','snapshot','legacy','unknown']),
   stage:new Set(['dom','command','data','paint_opportunity']),
   kind:new Set(['settings','help','export','json','wav','video','midi','eop']),
@@ -31,11 +32,11 @@ function cleanContext(value){
   const count=read(value,'count');if(finite(count)&&count>=0&&count<=100000)result.count=Math.round(count);
   return result;
 }
-function cleanBuild(value){return typeof value==='string'&&/^(?:desktop|runtime)\d{1,3}(?:-(?:perf|build|r)\d{1,5})?$/.test(value)?value:'custom-build';}
+function cleanBuild(value){return typeof value==='string'&&/^(?:desktop|runtime)\d{1,3}(?:-(?:perf|port|build|r)\d{1,5})?$/.test(value)?value:'custom-build';}
 const clone=value=>JSON.parse(JSON.stringify(value));
 const MODULE_URL=new URL(import.meta.url);
 const PIANO_PATH=MODULE_URL.pathname.replace(/\/web\/[^/]*$/,'/');
-const TOP_ASSETS=new Set(['index.html','app.js','web.css','keyboard-layout.js','keyboard-layout.css','performance.js','desktop-audio.js','library.js','library-vendor.js','library-search-worker.js','builtin-index.json','native-synth.js','native-video.js','staff-practice.js','native.js','credits.html']);
+const TOP_ASSETS=new Set(['index.html','app.js','web.css','desktop-studio.css','desktop-workspaces.js','desktop-scenes.js','desktop-scenes.css','desktop-tools.js','desktop-presentation.js','desktop-presentation.css','desktop-recorder.js','desktop-recorder.css','desktop-canvas-input.js','desktop-instruments.css','desktop-audio-worklet.js','desktop-offline-audio.js','instruments.json','desktop-score.js','desktop-score-worker.js','desktop-score.css','print-score.html','print-score.js','print-score.css','keyboard-layout.js','keyboard-layout.css','performance.js','desktop-audio.js','library.js','library-vendor.js','library-search-worker.js','builtin-index.json','native-synth.js','native-video.js','native-pad.js','native-touch.js','native-scope.js','staff-practice.js','native.js','credits.html']);
 const ENGINE_ASSETS=new Set(['audio.js','native-synth.js','native-gm.wasm','native-audio-worklet.js','native-search.js']);
 function assetPath(value){
   if(typeof value!=='string'||value.length>4096)return null;
@@ -45,6 +46,7 @@ function assetPath(value){
     if(path==='web/'||path==='web')return PIANO_PATH+'web/';
     if(path.startsWith('web/')&&TOP_ASSETS.has(path.slice(4)))return PIANO_PATH+path;
     if(path.startsWith('demo/')&&ENGINE_ASSETS.has(path.slice(5)))return PIANO_PATH+path;
+    if(/^web\/assets\/native\/visual-stage\/(?:scene\.html|stage\.js|fluid\.js)$/.test(path)||path==='web/assets/delta-harmonica/body.png'||/^web\/full-score\/[a-z-]+\.(?:html|js|css)$/.test(path))return PIANO_PATH+path;
     if(/^web\/builtin\/\d{2}\.json$/.test(path))return PIANO_PATH+'web/builtin/[song].json';
     if(/^demo\/assets\/piano\/\d{3}\.bin$/.test(path))return PIANO_PATH+'demo/assets/piano/[sample].bin';
     if(/^demo\/assets\/offline\/pack-\d{4}\.ppack$/.test(path))return PIANO_PATH+'demo/assets/offline/[pack].ppack';
