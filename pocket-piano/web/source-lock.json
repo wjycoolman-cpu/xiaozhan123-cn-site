@@ -1,5 +1,5 @@
 {
-  "version": "web41-20261023",
+  "version": "desktop42-20261023",
   "sharedSiteBaselineCommit": "471d9b412d9dd61954d890a47cbdb19c0e1cff49",
   "files": {
     "native-synth.js": {
@@ -39,5 +39,170 @@
       "sha256": "04683c5b2318e48a5f2cfc34be51201246e94a49a04a0c82d0db2845dace0810"
     }
   },
-  "hashBasis": "canonical Git/public bytes; local Windows line endings may differ"
+  "hashBasis": "canonical Git/public bytes; local Windows line endings may differ",
+  "desktopEntry": "index.html → app.js; no native mobile surface bootstrap",
+  "fontLoading": "System UI fonts; VexFlow embedded Bravura only when staff selected",
+  "builtinLoading": "builtin-index.json and individually selected builtin/NN.json, generated from unchanged shared assets/builtin.json",
+  "desktopComponents": {
+    ".gitattributes": {
+      "bytes": 138,
+      "sha256": "9dc77fbc98616b10369fbec57f713089553833f47e26f45d39f8d2ff685dbf6b"
+    },
+    "app.js": {
+      "bytes": 34573,
+      "sha256": "9bf9e5545046f9abe0db2201c773403b30ea16b0999594007591766a948c35d3"
+    },
+    "build-guide-runtime.py": {
+      "bytes": 2155,
+      "sha256": "d5317d367dd236a329d2c22b9352ca5582ea83f1786327b03e32e4381d41fecd"
+    },
+    "builtin-index.json": {
+      "bytes": 3757,
+      "sha256": "b1541b41289e0e549b5a9c7eacb1608308fabe8b9b594cded853e4a7684673cb"
+    },
+    "credits.css": {
+      "bytes": 304,
+      "sha256": "e06462ab3a6ee1f20ae53bb455717f8f54a4adcd4b53e07269cc389d24652715"
+    },
+    "credits.html": {
+      "bytes": 5564,
+      "sha256": "2b7f718f5b97c1a6c2a2f59aea92b8621a6b3bdc79301482a51776fd7106f06e"
+    },
+    "desktop-audio.js": {
+      "bytes": 9016,
+      "sha256": "c2c6c0a0866e8ba409556697675a8ccde4f9880be91d3e15d10824b8b98336c6"
+    },
+    "guide-runtime-provenance.json": {
+      "bytes": 745,
+      "sha256": "a96987b12f608b6bab247bd814f424ce119f45ab8c1ac9b950088056f9ae1ac2"
+    },
+    "index.html": {
+      "bytes": 9792,
+      "sha256": "00734eeaa4c8a7120c707879d42160cabf01a2dbfc58a66769e49287ced2132c"
+    },
+    "keyboard-layout.css": {
+      "bytes": 11171,
+      "sha256": "6062edec7fef5b1defe72386bb0948cde9ff1d55221c9cca45b962a1b3212d7d"
+    },
+    "keyboard-layout.js": {
+      "bytes": 28302,
+      "sha256": "b4fa17ea2460f1b0ec6165dd78bf1c1075c45f83a38df2541c67720070e56cfa"
+    },
+    "library-search-worker.js": {
+      "bytes": 3154,
+      "sha256": "f236cacd7c329906c6a3d91ca3ec4482b1b7613124266b71a5d31d5cef34c5b3"
+    },
+    "library-vendor.js": {
+      "bytes": 756,
+      "sha256": "07d5e7f4b5e4fccd66d805f6dbbb445a43114582d33a5093d4f9421a9cfa5e4b"
+    },
+    "library.js": {
+      "bytes": 15902,
+      "sha256": "27cbe0b8e967f545dcfdbb85ef1ac18b00612381e73f39084af4eb966d9237e0"
+    },
+    "LICENSE.txt": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native.js": {
+      "bytes": 6570,
+      "sha256": "b7861f48c870c003d87a02b648a46fbf729a6fed5e747a491e189d7174e54c2c"
+    },
+    "README.md": {
+      "bytes": 4955,
+      "sha256": "719a721c618765ec75704ad33d8836974ff83f62b11c23a892ea9ca831f3956e"
+    },
+    "staff-practice.js": {
+      "bytes": 16866,
+      "sha256": "a1a4960070842f9287f0ef1cbeaa74804f15dc9699bed06741a0e1f722524a0c"
+    },
+    "web.css": {
+      "bytes": 16810,
+      "sha256": "df76e6df3c449e37138c08d84b66c0f6237fd581d12888e7bb990583418b2839"
+    },
+    "内置曲目来源.txt": {
+      "bytes": 2872,
+      "sha256": "916cc7387274bc67c275e184ea5ee89bbfef18e9892f6956f0d762a28fe9dae4"
+    },
+    "曲库来源.txt": {
+      "bytes": 4261,
+      "sha256": "35f77ce8dc52f0f95805b2f12b0556c4156eb41a28df448a1f05cc05e2c4ca7a"
+    },
+    "音频来源.txt": {
+      "bytes": 3069,
+      "sha256": "79eddffe55564f71f60e2aac33c6baf0f42e3928ff820e478f35df72a2b6ec41"
+    },
+    "staff-practice/practice.js": {
+      "bytes": 18201,
+      "sha256": "37122be9ccdd9c55370d0b660c4b51a6d238f81f67239242ef0740532b1ce412"
+    },
+    "staff-practice/scene.html": {
+      "bytes": 2627,
+      "sha256": "116ab378756b9911d2148ef420d3fd502b2d8d711ceb7f0a3913b39074f50bbc"
+    },
+    "builtin/01.json": {
+      "bytes": 2455,
+      "sha256": "9dd846838f90cbe8dba31d6c8283b482d658eebbd0fdc366c28982f0db7b26ef"
+    },
+    "builtin/02.json": {
+      "bytes": 3566,
+      "sha256": "557327056fe3ac603357ca416247923e9bdb27fb7cfd33c7f185808f945ccfdc"
+    },
+    "builtin/03.json": {
+      "bytes": 1889,
+      "sha256": "cf18daa75db5be207b62b436285c94c9a97e55124e9c55f708f313de11bdd744"
+    },
+    "builtin/04.json": {
+      "bytes": 1498,
+      "sha256": "ea22a936575339883bbcd8471de080ced0f68489ff32e469533b644ebc32e9d9"
+    },
+    "builtin/05.json": {
+      "bytes": 1767,
+      "sha256": "826906ca592f8156914fa6fd92760a58ddaa85fa39fc089097667a387537296e"
+    },
+    "builtin/06.json": {
+      "bytes": 3248,
+      "sha256": "5fa4f1b2fcb8a77d272cb2eea4bc0cd57d9ef463525a02802eb615d5eeca6b84"
+    },
+    "builtin/07.json": {
+      "bytes": 4643,
+      "sha256": "95b1ed14f389db3e5a1dc062dbfe0250872557be521ef1b4c7755a11aa0b86e2"
+    },
+    "builtin/08.json": {
+      "bytes": 8174,
+      "sha256": "deb49d7214249019e1149cefae578bf688b25f5b0b954c774da001593bedff84"
+    },
+    "builtin/09.json": {
+      "bytes": 3342,
+      "sha256": "acf059ff908ee0fc81f6f7db13993d21c9c31ef2b53eb914c9bf1ce1d3c51c8d"
+    },
+    "builtin/10.json": {
+      "bytes": 71026,
+      "sha256": "10c3f8c76920a41053008a1ecfd52cbc2848f4292245ed011cc4a14cd69551c9"
+    },
+    "builtin/11.json": {
+      "bytes": 70838,
+      "sha256": "5cb06309244ba669c273ea9801c1402bd18a819f74f52899b6a1af03b82a8580"
+    },
+    "builtin/12.json": {
+      "bytes": 73010,
+      "sha256": "09153efa94891134e76dc4e910f3680f15e0c075621025b249cc658584336edd"
+    },
+    "builtin/13.json": {
+      "bytes": 116023,
+      "sha256": "520fc62038ad831eba5a49dc4554d7c353f2e377ee0975c9b63412998de08491"
+    },
+    "builtin/14.json": {
+      "bytes": 129489,
+      "sha256": "e4430207ee3b067f8cfacf0963d85dd111a768b3bd077a1419ebeb33f3949644"
+    },
+    "builtin/15.json": {
+      "bytes": 75154,
+      "sha256": "ca4fc68cdc3e3e3b6ffed8335c698d27e0f9a268b555151ea6f1cadc4464a00b"
+    },
+    "builtin/16.json": {
+      "bytes": 2987,
+      "sha256": "2a09c9ffd58cfb5977dad88275a73fc455e3ea853cb09baacc2ecc6312dee047"
+    }
+  }
 }

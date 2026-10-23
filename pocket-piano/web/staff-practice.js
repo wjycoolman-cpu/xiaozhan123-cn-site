@@ -1,6 +1,5 @@
 /* Interactive notation adapter. Engraving remains the existing Java/TeaVM
    FullScoreDocument + bundled VexFlow. Audio and the main Guide stay in app.js. */
-import * as formal from './native-synth.js';
 
 const QUARTER_TICKS=96, GRID_TICKS=24;
 const pitchOf=n=>Number(typeof n==='number'?n:n?.pitch);
@@ -117,9 +116,12 @@ function systemPayload(model,index,generation){
 // The compiled Java module and its score cache are private to this worker.
 // Loading notation therefore cannot reset the main app's Guide or audio engine.
 const inWorker=typeof document==='undefined'&&typeof self!=='undefined';
-if(inWorker)self.onmessage=event=>{
+if(inWorker)self.onmessage=async event=>{
  const {generation,song}=event.data||{};
  try{
+  // Only a notation job in its private worker loads the compiled score engine.
+  // A failed job is retried in a fresh worker by the existing retry control.
+  const formal=await import(new URL('./native-synth.js',import.meta.url).href);
   formal.loadSong(JSON.stringify(song));formal.scorePrepare();
   const pages=[],count=formal.scorePages(1);
   for(let page=0;page<count;page++)pages.push(JSON.parse(formal.scoreStaff(page,generation)));

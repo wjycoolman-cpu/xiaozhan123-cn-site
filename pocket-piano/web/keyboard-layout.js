@@ -107,7 +107,7 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
   host.setAttribute('aria-label', '电脑键盘演奏与键位适配');
   const toolbar = element('div', 'cw-toolbar');
   const title = element('div', 'cw-title');
-  title.append(element('strong', '', '电脑键盘'), element('span', 'cw-subtitle', '双手演奏 · 物理键位'));
+  title.append(element('strong', '', '电脑键盘'), element('span', 'cw-subtitle', '左右手演奏'));
   const layoutLabel = element('label', 'cw-layout-label', '布局 ');
   const layoutSelect = element('select', 'cw-layout');
   layoutSelect.setAttribute('aria-label', '电脑键位布局');
@@ -119,7 +119,10 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
   const resetButton = element('button', 'cw-reset', '恢复默认'); resetButton.type = 'button';
   const panicButton = element('button', 'cw-panic', '止音'); panicButton.type = 'button';
   panicButton.title = '停止所有声音（Esc）';
-  toolbar.append(title, layoutLabel, editButton, resetButton, panicButton);
+  toolbar.append(title, layoutLabel, editButton, panicButton);
+  const settings = element('details', 'cw-settings');
+  const settingsSummary = element('summary', 'cw-settings-summary', '键盘设置');
+  settings.append(settingsSummary);
   const tunings = element('div', 'cw-tunings');
   const transposeLabel = element('label', 'cw-tuning', '移调 ');
   const transpose = element('select', 'cw-transpose');
@@ -143,6 +146,8 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
     velocityLabel.append(velocity, output); velocityInputs[hand] = { input: velocity, output };
     group.append(octaveLabel, velocityLabel); tunings.append(group);
   }
+  tunings.append(resetButton);
+  settings.append(tunings);
   const viewport = element('div', 'cw-viewport');
   const diagram = element('div', 'cw-diagram');
   const main = element('div', 'cw-main');
@@ -232,7 +237,7 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
   const clear = element('button', '', '停用此键'), resetKey = element('button', '', '恢复此键'), save = element('button', 'cw-save', '保存键位');
   for (const b of [clear, resetKey, save]) b.type = 'button';
   actions.append(clear, resetKey, save); dialog.append(dialogHead, description, handLabel, pitchLabel, preview, actions);
-  host.replaceChildren(toolbar, tunings, viewport, below, status, dialog);
+  host.replaceChildren(toolbar, settings, viewport, below, status, dialog);
 
   function saveConfig(message = '') {
     try { localStorage.setItem(KEYBOARD_STORAGE_KEY, JSON.stringify(config)); storage = 'ready'; }
@@ -246,7 +251,7 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
   }
   function blockedTarget(e) {
     const target = e.target;
-    return target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])') || (['Space', 'Enter'].includes(e.code) && target.closest('button, a')));
+    return target instanceof Element && (target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])') || (['Space', 'Enter'].includes(e.code) && target.closest('button, a, summary')));
   }
   function rebuild() {
     const baseMap = presets(config.layout), overrides = config.overrides[config.layout];
@@ -281,7 +286,7 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
       const text = entry ? `${label(code)}，${entry.hand === 'left' ? '左手' : '右手'} ${noteName(entry.pitch)}，${editMode ? '点击编辑' : '按住演奏，右键编辑'}` : code === 'Enter' ? 'Enter，开始或暂停演奏' : `${label(code)}，${RESERVED.has(code) ? '保留系统功能' : '未映射，右键可设置'}`;
       ui.button.setAttribute('aria-label', text); ui.button.title = text;
     }
-    status.textContent = editMode ? '点击任意发音键编辑；保存后退出编辑即可演奏。' : 'Enter 播放/暂停；空格按住延音；右键改键；Esc 止音。' + (config.layout === 'everyone' ? ' Shift + 发音键升半音。' : '') + (storage === 'unavailable' ? ' 当前浏览器不允许保存键位。' : ' 键位自动保存在本浏览器。');
+    status.textContent = editMode ? '点击发音键修改音高与左右手，完成后点击“完成编辑”。' : 'Enter 播放/暂停 · 空格 延音 · Esc 止音 · 右键改键' + (config.layout === 'everyone' ? ' · Shift + 发音键升半音' : '') + (storage === 'unavailable' ? ' · 当前浏览器不允许保存键位' : '');
     paint();
   }
   function paint() {
@@ -418,7 +423,7 @@ export function createKeyboardAdapter({ host, onPress = () => {}, onRelease = ()
         octaves: { ...config.octaves }, velocity: { ...config.velocity }, keyMap: Object.fromEntries(Object.entries(currentMap).map(([code, v]) => [code, v.pitch])),
         mappings: Object.fromEntries(Object.entries(currentMap).map(([code, v]) => [code, { ...v }])),
         physical: [...physical.entries()].map(([code, v]) => ({ code, ...v })), pointers: [...pointers.values()].map(v => ({ ...v })),
-        pedal: pedalOwners.size > 0, editMode, editorOpen: dialog.open, labels: { left: '主键区', right: '数字小键盘' } };
+        pedal: pedalOwners.size > 0, editMode, editorOpen: dialog.open, settingsOpen: !!settings.open, labels: { left: '主键区', right: '数字小键盘' } };
     }
   };
 }

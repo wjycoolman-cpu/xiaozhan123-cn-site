@@ -1,25 +1,59 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="/pocket-piano/demo/"><meta name="theme-color" content="#202b38"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'"><title>弹钢琴 · 网页演奏</title><meta name="description" content="直接用电脑键盘弹钢琴，左右手数字键位、五线谱跟弹、曲库和录制。"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="native.css"><script defer src="vendor/fflate.js"></script><script defer src="vendor/midi.js"></script><link rel="stylesheet" href="/pocket-piano/web/web.css"><link rel="stylesheet" href="/pocket-piano/web/keyboard-layout.css"><script type="module" src="/pocket-piano/web/app.js"></script><script type="module" src="/pocket-piano/web/native.js"></script><link rel="stylesheet" href="/shared/product-feedback.css"><script defer src="/shared/product-feedback.js" data-product="pocket-piano"></script></head><body>
-<main class="instrument web-instrument">
-<div class="web-titlebar"><a href="/" class="web-back">‹ 小站</a><div class="web-brand"><strong>弹钢琴</strong><span>网页演奏</span></div><div class="web-title-actions"><button id="web-keyboard-toggle" aria-expanded="true">电脑键位</button><button id="web-help">按键说明</button><button id="web-panic" title="停止全部声音（Esc）">停止发声</button><a href="/pocket-piano/web/credits.html">来源与许可</a></div></div>
-<header class="native-toolbar">
-<button id="tone-entry" aria-label="音色，选择音色" class="native-tone"><img src="grand.svg" alt="三角钢琴"></button>
-<button id="surface-entry">钢琴 ▾</button>
-<button id="library" class="song" aria-label="选择歌曲，打开曲库"><span id="song-title">小星星</span><small id="native-state">等待开始 · 点开始后弹奏</small></button>
-<button id="mode-entry">跟弹 ▾</button><button id="start" class="primary">开始</button>
-<div class="native-commands"><button id="range-entry" aria-label="音域滑动与拖动设置">⇆</button><button id="restart">从头</button><button id="progress-entry">进度</button><button id="export-entry">导出</button><button id="score">简谱</button><button id="settings">工具</button></div>
-</header><select id="mode" hidden><option value="free" selected>自由弹奏</option><option value="follow">亮键练习</option><option value="auto">自动演奏</option></select>
-<section class="performance" aria-label="演奏提示">
-<div class="web-scorebar"><div class="web-view-tabs" role="group" aria-label="演奏谱面"><button id="web-waterfall" aria-pressed="false">下落音符</button><button id="web-staff" aria-pressed="true">五线谱</button></div><span class="web-score-note">电脑双手弹奏 · 看亮键与按键图</span><button id="web-fullscreen" aria-label="全屏演奏">⤢ 全屏</button></div>
-<div id="web-staff-layer" aria-label="互动五线谱"></div><canvas id="roll"></canvas><div id="instruction">直接点击琴键，或使用电脑键盘弹奏</div><div id="status" role="status" aria-live="polite"></div></section>
-<section class="keyboard-shell"><div class="keyboard-top" hidden><label>音色 <select id="tone"><option value="piano">🎹 三角钢琴</option><option value="soft">🎹 柔和钢琴</option><option value="bright">🎹 明亮钢琴</option><option value="ep">▤ 电钢琴</option><option value="bell">♢ 音乐盒</option><option value="organ">▥ 风琴</option><option value="retro">▧ 游戏方波</option><option value="pluck">♬ 拨弦</option></select></label><span class="range-controls"><button id="lower" aria-label="降低一个八度">− 八度</button><button id="higher" aria-label="升高一个八度">＋ 八度</button></span></div><div id="keyboard" aria-label="可弹奏钢琴键盘"></div></section>
-<section class="web-timeline" aria-label="播放进度"><span id="web-time">0:00</span><input id="web-seek" aria-label="调整演奏进度" type="range" min="0" max="1" value="0"><span id="web-duration">0:00</span><button id="web-record" aria-label="录制自己的弹奏">● 录制</button></section>
-<section id="computer-keyboard" class="web-computer" aria-label="电脑键盘按键图"></section>
-<footer hidden><span id="keyboard-hint">电脑：Z S X D C V G B H N J M ／ Q 2 W 3 E R 5 T 6 Y 7 U</span><button id="help">按键说明</button><a href="credits.html">来源与许可</a></footer></main>
-<dialog id="library-dialog"><div class="dialog-head"><h2>曲库</h2><label class="native-import">导入<input id="import" type="file" accept=".mid,.midi,.json"></label><button data-close aria-label="关闭曲库">×</button></div><div class="library-tools"><input id="search" type="search" placeholder="搜曲名或作者，少几个字也可以" autocomplete="off"><button id="native-clear-search" aria-label="清除搜索">×</button></div><select id="category" hidden><option value="全部">全部</option><option value="收藏">收藏</option><option value="我的">我的</option><option value="内置">基础练习</option></select><div id="native-categories"></div><p id="library-status" class="muted"></p><div id="songs" class="songs"></div><div class="native-paging"><button id="native-all">全部</button><button id="native-prev" aria-label="上一页">‹</button><span id="native-page">1 / 1</span><button id="native-next" aria-label="下一页">›</button><button id="more" hidden>显示更多</button></div></dialog>
-<dialog id="settings-dialog"><button id="record">录制自己的弹奏</button><div class="dialog-head"><h2>演奏设置</h2><button data-close aria-label="关闭设置">×</button></div><label class="setting">显示白键数量<select id="key-count"><option>7</option><option>8</option><option>10</option><option>14</option><option>18</option><option>22</option></select></label><label class="setting">速度 <input id="speed" type="range" min="0.4" max="1.5" step="0.05" value="1"><output id="speed-label">1×</output></label><label class="setting">音量 <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65"></label><label class="setting"><span>默认延音</span><input id="sustain" type="checkbox"></label><label class="setting"><span>简单跟弹：只弹右手，自动伴奏和补足音长</span><input id="simple" type="checkbox"></label><label class="setting"><span>显示下一键淡轮廓</span><input id="preview" type="checkbox"></label><p class="muted">左右八度按钮调整可见音域；跟弹时音域保持固定，超出范围的音会映射到同名琴键，声音仍使用原谱音高。</p></dialog>
-<dialog id="score-dialog"><div class="dialog-head"><h2>完整简谱</h2><button data-close aria-label="关闭谱面">×</button></div><div id="score-content"></div><button id="save-score">导出简谱</button></dialog>
-<dialog id="help-dialog"><div class="dialog-head"><h2>电脑按键</h2><button data-close aria-label="关闭说明">×</button></div><p>经典布局用左侧字母区弹左手、数字小键盘弹右手。按键图显示每个实体键对应的音级和音高；按住发声，松手释放，多个键可以一起按。</p><p>按住 <b>空格</b> 延音，松开后释放延音；主键盘 <b>Enter</b> 开始／暂停，<b>Esc</b> 停止全部声音。经典音阶布局按 <b>Shift＋音符键</b> 升半音。小键盘 Enter 是独立音符键。</p><p>没有数字小键盘时，选择“笔记本半音布局”。右键或长按按键图中的按键可编辑音高，也可以调整左右手八度和力度；设置只保存在当前浏览器。</p><p>跟弹：选择一首歌曲，选“完整跟弹”或“右手＋伴奏”，点击开始，按黄色轮廓提示的音符。和弦需要逐个按对；重复音需要松开再按。五线谱和下落音符可以随时切换。</p><p>输入框、弹窗和浏览器快捷键保持正常。Num Lock 建议打开；按键图使用实体键位，小键盘与上排数字区分别识别。硬件键盘本身可能限制同时按键数。</p><p>本页参考 Everyone Piano 的左右手键位和自定义操作方式；附加键位为网页适配，不声称完整复制其官方默认布局。</p></dialog><dialog id="native-mode"><div class="dialog-head"><h2>弹奏方式</h2><button data-close>完成</button></div><div class="native-sheet-body"><button data-mode="follow">亮键练习</button><button data-mode="auto">自动演奏</button><button data-mode="free">自由弹奏</button><button id="native-assisted">右手＋伴奏</button><p>固定琴键位置 · 自动匹配音高 · 可重叠接指</p></div></dialog>
-<dialog id="native-progress"><div class="dialog-head"><h2>播放进度与速度</h2><button data-close>×</button></div><label class="position"><span id="time">0:00</span><input id="seek" type="range" min="0" max="1" value="0"><span id="duration">0:00</span></label><button id="native-beginning">回到开头，等待开始</button></dialog>
-<dialog id="native-tone"><div class="dialog-head"><h2>选择音色</h2><button data-close>×</button></div><div id="native-tones"></div></dialog>
-<dialog id="native-capability"><div class="dialog-head"><h2 id="capability-title">浏览器能力说明</h2><button data-close>×</button></div><p id="capability-text"></p></dialog>
-<a class="site-product-feedback" href="/feedback/?product=pocket-piano&amp;source=product" target="_blank" rel="noopener noreferrer" aria-label="向开发者反馈使用问题">反馈</a></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#18252c">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'">
+  <title>弹钢琴 · 电脑演奏台</title>
+  <meta name="description" content="打开就用电脑键盘弹钢琴。双手键位、曲库、五线谱跟弹与演奏录制，专为桌面浏览器设计。">
+  <link rel="stylesheet" href="./web.css">
+  <link rel="stylesheet" href="./keyboard-layout.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body data-view="keys">
+<div class="desktop-app instrument">
+  <header class="topbar">
+    <a class="back-link" href="/" aria-label="返回小站">‹ 小站</a>
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><strong>弹钢琴</strong><span class="edition">电脑演奏台</span></div>
+    <div class="top-actions"><span class="audio-state" id="audio-state"><i></i>按键即可开始</span><button id="help" class="text-button">快捷键说明</button><button id="fullscreen" class="icon-button" aria-label="切换全屏" title="全屏">⛶</button></div>
+  </header>
+  <div class="app-body">
+    <aside class="library-panel" aria-label="曲库">
+      <div class="library-heading"><div><span class="eyebrow">YOUR MUSIC</span><h1>曲库</h1></div><label class="import-button" title="导入 MIDI、EOP 或 JSON 曲谱">＋ 导入<input id="import" type="file" accept=".mid,.midi,.eop,.json"></label></div>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索曲名、作者" autocomplete="off" aria-label="搜索曲库"></label>
+      <div class="library-filters" role="group" aria-label="曲库分类"><button data-category="全部" class="selected">全部</button><button data-category="收藏">收藏</button><button data-category="我的">我的曲目</button><button data-category="内置">内置</button></div>
+      <div class="library-meta"><span id="library-status" role="status">内置曲目随时可选</span><button id="load-catalog" class="link-button">在线曲库 ↗</button></div>
+      <div id="songs" class="song-list" aria-label="歌曲列表"><div class="library-empty"><span class="empty-note" aria-hidden="true">♫</span><strong>先随手弹几个音</strong><p>也可以选择歌曲，跟着键位或五线谱练习。</p><button id="load-builtins">查看内置曲目</button></div></div>
+      <div class="library-paging" id="paging" hidden><button id="prev-page" aria-label="上一页">‹</button><span id="page-label">1 / 1</span><button id="next-page" aria-label="下一页">›</button></div>
+      <div class="library-footer"><a href="./credits.html">参考与开源许可</a><a href="/feedback/?product=pocket-piano&amp;source=desktop-piano" target="_blank" rel="noopener">反馈</a></div>
+    </aside>
+    <main class="studio">
+      <section class="transport" aria-label="演奏控制">
+        <div class="current-song"><span class="eyebrow" id="song-kind">FREE PLAY</span><strong id="song-title">自由演奏</strong><span id="song-detail">电脑键盘已就位</span></div>
+        <div class="playback-controls"><button id="restart" class="icon-button" title="从头开始" aria-label="从头开始">↤</button><button id="start" class="play-button" aria-label="开始演奏">▶</button><select id="mode" aria-label="弹奏方式"><option value="free">自由演奏</option><option value="follow">跟弹练习</option><option value="auto">自动演奏</option></select></div>
+        <div class="transport-options"><label class="speed-control" title="播放速度"><select id="speed" aria-label="播放速度"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label><button id="record" class="record-button" aria-pressed="false"><span></span>录制</button><button id="settings" class="icon-button" title="演奏设置" aria-label="演奏设置">⚙</button></div>
+      </section>
+      <section class="workspace" aria-label="演奏工作区">
+        <div class="workspace-bar"><nav class="view-tabs" aria-label="演奏视图"><button data-view="keys" class="selected" aria-pressed="true">电脑键位</button><button data-view="staff" aria-pressed="false">五线谱</button><button data-view="waterfall" aria-pressed="false">下落音符</button></nav><span id="workspace-hint">按住发声 · 松手释放</span><button id="export-entry" class="text-button">导出</button></div>
+        <div class="workspace-content">
+          <section id="computer-keyboard" aria-label="电脑键盘按键图"></section>
+          <section id="web-staff-layer" hidden aria-label="互动五线谱"><div class="view-placeholder">选择曲目后显示五线谱</div></section>
+          <canvas id="roll" hidden aria-label="下落音符"></canvas>
+        </div>
+      </section>
+      <section class="piano-deck" aria-label="钢琴键盘">
+        <div class="piano-controls"><div class="tone-control"><span class="mini-piano" aria-hidden="true">▥</span><select id="tone" aria-label="演奏音色"><option value="0">三角钢琴</option><option value="4">柔和钢琴</option><option value="5">明亮钢琴</option><option value="12">立式钢琴</option><option value="13">爵士钢琴</option><option value="14">复古钢琴</option><option value="1">电钢琴</option><option value="2">八音盒</option></select></div><div id="instruction">直接按电脑键盘弹奏</div><label class="volume-control">音量<input id="volume" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="音量"></label><button id="panic" class="text-button" title="Esc 停止所有声音">停止发声</button></div>
+        <div id="keyboard" aria-label="可弹奏钢琴琴键"></div>
+        <div class="piano-range"><button id="lower" aria-label="可见音区降低一个八度">‹ 八度</button><span id="range-label">C2 — C7</span><span class="pedal-indicator" id="pedal-state">SPACE 延音踏板</span><button id="higher" aria-label="可见音区升高一个八度">八度 ›</button></div>
+      </section>
+      <section class="timeline" aria-label="演奏进度"><span id="time">0:00</span><input id="seek" aria-label="定位演奏进度" type="range" min="0" max="1" value="0"><span id="duration">0:00</span><span id="progress-detail">选择歌曲开始练习</span></section>
+      <footer class="studio-footer"><span id="status" role="status" aria-live="polite">默认使用电脑键盘 · Enter 开始 / 暂停 · Esc 停止声音</span><span class="local-save">设置保存在此浏览器</span></footer>
+    </main>
+  </div>
+</div>
+<dialog id="settings-dialog"><div class="dialog-head"><div><span class="eyebrow">PRACTICE</span><h2>演奏设置</h2></div><button data-close class="icon-button" aria-label="关闭设置">×</button></div><label class="setting"><span>右手旋律 + 自动伴奏<small>跟弹时只需弹主旋律，并自动补足音长</small></span><input id="simple" type="checkbox"></label><label class="setting"><span>提示下一组音符<small>下一步用淡色边框显示</small></span><input id="preview" type="checkbox" checked></label><label class="setting"><span>持续延音<small>也可以按住空格临时使用延音踏板</small></span><input id="sustain" type="checkbox"></label><p class="dialog-note">逐键音高、左右手八度与力度可在「电脑键位」中的「键盘设置」调整。原谱音高始终保持，可见琴键只决定显示范围。</p></dialog>
+<dialog id="help-dialog"><div class="dialog-head"><div><span class="eyebrow">KEYBOARD FIRST</span><h2>双手放在键盘上，就能弹</h2></div><button data-close class="icon-button" aria-label="关闭说明">×</button></div><div class="shortcut"><kbd>字母区</kbd><span>左手音区。按键图显示对应的音级与音高。</span></div><div class="shortcut"><kbd>数字小键盘</kbd><span>右手音区；无小键盘可切换「笔记本半音布局」。</span></div><div class="shortcut"><kbd>Space</kbd><span>按住延音，松开释放。</span></div><div class="shortcut"><kbd>Enter</kbd><span>开始 / 暂停。小键盘 Enter 是独立音符键。</span></div><div class="shortcut"><kbd>Shift + 音符键</kbd><span>经典布局升半音。</span></div><div class="shortcut"><kbd>Esc</kbd><span>立即停止声音。</span></div><p class="dialog-note">右键按键可编辑映射。输入框、设置弹窗和浏览器快捷键保持正常。和弦逐音按对才推进，重复音需松开再按。部分实体键盘会限制同时按下的按键数。</p></dialog>
+<dialog id="export-dialog"><div class="dialog-head"><div><span class="eyebrow">EXPORT</span><h2>保存你的演奏</h2></div><button data-close class="icon-button" aria-label="关闭导出">×</button></div><p id="export-description">选择一首曲目后，可以导出曲谱、音频和实际演奏画面。</p><div class="export-options"><button id="export-json"><strong>曲谱文件</strong><small>JSON · 可再次导入</small></button><button id="export-wav"><strong>音频</strong><small>WAV · 正式钢琴音源</small></button><button id="export-video"><strong>演奏视频</strong><small>MP4 · 1920 × 1080</small></button></div><p id="export-status" role="status" class="dialog-note">音频和视频在点击生成时才准备资源。</p></dialog>
+</body>
+</html>

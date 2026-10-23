@@ -1,5 +1,6 @@
 /* Pocket Piano practice adapter. Engraving: bundled VexFlow 4.2.5 (MIT).
-   Font and library notices remain in ../full-score/. No score/audio network access. */
+   Music glyphs remain bundled Bravura vectors; UI text uses system fonts.
+   Library notices remain in /pocket-piano/demo/assets/native/full-score/. */
 'use strict';
 (() => {
  const NS='http://www.w3.org/2000/svg', paper=document.getElementById('paper');
@@ -7,6 +8,7 @@
  const status=document.getElementById('status'),hint=document.getElementById('hint'),position=document.getElementById('position');
  const SHARPS=['c','c#','d','d#','e','f','f#','g','g#','a','a#','b'];
  const FLATS=['c','db','d','eb','e','f','gb','g','ab','a','bb','b'];
+ const TEXT_FONT='system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif';
  let payload=null,lastFrame=null,rendered=null,loadToken=0,active=true,closed=false,ready=false;
  let records=[],anchors=[],sourceIndex={},cursor=null,svg=null,logicalWidth=595,logicalHeight=180,viewY=0;
  let error='',errors=[],lastFocus='',serial=Promise.resolve();
@@ -114,12 +116,13 @@
   error='';errorBox.style.display='none';records=[];anchors=[];sourceIndex={};
   try{
    const VF=window.Vex&&window.Vex.Flow;if(!VF)throw Error('VexFlow 未能载入');VF.setMusicFont('Bravura');
-   const faces=await document.fonts.load('12px ScoreSC');await document.fonts.ready;
-   if(!faces.length)throw Error('本地谱面字体未能载入');if(token!==loadToken||closed)return;
+   // The notation glyphs are VexFlow's embedded vectors. Labels and Chinese UI
+   // use local system fonts, so a web font download never blocks this renderer.
+   if(token!==loadToken||closed)return;
    const system=data.systems&&data.systems[0];if(!system||!system.boxes.length)throw Error('没有可显示的谱段');
    paper.replaceChildren();logicalWidth=Math.max(595,viewport.clientWidth);logicalHeight=200;viewY=0;
    const renderer=new VF.Renderer(paper,VF.Renderer.Backends.SVG);renderer.resize(logicalWidth,logicalHeight);
-   const context=renderer.getContext();context.setFillStyle('#25333e');context.setStrokeStyle('#25333e');context.setFont('ScoreSC',9,'');
+   const context=renderer.getContext();context.setFillStyle('#25333e');context.setStrokeStyle('#25333e');context.setFont(TEXT_FONT,9,'');
    svg=paper.querySelector('svg');svg.setAttribute('role','img');svg.setAttribute('aria-label','演奏五线谱：'+data.title);
    const rows=groupRows(system.rows),clefs=['treble','bass'].filter(c=>rows.some(r=>r.clef===c));
    const [numerator,denominator]=data.meter.split('/').map(Number),flat=data.flats||['Db','Eb','F','Gb','Ab','Bb'].includes(data.key);

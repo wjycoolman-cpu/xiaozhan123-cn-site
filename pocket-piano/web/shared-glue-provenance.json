@@ -4,55 +4,63 @@
     "source": "../demo/native.js",
     "sha256": "78077b47160e2e455561110e4e3b3638bf1e0294b8398593f576eb95c01bcd74",
     "change": "Relative glue uses one corrected Guide; song entry and follow instruction reflect actual mode; current module is native.js for web only",
-    "webSha256": "b7861f48c870c003d87a02b648a46fbf729a6fed5e747a491e189d7174e54c2c"
+    "webSha256": "b7861f48c870c003d87a02b648a46fbf729a6fed5e747a491e189d7174e54c2c",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-surfaces.js",
     "source": "../demo/native-surfaces.js",
     "sha256": "8e3ce682a92e63578ca43fb63d5d2c93cfdd9f89bc4a09b7fb75141f8264dc92",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "8e3ce682a92e63578ca43fb63d5d2c93cfdd9f89bc4a09b7fb75141f8264dc92"
+    "webSha256": "8e3ce682a92e63578ca43fb63d5d2c93cfdd9f89bc4a09b7fb75141f8264dc92",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-tools.js",
     "source": "../demo/native-tools.js",
     "sha256": "3bc41f355063ab6b383f24862842d27247e7e8e2eb1dc13f2c1719d2c2a6036a",
     "change": "Relative imports use web corrected Guide; white-key width menu extended to7..52 so desktop33-key default remains selectable",
-    "webSha256": "4e9d2d6cf7902efb2283408243b4a3f0a2ef5c0ca006460f39b0d5c41262f636"
+    "webSha256": "4e9d2d6cf7902efb2283408243b4a3f0a2ef5c0ca006460f39b0d5c41262f636",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-score.js",
     "source": "../demo/native-score.js",
     "sha256": "aa57ae5ed14b326933f17f8ad22d6a3fdbae832c9a73a5f91862641873ca350c",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "aa57ae5ed14b326933f17f8ad22d6a3fdbae832c9a73a5f91862641873ca350c"
+    "webSha256": "aa57ae5ed14b326933f17f8ad22d6a3fdbae832c9a73a5f91862641873ca350c",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-pad.js",
     "source": "../demo/native-pad.js",
     "sha256": "0b95ac6bf5fd5d0b83630456815652fff16046426ea49add39cebbb49534d4b9",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "0b95ac6bf5fd5d0b83630456815652fff16046426ea49add39cebbb49534d4b9"
+    "webSha256": "0b95ac6bf5fd5d0b83630456815652fff16046426ea49add39cebbb49534d4b9",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-touch.js",
     "source": "../demo/native-touch.js",
     "sha256": "877b60f49bfb532f0f0735d136824eaf14012da28691cb597572006753ac128b",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "877b60f49bfb532f0f0735d136824eaf14012da28691cb597572006753ac128b"
+    "webSha256": "877b60f49bfb532f0f0735d136824eaf14012da28691cb597572006753ac128b",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-scope.js",
     "source": "../demo/native-scope.js",
     "sha256": "249a53373a1b9477a13156440104356f25473109743b6344d1a5930f55a1e752",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "249a53373a1b9477a13156440104356f25473109743b6344d1a5930f55a1e752"
+    "webSha256": "249a53373a1b9477a13156440104356f25473109743b6344d1a5930f55a1e752",
+    "loadedByDesktopEntry": false
   },
   {
     "file": "native-canvas-pc.js",
     "source": "../demo/native-canvas-pc.js",
     "sha256": "52a39da6e91e1244ca408abe02474988730c6b9313a9405e3682c0ac8227924f",
     "change": "unchanged thin glue; relative imports now share web corrected Guide",
-    "webSha256": "52a39da6e91e1244ca408abe02474988730c6b9313a9405e3682c0ac8227924f"
+    "webSha256": "52a39da6e91e1244ca408abe02474988730c6b9313a9405e3682c0ac8227924f",
+    "loadedByDesktopEntry": false
   }
 ]
