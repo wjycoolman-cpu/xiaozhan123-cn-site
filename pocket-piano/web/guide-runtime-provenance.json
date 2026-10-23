@@ -1,0 +1,11 @@
+{
+  "baseline": "../demo/native-synth.js",
+  "lineEndings": "canonical LF; Windows checkout CRLF normalized before the exact check",
+  "baselineSha256": "3fda73348df6e57322ea6c5ff5c2495b8c18fbe93677f229ad9a05f1e3d6d246",
+  "runtimeSha256": "240bf98a858b55b4fda43c3580dd4e045377c5ebab48973dec60075e169d93ed",
+  "old": "Fj=(a,b)=>{return Mn(a.ss,b,b)===JJ?0:1;}",
+  "new": "Fj=(a,b)=>{return Mn(a.ss,b,JJ)===null?1:0;}",
+  "reason": "TreeSet.add must store the same presence sentinel consumed by TreeSet.remove and return true only for a new key.",
+  "scope": "Main-thread Guide, cursor and score preparation; shared AudioWorklet and offline audio assets unchanged",
+  "license": "Project GPL-3.0 and embedded TeaVM Apache-2.0 notices preserved"
+}

@@ -65,7 +65,7 @@
         "formUrl": "/feedback/?product=pocket-piano"
       },
       "updateManifestUrl": "https://xiaozhan123.cn/pocket-piano/update.json",
-      "demoUrl": "/pocket-piano/demo/"
+      "demoUrl": "/pocket-piano/web/"
     },
     {
       "id": "mianji",

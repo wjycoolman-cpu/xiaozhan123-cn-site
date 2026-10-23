@@ -1,0 +1,43 @@
+{
+  "version": "web41-20261023",
+  "sharedSiteBaselineCommit": "471d9b412d9dd61954d890a47cbdb19c0e1cff49",
+  "files": {
+    "native-synth.js": {
+      "bytes": 573755,
+      "sha256": "3fda73348df6e57322ea6c5ff5c2495b8c18fbe93677f229ad9a05f1e3d6d246"
+    },
+    "audio.js": {
+      "bytes": 5246,
+      "sha256": "4b6d40cd020dc90e7c6e920d8a396cc72c83667a5ddd51945d0e69bb2c20c665"
+    },
+    "native-audio-worklet.js": {
+      "bytes": 3266,
+      "sha256": "1c1ca8b95a11b5716978817013badbc52d39badd2cf9600102c7eba453e2cd43"
+    },
+    "native-gm.wasm": {
+      "bytes": 23678,
+      "sha256": "6fa05525e371fb3dc48376a1e97b5ea579436b753da0c1889ff8f4b4f6c36355"
+    },
+    "native-offline-audio.js": {
+      "bytes": 2916,
+      "sha256": "0b329c35ca60928f31c58cce79995f3f2ef16882ea0358e2066282e966e773b4"
+    },
+    "assets/instruments.json": {
+      "bytes": 23069,
+      "sha256": "2e50646a5cd52d5120f0e16caa4548d72d478d128ab87d1be4860cf4e1e84d0d"
+    },
+    "assets/builtin.json": {
+      "bytes": 569126,
+      "sha256": "eeed5582cf44a389561a195a18fd51cb71b33368c9e081b1d1618e65b85a2a34"
+    },
+    "source/app31-html-source-part1.zip": {
+      "bytes": 88825494,
+      "sha256": "d8d458e0e18757fe3f9e48ecca183c2f2c5378004719876e52eccaee0337c02d"
+    },
+    "source/app31-html-source-part2.zip": {
+      "bytes": 23190898,
+      "sha256": "04683c5b2318e48a5f2cfc34be51201246e94a49a04a0c82d0db2845dace0810"
+    }
+  },
+  "hashBasis": "canonical Git/public bytes; local Windows line endings may differ"
+}

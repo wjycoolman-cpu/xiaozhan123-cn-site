@@ -1,7 +1,7 @@
 (() => {
  'use strict';
- const homeCopy = {"pocket-piano":"随手弹奏、跟随曲谱，记录自己的旋律。","mianji":"记录休息时长，看看自己的作息趋势。","qingci":"学习四六级词汇，聆听发音并复习。","question-bank":"整理自己的题库，练习与复习错题。","stardew-farm":"配置种田与开荒，让农场自动运转。","resume-studio":"挑选模板，填写资料，预览你的简历。","yuji":"轻松记录羽毛球比分，管理对战日程。","subtitle-studio":"识别声音、校对双语字幕，自由调整样式。"};
- const homeActions = {"pocket-piano":"在线弹奏","mianji":"查看演示","qingci":"开始学习","question-bank":"在线练习","stardew-farm":"查看演示","resume-studio":"体验设计","yuji":"体验计分","subtitle-studio":"开始制作"};
+ const homeCopy = {"pocket-piano":"电脑键盘双手演奏、五线谱跟弹，记录自己的旋律。","mianji":"记录休息时长，看看自己的作息趋势。","qingci":"学习四六级词汇，聆听发音并复习。","question-bank":"整理自己的题库，练习与复习错题。","stardew-farm":"配置种田与开荒，让农场自动运转。","resume-studio":"挑选模板，填写资料，预览你的简历。","yuji":"轻松记录羽毛球比分，管理对战日程。","subtitle-studio":"识别声音、校对双语字幕，自由调整样式。"};
+ const homeActions = {"pocket-piano":"网页版 ↗","mianji":"查看演示","qingci":"开始学习","question-bank":"在线练习","stardew-farm":"查看演示","resume-studio":"体验设计","yuji":"体验计分","subtitle-studio":"开始制作"};
  const $ = s => document.querySelector(s);
  const websiteFeedbackProduct = Object.freeze({id:'website',name:'网站',version:'',feedback:{endpoint:'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback',formUrl:'/feedback/?product=website'}});
  let catalog, filter = 'app', selected, activeFeedback, toastTimer;
@@ -39,7 +39,7 @@
   return `<div class="product-icon" aria-hidden="true">${symbol}</div>`;
  }
  function demoAction(p) { const u=safeUrl(p.demoUrl); return u ? `<a class="button secondary" href="${esc(u)}">${esc(homeActions[p.id] || "在线体验")}</a>` : ""; }
- function actions(p) { return `${demoAction(p)}${action(p)}${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步 ↗</a>':''}${p.id==='pocket-piano'?'<a class="text-button" href="./pocket-piano/web/" aria-label="\u6253\u5f00\u7f51\u9875\u94a2\u7434">\u7f51\u9875\u94a2\u7434 \u2197</a>':''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
+ function actions(p) { return `${demoAction(p)}${action(p)}${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步 ↗</a>':''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
  function preview(p) {
  return '<button class="product-visual" data-detail="'+esc(p.id)+'" aria-label="查看'+esc(p.name)+'详情">'+icon(p)+'</button>';
  }
