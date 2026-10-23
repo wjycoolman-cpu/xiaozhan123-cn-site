@@ -202,7 +202,8 @@ export class StaffPractice{
   });return this.preparing;
  }
  setActive(value){
-  this.active=!!value&&!this.disposed;this.element.hidden=!this.active;
+  const next=!!value&&!this.disposed;if(next===this.active)return;
+  this.active=next;this.element.hidden=!this.active;
   if(this.active&&!this.boot)this._loadScene();
   this.frame.contentWindow?.StaffPractice?.setActive(this.active);
   if(this.active&&this.song)this._prepare().then(()=>this._pump()).catch(()=>{});
