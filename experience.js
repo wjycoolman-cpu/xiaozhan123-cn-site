@@ -79,12 +79,13 @@
  renderTask('piano');
  // Actual product pages are created only after activation, one at a time.
  const dialog=$('#experience-dialog'), host=$('#experience-host'), loading=$('#experience-loading');
- let returnFocus,frame,loadTimer,openTicket=0,activeId;
+ let returnFocus,frame,loadTimer,openTicket=0,activeId,pendingId;
  function productUrl(p){const value=p.kind==='game'?p.playUrl:p.demoUrl;if(!value)return null;try{const base=location.protocol==='file:'?'https://xiaozhan123.cn/':location.href,u=new URL(value,base);return u.origin===new URL(base).origin&&['https:','http:'].includes(u.protocol)?u.href:null;}catch{return null;}}
  function launch(id){
-  const p=window.XiaoZhanCatalog?.products.find(p=>p.id===id);if(!p)return;
+  const p=window.XiaoZhanCatalog?.products.find(p=>p.id===id);
+  if(!p){if(window.XiaoZhanCatalog)return;stopAudio();returnFocus=document.activeElement;pendingId=id;$('#experience-title').textContent='正在读取作品';$('#experience-kind').textContent='准备应用入口';loading.hidden=false;const failed=!$('#load-error').hidden;loading.querySelector('p').textContent=failed?'作品目录暂时没有打开。':'正在读取作品…';loading.querySelector('small').textContent=failed?'点击右上角“重新加载”，准备好后将自动进入应用。':'入口准备好后会自动打开。';if(!dialog.open)dialog.showModal();$('#experience-close').focus({preventScroll:true});return;}
   const url=productUrl(p);if(!url)return;
-  stopAudio();returnFocus=$('#detail-dialog').open?document.querySelector(`.product-card [data-detail="${CSS.escape(id)}"]`):document.activeElement;activeId=id;
+  stopAudio();if(pendingId!==id)returnFocus=$('#detail-dialog').open?document.querySelector(`.product-card [data-detail="${CSS.escape(id)}"]`):document.activeElement;pendingId=null;activeId=id;
   if($('#detail-dialog').open)$('#detail-dialog').close();
   $('#experience-title').textContent=p.name;$('#experience-kind').textContent=p.kind==='game'?'网页游戏':p.demoUrl?.includes('/demo/')?'可操作网页演示':'网页应用';$('#experience-standalone').href=url;
   if(!dialog.open)dialog.showModal();$('#experience-close').focus({preventScroll:true});loadFrame(url,p);
@@ -98,9 +99,11 @@
   loadTimer=setTimeout(()=>{if(ticket!==openTicket)return;loading.hidden=true;$('#experience-kind').textContent='仍在加载，可重试或独立打开';},16000);
  }
  document.addEventListener('click',e=>{const b=e.target.closest('[data-experience]');if(b){e.preventDefault();launch(b.dataset.experience);}});
+ window.addEventListener('catalog:ready',()=>{if(pendingId&&dialog.open)launch(pendingId);});
+ window.addEventListener('catalog:error',()=>{if(pendingId&&dialog.open){loading.hidden=false;loading.querySelector('p').textContent='作品目录暂时没有打开。';loading.querySelector('small').textContent='点击右上角“重新加载”，准备好后将自动进入应用。';}});
  $('#experience-close').addEventListener('click',()=>dialog.close());
- $('#experience-retry').addEventListener('click',()=>{const p=window.XiaoZhanCatalog?.products.find(p=>p.id===activeId);if(p){$('#experience-kind').textContent='重新加载中';loadFrame(productUrl(p),p);}});
- dialog.addEventListener('close',()=>{openTicket++;clearTimeout(loadTimer);host.replaceChildren();frame=null;activeId=null;if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else $('#catalog').focus({preventScroll:true});});
+ $('#experience-retry').addEventListener('click',()=>{if(pendingId){loading.querySelector('p').textContent='正在重新读取作品…';$('#retry-catalog').click();return;}const p=window.XiaoZhanCatalog?.products.find(p=>p.id===activeId);if(p){$('#experience-kind').textContent='重新加载中';loadFrame(productUrl(p),p);}});
+ dialog.addEventListener('close',()=>{openTicket++;clearTimeout(loadTimer);host.replaceChildren();frame=null;activeId=null;pendingId=null;if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else $('#catalog').focus({preventScroll:true});});
  $('#menu-toggle').addEventListener('click',()=>{const open=$('#menu-toggle').getAttribute('aria-expanded')!=='true';$('#menu-toggle').setAttribute('aria-expanded',String(open));$('#menu-toggle').setAttribute('aria-label',open?'收起导航':'展开导航');$('#site-nav').classList.toggle('is-open',open);});
  $('#site-nav').addEventListener('click',e=>{if(!e.target.closest('a'))return;$('#site-nav').classList.remove('is-open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','展开导航');});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#site-nav').classList.remove('is-open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','展开导航');}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('dialog[open]')){e.preventDefault();$('#search-toggle').click();}});
