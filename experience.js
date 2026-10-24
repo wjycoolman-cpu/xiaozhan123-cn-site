@@ -49,6 +49,8 @@
  function stopAudio(){melodyTimers.forEach(clearTimeout);melodyTimers=[];[...noteTickets.keys()].forEach(endNote);const b=$('#melody-play');if(b){b.textContent='试听一段';b.setAttribute('aria-pressed','false');}}
  panel.addEventListener('pointerdown',e=>{const b=e.target.closest('[data-note]');if(!b)return;e.preventDefault();b.focus({preventScroll:true});b.setPointerCapture(e.pointerId);startNote(Number(b.dataset.note));});
  for(const event of ['pointerup','pointercancel','lostpointercapture'])panel.addEventListener(event,e=>{const b=e.target.closest('[data-note]');if(b)endNote(Number(b.dataset.note));});
+ panel.addEventListener('keydown',e=>{const b=e.target.closest('[data-note]');if(b&&['Enter',' '].includes(e.key)&&!e.repeat){e.preventDefault();startNote(Number(b.dataset.note));}});
+ panel.addEventListener('keyup',e=>{const b=e.target.closest('[data-note]');if(b&&['Enter',' '].includes(e.key)){e.preventDefault();endNote(Number(b.dataset.note));}});
  const keymap={a:0,s:2,d:4,f:5,g:7,h:9,j:11,k:12};
  document.addEventListener('keydown',e=>{
   if(task!=='piano'||e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,textarea,select,[contenteditable]')||document.querySelector('dialog[open]'))return;
@@ -101,7 +103,7 @@
  dialog.addEventListener('close',()=>{openTicket++;clearTimeout(loadTimer);host.replaceChildren();frame=null;activeId=null;if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else $('#catalog').focus({preventScroll:true});});
  $('#menu-toggle').addEventListener('click',()=>{const open=$('#menu-toggle').getAttribute('aria-expanded')!=='true';$('#menu-toggle').setAttribute('aria-expanded',String(open));$('#menu-toggle').setAttribute('aria-label',open?'收起导航':'展开导航');$('#site-nav').classList.toggle('is-open',open);});
  $('#site-nav').addEventListener('click',e=>{if(!e.target.closest('a'))return;$('#site-nav').classList.remove('is-open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','展开导航');});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#site-nav').classList.remove('is-open');$('#menu-toggle').setAttribute('aria-expanded','false');}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('dialog[open]')){e.preventDefault();$('#search-toggle').click();}});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#site-nav').classList.remove('is-open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','展开导航');}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('dialog[open]')){e.preventDefault();$('#search-toggle').click();}});
  $$('[data-nav-filter]').forEach(a=>a.addEventListener('click',()=>document.querySelector(`.filter-tabs [data-filter="${a.dataset.navFilter}"]`)?.click()));
  $('#catalog-search').addEventListener('submit',e=>{e.preventDefault();$('#catalog').focus({preventScroll:true});$('#catalog').scrollIntoView({block:'start',behavior:document.documentElement.dataset.reducedMotion==='true'?'auto':'smooth'});});
 })();
