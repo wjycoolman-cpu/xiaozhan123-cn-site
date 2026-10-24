@@ -1,10 +1,10 @@
 (() => {
  'use strict';
  const homeCopy = {"pocket-piano":"电脑键盘双手演奏、五线谱跟弹，记录自己的旋律。","mianji":"记录休息时长，看看自己的作息趋势。","qingci":"学习四六级词汇，聆听发音并复习。","question-bank":"整理自己的题库，练习与复习错题。","stardew-farm":"配置种田与开荒，让农场自动运转。","resume-studio":"挑选模板，填写资料，预览你的简历。","yuji":"轻松记录羽毛球比分，管理对战日程。","subtitle-studio":"识别声音、校对双语字幕，自由调整样式。"};
- const homeActions = {"pocket-piano":"网页版 ↗","mianji":"查看演示","qingci":"开始学习","question-bank":"在线练习","stardew-farm":"查看演示","resume-studio":"体验设计","yuji":"体验计分","subtitle-studio":"开始制作"};
+ const homeActions = {"pocket-piano":"打开网页版","mianji":"查看演示","qingci":"开始学习","question-bank":"在线练习","stardew-farm":"查看演示","resume-studio":"体验设计","yuji":"体验计分","subtitle-studio":"开始制作"};
  const $ = s => document.querySelector(s);
  const websiteFeedbackProduct = Object.freeze({id:'website',name:'网站',version:'',feedback:{endpoint:'https://xiaozhan-feedback-d1d5oh63be3b3b.api.tcloudbasegateway.com/v1/functions/qingci-feedback',formUrl:'/feedback/?product=website'}});
- let catalog, filter = 'app', selected, activeFeedback, toastTimer;
+ let catalog, filter = 'all', selected, activeFeedback, toastTimer, detailTrigger, feedbackReturnTarget;
  const feedbackClient = window.AppCenterFeedback ? window.AppCenterFeedback.create() : Promise.reject(Error('client_unavailable'));
  feedbackClient.catch(() => {});
  let feedbackSequence = 0, draftSequence = 0;
@@ -14,10 +14,10 @@
  function safeUrl(value) {
   if (typeof value !== 'string' || !value) return '';
   try {
-   const page = new URL(location.href), u = new URL(value, page);
+   const page = new URL(location.href), standalone = page.protocol === 'file:' || document.documentElement.dataset.preview==='true', base = standalone ? new URL('https://xiaozhan123.cn/') : page, u = new URL(value, base);
    const localPage = ['localhost', '127.0.0.1', '[::1]'].includes(page.hostname);
    const approvedSubtitleRelease = ["https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.0/SubtitleStudio-1.1.0-Windows.zip","https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-Windows.zip","https://github.com/wjycoolman-cpu/xiaozhan123-cn-site/releases/download/subtitle-studio-v1.1.3/SubtitleStudio-1.1.3-source.zip"].includes(u.href);
-   if (u.username || u.password || (u.origin !== page.origin && !approvedSubtitleRelease)) return '';
+   if (u.username || u.password || (u.origin !== base.origin && !approvedSubtitleRelease)) return '';
    return u.protocol === 'https:' || (u.protocol === 'http:' && localPage) ? u.href : '';
   } catch { return ''; }
  }
@@ -34,40 +34,52 @@
    mianji:'<path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/>',
    'question-bank':'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8.5 12l2.5 2.5 4.5-5"/>'
   };
-  if(p.id==='yuji')return '<div class="product-icon" aria-hidden="true"><img src="./yuji/icon.png" width="48" height="48" alt=""></div>';
+  if(p.id==='yuji')return `<div class="product-icon" aria-hidden="true"><img src="${esc(previewAssets?.['yuji-icon']||'./yuji/icon.png')}" width="48" height="48" alt=""></div>`;
   const symbol=p.id==='qingci'?'Aa':p.id==='kfc-order'?'K':`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${drawings[p.id]||''}</svg>`;
   return `<div class="product-icon" aria-hidden="true">${symbol}</div>`;
  }
  function demoAction(p) { const u=safeUrl(p.demoUrl); return u ? `<a class="button secondary" href="${esc(u)}">${esc(homeActions[p.id] || "在线体验")}</a>` : ""; }
- function actions(p) { return `${demoAction(p)}${action(p)}${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步 ↗</a>':''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>`; }
- function preview(p) {
- return '<button class="product-visual" data-detail="'+esc(p.id)+'" aria-label="查看'+esc(p.name)+'详情">'+icon(p)+'</button>';
+ function actions(p) { return `${demoAction(p)}${action(p)}${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步 ↗</a>':''}`; }
+ const previewFiles = {'pocket-piano':'pocket-piano','subtitle-studio':'subtitle-studio','qingci':'qingci','electric-drive':'electric-drive'};
+ const embeddedPreviewAssets=$('#preview-assets');const previewAssets=embeddedPreviewAssets?JSON.parse(embeddedPreviewAssets.textContent):null;
+ function previewSrc(p){return previewAssets?.[p.id]||'./assets/previews/'+previewFiles[p.id]+'.jpg';}
+ const cardOrder = ['pocket-piano','subtitle-studio','electric-drive','skymyth','qingci','mianji','question-bank','resume-studio','yuji','stardew-farm'];
+ function card(p) {
+  const target=safeUrl(p.kind==='game'?p.playUrl:p.demoUrl||p.downloadUrl);
+  const label=p.kind==='game'?'开始游戏':p.demoUrl?(homeActions[p.id]||'在线体验'):(p.downloadLabel||'下载');
+  return `<article class="product-card product-${esc(p.id)} ${p.kind==='game'?'game-card':'app-card'}" ${p.kind==='app'&&ready(p)?`draggable="true" data-drag="${esc(p.id)}"`:''}>${icon(p)}<div class="product-content"><h3><button class="title-button" data-detail="${esc(p.id)}">${esc(p.name)}</button></h3><p class="summary">${esc(homeCopy[p.id]||p.summary)}</p><div class="card-actions">${target?`<a class="open-product" href="${esc(target)}">${esc(label)}</a>`:''}<button class="text-button more-button" data-detail="${esc(p.id)}" aria-label="${esc(p.name)}的详情、分享与反馈">详情</button>${p.id==='yuji'?'<a class="text-button" href="./yuji/">赛事同步</a>':''}</div></div></article>`;
  }
- function card(p) { return '<article class="product-card '+(p.kind==='game'?'game-card':'app-card')+' '+esc(p.theme)+'" '+(p.kind==='app'&&ready(p)?'draggable="true" data-drag="'+esc(p.id)+'"':'')+'>'+preview(p)+'<div class="product-content"><div class="card-heading"><h3>'+esc(p.name)+'</h3></div><p class="summary">'+esc(homeCopy[p.id]||p.summary)+'</p><div class="card-actions">'+actions(p)+'</div></div></article>'; }
  function setFilter(kind) {
-  if (!['app', 'game'].includes(kind)) return;
-  filter = kind; $("#catalog").textContent=kind==="app"?"应用":"游戏";
+  if (!['all','app', 'game'].includes(kind)) return;
+  filter = kind;
   document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === kind)));
-  $('#search').placeholder = kind === 'app' ? '搜索应用' : '搜索游戏';
+  $('#search').placeholder = kind === 'app' ? '搜索应用名称、类型…' : kind === 'game' ? '搜索游戏名称、类型…' : '搜索作品名称、类型…';
   if (catalog) render();
  }
  function render() {
   const q = $('#search').value.trim().toLocaleLowerCase();
-  const list = catalog.products.filter(p => p.kind === filter && [p.name,...(p.aliases || []),p.category].join(' ').toLocaleLowerCase().includes(q));
-  $('#game-grid').innerHTML = list.filter(p => p.kind === 'game').map(card).join('');
-  $('#app-grid').innerHTML = list.filter(p => p.kind === 'app').map(card).join('');
-  $('#games').hidden = !list.some(p => p.kind === 'game'); $('#apps').hidden = !list.some(p => p.kind === 'app'); $('#empty').hidden = !!list.length;
+  const list = catalog.products.filter(p => (filter === 'all'||p.kind === filter) && [p.name,...(p.aliases || []),p.category,p.summary,homeCopy[p.id],p.kind==='game'?'游戏':'应用'].join(' ').toLocaleLowerCase().includes(q)).sort((a,b)=>cardOrder.indexOf(a.id)-cardOrder.indexOf(b.id));
+  $('#app-grid').innerHTML = list.map(card).join('');
+  $('#app-grid').classList.toggle('games-only',filter==='game');
+  $('#empty').hidden = !!list.length;
+  $('#catalog-count').textContent = list.length;
+  $('#catalog').textContent=q?'搜索结果':filter==='app'?'应用':filter==='game'?'游戏':'全部作品';
+  $('#search-clear').hidden=!q;
+  document.querySelectorAll('.side-nav [data-filter]').forEach(b=>b.classList.toggle('is-active',b.dataset.filter===filter));
+  document.querySelectorAll('.filter-tabs button').forEach(b=>{const count=catalog.products.filter(p=>b.dataset.filter==='all'||p.kind===b.dataset.filter).length;b.querySelector('span').textContent=String(count).padStart(2,'0');});
  }
  function product(id) { return id === 'website' ? websiteFeedbackProduct : catalog?.products.find(p => p.id === id); }
  function toast(message) { $('#toast').textContent = message; $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 3000); }
  function detail(p) {
-  selected = p; $('#detail-content').innerHTML = `<div class="detail-identity ${esc(p.theme)}">${icon(p)}<div><h2 id="detail-title" tabindex="-1">${esc(p.name)}</h2><span class="badge ${ready(p)?'available':''}">${esc(p.statusText)}</span></div></div><p class="muted">${esc(p.summary)}</p><dl class="detail-meta"><div><dt>版本</dt><dd>${esc(p.version || '待发布')}</dd></div><div><dt>大小</dt><dd>${size(p.sizeBytes)}</dd></div><div><dt>适用设备</dt><dd>${esc(p.compatibility)}</dd></div><div><dt>类型</dt><dd>${esc(p.category)}</dd></div></dl><h3>更新说明</h3><ul class="notes">${(p.releaseNotes || []).map(n => `<li>${esc(n)}</li>`).join('')}</ul><div class="card-actions">${demoAction(p)}${action(p)}${safeUrl(p.detailsUrl)?`<a class="button secondary" href="${esc(safeUrl(p.detailsUrl))}">使用与卸载说明</a>`:""}${safeUrl(p.sourceUrl)?`<a class="text-button" href="${esc(safeUrl(p.sourceUrl))}" download>源码</a>`:""}<button class="button secondary" data-share="${esc(p.id)}">分享链接</button><button class="text-button" data-feedback="${esc(p.id)}">反馈问题</button></div>`; $('#detail-dialog').showModal();$('#detail-title').focus();
+  if(!p)return;
+  detailTrigger=document.activeElement?.closest('[data-detail]')||document.querySelector(`.product-card [data-detail="${CSS.escape(p.id)}"]`);
+  selected = p; $('#detail-content').innerHTML = `${previewFiles[p.id]?`<figure class="detail-preview"><img src="${esc(previewSrc(p))}" alt="${esc(p.name)}实际网页界面" width="1280" height="720"><figcaption>实际网页界面</figcaption></figure>`:''}<div class="detail-identity ${esc(p.theme)}">${icon(p)}<div><h2 id="detail-title" tabindex="-1">${esc(p.name)}</h2><span class="badge ${ready(p)?'available':''}">${esc(p.statusText)}</span></div></div><p class="muted">${esc(p.summary)}</p><dl class="detail-meta"><div><dt>版本</dt><dd>${esc(p.version || '待发布')}</dd></div><div><dt>大小</dt><dd>${size(p.sizeBytes)}</dd></div><div><dt>适用设备</dt><dd>${esc(p.compatibility)}</dd></div><div><dt>类型</dt><dd>${esc(p.category)}</dd></div></dl><h3>更新说明</h3><ul class="notes">${(p.releaseNotes || []).map(n => `<li>${esc(n)}</li>`).join('')}</ul><div class="card-actions">${demoAction(p)}${action(p)}${safeUrl(p.detailsUrl)?`<a class="button secondary" href="${esc(safeUrl(p.detailsUrl))}">使用与卸载说明</a>`:""}${safeUrl(p.sourceUrl)?`<a class="text-button" href="${esc(safeUrl(p.sourceUrl))}" download>源码</a>`:""}<button class="button secondary" data-share="${esc(p.id)}">分享链接</button><button class="text-button" data-feedback="${esc(p.id)}">反馈问题</button></div>`; if(!$('#detail-dialog').open)$('#detail-dialog').showModal();$('#detail-title').focus();
  }
- function shareUrl(p) { const base = safeUrl(catalog.site.canonicalUrl) || location.href; const u = new URL(base); u.hash = `product=${encodeURIComponent(p.id)}`; return u.href; }
+ function shareUrl(p) { const base = safeUrl(catalog.site.canonicalUrl) || (catalog.site.canonicalUrl==='https://xiaozhan123.cn/'?'https://xiaozhan123.cn/':location.href); const u = new URL(base); u.hash = `product=${encodeURIComponent(p.id)}`; return u.href; }
  async function copy(text) { try { if (!navigator.clipboard) throw Error(); await navigator.clipboard.writeText(text); return true; } catch { return false; } }
  async function share(p) { const u = shareUrl(p); if (await copy(u)) { toast('链接已复制，分享给朋友吧'); return; } $('#share-url').value = u; $('#share-dialog').showModal(); $('#share-url').select(); }
- function feedbackEndpoint(p) { return window.AppCenterFeedback?.endpoint(p.feedback?.endpoint) || ''; }
- function renderFeedbackChannel(p) { const available=!!feedbackEndpoint(p);$('#feedback-channel').hidden=available;$('#feedback-channel').textContent=available?'':'反馈通道暂未开放，可以先保存草稿。'; }
+ function feedbackEndpoint(p) { if(document.documentElement.dataset.preview==='true')return ''; return window.AppCenterFeedback?.endpoint(p.feedback?.endpoint) || ''; }
+ function renderFeedbackChannel(p) { const available=!!feedbackEndpoint(p);$('#feedback-channel').hidden=available;$('#feedback-channel').textContent=available?'':document.documentElement.dataset.preview==='true'?'设计预览中不发送反馈，可以在本机试写草稿。':'反馈通道暂未开放，可以先保存草稿。'; }
  function feedbackError() { $('#feedback-status').className='form-status'; $('#feedback-status').textContent='暂时无法更新反馈保存状态。输入仍在当前页面，请保留内容后重试。'; }
  function renderFeedbackState(p, state) {
   if(activeFeedback?.id!==p.id)return;
@@ -91,6 +103,7 @@
   return feedbackClient.then(client=>client.setDraft(p.id,message,contact)).then(state=>{if(activeFeedback?.id===p.id&&ticket===draftSequence)renderFeedbackState(p,state);}).catch(()=>{if(activeFeedback?.id===p.id)feedbackError();});
  }
  async function feedback(p) {
+  feedbackReturnTarget=$('#detail-dialog').open?detailTrigger:document.activeElement;
   const saved=preserveDraft(), ticket=++feedbackSequence;
   activeFeedback=p;
   const form=$('#feedback-form');form.reset();form.elements.message.disabled=true;form.elements.contact.disabled=true;$('#clear-draft').disabled=true;$('#clear-local-feedback').disabled=true;
@@ -136,14 +149,24 @@
  document.addEventListener('click', e => { const el=e.target.closest('button'); if(!el)return; if(el.dataset.filter){ setFilter(el.dataset.filter); if(el.closest(".side-nav")) document.querySelector(".catalog-tools").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}); } if(el.dataset.detail) detail(product(el.dataset.detail)); if(el.dataset.share) share(product(el.dataset.share)); if(el.dataset.feedback) feedback(product(el.dataset.feedback)); if(el.dataset.close) { preserveDraft(); document.getElementById(el.dataset.close).close(); } });
  document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-drag]');if(!card||!e.dataTransfer)return;const p=product(card.dataset.drag),u=safeUrl(p.downloadUrl);e.dataTransfer.setData('DownloadURL',`${p.mimeType || 'application/vnd.android.package-archive'}:${p.filename||p.id+'.apk'}:${u}`);e.dataTransfer.setData('text/uri-list',u);e.dataTransfer.setData('text/plain',u);e.dataTransfer.effectAllowed='copy';});
  $('#search').addEventListener('input',()=>catalog&&render());
- $('#search-toggle').addEventListener('click',()=>{const open=$('#search-panel').hidden;$('#search-panel').hidden=!open;$('#search-toggle').setAttribute('aria-expanded',String(open));if(open)$('#search').focus();else{$('#search').value='';if(catalog)render();}});
+ $('#search-toggle').addEventListener('click',()=>{$('#search-panel').hidden=false;$('#search').focus();$('#search-panel').scrollIntoView({block:'center',behavior:document.documentElement.dataset.reducedMotion==='true'?'auto':'smooth'});});
  $('#feedback-form').addEventListener('input',()=>{$('#feedback-status').textContent='';$('#feedback-status').className='form-status';preserveDraft();});
  $('#feedback-dialog').addEventListener('cancel',preserveDraft);
- $('#feedback-dialog').addEventListener('close',()=>{if(activeFeedback)(activeFeedback.id==='website'?$('#website-feedback'):document.querySelector(`[data-detail="${activeFeedback.id}"]`))?.focus();});
+ $('#feedback-dialog').addEventListener('close',()=>{if(activeFeedback){const fallback=activeFeedback.id==='website'?$('#website-feedback'):document.querySelector(`.product-card [data-detail="${CSS.escape(activeFeedback.id)}"]`);(feedbackReturnTarget?.isConnected?feedbackReturnTarget:fallback)?.focus({preventScroll:true});}});
  $('#clear-draft').addEventListener('click',async()=>{const p=activeFeedback,ticket=++draftSequence;$('#feedback-form').reset();try{const client=await feedbackClient,state=await client.clearDraft(p.id);if(activeFeedback?.id===p.id&&ticket===draftSequence){renderFeedbackState(p,state);$('#feedback-status').textContent=state.attempts.length?'输入已清空，旧的待确认反馈仍保留。':'输入已清空。';}}catch{feedbackError();}});
  $('#clear-local-feedback').addEventListener('click',async()=>{const p=activeFeedback,ticket=++draftSequence;$('#feedback-form').reset();try{const client=await feedbackClient,state=await client.clearProduct(p.id);if(activeFeedback?.id===p.id&&ticket===draftSequence){renderFeedbackState(p,state);$('#feedback-status').textContent=state.localClearConfirmed?'已清除此产品的本机副本。这不会撤回网站可能已收到的反馈。':'当前页面内容已清空，本机加密副本暂无法确认清除。';}}catch{feedbackError();}});
  $('#feedback-pending').addEventListener('click',async e=>{const el=e.target.closest('button');if(!el||!activeFeedback)return;const p=activeFeedback;if(el.dataset.retryRequest){await preserveDraft();return sendFeedback(p,client=>client.retry(p.id,el.dataset.retryRequest,feedbackEndpoint(p)));}if(el.dataset.viewRequest){const saved=preserveDraft(),ticket=draftSequence;await saved;if(activeFeedback?.id!==p.id||ticket!==draftSequence)return;try{const client=await feedbackClient,state=await client.restoreAttempt(p.id,el.dataset.viewRequest);if(activeFeedback?.id===p.id&&ticket===draftSequence){const form=$('#feedback-form');form.elements.message.value=state.draft.message;form.elements.contact.value=state.draft.contact;renderFeedbackState(p,state);$('#feedback-status').textContent='已载入这次反馈。改写内容后会作为新的反馈发送，旧请求仍会保留。';}}catch{feedbackError();}}});
  $('#share-copy').addEventListener('click',async()=>{if(await copy($('#share-url').value)){toast('链接已复制');$('#share-dialog').close();}else{$('#share-url').select();toast('请长按或使用 Ctrl+C 复制链接');}});
  $('#feedback-form').addEventListener('submit',e=>{e.preventDefault();const p=activeFeedback;if(!p||!feedbackEndpoint(p))return;const form=$('#feedback-form'),message=form.elements.message.value,contact=form.elements.contact.value;return sendFeedback(p,client=>client.submit({productId:p.id,version:p.version||'',message,contact,endpoint:feedbackEndpoint(p)}));});
- fetch('./catalog/products.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(data=>{catalog=data;render();document.title=data.site.name;const admin=safeUrl(data.site.adminUrl);if(admin){$('#admin-link').href=admin;$('#admin-link').hidden=false;}const match=location.hash.match(/^#product=(.+)$/);if(match){try{const p=product(decodeURIComponent(match[1]));if(p){setFilter(p.kind);detail(p);}}catch{}}}).catch(()=>$('#load-error').hidden=false);
+ function openHashProduct(){const match=location.hash.match(/^#product=(.+)$/);if(!match){if($('#detail-dialog').open)$('#detail-dialog').close();return;}try{const p=product(decodeURIComponent(match[1]));if(p){setFilter(p.kind);detail(p);}else toast('这件作品暂时不在目录中。');}catch{toast('这个作品链接暂时无法打开。');}}
+ window.addEventListener('hashchange',()=>catalog&&openHashProduct());
+ function loadCatalog(){ $('#load-error').hidden=true; const embedded=$('#catalog-data'); const request=embedded?Promise.resolve({ok:true,json:()=>Promise.resolve(JSON.parse(embedded.textContent))}):fetch('./catalog/products.json',{cache:'no-store'}); request.then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(data=>{catalog=data;render();document.title='小站 · 我的作品空间';window.XiaoZhanCatalog=data;window.dispatchEvent(new CustomEvent('catalog:ready',{detail:data}));const admin=safeUrl(data.site.adminUrl);if(admin){$('#admin-link').href=admin;$('#admin-link').hidden=false;}openHashProduct();}).catch(()=>$('#load-error').hidden=false);}
+ $('#retry-catalog').addEventListener('click',loadCatalog);
+ $('#search-clear').addEventListener('click',()=>{$('#search').value='';render();$('#search').focus();});
+ document.addEventListener('keydown',e=>{if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.target.closest('input,textarea,select,[contenteditable]')&&!document.querySelector('dialog[open]')){e.preventDefault();$('#search-panel').hidden=false;$('#search-toggle').setAttribute('aria-expanded','true');$('#search').focus();}});
+ const motionMedia=matchMedia('(prefers-reduced-motion: reduce)');let motionChoice;try{motionChoice=localStorage.getItem('xiaozhan-motion');}catch{}
+ function setMotion(reduced,save=false){document.documentElement.dataset.reducedMotion=String(reduced);$('#motion-toggle').setAttribute('aria-pressed',String(reduced));$('#motion-toggle').setAttribute('aria-label',reduced?'启用动态效果':'减少动态效果');$('#motion-toggle').title=reduced?'启用动态效果':'减少动态效果';window.XiaoZhanStage?.setReduced(reduced);window.dispatchEvent(new CustomEvent('xz:motion',{detail:{reduced}}));if(save){motionChoice=String(reduced);try{localStorage.setItem('xiaozhan-motion',motionChoice);}catch{}}}
+ setMotion(motionChoice===null||motionChoice===undefined?motionMedia.matches:motionChoice==='true');$('#motion-toggle').addEventListener('click',()=>setMotion(document.documentElement.dataset.reducedMotion!=='true',true));motionMedia.addEventListener('change',e=>{if(motionChoice===null||motionChoice===undefined)setMotion(e.matches);});
+ document.querySelectorAll('a[href="#top"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:document.documentElement.dataset.reducedMotion==='true'?'instant':'smooth'});document.querySelector('#welcome-title').focus({preventScroll:true});}));
+ loadCatalog();
 })();
