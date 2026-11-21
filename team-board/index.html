@@ -254,10 +254,39 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 .shared-form {display:grid;gap:12px}.shared-form label {display:grid;gap:6px;font-size:14px;font-weight:600}.shared-form input,.shared-form textarea,.shared-form select {width:100%;box-sizing:border-box;border:1px solid #cbd8e3;border-radius:6px;padding:9px 10px;font:inherit;background:#fff;color:#183549}.shared-form textarea {min-height:88px;resize:vertical}
 .shared-form button {justify-self:start}.shared-form fieldset {border:1px solid #dce5ed;border-radius:7px;max-height:190px;overflow:auto}.shared-form fieldset label {display:flex;align-items:flex-start;font-weight:400;margin:6px 0}.shared-form fieldset input {width:auto;margin-top:4px}
 .shared-box {border:1px solid #e0e8ef;border-radius:8px;padding:15px 17px;background:#fff}.shared-box h3 {font-size:16px;margin:0 0 7px}.shared-box p {margin:6px 0;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}.shared-meta {font-size:13px;color:#607789}.shared-status {display:inline-block;background:#eaf3fb;color:#175a91;border-radius:20px;padding:3px 8px;font-size:12px;font-weight:700}
-.shared-list {display:grid;gap:10px}.shared-tree,.shared-tree ul {list-style:none;margin:0;padding-left:0}.shared-tree {overflow-x:auto}.shared-tree ul {margin-left:14px;padding-left:20px;border-left:1px solid #b7cddd}.shared-tree li {position:relative;margin:10px 0}.shared-tree ul>li:before {content:'';position:absolute;left:-20px;top:23px;width:16px;border-top:1px solid #b7cddd}.shared-tree .node-button {width:100%;min-width:180px;text-align:left;border:1px solid #dce6ee;background:#fff;border-radius:8px;padding:12px;cursor:pointer;color:inherit;font:inherit}.shared-tree .node-button:hover,.shared-tree .node-button[aria-pressed=true] {border-color:#347bb8;background:#f2f8fd}.shared-tree-layout {display:grid;grid-template-columns:minmax(230px, .9fr) minmax(260px, 1.1fr);gap:18px;align-items:start}.shared-error {color:#a02d31}.shared-success {color:#196c49}.shared-admin {border-top:1px solid #e5ebf0;padding-top:16px}.shared-admin summary {cursor:pointer;font-weight:650}.shared-admin>div {padding-top:14px}
+.feedback-layout {display:grid;grid-template-columns:minmax(260px, 1fr) minmax(0, 1fr);gap:18px;align-items:start}.feedback-compose {display:grid;gap:10px}.feedback-history {min-width:0}.feedback-history h3 {margin:0 0 10px;font-size:16px}.feedback-compose textarea {min-height:135px}.feedback-manage {margin-top:6px}.shared-list {display:grid;gap:10px}.shared-tree,.shared-tree ul {list-style:none;margin:0;padding-left:0}.shared-tree {overflow-x:auto}.shared-tree ul {margin-left:14px;padding-left:20px;border-left:1px solid #b7cddd}.shared-tree li {position:relative;margin:10px 0}.shared-tree ul>li:before {content:'';position:absolute;left:-20px;top:23px;width:16px;border-top:1px solid #b7cddd}.shared-tree .node-button {width:100%;min-width:180px;text-align:left;border:1px solid #dce6ee;background:#fff;border-radius:8px;padding:12px;cursor:pointer;color:inherit;font:inherit}.shared-tree .node-button:hover,.shared-tree .node-button[aria-pressed=true] {border-color:#347bb8;background:#f2f8fd}.shared-tree-layout {display:grid;grid-template-columns:minmax(230px, .9fr) minmax(260px, 1.1fr);gap:18px;align-items:start}.shared-error {color:#a02d31}.shared-success {color:#196c49}.shared-admin {border-top:1px solid #e5ebf0;padding-top:16px}.shared-admin summary {cursor:pointer;font-weight:650}.shared-admin>div {padding-top:14px}
 @media(max-width:700px), (max-height:600px) {.shared-body {padding:15px}.shared-header {padding:12px 15px}#shared-dialog {max-height:90dvh}.top-actions [data-shared] {font-size:13px;padding:6px}}
 @media(max-width:700px) {.shared-tree-layout {grid-template-columns:1fr}}
+@media (orientation:portrait), (max-width:559px) {.feedback-layout {grid-template-columns:1fr}}
+@media (orientation:landscape) and (max-height:600px) {.feedback-layout {gap:12px}.feedback-compose textarea {min-height:75px}.feedback-history .shared-list {max-height:50dvh;overflow:auto}}
+@media (pointer:coarse) and (max-width:600px) and (orientation:portrait) {#shared-dialog {position:fixed;inset:auto;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) rotate(90deg);width:min(94dvh,940px);max-width:none;max-height:92dvw;overflow:auto}.feedback-layout,.shared-tree-layout {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.feedback-compose textarea {min-height:75px;font-size:16px}.feedback-history .shared-list {max-height:50dvw;overflow:auto}}
 @media(max-height:600px) {.shared-body {gap:9px}.shared-tree .node-button {padding:8px}.shared-tree li {margin:7px 0}.shared-box p {margin:4px 0}}
+
+/* Version lineage: every line connects a parent to its children. */
+.version-map {min-width:0;border:1px solid #d7e4ee;border-radius:10px;padding:14px;background:#f5f9fc}
+.version-map-title {margin:0 0 3px;font-size:16px;color:#173b58}
+.version-map-hint {margin:0 0 14px;color:#607789;font-size:13px;line-height:1.5}
+.version-map .shared-tree,.version-map .shared-tree ul {margin:0;padding:0;border:0}
+.version-map .shared-tree {overflow-x:auto}
+.version-map .shared-tree ul {overflow:visible}
+.version-map .shared-tree li {position:relative;margin:0;padding:0 0 10px 26px;min-width:0}
+.version-map .shared-tree li::before {content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;border:0;background:#a9c9df}
+.version-map .shared-tree li:last-child::before {bottom:auto;height:26px}
+.version-map .shared-tree li::after {content:'';position:absolute;left:8px;top:25px;width:18px;height:2px;background:#a9c9df}
+.version-map .shared-tree > li::before {top:25px}
+.version-map .shared-tree > li:last-child::before {height:0}
+.version-map .shared-tree ul {margin-left:17px;padding-top:10px}
+.version-map .node-button {position:relative;display:block;box-sizing:border-box;width:100%;min-width:170px;padding:11px 12px;background:#fff;border:1px solid #cddfe9;border-radius:9px;box-shadow:0 2px 6px #274e6910}
+.version-map .node-button::before {content:'';position:absolute;left:-24px;top:18px;width:12px;height:12px;border:3px solid #f5f9fc;border-radius:50%;background:#558fbd;box-sizing:content-box}
+.version-map .node-button[aria-pressed=true] {border:2px solid #1767a4;background:#eaf5fc;padding:10px 11px}
+.version-map .node-button[aria-pressed=true]::before {background:#146eb2;box-shadow:0 0 0 3px #badff4}
+.version-map .node-title {display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.version-map .node-meta {display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:6px}
+.version-map .node-origin {font-size:12px;color:#597389}
+.version-detail-title {margin:0 0 8px;color:#173b58;font-size:16px}
+.version-detail-panel {min-width:0;position:sticky;top:70px}
+@media(max-width:700px){.version-detail-panel{position:static}.version-map .shared-tree ul{margin-left:8px}.version-map .shared-tree li{padding-left:20px}.version-map .shared-tree li::after{width:12px}.version-map .node-button::before{left:-18px}}
+
 </style>
 </head>
 <body class="visiting">
@@ -1034,9 +1063,13 @@ installBrandIcon();
 
   // Capture the initial public page before any user activity or private records are rendered.
   const localSnapshot = '<!doctype html>\n'+document.documentElement.outerHTML;
-  const data = {mode:'feedback', feedback:[], releases:[], selected:null, token:'',member:false,offline:false};
+  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]}];
+  const data = {mode:'feedback', feedback:[], releases:publicVersions, selected:publicVersions.at(-1)?.id || null, token:'',member:false,offline:false};
+  let feedbackDraft='', feedbackNotice='', viewSequence=0;
+  const readSequence={releases:0,feedback:0};
   let cloud = window.teamCloudbase || null;
   let cloudLoading = null;
+  let feedbackSubmitting = false;
   function loadScript(src){
     return new Promise((resolve,reject)=>{
       const script=document.createElement('script'); let settled=false;
@@ -1051,7 +1084,7 @@ installBrandIcon();
     const asset=name=>loadScript(base+name).catch(()=>loadScript(name));
     const sdk=()=>loadScript(base+'cloud-sdk.js').then(()=>{if(!window.cloudbase)throw new Error('SDK不可用');}).catch(()=>loadScript('cloud-sdk.js'));
     if(!cloudLoading) cloudLoading=Promise.all([asset('cloud-config.js'),sdk()])
-      .then(()=>asset('cloud-adapter.js'))
+      .then(()=>loadScript(base+'anon-feedback/cloud-adapter-feedback-v3.js').catch(()=>loadScript('cloud-adapter-feedback-v3.js')))
       .then(()=>{cloud=window.teamCloudbase;if(!cloud)throw new Error('共享服务初始化失败');return cloud;})
       .catch(error=>{cloudLoading=null;throw error;});
     return cloudLoading;
@@ -1069,6 +1102,7 @@ installBrandIcon();
     if(box){box.textContent=text;box.className=ok?'shared-success':'shared-error';}
   }
   async function api(path, options={}) {
+    if(!cloud && location.protocol!=='file:') await ensureCloud();
     if(cloud) return cloud.api(path,options);
     const headers = {...options.headers};
     if(options.admin) headers.Authorization='Bearer '+data.token;
@@ -1078,11 +1112,30 @@ installBrandIcon();
     if(!response.ok) throw new Error(result.error || '请求失败');
     return result;
   }
-  async function refresh(){
+  async function refresh(viewId=null){
     const [releases, feedback] = await Promise.all([api('/api/releases'),api('/api/feedback')]);
     if(!Array.isArray(releases.releases)||!Array.isArray(feedback.feedback)) throw new Error('未连接到班组共享服务');
+    if(viewId!==null && viewId!==viewSequence)return;
     data.releases=releases.releases; data.feedback=feedback.feedback;
     if(!data.selected || !data.releases.some(r=>r.id===data.selected)) data.selected=data.releases.at(-1)?.id || null;
+  }
+  async function refreshPart(kind,viewId){
+    const request=++readSequence[kind];
+    const value=await api(kind==='releases'?'/api/releases':'/api/feedback');
+    if(viewId!==viewSequence||request!==readSequence[kind])return;
+    if(!Array.isArray(value[kind]))throw new Error('服务返回无效数据');
+    data[kind]=value[kind];
+    if(kind==='releases' && (!data.selected || !data.releases.some(r=>r.id===data.selected)))data.selected=data.releases.at(-1)?.id||null;
+    const active=document.activeElement;
+    const editingOtherForm=active && content.contains(active) && active.closest('form') && !active.matches('#feedback-form textarea');
+    if(dialog.open && !feedbackSubmitting && !editingOtherForm)render(true);
+  }
+  function refreshVisibleParts(viewId){
+    for(const kind of ['releases','feedback']) refreshPart(kind,viewId).catch(()=>{
+      if(viewId!==viewSequence||!dialog.open||feedbackSubmitting)return;
+      if(data.mode==='feedback'&&feedbackNotice){if(kind==='feedback'){feedbackNotice='留言已提交，暂时无法刷新处理进度。';setMessage(feedbackNotice,true);}return;}
+      setMessage(kind==='releases'?'暂时无法刷新版本，当前显示已保存的内容。':'暂时无法刷新留言，可稍后再查看。');
+    });
   }
   function adminAccess(){
     if(cloud) return '';
@@ -1095,7 +1148,7 @@ installBrandIcon();
   function memberAccess(){
     if(!cloud) return '';
     if(data.member) return `<div class="shared-line"><span class="shared-success">已登录${data.token?' · 维护者':''}</span>${button('退出登录','sign-out')}</div>`;
-    return `<p class="shared-intro">留言和处理进度仅向已授权的班组成员开放。请使用班组账号登录。</p>
+    return `<p class="shared-intro">维护者登录后可处理留言和发布版本。</p>
       <form id="member-access" class="shared-form"><label>班组账号<input name="username" autocomplete="username" required></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><button class="button primary">登录</button></form>`;
   }
   function memberManagement(){
@@ -1112,16 +1165,16 @@ installBrandIcon();
     return `<article class="shared-box"><div class="shared-line"><strong>#${item.id} ${h(item.author)}</strong><span class="shared-status">${h(item.status)}</span><span class="shared-meta">${h(date(item.created_at))}</span></div><p>${h(item.content)}</p>${item.response?`<p class="shared-meta">处理说明：${h(item.response)}</p>`:''}${links}${admin}</article>`;
   }
   function feedbackView(){
-    if(cloud && !data.member) return memberAccess();
-    return `${cloud?memberAccess():''}<p class="shared-intro">提出建议后，${cloud?'班组成员':'大家'}可以查看留言和处理进展。</p>
-      <form id="feedback-form" class="shared-form"><label>称呼（可不填）<input name="author" maxlength="40"></label><label>留言内容<textarea name="content" maxlength="1000" required></textarea></label><button class="button primary">提交留言</button></form>
-      <div class="shared-list">${data.feedback.length?data.feedback.map(messageCard).join(''):'<p class="shared-intro">还没有留言。</p>'}</div>${adminAccess()}${memberManagement()}`;
+    const maintenance = cloud ? (data.member ? memberAccess() : `<details class="shared-admin feedback-manage"><summary>维护者登录</summary><div>${memberAccess()}</div></details>`) : '';
+    return `<p class="shared-intro">直接写下你的建议。提交后，可在此浏览器查看处理进展。</p>
+      <div class="feedback-layout"><div class="feedback-compose"><form id="feedback-form" class="shared-form"><label>留言内容<textarea name="content" maxlength="1000" placeholder="在这里输入你的留言" required></textarea></label><button class="button primary" ${feedbackSubmitting?'disabled':''}>提交留言</button></form>${maintenance}${memberManagement()}</div>
+      <section class="feedback-history" aria-label="留言与处理进展"><h3>留言与处理进展</h3><div class="shared-list">${data.feedback.length?data.feedback.map(messageCard).join(''):'<p class="shared-intro">还没有可查看的留言。</p>'}</div></section></div>`;
   }
   function treeNode(r, visited){
     if(visited.has(r.id)) return '';
     const next=new Set(visited);next.add(r.id);
     const children=data.releases.filter(c=>c.parent_id===r.id);
-    return `<li><button type="button" class="node-button" data-shared="node" data-id="${r.id}" aria-pressed="${data.selected===r.id}"><strong>${h(r.name)}</strong> <span class="shared-status">${h(r.status)}</span>${r.created_at?'<br><span class="shared-meta">登记 '+h(date(r.created_at))+'</span>':''}</button>${children.length?'<ul>'+children.map(c=>treeNode(c,next)).join('')+'</ul>':''}</li>`;
+    return `<li><button type="button" class="node-button" data-shared="node" data-id="${r.id}" aria-pressed="${data.selected===r.id}"><strong class="node-title">${h(r.name)}</strong><span class="node-meta"><span class="shared-status">${h(r.status)}</span><span class="node-origin">${r.parent_id?'由上一版本延伸':'起始版本'}</span></span>${r.created_at?'<span class="shared-meta">登记 '+h(date(r.created_at))+'</span>':''}</button>${children.length?'<ul>'+children.map(c=>treeNode(c,next)).join('')+'</ul>':''}</li>`;
   }
   function releaseForm(){
     if(!data.token) return '';
@@ -1143,45 +1196,50 @@ installBrandIcon();
     const related=r ? data.feedback.filter(f=>r.feedback_ids.includes(f.id)) : [];
     const detail = r ? `<article class="shared-box"><div class="shared-line"><h3>${h(r.name)}</h3><span class="shared-status">${h(r.status)}</span></div>
       <p class="shared-meta">来源版本：${h(parent?.name||'起始版本')}${r.created_at?' · 登记 '+h(date(r.created_at)):''}</p><p>${h(r.notes)}</p>
-      <p class="shared-meta">关联留言：${cloud && !data.member?'班组成员登录后查看':related.length ? related.map(f=>'#'+f.id+' '+h(f.content)).join('；'):'暂无'}</p>
-      ${data.offline ? button('下载离线网页','offline-download',`data-id="${r.id}"`) : cloud ? button('下载此版本','cloud-download',`data-id="${r.id}"`) : `<a class="button primary" href="/api/releases/${r.id}/download" download>下载此版本</a>`}
+      <p class="shared-meta">关联留言：${related.length ? related.map(f=>'#'+f.id+' '+h(f.content)).join('；'):'暂无'}</p>
+      ${data.offline ? button('下载离线网页','offline-download',`data-id="${r.id}"`) : button('下载此版本','cloud-download',`data-id="${r.id}"`)}
       ${data.token?`<form class="shared-form release-status" data-id="${r.id}"><label>版本状态<select name="status">${['测试中','已发布','已归档'].map(s=>`<option ${s===r.status?'selected':''}>${s}</option>`).join('')}</select></label><button class="button">更新状态</button></form>`:''}</article>` : '<p class="shared-intro">暂无版本。</p>';
     return `<p class="shared-intro">${data.offline?'本机显示随网页保存的版本；下载的是离线网页。共享留言和完整服务包需要连接服务。':'这里只记录网页前端的变化；选择版本可查看来源、修改内容、关联留言和下载包。'}</p>
-      <div class="shared-tree-layout"><ul class="shared-tree">${roots.map(r=>treeNode(r,new Set())).join('')}</ul>${detail}</div>${data.offline?'':(cloud?memberAccess():adminAccess())+releaseForm()+memberManagement()}`;
+      <div class="shared-tree-layout"><section class="version-map" aria-label="版本演进树"><h3 class="version-map-title">版本演进树</h3><p class="version-map-hint">从上到下查看版本延伸；线条分叉表示不同版本方向；可左右滑动，点击节点查看详情。</p><ul class="shared-tree">${roots.map(r=>treeNode(r,new Set())).join('')}</ul></section><section class="version-detail-panel"><h3 class="version-detail-title">所选版本</h3>${detail}</section></div>${data.offline?'':(cloud?memberAccess():'')+releaseForm()+memberManagement()}`;
   }
   function traceView(){
-    if(cloud && !data.member) return memberAccess();
     return `<p class="shared-intro">从留言查看处理进展，以及它落实到哪个版本。</p><ul class="shared-tree">${data.feedback.length?data.feedback.map(f=>`<li><div class="shared-box"><strong>#${f.id} ${h(f.content)}</strong> <span class="shared-status">${h(f.status)}</span>${f.response?`<p class="shared-meta">${h(f.response)}</p>`:''}</div><ul>${f.releases.length?f.releases.map(r=>`<li>${button(r.name,'select-version',`data-id="${r.id}"`)}</li>`).join(''):'<li class="shared-meta">尚未关联版本</li>'}</ul></li>`).join(''):'<li class="shared-intro">还没有留言。</li>'}</ul>`;
   }
-  function render(){
+  function render(preserveDraft=false){
+    const input=content.querySelector('#feedback-form textarea');
+    if(input) feedbackDraft=input.value;
+    const focused=preserveDraft && input && document.activeElement===input;
+    const start=focused?input.selectionStart:0,end=focused?input.selectionEnd:0;
     heading.textContent=data.mode==='feedback'?'留言箱':data.mode==='trace'?'留言去向':'版本记录';
     content.innerHTML=`<div class="shared-body"><nav class="shared-line" aria-label="共享功能">${button('留言箱','feedback')}${button('留言去向','trace')}${button('版本树','versions')}</nav><div id="shared-message" role="status"></div>${data.mode==='feedback'?feedbackView():data.mode==='trace'?traceView():versionView()}</div>`;
+    const next=content.querySelector('#feedback-form textarea');
+    if(next){next.value=feedbackDraft;if(focused){next.focus();next.setSelectionRange(start,end);}if(feedbackNotice)setMessage(feedbackNotice,true);}
   }
   async function open(mode){
-    data.mode=mode; heading.textContent=mode==='feedback'?'留言箱':mode==='trace'?'留言去向':'版本记录';
+    const viewId=++viewSequence;
+    data.mode=mode;data.offline=location.protocol==='file:';
     if(!dialog.open) dialog.showModal();
-    content.innerHTML='<div class="shared-body"><p class="shared-intro">正在连接共享服务…</p></div>';
-    if(location.protocol==='file:'){
-      data.offline=true;
-      if(mode==='versions'){
-        data.feedback=[];
-        data.releases=[
-          {id:1,name:'原离线版',parent_id:null,status:'已归档',notes:'原班组管理系统的离线版本，作为本次调整的基线。',created_at:'',feedback_ids:[]},
-          {id:2,name:'栏目与留言版本',parent_id:1,status:'测试中',notes:'调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。',created_at:'',feedback_ids:[]}
-        ];
-        if(!data.selected || !data.releases.some(r=>r.id===data.selected)) data.selected=2;
-        render();return;
-      }
+    if(data.offline && mode!=='versions'){
       content.innerHTML='<div class="shared-body"><p>留言箱需要连接班组共享服务。当前为离线打开，留言不会发送或同步。</p><div>'+button('查看离线版本树','versions')+'</div></div>';return;
     }
-    data.offline=false;
-    try {await ensureCloud();const health=await api('/api/health');if(health.service!=='team-board'||!health.ready)throw new Error();await refresh();render();}
-    catch(e){content.innerHTML='<div class="shared-body"><p class="shared-error">共享服务暂时连接不上，栏目仍可浏览。请检查网络后重试。</p><div>'+button('重新连接',''+mode)+'</div></div>';}
+    if(data.offline){
+      data.feedback=[];
+      data.releases=[
+        {id:1,name:'原离线版',parent_id:null,status:'已归档',notes:'原班组管理系统的离线版本，作为本次调整的基线。',created_at:'',feedback_ids:[]},
+        {id:2,name:'栏目与留言版本',parent_id:1,status:'测试中',notes:'调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。',created_at:'',feedback_ids:[]}
+      ];
+      if(!data.releases.some(r=>r.id===data.selected))data.selected=2;
+    }
+    render();
+    if(data.offline)return;
+    refreshVisibleParts(viewId);
+
   }
+  content.addEventListener('input', e=>{if(e.target.matches('#feedback-form textarea'))feedbackDraft=e.target.value;});
   document.addEventListener('click',async e=>{
     const el=e.target.closest('[data-shared]');if(!el)return;
     const action=el.dataset.shared;
-    if(action==='close'){dialog.close();return;}
+    if(action==='close'){viewSequence++;dialog.close();return;}
     if(action==='sign-out'){
       try{await cloud.signOut();data.token='';data.member=false;data.feedback=[];await refresh();render();setMessage('已退出登录。',true);}
       catch(err){setMessage(err.message||'退出失败，请重试。');}return;
@@ -1197,8 +1255,8 @@ installBrandIcon();
       return;
     }
     if(action==='cloud-download'){
-      try{const item=data.releases.find(r=>r.id===Number(el.dataset.id));const blob=await cloud.download(item);download(item.display_name,blob,'application/octet-stream');}
-      catch(err){setMessage(err.message||'下载失败，请重试。');}
+      try{const item=data.releases.find(r=>r.id===Number(el.dataset.id));setMessage('正在连接并准备下载…',true);el.disabled=true;await ensureCloud();const blob=await cloud.download(item);download(item.display_name,blob,'application/octet-stream');setMessage('下载已开始。',true);}
+      catch(err){setMessage(err.message||'下载失败，请重试。');}finally{el.disabled=false;}
       return;
     }
     if(action==='select-version'){data.selected=Number(el.dataset.id);await open('versions');}
@@ -1220,8 +1278,19 @@ installBrandIcon();
         render();setMessage('成员授权已添加。',true);return;
       }
       if(form.id==='feedback-form'){
-        await api('/api/feedback',{method:'POST',body:JSON.stringify({author:fields.get('author'),content:fields.get('content')})});
-        await refresh();render();setMessage('留言已提交。',true);return;
+        if(feedbackSubmitting)return;
+        const original=String(fields.get('content')||'');const message=original.trim();if(!message){setMessage('请输入留言内容。');return;}
+        feedbackSubmitting=true;feedbackNotice='';
+        const submit=form.querySelector('button[type=submit],button:not([type])');submit.disabled=true;setMessage('正在提交留言…',true);
+        try {await api('/api/feedback',{method:'POST',body:JSON.stringify({content:message})});}
+        catch(error){feedbackSubmitting=false;if(submit.isConnected)submit.disabled=false;throw error;}
+        feedbackSubmitting=false;
+        if(feedbackDraft===original) feedbackDraft='';
+        const current=content.querySelector('#feedback-form textarea');if(current && current.value===original)current.value='';
+        if(submit.isConnected)submit.disabled=false;
+        feedbackNotice='留言已提交。';if(data.mode==='feedback'&&dialog.open)setMessage(feedbackNotice,true);
+        refreshVisibleParts(viewSequence);
+        return;
       }
       if(form.classList.contains('feedback-edit')){
         await api('/api/admin/feedback/'+form.dataset.id,{method:'POST',admin:true,body:JSON.stringify({status:fields.get('status'),response:fields.get('response')})});
@@ -1238,7 +1307,8 @@ installBrandIcon();
       }
     }catch(err){setMessage(err.message||'操作失败，请重试。');}
   });
-  dialog.addEventListener('close',()=>{if(!cloud)data.token='';});
+  dialog.addEventListener('close',()=>{viewSequence++;if(!cloud)data.token='';});
+  if(location.protocol!=='file:')setTimeout(()=>ensureCloud().catch(()=>{}),300);
 })();
 </script>
 </body>
