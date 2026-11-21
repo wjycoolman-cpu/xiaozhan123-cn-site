@@ -262,7 +262,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 </head>
 <body class="visiting">
 <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <symbol id="team-mark" viewBox="512 222 895 790"><image id="logo-source" width="1890" height="1417" href="assets/team-logo.jpg"/></symbol>
+  <symbol id="team-mark" viewBox="512 222 895 790"><image id="logo-source" width="1890" height="1417" href="https://radical-skink-d1gbwtmsm84f045cf-1458711699.tcloudbaseapp.com/team-board/fast-assets/team-logo.jpg" onerror="this.onerror=null;this.setAttribute('href','assets/team-logo.jpg')"/></symbol>
   <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2.5 8 4.5v9.5l-8 5-8-5V7l8-4.5Z"/><path d="m4 7 8 5 8-5M12 12v9"/></symbol>
   <symbol id="i-quality" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 12l2.2 2.2 4.8-5"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
@@ -699,7 +699,7 @@ function directoryView(module, sid, isPublic) {
 function visitHome() {
   const content = visualMode === 'chart' ? bars('栏目资料',MODULES.map(m=>[m.label,m.sections.reduce((n,s)=>n+resourcesFor(m.id,s.id).length,0)]))
     : `<section class="visit-hero"><div class="visit-copy"><h1>现场作业</h1><p class="lead">工装准备 · 物料核对 · 现场交接</p></div>
-      <figure class="visit-photo"><img src="${WORKSHOP_IMAGE}" alt="设有工装架和工作台的车间示意图"><figcaption>车间示意图</figcaption></figure></section>`;
+      <figure class="visit-photo"><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="设有工装架和工作台的车间示意图"><figcaption>车间示意图</figcaption></figure></section>`;
   return `<div class="home-tools">${button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
 }
 
@@ -826,6 +826,8 @@ function formChanged() {
 }
 function installBrandIcon(){
   const image = new Image();
+  image.crossOrigin = 'anonymous';
+  image.onerror = () => { image.onerror=null; image.src='assets/team-logo.jpg'; };
   image.onload = () => {
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = 96;
@@ -839,7 +841,7 @@ function installBrandIcon(){
 }
 
 'use strict';
-const WORKSHOP_IMAGE='assets/workshop.png';
+const WORKSHOP_IMAGE='https://radical-skink-d1gbwtmsm84f045cf-1458711699.tcloudbaseapp.com/team-board/fast-assets/workshop.png';
 const TEMPLATES=[{"key": "quality-doc", "title": "标准作业资料登记表", "filename": "标准作业资料登记表.csv", "caption": "文件编号、版本及复核日期", "content": "文件编号,名称,版本,责任人,生效日期,下次复核日期\n"}, {"key": "layout-doc", "title": "6S 定置登记表", "filename": "6S 定置登记表.csv", "caption": "区域、位置编号及检查情况", "content": "区域,位置编号,物品名称,数量,责任人,检查日期,异常备注\n"}, {"key": "training-doc", "title": "岗位培训记录表", "filename": "岗位培训记录表.csv", "caption": "培训主题、岗位及后续事项", "content": "培训主题,日期,岗位,负责人,参加人数,后续事项\n"}, {"key": "party-doc", "title": "党建活动记录表", "filename": "党建活动记录表.csv", "caption": "活动主题、日期及主要内容", "content": "活动主题,日期,主要内容,后续事项\n"}];
 const STORAGE_KEY='team-workspace-offline-v2';
 const RESOURCE_MAP={
@@ -876,7 +878,7 @@ function exportCSV(){const m=moduleOf(state.module),s=sectionOf(state.module,sta
 function renderRail(){const pending=records.filter(r=>r.status!=='已完成'&&r.status!=='已归档').length;const done=records.filter(r=>r.status==='已完成'||r.status==='已归档').length;const due=records.filter(r=>r.deadline&&r.deadline<=today()&&r.status!=='已完成'&&r.status!=='已归档').length;const recent=[...records].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||'')).slice(0,3);$('rail').innerHTML=`
  <section class="panel rail-panel"><div class="rail-title"><h2>班组记录</h2><span>当前浏览器</span></div><div class="rail-content"><div class="rail-summary"><div class="metric"><strong>${records.length}</strong><span>全部记录</span></div><div class="metric"><strong>${pending}</strong><span>待跟进</span></div><div class="metric"><strong>${done}</strong><span>已完成</span></div></div><div class="recent-title">最近记录 ${due?`<span class="due-note">· ${due} 条已到计划日期</span>`:""}</div>${recent.length?recent.map(r=>`<button type="button" class="recent-row" data-action="record" data-module="${esc(r.module)}" data-section="${esc(r.section)}" data-id="${esc(r.id)}"><strong>${esc(r.title)}</strong><small>${esc(moduleOf(r.module)?.label||'')} · ${esc(r.status)}</small></button>`).join(''):'<p class="recent-empty">暂无记录</p>'}</div></section>
  <section class="panel rail-panel"><div class="rail-title"><h2>快捷工具</h2></div><div class="quick-grid"><button class="quick" data-action="tool" data-tool="search">${icon('search')}资料搜索</button><button class="quick" data-action="tool" data-tool="due">${icon('calendar')}到期核算</button><button class="quick" data-action="tool" data-tool="dues"><b aria-hidden="true">¥</b>党费试算</button><button class="quick" data-action="tool" data-tool="templates">${icon('doc')}常用模板</button></div></section>`}
-function homeHTML(){return `<div class="home"><div class="home-main"><div class="hero-image"><img src="${WORKSHOP_IMAGE}" alt="整洁的工装工作台和车间示意画面"><span class="image-label">现场示意图</span></div><div class="hero-copy"><h2>班组动态</h2>${button('查看改善案例 '+icon('arrow'),'story','','button primary')}</div></div><div class="process"><div class="process-title">生产准备工作流程 <span>流程示意</span></div><div class="process-steps"><div class="step"><strong>01　准备</strong><span>工装与物料</span></div><div class="step"><strong>02　核对</strong><span>标准与状态</span></div><div class="step"><strong>03　交接</strong><span>现场协作</span></div><div class="step"><strong>04　复核</strong><span>质量与安全</span></div></div></div></div>`}
+function homeHTML(){return `<div class="home"><div class="home-main"><div class="hero-image"><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="整洁的工装工作台和车间示意画面"><span class="image-label">现场示意图</span></div><div class="hero-copy"><h2>班组动态</h2>${button('查看改善案例 '+icon('arrow'),'story','','button primary')}</div></div><div class="process"><div class="process-title">生产准备工作流程 <span>流程示意</span></div><div class="process-steps"><div class="step"><strong>01　准备</strong><span>工装与物料</span></div><div class="step"><strong>02　核对</strong><span>标准与状态</span></div><div class="step"><strong>03　交接</strong><span>现场协作</span></div><div class="step"><strong>04　复核</strong><span>质量与安全</span></div></div></div></div>`}
 function tabs(m){return `<div class="section-tabs" role="group" aria-label="${esc(m.label)}分类">${m.sections.map(s=>`<button type="button" class="section-tab" aria-pressed="${s.id===state.section}" data-action="section" data-module="${m.id}" data-section="${s.id}">${esc(s.label)}<span>${esc(s.short)}</span></button>`).join('')}</div>`}
 function statusClass(s){return s==='待处理'?'pending':s==='已完成'||s==='已归档'?'finished':''}
 function resourcesFor(mid,sid){return rows.filter(r=>RESOURCE_MAP[r[1]]?.[0]===mid&&RESOURCE_MAP[r[1]]?.[1]===sid)}
