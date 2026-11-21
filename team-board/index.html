@@ -1045,10 +1045,11 @@ installBrandIcon();
   }
   function ensureCloud(){
     if(cloud)return Promise.resolve(cloud);
-    const sdk='https://radical-skink-d1gbwtmsm84f045cf-1458711699.tcloudbaseapp.com/team-board/cloud-sdk.js';
-    if(!cloudLoading) cloudLoading=Promise.all([loadScript('cloud-config.js'),
-      loadScript(sdk).then(()=>{if(!window.cloudbase)throw new Error('SDK不可用');}).catch(()=>loadScript('cloud-sdk.js'))])
-      .then(()=>loadScript('cloud-adapter.js'))
+    const base='https://radical-skink-d1gbwtmsm84f045cf-1458711699.tcloudbaseapp.com/team-board/';
+    const asset=name=>loadScript(base+name).catch(()=>loadScript(name));
+    const sdk=()=>loadScript(base+'cloud-sdk.js').then(()=>{if(!window.cloudbase)throw new Error('SDK不可用');}).catch(()=>loadScript('cloud-sdk.js'));
+    if(!cloudLoading) cloudLoading=Promise.all([asset('cloud-config.js'),sdk()])
+      .then(()=>asset('cloud-adapter.js'))
       .then(()=>{cloud=window.teamCloudbase;if(!cloud)throw new Error('共享服务初始化失败');return cloud;})
       .catch(error=>{cloudLoading=null;throw error;});
     return cloudLoading;
