@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123444">
+  <meta name="description" content="班组日常点检系统入口。">
+  <title>班组点检系统</title>
+  <style>
+    :root{color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:#183a4a;background:#f1f6f5;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh}a{color:inherit}a:focus-visible{outline:3px solid #248b83;outline-offset:4px}
+    .top{background:#123444;color:#fff}.top-inner{max-width:1120px;min-height:76px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-size:1.1rem;font-weight:700}.brand-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#a9e8d7;color:#123b48;font-size:1.35rem}
+    .back{color:#daefeb;text-decoration:none;font-size:.95rem}.back:hover{text-decoration:underline}
+    main{max-width:1120px;margin:auto;padding:clamp(40px,8vh,86px) 28px 54px}.eyebrow{font-size:.88rem;letter-spacing:.08em;color:#13726f;font-weight:700;margin:0 0 13px}
+    h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.15;letter-spacing:-.035em;margin:0;color:#123444}.lead{font-size:1.1rem;line-height:1.75;color:#4b6670;max-width:620px;margin:18px 0 0}
+    .layout{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;margin-top:34px}.card{background:#fff;border:1px solid #d9e7e4;border-radius:18px;padding:30px;box-shadow:0 14px 32px #1a4b4610}.primary-card{border-top:4px solid #0c7773}
+    .tag{display:inline-block;background:#e2f4ee;color:#086860;font-size:.85rem;font-weight:700;padding:5px 11px;border-radius:999px}.card h2{font-size:1.35rem;line-height:1.3;margin:18px 0 9px;color:#123444}.card p{line-height:1.75;margin:0;color:#516c74}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:25px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:9px;font-weight:700;text-decoration:none}.button.primary{background:#096e69;color:white}.button.primary:hover{background:#075c58}.button.secondary{border:1px solid #aac9c3;color:#155d5c}.button.secondary:hover{background:#eff8f5}
+    .note{font-size:.9rem;margin-top:14px!important;color:#617b81!important}.steps{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px;color:#335967}.steps li{display:flex;gap:10px;align-items:flex-start;line-height:1.55}.steps i{font-style:normal;flex:none;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#e2f4ee;color:#08716a;font-size:.85rem;font-weight:700;margin-top:1px}
+    footer{max-width:1120px;margin:auto;padding:0 28px 28px;color:#698188;font-size:.9rem}
+    @media(max-width:700px){.top-inner{min-height:65px;padding:0 18px}.brand{font-size:1rem}.back{font-size:.9rem}main{padding:38px 18px 35px}.lead{font-size:1rem;margin-top:14px}.layout{grid-template-columns:1fr;gap:12px;margin-top:25px}.card{padding:23px;border-radius:14px}.card h2{margin-top:14px}.actions{margin-top:20px}.button{width:100%}footer{padding:0 18px 25px}}
+    @media(prefers-reduced-motion:no-preference){.button{transition:background-color .15s ease}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="top-inner"><a class="brand" href="/team-inspection/" aria-label="班组点检系统首页"><span class="brand-mark" aria-hidden="true">✓</span><span>班组点检</span></a><a class="back" href="/">返回小站</a></div></header>
+  <main>
+    <p class="eyebrow">班组日常工作</p>
+    <h1>班组点检系统</h1>
+    <p class="lead">完成每日点检，查看进度与记录。</p>
+    <div class="layout">
+      <section class="card primary-card" aria-labelledby="formal-title">
+        <span class="tag">正式系统</span>
+        <h2 id="formal-title">进入班组点检</h2>
+        <p>使用你的工号和密码登录，查看自己的点检任务。</p>
+        <div class="actions"><a class="button primary" href="https://team-inspection-connectivity.pages.dev/">进入点检系统</a></div>
+        <p class="note">点击后会打开现有点检系统，继续使用原来的账号和记录。</p>
+      </section>
+      <section class="card" aria-labelledby="demo-title">
+        <span class="tag">独立演示</span>
+        <h2 id="demo-title">先熟悉操作</h2>
+        <p>在演示环境了解任务、拍照提交和进度查看。</p>
+        <ul class="steps"><li><i aria-hidden="true">✓</i><span>使用演示数据，不影响正式记录</span></li><li><i aria-hidden="true">✓</i><span>电脑和手机都可以打开</span></li></ul>
+        <div class="actions"><a class="button secondary" href="https://team-inspection-connectivity.pages.dev/demo/">打开演示系统</a></div>
+      </section>
+    </div>
+  </main>
+  <footer>班组点检系统</footer>
+</body>
+</html>

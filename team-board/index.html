@@ -287,6 +287,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 .version-detail-panel {min-width:0;position:sticky;top:70px}
 @media(max-width:700px){.version-detail-panel{position:static}.version-map .shared-tree ul{margin-left:8px}.version-map .shared-tree li{padding-left:20px}.version-map .shared-tree li::after{width:12px}.version-map .node-button::before{left:-18px}}
 
+.inspection-entry{text-decoration:none}
 </style>
 </head>
 <body class="visiting">
@@ -319,6 +320,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
     <div class="top-actions">
       <button type="button" id="home-control" class="top-button" data-action="visit-home" aria-label="首页"><svg><use href="#i-home"/></svg><span>首页</span></button>
       <button type="button" class="top-button" data-action="mode"><svg><use href="#i-record"/></svg><span id="mode-switch">工作台</span></button>
+      <a class="top-button inspection-entry" href="https://xiaozhan123.cn/team-inspection/" aria-label="班组点检">班组点检</a>
       <button type="button" class="top-button" data-shared="feedback">留言箱</button>
       <button type="button" class="top-button" data-shared="versions">版本记录</button>
       <button type="button" class="top-button staff-only" data-action="backup" aria-label="数据备份"><svg><use href="#i-download"/></svg><span>数据备份</span></button>
