@@ -337,6 +337,20 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
  .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.identity{grid-column:1;grid-row:1}.system-title{grid-column:2;grid-row:1}.top-actions{grid-column:1/-1;grid-row:2;display:flex;justify-content:flex-start;flex-wrap:wrap;gap:5px}.top-actions .top-button{flex:none}.top-actions .top-button span{display:inline}.module-bar{max-height:none}
 }
 
+
+#board-editor-dialog {width:min(600px,94vw);max-height:88dvh;overflow:auto;padding:0;border:1px solid #d8e2ec;border-radius:12px;color:#17334a;box-shadow:0 18px 60px #12283e55}
+#board-editor-dialog::backdrop {background:#10283c99}
+#board-editor-content {padding:18px;line-height:1.5}
+#board-editor-content .field {margin:12px 0}
+.board-legacy {border-top:1px solid #e0e8ef;padding:12px 0}
+.board-legacy small {display:block;color:#586f81}
+.board-editor-list {margin-top:20px;border-top:1px solid #e0e8ef}
+.board-editor-row {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0}
+.board-connection {color:#536d80;font-size:.88rem;margin:4px 0 12px}
+.board-form-message {color:#9e3f27}
+@media (pointer:coarse) and (max-width:600px) and (orientation:portrait) {
+ #board-editor-dialog {position:fixed;inset:auto;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) rotate(90deg);width:min(94dvh,600px);max-width:none;max-height:92dvw}
+}
 </style>
 </head>
 <body class="visiting">
@@ -372,6 +386,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
       <a class="top-button inspection-entry" href="https://xiaozhan123.cn/team-inspection/" aria-label="班组点检">班组点检</a>
       <button type="button" class="top-button" data-shared="feedback">留言箱</button>
       <button type="button" class="top-button" data-shared="versions">版本记录</button>
+      <button type="button" class="top-button" data-board="open">栏目编辑</button>
       <button type="button" class="top-button staff-only" data-action="backup" aria-label="数据备份"><svg><use href="#i-download"/></svg><span>数据备份</span></button>
       <button type="button" class="top-button primary-outline" data-action="fullscreen" aria-label="全屏"><svg><use href="#i-full"/></svg><span id="fullscreen-text">全屏</span></button>
     </div>
@@ -388,6 +403,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 </div>
 <dialog id="logo-dialog" aria-label="生产准备组标志"><svg viewBox="0 0 895 790" role="img" aria-label="生产准备组完整标志"><use href="#team-mark" width="895" height="790"/></svg><form method="dialog"><button class="button">关闭</button></form></dialog>
 <dialog id="shared-dialog" aria-labelledby="shared-heading"><header class="shared-header"><h2 id="shared-heading"></h2><button type="button" class="button" data-shared="close" aria-label="关闭">关闭</button></header><div id="shared-content" aria-live="polite"></div></dialog>
+<dialog id="board-editor-dialog" aria-labelledby="board-editor-title"><header class="shared-header"><h2 id="board-editor-title">栏目编辑</h2><button type="button" class="button" data-board="close">关闭</button></header><div id="board-editor-content"></div></dialog>
 <dialog id="csv-target-dialog" aria-labelledby="csv-target-title">
   <form id="csv-target-form">
     <h2 id="csv-target-title">导入 CSV</h2>
@@ -722,7 +738,7 @@ function recordItem(r,layout) {
   return `<details class="info-item"><summary><span>${esc(r.title)}</span><small class="tag ${statusClass(r.status)}">${esc(r.status)}</small><span class="record-caption">${caption}</span></summary>
     <div class="item-body"><dl class="record-meta">${meta.filter(([,v])=>v).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
     <h4>${esc(detail)}</h4><p class="detail-text">${esc(r.detail || '暂无记录内容')}</p>
-    ${button('查看及编辑','record',`data-id="${esc(r.id)}"`)}</div></details>`;
+    ${visiting?'':button('查看及编辑','record',`data-id="${esc(r.id)}"`)}</div></details>`;
 }
 function topicView(entry,isPublic,chart) {
   const {section,refs,items}=entry;
@@ -737,7 +753,7 @@ function topicView(entry,isPublic,chart) {
   }
   const blocks=groups.map(([k,list])=>`<h3 class="topic-subhead">${esc(k)} <small>${list.length} 条</small></h3>${list.map(r=>recordItem(r,layout)).join('')}`).join('');
   return `<section class="entry-group">
-    ${blocks || (isPublic?'':'<p class="empty-text">暂无记录</p>')}${!isPublic&&refs.length?'<h3 class="topic-subhead">参考资料与模板</h3>':''}
+    ${blocks || (boardOnline&&boardState.phase!=='ready'?'': '<p class="empty-text">暂无记录</p>')}${!isPublic&&refs.length?'<h3 class="topic-subhead">参考资料与模板</h3>':''}
     ${refs.map(referenceItem).join('')|| (isPublic?'<p class="empty-text">暂无参考资料</p>':'')}</section>`;
 }
 
@@ -746,14 +762,15 @@ function directoryView(module, sid, isPublic) {
   const sections = selected ? [selected] : isPublic ? module.sections : workspaceSections(module);
   const entries = sections.map(s=>({
     section:s, refs:resourcesFor(module.id,s.id),
-    items:isPublic?[]:records.filter(r=>r.module===module.id&&r.section===s.id)
+    items:(!boardOnline&&isPublic)?[]:records.filter(r=>r.module===module.id&&r.section===s.id)
   }));
   const all = entries.flatMap(e=>e.items);
   const refCount = entries.reduce((n,e)=>n+e.refs.length,0);
   const attrs = `data-module="${module.id}" data-section="${selected?.id||''}"`;
   const toolShortcut = module.id==='quality' && sid==='expiry' ? button('到期核算','catalog-tool','data-tool="due"')
     : module.id==='party' && sid==='party-dues' ? button('党费试算','catalog-tool','data-tool="dues"') : '';
-  const controls = `${toolShortcut}${button('导入 CSV','import-section',attrs,'button primary')}
+  const controls = boardOnline ? `${toolShortcut}${selected?button('新增记录','new',attrs,'button primary'):''}`
+    : `${toolShortcut}${button('导入 CSV','import-section',attrs,'button primary')}
     ${selected?button('新增记录','new',attrs)+(isPublic?button('查看本栏记录','section-work',attrs):button('导出 CSV','csv')):''}
     ${button('下载导入模板','csv-sample')}`;
   let content;
@@ -774,6 +791,7 @@ function directoryView(module, sid, isPublic) {
   return `<section class="directory-page">
     <header class="page-intro"><h1>${esc(selected?.label||module.label)}</h1>${viewButtons()}</header>
     ${submenu}
+    ${boardBanner()}
     <div class="page-tools"><div class="page-actions">${controls}</div></div>
     <div class="entry-content">${content}</div></section>`;
 }
@@ -782,12 +800,12 @@ function visitHome() {
   const content = visualMode === 'chart' ? bars('栏目资料',MODULES.map(m=>[m.label,m.sections.reduce((n,s)=>n+resourcesFor(m.id,s.id).length,0)]))
     : `<section class="visit-hero"><div class="visit-copy"><h1>现场作业</h1><p class="lead">工装准备 · 物料核对 · 现场交接</p></div>
       <figure class="visit-photo"><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="设有工装架和工作台的车间示意图"><figcaption>车间示意图</figcaption></figure></section>`;
-  return `<div class="home-tools">${button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
+  return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
 }
 
 function staffHome() {
   const content = visualMode==='chart' ? bars('栏目记录',MODULES.map(m=>[m.label,records.filter(r=>r.module===m.id).length])) : homeHTML();
-  return `<div class="home-tools">${button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
+  return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
 }
 
 function renderVisit() {
@@ -949,6 +967,169 @@ const newId=()=>globalThis.crypto?.randomUUID?.()||`${Date.now().toString(36)}-$
 let records=[],storageOK=false,storageError='',loadBlocked=false;
 try{const probe=`${STORAGE_KEY}-test`;localStorage.setItem(probe,'1');localStorage.removeItem(probe);storageOK=true;const raw=localStorage.getItem(STORAGE_KEY);if(raw){const parsed=JSON.parse(raw);if(!Array.isArray(parsed.records))throw new Error('数据格式无法识别');records=parsed.records.filter(r=>sectionOf(r.module,r.section));}}catch(e){storageError='已有浏览器数据无法读取或本地存储不可用；为保护原数据，本次不会覆盖，请先导出本页记录。';storageOK=false;loadBlocked=true;}
 let state={view:'home',module:null,section:null,page:0,id:null,query:'',returnTo:null,edit:false};
+// Online catalogue: public reading, server-authorized editing. Local records stay local.
+const boardOnline=location.protocol!=='file:';
+const boardState={phase:boardOnline?'loading':'offline',error:'',canEdit:false,canManage:false,
+  pending:null,legacy:[],legacyError:'',busy:false,refreshing:null,editorList:[]};
+if(boardOnline){
+  boardState.legacy=records.slice();
+  boardState.legacyError=storageError;
+  records=[];
+  // Local-storage failures must not prevent a successful cloud save.
+  storageError='';loadBlocked=false;
+}else document.querySelector('[data-board="open"]').style.display='none';
+function boardBanner(){
+  if(!boardOnline)return '';
+  const text=boardState.phase==='loading'?'正在读取共享栏目…':
+    boardState.phase==='ready'?'共享栏目 · 所有人可查看':
+    '共享栏目暂时连接失败，请重试';
+  return `<p class="board-connection" role="status">${esc(text)} ${boardState.phase==='error'?'<button type="button" class="button small" data-board="refresh">重试</button>':''}</p>`;
+}
+function boardRerender(){
+  if(!document.querySelector('#record-form') && !document.querySelector('dialog[open]') &&
+      !document.querySelector('.entry-content details[open]')) render();
+}
+async function boardRefresh(showErrors=false){
+  if(!boardOnline)return;
+  if(boardState.refreshing)return boardState.refreshing;
+  boardState.refreshing=(async()=>{
+    try{
+      const cloud=await window.ensureTeamCloud();
+      const [next,rights]=await Promise.all([cloud.boardRecords(),cloud.boardPermissions()]);
+      const valid=next.filter(r=>sectionOf(r.module,r.section));
+      const changed=JSON.stringify(records)!==JSON.stringify(valid)||boardState.phase!=='ready';
+      records=valid;Object.assign(boardState,rights,{phase:'ready',error:''});
+      if(changed)boardRerender();
+    }catch(err){
+      boardState.phase='error';boardState.error=err.message||'连接失败';
+      boardRerender();if(showErrors)tell('暂时无法连接共享栏目，请稍后重试。');
+    }
+  })().finally(()=>{boardState.refreshing=null;});
+  return boardState.refreshing;
+}
+function boardOpen(mode='account',pending=null){
+  boardState.pending=pending;
+  const dialog=$('board-editor-dialog');
+  dialog.dataset.mode=mode;
+  boardDraw();
+  if(!dialog.open)dialog.showModal();
+}
+function boardDraw(){
+  const dialog=$('board-editor-dialog'),body=$('board-editor-content');
+  if(dialog.dataset.mode==='legacy'){
+    $('board-editor-title').textContent='本机旧记录';
+    body.innerHTML=`<p>这些记录只保存在当前浏览器，没有自动公开。单条发布前会再次提示。</p>
+      ${boardState.legacyError?'<p class="notice">'+esc(boardState.legacyError)+'</p>':''}
+      ${boardState.legacy.length?boardState.legacy.map(r=>`<article class="board-legacy"><strong>${esc(r.title)}</strong>
+        <small>${esc(moduleOf(r.module)?.label||'')} · ${esc(sectionOf(r.module,r.section)?.label||'')} · ${esc(r.date||'')}</small>
+        <p class="detail-text">${esc(r.detail||'暂无内容')}</p>
+        <button class="button small" type="button" data-board="publish-legacy" data-id="${esc(r.id)}">发布这条记录</button></article>`).join(''):'<p>当前浏览器没有找到旧记录。</p>'}`;
+    return;
+  }
+  $('board-editor-title').textContent='栏目编辑';
+  if(!boardState.canEdit){
+    body.innerHTML=`<p>所有人可查看栏目内容；指定人员登录后可以编辑。</p>
+      <form id="board-login-form"><label class="field">账号<input name="username" autocomplete="username" required></label>
+      <label class="field">密码<input name="password" type="password" autocomplete="current-password" required></label>
+      <div class="form-actions"><button class="button primary" type="submit">登录编辑</button></div>
+      <p class="board-form-message" role="status"></p></form>`;
+    return;
+  }
+  body.innerHTML=`<p>已登录，可以编辑共享栏目。</p><button type="button" class="button" data-board="logout">退出编辑账号</button>
+    ${boardState.canManage?`<section class="board-editor-list"><h3>指定栏目编辑人员</h3>
+      <p>填写已创建账号的用户 ID；这里只授予栏目编辑权限。</p>
+      <form id="board-grant-form"><label class="field">用户 ID<input name="userId" maxlength="64" required></label>
+      <button class="button primary" type="submit">添加编辑人员</button></form>
+      <div id="board-editors">${boardState.editorList.length?boardState.editorList.map(x=>`<div class="board-editor-row"><span>${esc(x.user_id)}</span><button class="button small" type="button" data-board="remove-editor" data-id="${esc(x.user_id)}">移除</button></div>`).join(''):'暂无额外编辑人员'}</div></section>`:''}
+    <p id="board-account-message" role="status"></p>`;
+}
+async function boardLoadEditors(){
+  if(!boardState.canManage)return;
+  try{boardState.editorList=await (await window.ensureTeamCloud()).listBoardEditors();boardDraw();}
+  catch(e){const el=$('board-account-message');if(el)el.textContent='编辑人员列表暂不可用，请重试。';}
+}
+async function boardSave(form,rec,revision){
+  const payload=JSON.stringify([rec.id,rec.module,rec.section,rec.title,rec.date,rec.place,
+    rec.owner,rec.status,rec.deadline,rec.detail,revision]);
+  if(form.dataset.boardPayload!==payload){
+    form.dataset.boardPayload=payload;form.dataset.boardRequest=newId();
+  }
+  const submit=form.querySelector('[type="submit"]');
+  submit.disabled=true;submit.textContent='正在保存…';
+  try{
+    const saved=await (await window.ensureTeamCloud()).saveBoard(rec,revision,form.dataset.boardRequest);
+    records=[...records.filter(r=>r.id!==saved.id),saved];
+    if(form.isConnected){state.id=saved.id;state.view='detail';render();}
+    tell('已保存到共享栏目，其他人可以查看。');
+  }catch(e){
+    const message=form.querySelector('.status-text');
+    if(message)message.textContent='保存未确认：'+(e.message||'网络异常')+'。内容仍在这里，可以重试。';
+    tell('保存未确认，填写内容仍保留在当前页面。');
+  }finally{submit.disabled=false;submit.textContent='保存记录';}
+}
+async function boardDelete(r){
+  if(!confirm(`删除“${r.title}”？删除后所有人都不能再看到这条记录。`))return;
+  try{
+    await (await window.ensureTeamCloud()).deleteBoard(r.id,r.revision,newId());
+    records=records.filter(x=>x.id!==r.id);state.view='section';state.id=null;render();tell('共享记录已删除。');
+  }catch(e){tell('删除未确认：'+(e.message||'网络异常')+'。');}
+}
+document.addEventListener('click',async e=>{
+  const el=e.target.closest('[data-board]');if(!el)return;
+  const action=el.dataset.board;
+  if(action==='open'){boardOpen();if(boardState.canManage)boardLoadEditors();return;}
+  if(action==='legacy'){boardOpen('legacy');return;}
+  if(action==='close'){$('board-editor-dialog').close();return;}
+  if(action==='refresh'){boardState.phase='loading';boardRerender();await boardRefresh(true);return;}
+  if(action==='logout'){
+    try{await (await window.ensureTeamCloud()).signOut();Object.assign(boardState,{canEdit:false,canManage:false,editorList:[]});boardDraw();tell('已退出编辑账号。');}
+    catch(err){tell('退出失败，请重试。');}return;
+  }
+  if(action==='publish-legacy'){
+    const old=boardState.legacy.find(r=>r.id===el.dataset.id);if(!old)return;
+    if(!boardState.canEdit){$('board-editor-dialog').close();boardOpen('account',()=>{boardOpen('legacy');tell('登录后请再次选择要发布的旧记录。');});return;}
+    if(!/^[A-Za-z0-9_-]{1,100}$/.test(old.id)){tell('这条旧记录的编号无法直接发布，请新建共享记录。');return;}
+    if(!confirm(`将“${old.title}”发布到共享栏目？发布后任何访问网站的人都能查看。原本机记录会保留。`))return;
+    el.disabled=true;
+    try{
+      const saved=await (await window.ensureTeamCloud()).saveBoard(old,null,'legacy-'+old.id);
+      records=[...records.filter(r=>r.id!==saved.id),saved];tell('已发布这条记录，本机原记录仍然保留。');
+    }catch(err){tell('发布未确认：'+(err.message||'网络异常')+'；本机原记录仍然保留。');}
+    finally{el.disabled=false;}return;
+  }
+  if(action==='remove-editor'){
+    const id=el.dataset.id;if(!confirm('移除此人员的栏目编辑权限？'))return;
+    try{await (await window.ensureTeamCloud()).setBoardEditor(id,false);await boardLoadEditors();tell('栏目编辑权限已移除。');}
+    catch(err){tell('操作失败：'+(err.message||'请重试'));}return;
+  }
+});
+document.addEventListener('submit',async e=>{
+  const form=e.target;
+  if(form.id==='board-login-form'){
+    e.preventDefault();const msg=form.querySelector('.board-form-message'),btn=form.querySelector('button');btn.disabled=true;msg.textContent='正在登录…';
+    try{
+      const rights=await (await window.ensureTeamCloud()).signInEditor(form.elements.username.value.trim(),form.elements.password.value);
+      Object.assign(boardState,rights);form.elements.password.value='';
+      $('board-editor-dialog').close();const pending=boardState.pending;boardState.pending=null;
+      tell('已登录，可以编辑共享栏目。');if(pending)pending();else {boardOpen();if(rights.canManage)boardLoadEditors();}
+      boardRefresh();
+    }catch(err){msg.textContent=err.message||'登录失败，请检查账号和密码。';}
+    finally{btn.disabled=false;}return;
+  }
+  if(form.id==='board-grant-form'){
+    e.preventDefault();const btn=form.querySelector('button');btn.disabled=true;
+    try{await (await window.ensureTeamCloud()).setBoardEditor(form.elements.userId.value.trim(),true);await boardLoadEditors();tell('已添加栏目编辑人员。');}
+    catch(err){const msg=$('board-account-message');if(msg)msg.textContent=err.message||'添加失败，请重试。';}
+    finally{btn.disabled=false;}
+  }
+});
+if(boardOnline){
+  window.addEventListener('DOMContentLoaded',()=>boardRefresh());
+  window.addEventListener('focus',()=>{if(document.visibilityState==='visible')boardRefresh();});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')boardRefresh();});
+  setInterval(()=>{if(document.visibilityState==='visible')boardRefresh();},30000);
+}
+
 function saveData(){if(loadBlocked)return false;try{const raw=JSON.stringify({format:'team-workspace',version:2,records});localStorage.setItem(STORAGE_KEY,raw);if(localStorage.getItem(STORAGE_KEY)!==raw)throw new Error('verify');storageOK=true;storageError='';return true}catch(e){storageOK=false;storageError='未能写入浏览器。本次内容仍在当前页面，请立即导出备份；关闭页面后可能丢失。';return false}}
 function tell(message){let el=$('notice-toast');if(!el){el=document.createElement('div');el.id='notice-toast';el.setAttribute('role','status');Object.assign(el.style,{position:'fixed',right:'22px',bottom:'22px',zIndex:'20',background:'#153e62',color:'#fff',padding:'12px 16px',borderRadius:'7px',boxShadow:'0 5px 18px #24384a38',maxWidth:'min(440px,90vw)',fontSize:'14px',lineHeight:'1.5'});document.querySelector('.shell').append(el)}el.textContent=message;$('announcer').textContent=message;clearTimeout(tell.timer);tell.timer=setTimeout(()=>el.remove(),5500)}
 function button(label,action,extra='',cls='button'){return `<button type="button" class="${cls}" data-action="${action}" ${extra}>${label}</button>`}
@@ -958,7 +1139,7 @@ function exportBackup(){const payload=backupPayload();download(`班组记录备�
 function csvCell(x){let value=String(x??'');if(/^[\s]*[=+@-]/.test(value))value="'"+value;return '"'+value.replace(/"/g,'""')+'"'}
 function exportCSV(){const m=moduleOf(state.module),s=sectionOf(state.module,state.section);const selected=records.filter(r=>r.module===m.id&&r.section===s.id);if(!selected.length){tell('当前分类还没有记录可导出。');return}const lines=[recordColumns,...selected.map(r=>[r.title,r.date,r.place,r.owner,r.status,r.deadline,r.detail])];download(`${m.label}-${s.label}-${today()}.csv`,'\ufeff'+lines.map(row=>row.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8');tell('已准备导出表格，请在浏览器下载记录中确认保存位置。')}
 function renderRail(){const pending=records.filter(r=>r.status!=='已完成'&&r.status!=='已归档').length;const done=records.filter(r=>r.status==='已完成'||r.status==='已归档').length;const due=records.filter(r=>r.deadline&&r.deadline<=today()&&r.status!=='已完成'&&r.status!=='已归档').length;const recent=[...records].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||'')).slice(0,3);$('rail').innerHTML=`
- <section class="panel rail-panel"><div class="rail-title"><h2>班组记录</h2><span>当前浏览器</span></div><div class="rail-content"><div class="rail-summary"><div class="metric"><strong>${records.length}</strong><span>全部记录</span></div><div class="metric"><strong>${pending}</strong><span>待跟进</span></div><div class="metric"><strong>${done}</strong><span>已完成</span></div></div><div class="recent-title">最近记录 ${due?`<span class="due-note">· ${due} 条已到计划日期</span>`:""}</div>${recent.length?recent.map(r=>`<button type="button" class="recent-row" data-action="record" data-module="${esc(r.module)}" data-section="${esc(r.section)}" data-id="${esc(r.id)}"><strong>${esc(r.title)}</strong><small>${esc(moduleOf(r.module)?.label||'')} · ${esc(r.status)}</small></button>`).join(''):'<p class="recent-empty">暂无记录</p>'}</div></section>
+ <section class="panel rail-panel"><div class="rail-title"><h2>班组记录</h2><span>${boardOnline?'共享栏目':'当前浏览器'}</span></div><div class="rail-content"><div class="rail-summary"><div class="metric"><strong>${records.length}</strong><span>全部记录</span></div><div class="metric"><strong>${pending}</strong><span>待跟进</span></div><div class="metric"><strong>${done}</strong><span>已完成</span></div></div><div class="recent-title">最近记录 ${due?`<span class="due-note">· ${due} 条已到计划日期</span>`:""}</div>${recent.length?recent.map(r=>`<button type="button" class="recent-row" data-action="record" data-module="${esc(r.module)}" data-section="${esc(r.section)}" data-id="${esc(r.id)}"><strong>${esc(r.title)}</strong><small>${esc(moduleOf(r.module)?.label||'')} · ${esc(r.status)}</small></button>`).join(''):'<p class="recent-empty">暂无记录</p>'}</div></section>
  <section class="panel rail-panel"><div class="rail-title"><h2>快捷工具</h2></div><div class="quick-grid"><button class="quick" data-action="tool" data-tool="search">${icon('search')}资料搜索</button><button class="quick" data-action="tool" data-tool="due">${icon('calendar')}到期核算</button><button class="quick" data-action="tool" data-tool="dues"><b aria-hidden="true">¥</b>党费试算</button><button class="quick" data-action="tool" data-tool="templates">${icon('doc')}常用模板</button></div></section>`}
 function homeHTML(){return `<div class="home"><div class="home-main"><div class="hero-image"><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="整洁的工装工作台和车间示意画面"><span class="image-label">现场示意图</span></div><div class="hero-copy"><h2>班组动态</h2>${button('查看改善案例 '+icon('arrow'),'story','','button primary')}</div></div><div class="process"><div class="process-title">生产准备工作流程 <span>流程示意</span></div><div class="process-steps"><div class="step"><strong>01　准备</strong><span>工装与物料</span></div><div class="step"><strong>02　核对</strong><span>标准与状态</span></div><div class="step"><strong>03　交接</strong><span>现场协作</span></div><div class="step"><strong>04　复核</strong><span>质量与安全</span></div></div></div></div>`}
 function tabs(m){return `<div class="section-tabs" role="group" aria-label="${esc(m.label)}分类">${m.sections.map(s=>`<button type="button" class="section-tab" aria-pressed="${s.id===state.section}" data-action="section" data-module="${m.id}" data-section="${s.id}">${esc(s.label)}<span>${esc(s.short)}</span></button>`).join('')}</div>`}
@@ -976,7 +1157,7 @@ function resourceDetailHTML(){
  const template=r?.[5]?TEMPLATES.find(t=>t.key===r[1]):null;
  return `<div class="workview"><div class="section-header"><div><h2>${esc(title)}</h2><p class="subheading">${guide?'分类说明':example?'填写示例，非实际记录':'原看板示例资料'}</p></div>${button('← 返回资料','return-resource','','button small')}</div><div class="content-scroll detail-body"><div class="guide-card"><strong>${guide?'用途':example?'示例内容':'内容'}</strong><p>${esc(content)}</p></div>${guide?`<div class="guide-card" style="margin-top:10px"><strong>资料从哪里收集</strong><p>${esc(s.collect)}</p><p class="helper">${esc(s.fields)}</p></div>`:''}${m.id==='safety'?'<p class="notice" style="margin-top:10px">示例仅用于整理资料，现场作业以单位正式批准的有效文件为准。</p>':''}<div class="detail-actions">${template?button('下载 CSV 模板','template-key',`data-key="${esc(template.key)}"`,'button primary'):''}${r?.[6]==='#work'?button('查看改善案例','story','','button'):''}${r?.[6]==='#tools'?button('打开到期核算','tool','data-tool="due"','button'):''}${button('登记实际记录','new','','button')}</div></div></div>`
 }
-function formHTML(){const m=moduleOf(state.module),s=sectionOf(state.module,state.section),old=state.edit?records.find(r=>r.id===state.id):null;const r=old||{title:'',date:today(),place:'',owner:'',status:'待处理',deadline:'',detail:''};const layout=topicLayouts[s.id];return `<div class="workview"><div class="section-header"><div><h2>${state.edit?'编辑':'新增'}${esc(s.label)}${s.label.endsWith('记录')?'':'记录'}</h2></div>${button('← 返回','section',`data-module="${m.id}" data-section="${s.id}"`,'button small')}</div><div class="content-scroll"><form id="record-form"><div class="form-grid"><label class="field">${esc(layout?.[2]||s.title)} *<input name="title" maxlength="100" required value="${esc(r.title)}" placeholder="填写可识别的名称"></label><label class="field">记录日期 *<input type="date" name="date" required value="${esc(r.date)}"></label><label class="field">${esc(layout?.[1]||s.place)}<input name="place" maxlength="100" value="${esc(r.place)}" placeholder="按实际情况填写"></label><label class="field">负责人<input name="owner" maxlength="60" value="${esc(r.owner)}" placeholder="可填写岗位或姓名"></label><label class="field">当前状态<select name="status">${['待处理','进行中','已完成','已归档'].map(x=>`<option${r.status===x?' selected':''}>${x}</option>`).join('')}</select></label><label class="field">计划 / 复核日期<input type="date" name="deadline" value="${esc(r.deadline)}"></label><label class="field wide">${esc(layout?.[3]||'记录内容')}<textarea name="detail" maxlength="3000" placeholder="填写事实、处理措施、复核情况或资料位置">${esc(r.detail)}</textarea></label></div><div class="form-actions"><button class="button primary" type="submit">保存记录</button>${button('取消','section',`data-module="${m.id}" data-section="${s.id}"`)}<span class="status-text">保存到当前浏览器，建议定期导出备份。</span></div></form></div></div>`}
+function formHTML(){const m=moduleOf(state.module),s=sectionOf(state.module,state.section),old=state.edit?records.find(r=>r.id===state.id):null;const r=old||{title:'',date:today(),place:'',owner:'',status:'待处理',deadline:'',detail:''};const layout=topicLayouts[s.id];return `<div class="workview"><div class="section-header"><div><h2>${state.edit?'编辑':'新增'}${esc(s.label)}${s.label.endsWith('记录')?'':'记录'}</h2></div>${button('← 返回','section',`data-module="${m.id}" data-section="${s.id}"`,'button small')}</div><div class="content-scroll"><form id="record-form"><div class="form-grid"><label class="field">${esc(layout?.[2]||s.title)} *<input name="title" maxlength="100" required value="${esc(r.title)}" placeholder="填写可识别的名称"></label><label class="field">记录日期 *<input type="date" name="date" required value="${esc(r.date)}"></label><label class="field">${esc(layout?.[1]||s.place)}<input name="place" maxlength="100" value="${esc(r.place)}" placeholder="按实际情况填写"></label><label class="field">负责人<input name="owner" maxlength="60" value="${esc(r.owner)}" placeholder="可填写岗位或姓名"></label><label class="field">当前状态<select name="status">${['待处理','进行中','已完成','已归档'].map(x=>`<option${r.status===x?' selected':''}>${x}</option>`).join('')}</select></label><label class="field">计划 / 复核日期<input type="date" name="deadline" value="${esc(r.deadline)}"></label><label class="field wide">${esc(layout?.[3]||'记录内容')}<textarea name="detail" maxlength="3000" placeholder="填写事实、处理措施、复核情况或资料位置">${esc(r.detail)}</textarea></label></div><div class="form-actions"><button class="button primary" type="submit">保存记录</button>${button('取消','section',`data-module="${m.id}" data-section="${s.id}"`)}<span class="status-text">${boardOnline?'保存后所有访问者都能查看。':'保存到当前浏览器，建议定期导出备份。'}</span></div></form></div></div>`}
 function detailHTML(){const r=records.find(x=>x.id===state.id),m=r&&moduleOf(r.module),s=r&&sectionOf(r.module,r.section);if(!r||!m||!s)return '<div class="empty">未找到这条记录。</div>';return `<div class="workview"><div class="section-header"><div><h2>${esc(r.title)}</h2></div>${button('← 返回','return-detail','','button small')}</div><div class="content-scroll detail-body"><div class="detail-meta"><div><span>状态</span><strong>${esc(r.status)}</strong></div><div><span>记录日期</span><strong>${esc(r.date||'未填写')}</strong></div><div><span>${esc(s.place)}</span><strong>${esc(r.place||'未填写')}</strong></div><div><span>负责人</span><strong>${esc(r.owner||'未填写')}</strong></div><div><span>计划 / 复核日期</span><strong>${esc(r.deadline||'未填写')}</strong></div></div><div class="guide-card"><strong>记录内容</strong><div class="detail-text">${esc(r.detail||'未填写记录内容。')}</div></div><div class="detail-actions">${button('编辑记录','edit','','button primary')}${button('删除记录','delete','','button danger')}</div></div></div>`}
 function toolShell(title,body){return `<div class="workview"><div class="section-header"><div><h2>${title}</h2></div>${button('← 返回','back','','button small')}</div><div class="content-scroll tool-body">${body}</div></div>`}
 function searchHTML(){return toolShell('资料搜索',`<label class="field">搜索栏目、资料说明和实际记录<input id="search-query" class="search-input" type="search" placeholder="例如：检查、培训、工装" value="${esc(state.query)}" autocomplete="off"></label><div id="search-results" class="search-results"></div>`)}
@@ -1004,6 +1185,10 @@ function openRecord(el){const r=records.find(x=>x.id===el.dataset.id);if(!r)retu
 function validImported(r){const bound=(v,n)=>typeof v==='string'&&v.length<=n;return !!(r&&typeof r==='object'&&sectionOf(r.module,r.section)&&bound(r.id,120)&&r.id.length&&bound(r.title,100)&&r.title.trim().length&&['待处理','进行中','已完成','已归档'].includes(r.status)&&bound(r.date,10)&&bound(r.place,100)&&bound(r.owner,60)&&bound(r.deadline,10)&&bound(r.detail,3000)&&bound(r.createdAt,40)&&bound(r.updatedAt,40))}
 function cleanImported(r){const limit=(v,n)=>String(v??'').slice(0,n);return {id:limit(r.id,120),module:r.module,section:r.section,title:limit(r.title,100),date:limit(r.date,10),place:limit(r.place,100),owner:limit(r.owner,60),status:r.status,deadline:limit(r.deadline,10),detail:limit(r.detail,3000),createdAt:limit(r.createdAt,40),updatedAt:limit(r.updatedAt,40)}}
 document.addEventListener('click',async e=>{const el=e.target.closest('[data-action]');if(!el)return;const action=el.dataset.action;
+ if(boardOnline && ['new','edit','delete'].includes(action) && !boardState.canEdit){
+   boardOpen('account',()=>{if(el.isConnected)el.click();else tell('已登录，请再次选择要编辑的内容。');});return;
+ }
+ if(boardOnline && action==='backup'){boardOpen('legacy');return;}
  if (action === 'logo') { $('logo-dialog').showModal(); return; }
  if (action === 'visit-home') { switchMode(true); return; }
  if (action === 'mode') { switchMode(!visiting); return; }
@@ -1053,8 +1238,8 @@ document.addEventListener('click',async e=>{const el=e.target.closest('[data-act
  else if(action==='back'||action==='return-detail'||action==='return-resource')back();
  else if(action==='new'){state.detailReturn=snapshot();state.view='form';state.edit=false;state.id=null;render();$('record-form')?.elements.title.focus()}
  else if(action==='record')openRecord(el);
- else if(action==='edit'){state.view='form';state.edit=true;render();$('record-form')?.elements.title.focus()}
- else if(action==='delete'){const r=records.find(x=>x.id===state.id);if(r&&confirm(`删除“${r.title}”？此操作会从本浏览器记录中移除它。`)){records=records.filter(x=>x.id!==r.id);const ok=saveData();state.view='section';state.id=null;render();tell(ok?'记录已删除。':storageError)}}
+ else if(action==='edit'){state.editRevision=records.find(r=>r.id===state.id)?.revision;state.view='form';state.edit=true;render();$('record-form')?.elements.title.focus()}
+ else if(action==='delete'){const r=records.find(x=>x.id===state.id);if(boardOnline){if(r)await boardDelete(r)}else if(r&&confirm(`删除“${r.title}”？此操作会从本浏览器记录中移除它。`)){records=records.filter(x=>x.id!==r.id);const ok=saveData();state.view='section';state.id=null;render();tell(ok?'记录已删除。':storageError)}}
  else if(action==='page'){state.page+=Number(el.dataset.delta);if(state.view==='search')updateSearch();else render()}
  else if(action==='csv')exportCSV();
  else if(action==='export')exportBackup();
@@ -1064,7 +1249,7 @@ document.addEventListener('click',async e=>{const el=e.target.closest('[data-act
  else if(action==='template'){const t=TEMPLATES[Number(el.dataset.index)];if(t){download(t.filename,'\ufeff'+t.content,'text/csv;charset=utf-8');tell('已准备下载模板，请在浏览器下载记录中确认保存位置。')}}
  else if(action==='fullscreen'){try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();else throw new Error('unsupported')}catch(e){tell('当前浏览器未能进入全屏，可尝试浏览器自带的全屏功能。')}}
 });
-document.addEventListener('submit',e=>{const f=e.target;if(f.id==='record-form'){e.preventDefault();if(!f.reportValidity())return;const v=new FormData(f),old=state.edit?records.find(r=>r.id===state.id):null;const rec={id:old?.id||newId(),module:state.module,section:state.section,title:String(v.get('title')).trim(),date:String(v.get('date')),place:String(v.get('place')).trim(),owner:String(v.get('owner')).trim(),status:String(v.get('status')),deadline:String(v.get('deadline')),detail:String(v.get('detail')).trim(),createdAt:old?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};if(!rec.title){tell('请填写记录名称。');return}if(old)records=records.map(r=>r.id===rec.id?rec:r);else records.push(rec);const ok=saveData();state.id=rec.id;state.view='detail';render();tell(ok?'记录已保存在当前浏览器。':storageError)}
+document.addEventListener('submit',async e=>{const f=e.target;if(f.id==='record-form'){e.preventDefault();if(!f.reportValidity())return;const v=new FormData(f),old=state.edit?records.find(r=>r.id===state.id):null;const rec={id:old?.id||(f.dataset.recordId||(f.dataset.recordId=newId())),module:state.module,section:state.section,title:String(v.get('title')).trim(),date:String(v.get('date')),place:String(v.get('place')).trim(),owner:String(v.get('owner')).trim(),status:String(v.get('status')),deadline:String(v.get('deadline')),detail:String(v.get('detail')).trim(),createdAt:old?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};if(!rec.title){tell('请填写记录名称。');return}if(boardOnline){await boardSave(f,rec,state.edit?state.editRevision:null);return}if(old)records=records.map(r=>r.id===rec.id?rec:r);else records.push(rec);const ok=saveData();state.id=rec.id;state.view='detail';render();tell(ok?'记录已保存在当前浏览器。':storageError)}
  else if(f.id==='due-form'){e.preventDefault();if(!f.reportValidity())return;const a=Date.parse(f.elements.start.value+'T00:00:00Z'),b=Date.parse(f.elements.end.value+'T00:00:00Z'),n=Math.round((b-a)/86400000);f.querySelector('output').textContent=n===0?'基准日当天到期':n>0?`距离到期还有 ${n} 天`:`已经到期 ${Math.abs(n)} 天`}
  else if(f.id==='dues-form'){e.preventDefault();if(!f.reportValidity())return;const cents=Math.round(f.elements.base.valueAsNumber*100),basis=Math.round(f.elements.rate.valueAsNumber*100),value=Math.round(cents*basis/10000)/100;f.querySelector('output').textContent='试算金额：'+new Intl.NumberFormat('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2}).format(value)+' 元'}
 });
@@ -1113,7 +1298,7 @@ installBrandIcon();
 
   // Capture the initial public page before any user activity or private records are rendered.
   const localSnapshot = '<!doctype html>\n'+document.documentElement.outerHTML;
-  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]}];
+  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]},{"id":9,"name":"草图布局前端版","parent_id":8,"status":"已发布","notes":"按草图调整顶部和左侧栏目，点击栏目在右侧显示分类；6S增加工区包干和负责人登记，优化横屏显示。","storage_key":"releases/6245410b-d642-4031-a181-8280b06b4ddc.zip","display_name":"班组管理系统-草图布局前端版.zip","created_at":"2026-11-24 11:11:07.89962+08","feedback_ids":[]}];
   const data = {mode:'feedback', feedback:[], releases:publicVersions, selected:publicVersions.at(-1)?.id || null, token:'',member:false,offline:false};
   let feedbackDraft='', feedbackNotice='', viewSequence=0;
   const readSequence={releases:0,feedback:0};
@@ -1134,11 +1319,12 @@ installBrandIcon();
     const asset=name=>loadScript(base+name).catch(()=>loadScript(name));
     const sdk=()=>loadScript(base+'cloud-sdk.js').then(()=>{if(!window.cloudbase)throw new Error('SDK不可用');}).catch(()=>loadScript('cloud-sdk.js'));
     if(!cloudLoading) cloudLoading=Promise.all([asset('cloud-config.js'),sdk()])
-      .then(()=>loadScript(base+'anon-feedback/cloud-adapter-feedback-v3.js').catch(()=>loadScript('cloud-adapter-feedback-v3.js')))
+      .then(()=>loadScript(base+'shared-content/cloud-adapter-feedback-v4.js').catch(()=>loadScript('cloud-adapter-feedback-v4.js')))
       .then(()=>{cloud=window.teamCloudbase;if(!cloud)throw new Error('共享服务初始化失败');return cloud;})
       .catch(error=>{cloudLoading=null;throw error;});
     return cloudLoading;
   }
+  window.ensureTeamCloud=ensureCloud;
   const date = x => {
     if(!x) return '';
     const value=String(x);
