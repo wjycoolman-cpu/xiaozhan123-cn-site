@@ -288,6 +288,55 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 @media(max-width:700px){.version-detail-panel{position:static}.version-map .shared-tree ul{margin-left:8px}.version-map .shared-tree li{padding-left:20px}.version-map .shared-tree li::after{width:12px}.version-map .node-button::before{left:-18px}}
 
 .inspection-entry{text-decoration:none}
+
+/* Masthead and directory follow the user's sketch: identity left, system title right. */
+.topbar {display:flex;align-items:center;gap:clamp(10px,1.3vw,22px)}
+.identity {flex:1 1 auto;min-width:0}
+.identity strong {white-space:nowrap}
+.top-actions {flex:0 1 auto;min-width:0}
+.system-title {order:2;flex:none;font-size:clamp(18px,1.5vw,25px);color:#153454;white-space:nowrap;letter-spacing:.06em}
+.module-bar {padding:12px 10px}
+#directory-panel>summary {padding:8px 10px 11px}
+.folder>summary,.folder-home {min-height:39px}
+@media(max-width:1080px){.topbar{gap:7px;padding:6px 9px}.identity{gap:7px}.identity-mark{width:38px;height:38px}.identity strong{font-size:16px}.system-title{font-size:16px;letter-spacing:0}.top-actions{gap:4px}.top-actions .top-button{font-size:12px;min-height:32px;padding:5px 7px}.top-actions .top-button svg{width:14px;height:14px}}
+@media (pointer:coarse) and (max-width:600px) and (orientation:portrait), (pointer:coarse) and (max-width:1024px) and (max-height:600px){
+ .topbar{min-height:42px}.identity-mark{width:34px;height:32px}.identity strong{font-size:15px}.system-title{font-size:15px}.top-actions .top-button{min-height:30px;padding:4px 6px;font-size:12px}
+ .module-bar{padding:3px}.folder>summary,.folder-home{min-height:27px;padding:4px 7px;font-size:13px}.folder-items{margin-bottom:3px}.folder-item{min-height:28px;padding:4px 7px;font-size:13px}#directory-panel>summary{padding:4px 7px}
+}
+
+
+@media (pointer:coarse) and (max-height:350px) and (orientation:landscape), (pointer:coarse) and (max-width:350px) and (orientation:portrait){
+ #directory-panel>summary{font-size:12px;padding:3px 6px}.folder>summary,.folder-home{min-height:22px;padding:2px 6px;font-size:12px}.folder>summary svg,.folder-home svg{width:14px;height:14px}
+}
+
+
+@media (pointer:coarse) and (max-height:350px) and (orientation:landscape), (pointer:coarse) and (max-width:350px) and (orientation:portrait){
+ body:not(.visiting) .identity-mark{width:26px;height:26px} body:not(.visiting) .identity strong,body:not(.visiting) .system-title{font-size:12px} body:not(.visiting) .top-actions{gap:2px} body:not(.visiting) .top-actions .top-button{flex-shrink:0;font-size:10px;padding:3px 4px;gap:2px} body:not(.visiting) .top-actions .top-button svg{display:none}
+}
+
+
+@media (pointer:coarse) and (max-width:700px) and (max-height:400px) and (orientation:landscape), (pointer:coarse) and (max-width:400px) and (max-height:700px) and (orientation:portrait){
+ body:not(.visiting) .identity-mark{width:28px;height:28px} body:not(.visiting) .identity strong,body:not(.visiting) .system-title{font-size:13px} body:not(.visiting) .top-actions{gap:2px} body:not(.visiting) .top-actions .top-button{flex-shrink:0;font-size:11px;padding:3px 4px;gap:2px} body:not(.visiting) .top-actions .top-button svg{display:none}
+ .folder>summary,.folder-home{min-height:25px;padding:3px 6px}
+}
+@media (pointer:coarse) and (max-height:350px) and (orientation:landscape), (pointer:coarse) and (max-width:350px) and (orientation:portrait){
+ body:not(.visiting) .identity strong,body:not(.visiting) .system-title{font-size:12px}body:not(.visiting) .top-actions .top-button{font-size:10px}.folder>summary,.folder-home{min-height:22px;padding:2px 6px}
+}
+
+
+/* Primary categories remain in the left rail; their sections open on the right. */
+.folder-primary{width:100%;display:grid;grid-template-columns:20px minmax(0,1fr) 9px;align-items:center;gap:9px;min-height:39px;padding:7px 10px;border:0;border-radius:6px;background:transparent;text-align:left;color:#253e55;font:inherit;font-weight:600;cursor:pointer}
+.folder-primary svg{width:17px;height:17px;color:#476581}.folder-primary:hover,.folder-primary[aria-current=page]{background:#eaf2fb;color:#145b9b}
+.category-links{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.category-link{min-height:36px;padding:6px 12px;border:1px solid #d5e1eb;border-radius:6px;background:#f8fbfd;color:#29465f;font:inherit;cursor:pointer}.category-link:hover,.category-link[aria-current=page]{background:#eaf2fb;border-color:#8bb0d4;color:#00498f}.category-link[aria-current=page]{font-weight:650}
+@media (pointer:coarse) and (max-width:600px) and (orientation:portrait), (pointer:coarse) and (max-width:1024px) and (max-height:600px){.folder-primary{min-height:27px;padding:4px 7px;font-size:13px}.category-links{gap:5px;margin-bottom:8px}.category-link{font-size:13px;min-height:32px;padding:5px 8px}}
+@media (pointer:coarse) and (max-width:700px) and (max-height:400px) and (orientation:landscape), (pointer:coarse) and (max-width:400px) and (max-height:700px) and (orientation:portrait){.folder-primary{min-height:25px;padding:3px 6px}}
+@media (pointer:coarse) and (max-height:350px) and (orientation:landscape), (pointer:coarse) and (max-width:350px) and (orientation:portrait){.folder-primary{min-height:22px;padding:2px 6px;font-size:12px}.folder-primary svg{width:14px;height:14px}}
+
+
+@media (max-width:800px) and (pointer:fine){
+ .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.identity{grid-column:1;grid-row:1}.system-title{grid-column:2;grid-row:1}.top-actions{grid-column:1/-1;grid-row:2;display:flex;justify-content:flex-start;flex-wrap:wrap;gap:5px}.top-actions .top-button{flex:none}.top-actions .top-button span{display:inline}.module-bar{max-height:none}
+}
+
 </style>
 </head>
 <body class="visiting">
@@ -315,7 +364,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
   <header class="topbar">
     <div class="identity">
       <button class="identity-mark" type="button" data-action="logo" aria-label="放大班组标志"><svg viewBox="0 0 895 790" aria-hidden="true"><use href="#team-mark" width="895" height="790"/></svg></button>
-      <div><strong>生产准备组</strong><small id="mode-label">班组管理系统</small></div>
+      <div><strong>生产准备组</strong></div>
     </div>
     <div class="top-actions">
       <button type="button" id="home-control" class="top-button" data-action="visit-home" aria-label="首页"><svg><use href="#i-home"/></svg><span>首页</span></button>
@@ -326,6 +375,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
       <button type="button" class="top-button staff-only" data-action="backup" aria-label="数据备份"><svg><use href="#i-download"/></svg><span>数据备份</span></button>
       <button type="button" class="top-button primary-outline" data-action="fullscreen" aria-label="全屏"><svg><use href="#i-full"/></svg><span id="fullscreen-text">全屏</span></button>
     </div>
+    <strong class="system-title" id="mode-label">管理系统</strong>
   </header>
   <main id="visit" aria-label="班组管理系统"></main>
   <main class="workspace">
@@ -403,6 +453,7 @@ const EXAMPLES={
  'quality:closure':['质量问题跟踪示例','问题：某批次标识待核实；分别记录现场现象、责任人、处理措施、计划日期和复核结果。'],
  'site:location':['定置资料登记示例','区域：某工装区；填写位置编号、物品名称、数量、责任人及确认后的标准位置。'],
  'site:rounds':['现场巡查登记示例','对象：某区域的物品摆放；填写巡查日期、实际发现情况、检查人和需要跟进的事项。'],
+ 'site:area-duty':['工区包干登记示例','填写工区或区域、包干事项、负责人以及包干范围和要求。'],
  'site:remedy':['现场整改登记示例','事项：某区域物品归位待确认；填写发现位置、整改措施、负责人、期限和复核结果。'],
  'safety:rules':['安全文件登记示例','文件：某设备安全规程；填写批准后的文件名称、编号、版本、适用岗位及存放位置。'],
  'safety:hazard':['隐患排查登记示例','事项：某区域发现待处理隐患；填写地点、现象、发现时间、责任人、处理进展和复核结果。'],
@@ -476,11 +527,11 @@ function currentModule(id,label,items){
 const MODULES = [
   currentModule('production','生产',[['tool-fault','工装故障单'],['tool-manual','工装使用说明书']]),
   currentModule('quality','质量',[['inspection','质量档案'],['team-zero','班组归零'],['quality-meeting','质量会'],['standards','标准作业法']]),
-  currentModule('site','6S',[['rounds','6S标准文件'],['custom-template','定制模板'],['operation-video','操作视频']]),
+  currentModule('site','6S',[['rounds','6S标准文件'],['custom-template','定制模板'],['operation-video','操作视频'],['area-duty','工区包干']]),
   currentModule('safety','安全',[['handbook','安全手册'],['equipment-safety','设备安全操作规程'],['crane-qualification','行车资质人员']]),
   currentModule('rules','组织'),
   currentModule('people','培训'),
-  currentModule('innovation','精益'),
+  currentModule('innovation','精益创新'),
   currentModule('ai','AI',[['ai-material','AI资料']]),
   currentModule('party','党建')
 ];
@@ -498,6 +549,7 @@ const rows = [
   ['quality','archive-doc','质量检查与档案索引','质量检查 质量档案 作业法 问题闭环','按作业类型保存检查记录、问题描述、处理证据及复核结论。这里没有导入真实质量记录。'],
   ['site','layout-doc','6S 定置登记模板','6s 工装 现场 位置 标准 定制模板','登记区域、位置编号、物品名称、数量、责任人和检查情况。',true],
   ['site','standard-doc','6S 标准资料索引','6s 标准 文件 检查','按区域维护标准说明、定置示意和检查记录。正式标准请使用本单位的有效文件。'],
+  ['site','area-duty-doc','工区包干与负责人登记说明','工区 包干 范围 负责人','按实际工区填写包干范围、事项和负责人，并及时维护。'],
   ['safety','safety-doc','设备安全操作规程示例','手册 安全 设备 规程 行车 培训','这里只展示文档结构，不可作为现场作业依据。正式资料应包含适用范围、人员资质、作业前确认、异常处置和批准信息。'],
   ['safety','crane-doc','行车与安全培训资料目录','行车 天车 安全 培训','汇总经批准的行车规程、岗位培训和复核材料。示例未包含具体操作指令。'],
   ['innovation','lean-doc','精益项目与提案记录','精益 改善 项目 提案 专利 创新','项目从问题、改善措施和前后证据三个方面记录。涉及专利时使用已核实的申请或授权信息。',false,'#work'],
@@ -537,16 +589,10 @@ function workspaceSections(module) {
 
 function renderDirectory() {
   const selected = visiting ? exhibit : state.module;
-  const sub = visiting ? publicSection : state.section;
-  $('module-list').innerHTML = button(icon('home')+'<span>首页</span>','visit-home',!selected?'aria-current="page"':'','folder-home') + MODULES.map(m => {
-    const current = selected === m.id;
-    const items = visiting ? m.sections : workspaceSections(m);
-    return `<details class="folder" name="board-folders" data-folder="${m.id}" ${expandedModules.has(m.id)||(!expandedModules.size&&current)?'open':''}>
-      <summary>${icon(m.icon)}<span>${esc(m.label)}</span><span class="folder-chevron" aria-hidden="true"></span></summary>
-      <div class="folder-items">${items.map(s => button(esc(s.label),'browse',
-        `data-module="${m.id}" data-section="${s.id}" ${current && (sub||'') === s.id?'aria-current="page"':''}`, 'folder-item')).join('')}</div>
-    </details>`;
-  }).join('');
+  $('module-list').innerHTML = button(icon('home')+'<span>首页</span>','visit-home',!selected?'aria-current="page"':'','folder-home') + MODULES.map(m =>
+    button(icon(m.icon)+`<span>${esc(m.label)}</span><span class="folder-chevron" aria-hidden="true"></span>`,'browse',
+      `data-module="${m.id}" data-section="" ${selected===m.id?'aria-current="page"':''}`,'folder-primary')
+  ).join('');
 }
 
 function browseModule(mid, sid) {
@@ -557,7 +603,8 @@ function browseModule(mid, sid) {
     state = {...state,view:'directory',module:mid,section:null,id:null,page:0};
     render();
   }
-  const current = $('module-list').querySelector('[aria-current="page"]');
+  const contentRoot = $(visiting?'visit':'stage');
+  const current = (sid && [...contentRoot.querySelectorAll('.category-link')].find(el=>el.dataset.module===mid&&el.dataset.section===sid)) || $('module-list').querySelector('[aria-current="page"]');
   current?.focus({preventScroll:true});
   if (stackedDirectory()) {
     $('directory-panel').open=false;
@@ -598,6 +645,7 @@ const topicLayouts = {
   expiry:['due','复核对象','到期事项','复核要求与处理情况'],
   rounds:['index','适用区域','6S 标准名称','检查要点与判定依据'],
   location:['object','区域 / 位置编号','定置项目','配置要求与图纸位置'],
+  'area-duty':['object','工区 / 区域','包干事项','包干范围与要求'],
   handbook:['index','适用岗位','手册名称与版本','适用范围与文件位置'],
   rules:['index','设备 / 工序','规程名称与版本','操作要求与文件位置'],
   activity:['history','培训对象','安全培训主题','培训内容与考核记录'],
@@ -721,8 +769,11 @@ function directoryView(module, sid, isPublic) {
       ${[...e.items].reverse().map(r=>recordItem(r,topicLayouts[e.section.id]||['index',e.section.place,e.section.title,'记录内容'])).join('')}${e.refs.map(referenceItem).join('')}
       ${e.items.length+e.refs.length?'':'<p class="empty-text">暂无资料</p>'}</section>`).join('');
   }
+  const submenu = `<nav class="category-links" aria-label="${esc(module.label)}分类">${(isPublic?module.sections:workspaceSections(module)).map(section=>button(esc(section.label),'browse',
+    `data-module="${module.id}" data-section="${section.id}" ${selected?.id===section.id?'aria-current="page"':''}`,'category-link')).join('')}</nav>`;
   return `<section class="directory-page">
     <header class="page-intro"><h1>${esc(selected?.label||module.label)}</h1>${viewButtons()}</header>
+    ${submenu}
     <div class="page-tools"><div class="page-actions">${controls}</div></div>
     <div class="entry-content">${content}</div></section>`;
 }
@@ -833,7 +884,7 @@ function switchMode(toVisit) {
   home.dataset.action = toVisit ? 'visit-home' : 'home';
   home.setAttribute('aria-label', toVisit ? '首页' : '工作台首页');
   home.querySelector('span').textContent = home.getAttribute('aria-label');
-  $('mode-label').textContent = toVisit ? '班组管理系统' : '综合工作台';
+  $('mode-label').textContent = toVisit ? '管理系统' : '综合工作台';
   $('mode-switch').textContent = toVisit ? '工作台' : '班组首页';
   if (toVisit) {
     $('notice-toast')?.remove();
@@ -878,7 +929,7 @@ const STORAGE_KEY='team-workspace-offline-v2';
 const RESOURCE_MAP={
  'device-doc':['production','equipment'],'fault-doc':['production','equipment-history'],'material-doc':['production','material'],
  'quality-doc':['quality','standards'],'archive-doc':['quality','inspection'],
- 'layout-doc':['site','location'],'standard-doc':['site','rounds'],
+ 'layout-doc':['site','location'],'standard-doc':['site','rounds'],'area-duty-doc':['site','area-duty'],
  'safety-doc':['safety','rules'],'crane-doc':['safety','activity'],
  'lean-doc':['innovation','idea'],'training-doc':['people','training'],'credential-doc':['people','qualification'],
  'exam-doc':['people','grade-exam'],'party-doc':['party','event'],'party-material':['party','party-forms'],'rules-doc':['rules','catalog']
@@ -990,10 +1041,7 @@ document.addEventListener('click',async e=>{const el=e.target.closest('[data-act
   return;
  }
  if(action==='home'){state={...state,view:'home',module:null,section:null,page:0,id:null,returnTo:null,detailReturn:null,resourceReturn:null};render()}
- else if(action==='module'){
-   const folder=$('module-list').querySelector('[data-folder="'+el.dataset.module+'"]');
-   if(folder){$('directory-panel').open=true;folder.open=true;folder.querySelector('summary').focus();}
- }
+ else if(action==='module'){browseModule(el.dataset.module,null)}
  else if(action==='section')openModule(el.dataset.module,el.dataset.section);
  else if(action==='tool')openTool(el.dataset.tool);
  else if(action==='backup')openTool('backup');
@@ -1065,7 +1113,7 @@ installBrandIcon();
 
   // Capture the initial public page before any user activity or private records are rendered.
   const localSnapshot = '<!doctype html>\n'+document.documentElement.outerHTML;
-  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]}];
+  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]}];
   const data = {mode:'feedback', feedback:[], releases:publicVersions, selected:publicVersions.at(-1)?.id || null, token:'',member:false,offline:false};
   let feedbackDraft='', feedbackNotice='', viewSequence=0;
   const readSequence={releases:0,feedback:0};
