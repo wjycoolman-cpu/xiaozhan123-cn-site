@@ -244,7 +244,7 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 
 .folder-home {display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:0;border-radius:7px;background:transparent;text-align:left;font:inherit;font-weight:650;color:#304a61;cursor:pointer}
 .folder-home svg {width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8}
-.folder-home:hover,.folder-home[aria-current=page] {background:#eaf2fb;color:#145b9b}
+.folder-home:hover,.folder-home[aria-current=page],.folder.is-current>summary {background:#eaf2fb;color:#145b9b}
 #shared-dialog {width:min(940px,94vw);max-height:min(88dvh,900px);padding:0;border:1px solid #d8e2ec;border-radius:12px;color:#17334a;box-shadow:0 18px 60px #12283e55}
 #shared-dialog::backdrop {background:#10283c99}
 .shared-header {display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid #e2e9ef;position:sticky;top:0;background:#fff;z-index:1}
@@ -604,30 +604,30 @@ function workspaceSections(module) {
 }
 
 function renderDirectory() {
-  const selected = visiting ? exhibit : state.module;
-  $('module-list').innerHTML = button(icon('home')+'<span>首页</span>','visit-home',!selected?'aria-current="page"':'','folder-home') + MODULES.map(m =>
-    button(icon(m.icon)+`<span>${esc(m.label)}</span><span class="folder-chevron" aria-hidden="true"></span>`,'browse',
-      `data-module="${m.id}" data-section="" ${selected===m.id?'aria-current="page"':''}`,'folder-primary')
-  ).join('');
+  const selected=visiting?exhibit:state.module;
+  const selectedSection=visiting?publicSection:state.section;
+  $('module-list').innerHTML=button(icon('home')+'<span>首页</span>','visit-home',!selected?'aria-current="page"':'','folder-home')+MODULES.map(m=>{
+    const current=selected===m.id;
+    const items=visiting?m.sections:workspaceSections(m);
+    return `<details class="folder ${current?'is-current':''}" name="board-folders" data-folder="${m.id}" ${expandedModules.has(m.id)?'open':''}>
+      <summary>${icon(m.icon)}<span>${esc(m.label)}</span><span class="folder-chevron" aria-hidden="true"></span></summary>
+      <div class="folder-items">${items.map(s=>button(esc(s.label),'browse',
+        `data-module="${m.id}" data-section="${s.id}" ${current&&selectedSection===s.id?'aria-current="page"':''}`,'folder-item')).join('')}</div>
+    </details>`;
+  }).join('');
 }
 
 function browseModule(mid, sid) {
   if (!visiting && state.view === 'form' && formChanged() && !confirm('记录尚未保存，离开填写页面？')) return;
+  if(sid){expandedModules.clear();expandedModules.add(mid);}
   if (visiting) showExhibit(mid,sid);
   else if (sid) openModule(mid,sid);
   else {
     state = {...state,view:'directory',module:mid,section:null,id:null,page:0};
     render();
   }
-  const contentRoot = $(visiting?'visit':'stage');
-  const current = (sid && [...contentRoot.querySelectorAll('.category-link')].find(el=>el.dataset.module===mid&&el.dataset.section===sid)) || $('module-list').querySelector('[aria-current="page"]');
+  const current=$('module-list').querySelector('[aria-current="page"]');
   current?.focus({preventScroll:true});
-  if (stackedDirectory()) {
-    $('directory-panel').open=false;
-    const title = $(visiting?'visit':'stage').querySelector('h1');
-    title.tabIndex=-1;
-    title.focus();
-  }
 }
 
 function viewButtons() {
@@ -786,11 +786,8 @@ function directoryView(module, sid, isPublic) {
       ${[...e.items].reverse().map(r=>recordItem(r,topicLayouts[e.section.id]||['index',e.section.place,e.section.title,'记录内容'])).join('')}${e.refs.map(referenceItem).join('')}
       ${e.items.length+e.refs.length?'':'<p class="empty-text">暂无资料</p>'}</section>`).join('');
   }
-  const submenu = `<nav class="category-links" aria-label="${esc(module.label)}分类">${(isPublic?module.sections:workspaceSections(module)).map(section=>button(esc(section.label),'browse',
-    `data-module="${module.id}" data-section="${section.id}" ${selected?.id===section.id?'aria-current="page"':''}`,'category-link')).join('')}</nav>`;
   return `<section class="directory-page">
     <header class="page-intro"><h1>${esc(selected?.label||module.label)}</h1>${viewButtons()}</header>
-    ${submenu}
     ${boardBanner()}
     <div class="page-tools"><div class="page-actions">${controls}</div></div>
     <div class="entry-content">${content}</div></section>`;
@@ -1180,7 +1177,7 @@ function backupHTML(){return toolShell('数据备份与导入',`<div class="noti
 function storyHTML(){return toolShell('班组动态 · 示例',`<div class="tool-list">${STORIES.map(s=>`<div class="tool-line"><div><strong>${esc(s.title)}</strong><small>${esc(s.label)}</small></div>${button('查看','story-detail',`data-id="${s.id}"`,'button small')}</div>`).join('')}</div>`)}
 function storyDetailHTML(){const s=STORIES.find(x=>x.id===state.story)||STORIES[0];return toolShell(`${esc(s.title)} · 示例`,`${s.parts.map(([label,text])=>`<div class="guide-card" style="margin-top:8px"><strong>${esc(label)}</strong><p>${esc(text)}</p></div>`).join('')}<div class="detail-actions">${button('返回动态','story-list','','button')}</div>`)}
 function render(){ if (visiting) { renderVisit(); return; } renderDirectory();document.body.classList.toggle('staff-catalog',['directory','section'].includes(state.view));renderRail();let html=state.view==='home'?staffHome():['section','directory'].includes(state.view)?directoryView(moduleOf(state.module),state.section,false):state.view==='resources'?resourceListHTML():state.view==='resource-detail'?resourceDetailHTML():state.view==='story-detail'?storyDetailHTML():state.view==='form'?formHTML():state.view==='detail'?detailHTML():state.view==='search'?searchHTML():state.view==='due'?dueHTML():state.view==='dues'?duesHTML():state.view==='templates'?templatesHTML():state.view==='backup'?backupHTML():storyHTML();$('stage').innerHTML=html;if(state.view==='search')updateSearch();if(stackedDirectory()){if(state.view==='home')window.scrollTo({top:0,behavior:'auto'});else $('stage').scrollIntoView({block:'start',behavior:'auto'})} }
-function openModule(mid,sid){const m=moduleOf(mid);if(!m)return;state={...state,view:'section',module:m.id,section:sid&&sectionOf(m.id,sid)?sid:m.sections[0].id,page:0,id:null};render()}
+function openModule(mid,sid){const m=moduleOf(mid);if(!m)return;expandedModules.clear();expandedModules.add(m.id);state={...state,view:'section',module:m.id,section:sid&&sectionOf(m.id,sid)?sid:m.sections[0].id,page:0,id:null};render()}
 function snapshot(){return {view:state.view,module:state.module,section:state.section,page:state.page,id:state.id,query:state.query,resource:state.resource,story:state.story}}
 function openTool(name){state.returnTo=snapshot();state.view=name;state.page=0;state.query='';render();if(name==='search')$('search-query')?.focus()}
 function back(){if(state.view==='detail'&&state.detailReturn){const prev=state.detailReturn;state={...state,...prev,detailReturn:null};render();return}if(state.view==='resource-detail'&&state.resourceReturn){const prev=state.resourceReturn;state={...state,...prev,resourceReturn:null};render();return}if(state.view==='resources'){state.view='section';render();return}if(state.view==='story-detail'){state.view='story';render();return}if(state.view==='form'){state.view=state.edit?'detail':'section';render();return}if(state.returnTo){const prev=state.returnTo;state={...state,...prev,returnTo:null};render()}else{state.view='home';state.module=null;render()}}
@@ -1301,7 +1298,7 @@ installBrandIcon();
 
   // Capture the initial public page before any user activity or private records are rendered.
   const localSnapshot = '<!doctype html>\n'+document.documentElement.outerHTML;
-  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]},{"id":9,"name":"草图布局前端版","parent_id":8,"status":"已发布","notes":"按草图调整顶部和左侧栏目，点击栏目在右侧显示分类；6S增加工区包干和负责人登记，优化横屏显示。","storage_key":"releases/6245410b-d642-4031-a181-8280b06b4ddc.zip","display_name":"班组管理系统-草图布局前端版.zip","created_at":"2026-11-24 11:11:07.89962+08","feedback_ids":[]},{"id":10,"name":"共享栏目编辑前端版","parent_id":9,"status":"已发布","notes":"栏目展示共享记录；指定编辑人员可登录修改；保留本机旧记录及逐条发布入口；优化手机横屏编辑。","storage_key":"releases/e1f84fbf-670b-48d1-97a9-3371e51be8d5.zip","display_name":"班组管理系统-共享栏目编辑前端版.zip","created_at":"2026-11-24 11:49:38.193084+08","feedback_ids":[]}];
+  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]},{"id":9,"name":"草图布局前端版","parent_id":8,"status":"已发布","notes":"按草图调整顶部和左侧栏目，点击栏目在右侧显示分类；6S增加工区包干和负责人登记，优化横屏显示。","storage_key":"releases/6245410b-d642-4031-a181-8280b06b4ddc.zip","display_name":"班组管理系统-草图布局前端版.zip","created_at":"2026-11-24 11:11:07.89962+08","feedback_ids":[]},{"id":10,"name":"共享栏目编辑前端版","parent_id":9,"status":"已发布","notes":"栏目展示共享记录；指定编辑人员可登录修改；保留本机旧记录及逐条发布入口；优化手机横屏编辑。","storage_key":"releases/e1f84fbf-670b-48d1-97a9-3371e51be8d5.zip","display_name":"班组管理系统-共享栏目编辑前端版.zip","created_at":"2026-11-24 11:49:38.193084+08","feedback_ids":[]},{"id":11,"name":"本机旧记录入口修正前端版","parent_id":10,"status":"已发布","notes":"将工作台中旧数据入口改名为“本机旧记录”，明确这些内容不会自动公开。","storage_key":"releases/45dcf9d4-ae13-4c0a-ade9-072ecaac0129.zip","display_name":"班组管理系统-本机旧记录入口修正前端版.zip","created_at":"2026-11-24 12:02:24.526692+08","feedback_ids":[]}];
   const data = {mode:'feedback', feedback:[], releases:publicVersions, selected:publicVersions.at(-1)?.id || null, token:'',member:false,offline:false};
   let feedbackDraft='', feedbackNotice='', viewSequence=0;
   const readSequence={releases:0,feedback:0};
