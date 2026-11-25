@@ -351,6 +351,31 @@ body:not(.visiting) #visit,.visiting .workspace,.visiting .staff-only,.visiting 
 @media (pointer:coarse) and (max-width:600px) and (orientation:portrait) {
  #board-editor-dialog {position:fixed;inset:auto;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) rotate(90deg);width:min(94dvh,600px);max-width:none;max-height:92dvw}
 }
+
+/* Homepage overview uses the existing brand, controls and stable directory IDs. */
+.home-overview{display:grid;gap:22px;padding:0 2px 20px;min-width:0}
+.overview-welcome{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:24px;align-items:center;border:1px solid #dce2e8;border-radius:10px;background:#fff;overflow:hidden;padding:24px}
+.overview-welcome h1{font-size:28px;line-height:1.3;margin:0 0 10px;color:#17334a;letter-spacing:.02em}
+.overview-welcome p{margin:0 0 20px;line-height:1.6;color:#586b7b;font-size:14px}
+.overview-welcome figure{position:relative;height:132px;margin:0;overflow:hidden;border-radius:7px;background:#e8edf2}
+.overview-welcome img{display:block;width:100%;height:100%;object-fit:cover}
+.overview-welcome figcaption{position:absolute;right:7px;bottom:7px;font-size:11px;background:#17334acc;color:#fff;padding:3px 6px;border-radius:3px}
+.overview-quick{display:flex;gap:8px;flex-wrap:wrap}.overview-quick .button{font-size:13px;min-height:36px;padding:7px 11px;display:inline-flex;gap:6px;align-items:center}.overview-quick svg{width:16px;height:16px}
+.overview-section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 13px}.overview-section-title h2{font-size:18px;margin:0;color:#17334a}.overview-section-title>span{font-size:12px;color:#677986}
+.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.overview-card{border:1px solid #dce2e8;background:#fff;border-radius:8px;padding:17px 18px 13px;min-width:0;display:flex;flex-direction:column}
+.overview-card-title{display:flex;align-items:center;gap:9px}.overview-card-title>svg{height:20px;width:20px;color:#316b99;flex:none}.overview-card-title h3{margin:0;font-size:17px;line-height:1.4;flex:1}.overview-card-title>span{font-size:11px;color:#738391;white-space:nowrap}
+.overview-module{font:inherit;font-weight:650;color:#17334a;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.overview-card>p{color:#60717e;font-size:12px;line-height:1.6;margin:10px 0 12px}
+.overview-links{display:flex;align-content:start;flex-wrap:wrap;gap:5px 12px;flex:1;margin-bottom:13px}
+.overview-link{border:0;background:none;padding:2px 0;color:#365d7b;font:inherit;font-size:12px;line-height:1.5;cursor:pointer;text-align:left}
+.overview-all{display:flex;gap:6px;align-items:center;justify-content:space-between;width:100%;border:0;border-top:1px solid #e8edf2;background:none;font:inherit;font-size:12px;padding:10px 0 0;color:#35698f;cursor:pointer}.overview-all svg{width:14px;height:14px}
+.overview-module:hover,.overview-link:hover,.overview-all:hover{color:#00569e;text-decoration:underline}.overview-module:focus-visible,.overview-link:focus-visible,.overview-all:focus-visible{outline:2px solid #145b9b;outline-offset:4px}
+.overview-legacy{margin-top:12px;border-top:1px solid #dce2e8;padding-top:14px}.overview-legacy>summary{cursor:pointer;color:#365d7b;padding:8px 0}.overview-legacy .home{margin-top:10px}.overview-chart{margin-top:16px}
+@media(max-width:1050px){.overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.overview-welcome{grid-template-columns:minmax(0,1fr) 145px;padding:18px;gap:16px}.overview-welcome h1{font-size:24px}.overview-card{padding:14px}}
+@media(pointer:coarse){.home-overview{gap:15px}.overview-welcome{padding:15px;gap:12px;grid-template-columns:minmax(0,1fr) 140px}.overview-welcome h1{font-size:23px}.overview-welcome p{font-size:12px;margin-bottom:12px}.overview-quick .button{font-size:12px;min-height:32px;padding:5px 8px}.overview-card{padding:13px}.overview-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.overview-link{min-height:28px;display:inline-flex;align-items:center}.overview-welcome figure{height:120px}}
+@media(max-width:560px) and (pointer:fine){.overview-welcome{grid-template-columns:1fr}.overview-welcome figure{display:none}.overview-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body class="visiting">
@@ -805,16 +830,35 @@ function directoryView(module, sid, isPublic) {
     <div class="entry-content">${content}</div></section>`;
 }
 
-function visitHome() {
-  const content = visualMode === 'chart' ? bars('栏目资料',MODULES.map(m=>[m.label,m.sections.reduce((n,s)=>n+resourcesFor(m.id,s.id).length,0)]))
-    : `<section class="visit-hero"><div class="visit-copy"><h1>现场作业</h1><p class="lead">工装准备 · 物料核对 · 现场交接</p></div>
-      <figure class="visit-photo"><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="设有工装架和工作台的车间示意图"><figcaption>车间示意图</figcaption></figure></section>`;
-  return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
+const HOME_DESCRIPTIONS={
+ production:'工装资料、设备履历与物料交接',quality:'质量档案、标准作业与问题闭环',
+ site:'现场标准、工区包干与整改跟踪',safety:'安全规程、人员资质与隐患排查',
+ rules:'班组制度、人员印章与日常组织',people:'岗位资质、培训与技能发展',
+ innovation:'改善提案、项目跟踪与成果沉淀',ai:'AI 相关资料与应用参考',party:'党建活动、学习资料与工作记录'
+};
+function homeOverviewHTML(){
+ const shortcuts=[['site','area-duty','工区包干'],['quality','expiry','到期提醒'],['people','qualification','人员资质']];
+ return `<div class="home-overview">
+  <section class="overview-welcome"><div><h1>班组工作总览</h1><p>从日常工作出发，查找资料、维护记录、跟进事项。</p>
+   <div class="overview-quick"><a class="button primary" href="https://xiaozhan123.cn/team-inspection/">${icon('record')}班组点检</a>${shortcuts.map(([mid,sid,label])=>button(label,'browse',`data-module="${mid}" data-section="${sid}"`)).join('')}</div>
+  </div><figure><img src="${WORKSHOP_IMAGE}" onerror="this.onerror=null;this.src='assets/workshop.png'" alt="生产准备组车间示意图"><figcaption>现场示意图</figcaption></figure></section>
+  <section aria-labelledby="overview-title"><div class="overview-section-title"><h2 id="overview-title">班组栏目</h2><span>按工作内容进入</span></div>
+   <div class="overview-grid">${MODULES.map(m=>`<article class="overview-card">
+    <div class="overview-card-title">${icon(m.icon)}<h3>${button(esc(m.label),'browse',`data-module="${m.id}"`,'overview-module')}</h3><span>${m.sections.length} 项</span></div>
+    <p>${esc(HOME_DESCRIPTIONS[m.id]||m.desc)}</p>
+    <div class="overview-links">${m.sections.slice(0,3).map(s=>button(esc(s.label),'browse',`data-module="${m.id}" data-section="${s.id}"`,'overview-link')).join('')}</div>
+    ${button('查看全部 '+icon('arrow'),'browse',`data-module="${m.id}"`,'overview-all')}
+   </article>`).join('')}</div>
+  </section>
+ </div>`;
 }
-
+function visitHome() {
+ const chart=visualMode==='chart'?`<div class="overview-chart">${bars('栏目资料',MODULES.map(m=>[m.label,m.sections.reduce((n,s)=>n+resourcesFor(m.id,s.id).length,0)]))}</div>`:'';
+ return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${homeOverviewHTML()}${chart}`;
+}
 function staffHome() {
-  const content = visualMode==='chart' ? bars('栏目记录',MODULES.map(m=>[m.label,records.filter(r=>r.module===m.id).length])) : homeHTML();
-  return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${content}`;
+ const chart=visualMode==='chart'?bars('本机栏目记录',MODULES.map(m=>[m.label,records.filter(r=>r.module===m.id).length])):'';
+ return `<div class="home-tools">${boardOnline?'':button('导入备份','open-import-workspace','','button primary')}${viewButtons()}</div>${homeOverviewHTML()}${chart}<details class="overview-legacy"><summary>班组动态与工作流程</summary>${homeHTML()}</details>`;
 }
 
 function renderVisit() {
@@ -1310,7 +1354,7 @@ installBrandIcon();
 
   // Capture the initial public page before any user activity or private records are rendered.
   const localSnapshot = '<!doctype html>\n'+document.documentElement.outerHTML;
-  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]},{"id":9,"name":"草图布局前端版","parent_id":8,"status":"已发布","notes":"按草图调整顶部和左侧栏目，点击栏目在右侧显示分类；6S增加工区包干和负责人登记，优化横屏显示。","storage_key":"releases/6245410b-d642-4031-a181-8280b06b4ddc.zip","display_name":"班组管理系统-草图布局前端版.zip","created_at":"2026-11-24 11:11:07.89962+08","feedback_ids":[]},{"id":10,"name":"共享栏目编辑前端版","parent_id":9,"status":"已发布","notes":"栏目展示共享记录；指定编辑人员可登录修改；保留本机旧记录及逐条发布入口；优化手机横屏编辑。","storage_key":"releases/e1f84fbf-670b-48d1-97a9-3371e51be8d5.zip","display_name":"班组管理系统-共享栏目编辑前端版.zip","created_at":"2026-11-24 11:49:38.193084+08","feedback_ids":[]},{"id":11,"name":"本机旧记录入口修正前端版","parent_id":10,"status":"已发布","notes":"将工作台中旧数据入口改名为“本机旧记录”，明确这些内容不会自动公开。","storage_key":"releases/45dcf9d4-ae13-4c0a-ade9-072ecaac0129.zip","display_name":"班组管理系统-本机旧记录入口修正前端版.zip","created_at":"2026-11-24 12:02:24.526692+08","feedback_ids":[]},{"id":12,"name":"左侧展开栏目版","parent_id":11,"status":"已发布","notes":"一级栏目在左侧展开，二级分类保留在左侧；点击分类后右侧显示对应内容。","storage_key":"releases/fe1ce962-ff50-414c-9688-0ae4ca6ed5f4.zip","display_name":"班组管理系统-左侧展开栏目版.zip","created_at":"2026-11-24 15:32:34.511758+08","feedback_ids":[]},{"id":13,"name":"化学品人员印章栏目版","parent_id":12,"status":"已发布","notes":"安全栏目新增化学品；组织栏目分别新增人员和印章，三个项目均位于左侧展开菜单。","storage_key":"releases/4854c512-c70d-4009-bacb-74a1d825be50.zip","display_name":"班组管理系统-化学品人员印章栏目版.zip","created_at":"2026-11-24 16:22:17.653017+08","feedback_ids":[]}];
+  const publicVersions = [{"id":1,"name":"原离线版","parent_id":null,"status":"已归档","notes":"原班组管理系统的离线版本，作为本次调整的基线。","storage_key":"seed/baseline.html","display_name":"班组管理系统-原离线版.html","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":2,"name":"栏目与留言版本","parent_id":1,"status":"测试中","notes":"调整十个一级栏目和指定二级目录；增加共享留言箱、版本树及更新包下载。","storage_key":"releases/bb93651d-4140-4cdc-b072-21a9686132eb.zip","display_name":"班组管理系统-栏目与留言版本.zip","created_at":"2026-11-21 00:41:36.211916+08","feedback_ids":[]},{"id":4,"name":"前端加载优化版","parent_id":2,"status":"已发布","notes":"精简首页内容，栏目优先显示，共享功能按需加载并支持重试；版本树只记录网页前端变更。","storage_key":"releases/b08990a1-aa59-4a41-8b96-8c3c1b28e8bd.zip","display_name":"班组管理系统-前端加载优化版.zip","created_at":"2026-11-21 13:05:39.300696+08","feedback_ids":[]},{"id":5,"name":"前端连接稳定版","parent_id":4,"status":"已发布","notes":"共享功能的前端文件优先从腾讯云加载，失败时使用备用地址，减少版本树和留言箱连接等待。","storage_key":"releases/d7461c24-943b-4901-b079-692751e76646.zip","display_name":"班组管理系统-前端连接稳定版.zip","created_at":"2026-11-21 13:12:57.664788+08","feedback_ids":[]},{"id":6,"name":"前端图片加载优化版","parent_id":5,"status":"已发布","notes":"网页图片优先从腾讯云加载，保留备用地址，优化班组标志和车间图片的显示速度。","storage_key":"releases/f5b6d6e8-2a43-4bcd-8e5f-0b1ca55b034f.zip","display_name":"班组管理系统-前端图片加载优化版.zip","created_at":"2026-11-21 13:21:27.950751+08","feedback_ids":[]},{"id":7,"name":"留言与版本树前端优化版","parent_id":6,"status":"已发布","notes":"留言框直接输入并提交；手机横屏适配；版本树显示演进关系；版本与留言分开加载并先显示已有内容。","storage_key":"releases/21963cee-0bc1-4be4-9e28-ea4e9a37a985.zip","display_name":"班组管理系统-留言与版本树前端优化版.zip","created_at":"2026-11-21 13:39:34.773763+08","feedback_ids":[]},{"id":8,"name":"班组点检入口前端版","parent_id":7,"status":"已发布","notes":"班组管理系统新增点检入口，可打开网站中的独立入口页，进入现有正式或演示点检系统。","storage_key":"releases/48dae9c2-19e3-4f5c-8479-2810e07ed972.zip","display_name":"班组管理系统-点检入口前端版.zip","created_at":"2026-11-23 22:35:57.386514+08","feedback_ids":[]},{"id":9,"name":"草图布局前端版","parent_id":8,"status":"已发布","notes":"按草图调整顶部和左侧栏目，点击栏目在右侧显示分类；6S增加工区包干和负责人登记，优化横屏显示。","storage_key":"releases/6245410b-d642-4031-a181-8280b06b4ddc.zip","display_name":"班组管理系统-草图布局前端版.zip","created_at":"2026-11-24 11:11:07.89962+08","feedback_ids":[]},{"id":10,"name":"共享栏目编辑前端版","parent_id":9,"status":"已发布","notes":"栏目展示共享记录；指定编辑人员可登录修改；保留本机旧记录及逐条发布入口；优化手机横屏编辑。","storage_key":"releases/e1f84fbf-670b-48d1-97a9-3371e51be8d5.zip","display_name":"班组管理系统-共享栏目编辑前端版.zip","created_at":"2026-11-24 11:49:38.193084+08","feedback_ids":[]},{"id":11,"name":"本机旧记录入口修正前端版","parent_id":10,"status":"已发布","notes":"将工作台中旧数据入口改名为“本机旧记录”，明确这些内容不会自动公开。","storage_key":"releases/45dcf9d4-ae13-4c0a-ade9-072ecaac0129.zip","display_name":"班组管理系统-本机旧记录入口修正前端版.zip","created_at":"2026-11-24 12:02:24.526692+08","feedback_ids":[]},{"id":12,"name":"左侧展开栏目版","parent_id":11,"status":"已发布","notes":"一级栏目在左侧展开，二级分类保留在左侧；点击分类后右侧显示对应内容。","storage_key":"releases/fe1ce962-ff50-414c-9688-0ae4ca6ed5f4.zip","display_name":"班组管理系统-左侧展开栏目版.zip","created_at":"2026-11-24 15:32:34.511758+08","feedback_ids":[]},{"id":13,"name":"化学品人员印章栏目版","parent_id":12,"status":"已发布","notes":"安全栏目新增化学品；组织栏目分别新增人员和印章，三个项目均位于左侧展开菜单。","storage_key":"releases/4854c512-c70d-4009-bacb-74a1d825be50.zip","display_name":"班组管理系统-化学品人员印章栏目版.zip","created_at":"2026-11-24 16:22:17.653017+08","feedback_ids":[]},{"id":14,"parent_id":13,"name":"新旧栏目合并保留版","status":"已发布","notes":"恢复原有分类入口，与新增分类按原编号合并；保留本机旧记录、留言和版本树，左侧展开方式不变。","storage_key":"releases/3488cb30-90c1-4a4f-b3e4-2eef1726c7ce.zip","display_name":"班组管理系统-新旧栏目合并保留版.zip","created_at":"2026-11-25 09:16:49.311099+08","feedback_ids":[]}];
   const data = {mode:'feedback', feedback:[], releases:publicVersions, selected:publicVersions.at(-1)?.id || null, token:'',member:false,offline:false};
   let feedbackDraft='', feedbackNotice='', viewSequence=0;
   const readSequence={releases:0,feedback:0};
